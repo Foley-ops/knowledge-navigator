@@ -15,7 +15,7 @@ runbook). The build never reads or writes parent directories.
 checkpoint not listed under *Completed checkpoints*, honouring its **Depends on** line.
 
 ## Current checkpoint
-I05 complete — running the Definition of Done audit.
+COMPLETE
 
 ## Completed checkpoints
 - **A00** — Inventory. Project root /Users/nick/Projects/knowledge-navigator contained only KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md and an empty .git/ (branch main, zero commits). No unrelated user files at risk; nothing outside this folder is read or written.
@@ -84,6 +84,7 @@ I05 complete — running the Definition of Done audit.
 - **I04** — Security and privacy review performed and captured as scripts/security-review.sh (make security-review) so it is repeatable rather than a one-off reading.
 - **I03** — Standalone README verified to contain the product purpose, the three experiences, current status, an architecture summary naming SQLite+FTS5, Fastify, Docusaurus and Nginx, both Compose quick-start commands, the local URL, the content workflow with a link to the agent contract, the testing commands, the privacy defaults including localhost binding and the fact that questions and context are not logged, backup and recovery instructions, the publishing warning, and links to the runbook as build authority and BUILD_STATE.md as build history.
 - **I05** — Final acceptance suite run in the runbook's order.
+- **Definition of Done** — Every statement in runbook §6 verified. The build is complete.
 
 ## Last successful checks
 - **A00** `pwd && /bin/ls -la && git status --short` → root confirmed; git works; only the runbook untracked
@@ -162,6 +163,7 @@ I05 complete — running the Definition of Done audit.
 - **I05** `docker compose config` → valid; services exactly api and web; only web publishes a port, on 127.0.0.1:3000
 - **I05** `OLLAMA_BASE_URL=http://ollama:11434 OLLAMA_MODEL=qwen3:8b docker compose --profile container-ollama config` → valid; adds exactly ollama and ollama-pull; still only web publishes a port; api wired to http://ollama:11434 with qwen3:8b
 - **I05** `git status and staged-diff inspection` → no database, .env, node_modules, dist, build, coverage or test artefact staged; no credential pattern in the staged diff; every path named in runbook §3 exists; no nested project folder; no absolute or parent-escaping path in tracked source
+- **Definition of Done** `live audit of all 33 statements in runbook §6 against the running stack, the built images, the tracked files and the compiled artefacts` → 33/33 pass. Repository safety 4/4; canonical knowledge 5/5 plus six deliberately broken pages each rejected (duplicate id, missing relationship target, broken relative link, category outside the atlas, alias colliding with another concept, non-http source URL); compiled index 4/4; researcher experience 10/10; containers 8/8; quality 4/4 (this last line being the audit itself).
 
 ## Blockers
 _none_
@@ -190,6 +192,7 @@ _none_
 - A bare 'lib/' in .gitignore and '**/lib/' in .dockerignore matched apps/web/src/lib as well as build output. Four real source files — the browser API client, the graph reader, the review-state vocabulary and the frontmatter reader — were therefore never committed and never reached the Docker build context. The web image build caught it as an unresolvable webpack import. Both patterns are now anchored to the directories that actually hold build output, and the recovered files are committed.
 - Three nginx bugs were found by the G06 smoke test and fixed: directory routes returned 301 redirects (now served as <route>/index.html directly), an unknown path returned the 404 page with HTTP 200 (try_files now ends in =404 with error_page), and every security header was missing from page responses because an add_header inside a location silently drops all inherited ones (headers now live in an included snippet repeated per location). The /api/ proxy deliberately does not repeat them, because the API already sets its own and duplicates can be treated as a conflict.
 - I04 false positives, documented rather than suppressed. (1) The web image contains 147 .pem files under /etc/ssl and /etc/ssl1.1 — the base image's ca-certificates-bundle, 145 public root certificates with zero private keys, verified with apk info --who-owns. (2) 'password:' in publish-images.yml is the input name of docker/login-action, fed GitHub's built-in ephemeral token rather than a stored secret. (3) '/etc/passwd' appears in three test files as a path-traversal input used to prove the API refuses it. The review script reports these as NOTE and its header explains each one.
+- Remaining non-blocking limitations, recorded honestly rather than left implicit. (1) All eleven pages are review_state generated-draft: written and self-corrected by an AI agent, corrected again after an adversarial review, but never checked against their sources by a person. The interface says so on every page. (2) The pages run 982-1235 words against the runbook's 400-800 aim; the runbook subordinates length to correctness and the twelve-section template leaves roughly 80-100 words per section at this length. (3) The 1989 priority claim on convolutional-layer.md is stated in prose and explicitly marked as unsupported by any source cited there, because no verifiable URL for that paper could be fetched. (4) The LeNet-5 source URL returns HTTP 202 rather than 200 to a bounded request, so its reachability is weaker evidence than the other eighteen. (5) The GitHub Actions workflows are syntactically and structurally validated locally but have never executed remotely, because this project is never pushed. (6) The container-ollama fallback configuration is validated but was never started, as the runbook directs. (7) The Ollama fallback image is pinned to ollama/ollama:latest rather than a fixed version.
 
 ## Next action
-Begin I00 — finish the operational README.
+COMPLETE. No checkpoint remains. To re-verify from a clean checkout: npm ci, then make check, ./scripts/smoke.sh, npm run test:browser and make security-review. To run the product: docker compose up --build -d, then open http://127.0.0.1:3000.
