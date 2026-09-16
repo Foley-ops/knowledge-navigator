@@ -1,0 +1,227 @@
+{
+  "$id": "https://knowledge-navigator.local/schemas/concept.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Generated from packages/core/src/schema.ts — do not edit by hand. JSON Schema cannot express this contract completely: primary_category must also appear in categories, the slug name must match the last segment of concept_id, aliases must be unique once normalised, a concept must not relate to itself, and source_id must be unique within a page. Those rules are enforced by `navigator validate`, which is authoritative.",
+  "properties": {
+    "aliases": {
+      "default": [],
+      "items": {
+        "maxLength": 200,
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "categories": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "concept_id": {
+      "minLength": 1,
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "concept",
+        "method",
+        "algorithm",
+        "theorem",
+        "mathematical-object",
+        "assumption",
+        "property",
+        "problem",
+        "failure-mode",
+        "example",
+        "implementation",
+        "tool"
+      ],
+      "type": "string"
+    },
+    "primary_category": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "relationships": {
+      "default": [],
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "condition": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "note": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "target": {
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "requires",
+              "prerequisite_of",
+              "generalizes",
+              "specializes",
+              "variant_of",
+              "equivalent_under",
+              "contrasts_with",
+              "approximates",
+              "implements",
+              "used_to_solve",
+              "useful_when",
+              "unreliable_when",
+              "assumes",
+              "guarantees",
+              "mitigates",
+              "contributes_to",
+              "introduced_by",
+              "supported_by",
+              "challenged_by",
+              "refined_by",
+              "belongs_to_category"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "target"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "review_state": {
+      "enum": [
+        "generated-draft",
+        "source-checked",
+        "expert-reviewed",
+        "formally-verified",
+        "disputed-or-conditional"
+      ],
+      "type": "string"
+    },
+    "slug": {
+      "pattern": "^\\/concepts\\/[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "sources": {
+      "default": [],
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "checked_on": {
+            "format": "date",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
+            "type": "string"
+          },
+          "source_id": {
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "source_kind": {
+            "enum": [
+              "primary-research",
+              "preprint",
+              "authoritative-secondary",
+              "reference-documentation",
+              "lecture-or-course",
+              "implementation",
+              "dataset-or-benchmark"
+            ],
+            "type": "string"
+          },
+          "supports": {
+            "items": {
+              "enum": [
+                "definition",
+                "why-it-matters",
+                "intuition",
+                "concrete-example",
+                "formal-treatment",
+                "assumptions-and-requirements",
+                "uses-and-applicability",
+                "limitations-and-common-mistakes",
+                "variants-and-alternatives",
+                "history-and-attribution"
+              ],
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "title": {
+            "maxLength": 400,
+            "minLength": 1,
+            "type": "string"
+          },
+          "url": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "title",
+          "url",
+          "source_kind",
+          "supports",
+          "checked_on"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "summary": {
+      "maxLength": 500,
+      "minLength": 1,
+      "type": "string"
+    },
+    "tier": {
+      "anyOf": [
+        {
+          "const": 1,
+          "type": "number"
+        },
+        {
+          "const": 2,
+          "type": "number"
+        },
+        {
+          "const": 3,
+          "type": "number"
+        }
+      ]
+    },
+    "title": {
+      "maxLength": 200,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "concept_id",
+    "title",
+    "slug",
+    "kind",
+    "tier",
+    "review_state",
+    "summary",
+    "categories",
+    "primary_category"
+  ],
+  "title": "Knowledge Navigator canonical concept frontmatter",
+  "type": "object"
+}
