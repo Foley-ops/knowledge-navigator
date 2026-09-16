@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
@@ -38,6 +40,24 @@ const config: Config = {
 
   i18n: { defaultLocale: 'en', locales: ['en'] },
 
+  plugins: [
+    // The Explore page reads the compiled graph directly rather than calling
+    // the API, so browsing keeps working even when the API is down.
+    function navigatorGeneratedAliases() {
+      const here = dirname(fileURLToPath(import.meta.url));
+      return {
+        name: 'navigator-generated-aliases',
+        configureWebpack: () => ({
+          resolve: {
+            alias: {
+              '@generated-graph': resolve(here, '../../generated/graph.json'),
+            },
+          },
+        }),
+      };
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -74,7 +94,12 @@ const config: Config = {
         { to: '/about', label: 'About', position: 'right' },
       ],
     },
-    footer: { style: 'light', links: [] },
+    footer: {
+      style: 'light',
+      links: [],
+      copyright:
+        'Private, local-first, and experimental. Every page is a generated draft until a person checks it against its sources.',
+    },
     docs: { sidebar: { hideable: true, autoCollapseCategories: false } },
   } satisfies Preset.ThemeConfig,
 };

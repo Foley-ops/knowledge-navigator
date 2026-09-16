@@ -2,6 +2,14 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "strict": true,
+    // `@docusaurus/tsconfig` declares baseUrl and the @site/* path mapping, but
+    // a relative `paths` entry resolves against the config that declares it —
+    // which is the vendored package directory, not this workspace. Both are
+    // restated here so `@site/*` points at apps/web.
+    "baseUrl": ".",
+    "paths": {
+      "@site/*": ["./*"]
+    },
     // @docusaurus/tsconfig 3.10.2 still sets `baseUrl`, which TypeScript 6
     // reports as a deprecation error. The option comes from the vendored
     // Docusaurus config, not from this project; acknowledge it rather than
