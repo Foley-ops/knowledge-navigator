@@ -198,12 +198,19 @@ layers give global mixing and learned, input-dependent weights at higher cost.
 
 ## History and attribution
 
-Weight-shared local receptive fields appear in Fukushima's neocognitron, and the
-trainable convolutional layer in its modern form — local kernels, shared weights,
-subsampling, trained end to end by gradient descent — is set out by LeCun,
-Bottou, Bengio and Haffner (1998) in the paper that introduces
-[LeNet](./lenet.md). Later architectures changed the kernel sizes, depth and
-normalisation but not the layer's definition.
+Weight-shared local receptive fields appear in Fukushima's neocognitron, which
+was not trained by gradient descent. The trainable convolutional layer in its
+modern form — local kernels, shared weights, subsampling, trained end to end by
+backpropagation — was first published by LeCun and colleagues in 1989, and
+reaches its canonical, complete exposition in LeCun, Bottou, Bengio and Haffner
+(1998), the paper cited here, which introduces [LeNet](./lenet.md). Later
+architectures changed the kernel sizes, depth and normalisation but not the
+layer's definition.
+
+The 1989 priority claim is **not** supported by any source cited on this page;
+it is recorded here so a reader does not mistake the 1998 paper for the first
+publication, and it should be checked against the 1989 paper before being
+relied on.
 
 ## Sources
 
@@ -213,8 +220,9 @@ normalisation but not the layer's definition.
   formula and the stride, padding, dilation and transposed variants.
 - **torch.nn.Conv2d documentation** — a checkable statement of the exact
   computation, the shape formula, groups, and the cross-correlation convention.
-- **Gradient-Based Learning Applied to Document Recognition** — the original
-  formulation of the trainable layer.
+- **Gradient-Based Learning Applied to Document Recognition** — the canonical
+  exposition of the trainable layer. It is the standard reference, not the first
+  publication; see History and attribution.
 
 ## Prerequisites and next connections
 

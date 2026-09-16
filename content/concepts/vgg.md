@@ -120,8 +120,12 @@ applies this everywhere:
  └ FC-4096 → FC-4096 → FC-1000 → softmax
 ```
 
-Channel count doubles at each of the first four pooling stages and then holds at
-512, so the activation volume falls roughly by half per stage.
+Channel count doubles at each of the first **three** pooling stages — 64 to 128,
+128 to 256, 256 to 512 — and then holds at 512 through the last two. While
+doubling is still opposing the spatial quartering, the activation volume falls by
+about half per stage; once the channel count stops growing, it falls by about a
+quarter per stage. Across all five stages the volume drops by roughly $128\times$,
+from $224^2 \cdot 64$ to $7^2 \cdot 512$.
 
 ## Formal treatment
 
@@ -135,12 +139,29 @@ $123$ million — close to $90\%$ — sit in the three fully connected layers, a
 over $100$ million in the first of them alone, which maps $7 \times 7 \times 512$
 to $4096$. The convolutional trunk is only about $15$ million weights.
 
-Compute is distributed the opposite way. The early high-resolution blocks
-dominate: block 1 runs $64$ channels at $224 \times 224$, and a forward pass at
-$224 \times 224$ costs roughly $1.5 \times 10^{10}$ multiply–accumulate
-operations, almost all of it convolutional. **Parameters and FLOPs are therefore
-concentrated in different parts of the same network**, which is why "reduce
-parameters" and "reduce compute" call for different edits here.
+Compute is distributed the opposite way. A forward pass at $224 \times 224$ costs
+roughly $1.5 \times 10^{10}$ multiply–accumulate operations, of which the dense
+head contributes about $1.2 \times 10^{8}$ — under $1\%$. **Parameters and
+multiply–accumulates are therefore concentrated in different parts of the same
+network**, which is why "reduce parameters" and "reduce compute" call for
+different edits here.
+
+Inside the trunk the cost is remarkably even rather than front-loaded. Spatial
+area quarters at each pooling stage while input and output channels each double,
+and the two cancel: every interior $3 \times 3$ layer in blocks 1 to 4 costs the
+same $1.85 \times 10^{9}$ multiply–accumulates. Blocks 3 and 4 lead only because
+they have three such layers each:
+
+| Block | Multiply–accumulates | Share of the forward pass |
+| ----- | -------------------- | ------------------------- |
+| 1     | $1.94 \times 10^{9}$ | 12.5%                     |
+| 2     | $2.77 \times 10^{9}$ | 17.9%                     |
+| 3     | $4.62 \times 10^{9}$ | 29.9%                     |
+| 4     | $4.62 \times 10^{9}$ | 29.9%                     |
+| 5     | $1.39 \times 10^{9}$ | 9.0%                      |
+
+Block 1 is the second _cheapest_ block, because its first convolution sees only
+three input channels.
 
 ## Assumptions and requirements
 
@@ -178,7 +199,9 @@ parameters and compute.
   convolutions" is wrong; the fully connected head holds roughly $90\%$ of the
   weights. Replacing it with global average pooling removes most of them.
 - **The compute cost is misattributed.** Symmetrically, trimming the head barely
-  changes FLOPs, because the early convolutional blocks dominate compute.
+  changes multiply–accumulates, because the convolutional trunk carries over
+  $99\%$ of them — and within the trunk the mid blocks, not the first one, are
+  the largest contributors.
 - **Modern reimplementations are compared as if identical.** `vgg16_bn` inserts
   batch normalisation throughout; it trains far more easily than the 2014 network
   and is not the same model.

@@ -66,8 +66,17 @@ $$
 Here $\star$ denotes cross-correlation and $*$ denotes
 [Convolution](./convolution.md). The single difference is the sign inside the
 second argument: $g(t - \tau)$ for convolution, $g(t + \tau)$ for
-cross-correlation. Equivalently, $f \star g = f * \tilde{g}$ where
-$\tilde{g}(t) = g(-t)$ is the reflection of $g$.
+cross-correlation. Equivalently,
+
+$$
+f \star g = \tilde{f} * g, \qquad \tilde{f}(t) = f(-t) ,
+$$
+
+so under this convention the reflection falls on the **first** argument. That
+first argument is the template — it is held still while the second slides — and
+it is also the one conjugated in the complex case below. Keep that orientation
+in mind: a formula copied from a text that shifts the _first_ argument instead
+will put the reflection on $g$.
 
 For complex-valued functions the first argument is conjugated,
 $(f \star g)(t) = \int \overline{f(\tau)}\, g(t + \tau)\, d\tau$, so that
@@ -84,8 +93,8 @@ deep learning codebase without deriving the wrong gradient.
 
 ## Intuition
 
-Take the template, lay it directly over the signal — no flipping — multiply
-aligned values and sum. Large output means the signal locally looks like the
+Take the template — the first argument — lay it directly over the signal with no
+flipping, multiply aligned values and sum. Large output means the signal locally looks like the
 template; a large negative output means it looks like the template inverted.
 Convolution does the same sweep after flipping the template, which is why
 convolution is commutative and cross-correlation is not: swapping the arguments
@@ -93,23 +102,37 @@ of $\star$ reflects the displacement axis.
 
 ## Concrete example
 
-Take the signal $f = [1, 2, 3]$ and template $g = [1, -1]$ from the convolution
-example. Cross-correlating gives $(f \star g) = [-1,\,-1,\,-1,\, 3]$ over the
-same displacement range for which convolution gave $[1,\, 1,\, 1,\, -3]$: the
-same numbers with the sign flipped and the order reversed, exactly as reflecting
-the antisymmetric kernel $[1,-1]$ predicts.
+Take the kernel $w = [1, -1]$ at positions $0, 1$ as the first argument and the
+signal $x = [1, 2, 3]$ at positions $0, 1, 2$ as the second — the same pair as
+the convolution example, with the kernel now in the template slot.
 
-Now take the symmetric kernel $g = [1, 1]$. Convolution and cross-correlation
-both give $[1,\, 3,\, 5,\, 3]$. Symmetry of the kernel is precisely the condition
-under which the two operations agree.
+- $(w * x) = [1,\, 1,\, 1,\, -3]$ at displacements $n = 0 \ldots 3$.
+- $(w \star x) = [-1,\, -1,\, -1,\, 3]$ at displacements $n = -1 \ldots 2$.
+
+Reflecting $[1,-1]$ about the origin negates it and shifts it by one position,
+so the cross-correlation is the convolution negated and relocated — not merely
+reordered. Note that the two operations do not even occupy the same displacement
+range.
+
+Now take $w = [1, 2, 1]$ at positions $-1, 0, 1$, which is symmetric **about the
+origin**. Both operations give $[1,\, 4,\, 8,\, 8,\, 3]$ at displacements
+$n = -1 \ldots 3$. Symmetry of the first argument about the origin — for a
+network layer, of the kernel — is precisely the condition under which the two
+agree. Indexing matters: $[1, 1]$ at positions $0, 1$ is symmetric about $0.5$,
+not about the origin, and the two operations then agree only up to a shift.
 
 ## Formal treatment
 
-The two operations are related by reflection of one argument:
+The two operations are related by reflection of the first argument:
 
 $$
-(f \star g)(t) = (f * \tilde{g})(t), \qquad \tilde{g}(t) = g(-t).
+(f \star g)(t) = (\tilde{f} * g)(t), \qquad \tilde{f}(t) = f(-t),
 $$
+
+which is the form consistent with the definition above and with the Fourier
+identity below, where the conjugate sits on $\mathcal{F}\{f\}$. Reflecting the
+second argument instead gives $(f * \tilde{g})(t) = (f \star g)(-t)$ — the same
+values along a reversed displacement axis.
 
 Consequently cross-correlation inherits bilinearity and translation-commutation
 from convolution but **loses commutativity and associativity**:

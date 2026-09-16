@@ -196,10 +196,13 @@ reach without subsampling at all.
 
 ## History and attribution
 
-Local averaging with subsampling appears as the "S-layer" of Fukushima's
-neocognitron and as the subsampling layers of
-[LeNet](./lenet.md), where averaging is followed by a trainable coefficient and
-bias rather than being purely fixed. Max pooling became the default through the
+Local averaging with subsampling appears as the **C-layer** of Fukushima's
+neocognitron — the fixed, non-trainable cells that blur over a neighbourhood of
+S-cell responses to tolerate positional shift, and whose density is thinned from
+layer to layer. (The trainable S-layer is the feature-extracting stage, and is
+the ancestor of the convolutional layer rather than of pooling.) The same idea
+appears as the subsampling layers of [LeNet](./lenet.md), where averaging is
+followed by a trainable coefficient and bias rather than being purely fixed. Max pooling became the default through the
 2000s and early 2010s, and its necessity was directly questioned by the
 all-convolutional net of Springenberg et al. (2015).
 

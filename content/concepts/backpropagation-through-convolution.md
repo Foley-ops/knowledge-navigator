@@ -8,7 +8,7 @@ aliases:
 kind: algorithm
 tier: 1
 review_state: generated-draft
-summary: The backward pass of a convolutional layer, in which the gradient with respect to the input is a convolution with the flipped kernel and the gradient with respect to the kernel is a correlation between input and output gradient.
+summary: The backward pass of a convolutional layer, in which the gradient with respect to the input is a true convolution of the output gradient with the kernel and the gradient with respect to the kernel is a correlation between input and output gradient.
 categories:
   - Artificial Intelligence/Deep Learning — Training
 primary_category: Artificial Intelligence/Deep Learning — Training

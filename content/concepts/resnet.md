@@ -80,8 +80,11 @@ ResNet answered a specific, well-posed question. [VGG](./vgg.md) had shown that
 depth helps, and had also found that plain stacks stop improving around 19 weight
 layers; deeper plain networks had _higher training_ error, which ruled out
 overfitting as the cause. ResNet's identity shortcuts removed that barrier, and
-the 152-layer model won ILSVRC 2015 classification with a $3.57\%$ top-5 error on
-the test set.
+ResNets won ILSVRC 2015 classification. The headline $3.57\%$ top-5 error on the
+test set belongs to the winning **ensemble** of six ResNets of differing depth —
+only two of them 152-layer — not to a single model; the single ResNet-152 is
+reported at $4.49\%$ top-5. Quoting the ensemble figure as a single-model result
+is exactly the protocol conflation the Limitations section below warns about.
 
 The architectural pattern outlasted the benchmark result. Residual stages with
 global average pooling are still the default backbone shape, and ResNet-50
@@ -134,8 +137,15 @@ addition.
 
 The depth-versus-cost comparison is the paper's headline structural claim:
 ResNet-152 has **lower** computational complexity than VGG-19 despite being eight
-times deeper, because global average pooling removes VGG's enormous dense head
-and the bottleneck design keeps per-block cost low.
+times deeper — $11.3 \times 10^{9}$ against VGG-19's $19.6 \times 10^{9}$ and
+VGG-16's $15.3 \times 10^{9}$ multiply–accumulates.
+
+The saving comes from the trunk, not the head. The $7 \times 7$ stride-2 stem and
+the stride-2 max pool drop the map to $56 \times 56$ within two layers, where
+[VGG](./vgg.md) is still running 64 channels at $224 \times 224$ and 128 at
+$112 \times 112$, and the bottleneck blocks keep every $3 \times 3$ convolution
+narrow. Global average pooling removes roughly $90\%$ of VGG's _parameters_ but
+well under $1\%$ of its arithmetic — a parameter saving, not a compute one.
 
 The relationship to [Backpropagation Through Convolution](./backpropagation-through-convolution.md)
 is what makes the depth usable: the additive shortcut contributes a term to
