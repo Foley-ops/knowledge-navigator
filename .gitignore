@@ -1,0 +1,71 @@
+# ---------------------------------------------------------------------------
+# Knowledge Navigator — Git ignore boundary
+#
+# Canonical knowledge lives in content/concepts/*.md and IS tracked.
+# Everything derived from it (SQLite, build output, caches) is disposable
+# and is NOT tracked. See the runbook, section 4.2.
+#
+# Deliberately NOT ignored: .env.example, generated/graph.json,
+# apps/web/sidebars.generated.ts, package-lock.json.
+# ---------------------------------------------------------------------------
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+.npm/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+lib/
+out/
+*.tsbuildinfo
+apps/web/.docusaurus/
+apps/web/build/
+.docusaurus/
+
+# Test and coverage artifacts
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+playwright/.cache/
+
+# Compiled index — rebuildable from canonical Markdown at any time
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/*.tmp
+data/*.db.tmp*
+*.sqlite
+*.sqlite3
+knowledge.db
+knowledge.db-*
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-error.log*
+
+# Local model data (host Ollama is managed outside this project)
+.ollama/
+ollama/
+ollama-data/
+*.gguf
+*.safetensors
+
+# Operating-system and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------------
+# Knowledge Navigator — Docker build context boundary
+#
+# The build context is this project root. Images receive only what they need
+# to install dependencies, validate and compile canonical content, and build
+# or serve the application. Everything private, local, or rebuildable is
+# excluded. See the runbook, checkpoints A03 and G01.
+# ---------------------------------------------------------------------------
+
+# Version control and build authority / state notes
+.git/
+.gitignore
+.gitattributes
+.github/
+KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md
+BUILD_STATE.md
+
+# Secrets and local configuration (images are configured through environment)
+.env
+.env.*
+!.env.example
+
+# Host dependencies and build output — images install and build their own
+node_modules/
+**/node_modules/
+**/dist/
+**/build/
+**/lib/
+**/*.tsbuildinfo
+apps/web/.docusaurus/
+apps/web/build/
+
+# Local compiled index and any database file — the API image compiles its own
+data/
+**/*.db
+**/*.db-journal
+**/*.db-wal
+**/*.db-shm
+**/*.sqlite
+**/*.sqlite3
+
+# Test artifacts and local test output
+coverage/
+**/coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+**/*.spec.ts-snapshots/
+tests/browser/
+
+# Local model data
+.ollama/
+ollama-data/
+**/*.gguf
+**/*.safetensors
+
+# Logs and operating-system noise
+*.log
+logs/
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
