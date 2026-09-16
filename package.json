@@ -31,7 +31,8 @@
     "check": "bash scripts/check.sh",
     "smoke": "bash scripts/smoke.sh",
     "dev": "npm run compile && npm run dev --workspace @navigator/api",
-    "dev:web": "npm run start --workspace @navigator/web"
+    "dev:web": "npm run start --workspace @navigator/web",
+    "pretest:browser": "npm run build:core && npm run build --workspace @navigator/api && npm run compile && npm run build --workspace @navigator/web"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

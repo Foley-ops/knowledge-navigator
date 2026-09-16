@@ -15,7 +15,7 @@ runbook). The build never reads or writes parent directories.
 checkpoint not listed under *Completed checkpoints*, honouring its **Depends on** line.
 
 ## Current checkpoint
-G07 complete — Phase G done, H00 next.
+H04 complete — Phase H done, I00 next.
 
 ## Completed checkpoints
 - **A00** — Inventory. Project root /Users/nick/Projects/knowledge-navigator contained only KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md and an empty .git/ (branch main, zero commits). No unrelated user files at risk; nothing outside this folder is read or written.
@@ -73,6 +73,11 @@ G07 complete — Phase G done, H00 next.
 - **G05** — The API becomes healthy only after content compiles and the index opens, and web becomes healthy only once it can serve a page; web waits on the API's health. Both handle SIGTERM: the API closes SQLite and exits, and tini forwards the signal.
 - **G06** — Core smoke test run from the project root: docker compose down --volumes, then docker compose up --build -d, wait for health, exercise the product through the published web port only.
 - **G07** — Host-Ollama acceptance. The host answers at http://127.0.0.1:11434/api/tags and lists qwen3.8:27b-mlx; a temporary container reaches the same list at http://host.docker.internal:11434/api/tags; the ordinary stack ran with no fallback profile, no Ollama container and no second model pull; ASSISTANT_PROVIDER=ollama was confirmed inside the running container.
+- **H00** — scripts/check.sh plus a 'make check' target. Nine stages in fail-fast order: Node version (fails with the exact nvm command when it is not 22), dependencies installed, formatting, lint, types, content validation, deterministic compilation, unit tests, and the Docusaurus production build. It stops at the first failure and names the stage and the failing command. The deterministic-compilation stage compiles the same corpus twice with SOURCE_DATE_EPOCH pinned and diffs generated/graph.json and apps/web/sidebars.generated.ts byte for byte.
+- **H01** — scripts/smoke.sh runs the Compose acceptance test repeatably: it removes any previous stack, builds and starts, waits for both health checks with a finite timeout (READY_TIMEOUT, default 300 s), exercises 16 checks through the one published port, prints docker compose ps and the last 60 log lines of each service on failure, and always tears the containers down on exit while preserving named volumes. The provider defaults to 'disabled' so the smoke test never depends on a model.
+- **H02** — Playwright acceptance tests for the five journeys in tests/browser/journeys.spec.ts, driven by playwright.config.ts which starts three servers: the static site, an API using the deterministic fixture provider, and a second API with generation switched off. No real model is contacted. The journeys are: search by alias and open the concept; reach the same canonical concept through two categories and confirm one URL; inspect a neighbourhood including depth change, recentring and the always-present text list; ask a fixture question and see all nine structured sections plus a depth re-run that preserves the question and context; and see a useful message with the evidence intact when the provider is disabled. Two extra journeys cover an absent search term and an empty question.
+- **H03** — .github/workflows/check.yml runs on push to main, on pull requests and on demand. Three jobs: lockfile install plus 'make check'; lockfile install plus the browser journeys with traces uploaded on failure; and both Docker image builds with push disabled. Permissions are contents:read and the workflow reads no repository secret.
+- **H04** — .github/workflows/publish-images.yml is triggered only by workflow_dispatch or a navigator-v* tag. A guard job refuses an unconfirmed manual run, the ordinary check workflow must pass on the same commit, and only then are linux/amd64 and linux/arm64 images built from this repository's root and pushed to the GitHub Container Registry with OCI labels, provenance and an SBOM. It has not been run.
 
 ## Last successful checks
 - **A00** `pwd && /bin/ls -la && git status --short` → root confirmed; git works; only the runbook untracked
@@ -135,6 +140,11 @@ G07 complete — Phase G done, H00 next.
 - **G06** `15 requests against http://127.0.0.1:3000` → all passed — home, concept, explore, ask and about pages; search by alias, graph, concept, build, health and assistant-status APIs; a 404 page, an unknown concept and an unknown API route each returning 404; security headers present; and nothing answering on 127.0.0.1:8000, confirming the API port is unpublished
 - **G07** `the runbook's acceptance question posted to /api/assistant/query through the web proxy` → HTTP 200 from qwen3.8:27b-mlx in 110.6 s. All nine contract fields present, confidence 'medium', 5 citations and zero fabricated ids. The model identified pooling as the mechanism, named its assumptions and disqualifiers, and explicitly recorded that receptive field and skip connections were not among the material it was given rather than inventing them. The container-ollama configuration was validated without being started.
 - **Phase G** `docker compose up --build -d, browser pass through the nginx /api proxy, docker compose down` → search and the graph work through the proxy with no API base override and no console errors; the stack stops leaving nothing running and the data volume intact
+- **H00** `make check` → all 9 stages passed in 11 s; 330 unit tests; graph.json and sidebars.generated.ts byte-identical across two builds
+- **H01** `./scripts/smoke.sh twice` → both runs passed 16 checks; after each run no container from the project remained and the navigator-data volume was preserved
+- **H02** `npm run test:browser, twice` → 7 tests passed in 4.7 s on both runs. Traces are retained on failure and uploaded as a CI artefact; locally they land in test-results/.
+- **H03** `YAML parsed and structurally audited locally (actionlint is not installed)` → 17/17 structural assertions passed: installs from the lockfile, runs make check, runs the browser tests, builds both images with push:false, read-only permissions, no secrets, no self-hosted runner. Remote execution on GitHub Actions remains UNVERIFIED because this project is never pushed.
+- **H04** `structural audit of the publication workflow` → build context is '.' so .dockerignore is the only boundary and no parent-directory file can enter; it uses the built-in GITHUB_TOKEN rather than a stored secret; it cannot fire on a branch push or a schedule. The header and README state that public distribution requires a privacy and licence review first.
 
 ## Blockers
 _none_
@@ -164,4 +174,4 @@ _none_
 - Three nginx bugs were found by the G06 smoke test and fixed: directory routes returned 301 redirects (now served as <route>/index.html directly), an unknown path returned the 404 page with HTTP 200 (try_files now ends in =404 with error_page), and every security header was missing from page responses because an add_header inside a location silently drops all inherited ones (headers now live in an included snippet repeated per location). The /api/ proxy deliberately does not repeat them, because the API already sets its own and duplicates can be treated as a conflict.
 
 ## Next action
-Begin H00 — create one check script.
+Begin I00 — finish the operational README.

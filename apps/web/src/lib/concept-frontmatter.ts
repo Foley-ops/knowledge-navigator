@@ -41,7 +41,9 @@ function str(value: unknown): string | undefined {
 }
 
 function strings(value: unknown): string[] {
-  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string')
+    : [];
 }
 
 function relationships(value: unknown): ConceptRelationship[] {

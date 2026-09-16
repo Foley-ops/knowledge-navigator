@@ -1,0 +1,103 @@
+# ---------------------------------------------------------------------------
+# Manual image publication.
+#
+# This workflow never runs on its own. It is triggered by hand, or by pushing a
+# tag of the form navigator-v*, and it refuses to publish until the ordinary
+# checks have passed on the same commit.
+#
+# PUBLISHING IS A DECISION, NOT A STEP. Before running this, complete a privacy
+# and licence review: the images are built from this repository and would carry
+# whatever canonical content it holds at that commit, which on a personal
+# instance may include private research notes. See the publishing section of
+# README.md.
+# ---------------------------------------------------------------------------
+name: publish-images
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "publish" to confirm a privacy and licence review has been completed'
+        required: true
+        default: ''
+  push:
+    tags:
+      - 'navigator-v*'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  guard:
+    name: Confirm the publication was intended
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse an unconfirmed manual run
+        if: github.event_name == 'workflow_dispatch' && inputs.confirm != 'publish'
+        run: |
+          echo "This workflow publishes container images to a public registry."
+          echo "Re-run it and type 'publish' to confirm a privacy and licence review is done."
+          exit 1
+
+  check:
+    name: Ordinary checks must pass first
+    needs: guard
+    uses: ./.github/workflows/check.yml
+
+  publish:
+    name: Build and push
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        include:
+          - image: api
+            dockerfile: Dockerfile.api
+            title: Knowledge Navigator API
+          - image: web
+            dockerfile: Dockerfile.web
+            title: Knowledge Navigator web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Sign in to the GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: Derive tags and labels
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}/${{ matrix.image }}
+          tags: |
+            type=ref,event=tag
+            type=sha,format=long
+          labels: |
+            org.opencontainers.image.title=${{ matrix.title }}
+            org.opencontainers.image.description=A private, local-first research knowledge navigator for mathematics, artificial intelligence and programming.
+            org.opencontainers.image.licenses=MIT
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          # The build context is this repository and nothing else, so
+          # .dockerignore is the only boundary that matters.
+          context: .
+          file: ${{ matrix.dockerfile }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          provenance: true
+          sbom: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

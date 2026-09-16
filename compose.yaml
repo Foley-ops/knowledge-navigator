@@ -34,7 +34,7 @@ services:
       ASSISTANT_CHARACTER_BUDGET: ${ASSISTANT_CHARACTER_BUDGET:-14000}
       DATABASE_PATH: /data/knowledge.db
       CONTENT_PATH: /app/content/concepts
-      PORT: "8000"
+      PORT: '8000'
       HOST: 0.0.0.0
       LOG_LEVEL: ${LOG_LEVEL:-info}
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://127.0.0.1:3000,http://localhost:3000}
@@ -44,7 +44,7 @@ services:
     # need it mapped explicitly, so the same host-Ollama configuration works
     # on both.
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - 'host.docker.internal:host-gateway'
     networks:
       - navigator
     # The API only reports healthy once content has compiled and the index has
@@ -71,14 +71,14 @@ services:
     # default. Set BIND_ADDRESS deliberately if this should ever be reachable
     # from another machine — and read the privacy note in the README first.
     ports:
-      - "${BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-3000}:8080"
+      - '${BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-3000}:8080'
     depends_on:
       api:
         condition: service_healthy
     networks:
       - navigator
     healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8080/healthz']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -89,7 +89,7 @@ services:
   # Only starts under `--profile container-ollama`. The ordinary stack uses the
   # host's own Ollama and must never start or pull a duplicate model.
   ollama:
-    profiles: ["container-ollama"]
+    profiles: ['container-ollama']
     image: ollama/ollama:latest
     restart: unless-stopped
     volumes:
@@ -99,7 +99,7 @@ services:
     # Deliberately no `ports`: the model API is reachable only from inside this
     # Compose network.
     healthcheck:
-      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      test: ['CMD-SHELL', 'ollama list >/dev/null 2>&1 || exit 1']
       interval: 10s
       timeout: 10s
       retries: 12
@@ -107,16 +107,16 @@ services:
     stop_grace_period: 20s
 
   ollama-pull:
-    profiles: ["container-ollama"]
+    profiles: ['container-ollama']
     image: ollama/ollama:latest
-    restart: "no"
+    restart: 'no'
     depends_on:
       ollama:
         condition: service_healthy
     environment:
       OLLAMA_HOST: http://ollama:11434
-    entrypoint: ["/bin/sh", "-c"]
-    command: ["ollama pull ${OLLAMA_MODEL:-qwen3:8b}"]
+    entrypoint: ['/bin/sh', '-c']
+    command: ['ollama pull ${OLLAMA_MODEL:-qwen3:8b}']
     networks:
       - navigator
 
