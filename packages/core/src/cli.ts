@@ -5,12 +5,17 @@
  * Commands are added as their checkpoints complete; a command that is not yet
  * implemented fails loudly rather than pretending to succeed.
  */
+import { existsSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import type { Database as DatabaseType } from 'better-sqlite3';
 import { serializeConceptJsonSchema } from './json-schema.js';
 import { projectPaths } from './paths.js';
 import { loadCorpus } from './validate.js';
 import type { CorpusResult } from './validate.js';
+import { compileCorpus } from './compile.js';
+import { openDatabaseReadOnly } from './db.js';
+import { getConceptById, getConceptBySlug, searchConcepts } from './query.js';
 import { compareStrings } from './normalize.js';
 
 const USAGE = `navigator <command> [options]
@@ -24,6 +29,8 @@ Commands:
 
 Options:
   --content <dir>         Override the canonical content directory
+  --database <path>       Override the compiled database location
+  --limit <n>             Maximum search results (1-50, default 10)
 `;
 
 function optionValue(args: readonly string[], name: string): string | undefined {
@@ -103,6 +110,165 @@ async function commandValidate(args: readonly string[]): Promise<number> {
   return 0;
 }
 
+async function commandCompile(args: readonly string[]): Promise<number> {
+  const paths = projectPaths();
+  const databaseOverride = optionValue(args, '--database');
+  const result = await compileCorpus({
+    contentDir: contentDir(args),
+    databasePath:
+      databaseOverride === undefined
+        ? (process.env['DATABASE_PATH'] ?? paths.defaultDatabase)
+        : resolve(process.cwd(), databaseOverride),
+    graphJsonPath: paths.graphJson,
+    sidebarsPath: paths.generatedSidebars,
+  });
+  if (!result.ok) {
+    console.error(`compilation failed with ${String(result.diagnostics.length)} problem(s):\n`);
+    for (const diagnostic of result.diagnostics) {
+      console.error(`  ${diagnostic.file}  ${diagnostic.field}\n      ${diagnostic.message}`);
+    }
+    return 1;
+  }
+  const { stats } = result;
+  console.log('compiled the canonical corpus\n');
+  console.log(`concepts:           ${String(stats.concepts)}`);
+  console.log(`names indexed:      ${String(stats.aliases)}`);
+  console.log(`categories:         ${String(stats.categories)}`);
+  console.log(`category links:     ${String(stats.conceptCategories)}`);
+  console.log(`relationships:      ${String(stats.relationships)}`);
+  console.log(`sources:            ${String(stats.sources)}`);
+  console.log(`source citations:   ${String(stats.conceptSources)}`);
+  console.log(`full-text rows:     ${String(stats.ftsRows)}`);
+  console.log(`corpus hash:        ${result.corpusHash}`);
+  console.log(`built at:           ${result.builtAt}`);
+  console.log('\nwrote:');
+  for (const output of result.outputs) console.log(`  ${output}`);
+  return 0;
+}
+
+function resolveDatabasePath(args: readonly string[]): string {
+  const override = optionValue(args, '--database');
+  if (override !== undefined) return resolve(process.cwd(), override);
+  return process.env['DATABASE_PATH'] ?? projectPaths().defaultDatabase;
+}
+
+function withDatabase<T>(args: readonly string[], run: (db: DatabaseType) => T): T {
+  const path = resolveDatabasePath(args);
+  if (!existsSync(path)) {
+    throw new Error(
+      `no compiled index at ${path}. Run \`npm run compile\` first, or pass --database <path>.`,
+    );
+  }
+  const db = openDatabaseReadOnly(path);
+  try {
+    return run(db);
+  } finally {
+    db.close();
+  }
+}
+
+function commandInspect(args: readonly string[]): number {
+  const conceptId = args.find((arg) => !arg.startsWith('--'));
+  if (conceptId === undefined) {
+    console.error('navigator inspect: a concept id or slug is required\n\n' + USAGE);
+    return 2;
+  }
+  return withDatabase(args, (db) => {
+    const concept =
+      getConceptById(db, conceptId) ??
+      getConceptBySlug(db, conceptId.startsWith('/') ? conceptId : `/concepts/${conceptId}`);
+    if (concept === undefined) {
+      console.error(`navigator inspect: no concept "${conceptId}"`);
+      return 1;
+    }
+    const lines = [
+      concept.title,
+      '='.repeat(concept.title.length),
+      '',
+      `id:            ${concept.id}`,
+      `slug:          ${concept.slug}`,
+      `kind:          ${concept.kind}`,
+      `tier:          ${String(concept.tier)}`,
+      `review state:  ${concept.reviewState}`,
+      `source file:   ${concept.sourcePath}`,
+      `content hash:  ${concept.contentHash}`,
+      '',
+      `summary:       ${concept.summary}`,
+    ];
+    if (concept.aliases.length > 0) {
+      lines.push('', `aliases:       ${concept.aliases.join(', ')}`);
+    }
+    lines.push('', 'categories:');
+    for (const category of concept.categories) {
+      lines.push(`  ${category.isPrimary ? '*' : ' '} ${category.path}`);
+    }
+    lines.push('', 'relationships:');
+    if (concept.relationships.length === 0) lines.push('  (none)');
+    for (const relationship of concept.relationships) {
+      const arrow = relationship.direction === 'outgoing' ? '->' : '<-';
+      lines.push(
+        `  ${arrow} ${relationship.type.padEnd(16)} ${relationship.otherTitle} (${relationship.otherId})`,
+      );
+      if (relationship.condition !== null) lines.push(`       when: ${relationship.condition}`);
+      if (relationship.note !== null) lines.push(`       note: ${relationship.note}`);
+    }
+    lines.push('', 'sources:');
+    if (concept.sources.length === 0) lines.push('  (none)');
+    for (const source of concept.sources) {
+      lines.push(`  ${source.title}`);
+      lines.push(`       ${source.url}`);
+      lines.push(
+        `       ${source.sourceKind}; supports ${source.supports.join(', ')}; checked ${source.checkedOn}`,
+      );
+    }
+    console.log(lines.join('\n'));
+    return 0;
+  });
+}
+
+function commandSearch(args: readonly string[]): number {
+  const terms: string[] = [];
+  for (let i = 0; i < args.length; i += 1) {
+    const arg = args[i];
+    if (arg === undefined) continue;
+    if (arg.startsWith('--')) {
+      i += 1;
+      continue;
+    }
+    terms.push(arg);
+  }
+  const query = terms.join(' ');
+  if (query.trim() === '') {
+    console.error('navigator search: a query is required\n\n' + USAGE);
+    return 2;
+  }
+  const limitOption = optionValue(args, '--limit');
+  const limit = limitOption === undefined ? 10 : Number.parseInt(limitOption, 10);
+
+  return withDatabase(args, (db) => {
+    let hits;
+    try {
+      hits = searchConcepts(db, query, Number.isFinite(limit) ? limit : 10);
+    } catch (error) {
+      console.error(`navigator search: ${error instanceof Error ? error.message : String(error)}`);
+      return 2;
+    }
+    if (hits.length === 0) {
+      console.log(`no concept matches "${query}"`);
+      return 0;
+    }
+    console.log(`${String(hits.length)} result(s) for "${query}":\n`);
+    for (const hit of hits) {
+      console.log(`  ${hit.title}  [${hit.matchKind}]`);
+      console.log(`    ${hit.slug}   ${hit.conceptId}`);
+      console.log(`    ${hit.rankExplanation}`);
+      console.log(`    ${hit.summary}`);
+      console.log('');
+    }
+    return 0;
+  });
+}
+
 async function main(argv: readonly string[]): Promise<number> {
   const [command, ...args] = argv;
   switch (command) {
@@ -110,6 +276,12 @@ async function main(argv: readonly string[]): Promise<number> {
       return commandSchema(args);
     case 'validate':
       return commandValidate(args);
+    case 'compile':
+      return commandCompile(args);
+    case 'inspect':
+      return commandInspect(args);
+    case 'search':
+      return commandSearch(args);
     case undefined:
     case '--help':
     case '-h':

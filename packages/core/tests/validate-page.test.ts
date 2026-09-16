@@ -25,7 +25,9 @@ describe('Tier 1 page template', () => {
     const diagnostics = validateConceptPage(
       loadFixture('convolution.md', { body: `${tier1Body()}\n## Intuition\n\nAgain.\n` }),
     );
-    expect(messages(loadFixture('convolution.md', { body: `${tier1Body()}\n## Intuition\n\nAgain.\n` }))).toContain(
+    expect(
+      messages(loadFixture('convolution.md', { body: `${tier1Body()}\n## Intuition\n\nAgain.\n` })),
+    ).toContain(
       'heading:Intuition: the heading "## Intuition" appears 2 times; it must appear exactly once',
     );
     expect(diagnostics.length).toBeGreaterThan(0);

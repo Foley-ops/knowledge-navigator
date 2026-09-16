@@ -61,9 +61,9 @@ describe('D00 — database schema', () => {
     try {
       const names = new Set(
         (
-          db
-            .prepare("SELECT name FROM sqlite_master WHERE type IN ('table','view')")
-            .all() as { name: string }[]
+          db.prepare("SELECT name FROM sqlite_master WHERE type IN ('table','view')").all() as {
+            name: string;
+          }[]
         ).map((row) => row.name),
       );
       for (const table of REQUIRED_TABLES) {
@@ -79,8 +79,9 @@ describe('D00 — database schema', () => {
     const db = open();
     try {
       const meta = Object.fromEntries(
-        (db.prepare('SELECT key, value FROM build_meta').all() as { key: string; value: string }[])
-          .map((row) => [row.key, row.value]),
+        (
+          db.prepare('SELECT key, value FROM build_meta').all() as { key: string; value: string }[]
+        ).map((row) => [row.key, row.value]),
       );
       expect(meta['schema_version']).toBe(String(SCHEMA_VERSION));
       expect(meta['schema_version']).toBe('1');
@@ -101,9 +102,11 @@ describe('D00 — database schema', () => {
     const db = open();
     try {
       const indexes = new Set(
-        (db.prepare("SELECT name FROM sqlite_master WHERE type = 'index'").all() as {
-          name: string;
-        }[]).map((row) => row.name),
+        (
+          db.prepare("SELECT name FROM sqlite_master WHERE type = 'index'").all() as {
+            name: string;
+          }[]
+        ).map((row) => row.name),
       );
       for (const index of [
         'aliases_normalized_unique',
@@ -222,7 +225,11 @@ describe('D01 — concepts and aliases', () => {
 
     const db = open();
     try {
-      for (const query of ['CONVOLUTION Operator', 'convolution-operator', 'convolution  operator']) {
+      for (const query of [
+        'CONVOLUTION Operator',
+        'convolution-operator',
+        'convolution  operator',
+      ]) {
         const hit = db
           .prepare('SELECT concept_id FROM aliases WHERE normalized = ?')
           .get(normalizeForTest(query)) as { concept_id: string } | undefined;
@@ -262,7 +269,13 @@ describe('D02 — categories and relationships', () => {
     try {
       const rows = db
         .prepare('SELECT path, name, top_level, depth, parent_id FROM categories ORDER BY path')
-        .all() as { path: string; name: string; top_level: string; depth: number; parent_id: number | null }[];
+        .all() as {
+        path: string;
+        name: string;
+        top_level: string;
+        depth: number;
+        parent_id: number | null;
+      }[];
       expect(rows.map((r) => r.path)).toEqual([
         'Artificial Intelligence',
         'Artificial Intelligence/Computer Vision',
@@ -275,9 +288,11 @@ describe('D02 — categories and relationships', () => {
       expect(area?.parent_id).toBeNull();
       expect(area?.depth).toBe(1);
       expect(leaf?.parent_id).toBe(
-        (db.prepare('SELECT id FROM categories WHERE path = ?').get('Artificial Intelligence') as {
-          id: number;
-        }).id,
+        (
+          db.prepare('SELECT id FROM categories WHERE path = ?').get('Artificial Intelligence') as {
+            id: number;
+          }
+        ).id,
       );
       expect(leaf?.name).toBe('Computer Vision');
       expect(leaf?.top_level).toBe('Artificial Intelligence');
@@ -416,9 +431,7 @@ describe('D03 — sources', () => {
     });
     await writeConcept('cross-correlation.md', {
       ...CROSS_CORRELATION,
-      sources: [
-        { ...CITED, supports: ['intuition', 'formal-treatment'], checkedOn: '2026-01-02' },
-      ],
+      sources: [{ ...CITED, supports: ['intuition', 'formal-treatment'], checkedOn: '2026-01-02' }],
     });
     const result = await compileCorpus({ contentDir, databasePath, env: {} });
     expect(result.ok).toBe(true);
@@ -461,7 +474,12 @@ describe('D03 — sources', () => {
     await writeConcept('cross-correlation.md', {
       ...CROSS_CORRELATION,
       sources: [
-        { ...CITED, title: 'Something else entirely', url: 'https://example.org/other', supports: ['definition'] },
+        {
+          ...CITED,
+          title: 'Something else entirely',
+          url: 'https://example.org/other',
+          supports: ['definition'],
+        },
       ],
     });
     const result = await compileCorpus({ contentDir, databasePath, env: {} });
@@ -494,5 +512,113 @@ describe('D03 — sources', () => {
     } finally {
       db.close();
     }
+  });
+});
+
+describe('D07 — atomic compilation', () => {
+  const hashOf = async (path: string): Promise<string> => {
+    const { createHash } = await import('node:crypto');
+    const { readFile } = await import('node:fs/promises');
+    return createHash('sha256')
+      .update(await readFile(path))
+      .digest('hex');
+  };
+
+  it('preserves the previous database when a later build fails', async () => {
+    await writeConcept('convolution.md', CONVOLUTION);
+    await writeConcept('cross-correlation.md', CROSS_CORRELATION);
+    const first = await compileCorpus({ contentDir, databasePath, env: {} });
+    expect(first.ok).toBe(true);
+    const before = await hashOf(databasePath);
+
+    // Break a relationship target, then rebuild.
+    await writeConcept('cross-correlation.md', {
+      ...CROSS_CORRELATION,
+      relationships: [{ type: 'requires', target: 'concept.analysis.does_not_exist' }],
+    });
+    const second = await compileCorpus({ contentDir, databasePath, env: {} });
+    expect(second.ok).toBe(false);
+    expect(second.diagnostics.some((d) => d.message.includes('does not exist in the corpus'))).toBe(
+      true,
+    );
+
+    expect(await hashOf(databasePath)).toBe(before);
+    expect(readdirSync(join(root, 'data')).filter((n) => n.endsWith('.tmp'))).toEqual([]);
+
+    // The preserved database is still usable and still describes the old corpus.
+    const db = open();
+    try {
+      expect((db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n).toBe(2);
+      expect(db.pragma('foreign_key_check')).toEqual([]);
+    } finally {
+      db.close();
+    }
+  });
+
+  it('preserves the previous database when the corpus becomes unparseable', async () => {
+    await writeConcept('convolution.md', CONVOLUTION);
+    await writeConcept('cross-correlation.md', CROSS_CORRELATION);
+    await compileCorpus({ contentDir, databasePath, env: {} });
+    const before = await hashOf(databasePath);
+
+    await writeFile(join(contentDir, 'convolution.md'), '---\nnot: valid\n---\n', 'utf8');
+    const result = await compileCorpus({ contentDir, databasePath, env: {} });
+    expect(result.ok).toBe(false);
+    expect(await hashOf(databasePath)).toBe(before);
+    expect(readdirSync(join(root, 'data')).filter((n) => n.endsWith('.tmp'))).toEqual([]);
+  });
+
+  it('verifies row counts, foreign keys and primary categories before swapping', async () => {
+    await writeConcept('convolution.md', CONVOLUTION);
+    await writeConcept('cross-correlation.md', CROSS_CORRELATION);
+    const result = await compileCorpus({ contentDir, databasePath, env: {} });
+    expect(result.ok).toBe(true);
+    const db = open();
+    try {
+      expect(db.pragma('foreign_key_check')).toEqual([]);
+      expect(
+        (db.pragma('integrity_check') as { integrity_check: string }[])[0]?.integrity_check,
+      ).toBe('ok');
+      const primaries = db
+        .prepare('SELECT COUNT(*) AS n FROM concept_categories WHERE is_primary = 1')
+        .get() as { n: number };
+      expect(primaries.n).toBe(2);
+    } finally {
+      db.close();
+    }
+  });
+
+  it('writes graph JSON and sidebars only after the database is in place', async () => {
+    await writeConcept('convolution.md', CONVOLUTION);
+    await writeConcept('cross-correlation.md', CROSS_CORRELATION);
+    const graphJsonPath = join(root, 'generated', 'graph.json');
+    const sidebarsPath = join(root, 'web', 'sidebars.generated.ts');
+    const ok = await compileCorpus({
+      contentDir,
+      databasePath,
+      graphJsonPath,
+      sidebarsPath,
+      env: { SOURCE_DATE_EPOCH: '1700000000' },
+    });
+    expect(ok.ok).toBe(true);
+    expect(ok.outputs).toEqual([databasePath, graphJsonPath, sidebarsPath]);
+    expect(existsSync(graphJsonPath)).toBe(true);
+
+    const graphBefore = await hashOf(graphJsonPath);
+    await writeConcept('cross-correlation.md', {
+      ...CROSS_CORRELATION,
+      relationships: [{ type: 'requires', target: 'concept.analysis.does_not_exist' }],
+    });
+    const failed = await compileCorpus({
+      contentDir,
+      databasePath,
+      graphJsonPath,
+      sidebarsPath,
+      env: { SOURCE_DATE_EPOCH: '1700000000' },
+    });
+    expect(failed.ok).toBe(false);
+    expect(failed.outputs).toEqual([]);
+    // A failed build leaves the previous graph describing the previous corpus.
+    expect(await hashOf(graphJsonPath)).toBe(graphBefore);
   });
 });

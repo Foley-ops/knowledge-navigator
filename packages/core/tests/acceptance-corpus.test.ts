@@ -45,9 +45,11 @@ afterAll(async () => {
 
 describe('the acceptance corpus', () => {
   it('holds exactly eleven Tier 1 generated-draft concepts', () => {
-    const rows = db
-      .prepare('SELECT id, tier, review_state FROM concepts ORDER BY id')
-      .all() as { id: string; tier: number; review_state: string }[];
+    const rows = db.prepare('SELECT id, tier, review_state FROM concepts ORDER BY id').all() as {
+      id: string;
+      tier: number;
+      review_state: string;
+    }[];
     expect(rows).toHaveLength(11);
     expect(rows.every((r) => r.tier === 1)).toBe(true);
     expect(rows.every((r) => r.review_state === 'generated-draft')).toBe(true);
@@ -111,7 +113,9 @@ describe('the acceptance corpus', () => {
     ]);
   });
 
-  it('exposes the three top-level atlas areas that are in use', () => {
+  it('exposes only the atlas areas the slice actually uses', () => {
+    // The atlas has three areas (Artificial Intelligence, Mathematics,
+    // Programming); the eleven-page slice populates two of them.
     const areas = db
       .prepare('SELECT DISTINCT top_level FROM categories ORDER BY top_level')
       .all() as { top_level: string }[];
@@ -153,11 +157,7 @@ describe('the acceptance corpus', () => {
         'implements',
         'concept.analysis.cross_correlation',
       ],
-      [
-        'concept.deep_learning.resnet',
-        'implements',
-        'concept.deep_learning.residual_connection',
-      ],
+      ['concept.deep_learning.resnet', 'implements', 'concept.deep_learning.residual_connection'],
       ['concept.deep_learning.resnet', 'contrasts_with', 'concept.deep_learning.vgg'],
     ] as const) {
       expect(has.get(source, type, target), `${source} ${type} ${target}`).toBeDefined();

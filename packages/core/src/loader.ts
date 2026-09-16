@@ -225,10 +225,7 @@ export function loadConceptFromText(text: string, fileName: string): LoadResult 
 }
 
 /** Load a concept from disk. */
-export async function loadConceptFile(
-  absolutePath: string,
-  fileName: string,
-): Promise<LoadResult> {
+export async function loadConceptFile(absolutePath: string, fileName: string): Promise<LoadResult> {
   let text: string;
   try {
     text = await readFile(absolutePath, 'utf8');

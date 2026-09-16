@@ -6,7 +6,7 @@
  * a working database.
  */
 import { randomBytes } from 'node:crypto';
-import { mkdir, rename, rm } from 'node:fs/promises';
+import { mkdir, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import type { Database as DatabaseType } from 'better-sqlite3';
 import { SCHEMA_VERSION, buildTimestamp, createDatabase } from './db.js';
@@ -15,12 +15,19 @@ import { loadCorpus } from './validate.js';
 import type { Diagnostic } from './validate.js';
 import type { LoadedConcept } from './loader.js';
 import type { Source } from './schema.js';
+import { buildGraphDocument, serializeGraph } from './graph.js';
+import { buildSidebars } from './sidebars.js';
+import { openDatabaseReadOnly } from './db.js';
 
 export interface CompileOptions {
   /** Directory holding canonical Markdown. */
   readonly contentDir: string;
   /** Final location of the compiled database. */
   readonly databasePath: string;
+  /** Where to write the browser graph. Omitted means "do not write it". */
+  readonly graphJsonPath?: string | undefined;
+  /** Where to write the generated Docusaurus sidebar. Omitted means skip. */
+  readonly sidebarsPath?: string | undefined;
   /** Overrides `process.env` for timestamp determinism in tests. */
   readonly env?: NodeJS.ProcessEnv;
 }
@@ -43,6 +50,7 @@ export type CompileResult =
       readonly corpusHash: string;
       readonly builtAt: string;
       readonly diagnostics: readonly Diagnostic[];
+      readonly outputs: readonly string[];
     }
   | {
       readonly ok: false;
@@ -50,18 +58,8 @@ export type CompileResult =
       readonly corpusHash: string | undefined;
       readonly builtAt: undefined;
       readonly diagnostics: readonly Diagnostic[];
+      readonly outputs: readonly string[];
     };
-
-const EMPTY_STATS: CompileStats = {
-  concepts: 0,
-  aliases: 0,
-  categories: 0,
-  conceptCategories: 0,
-  relationships: 0,
-  sources: 0,
-  conceptSources: 0,
-  ftsRows: 0,
-};
 
 /**
  * Insert concept identity, body and names.
@@ -174,12 +172,7 @@ function insertCategories(db: DatabaseType, concepts: readonly LoadedConcept[]):
     const fm = concept.frontmatter;
     fm.categories.forEach((category, position) => {
       const categoryId = ensure(category);
-      insertLink.run(
-        fm.concept_id,
-        categoryId,
-        category === fm.primary_category ? 1 : 0,
-        position,
-      );
+      insertLink.run(fm.concept_id, categoryId, category === fm.primary_category ? 1 : 0, position);
     });
   }
 }
@@ -251,6 +244,21 @@ function insertSources(db: DatabaseType, concepts: readonly LoadedConcept[]): vo
   }
 }
 
+/**
+ * Populate the full-text index with title, aliases, summary and plain-text body
+ * (runbook D04). The body is the prose the loader extracted, so LaTeX and raw
+ * markup never become search tokens.
+ */
+function insertFts(db: DatabaseType, concepts: readonly LoadedConcept[]): void {
+  const insert = db.prepare(
+    'INSERT INTO concepts_fts (concept_id, title, aliases, summary, body) VALUES (?, ?, ?, ?, ?)',
+  );
+  for (const concept of concepts) {
+    const fm = concept.frontmatter;
+    insert.run(fm.concept_id, fm.title, fm.aliases.join(' \n'), fm.summary, concept.plainText);
+  }
+}
+
 /** Record the facts a reader needs to know which corpus this index came from. */
 function writeBuildMeta(
   db: DatabaseType,
@@ -286,6 +294,66 @@ function collectStats(db: DatabaseType): CompileStats {
 }
 
 /**
+ * Verify the freshly written database before it is allowed to replace the
+ * previous one (runbook D07). Anything wrong here throws, which removes the
+ * temporary file and leaves the prior database untouched.
+ */
+function verifyDatabase(
+  db: DatabaseType,
+  concepts: readonly LoadedConcept[],
+  stats: CompileStats,
+): void {
+  const violations = db.pragma('foreign_key_check') as unknown[];
+  if (violations.length > 0) {
+    throw new Error(`compiled database has ${String(violations.length)} foreign key violation(s)`);
+  }
+
+  const integrity = db.pragma('integrity_check') as { integrity_check: string }[];
+  if (integrity[0]?.integrity_check !== 'ok') {
+    throw new Error(
+      `compiled database failed integrity_check: ${String(integrity[0]?.integrity_check)}`,
+    );
+  }
+
+  const expected = {
+    concepts: concepts.length,
+    relationships: concepts.reduce((n, c) => n + c.frontmatter.relationships.length, 0),
+    conceptCategories: concepts.reduce((n, c) => n + c.frontmatter.categories.length, 0),
+    conceptSources: concepts.reduce((n, c) => n + c.frontmatter.sources.length, 0),
+    sources: new Set(concepts.flatMap((c) => c.frontmatter.sources.map((s) => s.source_id))).size,
+    ftsRows: concepts.length,
+  };
+  for (const [key, want] of Object.entries(expected) as [keyof typeof expected, number][]) {
+    const got = stats[key];
+    if (got !== want) {
+      throw new Error(
+        `compiled ${key} row count is ${String(got)} but the corpus declares ${String(want)}`,
+      );
+    }
+  }
+
+  // Every concept must have exactly one primary category row, and it must be
+  // the one its frontmatter names.
+  const mismatched = db
+    .prepare(
+      `SELECT c.id FROM concepts c
+        WHERE (SELECT COUNT(*) FROM concept_categories cc
+                WHERE cc.concept_id = c.id AND cc.is_primary = 1) <> 1
+           OR NOT EXISTS (
+                SELECT 1 FROM concept_categories cc
+                  JOIN categories cat ON cat.id = cc.category_id
+                 WHERE cc.concept_id = c.id AND cc.is_primary = 1
+                   AND cat.path = c.primary_category)`,
+    )
+    .all() as { id: string }[];
+  if (mismatched.length > 0) {
+    throw new Error(
+      `primary category is missing or ambiguous for: ${mismatched.map((r) => r.id).join(', ')}`,
+    );
+  }
+}
+
+/**
  * Compile the corpus. Returns diagnostics instead of throwing for any problem
  * a content author can fix.
  */
@@ -298,6 +366,7 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
       corpusHash: corpus.corpusHash,
       builtAt: undefined,
       diagnostics: corpus.diagnostics,
+      outputs: [],
     };
   }
 
@@ -307,7 +376,7 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
 
   const tempPath = join(targetDir, `.${randomBytes(8).toString('hex')}.db.tmp`);
   let db: DatabaseType | undefined;
-  let stats: CompileStats = EMPTY_STATS;
+  let stats: CompileStats;
 
   try {
     db = createDatabase(tempPath);
@@ -316,6 +385,7 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
     insertCategories(db, corpus.concepts);
     insertRelationships(db, corpus.concepts);
     insertSources(db, corpus.concepts);
+    insertFts(db, corpus.concepts);
     writeBuildMeta(db, {
       corpusHash: corpus.corpusHash,
       builtAt,
@@ -323,9 +393,12 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
     });
     db.exec('COMMIT');
     stats = collectStats(db);
+    verifyDatabase(db, corpus.concepts, stats);
     db.close();
     db = undefined;
 
+    // The rename is the only moment the live database changes, and on POSIX it
+    // is atomic within a filesystem.
     await rename(tempPath, options.databasePath);
   } catch (error) {
     if (db !== undefined) {
@@ -348,8 +421,35 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
           message: error instanceof Error ? error.message : String(error),
         },
       ],
+      outputs: [],
     };
   }
 
-  return { ok: true, stats, corpusHash: corpus.corpusHash, builtAt, diagnostics: [] };
+  // Derived artefacts are written only after the database is safely in place,
+  // so a failed compilation can never leave a graph describing a corpus that
+  // was never indexed.
+  const outputs: string[] = [options.databasePath];
+  if (options.graphJsonPath !== undefined || options.sidebarsPath !== undefined) {
+    const readable = openDatabaseReadOnly(options.databasePath);
+    try {
+      if (options.graphJsonPath !== undefined) {
+        const document = buildGraphDocument(readable, {
+          builtAt,
+          corpusHash: corpus.corpusHash,
+        });
+        await mkdir(dirname(options.graphJsonPath), { recursive: true });
+        await writeFile(options.graphJsonPath, serializeGraph(document), 'utf8');
+        outputs.push(options.graphJsonPath);
+      }
+      if (options.sidebarsPath !== undefined) {
+        await mkdir(dirname(options.sidebarsPath), { recursive: true });
+        await writeFile(options.sidebarsPath, buildSidebars(readable), 'utf8');
+        outputs.push(options.sidebarsPath);
+      }
+    } finally {
+      readable.close();
+    }
+  }
+
+  return { ok: true, stats, corpusHash: corpus.corpusHash, builtAt, diagnostics: [], outputs };
 }

@@ -210,7 +210,8 @@ describe('corpus validation', () => {
 
   it('ignores absolute and external links', () => {
     const body = tier1Body({
-      Definition: 'See [the book](https://www.deeplearningbook.org/) and [pooling](/concepts/pooling).',
+      Definition:
+        'See [the book](https://www.deeplearningbook.org/) and [pooling](/concepts/pooling).',
     });
     expect(validateCorpus(pair({ body }))).toEqual([]);
   });
@@ -227,9 +228,7 @@ describe('corpus validation', () => {
       ...convolution!,
       frontmatter: {
         ...convolution!.frontmatter,
-        relationships: [
-          { type: 'requires' as const, target: 'concept.analysis.convolution' },
-        ],
+        relationships: [{ type: 'requires' as const, target: 'concept.analysis.convolution' }],
       },
     };
     expect(

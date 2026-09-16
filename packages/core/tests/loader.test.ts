@@ -157,19 +157,13 @@ describe('loading one canonical concept file', () => {
   });
 
   it('rejects YAML duplicate keys', () => {
-    const result = loadConceptFromText(
-      '---\ntitle: One\ntitle: Two\n---\n\nBody\n',
-      'x.md',
-    );
+    const result = loadConceptFromText('---\ntitle: One\ntitle: Two\n---\n\nBody\n', 'x.md');
     expect(result.ok).toBe(false);
     expect(result.issues[0]?.path).toBe('(frontmatter)');
   });
 
   it('refuses YAML alias expansion', () => {
-    const result = loadConceptFromText(
-      '---\na: &big [x, x, x]\nb: *big\n---\n\nBody\n',
-      'x.md',
-    );
+    const result = loadConceptFromText('---\na: &big [x, x, x]\nb: *big\n---\n\nBody\n', 'x.md');
     expect(result.ok).toBe(false);
     expect(result.issues[0]?.path).toBe('(frontmatter)');
   });

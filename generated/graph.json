@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "builtAt": "2026-09-16T22:53:31.089Z",
+  "corpusHash": "bb96930aab75dd2c3741c91919f65b8ba3ea53b5a7c13cea1588c7fd1edff96e",
+  "counts": {
+    "concepts": 11,
+    "relationships": 20,
+    "categories": 6
+  },
+  "categories": [
+    {
+      "path": "Artificial Intelligence",
+      "name": "Artificial Intelligence",
+      "topLevel": "Artificial Intelligence",
+      "depth": 1,
+      "parent": null,
+      "primaryConceptIds": [],
+      "conceptIds": []
+    },
+    {
+      "path": "Artificial Intelligence/Computer Vision",
+      "name": "Computer Vision",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.deep_learning.resnet",
+        "concept.deep_learning.vgg"
+      ],
+      "conceptIds": [
+        "concept.deep_learning.lenet",
+        "concept.deep_learning.receptive_field",
+        "concept.deep_learning.resnet",
+        "concept.deep_learning.vgg"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Deep Learning — Architectures",
+      "name": "Deep Learning — Architectures",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.deep_learning.convolutional_layer",
+        "concept.deep_learning.lenet",
+        "concept.deep_learning.pooling",
+        "concept.deep_learning.receptive_field",
+        "concept.deep_learning.residual_connection"
+      ],
+      "conceptIds": [
+        "concept.analysis.translation_equivariance",
+        "concept.deep_learning.convolutional_layer",
+        "concept.deep_learning.lenet",
+        "concept.deep_learning.pooling",
+        "concept.deep_learning.receptive_field",
+        "concept.deep_learning.residual_connection",
+        "concept.deep_learning.resnet",
+        "concept.deep_learning.vgg"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Deep Learning — Training",
+      "name": "Deep Learning — Training",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.deep_learning.backpropagation_through_convolution"
+      ],
+      "conceptIds": [
+        "concept.deep_learning.backpropagation_through_convolution"
+      ]
+    },
+    {
+      "path": "Mathematics",
+      "name": "Mathematics",
+      "topLevel": "Mathematics",
+      "depth": 1,
+      "parent": null,
+      "primaryConceptIds": [],
+      "conceptIds": []
+    },
+    {
+      "path": "Mathematics/Analysis",
+      "name": "Analysis",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.analysis.convolution",
+        "concept.analysis.cross_correlation",
+        "concept.analysis.translation_equivariance"
+      ],
+      "conceptIds": [
+        "concept.analysis.convolution",
+        "concept.analysis.cross_correlation",
+        "concept.analysis.translation_equivariance"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "concept.analysis.convolution",
+      "title": "Convolution",
+      "slug": "/concepts/convolution",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An operation that combines two functions into a third by reflecting one, shifting it, and integrating or summing the overlap.",
+      "aliases": [
+        "convolution operator"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ]
+    },
+    {
+      "id": "concept.analysis.cross_correlation",
+      "title": "Cross-Correlation",
+      "slug": "/concepts/cross-correlation",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A sliding inner product between two functions that measures their similarity at each displacement, differing from convolution only by the absence of a reflection.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ]
+    },
+    {
+      "id": "concept.analysis.translation_equivariance",
+      "title": "Translation Equivariance",
+      "slug": "/concepts/translation-equivariance",
+      "kind": "property",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The property that shifting a map's input shifts its output the same way, distinct from invariance, where shifting the input leaves the output unchanged.",
+      "aliases": [
+        "shift equivariance"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.backpropagation_through_convolution",
+      "title": "Backpropagation Through Convolution",
+      "slug": "/concepts/backpropagation-through-convolution",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The backward pass of a convolutional layer, in which the gradient with respect to the input is a true convolution of the output gradient with the kernel and the gradient with respect to the kernel is a correlation between input and output gradient.",
+      "aliases": [
+        "convolution backward pass",
+        "conv backprop"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.convolutional_layer",
+      "title": "Convolutional Layer",
+      "slug": "/concepts/convolutional-layer",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A neural-network layer that applies learned local filters with shared parameters across every spatial position of its input.",
+      "aliases": [
+        "convolution layer",
+        "conv layer"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.lenet",
+      "title": "LeNet",
+      "slug": "/concepts/lenet",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The 1998 convolutional network for handwritten digit recognition that established the alternating convolution-and-subsampling pattern trained end to end by gradient descent.",
+      "aliases": [
+        "LeNet-5"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures",
+        "Artificial Intelligence/Computer Vision"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.pooling",
+      "title": "Pooling",
+      "slug": "/concepts/pooling",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A fixed aggregation over local spatial windows that reduces resolution and discards position information, trading detail for tolerance to small shifts.",
+      "aliases": [
+        "spatial pooling"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.receptive_field",
+      "title": "Receptive Field",
+      "slug": "/concepts/receptive-field",
+      "kind": "property",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The region of the input that can influence one unit's activation, distinguished from the much smaller effective region that actually influences it appreciably.",
+      "aliases": [
+        "RF"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures",
+        "Artificial Intelligence/Computer Vision"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.residual_connection",
+      "title": "Residual Connection",
+      "slug": "/concepts/residual-connection",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An identity shortcut added around a block so the block learns a residual, introduced to make very deep networks trainable and to give gradients a direct path backwards.",
+      "aliases": [
+        "skip connection",
+        "shortcut connection"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.resnet",
+      "title": "ResNet",
+      "slug": "/concepts/resnet",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of convolutional networks built from residual blocks, which made networks of 50 to 152 layers trainable and resumed the depth trend that plain stacks had exhausted.",
+      "aliases": [
+        "Residual Network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Computer Vision",
+      "categories": [
+        "Artificial Intelligence/Computer Vision",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ]
+    },
+    {
+      "id": "concept.deep_learning.vgg",
+      "title": "VGG",
+      "slug": "/concepts/vgg",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of deep convolutional networks built from uniform stacks of 3x3 convolutions, showing that depth with small kernels improves accuracy at a large cost in parameters and computation.",
+      "aliases": [
+        "VGGNet",
+        "VGG network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Computer Vision",
+      "categories": [
+        "Artificial Intelligence/Computer Vision",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "concept.analysis.cross_correlation|contrasts_with|concept.analysis.convolution",
+      "source": "concept.analysis.cross_correlation",
+      "target": "concept.analysis.convolution",
+      "type": "contrasts_with",
+      "note": "Convolution reflects one argument before sliding; cross-correlation does not, so cross-correlation is not commutative.",
+      "condition": "The two coincide exactly when the kernel is symmetric about the origin."
+    },
+    {
+      "id": "concept.analysis.cross_correlation|requires|concept.analysis.convolution",
+      "source": "concept.analysis.cross_correlation",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "Cross-correlation is defined by contrast with convolution and shares its algebra apart from the reflection.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.translation_equivariance|requires|concept.analysis.convolution",
+      "source": "concept.analysis.translation_equivariance",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "Convolution is the canonical translation-equivariant linear map, and the property is usually stated about it first.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.backpropagation_through_convolution|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.backpropagation_through_convolution",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "The backward pass is derived from the layer's forward definition and depends on its stride, padding and dilation.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_layer|implements|concept.analysis.cross_correlation",
+      "source": "concept.deep_learning.convolutional_layer",
+      "target": "concept.analysis.cross_correlation",
+      "type": "implements",
+      "note": "Every major framework implements the layer as a cross-correlation over learned kernels.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_layer|requires|concept.analysis.convolution",
+      "source": "concept.deep_learning.convolutional_layer",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "The layer's forward pass is a sliding local weighted sum over the input.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_layer|requires|concept.analysis.cross_correlation",
+      "source": "concept.deep_learning.convolutional_layer",
+      "target": "concept.analysis.cross_correlation",
+      "type": "requires",
+      "note": "The operation actually computed is cross-correlation, despite the layer's name.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_layer|requires|concept.analysis.translation_equivariance",
+      "source": "concept.deep_learning.convolutional_layer",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "requires",
+      "note": "Parameter sharing across positions is what makes the layer translation-equivariant.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_layer|requires|concept.deep_learning.receptive_field",
+      "source": "concept.deep_learning.convolutional_layer",
+      "target": "concept.deep_learning.receptive_field",
+      "type": "requires",
+      "note": "Kernel size, stride and dilation of the layer determine how the receptive field grows.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.lenet|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.lenet",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "LeNet's C1, C3 and C5 stages are convolutional layers with shared weights.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.lenet|requires|concept.deep_learning.pooling",
+      "source": "concept.deep_learning.lenet",
+      "target": "concept.deep_learning.pooling",
+      "type": "requires",
+      "note": "LeNet's S2 and S4 stages are subsampling layers, the ancestor of modern pooling.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.pooling|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.pooling",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "Pooling operates on the feature maps a convolutional layer produces and is placed between convolutional stages.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.receptive_field|requires|concept.analysis.convolution",
+      "source": "concept.deep_learning.receptive_field",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "The receptive field is determined by the spatial extent, stride and dilation of the convolutions a unit sits behind.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.residual_connection|requires|concept.deep_learning.backpropagation_through_convolution",
+      "source": "concept.deep_learning.residual_connection",
+      "target": "concept.deep_learning.backpropagation_through_convolution",
+      "type": "requires",
+      "note": "The argument for residual connections is about how gradients behave as they are propagated back through many convolutional layers.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.resnet|contrasts_with|concept.deep_learning.vgg",
+      "source": "concept.deep_learning.resnet",
+      "target": "concept.deep_learning.vgg",
+      "type": "contrasts_with",
+      "note": "A 152-layer ResNet has lower complexity than VGG-19 and trains successfully at a depth where a plain stack degrades.",
+      "condition": "Compared at similar or greater depth on ImageNet classification."
+    },
+    {
+      "id": "concept.deep_learning.resnet|implements|concept.deep_learning.residual_connection",
+      "source": "concept.deep_learning.resnet",
+      "target": "concept.deep_learning.residual_connection",
+      "type": "implements",
+      "note": "ResNet is the architecture in which the identity shortcut was introduced and evaluated.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.resnet|requires|concept.deep_learning.residual_connection",
+      "source": "concept.deep_learning.resnet",
+      "target": "concept.deep_learning.residual_connection",
+      "type": "requires",
+      "note": "Every stage of a ResNet is a stack of blocks wrapped in identity shortcuts.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.resnet|requires|concept.deep_learning.vgg",
+      "source": "concept.deep_learning.resnet",
+      "target": "concept.deep_learning.vgg",
+      "type": "requires",
+      "note": "ResNet adopts VGG's 3x3 design discipline and stage structure, then adds shortcuts to get past its depth limit.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vgg|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.vgg",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "VGG is built almost entirely from stacked 3x3 convolutional layers.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vgg|requires|concept.deep_learning.pooling",
+      "source": "concept.deep_learning.vgg",
+      "target": "concept.deep_learning.pooling",
+      "type": "requires",
+      "note": "Five max-pooling stages separate VGG's convolutional blocks and set its resolution schedule.",
+      "condition": null
+    }
+  ]
+}

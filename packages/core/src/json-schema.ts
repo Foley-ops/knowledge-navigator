@@ -10,8 +10,7 @@ import { z } from 'zod';
 import { conceptFrontmatterSchema } from './schema.js';
 import { compareStrings } from './normalize.js';
 
-export const CONCEPT_SCHEMA_ID =
-  'https://knowledge-navigator.local/schemas/concept.schema.json';
+export const CONCEPT_SCHEMA_ID = 'https://knowledge-navigator.local/schemas/concept.schema.json';
 
 type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 
