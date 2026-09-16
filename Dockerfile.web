@@ -1,0 +1,45 @@
+# syntax=docker/dockerfile:1
+# ---------------------------------------------------------------------------
+# Knowledge Navigator web surface
+#
+# Validates canonical content, compiles the sidebar and graph from it, builds
+# the static site, and serves the result from an unprivileged Nginx. No source,
+# no dependency tree and no database reaches the runtime image — only the built
+# site and one configuration file.
+# ---------------------------------------------------------------------------
+
+FROM node:22-bookworm-slim AS builder
+WORKDIR /app
+
+# better-sqlite3 is needed by the compile step that generates the sidebar.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 make g++ ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY package.json package-lock.json .npmrc tsconfig.base.json ./
+COPY packages/core/package.json packages/core/
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+RUN npm ci --ignore-scripts=false
+
+COPY packages/core ./packages/core
+COPY apps/web ./apps/web
+COPY content ./content
+
+# Content is validated before anything is generated from it, so an invalid
+# corpus fails the image build rather than producing a site that disagrees with
+# canonical Markdown.
+RUN npm run validate \
+ && npm run compile \
+ && npm run build --workspace @navigator/web
+
+FROM nginxinc/nginx-unprivileged:1.29-alpine AS runtime
+LABEL org.opencontainers.image.title="Knowledge Navigator web"
+
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/apps/web/build /usr/share/nginx/html
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=5 \
+  CMD wget -q -O /dev/null http://127.0.0.1:8080/healthz || exit 1

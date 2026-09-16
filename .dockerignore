@@ -24,8 +24,6 @@ BUILD_STATE.md
 node_modules/
 **/node_modules/
 **/dist/
-**/build/
-**/lib/
 **/*.tsbuildinfo
 apps/web/.docusaurus/
 apps/web/build/

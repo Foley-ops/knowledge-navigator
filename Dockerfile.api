@@ -1,0 +1,100 @@
+# syntax=docker/dockerfile:1
+# ---------------------------------------------------------------------------
+# Knowledge Navigator API
+#
+# The image compiles canonical Markdown into a fresh index on every start, then
+# serves it read-only. Nothing in the running container writes to canonical
+# content, and the process runs as an unprivileged user.
+# ---------------------------------------------------------------------------
+
+# --- builder ---------------------------------------------------------------
+FROM node:22-bookworm-slim AS builder
+WORKDIR /app
+
+# better-sqlite3 falls back to compiling from source when no prebuilt binary
+# matches the platform, so the toolchain has to be present in this stage only.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 make g++ ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+# Dependencies first, so a content-only change does not reinstall them.
+COPY package.json package-lock.json .npmrc tsconfig.base.json ./
+COPY packages/core/package.json packages/core/
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+RUN npm ci --ignore-scripts=false
+
+COPY packages/core ./packages/core
+COPY apps/api ./apps/api
+RUN npm run build --workspace @navigator/core \
+ && npm run build --workspace @navigator/api
+
+# --- production dependencies ------------------------------------------------
+FROM node:22-bookworm-slim AS deps
+WORKDIR /app
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 make g++ ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+COPY package.json package-lock.json .npmrc ./
+COPY packages/core/package.json packages/core/
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+# Only the two workspaces this image runs, and only their runtime dependencies.
+# Without the workspace filter npm installs the whole locked tree, including
+# Docusaurus, webpack and Babel, none of which belong in an API image.
+RUN npm ci --omit=dev \
+      --workspace @navigator/core --workspace @navigator/api \
+      --include-workspace-root \
+ # typescript survives the filter as an optional peer of cosmiconfig, which is
+ # reachable only through the web toolchain. Nothing the API imports at runtime
+ # needs it.
+ && rm -rf node_modules/typescript \
+ # better-sqlite3 loads a prebuilt binary; its bundled SQLite sources, C++
+ # sources and build intermediates are build-time only, and the prebuilt
+ # binaries for other operating systems can never be loaded here.
+ && rm -rf node_modules/better-sqlite3/deps \
+           node_modules/better-sqlite3/src \
+           node_modules/better-sqlite3/build \
+ && find node_modules/better-sqlite3/prebuilds -maxdepth 1 -type f \
+      \( -name 'darwin-*' -o -name 'win32-*' -o -name 'linuxmusl-*' \) -delete \
+ && npm cache clean --force
+
+# --- runtime ---------------------------------------------------------------
+FROM node:22-bookworm-slim AS runtime
+ENV NODE_ENV=production \
+    DATABASE_PATH=/data/knowledge.db \
+    CONTENT_PATH=/app/content/concepts \
+    PORT=8000 \
+    HOST=0.0.0.0
+WORKDIR /app
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends tini \
+ && rm -rf /var/lib/apt/lists/* \
+ && groupadd --system --gid 10001 navigator \
+ && useradd --system --uid 10001 --gid navigator --home /app navigator \
+ && mkdir -p /data /app/generated \
+ && chown -R navigator:navigator /data /app
+
+COPY --from=deps  --chown=navigator:navigator /app/node_modules ./node_modules
+COPY --from=builder --chown=navigator:navigator /app/packages/core/dist ./packages/core/dist
+COPY --from=builder --chown=navigator:navigator /app/apps/api/dist ./apps/api/dist
+COPY --chown=navigator:navigator package.json ./
+COPY --chown=navigator:navigator packages/core/package.json ./packages/core/
+COPY --chown=navigator:navigator apps/api/package.json ./apps/api/
+# Canonical knowledge. It is read, never written.
+COPY --chown=navigator:navigator content ./content
+COPY --chown=navigator:navigator docker/api-entrypoint.sh /usr/local/bin/api-entrypoint
+
+RUN chmod +x /usr/local/bin/api-entrypoint
+
+USER navigator
+VOLUME ["/data"]
+EXPOSE 8000
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=40s --retries=6 \
+  CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||8000)+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+
+# tini reaps and forwards signals, so SIGTERM reaches the API and SQLite closes
+# cleanly instead of the container being killed after the stop timeout.
+ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/api-entrypoint"]

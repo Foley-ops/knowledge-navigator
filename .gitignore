@@ -19,10 +19,13 @@ node_modules/
 .npm/
 .pnpm-store/
 
-# Build output
+# Build output.
+# Patterns are anchored: a bare `lib/` or `build/` also matches source
+# directories such as apps/web/src/lib, which silently drops real source from
+# the repository and from image build contexts.
 dist/
-build/
-lib/
+/build/
+apps/web/build/
 out/
 *.tsbuildinfo
 apps/web/.docusaurus/
