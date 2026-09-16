@@ -43,4 +43,14 @@ export default tseslint.config(
       'prefer-const': 'error',
     },
   },
+  {
+    // Tests assert against decoded JSON responses and index into them freely.
+    // Modelling every response shape twice would make the assertions describe
+    // the types rather than the behaviour, so `any` is allowed here — and only
+    // here. Source files stay strict.
+    files: ['**/tests/**/*.{ts,tsx}', '**/*.test.ts', '**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
 );

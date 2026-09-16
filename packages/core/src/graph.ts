@@ -200,3 +200,151 @@ export function buildGraphDocument(
 export function serializeGraph(document: GraphDocument): string {
   return `${JSON.stringify(document, null, 2)}\n`;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Bounded neighbourhood traversal (runbook E04)                               */
+/* -------------------------------------------------------------------------- */
+
+export const MIN_GRAPH_DEPTH = 1;
+export const MAX_GRAPH_DEPTH = 3;
+export const MAX_GRAPH_NODES = 200;
+
+export interface NeighborhoodNode {
+  readonly id: string;
+  readonly title: string;
+  readonly slug: string;
+  readonly kind: string;
+  readonly tier: number;
+  readonly reviewState: string;
+  readonly summary: string;
+  readonly primaryCategory: string;
+  /** Hops from the centre. The centre itself is 0. */
+  readonly distance: number;
+}
+
+export interface Neighborhood {
+  readonly centerId: string;
+  readonly depth: number;
+  readonly nodes: readonly NeighborhoodNode[];
+  readonly edges: readonly GraphEdge[];
+  /** True when the node cap stopped the traversal before it ran out of graph. */
+  readonly truncated: boolean;
+  readonly nodeLimit: number;
+}
+
+/**
+ * Breadth-first neighbourhood around one concept, bounded in both depth and
+ * size. Relationships are followed in both directions, because a prerequisite
+ * is as relevant to a reader as a dependent. The whole-corpus query is
+ * deliberately unreachable through this function: depth is clamped to 1–3 and
+ * the node count is capped, with truncation reported rather than hidden.
+ */
+export function getNeighborhood(
+  db: DatabaseType,
+  centerId: string,
+  requestedDepth: number,
+  nodeLimit: number = MAX_GRAPH_NODES,
+): Neighborhood | undefined {
+  const exists = db.prepare('SELECT 1 AS found FROM concepts WHERE id = ?').get(centerId);
+  if (exists === undefined) return undefined;
+
+  const depth = Math.min(Math.max(Math.trunc(requestedDepth), MIN_GRAPH_DEPTH), MAX_GRAPH_DEPTH);
+  const limit = Math.min(Math.max(Math.trunc(nodeLimit), 1), MAX_GRAPH_NODES);
+
+  const neighbourStatement = db.prepare(
+    `SELECT type, target_concept_id AS other, note, condition, 1 AS outgoing
+       FROM relationships WHERE source_concept_id = @id
+      UNION ALL
+     SELECT type, source_concept_id AS other, note, condition, 0 AS outgoing
+       FROM relationships WHERE target_concept_id = @id
+      ORDER BY outgoing DESC, type, other`,
+  );
+
+  const distances = new Map<string, number>([[centerId, 0]]);
+  const edges = new Map<string, GraphEdge>();
+  let truncated = false;
+  let frontier: string[] = [centerId];
+
+  for (let hop = 0; hop < depth; hop += 1) {
+    const next: string[] = [];
+    for (const id of frontier) {
+      const rows = neighbourStatement.all({ id }) as {
+        type: string;
+        other: string;
+        note: string | null;
+        condition: string | null;
+        outgoing: number;
+      }[];
+      for (const row of rows) {
+        const source = row.outgoing === 1 ? id : row.other;
+        const target = row.outgoing === 1 ? row.other : id;
+
+        if (!distances.has(row.other)) {
+          if (distances.size >= limit) {
+            truncated = true;
+            continue;
+          }
+          distances.set(row.other, hop + 1);
+          next.push(row.other);
+        }
+        // Only keep an edge once both of its endpoints are inside the result.
+        if (distances.has(source) && distances.has(target)) {
+          const key = edgeId(source, row.type, target);
+          if (!edges.has(key)) {
+            edges.set(key, {
+              id: key,
+              source,
+              target,
+              type: row.type,
+              note: row.note,
+              condition: row.condition,
+            });
+          }
+        }
+      }
+    }
+    frontier = next;
+    if (frontier.length === 0) break;
+  }
+
+  const ids = [...distances.keys()].sort(compareStrings);
+  const placeholders = ids.map(() => '?').join(', ');
+  const rows = db
+    .prepare(
+      `SELECT id, title, slug, kind, tier, review_state, summary, primary_category
+         FROM concepts WHERE id IN (${placeholders}) ORDER BY id`,
+    )
+    .all(...ids) as {
+    id: string;
+    title: string;
+    slug: string;
+    kind: string;
+    tier: number;
+    review_state: string;
+    summary: string;
+    primary_category: string;
+  }[];
+
+  const nodes: NeighborhoodNode[] = rows
+    .map((row) => ({
+      id: row.id,
+      title: row.title,
+      slug: row.slug,
+      kind: row.kind,
+      tier: row.tier,
+      reviewState: row.review_state,
+      summary: row.summary,
+      primaryCategory: row.primary_category,
+      distance: distances.get(row.id) ?? 0,
+    }))
+    .sort((a, b) => a.distance - b.distance || compareStrings(a.id, b.id));
+
+  return {
+    centerId,
+    depth,
+    nodes,
+    edges: [...edges.values()].sort((a, b) => compareStrings(a.id, b.id)),
+    truncated,
+    nodeLimit: limit,
+  };
+}

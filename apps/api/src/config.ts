@@ -20,11 +20,37 @@ export const configSchema = z.object({
   OLLAMA_BASE_URL: trimmed.url().default('http://host.docker.internal:11434'),
   OLLAMA_MODEL: trimmed.min(1).default('qwen3.8:27b-mlx'),
   ASSISTANT_TIMEOUT_MS: z.coerce.number().int().min(1_000).max(600_000).default(120_000),
+  /**
+   * Maximum characters of canonical material placed in a model prompt. Keeps a
+   * long corpus from overflowing a local model's context window.
+   */
+  ASSISTANT_CHARACTER_BUDGET: z.coerce.number().int().min(500).max(200_000).default(14_000),
   DATABASE_PATH: trimmed.min(1).default('/data/knowledge.db'),
   CONTENT_PATH: trimmed.min(1).default('/app/content/concepts'),
   PORT: portSchema.default(8000),
   HOST: trimmed.min(1).default('0.0.0.0'),
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
+
+  /* ---------------------------- safety limits ---------------------------- */
+
+  /** Origins permitted to call the API directly from a browser. */
+  ALLOWED_ORIGINS: trimmed
+    .default('http://127.0.0.1:3000,http://localhost:3000')
+    .transform((value) =>
+      value
+        .split(',')
+        .map((origin) => origin.trim())
+        .filter((origin) => origin !== ''),
+    ),
+  /** Requests per window, per process. This is a single-user local service. */
+  RATE_LIMIT_MAX: z.coerce.number().int().min(1).max(100_000).default(600),
+  RATE_LIMIT_WINDOW_MS: z.coerce.number().int().min(1_000).max(3_600_000).default(60_000),
+  /** Generation is expensive, so it gets its own, much tighter allowance. */
+  ASSISTANT_RATE_LIMIT_MAX: z.coerce.number().int().min(1).max(10_000).default(30),
+  /** Maximum request body. The largest legitimate body is a question plus context. */
+  BODY_LIMIT_BYTES: z.coerce.number().int().min(1_024).max(4_194_304).default(65_536),
+  /** How long a single request may occupy a connection. */
+  REQUEST_TIMEOUT_MS: z.coerce.number().int().min(1_000).max(900_000).default(180_000),
 });
 
 export type Config = Readonly<z.infer<typeof configSchema>>;

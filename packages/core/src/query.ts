@@ -58,6 +58,17 @@ export class QueryError extends Error {
 }
 
 /**
+ * How query terms combine.
+ *
+ * `all` (the default) requires every term, which is what a person typing into a
+ * search box means. `any` ranks by how well a document matches the terms it
+ * does contain, which is what grounded retrieval needs: a whole sentence ANDed
+ * together matches nothing, while OR-ing it and letting BM25 rank finds the
+ * concepts the sentence is actually about.
+ */
+export type MatchMode = 'all' | 'any';
+
+/**
  * Turn arbitrary user text into a safe FTS5 MATCH expression.
  *
  * Every token is quoted, and a `"` inside a token is doubled, so no user input
@@ -65,13 +76,13 @@ export class QueryError extends Error {
  * `^`, parentheses) become literal text rather than query structure. The final
  * token also gets a prefix match so that typing continues to narrow results.
  */
-export function toFtsQuery(raw: string): string | undefined {
+export function toFtsQuery(raw: string, mode: MatchMode = 'all'): string | undefined {
   const tokens = raw.match(/[\p{L}\p{N}_]+/gu);
   if (tokens === null || tokens.length === 0) return undefined;
   const quoted = tokens.map((token) => `"${token.replace(/"/g, '""')}"`);
   const last = quoted[quoted.length - 1];
   if (last !== undefined) quoted[quoted.length - 1] = `${last}*`;
-  return quoted.join(' ');
+  return quoted.join(mode === 'any' ? ' OR ' : ' ');
 }
 
 interface ConceptRow {
@@ -114,7 +125,12 @@ const CONCEPT_COLUMNS = 'c.id, c.title, c.slug, c.summary, c.kind, c.tier, c.rev
  * band the order is BM25 relevance; the ordering is deterministic for a given
  * index.
  */
-export function searchConcepts(db: DatabaseType, rawQuery: string, limit = 10): SearchHit[] {
+export function searchConcepts(
+  db: DatabaseType,
+  rawQuery: string,
+  limit = 10,
+  mode: MatchMode = 'all',
+): SearchHit[] {
   const query = rawQuery.trim();
   if (query.length === 0) {
     throw new QueryError('empty_query', 'a search query must not be empty');
@@ -179,7 +195,7 @@ export function searchConcepts(db: DatabaseType, rawQuery: string, limit = 10): 
   }
 
   /* 5. Full text over title, aliases, summary and body. */
-  const match = toFtsQuery(query);
+  const match = toFtsQuery(query, mode);
   if (match !== undefined) {
     let rows: (ConceptRow & { score: number })[];
     try {
@@ -254,6 +270,8 @@ export interface ConceptDetail {
   readonly summary: string;
   /** Canonical Markdown source. The caller renders it; the API never does. */
   readonly body: string;
+  /** Prose extracted from the body, without notation or markup. */
+  readonly plainText: string;
   readonly aliases: readonly string[];
   readonly primaryCategory: string;
   readonly categories: readonly ConceptCategory[];
@@ -272,6 +290,7 @@ interface ConceptBaseRow {
   review_state: string;
   summary: string;
   body: string;
+  plain_text: string;
   content_hash: string;
   source_path: string;
   primary_category: string;
@@ -365,6 +384,7 @@ function hydrate(db: DatabaseType, base: ConceptBaseRow): ConceptDetail {
     reviewState: base.review_state,
     summary: base.summary,
     body: base.body,
+    plainText: base.plain_text,
     aliases,
     primaryCategory: base.primary_category,
     categories,
@@ -376,7 +396,7 @@ function hydrate(db: DatabaseType, base: ConceptBaseRow): ConceptDetail {
 }
 
 const CONCEPT_BASE_COLUMNS =
-  'id, title, slug, kind, tier, review_state, summary, body, content_hash, source_path, primary_category';
+  'id, title, slug, kind, tier, review_state, summary, body, plain_text, content_hash, source_path, primary_category';
 
 /** Retrieve one concept by its stable id, or undefined when it does not exist. */
 export function getConceptById(db: DatabaseType, conceptId: string): ConceptDetail | undefined {
