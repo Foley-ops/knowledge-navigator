@@ -1,0 +1,7 @@
+/* KaTeX stylesheet, served from the installed package. No CDN is used. */
+@import 'katex/dist/katex.min.css';
+
+:root {
+  --ifm-font-family-base:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}

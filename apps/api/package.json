@@ -1,0 +1,27 @@
+{
+  "name": "@navigator/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Local Fastify API over the compiled Knowledge Navigator index.",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "main": "./dist/server.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean": "tsc --build --clean tsconfig.json",
+    "typecheck": "tsc --build --force tsconfig.json && tsc --project tsconfig.spec.json",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "11.3.0",
+    "@fastify/helmet": "13.1.1",
+    "@fastify/rate-limit": "11.2.0",
+    "@navigator/core": "*",
+    "fastify": "5.12.5",
+    "zod": "4.6.5"
+  }
+}

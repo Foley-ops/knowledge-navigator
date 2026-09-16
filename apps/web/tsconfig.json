@@ -1,0 +1,13 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "strict": true,
+    // @docusaurus/tsconfig 3.10.2 still sets `baseUrl`, which TypeScript 6
+    // reports as a deprecation error. The option comes from the vendored
+    // Docusaurus config, not from this project; acknowledge it rather than
+    // dropping type checking for the web workspace.
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["src/", "docusaurus.config.ts", "sidebars.generated.ts"],
+  "exclude": [".docusaurus/", "build/"]
+}

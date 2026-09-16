@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+coverage/
+data/
+apps/web/.docusaurus/
+apps/web/build/
+apps/web/sidebars.generated.ts
+generated/graph.json
+schemas/concept.schema.json
+package-lock.json
+test-results/
+playwright-report/
+KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md
+BUILD_STATE.md
