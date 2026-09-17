@@ -61,3 +61,33 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# ---------------------------------------------------------------------------
+# Version 2 — private local work area and v2 build authority.
+#
+# content/atlas.yaml and content/graph-only/ ARE part of the context: the API
+# image compiles them. Everything below is personal or unreviewed and must
+# never reach an image layer. See the v2 runbook, checkpoint J03.
+# ---------------------------------------------------------------------------
+KNOWLEDGE_NAVIGATOR_V2_BUILD_RUNBOOK.md
+V2_BUILD_STATE.md
+
+# Proposal workspaces, private exports, and agent scratch space
+.navigator/
+
+# Private personal database — the API creates its own inside its volume
+data/personal.db
+data/personal.db-*
+**/personal.db
+**/personal.db-*
+
+# Uploaded originals and extraction temporaries
+data/uploads/
+data/artifacts/
+data/extraction/
+**/*.upload.tmp
+**/*.extract.tmp
+
+# Private exports
+exports/
+**/*.navigator-export.json

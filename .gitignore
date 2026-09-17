@@ -72,3 +72,32 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# ---------------------------------------------------------------------------
+# Version 2 — private local work area.
+#
+# Canonical v2 content IS tracked: content/atlas.yaml and content/graph-only/.
+# Everything below is personal, machine-local, or an unreviewed agent proposal,
+# and must never enter Git. See the v2 runbook, checkpoint J03 and section 3.
+# ---------------------------------------------------------------------------
+
+# Proposal workspaces, private exports, and agent scratch space
+.navigator/
+
+# Private personal database (never rebuildable from canonical Markdown)
+data/personal.db
+data/personal.db-*
+personal.db
+personal.db-*
+
+# Uploaded originals and extraction temporaries.
+# Original bytes are never retained, but a streaming upload may touch disk.
+data/uploads/
+data/artifacts/
+data/extraction/
+*.upload.tmp
+*.extract.tmp
+
+# Private exports written outside .navigator/exports by --allow-external-output
+exports/
+*.navigator-export.json
