@@ -20,6 +20,9 @@ export interface ProjectPaths {
   readonly atlasFile: string;
   readonly generatedDir: string;
   readonly dataDir: string;
+  /** Local work area: proposals and exports. Never tracked (v2 runbook §5). */
+  readonly navigatorDir: string;
+  readonly exportsDir: string;
   readonly schemasDir: string;
   readonly conceptJsonSchema: string;
   readonly graphJson: string;
@@ -58,6 +61,8 @@ export function projectPaths(explicitRoot?: string): ProjectPaths {
     atlasFile: resolve(root, 'content', 'atlas.yaml'),
     generatedDir: resolve(root, 'generated'),
     dataDir: resolve(root, 'data'),
+    navigatorDir: resolve(root, '.navigator'),
+    exportsDir: resolve(root, '.navigator', 'exports'),
     schemasDir: resolve(root, 'schemas'),
     conceptJsonSchema: resolve(root, 'schemas', 'concept.schema.json'),
     graphJson: resolve(root, 'generated', 'graph.json'),

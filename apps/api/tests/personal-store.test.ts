@@ -579,14 +579,107 @@ describe('saved items', () => {
       ],
       result: { answer: 'Pooling discards spatial detail.', confidence: 'medium' },
     },
+    // A comparison and a path are kept whole (v2 Q07), so the fixture is the
+    // whole structure: dropping the missing markers or the review states here
+    // would be dropping exactly what makes a saved comparison worth having.
     comparison: {
       conceptIds: ['concept.deep_learning.resnet', 'concept.deep_learning.vgg'],
       builtAt: '2026-09-17T00:00:00.000Z',
+      comparison: {
+        concepts: [
+          {
+            conceptId: 'concept.deep_learning.resnet',
+            title: 'ResNet',
+            slug: '/concepts/resnet',
+            kind: 'method',
+            tier: 1,
+            reviewState: 'generated-draft',
+            summary: 'A deep residual network.',
+            format: 'markdown',
+            hasArticle: true,
+            categories: ['Artificial Intelligence/Deep Learning'],
+            claimCount: 0,
+            sourceCount: 1,
+          },
+          {
+            conceptId: 'concept.deep_learning.vgg',
+            title: 'VGG',
+            slug: '/concepts/vgg',
+            kind: 'method',
+            tier: 1,
+            reviewState: 'generated-draft',
+            summary: 'A stack of small filters.',
+            format: 'markdown',
+            hasArticle: true,
+            categories: ['Artificial Intelligence/Deep Learning'],
+            claimCount: 0,
+            sourceCount: 1,
+          },
+        ],
+        rows: [
+          {
+            key: 'definition',
+            label: 'Definition',
+            hint: 'What each one is.',
+            cells: [
+              {
+                conceptId: 'concept.deep_learning.resnet',
+                value: 'Residual blocks.',
+                missing: null,
+              },
+              { conceptId: 'concept.deep_learning.vgg', value: null, missing: 'no-section' },
+            ],
+          },
+        ],
+        relationships: {},
+        between: [],
+        sources: [],
+        evidence: {
+          'concept.deep_learning.resnet': {
+            sources: 1,
+            claims: 0,
+            sectionsWithClaims: [],
+            reviewState: 'generated-draft',
+          },
+          'concept.deep_learning.vgg': {
+            sources: 1,
+            claims: 0,
+            sectionsWithClaims: [],
+            reviewState: 'generated-draft',
+          },
+        },
+        completeness: { cells: 2, missing: 1 },
+      },
     },
     path: {
       targetConceptId: 'concept.deep_learning.resnet',
-      reachable: true,
+      knownConceptIds: [],
       builtAt: '2026-09-17T00:00:00.000Z',
+      path: {
+        targetId: 'concept.deep_learning.resnet',
+        targetTitle: 'ResNet',
+        reachable: true,
+        steps: [
+          {
+            conceptId: 'concept.deep_learning.resnet',
+            title: 'ResNet',
+            slug: '/concepts/resnet',
+            hasArticle: true,
+            tier: 1,
+            reviewState: 'generated-draft',
+            summary: 'A deep residual network.',
+            position: 1,
+            because: null,
+            familiarity: null,
+            likelyKnown: false,
+          },
+        ],
+        startedFrom: [],
+        familiarityEffects: [],
+        missing: [],
+        edges: [],
+        truncated: false,
+      },
     },
     'next-check': { statement: 'Measure recall at 512px.' },
   };

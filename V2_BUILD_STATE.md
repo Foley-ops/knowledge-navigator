@@ -24,7 +24,7 @@ honouring its **Depends on** line.
 
 ## Current checkpoint
 
-P08
+Q08
 
 ## Completed checkpoints
 
@@ -90,6 +90,15 @@ P08
 - **P06** — The project Artifacts section uploads one chosen file at a time, shows extraction progress, metadata, warnings, a safe plain-text preview, archive and restore. It states before any file is chosen that the text is kept, the file is not stored, nothing is executed and there is no OCR.
 - **P07** — Ask may select a project and up to five artifacts or notes. The picker shows each item character count and the running total, nothing is ticked by default, and only ticked ids are sent. Private material has its own 12,000-character budget, is taken in the order the researcher listed, and truncation is reported per item and in total.
 - **P08** — Assistant results carry a privateContext block of ids, labels and counts — never a word of the material — rendered in its own Private context used section with a dashed rule that borrows none of the evidence palette. The system prompt states that private material is data, may be referred to in prose, and may NOT be cited, and it never enters the citable-id list.
+- **P09** — Phase P committed as 2820047. make check 9/9 in 15 s with 686 unit tests across 31 files; 54 browser journeys passed; security review 21 pass / 0 fail / 2 documented notes; a busybox build against the real Docker context confirms no .navigator, personal database, upload, artifact or extraction path can reach an image.
+- **Q00** — Deterministic comparison parser: packages/core/src/compare.ts extracts the five section rows plus summary from stored canonical Markdown, preserving Markdown source and distinguishing empty, no-section and no-article.
+- **Q01** — compareConcepts() and POST /api/compare: ids validated, duplicates collapsed, two to four enforced, caller order preserved, with review states, relationships, sources and claim coverage in the payload.
+- **Q02** — The /compare page: concept search shared with Path, two-to-four selection carried in the URL, a grid that is columnar at tool width and stacked at 360px, missing markers with a stated reason, review-state rails per column, source links, and an optional project save.
+- **Q03** — Explain this comparison: POST /api/compare/explain sends the rendered table as the whole context, citable ids are the compared concepts and their sources, and a rejected synthesis leaves the table untouched.
+- **Q04** — Prerequisite traversal in packages/core/src/learning-paths.ts: only requires and prerequisite_of order anything, both directions normalise to before-to-after keeping which page declared it, backwards breadth-first with deepest-first reading order, ties broken on concept id, cycles visited once and reported.
+- **Q05** — Familiarity applied transparently: strong becomes a starting point, working stays in the route marked likely known, unfamiliar and recognize change nothing, include puts a skipped concept back, and every record that changed the result is named in familiarityEffects.
+- **Q06** — POST /api/paths and the /path page: target search, optional project for familiarity, ordered steps numbered in reading order, the declared edge behind every step, familiarity effects named, missing graph information, canonical links, and no invented edge anywhere.
+- **Q07** — Comparisons and paths are saved whole and exported as Markdown. The saved shapes live in packages/core/src/export.ts so the private store and the exporter share one definition; navigator export list and navigator export saved <id> read the private database read-only and write one file to .navigator/exports with canonical page URLs and source URLs.
 
 ## Last successful checks
 
@@ -159,6 +168,17 @@ P08
 - **P06** `npx playwright test tests/browser/artifacts.spec.ts` → 8 journeys passed — the explanation is present before a file is chosen; a Markdown file uploads, shows its metadata, previews, archives and restores; a notebook uploads with its output-discarded warning and none of its output in the preview; an unsupported file is refused with a reason and nothing is stored; and the same bytes twice stay one artifact
 - **P07** `npx vitest run apps/api/tests/private-context.test.ts` → 17 tests passed — with no selection the prompt contains none of six sentinels; with a selection it contains exactly the selected two and none of the unselected, the other project or the archived one; a selection without a project is ignored; retrieval returns identical canonical concepts with and without a selection; and the budget shortens an over-long item, records an item it had no room for, and preserves the researcher ordering
 - **P08** `npx vitest run apps/api/tests/private-context.test.ts and npx playwright test tests/browser/artifacts.spec.ts` → the citable ids contain no artifact or note id; the evidence list and the whole response body contain no private text; the prompt says NOT citable; and in the browser the two sections are separate elements, the private one says it is not canonical evidence and not cited above, and no citation link names the uploaded file
+- **P09** `make check && npx playwright test && make security-review && docker build context assertion` → 686 tests; 54 journeys; security 21/0/2; no private path in the build context; commit 2820047; tree clean
+- **Q00** `npx vitest run --root packages/core tests/compare-paths.test.ts` → 26 passed — headings, missing sections, math and code fences preserved verbatim, Tier 2 no-section, Tier 3 no-article.
+- **Q01** `npx vitest run --root apps/api tests/compare-paths.test.ts` → 24 passed — 2/3/4 concepts, duplicates, unknown ids named in the 404, Tier 3 no-article cells, empty vs absent sections, index unavailable 503.
+- **Q02** `npm run test:browser -- tests/browser/compare.spec.ts` → 10 passed — two and four concepts added, compared and removed from the keyboard alone at desktop and 360px, every cell present at both widths, document never wider than the viewport.
+- **Q03** `npx vitest run --root apps/api tests/compare-paths.test.ts` → A fabricated citation returns synthesis: null with code fabricated_citation and the full comparison; an unparseable reply does the same with invalid_model_output; the prompt contains the table and no section outside the comparison contract.
+- **Q04** `npx vitest run --root packages/core tests/compare-paths.test.ts` → 28 passed — direct, multi-hop, tied (declaration order ignored), cyclic, unreachable, unknown target, Tier 3 step, and an empty known set identical to no known set.
+- **Q05** `npx vitest run --root packages/core tests/compare-paths.test.ts` → Five familiarity cases pass, including that the target itself is never treated as known.
+- **Q06** `npm run test:browser -- tests/browser/path.spec.ts` → 5 passed — reachable ten-step route built from the keyboard, unreachable target stating the corpus records no route, a personalised route dropping a strong concept and naming the record, and a graph-only step marked as having no article.
+- **Q06** `npm run test:browser` → 69 passed — the whole browser suite, including every v1 journey, with Compare and Path added to the navigation.
+- **Q07** `npx vitest run --root packages/core tests/export.test.ts && npx vitest run --root apps/api tests/export-cli.test.ts` → 12 + 8 passed — the saved shape accepts exactly what the comparison and path engines produce and rejects an unknown field; the export carries every id, source URL, review state and missing marker, is byte-identical when nothing changed, and the corpus hash is unchanged after exporting.
+- **Q07** `npm run test:browser -- tests/browser/path.spec.ts tests/browser/compare.spec.ts` → 16 passed — a comparison and a route are each saved to a project from the keyboard, and the workspace shows the exact export command for each.
 
 ## Blockers
 
@@ -185,7 +205,10 @@ _none_
 - Two product defects were found by the workspace journeys and fixed. The Archived projects panel loaded once on mount, so archiving a project left it absent from both lists until a manual reload; it now reloads on a token bumped by archive and restore. And the create-project form is behind a New project disclosure once a project exists, which the journeys now open the way a researcher would.
 - The extraction timeout had to be enforced inside the work, not only by a racing timer. Page extraction is CPU-bound and resolves through microtasks, so a setTimeout never got a turn and a 1 ms budget completed a 60-page PDF in full. The PDF page loop now checks a deadline on every page, and the timer is kept as a backstop for work that yields and then hangs. The test that caught it is pinned.
 - Browser journeys share one private store per API within a run, so the "no projects yet" journey now runs against the generation-off API on port 8102, whose store no other journey writes to. That keeps the assertion strict rather than conditional, and additionally proves the workspace works with generation switched off.
+- The graph-only path journey is served from a stubbed /api/paths response. The acceptance corpus deliberately holds no Tier 3 identity and the coverage journeys assert that count is zero, so adding one to make a journey pass would change the corpus to suit a test. The API behaviour is proven end to end against a compiled mixed-tier corpus in apps/api/tests/compare-paths.test.ts; the browser journey asserts only what the page does with such a step.
+- The Path page keeps every concept title it has seen rather than deriving labels from the current route. A concept marked as known leaves the route, and the chip offering to put it back was showing a raw dotted id — the browser journey caught it.
+- The comparison and path saved payloads now require the whole structure rather than a summary: the schemas moved to packages/core/src/export.ts and apps/api/src/personal/saved.ts imports them. The exporter runs in the command line with no API behind it, so one definition is the only way a saved item and an exported one cannot drift. Two N06 fixtures were rewritten to the fuller shape; the strictness and round-trip assertions they make are unchanged.
 
 ## Next action
 
-P09 — run the dependency audit, extraction, API, browser and security checks, then commit Phase P.
+Q08 — run every test and commit Phase Q.

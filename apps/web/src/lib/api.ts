@@ -458,6 +458,144 @@ export interface PrivateContextView {
   truncated: boolean;
 }
 
+/* ------------------------------ comparison -------------------------------- */
+
+/** Why a comparison cell is empty. Each reason means something different. */
+export type MissingReason = 'empty' | 'no-section' | 'no-article';
+
+export interface ComparisonCell {
+  conceptId: string;
+  /** Markdown source as the page stores it, or null when there is nothing. */
+  value: string | null;
+  missing: MissingReason | null;
+}
+
+export interface ComparisonRow {
+  key: string;
+  label: string;
+  hint: string;
+  cells: ComparisonCell[];
+}
+
+export interface ComparedConcept {
+  conceptId: string;
+  title: string;
+  slug: string;
+  kind: string;
+  tier: number;
+  reviewState: string;
+  summary: string;
+  format: string;
+  hasArticle: boolean;
+  categories: string[];
+  claimCount: number;
+  sourceCount: number;
+}
+
+export interface ComparisonRelationship {
+  direction: 'outgoing' | 'incoming';
+  type: string;
+  otherId: string;
+  otherTitle: string;
+  note: string | null;
+  condition: string | null;
+}
+
+export interface ComparisonSource {
+  sourceId: string;
+  title: string;
+  url: string;
+  sourceKind: string;
+  supports: string[];
+  checkedOn: string;
+  citedBy: string[];
+}
+
+export interface ComparisonEvidence {
+  sources: number;
+  claims: number;
+  sectionsWithClaims: string[];
+  reviewState: string;
+}
+
+export interface Comparison {
+  concepts: ComparedConcept[];
+  rows: ComparisonRow[];
+  relationships: Record<string, ComparisonRelationship[]>;
+  between: ComparisonRelationship[];
+  sources: ComparisonSource[];
+  evidence: Record<string, ComparisonEvidence>;
+  completeness: { cells: number; missing: number };
+}
+
+/** A comparison plus an optional synthesis. The table is present either way. */
+export interface ComparisonExplanation {
+  requestId: string;
+  comparison: Comparison;
+  privateContext: PrivateContextView;
+  provider: string;
+  model: string | null;
+  latencyMs: number;
+  synthesis: AssistantResult | null;
+  error: { code: string; message: string; detail?: string } | null;
+}
+
+/* --------------------------------- paths ---------------------------------- */
+
+export interface PathEdge {
+  beforeId: string;
+  afterId: string;
+  type: 'requires' | 'prerequisite_of';
+  /** Which page declared the relationship. */
+  declaredBy: string;
+  note: string | null;
+  condition: string | null;
+}
+
+export interface PathStep {
+  conceptId: string;
+  title: string;
+  slug: string;
+  hasArticle: boolean;
+  tier: number;
+  reviewState: string;
+  summary: string;
+  position: number;
+  because: PathEdge | null;
+  familiarity: FamiliarityLevel | null;
+  likelyKnown: boolean;
+}
+
+export interface MissingGraphInformation {
+  conceptId: string;
+  title: string;
+  reason: string;
+}
+
+export interface LearningPath {
+  requestId: string;
+  targetId: string;
+  targetTitle: string;
+  reachable: boolean;
+  steps: PathStep[];
+  startedFrom: {
+    conceptId: string;
+    title: string;
+    reason: 'declared-known' | 'familiarity-strong';
+  }[];
+  familiarityEffects: {
+    conceptId: string;
+    title: string;
+    level: FamiliarityLevel;
+    effect: 'treated-as-known' | 'marked-likely-known';
+  }[];
+  missing: MissingGraphInformation[];
+  edges: PathEdge[];
+  truncated: boolean;
+  /** False when a project was named but the private store could not be read. */
+  familiarityAvailable: boolean;
+}
+
 export interface AssistantAsk {
   question: string;
   context?: string;
@@ -723,6 +861,57 @@ export const api = {
 
   restoreArtifact: (projectId: string, id: string): Promise<Artifact> =>
     post<Artifact>(`/personal/projects/${projectId}/artifacts/${id}/restore`, {}),
+
+  /* --------------------------- compare and path -------------------------- */
+
+  /**
+   * The deterministic comparison. No model is involved, so this call fails
+   * only for reasons the researcher can act on: an unknown id, or no index.
+   */
+  compare: (conceptIds: readonly string[], signal?: AbortSignal): Promise<Comparison> =>
+    request<Comparison>('/compare', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ conceptIds }),
+      ...(signal === undefined ? {} : { signal }),
+    }),
+
+  /**
+   * Ask the local model to read the table aloud. The table comes back whether
+   * or not the synthesis does, so the caller renders the body on both paths.
+   */
+  explainComparison: (
+    input: {
+      conceptIds: readonly string[];
+      depth?: string;
+      projectId?: string;
+      artifactIds?: string[];
+      noteIds?: string[];
+    },
+    signal?: AbortSignal,
+  ): Promise<ComparisonExplanation> =>
+    request<ComparisonExplanation>('/compare/explain', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(input),
+      ...(signal === undefined ? {} : { signal }),
+    }),
+
+  path: (
+    input: {
+      targetId: string;
+      known?: readonly string[];
+      include?: readonly string[];
+      projectId?: string;
+    },
+    signal?: AbortSignal,
+  ): Promise<LearningPath> =>
+    request<LearningPath>('/paths', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(input),
+      ...(signal === undefined ? {} : { signal }),
+    }),
 
   assistantStatus: (signal?: AbortSignal): Promise<AssistantStatus> =>
     request<AssistantStatus>('/assistant/status', signal === undefined ? {} : { signal }),

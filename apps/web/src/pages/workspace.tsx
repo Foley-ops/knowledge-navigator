@@ -368,6 +368,12 @@ function Saved({ projectId }: { projectId: string }): ReactNode {
                 {typeof payload['question'] === 'string' && (
                   <p className="workspace-item__body">{payload['question']}</p>
                 )}
+                {(item.itemType === 'comparison' || item.itemType === 'path') && (
+                  <p className="workspace-item__meta workspace-export">
+                    Export as Markdown:{' '}
+                    <code className="nav-id">navigator export saved {item.id}</code>
+                  </p>
+                )}
                 <p className="workspace-item__meta">
                   saved {shortDate(item.createdAt)}
                   <button

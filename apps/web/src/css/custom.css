@@ -1842,3 +1842,394 @@ details[open] > summary.coverage-branch__name::before {
   gap: 0.35rem;
   font-size: var(--nav-size-sm);
 }
+
+/* ==========================================================================
+   Compare and Path
+
+   Both pages put canonical material next to material the corpus does not have,
+   so "missing" needs a visual weight of its own: a caution rule and a stated
+   reason, never an empty cell. The comparison is a grid rather than a table
+   element so that it becomes a stack at narrow widths without a horizontal
+   scroll and without dropping a single cell.
+   ========================================================================== */
+
+.nav-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.concept-search__results {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.concept-search__result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.concept-search__about {
+  flex: 1 1 18rem;
+}
+
+.concept-search__title {
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.concept-search__summary {
+  margin: 0.15rem 0 0;
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+}
+
+.concept-search__why,
+.concept-search__status {
+  margin: 0.15rem 0 0;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+/* ---- chosen set ---------------------------------------------------------- */
+
+.compare-chosen {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--nav-rule);
+  padding-top: 0.75rem;
+}
+
+.compare-chosen__heading {
+  font-size: var(--nav-size-sm);
+  margin: 0 0 0.4rem;
+}
+
+.compare-chosen__empty {
+  margin: 0.25rem 0 0;
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+}
+
+.compare-chosen__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.compare-chosen__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--nav-rule-strong);
+  padding: 0.25rem 0.3rem 0.25rem 0.6rem;
+  background: var(--nav-surface);
+}
+
+.compare-chosen__name {
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+}
+
+/* ---- the grid ------------------------------------------------------------ */
+
+.compare-completeness {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  margin: 0 0 0.75rem;
+}
+
+.compare-table {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.compare-row__cells {
+  display: grid;
+  gap: 0.75rem;
+  /* One column per compared concept at tool width; a stack when narrow. */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 60rem) {
+  .compare-row__cells {
+    grid-template-columns: repeat(var(--compare-columns, 2), minmax(0, 1fr));
+  }
+}
+
+.compare-row__label {
+  font-size: var(--nav-size-lg);
+  margin: 0;
+}
+
+.compare-row__hint {
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+  margin: 0.1rem 0 0.5rem;
+}
+
+.compare-row--head .compare-row__cells {
+  align-items: stretch;
+}
+
+.compare-column {
+  padding-left: 0.75rem;
+}
+
+.compare-column__title {
+  font-size: var(--nav-size-lg);
+  margin: 0;
+}
+
+.compare-column__meta {
+  margin: 0.2rem 0 0;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.compare-column__summary {
+  margin: 0.35rem 0 0;
+  font-size: var(--nav-size-sm);
+}
+
+.compare-column__evidence {
+  margin: 0.3rem 0 0;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+.compare-column__id {
+  margin: 0.3rem 0 0;
+}
+
+.compare-cell {
+  padding-left: 0.75rem;
+}
+
+.compare-cell__who {
+  font-size: var(--nav-size-2xs);
+  text-transform: none;
+  color: var(--nav-ink-faint);
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+
+/* Cell text is Markdown source, kept as the page stores it. Whitespace is
+   preserved so a list stays a list rather than collapsing into a paragraph. */
+.compare-cell__value {
+  margin: 0;
+  font-family: var(--nav-serif);
+  font-size: var(--nav-size-sm);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.compare-cell__missing {
+  margin: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.compare-missing {
+  font-size: var(--nav-size-2xs);
+  font-weight: 600;
+  color: var(--nav-caution);
+  border: 1px dashed var(--nav-caution);
+  background: var(--nav-caution-quiet);
+  padding: 0.1rem 0.35rem;
+  justify-self: start;
+}
+
+.compare-cell__missing-note {
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-muted);
+}
+
+/* ---- supporting blocks --------------------------------------------------- */
+
+.compare-empty {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  margin: 0;
+}
+
+.compare-relationships,
+.compare-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+  font-size: var(--nav-size-sm);
+}
+
+.compare-relationships__type {
+  font-weight: 600;
+}
+
+.compare-relationships__note,
+.compare-sources__meta {
+  color: var(--nav-ink-muted);
+}
+
+.compare-sources__cited {
+  display: block;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+.compare-explain__what {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  margin: 0 0 0.75rem;
+}
+
+/* ---- path ---------------------------------------------------------------- */
+
+.path-target,
+.path-personal,
+.path-count {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.path-known {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--nav-size-sm);
+}
+
+.path-known > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--nav-rule-strong);
+  padding: 0.25rem 0.3rem 0.25rem 0.6rem;
+  background: var(--nav-surface);
+}
+
+.path-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.path-step {
+  padding-left: 0.85rem;
+}
+
+.path-step__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+/* The number is the reading order, which is the point of the page. */
+.path-step__position {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-faint);
+  border: 1px solid var(--nav-rule-strong);
+  min-width: 1.6rem;
+  text-align: center;
+  padding: 0.05rem 0.25rem;
+}
+
+.path-step__title {
+  font-size: var(--nav-size-lg);
+  margin: 0;
+}
+
+.path-step__meta {
+  margin: 0.2rem 0 0;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.path-step__no-article {
+  color: var(--nav-caution);
+}
+
+.path-step__summary {
+  margin: 0.35rem 0 0;
+  font-family: var(--nav-serif);
+  font-size: var(--nav-size-sm);
+}
+
+.path-step__because {
+  margin: 0.35rem 0 0;
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+}
+
+.path-step__familiarity {
+  margin: 0.3rem 0 0;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+.path-step__actions {
+  margin: 0.4rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.path-notes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+  font-size: var(--nav-size-sm);
+}
+
+.path-notes--missing > li {
+  border-left: 2px dashed var(--nav-caution);
+  padding-left: 0.6rem;
+}
+
+/* The exact command that turns a saved item into a file, so the loop between
+   the browser and the command line is visible rather than documented. */
+.workspace-export > code {
+  overflow-wrap: anywhere;
+}

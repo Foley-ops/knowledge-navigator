@@ -163,6 +163,15 @@ else ok "no private database or proposal workspace is tracked"; fi
 if git check-ignore -q data/personal.db && git check-ignore -q .navigator/proposals/x; then
   ok "the private paths are ignored by Git"
 else bad "a private path is not ignored"; fi
+# The exporter (Q07) is the only thing outside the API that touches private
+# records. It must never be able to write one.
+cli_private=$(grep -nE "new Database\(" packages/core/src/cli.ts | grep -v "readonly: true")
+if [ -n "$cli_private" ]; then
+  bad "the command line opens a database without readonly:"; printf '%s\n' "$cli_private" | sed 's/^/        /'
+else ok "the command line opens the private store read-only"; fi
+if grep -qE "projectPaths\(\)\.exportsDir" packages/core/src/cli.ts; then
+  ok "exports default to .navigator/exports, which Git ignores"
+else bad "the export command does not default to .navigator/exports"; fi
 
 echo
 echo "== 8. no externally hosted asset in the shipped site =="

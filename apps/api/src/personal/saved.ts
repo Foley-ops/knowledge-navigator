@@ -12,7 +12,7 @@
  */
 import { z } from 'zod';
 import type { Database as DatabaseType } from 'better-sqlite3';
-import { DOTTED_ID } from '@navigator/core';
+import { DOTTED_ID, savedComparisonSchema, savedPathSchema } from '@navigator/core';
 import { newId, nowIso } from './db.js';
 import { getProject } from './projects.js';
 import { getSessionInProject } from './sessions.js';
@@ -113,20 +113,16 @@ const assistantAnswerPayload = z.strictObject({
   result: z.record(z.string(), z.unknown()),
 });
 
-const comparisonPayload = z.strictObject({
-  conceptIds: z.array(conceptId).min(2, 'a comparison needs at least two concepts').max(4),
-  rows: z.array(z.record(z.string(), z.unknown())).max(200).default([]),
-  builtAt: z.string().min(1).max(40),
-  synthesis: z.record(z.string(), z.unknown()).nullable().optional(),
-});
-
-const pathPayload = z.strictObject({
-  targetConceptId: conceptId,
-  knownConceptIds: z.array(conceptId).max(200).default([]),
-  steps: z.array(z.record(z.string(), z.unknown())).max(200).default([]),
-  reachable: z.boolean(),
-  builtAt: z.string().min(1).max(40),
-});
+/**
+ * A comparison and a path are saved whole, not summarised.
+ *
+ * The schemas live in `@navigator/core` because the same shape has to be
+ * readable by the exporter, which runs in the command line with no API and no
+ * private store behind it. Keeping one definition means a saved item and an
+ * exported one cannot drift apart.
+ */
+const comparisonPayload = savedComparisonSchema;
+const pathPayload = savedPathSchema;
 
 const nextCheckPayload = z.strictObject({
   statement: boundedText('statement', 2_000),

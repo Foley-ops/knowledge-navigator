@@ -6,7 +6,7 @@
  * implemented fails loudly rather than pretending to succeed.
  */
 import { existsSync } from 'node:fs';
-import { writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import type { Database as DatabaseType } from 'better-sqlite3';
 import { allJsonSchemas } from './json-schema.js';
@@ -19,6 +19,8 @@ import { openDatabaseReadOnly } from './db.js';
 import { getConceptById, getConceptBySlug, searchConcepts } from './query.js';
 import { getConceptEvidence, getCoverageSummary, listBacklog, listCandidates } from './coverage.js';
 import { compareStrings } from './normalize.js';
+import Database from 'better-sqlite3';
+import { exportFileName, renderSavedItemMarkdown } from './export.js';
 
 const USAGE = `navigator <command> [options]
 
@@ -36,12 +38,23 @@ Commands:
   coverage unresolved [--blocking]        The grouped editorial backlog
   evidence <concept-id-or-slug>           Claim-level evidence for one concept
 
+  export saved <saved-item-id>            Write one saved comparison or path to
+                      [--out <dir>]       .navigator/exports/ as Markdown
+                      [--personal <path>]
+                      [--site <url>]
+                      [--stdout]
+  export list [--project <id>]            Saved comparisons and paths, with ids
+
 Options:
   --content <dir>         Override the canonical content directory
   --database <path>       Override the compiled database location
   --limit <n>             Maximum results (default 10 for search, 500 otherwise)
   --offset <n>            Skip this many coverage results
   --json                  Print stable JSON instead of readable text
+  --personal <path>       Override the private database location
+  --out <dir>             Write an export somewhere other than .navigator/exports
+  --site <url>            Base URL for canonical links in an export
+  --stdout                Print an export instead of writing a file
 `;
 
 function optionValue(args: readonly string[], name: string): string | undefined {
@@ -520,6 +533,166 @@ function commandSearch(args: readonly string[]): number {
   });
 }
 
+/* -------------------------------------------------------------------------- */
+/* Export (v2 runbook Q07)                                                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The private database, which the command line opens read-only.
+ *
+ * This is the one place outside the API that touches a researcher's own
+ * records, and it only ever reads them. Export writes exactly one file, under
+ * `.navigator/exports` unless told otherwise, and never touches canonical
+ * content.
+ */
+function resolvePersonalPath(args: readonly string[]): string {
+  const override = optionValue(args, '--personal');
+  if (override !== undefined) return resolve(process.cwd(), override);
+  return process.env['PERSONAL_DATABASE_PATH'] ?? join(projectPaths().dataDir, 'personal.db');
+}
+
+interface SavedRow {
+  id: string;
+  project_id: string;
+  item_type: string;
+  label: string;
+  payload: string;
+  created_at: string;
+}
+
+function withPersonal<T>(args: readonly string[], run: (db: DatabaseType) => T): T {
+  const path = resolvePersonalPath(args);
+  if (!existsSync(path)) {
+    throw new Error(
+      `no private database at ${path}. Start the product and save something first, or pass --personal <path>.`,
+    );
+  }
+  const db = new Database(path, { readonly: true, fileMustExist: true });
+  try {
+    return run(db);
+  } finally {
+    db.close();
+  }
+}
+
+function commandExportList(args: readonly string[]): number {
+  return withPersonal(args, (db) => {
+    const project = optionValue(args, '--project');
+    const rows = (
+      project === undefined
+        ? db
+            .prepare(
+              `SELECT id, project_id, item_type, label, payload, created_at FROM saved_items
+                WHERE item_type IN ('comparison', 'path') AND archived_at IS NULL
+                ORDER BY created_at DESC, id`,
+            )
+            .all()
+        : db
+            .prepare(
+              `SELECT id, project_id, item_type, label, payload, created_at FROM saved_items
+                WHERE item_type IN ('comparison', 'path') AND archived_at IS NULL AND project_id = ?
+                ORDER BY created_at DESC, id`,
+            )
+            .all(project)
+    ) as SavedRow[];
+
+    if (wantsJson(args)) {
+      printJson(
+        rows.map((row) => ({
+          id: row.id,
+          projectId: row.project_id,
+          itemType: row.item_type,
+          label: row.label,
+          createdAt: row.created_at,
+        })),
+      );
+      return 0;
+    }
+
+    if (rows.length === 0) {
+      console.log('nothing saved that can be exported as Markdown');
+      return 0;
+    }
+    console.log(`${String(rows.length)} exportable item(s):\n`);
+    for (const row of rows) {
+      console.log(`  ${row.id}  ${row.item_type.padEnd(10)}  ${row.label}`);
+      console.log(`    saved ${row.created_at}  project ${row.project_id}`);
+      console.log('');
+    }
+    return 0;
+  });
+}
+
+async function commandExportSaved(args: readonly string[]): Promise<number> {
+  const id = args.find((arg) => !arg.startsWith('--'));
+  if (id === undefined) {
+    console.error('navigator export saved: a saved item id is required\n\n' + USAGE);
+    return 2;
+  }
+
+  const row = withPersonal(args, (db) => {
+    return db
+      .prepare(
+        `SELECT id, project_id, item_type, label, payload, created_at
+           FROM saved_items WHERE id = ?`,
+      )
+      .get(id) as SavedRow | undefined;
+  });
+
+  if (row === undefined) {
+    console.error(
+      `navigator export saved: no saved item ${id}. Run \`navigator export list\` to see what there is.`,
+    );
+    return 2;
+  }
+
+  let markdown: string;
+  try {
+    markdown = renderSavedItemMarkdown(row.item_type, JSON.parse(row.payload), {
+      ...(optionValue(args, '--site') === undefined
+        ? {}
+        : { siteUrl: optionValue(args, '--site') }),
+      exportedAt: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error(
+      `navigator export saved: ${error instanceof Error ? error.message : String(error)}`,
+    );
+    return 2;
+  }
+
+  if (args.includes('--stdout')) {
+    process.stdout.write(markdown);
+    return 0;
+  }
+
+  const outDir =
+    optionValue(args, '--out') === undefined
+      ? projectPaths().exportsDir
+      : resolve(process.cwd(), optionValue(args, '--out') ?? '.');
+  await mkdir(outDir, { recursive: true });
+  const file = join(
+    outDir,
+    exportFileName(row.item_type === 'path' ? 'path' : 'comparison', row.label, row.id),
+  );
+  await writeFile(file, markdown, 'utf8');
+  console.log(`wrote ${file}`);
+  return 0;
+}
+
+async function commandExport(args: readonly string[]): Promise<number> {
+  const [subcommand, ...rest] = args;
+  switch (subcommand) {
+    case 'saved':
+      return commandExportSaved(rest);
+    case 'list':
+      return commandExportList(rest);
+    default:
+      console.error(`navigator export: unknown subcommand "${subcommand ?? ''}"\n\n${USAGE}`);
+      return 2;
+  }
+}
+
 async function main(argv: readonly string[]): Promise<number> {
   const [command, ...args] = argv;
   switch (command) {
@@ -537,6 +710,8 @@ async function main(argv: readonly string[]): Promise<number> {
       return commandCoverage(args);
     case 'evidence':
       return commandEvidence(args);
+    case 'export':
+      return commandExport(args);
     case undefined:
     case '--help':
     case '-h':

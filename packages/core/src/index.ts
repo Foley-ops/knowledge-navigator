@@ -18,4 +18,7 @@ export * from './graph.js';
 export * from './sidebars.js';
 export * from './compile.js';
 export * from './query.js';
+export * from './compare.js';
+export * from './learning-paths.js';
 export * from './coverage.js';
+export * from './export.js';
