@@ -248,7 +248,21 @@ describe('graph coverage metadata (v2 runbook L05)', () => {
     // generated/graph.json is built into the web image and served to anyone who
     // can reach the site. Nothing from the private database, the artifact
     // store, the proposal workspace or the atlas notes may appear in it.
-    const forbidden = [
+    // Two different questions, so two different searches.
+    //
+    // A credential must not appear anywhere at all, prose included. The private
+    // *stores*, though, are named after ordinary English words — a relationship
+    // note may legitimately say "Metropolis proposals" or "a personal choice" —
+    // so scanning the whole file for those catches the corpus's own published
+    // prose and says nothing about leakage. What would actually indicate a leak
+    // is one of those names appearing as structure: a key, an id, a type, a
+    // table name. That is what is checked here.
+    const credentials = ['apikey', 'api_key', 'password', 'secret', 'bearer '];
+    for (const needle of credentials) {
+      expect(lowered.includes(needle), `graph.json contains "${needle}"`).toBe(false);
+    }
+
+    const privateStores = [
       'personal',
       'artifact',
       'familiarity',
@@ -259,13 +273,34 @@ describe('graph coverage metadata (v2 runbook L05)', () => {
       'export_history',
       'exporthistory',
       'candidate_note',
-      'apikey',
-      'api_key',
-      'password',
-      'secret',
     ];
-    for (const needle of forbidden) {
-      expect(lowered.includes(needle), `graph.json contains "${needle}"`).toBe(false);
+
+    /** Every object key, and every value that names something rather than reads as prose. */
+    const structure: string[] = [];
+    const PROSE_FIELDS = new Set(['note', 'summary', 'title', 'label', 'reason']);
+    const walk = (value: unknown, field: string | null): void => {
+      if (Array.isArray(value)) {
+        for (const entry of value) walk(entry, field);
+        return;
+      }
+      if (value !== null && typeof value === 'object') {
+        for (const [key, child] of Object.entries(value)) {
+          structure.push(key);
+          walk(child, key);
+        }
+        return;
+      }
+      if (typeof value === 'string' && (field === null || !PROSE_FIELDS.has(field))) {
+        structure.push(value);
+      }
+    };
+    walk(JSON.parse(text), null);
+    const structural = structure.join(' ').toLowerCase();
+
+    for (const needle of privateStores) {
+      expect(structural.includes(needle), `graph.json names "${needle}" in a key, id or type`).toBe(
+        false,
+      );
     }
 
     // Coverage is counts only: no candidate label and no backlog text.

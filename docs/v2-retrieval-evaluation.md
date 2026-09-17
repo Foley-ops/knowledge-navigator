@@ -11,8 +11,8 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 ## Result
 
 - Questions: **28** across 6 intent classes.
-- Complete retrieval (every needed concept reached): **24/28** (86%).
-- Concept recall (needed concepts reached): **33/37** (89%).
+- Complete retrieval (every needed concept reached): **23/28** (82%).
+- Concept recall (needed concepts reached): **32/37** (86%).
 - Answer quality: **not measured**. No model is involved in this evaluation.
 
 ## By intent
@@ -21,14 +21,14 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 | --- | --- | --- | --- |
 | title | 5 | 5/5 (100%) | 5/5 (100%) |
 | alias | 5 | 5/5 (100%) | 5/5 (100%) |
-| paraphrase | 5 | 3/5 (60%) | 4/6 (67%) |
+| paraphrase | 5 | 2/5 (40%) | 3/6 (50%) |
 | symptom | 5 | 5/5 (100%) | 5/5 (100%) |
 | comparison | 4 | 4/4 (100%) | 8/8 (100%) |
 | path | 4 | 2/4 (50%) | 6/8 (75%) |
 
 ## Where it fails
 
-4 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
+5 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
 
 ### P2 (paraphrase)
 
@@ -37,19 +37,26 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
 - Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`, `concept.analysis.convolution`
 
+### P3 (paraphrase)
+
+> What lets a very deep network train without the signal dying on the way back?
+
+- Needed but not retrieved: `concept.deep_learning.residual_connection`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.analysis.cross_correlation`, `concept.analysis.translation_equivariance`, `concept.deep_learning.resnet`, `concept.analysis.multivariable_calculus`
+
 ### P5 (paraphrase)
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.foundations.model_theory`, `concept.analysis.cross_correlation`, `concept.analysis.multivariable_calculus`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.algorithms.core_data_structures`, `concept.foundations.model_theory`, `concept.analysis.multivariable_calculus`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.probability.martingales`, `concept.geometry.euclidean_geometry`, `concept.probability.stochastic_processes`, `concept.deep_learning.resnet`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.geometry.euclidean_geometry`, `concept.probability.martingales`, `concept.probability.stochastic_processes`
 
 ### R3 (path)
 
@@ -82,7 +89,7 @@ Nothing here is evidence for embeddings yet. A miss on eleven pages is usually a
 | A5 | alias | What is a skip connection? | `deep_learning.residual_connection` | yes |
 | P1 | paraphrase | Why does sliding a filter over an image work the same wherever the object is? | `analysis.translation_equivariance` | yes |
 | P2 | paraphrase | How does a network see a wider area of the input as it gets deeper? | `deep_learning.receptive_field` | no |
-| P3 | paraphrase | What lets a very deep network train without the signal dying on the way back? | `deep_learning.residual_connection` | yes |
+| P3 | paraphrase | What lets a very deep network train without the signal dying on the way back? | `deep_learning.residual_connection` | no |
 | P4 | paraphrase | How do you shrink a feature map without learning any parameters? | `deep_learning.pooling` | yes |
 | P5 | paraphrase | Is the operation in a CNN really the mathematical one, or the flipped version? | `analysis.convolution`, `analysis.cross_correlation` | no |
 | S1 | symptom | My detector keeps losing small objects after a few downsampling stages. Why? | `deep_learning.pooling` | yes |

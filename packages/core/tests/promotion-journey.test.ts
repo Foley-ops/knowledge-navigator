@@ -258,8 +258,8 @@ beforeAll(async () => {
 }, 120_000);
 
 afterAll(async () => {
-  await rm(repo, { recursive: true, force: true });
-  await rm(bundleRoot, { recursive: true, force: true });
+  await rm(repo, { recursive: true, force: true, maxRetries: 10 });
+  await rm(bundleRoot, { recursive: true, force: true, maxRetries: 10 });
 });
 
 describe('the living-content loop, once, for real', () => {

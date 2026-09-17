@@ -340,7 +340,7 @@ async function compileFixtureCorpus(): Promise<{ root: string; databasePath: str
     env: { SOURCE_DATE_EPOCH: '1700000000' },
   });
   if (!result.ok) {
-    await rm(root, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true, maxRetries: 10 });
     throw new Error(
       `fixture corpus did not compile: ${result.diagnostics
         .map((d) => `${d.file} ${d.field}: ${d.message}`)
@@ -374,7 +374,7 @@ afterAll(async () => {
   await app.close();
   if (fixtureApp !== undefined) await fixtureApp.close();
   await corpus.cleanup();
-  if (fixtureRoot !== '') await rm(fixtureRoot, { recursive: true, force: true });
+  if (fixtureRoot !== '') await rm(fixtureRoot, { recursive: true, force: true, maxRetries: 10 });
   // The record this checkpoint asks for, written where a person can read it
   // rather than into a test runner's swallowed console.
   const report = ['# Evaluation (v2 T00)', '', ...findings.map((line) => `- ${line}`), ''].join(
@@ -422,14 +422,29 @@ describe('workflow 1: discovering an unfamiliar neighbourhood from Coverage', ()
     );
   });
 
-  it('reaches an area where nothing has been written yet', async () => {
+  it('separates the candidates that have a page from the ones that are only a name', async () => {
+    // Programming was the empty area when this workflow was written, and the
+    // content build is filling it. What the researcher needs from Coverage is
+    // not that the area be empty but that it never blur the two states: a
+    // candidate either names a concept that exists or is still just a label,
+    // and the status and the id have to agree about which.
     const { body } = await get('/api/coverage/candidates?area=atlas.programming&limit=500');
     expect(body.items.length).toBeGreaterThan(0);
+
+    let written = 0;
     for (const candidate of body.items) {
-      expect(candidate.canonicalConceptId).toBeNull();
-      expect(candidate.status).toBe('candidate');
+      if (candidate.status === 'covered') {
+        expect(candidate.canonicalConceptId).toEqual(expect.stringMatching(/^concept\./));
+        written += 1;
+      } else {
+        expect(candidate.status).toBe('candidate');
+        expect(candidate.canonicalConceptId).toBeNull();
+      }
     }
-    record(`programming: ${String(body.items.length)} candidates, none canonical`);
+    record(
+      `programming: ${String(body.items.length)} candidates, ${String(written)} canonical, ` +
+        `${String(body.items.length - written)} still only a name`,
+    );
   });
 
   it('never hands back page content for something that has none', async () => {

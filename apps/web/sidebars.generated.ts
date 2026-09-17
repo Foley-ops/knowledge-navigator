@@ -111,6 +111,15 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               type: 'category',
+              label: "Formal Verification",
+              collapsed: true,
+              items: [
+                { type: 'doc', id: "coq", label: "Coq" },
+                { type: 'doc', id: "lean", label: "Lean" },
+              ],
+            },
+            {
+              type: 'category',
               label: "Logic & Proof",
               collapsed: true,
               items: [
@@ -162,10 +171,35 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: "Mathematical Physics",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "hamiltonian-mechanics", label: "Hamiltonian Mechanics" },
+            { type: 'doc', id: "statistical-mechanics", label: "Statistical Mechanics" },
+          ],
+        },
+        {
+          type: 'category',
           label: "Number Theory",
           collapsed: true,
           items: [
+            { type: 'doc', id: "algebraic-number-theory", label: "Algebraic Number Theory" },
+            { type: 'doc', id: "analytic-number-theory", label: "Analytic Number Theory" },
             { type: 'doc', id: "elementary-number-theory", label: "Elementary Number Theory" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Optimization",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "combinatorial-optimization", label: "Combinatorial Optimization" },
+            { type: 'doc', id: "convex-optimization", label: "Convex Optimization" },
+            { type: 'doc', id: "integer-programming", label: "Integer Programming" },
+            { type: 'doc', id: "nonconvex-optimization", label: "Nonconvex Optimization" },
+            { type: 'doc', id: "optimal-transport", label: "Optimal Transport" },
+            { type: 'doc', id: "stochastic-optimization", label: "Stochastic Optimization" },
+            { type: 'doc', id: "variational-methods", label: "Variational Methods" },
           ],
         },
         {
@@ -182,6 +216,34 @@ const sidebars: SidebarsConfig = {
             { type: 'doc', id: "probability-and-computing", label: "Probability and Computing" },
             { type: 'doc', id: "random-matrix-theory", label: "Random Matrix Theory" },
             { type: 'doc', id: "stochastic-processes", label: "Stochastic Processes" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Theory of Computation",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "automata", label: "Automata" },
+            { type: 'doc', id: "computational-complexity", label: "Computational Complexity" },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: "Programming",
+      collapsed: false,
+      items: [
+        {
+          type: 'category',
+          label: "Data Structures & Algorithms",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "complexity-analysis", label: "Complexity Analysis" },
+            { type: 'doc', id: "core-data-structures", label: "Core Data Structures" },
+            { type: 'doc', id: "graph-algorithms", label: "Graph Algorithms" },
+            { type: 'doc', id: "searching", label: "Searching" },
+            { type: 'doc', id: "sorting", label: "Sorting" },
           ],
         },
       ],

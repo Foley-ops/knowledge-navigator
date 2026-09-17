@@ -130,8 +130,14 @@ beforeEach(async () => {
 }, 60_000);
 
 afterEach(async () => {
-  await rm(repo, { recursive: true, force: true });
-  await rm(bundleRoot, { recursive: true, force: true });
+  // git leaves pack files open for a moment after the last command returns, so
+  // removing .git/objects/pack can lose a race and fail with ENOTEMPTY. It is
+  // the temp directory of a finished test either way, so retry rather than fail
+  // a run over cleanup — the flake lands on a different test each time, which
+  // makes it read as a real failure somewhere new.
+  const scrub = (path: string) => rm(path, { recursive: true, force: true, maxRetries: 10 });
+  await scrub(repo);
+  await scrub(bundleRoot);
 });
 
 /* ------------------------------ the guards -------------------------------- */

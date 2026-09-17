@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T19:58:04.555Z",
-  "corpusHash": "e1d493862cc86b614dd47c556330f5fc63b8c76ad2ce72a71ffb7ec4b6ae21cb",
-  "atlasHash": "711c9120ae0690e9eb7a9f29f0e3d80f9191d26febdda0f27fb785240802d843",
+  "builtAt": "2026-09-17T22:03:54.978Z",
+  "corpusHash": "a207f67a73f653dfcb9ce62127e8def0a01c0902f9c4a2ad01cebb0be97e8202",
+  "atlasHash": "f2e31713f89db613c3160ee618b90f960b901ee1b1f18d67d0bd016f75496c37",
   "counts": {
-    "concepts": 81,
-    "relationships": 295,
-    "categories": 13
+    "concepts": 101,
+    "relationships": 374,
+    "categories": 19
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 81,
+      "1": 101,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 81,
+      "markdown": 101,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 81
+      "generated-draft": 101
     },
-    "conceptsWithArticle": 81,
+    "conceptsWithArticle": 101,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 210,
+      "candidate": 190,
       "proposed-tier-3": 0,
-      "covered": 81,
+      "covered": 101,
       "deferred": 0
     },
-    "unresolvedReferences": 37,
-    "unresolvedGroups": 37,
+    "unresolvedReferences": 88,
+    "unresolvedGroups": 88,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -228,6 +228,21 @@
       ]
     },
     {
+      "path": "Mathematics/Foundations/Formal Verification",
+      "name": "Formal Verification",
+      "topLevel": "Mathematics",
+      "depth": 3,
+      "parent": "Mathematics/Foundations",
+      "primaryConceptIds": [
+        "concept.formal_verification.coq",
+        "concept.formal_verification.lean"
+      ],
+      "conceptIds": [
+        "concept.formal_verification.coq",
+        "concept.formal_verification.lean"
+      ]
+    },
+    {
       "path": "Mathematics/Foundations/Logic & Proof",
       "name": "Logic & Proof",
       "topLevel": "Mathematics",
@@ -309,16 +324,60 @@
       ]
     },
     {
+      "path": "Mathematics/Mathematical Physics",
+      "name": "Mathematical Physics",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.physics.hamiltonian_mechanics",
+        "concept.physics.statistical_mechanics"
+      ],
+      "conceptIds": [
+        "concept.physics.hamiltonian_mechanics",
+        "concept.physics.statistical_mechanics"
+      ]
+    },
+    {
       "path": "Mathematics/Number Theory",
       "name": "Number Theory",
       "topLevel": "Mathematics",
       "depth": 2,
       "parent": "Mathematics",
       "primaryConceptIds": [
+        "concept.number_theory.algebraic_number_theory",
+        "concept.number_theory.analytic_number_theory",
         "concept.number_theory.elementary_number_theory"
       ],
       "conceptIds": [
+        "concept.number_theory.algebraic_number_theory",
+        "concept.number_theory.analytic_number_theory",
         "concept.number_theory.elementary_number_theory"
+      ]
+    },
+    {
+      "path": "Mathematics/Optimization",
+      "name": "Optimization",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.optimization.combinatorial_optimization",
+        "concept.optimization.convex_optimization",
+        "concept.optimization.integer_programming",
+        "concept.optimization.nonconvex_optimization",
+        "concept.optimization.optimal_transport",
+        "concept.optimization.stochastic_optimization",
+        "concept.optimization.variational_methods"
+      ],
+      "conceptIds": [
+        "concept.optimization.combinatorial_optimization",
+        "concept.optimization.convex_optimization",
+        "concept.optimization.integer_programming",
+        "concept.optimization.nonconvex_optimization",
+        "concept.optimization.optimal_transport",
+        "concept.optimization.stochastic_optimization",
+        "concept.optimization.variational_methods"
       ]
     },
     {
@@ -348,6 +407,51 @@
         "concept.probability.probability_theory",
         "concept.probability.random_matrix_theory",
         "concept.probability.stochastic_processes"
+      ]
+    },
+    {
+      "path": "Mathematics/Theory of Computation",
+      "name": "Theory of Computation",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.computation.automata",
+        "concept.computation.computational_complexity"
+      ],
+      "conceptIds": [
+        "concept.computation.automata",
+        "concept.computation.computational_complexity"
+      ]
+    },
+    {
+      "path": "Programming",
+      "name": "Programming",
+      "topLevel": "Programming",
+      "depth": 1,
+      "parent": null,
+      "primaryConceptIds": [],
+      "conceptIds": []
+    },
+    {
+      "path": "Programming/Data Structures & Algorithms",
+      "name": "Data Structures & Algorithms",
+      "topLevel": "Programming",
+      "depth": 2,
+      "parent": "Programming",
+      "primaryConceptIds": [
+        "concept.algorithms.complexity_analysis",
+        "concept.algorithms.core_data_structures",
+        "concept.algorithms.graph_algorithms",
+        "concept.algorithms.searching",
+        "concept.algorithms.sorting"
+      ],
+      "conceptIds": [
+        "concept.algorithms.complexity_analysis",
+        "concept.algorithms.core_data_structures",
+        "concept.algorithms.graph_algorithms",
+        "concept.algorithms.searching",
+        "concept.algorithms.sorting"
       ]
     }
   ],
@@ -643,6 +747,111 @@
       "candidateId": "candidate.mathematics.algebra.ring_theory",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algorithms.complexity_analysis",
+      "title": "Complexity Analysis",
+      "slug": "/concepts/complexity-analysis",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice of describing how an algorithm's running time and memory grow with input size, stated as asymptotic bounds that survive a change of machine, language or compiler.",
+      "aliases": [
+        "asymptotic analysis",
+        "big-O notation"
+      ],
+      "primaryCategory": "Programming/Data Structures & Algorithms",
+      "categories": [
+        "Programming/Data Structures & Algorithms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.data_structures_and_algorithms.complexity_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.algorithms.core_data_structures",
+      "title": "Core Data Structures",
+      "slug": "/concepts/core-data-structures",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The array, linked list, stack, queue, hash table, binary search tree, balanced tree and heap are the handful of memory arrangements whose operation costs decide what a program can afford to do.",
+      "aliases": [],
+      "primaryCategory": "Programming/Data Structures & Algorithms",
+      "categories": [
+        "Programming/Data Structures & Algorithms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.data_structures_and_algorithms.core_data_structures",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.algorithms.graph_algorithms",
+      "title": "Graph Algorithms",
+      "slug": "/concepts/graph-algorithms",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The family of procedures — traversal, shortest paths, spanning trees, topological order, connectivity — that extract structure from vertices and edges in time linear or near-linear in the graph, together with the representation choices that decide whether they actually run that fast.",
+      "aliases": [],
+      "primaryCategory": "Programming/Data Structures & Algorithms",
+      "categories": [
+        "Programming/Data Structures & Algorithms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.data_structures_and_algorithms.graph_algorithms",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algorithms.searching",
+      "title": "Searching",
+      "slug": "/concepts/searching",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Locating an item in a collection is cheap or expensive depending almost entirely on what structure the collection was given beforehand, and in high dimensions the cheap options run out.",
+      "aliases": [],
+      "primaryCategory": "Programming/Data Structures & Algorithms",
+      "categories": [
+        "Programming/Data Structures & Algorithms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.data_structures_and_algorithms.searching",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.algorithms.sorting",
+      "title": "Sorting",
+      "slug": "/concepts/sorting",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The problem of rearranging a sequence into order, where matching upper and lower bounds of about n log n comparisons are known, and where the algorithms that actually ship are hybrids tuned for the partly ordered data real programs hand them.",
+      "aliases": [
+        "comparison sort"
+      ],
+      "primaryCategory": "Programming/Data Structures & Algorithms",
+      "categories": [
+        "Programming/Data Structures & Algorithms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.data_structures_and_algorithms.sorting",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1106,6 +1315,50 @@
       "claims": 0
     },
     {
+      "id": "concept.computation.automata",
+      "title": "Automata",
+      "slug": "/concepts/automata",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Automata theory grades computation by how much memory a machine may keep: a finite control alone recognises exactly the regular languages, adding a stack gives the context-free ones, and removing the bound altogether gives everything computable.",
+      "aliases": [
+        "finite-state machine"
+      ],
+      "primaryCategory": "Mathematics/Theory of Computation",
+      "categories": [
+        "Mathematics/Theory of Computation"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.theory_of_computation.automata",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.computation.computational_complexity",
+      "title": "Computational Complexity",
+      "slug": "/concepts/computational-complexity",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of how much time, space and other resources a computational problem inherently demands, and the classification of problems into classes such as P, NP and PSPACE by reduction between them.",
+      "aliases": [
+        "computational complexity theory"
+      ],
+      "primaryCategory": "Mathematics/Theory of Computation",
+      "categories": [
+        "Mathematics/Theory of Computation"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.theory_of_computation.computational_complexity",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.backpropagation_through_convolution",
       "title": "Backpropagation Through Convolution",
       "slug": "/concepts/backpropagation-through-convolution",
@@ -1287,6 +1540,52 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.vgg",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.formal_verification.coq",
+      "title": "Coq",
+      "slug": "/concepts/coq",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An interactive proof assistant, renamed the Rocq Prover in 2025, in which propositions are types and proofs are programs checked by a small kernel — the system behind the machine-checked four colour theorem and the CompCert verified C compiler.",
+      "aliases": [
+        "Rocq Prover",
+        "Rocq"
+      ],
+      "primaryCategory": "Mathematics/Foundations/Formal Verification",
+      "categories": [
+        "Mathematics/Foundations/Formal Verification"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.formal_verification.coq",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 5,
+      "claims": 0
+    },
+    {
+      "id": "concept.formal_verification.lean",
+      "title": "Lean",
+      "slug": "/concepts/lean",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Lean is an interactive theorem prover and programming language in which a statement is a type and its proof is a term, checked by a small kernel, with mathlib as the shared library that makes formalising real mathematics practical rather than merely possible.",
+      "aliases": [
+        "Lean 4",
+        "Lean theorem prover"
+      ],
+      "primaryCategory": "Mathematics/Foundations/Formal Verification",
+      "categories": [
+        "Mathematics/Foundations/Formal Verification"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.formal_verification.lean",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -1886,6 +2185,46 @@
       "claims": 0
     },
     {
+      "id": "concept.number_theory.algebraic_number_theory",
+      "title": "Algebraic Number Theory",
+      "slug": "/concepts/algebraic-number-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The arithmetic of finite extensions of the rationals, where factorisation of numbers into primes breaks down and factorisation of ideals into prime ideals replaces it, with the class group measuring exactly how much was lost.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Number Theory",
+      "categories": [
+        "Mathematics/Number Theory"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.number_theory.algebraic_number_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.number_theory.analytic_number_theory",
+      "title": "Analytic Number Theory",
+      "slug": "/concepts/analytic-number-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of the integers by way of complex analysis, where arithmetic questions about primes become questions about the poles, zeros and growth of functions built from them.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Number Theory",
+      "categories": [
+        "Mathematics/Number Theory"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.number_theory.analytic_number_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.number_theory.elementary_number_theory",
       "title": "Elementary Number Theory",
       "slug": "/concepts/elementary-number-theory",
@@ -1905,6 +2244,207 @@
       "candidateId": "candidate.mathematics.number_theory.elementary_number_theory",
       "candidateStatus": "covered",
       "unresolvedReferences": 5,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.combinatorial_optimization",
+      "title": "Combinatorial Optimization",
+      "slug": "/concepts/combinatorial-optimization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Optimization over a feasible set that is finite but exponentially large — tours, matchings, spanning trees, subsets — where an optimum always exists and the whole difficulty is finding it without enumerating.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.combinatorial_optimization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.convex_optimization",
+      "title": "Convex Optimization",
+      "slug": "/concepts/convex-optimization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The class of problems in which a convex objective is minimised over a convex feasible set, where every local minimum is global and the dual problem hands back a certificate that the answer really is optimal.",
+      "aliases": [
+        "convex programming"
+      ],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.convex_optimization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.integer_programming",
+      "title": "Integer Programming",
+      "slug": "/concepts/integer-programming",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Optimizing a linear objective over the integer points of a polyhedron — one extra word in the model that turns a polynomial-time linear program into an NP-hard problem, and that buys the ability to express a yes-or-no decision.",
+      "aliases": [
+        "integer linear programming",
+        "mixed-integer programming"
+      ],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.integer_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.nonconvex_optimization",
+      "title": "Nonconvex Optimization",
+      "slug": "/concepts/nonconvex-optimization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Minimisation without the convexity that makes a local minimum global, where algorithms can still be proved to reach stationary points but no longer certify that the point they reached is the best one.",
+      "aliases": [
+        "non-convex optimization",
+        "nonconvex programming"
+      ],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.nonconvex_optimization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 4,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.optimal_transport",
+      "title": "Optimal Transport",
+      "slug": "/concepts/optimal-transport",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The problem of rearranging one probability measure into another at least total cost, whose relaxed form always has a solution and whose optimal value gives a geometry-aware distance between distributions.",
+      "aliases": [
+        "Monge-Kantorovich problem",
+        "Wasserstein distance"
+      ],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.optimal_transport",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.stochastic_optimization",
+      "title": "Stochastic Optimization",
+      "slug": "/concepts/stochastic-optimization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Optimization when the objective and its gradient can only be sampled rather than evaluated, so cheap noisy steps replace exact expensive ones and the convergence rate is set by the noise instead of the curvature.",
+      "aliases": [
+        "stochastic approximation"
+      ],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.stochastic_optimization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.optimization.variational_methods",
+      "title": "Variational Methods",
+      "slug": "/concepts/variational-methods",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of techniques that replaces an intractable quantity with the optimum of a functional over a restricted family of candidates, trading exactness for an optimisation problem that can actually be solved.",
+      "aliases": [
+        "variational inference",
+        "evidence lower bound"
+      ],
+      "primaryCategory": "Mathematics/Optimization",
+      "categories": [
+        "Mathematics/Optimization"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.optimization.variational_methods",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.physics.hamiltonian_mechanics",
+      "title": "Hamiltonian Mechanics",
+      "slug": "/concepts/hamiltonian-mechanics",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A reformulation of classical mechanics in which one scalar energy function generates a first-order flow on phase space, and that flow preserves a geometric structure strong enough to force conservation of volume.",
+      "aliases": [
+        "Hamiltonian formalism"
+      ],
+      "primaryCategory": "Mathematics/Mathematical Physics",
+      "categories": [
+        "Mathematics/Mathematical Physics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.mathematical_physics.hamiltonian_mechanics",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.physics.statistical_mechanics",
+      "title": "Statistical Mechanics",
+      "slug": "/concepts/statistical-mechanics",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The theory that predicts what a system of enormously many degrees of freedom does on average, by putting a probability distribution on its microscopic configurations and extracting everything measurable from one normalising sum.",
+      "aliases": [
+        "statistical physics",
+        "equilibrium statistical mechanics"
+      ],
+      "primaryCategory": "Mathematics/Mathematical Physics",
+      "categories": [
+        "Mathematics/Mathematical Physics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.mathematical_physics.statistical_mechanics",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 4,
       "claims": 0
     },
     {
@@ -2555,6 +3095,166 @@
       "condition": null
     },
     {
+      "id": "concept.algorithms.complexity_analysis|contrasts_with|concept.computation.computational_complexity",
+      "source": "concept.algorithms.complexity_analysis",
+      "target": "concept.computation.computational_complexity",
+      "type": "contrasts_with",
+      "note": "Complexity analysis measures one named algorithm's resource growth, whereas computational complexity classifies problems by what every possible algorithm must spend.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.complexity_analysis|contributes_to|concept.algorithms.core_data_structures",
+      "source": "concept.algorithms.complexity_analysis",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "contributes_to",
+      "note": "A data structure is chosen by the worst-case and amortised cost of its operations, and those costs are exactly what this analysis produces.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.complexity_analysis|contributes_to|concept.algorithms.graph_algorithms",
+      "source": "concept.algorithms.complexity_analysis",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "contributes_to",
+      "note": "Graph costs are stated in two parameters at once, and reading a bound like linear in vertices plus edges requires the multi-parameter form of the notation.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.complexity_analysis|contributes_to|concept.algorithms.sorting",
+      "source": "concept.algorithms.complexity_analysis",
+      "target": "concept.algorithms.sorting",
+      "type": "contributes_to",
+      "note": "The separation between quadratic and linearithmic sorts, and the comparison lower bound that makes it final, are both statements in asymptotic notation.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.core_data_structures|contributes_to|concept.algorithms.complexity_analysis",
+      "source": "concept.algorithms.core_data_structures",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contributes_to",
+      "note": "These structures supply the canonical worked examples of amortized, average-case and worst-case analysis — the dynamic array's doubling, the hash table's load factor, the degenerate search tree.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.core_data_structures|contributes_to|concept.algorithms.sorting",
+      "source": "concept.algorithms.core_data_structures",
+      "target": "concept.algorithms.sorting",
+      "type": "contributes_to",
+      "note": "Heapsort is nothing but repeated extract-min from a binary heap, and most in-place sorts assume the contiguous random-access array.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.core_data_structures|prerequisite_of|concept.algorithms.graph_algorithms",
+      "source": "concept.algorithms.core_data_structures",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "prerequisite_of",
+      "note": "Breadth-first search is a queue, depth-first search a stack, Dijkstra a priority queue, and the adjacency list an array of lists — the graph algorithms are these structures with a traversal rule on top.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.core_data_structures|used_to_solve|concept.algorithms.searching",
+      "source": "concept.algorithms.core_data_structures",
+      "target": "concept.algorithms.searching",
+      "type": "used_to_solve",
+      "note": "Which structure holds the collection is what decides whether a lookup is one hash probe, a logarithmic descent, or a linear scan.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.graph_algorithms|contrasts_with|concept.computation.computational_complexity",
+      "source": "concept.algorithms.graph_algorithms",
+      "target": "concept.computation.computational_complexity",
+      "type": "contrasts_with",
+      "note": "Changing one word in a graph problem's statement — shortest walk to longest, spanning tree to Hamiltonian cycle — moves it from near-linear time to NP-hard, and complexity theory is where that boundary is drawn.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.graph_algorithms|requires|concept.algorithms.complexity_analysis",
+      "source": "concept.algorithms.graph_algorithms",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "requires",
+      "note": "The entire case for adjacency lists over matrices, and for Dijkstra over Bellman-Ford, is stated in asymptotic running times and is unreadable without them.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.graph_algorithms|requires|concept.algorithms.core_data_structures",
+      "source": "concept.algorithms.graph_algorithms",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "requires",
+      "note": "Every algorithm here is a traversal rule plus a container — a queue, a stack, a priority queue or a disjoint-set forest — and the container's cost is the algorithm's cost.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.graph_algorithms|used_to_solve|concept.optimization.combinatorial_optimization",
+      "source": "concept.algorithms.graph_algorithms",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "used_to_solve",
+      "note": "Shortest path, minimum spanning tree and maximum flow are the combinatorial optimisation problems that turn out to be solvable exactly in polynomial time, and these are the algorithms that solve them.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.searching|contrasts_with|concept.algorithms.graph_algorithms",
+      "source": "concept.algorithms.searching",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "contrasts_with",
+      "note": "Graph search explores a reachability structure with no key order to exploit, so its cost is counted in vertices and edges rather than in comparisons against an ordered universe.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.searching|requires|concept.algorithms.core_data_structures",
+      "source": "concept.algorithms.searching",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "requires",
+      "note": "Which search is even available is fixed by the container holding the data — array, hash table or balanced tree — so those structures have to be understood first.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.searching|requires|concept.algorithms.sorting",
+      "source": "concept.algorithms.searching",
+      "target": "concept.algorithms.sorting",
+      "type": "requires",
+      "note": "Binary search is correct only on a sequence already in sorted order, so a reader must know what sorting costs and guarantees before the logarithmic bound means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.searching|unreliable_when|concept.probability.high_dimensional_statistics",
+      "source": "concept.algorithms.searching",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "unreliable_when",
+      "note": "Exact nearest-neighbour search degrades toward a full linear scan as dimension grows, for the same geometric reasons high-dimensional statistics studies.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.sorting|assumes|concept.algebra.order_theory",
+      "source": "concept.algorithms.sorting",
+      "target": "concept.algebra.order_theory",
+      "type": "assumes",
+      "note": "A sort is only well defined once the comparator is a total preorder; a comparator that is not transitive has no correct answer to produce, and library sorts respond to one with undefined behaviour rather than a wrong order.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.sorting|contributes_to|concept.algorithms.complexity_analysis",
+      "source": "concept.algorithms.sorting",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contributes_to",
+      "note": "The decision-tree argument for the n log n comparison bound is the standard first example of a proved lower bound, and of the fact that such a bound is a statement about a model rather than about a problem.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.sorting|contributes_to|concept.probability.probability_and_computing",
+      "source": "concept.algorithms.sorting",
+      "target": "concept.probability.probability_and_computing",
+      "type": "contributes_to",
+      "note": "Randomised quicksort is the canonical opening example of a Las Vegas algorithm, where randomising the pivot moves the quadratic case from the input to the coins.",
+      "condition": null
+    },
+    {
+      "id": "concept.algorithms.sorting|prerequisite_of|concept.algorithms.searching",
+      "source": "concept.algorithms.sorting",
+      "target": "concept.algorithms.searching",
+      "type": "prerequisite_of",
+      "note": "Binary search and every interpolation variant take sortedness as a precondition, so the cost of establishing that order is part of the decision to use them.",
+      "condition": null
+    },
+    {
       "id": "concept.analysis.banach_spaces|contributes_to|concept.analysis.functional_analysis",
       "source": "concept.analysis.banach_spaces",
       "target": "concept.analysis.functional_analysis",
@@ -3147,6 +3847,70 @@
       "condition": null
     },
     {
+      "id": "concept.computation.automata|contrasts_with|concept.foundations.computability_theory",
+      "source": "concept.computation.automata",
+      "target": "concept.foundations.computability_theory",
+      "type": "contrasts_with",
+      "note": "Both ask which languages a machine model recognises, but bounding the memory makes emptiness and equivalence decidable, where an unbounded tape makes them undecidable.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.automata|contributes_to|concept.computation.computational_complexity",
+      "source": "concept.computation.automata",
+      "target": "concept.computation.computational_complexity",
+      "type": "contributes_to",
+      "note": "The machine-model-versus-language-class method, nondeterminism and the separation arguments all appear here first, with a structural bound on memory in place of a resource bound.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.automata|contributes_to|concept.logic.first_order_logic",
+      "source": "concept.computation.automata",
+      "target": "concept.logic.first_order_logic",
+      "type": "contributes_to",
+      "note": "Regular languages coincide with the string properties definable in monadic second-order logic, which makes automata the decision procedure behind that logic's satisfiability.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.automata|requires|concept.foundations.set_theory",
+      "source": "concept.computation.automata",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "A transition function, the power set used in the subset construction and the Myhill–Nerode equivalence classes are all stated in the language of sets, functions and relations.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.computational_complexity|contrasts_with|concept.optimization.convex_optimization",
+      "source": "concept.computation.computational_complexity",
+      "target": "concept.optimization.convex_optimization",
+      "type": "contrasts_with",
+      "note": "Convexity, not linearity or smoothness, is the practical dividing line for tractable continuous problems, and it cuts the space of problems differently from the P/NP boundary.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.computational_complexity|contributes_to|concept.optimization.combinatorial_optimization",
+      "source": "concept.computation.computational_complexity",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "contributes_to",
+      "note": "NP-hardness proofs are why that field is organised around approximation, cutting planes and heuristics rather than around a single exact polynomial algorithm.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.computational_complexity|requires|concept.computation.automata",
+      "source": "concept.computation.computational_complexity",
+      "target": "concept.computation.automata",
+      "type": "requires",
+      "note": "Time and space are measured as resource bounds on a fixed machine model, so the Turing machine and its relatives have to be in hand before a complexity class means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.computation.computational_complexity|requires|concept.foundations.computability_theory",
+      "source": "concept.computation.computational_complexity",
+      "target": "concept.foundations.computability_theory",
+      "type": "requires",
+      "note": "Complexity refines the decidable problems, and its basic separation technique is the diagonalisation already used to prove the halting problem undecidable.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.backpropagation_through_convolution|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.backpropagation_through_convolution",
       "target": "concept.deep_learning.convolutional_layer",
@@ -3280,6 +4044,62 @@
       "target": "concept.deep_learning.pooling",
       "type": "requires",
       "note": "Five max-pooling stages separate VGG's convolutional blocks and set its resolution schedule.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.coq|contrasts_with|concept.formal_verification.lean",
+      "source": "concept.formal_verification.coq",
+      "target": "concept.formal_verification.lean",
+      "type": "contrasts_with",
+      "note": "The two proof assistants share a dependent-type-theory foundation but differ in kernel details, tactic language, axiom defaults and library culture, so a development in one does not transfer to the other.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.coq|contrasts_with|concept.foundations.set_theory",
+      "source": "concept.formal_verification.coq",
+      "target": "concept.foundations.set_theory",
+      "type": "contrasts_with",
+      "note": "Coq founds mathematics on a dependent type theory rather than on ZFC, so equality, quotients and the axiom of choice behave differently from the set-theoretic account most mathematicians learn.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.coq|implements|concept.logic.proof_theory",
+      "source": "concept.formal_verification.coq",
+      "target": "concept.logic.proof_theory",
+      "type": "implements",
+      "note": "The kernel is a working realisation of the Curry-Howard reading of natural deduction — a derivation is a term, and checking a proof is type-checking it.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.coq|used_to_solve|concept.geometry.euclidean_geometry",
+      "source": "concept.formal_verification.coq",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "used_to_solve",
+      "note": "Beeson, Narboux and Wiedijk machine-checked Euclid's Book I from axioms as close as possible to Euclid's own, written in a language close to Tarski's, with the proofs checked in both Coq and HOL Light, which exposed which diagrammatic steps Euclid had left unstated.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.lean|contrasts_with|concept.formal_verification.coq",
+      "source": "concept.formal_verification.lean",
+      "target": "concept.formal_verification.coq",
+      "type": "contrasts_with",
+      "note": "Both are proof assistants over a calculus of inductive constructions, but they differ in their treatment of proof irrelevance and quotients, in their metaprogramming, and in the culture of their mathematical libraries.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.lean|contrasts_with|concept.foundations.set_theory",
+      "source": "concept.formal_verification.lean",
+      "target": "concept.foundations.set_theory",
+      "type": "contrasts_with",
+      "note": "Lean founds mathematics on dependent type theory rather than ZFC, so a set is a predicate on a type instead of a primitive, and membership is typed rather than global.",
+      "condition": null
+    },
+    {
+      "id": "concept.formal_verification.lean|implements|concept.logic.proof_theory",
+      "source": "concept.formal_verification.lean",
+      "target": "concept.logic.proof_theory",
+      "type": "implements",
+      "note": "Lean turns the proof-theoretic idea of a derivation into a running artefact — the proof term is the derivation, and kernel type-checking is the mechanical check that its rules were applied correctly.",
       "condition": null
     },
     {
@@ -4155,6 +4975,70 @@
       "condition": null
     },
     {
+      "id": "concept.number_theory.algebraic_number_theory|contrasts_with|concept.number_theory.analytic_number_theory",
+      "source": "concept.number_theory.algebraic_number_theory",
+      "target": "concept.number_theory.analytic_number_theory",
+      "type": "contrasts_with",
+      "note": "Both attack primes, one by algebraic structure in a fixed field and the other by complex analysis and averages, and they meet in the analytic class number formula.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.algebraic_number_theory|generalizes|concept.number_theory.elementary_number_theory",
+      "source": "concept.number_theory.algebraic_number_theory",
+      "target": "concept.number_theory.elementary_number_theory",
+      "type": "generalizes",
+      "note": "Divisibility, primes and congruences in Z are the degree-one case, and the theory keeps their statements while replacing elements by ideals to keep them true.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.algebraic_number_theory|requires|concept.algebra.field_theory",
+      "source": "concept.number_theory.algebraic_number_theory",
+      "target": "concept.algebra.field_theory",
+      "type": "requires",
+      "note": "A number field is by definition a finite extension of Q, so degree, minimal polynomials and embeddings into C are the vocabulary the definitions are stated in.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.algebraic_number_theory|requires|concept.algebra.ring_theory",
+      "source": "concept.number_theory.algebraic_number_theory",
+      "target": "concept.algebra.ring_theory",
+      "type": "requires",
+      "note": "The whole subject is written in ideals, quotient rings, Noetherian conditions and integral closure, and none of its statements parse without them.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.analytic_number_theory|contrasts_with|concept.number_theory.algebraic_number_theory",
+      "source": "concept.number_theory.analytic_number_theory",
+      "target": "concept.number_theory.algebraic_number_theory",
+      "type": "contrasts_with",
+      "note": "The two fields attack the same objects from opposite sides and meet at Dedekind zeta functions and the class number formula, where an analytic residue computes an algebraic invariant.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.analytic_number_theory|contrasts_with|concept.number_theory.elementary_number_theory",
+      "source": "concept.number_theory.analytic_number_theory",
+      "target": "concept.number_theory.elementary_number_theory",
+      "type": "contrasts_with",
+      "note": "Both study the same primes, but the elementary proof of the prime number theorem by Erdos and Selberg shows the analytic route is a matter of naturalness and sharper error terms, not logical necessity.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.analytic_number_theory|contributes_to|concept.probability.random_matrix_theory",
+      "source": "concept.number_theory.analytic_number_theory",
+      "target": "concept.probability.random_matrix_theory",
+      "type": "contributes_to",
+      "note": "Montgomery's pair correlation of zeta zeros matched the eigenvalue statistics of random Hermitian matrices, which turned a number-theoretic computation into one of random matrix theory's most-cited applications.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.analytic_number_theory|requires|concept.analysis.complex_analysis",
+      "source": "concept.number_theory.analytic_number_theory",
+      "target": "concept.analysis.complex_analysis",
+      "type": "requires",
+      "note": "Analytic continuation, contour shifting and the argument principle are the actual machinery; without them the zeta function is only a divergent series and the explicit formula cannot be derived.",
+      "condition": null
+    },
+    {
       "id": "concept.number_theory.elementary_number_theory|contrasts_with|concept.foundations.computability_theory",
       "source": "concept.number_theory.elementary_number_theory",
       "target": "concept.foundations.computability_theory",
@@ -4184,6 +5068,294 @@
       "target": "concept.algebra.ring_theory",
       "type": "contributes_to",
       "note": "Unique factorisation in the integers and the quotients Z/nZ are the concrete cases that ring theory abstracts into unique factorisation domains, ideals and quotient rings.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.combinatorial_optimization|contrasts_with|concept.optimization.convex_optimization",
+      "source": "concept.optimization.combinatorial_optimization",
+      "target": "concept.optimization.convex_optimization",
+      "type": "contrasts_with",
+      "note": "Both minimize a linear or convex objective, but here the feasible set is a finite point set rather than a convex body, so local optimality carries no information and duality gives bounds rather than certificates of optimality.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.combinatorial_optimization|contrasts_with|concept.optimization.nonconvex_optimization",
+      "source": "concept.optimization.combinatorial_optimization",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "contrasts_with",
+      "note": "Both face landscapes riddled with local optima, but a discrete feasible set has no gradients and no neighbourhood structure by default, so descent is replaced by enumeration with bounds.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.combinatorial_optimization|contributes_to|concept.optimization.integer_programming",
+      "source": "concept.optimization.combinatorial_optimization",
+      "target": "concept.optimization.integer_programming",
+      "type": "contributes_to",
+      "note": "Combinatorial problems are what integer programming is a general language for, and the polyhedral structure of their relaxations — total unimodularity, facets, cutting planes — is what integer programming solvers exploit.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.combinatorial_optimization|requires|concept.computation.computational_complexity",
+      "source": "concept.optimization.combinatorial_optimization",
+      "target": "concept.computation.computational_complexity",
+      "type": "requires",
+      "note": "The central fact about this field is which problems are polynomial and which are NP-hard, and neither half of that sentence means anything without the complexity classes and the notion of reduction.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.convex_optimization|contrasts_with|concept.optimization.nonconvex_optimization",
+      "source": "concept.optimization.convex_optimization",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "contrasts_with",
+      "note": "The same solvers run on both, but without convexity a stationary point carries no global guarantee and the duality gap need not close, which is exactly the value convexity buys.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.convex_optimization|contributes_to|concept.optimization.integer_programming",
+      "source": "concept.optimization.convex_optimization",
+      "target": "concept.optimization.integer_programming",
+      "type": "contributes_to",
+      "note": "Branch-and-bound is only as good as its bounds, and those bounds are the optimal values of convex relaxations of the integer problem.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.convex_optimization|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.optimization.convex_optimization",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "Gradients, Hessians and Lagrange multipliers are the language in which the optimality conditions and every algorithm here are written.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.convex_optimization|requires|concept.geometry.convex_geometry",
+      "source": "concept.optimization.convex_optimization",
+      "target": "concept.geometry.convex_geometry",
+      "type": "requires",
+      "note": "The objects being optimised over are convex sets and convex functions, and the separating-hyperplane argument behind duality is a theorem of convex geometry, so the geometry has to come first.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.integer_programming|contrasts_with|concept.optimization.convex_optimization",
+      "source": "concept.optimization.integer_programming",
+      "target": "concept.optimization.convex_optimization",
+      "type": "contrasts_with",
+      "note": "Deleting the integrality constraint leaves a linear program solvable in polynomial time, so integer programming is the sharpest illustration of what convexity is worth.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.integer_programming|contrasts_with|concept.optimization.nonconvex_optimization",
+      "source": "concept.optimization.integer_programming",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "contrasts_with",
+      "note": "Both are nonconvex, but the difficulty here is a discrete feasible set rather than a rough landscape, and the methods answer with a certified bound rather than a local minimum.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.integer_programming|contributes_to|concept.computation.computational_complexity",
+      "source": "concept.optimization.integer_programming",
+      "target": "concept.computation.computational_complexity",
+      "type": "contributes_to",
+      "note": "Zero-one integer programming is one of Karp's original NP-complete problems and remains a standard target for hardness reductions.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.integer_programming|specializes|concept.optimization.combinatorial_optimization",
+      "source": "concept.optimization.integer_programming",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "specializes",
+      "note": "Integer programming is the particular formalism — linear objective, linear constraints, integrality — in which most combinatorial optimization problems are written down and handed to a general solver.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.nonconvex_optimization|contrasts_with|concept.optimization.combinatorial_optimization",
+      "source": "concept.optimization.nonconvex_optimization",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "contrasts_with",
+      "note": "Both give up a global certificate, but for different reasons - discreteness of the feasible set there, curvature of a continuous landscape here - and continuous relaxations are the bridge between them.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.nonconvex_optimization|contrasts_with|concept.optimization.convex_optimization",
+      "source": "concept.optimization.nonconvex_optimization",
+      "target": "concept.optimization.convex_optimization",
+      "type": "contrasts_with",
+      "note": "The field is defined by the failure of the one guarantee convex optimisation provides, so every result here is read against what convexity would have given for free.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.nonconvex_optimization|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.optimization.nonconvex_optimization",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "Every statement on this page is about gradients, Hessians and critical points, which a reader has to have met before the first-order and second-order conditions mean anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.nonconvex_optimization|used_to_solve|concept.linear_algebra.tensor_decomposition",
+      "source": "concept.optimization.nonconvex_optimization",
+      "target": "concept.linear_algebra.tensor_decomposition",
+      "type": "used_to_solve",
+      "note": "Fitting a low-rank CP decomposition is a nonconvex least-squares problem attacked by local methods, and it is one of the few such problems whose landscape has been analysed rather than assumed benign.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.optimal_transport|contributes_to|concept.probability.high_dimensional_statistics",
+      "source": "concept.optimization.optimal_transport",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "contributes_to",
+      "note": "Wasserstein distance between an empirical measure and its population is a standard estimand there, and its dimension-dependent convergence rate is a textbook instance of the curse of dimensionality.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.optimal_transport|equivalent_under|concept.optimization.combinatorial_optimization",
+      "source": "concept.optimization.optimal_transport",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "equivalent_under",
+      "note": "When both marginals are finitely supported the problem is exactly the classical transportation problem, a min-cost-flow instance whose linear program has integral vertices.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.optimal_transport|requires|concept.analysis.measure_theory",
+      "source": "concept.optimization.optimal_transport",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "The problem is posed over pushforwards and couplings of measures, so a reader needs measurable maps, pushforward measures and integration against a cost before the statement is even readable.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.optimal_transport|specializes|concept.optimization.convex_optimization",
+      "source": "concept.optimization.optimal_transport",
+      "target": "concept.optimization.convex_optimization",
+      "type": "specializes",
+      "note": "The Kantorovich problem is a linear program over the convex set of couplings, and Kantorovich-Rubinstein duality is its Lagrangian dual.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.stochastic_optimization|assumes|concept.probability.probability_theory",
+      "source": "concept.optimization.stochastic_optimization",
+      "target": "concept.probability.probability_theory",
+      "type": "assumes",
+      "note": "The objective is an expectation over a probability space and the oracle is a random variable, so unbiasedness, finite variance and almost-sure convergence are the statements being made.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.stochastic_optimization|contrasts_with|concept.optimization.convex_optimization",
+      "source": "concept.optimization.stochastic_optimization",
+      "target": "concept.optimization.convex_optimization",
+      "type": "contrasts_with",
+      "note": "With an exact gradient a smooth convex problem admits $O(1/T)$, and a smooth strongly convex one converges linearly; with a noisy oracle the floor is $\\Omega(1/\\sqrt{T})$ in the convex case and $\\Omega(1/(\\lambda T))$ in the strongly convex case, so the two settings have genuinely different complexity.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.stochastic_optimization|supported_by|concept.probability.martingales",
+      "source": "concept.optimization.stochastic_optimization",
+      "target": "concept.probability.martingales",
+      "type": "supported_by",
+      "note": "The noise sequence is a martingale difference with respect to the natural filtration, and the classical almost-sure convergence proofs run through supermartingale convergence theorems.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.stochastic_optimization|used_to_solve|concept.optimization.nonconvex_optimization",
+      "source": "concept.optimization.stochastic_optimization",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "used_to_solve",
+      "note": "Stochastic gradient methods are the default tool for the nonconvex problems of large-scale machine learning, even though the convergence theorems quoted for them assume convexity.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.variational_methods|contrasts_with|concept.optimization.convex_optimization",
+      "source": "concept.optimization.variational_methods",
+      "target": "concept.optimization.convex_optimization",
+      "type": "contrasts_with",
+      "note": "Turning inference into optimisation does not import convex guarantees — the evidence lower bound is concave in each mean-field factor with the others held fixed, so each block update is a convex problem, but it is not jointly concave in the tuple of factors, because the product parameterisation is multilinear and the mean-field family is not a convex set.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.variational_methods|contributes_to|concept.optimization.stochastic_optimization",
+      "source": "concept.optimization.variational_methods",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "contributes_to",
+      "note": "Maximising the bound on large data sets is done by stochastic gradient ascent on Monte Carlo estimates, and the search for low-variance estimators of the gradient of an expectation came largely from this setting.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.variational_methods|requires|concept.probability.bayesian_inference",
+      "source": "concept.optimization.variational_methods",
+      "target": "concept.probability.bayesian_inference",
+      "type": "requires",
+      "note": "The evidence lower bound is defined against a posterior and a marginal likelihood, so a reader who does not already have those objects cannot read the central derivation.",
+      "condition": null
+    },
+    {
+      "id": "concept.optimization.variational_methods|specializes|concept.analysis.calculus_of_variations",
+      "source": "concept.optimization.variational_methods",
+      "target": "concept.analysis.calculus_of_variations",
+      "type": "specializes",
+      "note": "Variational methods take the general apparatus of stationarity over a function space and restrict the search to a parameterised or factorised family chosen for tractability.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.hamiltonian_mechanics|contributes_to|concept.physics.statistical_mechanics",
+      "source": "concept.physics.hamiltonian_mechanics",
+      "target": "concept.physics.statistical_mechanics",
+      "type": "contributes_to",
+      "note": "Liouville's theorem supplies the invariant measure on phase space that the microcanonical and canonical ensembles are built on.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.hamiltonian_mechanics|requires|concept.analysis.ordinary_differential_equations",
+      "source": "concept.physics.hamiltonian_mechanics",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "requires",
+      "note": "Hamilton's equations are a system of first-order ODEs, and it is Picard-Lindelof that turns them into a well-defined flow map with a maximal interval of existence.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.hamiltonian_mechanics|specializes|concept.analysis.dynamical_systems",
+      "source": "concept.physics.hamiltonian_mechanics",
+      "target": "concept.analysis.dynamical_systems",
+      "type": "specializes",
+      "note": "A Hamiltonian flow is a continuous-time dynamical system with an extra constraint — volume preservation — that rules out the attractors a general flow may have.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.hamiltonian_mechanics|used_to_solve|concept.probability.bayesian_inference",
+      "source": "concept.physics.hamiltonian_mechanics",
+      "target": "concept.probability.bayesian_inference",
+      "type": "used_to_solve",
+      "note": "Hamiltonian Monte Carlo treats the negative log posterior as a potential energy and uses simulated Hamiltonian trajectories as Metropolis proposals.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.statistical_mechanics|assumes|concept.physics.hamiltonian_mechanics",
+      "source": "concept.physics.statistical_mechanics",
+      "target": "concept.physics.hamiltonian_mechanics",
+      "type": "assumes",
+      "note": "The classical ensembles live on phase space and assume a Hamiltonian flow that conserves energy and preserves Liouville measure, which is what makes the uniform measure on an energy shell a stationary distribution in the first place.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.statistical_mechanics|contributes_to|concept.geometry.renormalization",
+      "source": "concept.physics.statistical_mechanics",
+      "target": "concept.geometry.renormalization",
+      "type": "contributes_to",
+      "note": "The renormalization group, imported from quantum field theory and reshaped by Kadanoff and Wilson for critical phenomena, explains critical exponents in statistical-mechanical models, and its coarse-graining maps act on exactly the couplings that define a lattice Hamiltonian.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.statistical_mechanics|contributes_to|concept.probability.bayesian_inference",
+      "source": "concept.physics.statistical_mechanics",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contributes_to",
+      "note": "Variational Bayes is the mean-field approximation transplanted, with the evidence lower bound as minus a variational free energy and the gap it leaves as the same Gibbs inequality that bounds free energies in physics.",
+      "condition": null
+    },
+    {
+      "id": "concept.physics.statistical_mechanics|requires|concept.probability.probability_theory",
+      "source": "concept.physics.statistical_mechanics",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Every object here is a probability object — a distribution over configurations, an expectation, a variance, a large-deviation rate — and a reader without expectations and independence cannot follow the partition function at all.",
       "condition": null
     },
     {

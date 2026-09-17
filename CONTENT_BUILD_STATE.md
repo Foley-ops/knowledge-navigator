@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 8 of 28.** 10 of 10 pages in it are still to write.
+**Batch 10 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/analytic-number-theory.md` — Analytic Number Theory (concept.number_theory.analytic_number_theory)
-- `content/concepts/algebraic-number-theory.md` — Algebraic Number Theory (concept.number_theory.algebraic_number_theory)
-- `content/concepts/automata.md` — Automata (concept.computation.automata)
-- `content/concepts/computational-complexity.md` — Computational Complexity (concept.computation.computational_complexity)
-- `content/concepts/convex-optimization.md` — Convex Optimization (concept.optimization.convex_optimization)
-- `content/concepts/nonconvex-optimization.md` — Nonconvex Optimization (concept.optimization.nonconvex_optimization)
-- `content/concepts/stochastic-optimization.md` — Stochastic Optimization (concept.optimization.stochastic_optimization)
-- `content/concepts/combinatorial-optimization.md` — Combinatorial Optimization (concept.optimization.combinatorial_optimization)
-- `content/concepts/integer-programming.md` — Integer Programming (concept.optimization.integer_programming)
-- `content/concepts/variational-methods.md` — Variational Methods (concept.optimization.variational_methods)
+- `content/concepts/imperative-programming.md` — Imperative Programming (concept.paradigms.imperative_programming)
+- `content/concepts/object-oriented-programming.md` — Object-Oriented Programming (concept.paradigms.object_oriented_programming)
+- `content/concepts/functional-programming.md` — Functional Programming (concept.paradigms.functional_programming)
+- `content/concepts/array-programming.md` — Array Programming (concept.paradigms.array_programming)
+- `content/concepts/python.md` — Python (concept.languages.python)
+- `content/concepts/c-language.md` — C (concept.languages.c_language)
+- `content/concepts/cpp.md` — C++ (concept.languages.cpp)
+- `content/concepts/rust.md` — Rust (concept.languages.rust)
+- `content/concepts/go.md` — Go (concept.languages.go)
+- `content/concepts/javascript.md` — JavaScript (concept.languages.javascript)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,20 +36,20 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 81 |
-| Markdown pages in the corpus | 81 |
-| Tier 1 pages | 81 |
+| Candidates covered by a page | 101 |
+| Markdown pages in the corpus | 101 |
+| Tier 1 pages | 101 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 70 of 280 |
+| Planned pages written | 90 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 70 | 85 | 82% |
-| Programming | 0 | 47 | 0% |
+| Mathematics | 85 | 85 | 100% |
+| Programming | 5 | 47 | 11% |
 
 ### By category
 
@@ -70,16 +70,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Mathematics/Algebra | 14 | 14 | complete |
 | Mathematics/Analysis | 18 | 18 | complete |
 | Mathematics/Foundations | 4 | 4 | complete |
-| Mathematics/Foundations/Formal Verification | 0 | 2 |  |
+| Mathematics/Foundations/Formal Verification | 2 | 2 | complete |
 | Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
 | Mathematics/Geometry & Topology | 15 | 15 | complete |
 | Mathematics/Linear & Multilinear Algebra | 6 | 6 | complete |
-| Mathematics/Mathematical Physics | 0 | 2 |  |
-| Mathematics/Number Theory | 1 | 3 |  |
-| Mathematics/Optimization | 0 | 7 |  |
+| Mathematics/Mathematical Physics | 2 | 2 | complete |
+| Mathematics/Number Theory | 3 | 3 | complete |
+| Mathematics/Optimization | 7 | 7 | complete |
 | Mathematics/Probability & Statistics | 9 | 9 | complete |
-| Mathematics/Theory of Computation | 0 | 2 |  |
-| Programming/Data Structures & Algorithms | 0 | 5 |  |
+| Mathematics/Theory of Computation | 2 | 2 | complete |
+| Programming/Data Structures & Algorithms | 5 | 5 | complete |
 | Programming/Languages | 0 | 15 |  |
 | Programming/Languages/Paradigms | 0 | 4 |  |
 | Programming/ML Engineering | 0 | 7 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-70 of the planned 280, in the order they were written.
+90 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -162,6 +162,26 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Fractal Geometry | `concept.geometry.fractal_geometry` | tier 1 | covered |
 | Renormalization | `concept.geometry.renormalization` | tier 1 | covered |
 | Elementary Number Theory | `concept.number_theory.elementary_number_theory` | tier 1 | covered |
+| Analytic Number Theory | `concept.number_theory.analytic_number_theory` | tier 1 | covered |
+| Algebraic Number Theory | `concept.number_theory.algebraic_number_theory` | tier 1 | covered |
+| Automata | `concept.computation.automata` | tier 1 | covered |
+| Computational Complexity | `concept.computation.computational_complexity` | tier 1 | covered |
+| Convex Optimization | `concept.optimization.convex_optimization` | tier 1 | covered |
+| Nonconvex Optimization | `concept.optimization.nonconvex_optimization` | tier 1 | covered |
+| Stochastic Optimization | `concept.optimization.stochastic_optimization` | tier 1 | covered |
+| Combinatorial Optimization | `concept.optimization.combinatorial_optimization` | tier 1 | covered |
+| Integer Programming | `concept.optimization.integer_programming` | tier 1 | covered |
+| Variational Methods | `concept.optimization.variational_methods` | tier 1 | covered |
+| Optimal Transport | `concept.optimization.optimal_transport` | tier 1 | covered |
+| Hamiltonian Mechanics | `concept.physics.hamiltonian_mechanics` | tier 1 | covered |
+| Statistical Mechanics | `concept.physics.statistical_mechanics` | tier 1 | covered |
+| Lean | `concept.formal_verification.lean` | tier 1 | covered |
+| Coq | `concept.formal_verification.coq` | tier 1 | covered |
+| Complexity Analysis | `concept.algorithms.complexity_analysis` | tier 1 | covered |
+| Core Data Structures | `concept.algorithms.core_data_structures` | tier 1 | covered |
+| Sorting | `concept.algorithms.sorting` | tier 1 | covered |
+| Searching | `concept.algorithms.searching` | tier 1 | covered |
+| Graph Algorithms | `concept.algorithms.graph_algorithms` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -275,35 +295,35 @@ it. Batches are ten pages each.
 | x | Renormalization | `concept.geometry.renormalization` | Mathematics/Geometry & Topology |
 | x | Elementary Number Theory | `concept.number_theory.elementary_number_theory` | Mathematics/Number Theory |
 
-### Batch 8
+### Batch 8 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Analytic Number Theory | `concept.number_theory.analytic_number_theory` | Mathematics/Number Theory |
-|   | Algebraic Number Theory | `concept.number_theory.algebraic_number_theory` | Mathematics/Number Theory |
-|   | Automata | `concept.computation.automata` | Mathematics/Theory of Computation |
-|   | Computational Complexity | `concept.computation.computational_complexity` | Mathematics/Theory of Computation |
-|   | Convex Optimization | `concept.optimization.convex_optimization` | Mathematics/Optimization |
-|   | Nonconvex Optimization | `concept.optimization.nonconvex_optimization` | Mathematics/Optimization |
-|   | Stochastic Optimization | `concept.optimization.stochastic_optimization` | Mathematics/Optimization |
-|   | Combinatorial Optimization | `concept.optimization.combinatorial_optimization` | Mathematics/Optimization |
-|   | Integer Programming | `concept.optimization.integer_programming` | Mathematics/Optimization |
-|   | Variational Methods | `concept.optimization.variational_methods` | Mathematics/Optimization |
+| x | Analytic Number Theory | `concept.number_theory.analytic_number_theory` | Mathematics/Number Theory |
+| x | Algebraic Number Theory | `concept.number_theory.algebraic_number_theory` | Mathematics/Number Theory |
+| x | Automata | `concept.computation.automata` | Mathematics/Theory of Computation |
+| x | Computational Complexity | `concept.computation.computational_complexity` | Mathematics/Theory of Computation |
+| x | Convex Optimization | `concept.optimization.convex_optimization` | Mathematics/Optimization |
+| x | Nonconvex Optimization | `concept.optimization.nonconvex_optimization` | Mathematics/Optimization |
+| x | Stochastic Optimization | `concept.optimization.stochastic_optimization` | Mathematics/Optimization |
+| x | Combinatorial Optimization | `concept.optimization.combinatorial_optimization` | Mathematics/Optimization |
+| x | Integer Programming | `concept.optimization.integer_programming` | Mathematics/Optimization |
+| x | Variational Methods | `concept.optimization.variational_methods` | Mathematics/Optimization |
 
-### Batch 9
+### Batch 9 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Optimal Transport | `concept.optimization.optimal_transport` | Mathematics/Optimization |
-|   | Hamiltonian Mechanics | `concept.physics.hamiltonian_mechanics` | Mathematics/Mathematical Physics |
-|   | Statistical Mechanics | `concept.physics.statistical_mechanics` | Mathematics/Mathematical Physics |
-|   | Lean | `concept.formal_verification.lean` | Mathematics/Foundations/Formal Verification |
-|   | Coq | `concept.formal_verification.coq` | Mathematics/Foundations/Formal Verification |
-|   | Complexity Analysis | `concept.algorithms.complexity_analysis` | Programming/Data Structures & Algorithms |
-|   | Core Data Structures | `concept.algorithms.core_data_structures` | Programming/Data Structures & Algorithms |
-|   | Sorting | `concept.algorithms.sorting` | Programming/Data Structures & Algorithms |
-|   | Searching | `concept.algorithms.searching` | Programming/Data Structures & Algorithms |
-|   | Graph Algorithms | `concept.algorithms.graph_algorithms` | Programming/Data Structures & Algorithms |
+| x | Optimal Transport | `concept.optimization.optimal_transport` | Mathematics/Optimization |
+| x | Hamiltonian Mechanics | `concept.physics.hamiltonian_mechanics` | Mathematics/Mathematical Physics |
+| x | Statistical Mechanics | `concept.physics.statistical_mechanics` | Mathematics/Mathematical Physics |
+| x | Lean | `concept.formal_verification.lean` | Mathematics/Foundations/Formal Verification |
+| x | Coq | `concept.formal_verification.coq` | Mathematics/Foundations/Formal Verification |
+| x | Complexity Analysis | `concept.algorithms.complexity_analysis` | Programming/Data Structures & Algorithms |
+| x | Core Data Structures | `concept.algorithms.core_data_structures` | Programming/Data Structures & Algorithms |
+| x | Sorting | `concept.algorithms.sorting` | Programming/Data Structures & Algorithms |
+| x | Searching | `concept.algorithms.searching` | Programming/Data Structures & Algorithms |
+| x | Graph Algorithms | `concept.algorithms.graph_algorithms` | Programming/Data Structures & Algorithms |
 
 ### Batch 10
 
@@ -616,6 +636,37 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batches 8 and 9 — the session limit again, and what survived it
+
+Both batches were launched concurrently and both hit the hourly limit. Twenty of
+twenty agents reported failure in batch 9 and ten of fourteen in batch 8 — yet
+all twenty pages were on disk and nineteen passed `check-page.mjs`. The agents
+had written their files and died before reporting. The twentieth carried a stray
+`reason_note_placeholder_removed` key from an agent killed mid-edit.
+
+The pages were kept and only the missing checking was redone: twenty verifiers
+rather than twenty writers plus twenty verifiers. Fifty-three faults came back,
+all corrected. This is the second time the same shape has appeared, and the rule
+now has a name in this file: **a page passing the per-page checker is not
+evidence that it was verified.** Reconcile an interrupted run against what the
+verifiers returned, never against what is on disk.
+
+Three other things came out of it:
+
+- `stochastic-optimization.md` claimed "stochastic gradient descent" as an alias.
+  SGD is its own atlas candidate awaiting its own page, so the alias would have
+  blocked it. This is exactly the collision the writing brief warns about, and
+  the corpus validator caught it.
+- The graph export's leak test scanned the whole of `graph.json` for the
+  substring `proposal`, which a relationship note about Metropolis proposals in
+  Hamiltonian Monte Carlo tripped. Credentials are still searched for everywhere;
+  the private store names are now searched for in keys, ids and types, which is
+  where a real leak would show, rather than in published prose.
+- Six test files removing a temporary git repository raced with git's own file
+  handles and failed with `ENOTEMPTY` on a different test each run. Cleanup now
+  retries. This was a pre-existing flake that a loaded machine made frequent, and
+  it reads as a real failure somewhere new every time.
 
 ### Batch 7 — the registry expansion, and what it did and did not fix
 

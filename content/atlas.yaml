@@ -184,14 +184,14 @@ candidates:
     categories:
       - atlas.mathematics.foundations.formal_verification
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.formal_verification.lean
   - candidate_id: candidate.mathematics.foundations.formal_verification.coq
     title: Coq
     categories:
       - atlas.mathematics.foundations.formal_verification
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.formal_verification.coq
   - candidate_id: candidate.mathematics.number_theory.elementary_number_theory
     title: Elementary Number Theory
     categories:
@@ -202,14 +202,14 @@ candidates:
     title: Analytic Number Theory
     categories:
       - atlas.mathematics.number_theory
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.number_theory.analytic_number_theory
   - candidate_id: candidate.mathematics.number_theory.algebraic_number_theory
     title: Algebraic Number Theory
     categories:
       - atlas.mathematics.number_theory
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.number_theory.algebraic_number_theory
   - candidate_id: candidate.mathematics.algebra.group_theory
     title: Group Theory
     categories:
@@ -604,68 +604,68 @@ candidates:
     title: Convex Optimization
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.convex_optimization
   - candidate_id: candidate.mathematics.optimization.nonconvex_optimization
     title: Nonconvex Optimization
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.nonconvex_optimization
   - candidate_id: candidate.mathematics.optimization.stochastic_optimization
     title: Stochastic Optimization
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.stochastic_optimization
   - candidate_id: candidate.mathematics.optimization.combinatorial_optimization
     title: Combinatorial Optimization
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.combinatorial_optimization
   - candidate_id: candidate.mathematics.optimization.integer_programming
     title: Integer Programming
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.integer_programming
   - candidate_id: candidate.mathematics.optimization.variational_methods
     title: Variational Methods
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.variational_methods
   - candidate_id: candidate.mathematics.optimization.optimal_transport
     title: Optimal Transport
     categories:
       - atlas.mathematics.optimization
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.optimization.optimal_transport
   - candidate_id: candidate.mathematics.theory_of_computation.automata
     title: Automata
     categories:
       - atlas.mathematics.theory_of_computation
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.computation.automata
   - candidate_id: candidate.mathematics.theory_of_computation.computational_complexity
     title: Computational Complexity
     categories:
       - atlas.mathematics.theory_of_computation
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.computation.computational_complexity
   - candidate_id: candidate.mathematics.mathematical_physics.hamiltonian_mechanics
     title: Hamiltonian Mechanics
     categories:
       - atlas.mathematics.mathematical_physics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.physics.hamiltonian_mechanics
   - candidate_id: candidate.mathematics.mathematical_physics.statistical_mechanics
     title: Statistical Mechanics
     categories:
       - atlas.mathematics.mathematical_physics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.physics.statistical_mechanics
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.uninformed_search
     title: Uninformed Search
     categories:
@@ -1721,32 +1721,32 @@ candidates:
     title: Core Data Structures
     categories:
       - atlas.programming.data_structures_and_algorithms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algorithms.core_data_structures
   - candidate_id: candidate.programming.data_structures_and_algorithms.sorting
     title: Sorting
     categories:
       - atlas.programming.data_structures_and_algorithms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algorithms.sorting
   - candidate_id: candidate.programming.data_structures_and_algorithms.searching
     title: Searching
     categories:
       - atlas.programming.data_structures_and_algorithms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algorithms.searching
   - candidate_id: candidate.programming.data_structures_and_algorithms.graph_algorithms
     title: Graph Algorithms
     categories:
       - atlas.programming.data_structures_and_algorithms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algorithms.graph_algorithms
   - candidate_id: candidate.programming.data_structures_and_algorithms.complexity_analysis
     title: Complexity Analysis
     categories:
       - atlas.programming.data_structures_and_algorithms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algorithms.complexity_analysis
   - candidate_id: candidate.programming.systems.operating_systems
     title: Operating Systems
     categories:

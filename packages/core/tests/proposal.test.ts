@@ -287,7 +287,7 @@ describe('the base commit', () => {
   });
 
   afterAll(async () => {
-    await rm(repo, { recursive: true, force: true });
+    await rm(repo, { recursive: true, force: true, maxRetries: 10 });
   });
 
   it('accepts a commit this repository has', () => {

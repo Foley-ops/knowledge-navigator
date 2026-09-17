@@ -198,8 +198,8 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await rm(repo, { recursive: true, force: true });
-  await rm(scratch, { recursive: true, force: true });
+  await rm(repo, { recursive: true, force: true, maxRetries: 10 });
+  await rm(scratch, { recursive: true, force: true, maxRetries: 10 });
 });
 
 describe('dispatching for real', () => {

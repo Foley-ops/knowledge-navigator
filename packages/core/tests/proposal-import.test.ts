@@ -121,9 +121,9 @@ beforeEach(async () => {
 }, 60_000);
 
 afterEach(async () => {
-  await rm(worktree, { recursive: true, force: true });
-  await rm(repo, { recursive: true, force: true });
-  await rm(bundleRoot, { recursive: true, force: true });
+  await rm(worktree, { recursive: true, force: true, maxRetries: 10 });
+  await rm(repo, { recursive: true, force: true, maxRetries: 10 });
+  await rm(bundleRoot, { recursive: true, force: true, maxRetries: 10 });
 });
 
 /** The work an agent would have left behind. */
@@ -221,7 +221,7 @@ describe('a task that went wrong', () => {
       expect(outcome.problems.join(' ')).toContain('not a worktree of this repository');
       expect(await statusNow()).toBe('running');
     } finally {
-      await rm(foreign, { recursive: true, force: true });
+      await rm(foreign, { recursive: true, force: true, maxRetries: 10 });
     }
   });
 

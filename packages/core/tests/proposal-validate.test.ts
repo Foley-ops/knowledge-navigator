@@ -132,8 +132,8 @@ beforeEach(async () => {
 }, 60_000);
 
 afterEach(async () => {
-  await rm(repo, { recursive: true, force: true });
-  await rm(bundleRoot, { recursive: true, force: true });
+  await rm(repo, { recursive: true, force: true, maxRetries: 10 });
+  await rm(bundleRoot, { recursive: true, force: true, maxRetries: 10 });
 });
 
 describe('a proposal that did what it was asked', () => {
