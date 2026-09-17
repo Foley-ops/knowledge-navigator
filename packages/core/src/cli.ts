@@ -17,6 +17,7 @@ import type { CorpusResult } from './validate.js';
 import { compileCorpus } from './compile.js';
 import { openDatabaseReadOnly } from './db.js';
 import { getConceptById, getConceptBySlug, searchConcepts } from './query.js';
+import { getConceptEvidence, getCoverageSummary, listBacklog, listCandidates } from './coverage.js';
 import { compareStrings } from './normalize.js';
 
 const USAGE = `navigator <command> [options]
@@ -28,10 +29,19 @@ Commands:
   inspect <concept-id>    Show one compiled concept
   search <query>          Search the compiled index
 
+  coverage summary                        Counts for identities, atlas and backlog
+  coverage candidates [--area <id>]       Atlas candidates, optionally filtered
+                      [--category <id>]
+                      [--status <status>]
+  coverage unresolved [--blocking]        The grouped editorial backlog
+  evidence <concept-id-or-slug>           Claim-level evidence for one concept
+
 Options:
   --content <dir>         Override the canonical content directory
   --database <path>       Override the compiled database location
-  --limit <n>             Maximum search results (1-50, default 10)
+  --limit <n>             Maximum results (default 10 for search, 500 otherwise)
+  --offset <n>            Skip this many coverage results
+  --json                  Print stable JSON instead of readable text
 `;
 
 function optionValue(args: readonly string[], name: string): string | undefined {
@@ -162,7 +172,15 @@ async function commandCompile(args: readonly string[]): Promise<number> {
   console.log(`sources:            ${String(stats.sources)}`);
   console.log(`source citations:   ${String(stats.conceptSources)}`);
   console.log(`full-text rows:     ${String(stats.ftsRows)}`);
+  console.log(`  graph only:       ${String(stats.graphOnlyConcepts)}`);
+  console.log(`unresolved refs:    ${String(stats.unresolvedReferences)}`);
+  console.log(`claims:             ${String(stats.claims)}`);
+  console.log(`claim evidence:     ${String(stats.claimEvidence)}`);
+  console.log(`atlas areas:        ${String(stats.atlasAreas)}`);
+  console.log(`atlas categories:   ${String(stats.atlasCategories)}`);
+  console.log(`atlas candidates:   ${String(stats.atlasCandidates)}`);
   console.log(`corpus hash:        ${result.corpusHash}`);
+  console.log(`atlas hash:         ${result.atlasHash}`);
   console.log(`built at:           ${result.builtAt}`);
   console.log('\nwrote:');
   for (const output of result.outputs) console.log(`  ${output}`);
@@ -249,6 +267,216 @@ function commandInspect(args: readonly string[]): number {
   });
 }
 
+/* -------------------------------------------------------------------------- */
+/* Coverage (v2 runbook L06)                                                   */
+/* -------------------------------------------------------------------------- */
+
+function wantsJson(args: readonly string[]): boolean {
+  return args.includes('--json');
+}
+
+/** Stable JSON: keys in insertion order, two-space indent, trailing newline. */
+function printJson(value: unknown): void {
+  console.log(JSON.stringify(value, null, 2));
+}
+
+function numericOption(args: readonly string[], name: string): number | undefined {
+  const raw = optionValue(args, name);
+  if (raw === undefined) return undefined;
+  const value = Number.parseInt(raw, 10);
+  return Number.isFinite(value) ? value : undefined;
+}
+
+function commandCoverageSummary(args: readonly string[]): number {
+  return withDatabase(args, (db) => {
+    const summary = getCoverageSummary(db);
+    if (wantsJson(args)) {
+      printJson(summary);
+      return 0;
+    }
+    const lines = [
+      'canonical identities',
+      `  total               ${String(summary.concepts.total)}`,
+      `  with an article     ${String(summary.concepts.withArticle)}`,
+      ...Object.entries(summary.concepts.byTier).map(
+        ([tier, n]) => `  tier ${tier}              ${String(n)}`,
+      ),
+      ...Object.entries(summary.concepts.byFormat).map(
+        ([format, n]) => `  ${format.padEnd(18)}  ${String(n)}`,
+      ),
+      ...Object.entries(summary.concepts.byReviewState).map(
+        ([state, n]) => `  ${state.padEnd(18)}  ${String(n)}`,
+      ),
+      '',
+      'atlas (editorial, never evidence)',
+      `  areas               ${String(summary.atlas.areas)}`,
+      `  categories          ${String(summary.atlas.categories)} (${String(summary.atlas.emptyCategories)} empty)`,
+      `  candidates          ${String(summary.atlas.candidates)}`,
+      ...Object.entries(summary.atlas.byStatus).map(
+        ([status, n]) => `  ${status.padEnd(18)}  ${String(n)}`,
+      ),
+      '',
+      'editorial backlog',
+      `  references          ${String(summary.backlog.references)}`,
+      `  groups              ${String(summary.backlog.groups)}`,
+      `  blocking            ${String(summary.backlog.blocking)}`,
+      '',
+      'evidence',
+      `  claims              ${String(summary.evidence.claims)}`,
+      ...Object.entries(summary.evidence.byStatus).map(
+        ([status, n]) => `  ${status.padEnd(18)}  ${String(n)}`,
+      ),
+      `  locators            ${String(summary.evidence.locators)}`,
+      `  concepts with claims ${String(summary.evidence.conceptsWithClaims)}`,
+      '',
+      `corpus hash  ${summary.corpusHash}`,
+      `atlas hash   ${summary.atlasHash}`,
+      `built at     ${summary.builtAt}`,
+    ];
+    console.log(lines.join('\n'));
+    return 0;
+  });
+}
+
+function commandCoverageCandidates(args: readonly string[]): number {
+  const status = optionValue(args, '--status');
+  if (status !== undefined && !(atlasStatuses as readonly string[]).includes(status)) {
+    console.error(
+      `navigator coverage candidates: unknown status "${status}". Use one of: ${atlasStatuses.join(', ')}`,
+    );
+    return 2;
+  }
+  return withDatabase(args, (db) => {
+    const page = listCandidates(db, {
+      areaId: optionValue(args, '--area'),
+      categoryId: optionValue(args, '--category'),
+      status,
+      limit: numericOption(args, '--limit'),
+      offset: numericOption(args, '--offset'),
+    });
+    if (wantsJson(args)) {
+      printJson(page);
+      return 0;
+    }
+    if (page.items.length === 0) {
+      console.log('no candidate matches those filters');
+      return 0;
+    }
+    console.log(
+      `${String(page.items.length)} of ${String(page.total)} candidate(s)${page.truncated ? ' (truncated)' : ''}:\n`,
+    );
+    for (const candidate of page.items) {
+      const covered =
+        candidate.canonicalConceptId === null
+          ? ''
+          : `  ->  ${candidate.canonicalConceptId} (${candidate.canonicalSlug ?? ''})`;
+      console.log(`  ${candidate.title}  [${candidate.status}]${covered}`);
+      console.log(`    ${candidate.candidateId}`);
+      console.log(`    ${candidate.categories.map((c) => c.path).join('; ')}`);
+      if (candidate.note !== null) console.log(`    note: ${candidate.note}`);
+      console.log('');
+    }
+    return 0;
+  });
+}
+
+function commandCoverageUnresolved(args: readonly string[]): number {
+  return withDatabase(args, (db) => {
+    const page = listBacklog(db, {
+      blockingOnly: args.includes('--blocking'),
+      limit: numericOption(args, '--limit'),
+      offset: numericOption(args, '--offset'),
+    });
+    if (wantsJson(args)) {
+      printJson(page);
+      return 0;
+    }
+    if (page.items.length === 0) {
+      console.log('nothing is waiting on a missing concept');
+      return 0;
+    }
+    console.log(
+      `${String(page.items.length)} of ${String(page.total)} backlog item(s)${page.truncated ? ' (truncated)' : ''}:\n`,
+    );
+    for (const group of page.items) {
+      console.log(
+        `  ${group.label}${group.blocking ? '  [blocking]' : ''}  — ${String(group.sourceCount)} page(s) waiting`,
+      );
+      console.log(`    ${group.groupId}`);
+      for (const source of group.sources) {
+        console.log(`    from ${source.conceptTitle} (${source.conceptId}): ${source.reason}`);
+      }
+      if (group.proposedCategories.length > 0) {
+        console.log(`    proposed: ${group.proposedCategories.join('; ')}`);
+      }
+      console.log('');
+    }
+    return 0;
+  });
+}
+
+function commandCoverage(args: readonly string[]): number {
+  const [subcommand, ...rest] = args;
+  switch (subcommand) {
+    case 'summary':
+      return commandCoverageSummary(rest);
+    case 'candidates':
+      return commandCoverageCandidates(rest);
+    case 'unresolved':
+      return commandCoverageUnresolved(rest);
+    default:
+      console.error(
+        `navigator coverage: unknown subcommand "${subcommand ?? ''}". Use summary, candidates or unresolved.`,
+      );
+      return 2;
+  }
+}
+
+function commandEvidence(args: readonly string[]): number {
+  const target = args.find((arg) => !arg.startsWith('--'));
+  if (target === undefined) {
+    console.error('navigator evidence: a concept id or slug is required\n\n' + USAGE);
+    return 2;
+  }
+  return withDatabase(args, (db) => {
+    // Accept either address, because a reader has a slug and an agent has an id.
+    const bySlug = target.startsWith('/') ? getConceptBySlug(db, target) : undefined;
+    const conceptId = bySlug?.id ?? target;
+    const evidence = getConceptEvidence(db, conceptId);
+    if (evidence === undefined) {
+      console.error(`navigator evidence: no concept "${target}"`);
+      return 1;
+    }
+    if (wantsJson(args)) {
+      printJson(evidence);
+      return 0;
+    }
+    console.log(`${evidence.title}  [${evidence.reviewState}]  tier ${String(evidence.tier)}`);
+    console.log(`${evidence.conceptId}   ${evidence.slug}\n`);
+    if (!evidence.hasClaimMapping) {
+      console.log('This page has no claim-level evidence mapping yet.');
+      console.log('Its sources are listed below, but no statement is tied to a locator.\n');
+    }
+    for (const claim of evidence.claims) {
+      console.log(`  [${claim.status}] ${claim.section}`);
+      console.log(`    ${claim.statement}`);
+      for (const item of claim.evidence) {
+        console.log(`      ${item.sourceId} — ${item.locator}`);
+        if (item.note !== null) console.log(`        ${item.note}`);
+      }
+      if (claim.evidence.length === 0) console.log('      (no evidence, and marked unsupported)');
+      console.log('');
+    }
+    console.log('sources:');
+    for (const source of evidence.sources) {
+      console.log(`  ${source.sourceId}  ${source.title}  (${String(source.claimCount)} claim(s))`);
+      console.log(`    ${source.url}`);
+      console.log(`    supports: ${source.supports.join(', ')}   checked ${source.checkedOn}`);
+    }
+    return 0;
+  });
+}
+
 function commandSearch(args: readonly string[]): number {
   const terms: string[] = [];
   for (let i = 0; i < args.length; i += 1) {
@@ -305,6 +533,10 @@ async function main(argv: readonly string[]): Promise<number> {
       return commandInspect(args);
     case 'search':
       return commandSearch(args);
+    case 'coverage':
+      return commandCoverage(args);
+    case 'evidence':
+      return commandEvidence(args);
     case undefined:
     case '--help':
     case '-h':

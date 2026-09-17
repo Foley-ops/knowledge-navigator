@@ -158,3 +158,157 @@ describe('navigator command line', () => {
     expect(result.stderr).toContain('npm run compile');
   }, 60_000);
 });
+
+describe('navigator coverage (v2 runbook L06)', () => {
+  it('summary reports identities, atlas and backlog separately', async () => {
+    const result = await navigator('coverage', 'summary');
+    expect(result.code).toBe(0);
+    expect(result.stdout).toContain('canonical identities');
+    expect(result.stdout).toContain('atlas (editorial, never evidence)');
+    expect(result.stdout).toContain('editorial backlog');
+    expect(result.stdout).toContain('corpus hash');
+    expect(result.stdout).toContain('atlas hash');
+  }, 60_000);
+
+  it('summary --json is parseable and stable across two runs', async () => {
+    const first = await navigator('coverage', 'summary', '--json');
+    const second = await navigator('coverage', 'summary', '--json');
+    expect(first.code).toBe(0);
+    expect(first.stdout).toBe(second.stdout);
+
+    const summary = JSON.parse(first.stdout) as {
+      concepts: { total: number };
+      atlas: { areas: number; candidates: number };
+    };
+    expect(summary.concepts.total).toBe(11);
+    expect(summary.atlas.areas).toBe(3);
+    expect(summary.atlas.candidates).toBeGreaterThan(200);
+  }, 60_000);
+
+  it('candidates filters by area and by status', async () => {
+    const programming = await navigator(
+      'coverage',
+      'candidates',
+      '--area',
+      'atlas.programming',
+      '--json',
+    );
+    expect(programming.code).toBe(0);
+    const page = JSON.parse(programming.stdout) as {
+      total: number;
+      items: { candidateId: string; categories: { areaId: string }[] }[];
+    };
+    expect(page.total).toBeGreaterThan(0);
+    // Filtering is by category membership, not by id: Lean and Logic
+    // Programming sit in Programming and in another area, and their ids come
+    // from whichever category the atlas lists first.
+    expect(
+      page.items.every((item) =>
+        item.categories.some((category) => category.areaId === 'atlas.programming'),
+      ),
+    ).toBe(true);
+    expect(page.items.some((item) => !item.candidateId.startsWith('candidate.programming.'))).toBe(
+      true,
+    );
+
+    const covered = await navigator('coverage', 'candidates', '--status', 'covered', '--json');
+    const coveredPage = JSON.parse(covered.stdout) as {
+      total: number;
+      items: { canonicalConceptId: string | null }[];
+    };
+    expect(coveredPage.total).toBe(11);
+    expect(coveredPage.items.every((item) => item.canonicalConceptId !== null)).toBe(true);
+  }, 60_000);
+
+  it('candidates returns an empty page rather than failing', async () => {
+    const result = await navigator('coverage', 'candidates', '--status', 'deferred', '--json');
+    expect(result.code).toBe(0);
+    const page = JSON.parse(result.stdout) as { total: number; items: unknown[] };
+    expect(page.total).toBe(0);
+    expect(page.items).toEqual([]);
+
+    const text = await navigator('coverage', 'candidates', '--status', 'deferred');
+    expect(text.code).toBe(0);
+    expect(text.stdout).toContain('no candidate matches those filters');
+  }, 60_000);
+
+  it('candidates rejects an unknown status with the allowed list', async () => {
+    const result = await navigator('coverage', 'candidates', '--status', 'maybe');
+    expect(result.code).toBe(2);
+    expect(result.stderr).toContain('unknown status "maybe"');
+    expect(result.stderr).toContain('proposed-tier-3');
+  }, 60_000);
+
+  it('candidates orders deterministically and paginates', async () => {
+    const page1 = await navigator('coverage', 'candidates', '--limit', '5', '--json');
+    const again = await navigator('coverage', 'candidates', '--limit', '5', '--json');
+    expect(page1.stdout).toBe(again.stdout);
+
+    const page2 = await navigator(
+      'coverage',
+      'candidates',
+      '--limit',
+      '5',
+      '--offset',
+      '5',
+      '--json',
+    );
+    const first = JSON.parse(page1.stdout) as { items: { candidateId: string }[] };
+    const second = JSON.parse(page2.stdout) as { items: { candidateId: string }[] };
+    const ids = new Set(first.items.map((i) => i.candidateId));
+    expect(second.items.every((i) => !ids.has(i.candidateId))).toBe(true);
+    expect(first.items).toHaveLength(5);
+  }, 60_000);
+
+  it('unresolved says so plainly when the backlog is empty', async () => {
+    const result = await navigator('coverage', 'unresolved');
+    expect(result.code).toBe(0);
+    expect(result.stdout).toContain('nothing is waiting on a missing concept');
+
+    const json = await navigator('coverage', 'unresolved', '--blocking', '--json');
+    expect(JSON.parse(json.stdout)).toMatchObject({ total: 0, items: [] });
+  }, 60_000);
+
+  it('rejects an unknown subcommand', async () => {
+    const result = await navigator('coverage', 'everything');
+    expect(result.code).toBe(2);
+    expect(result.stderr).toContain('unknown subcommand "everything"');
+  }, 60_000);
+});
+
+describe('navigator evidence (v2 runbook L06)', () => {
+  it('accepts a concept id and a slug, and says when no claims exist', async () => {
+    const byId = await navigator('evidence', 'concept.deep_learning.resnet');
+    const bySlug = await navigator('evidence', '/concepts/resnet');
+    expect(byId.code).toBe(0);
+    expect(bySlug.stdout).toBe(byId.stdout);
+    expect(byId.stdout).toContain('no claim-level evidence mapping yet');
+    expect(byId.stdout).toContain('source.he2016.deep_residual_learning');
+  }, 60_000);
+
+  it('--json is stable and carries the sources', async () => {
+    const first = await navigator('evidence', 'concept.deep_learning.resnet', '--json');
+    const second = await navigator('evidence', 'concept.deep_learning.resnet', '--json');
+    expect(first.stdout).toBe(second.stdout);
+    const evidence = JSON.parse(first.stdout) as {
+      hasClaimMapping: boolean;
+      claims: unknown[];
+      sources: { sourceId: string }[];
+    };
+    expect(evidence.hasClaimMapping).toBe(false);
+    expect(evidence.claims).toEqual([]);
+    expect(evidence.sources.length).toBeGreaterThan(0);
+  }, 60_000);
+
+  it('fails clearly on an unknown concept', async () => {
+    const result = await navigator('evidence', 'concept.no.such');
+    expect(result.code).toBe(1);
+    expect(result.stderr).toContain('no concept "concept.no.such"');
+  }, 60_000);
+
+  it('requires an argument', async () => {
+    const result = await navigator('evidence');
+    expect(result.code).toBe(2);
+    expect(result.stderr).toContain('a concept id or slug is required');
+  }, 60_000);
+});

@@ -14,7 +14,10 @@ import { categorySegments, categoryTopLevel, compareStrings, normalizeName } fro
 import { loadCorpus } from './validate.js';
 import type { Diagnostic } from './validate.js';
 import type { LoadedConcept } from './loader.js';
+import { backlogGroupId, unresolvedReferenceId } from './schema.js';
 import type { Source } from './schema.js';
+import { resolveAtlasCategoryPath } from './atlas.js';
+import type { AtlasIndex } from './atlas.js';
 import { buildGraphDocument, serializeGraph } from './graph.js';
 import { buildSidebars } from './sidebars.js';
 import { openDatabaseReadOnly } from './db.js';
@@ -41,6 +44,15 @@ export interface CompileStats {
   readonly sources: number;
   readonly conceptSources: number;
   readonly ftsRows: number;
+  // Version 2
+  readonly graphOnlyConcepts: number;
+  readonly atlasAreas: number;
+  readonly atlasCategories: number;
+  readonly atlasCandidates: number;
+  readonly atlasCandidateCategories: number;
+  readonly unresolvedReferences: number;
+  readonly claims: number;
+  readonly claimEvidence: number;
 }
 
 export type CompileResult =
@@ -48,6 +60,7 @@ export type CompileResult =
       readonly ok: true;
       readonly stats: CompileStats;
       readonly corpusHash: string;
+      readonly atlasHash: string;
       readonly builtAt: string;
       readonly diagnostics: readonly Diagnostic[];
       readonly outputs: readonly string[];
@@ -56,6 +69,7 @@ export type CompileResult =
       readonly ok: false;
       readonly stats: undefined;
       readonly corpusHash: string | undefined;
+      readonly atlasHash: string | undefined;
       readonly builtAt: undefined;
       readonly diagnostics: readonly Diagnostic[];
       readonly outputs: readonly string[];
@@ -74,10 +88,12 @@ function insertConcepts(db: DatabaseType, concepts: readonly LoadedConcept[]): v
   const insertConcept = db.prepare(`
     INSERT INTO concepts (
       id, title, slug, file_name, source_path, kind, tier, review_state,
-      summary, body, plain_text, content_hash, primary_category
+      summary, body, plain_text, content_hash, primary_category,
+      content_format, has_article
     ) VALUES (
       @id, @title, @slug, @file_name, @source_path, @kind, @tier, @review_state,
-      @summary, @body, @plain_text, @content_hash, @primary_category
+      @summary, @body, @plain_text, @content_hash, @primary_category,
+      @content_format, @has_article
     )
   `);
   const insertAlias = db.prepare(`
@@ -92,7 +108,10 @@ function insertConcepts(db: DatabaseType, concepts: readonly LoadedConcept[]): v
       title: fm.title,
       slug: fm.slug,
       file_name: concept.fileName,
-      source_path: `content/concepts/${concept.fileName}`,
+      source_path:
+        concept.format === 'graph-only'
+          ? `content/graph-only/${concept.fileName}`
+          : `content/concepts/${concept.fileName}`,
       kind: fm.kind,
       tier: fm.tier,
       review_state: fm.review_state,
@@ -101,6 +120,10 @@ function insertConcepts(db: DatabaseType, concepts: readonly LoadedConcept[]): v
       plain_text: concept.plainText,
       content_hash: concept.contentHash,
       primary_category: fm.primary_category,
+      content_format: concept.format,
+      // Only a Markdown page below Tier 3 has something to read. Everything
+      // else resolves to an identity panel, never to an empty article.
+      has_article: concept.format === 'markdown' && fm.tier < 3 ? 1 : 0,
     });
 
     const seen = new Set<string>();
@@ -255,21 +278,194 @@ function insertFts(db: DatabaseType, concepts: readonly LoadedConcept[]): void {
   );
   for (const concept of concepts) {
     const fm = concept.frontmatter;
+    // A graph-only identity is findable by the names and the one cautious
+    // sentence it declares. It has no prose, so it contributes no body: it can
+    // be found, but it can never look like an article that was never written.
     insert.run(fm.concept_id, fm.title, fm.aliases.join(' \n'), fm.summary, concept.plainText);
+  }
+}
+
+/**
+ * Insert the curated atlas (v2 runbook L01).
+ *
+ * Every area, category and candidate is stored, including categories with no
+ * candidate and no child: an unexplained neighbourhood has to stay visible, and
+ * dropping it here would make Coverage quietly under-report the universe.
+ */
+function insertAtlas(db: DatabaseType, atlas: AtlasIndex): void {
+  const insertArea = db.prepare('INSERT INTO atlas_areas (id, title, position) VALUES (?, ?, ?)');
+  const insertCategory = db.prepare(`
+    INSERT INTO atlas_categories (id, title, area_id, parent_category_id, depth, path, position)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `);
+  const insertCandidate = db.prepare(`
+    INSERT INTO atlas_candidates
+      (id, title, normalized_title, status, canonical_concept_id, note, position)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `);
+  const insertCandidateAlias = db.prepare(
+    'INSERT INTO atlas_candidate_aliases (candidate_id, alias, normalized, position) VALUES (?, ?, ?, ?)',
+  );
+  const insertCandidateCategory = db.prepare(
+    'INSERT INTO atlas_candidate_categories (candidate_id, category_id, position) VALUES (?, ?, ?)',
+  );
+
+  atlas.document.areas.forEach((area, position) => {
+    insertArea.run(area.area_id, area.title, position);
+  });
+
+  // Shallowest first, so a parent row always exists before its child.
+  const nodes = [...atlas.categories.values()].sort(
+    (a, b) => a.depth - b.depth || compareStrings(a.categoryId, b.categoryId),
+  );
+  nodes.forEach((node, position) => {
+    insertCategory.run(
+      node.categoryId,
+      node.title,
+      node.areaId,
+      atlas.categories.has(node.parentId) ? node.parentId : null,
+      node.depth,
+      node.path,
+      position,
+    );
+  });
+
+  atlas.document.candidates.forEach((candidate, position) => {
+    insertCandidate.run(
+      candidate.candidate_id,
+      candidate.title,
+      normalizeName(candidate.title),
+      candidate.status,
+      candidate.canonical_concept_id ?? null,
+      candidate.note ?? null,
+      position,
+    );
+    candidate.aliases.forEach((alias, aliasPosition) => {
+      insertCandidateAlias.run(candidate.candidate_id, alias, normalizeName(alias), aliasPosition);
+    });
+    candidate.categories.forEach((categoryId, categoryPosition) => {
+      insertCandidateCategory.run(candidate.candidate_id, categoryId, categoryPosition);
+    });
+  });
+}
+
+/**
+ * Insert the editorial backlog (v2 runbook L03).
+ *
+ * An unresolved reference stays attached to the page that needs it, and also
+ * carries a `group_id` derived from its normalised label, so the two pages
+ * waiting on the same idea are one piece of work with two source records.
+ */
+function insertUnresolvedReferences(
+  db: DatabaseType,
+  concepts: readonly LoadedConcept[],
+  atlas: AtlasIndex,
+): void {
+  const insertReference = db.prepare(`
+    INSERT INTO unresolved_references
+      (id, group_id, concept_id, label, normalized_label, reason, blocking, proposed_kind, position)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+  const insertSection = db.prepare(
+    'INSERT INTO unresolved_reference_sections (reference_id, section, position) VALUES (?, ?, ?)',
+  );
+  const insertCategory = db.prepare(`
+    INSERT INTO unresolved_reference_categories
+      (reference_id, category_path, atlas_category_id, position)
+    VALUES (?, ?, ?, ?)
+  `);
+
+  for (const concept of concepts) {
+    const conceptId = concept.frontmatter.concept_id;
+    concept.frontmatter.unresolved_references.forEach((reference, position) => {
+      const id = unresolvedReferenceId(conceptId, reference.label);
+      insertReference.run(
+        id,
+        backlogGroupId(reference.label),
+        conceptId,
+        reference.label,
+        normalizeName(reference.label),
+        reference.reason,
+        reference.blocking ? 1 : 0,
+        reference.proposed_kind ?? null,
+        position,
+      );
+      reference.sections.forEach((section, sectionPosition) => {
+        insertSection.run(id, section, sectionPosition);
+      });
+      reference.proposed_categories.forEach((path, categoryPosition) => {
+        insertCategory.run(
+          id,
+          path,
+          resolveAtlasCategoryPath(atlas, path) ?? null,
+          categoryPosition,
+        );
+      });
+    });
+  }
+}
+
+/**
+ * Insert claims and their evidence locators (v2 runbook L04).
+ *
+ * `claim_evidence.source_id` is a foreign key into `sources`, so a locator can
+ * never point at a work the corpus does not carry. An `unsupported` claim has
+ * no evidence rows at all — that is how the database records "nobody has
+ * checked this" rather than leaving it indistinguishable from a checked one.
+ */
+function insertClaims(db: DatabaseType, concepts: readonly LoadedConcept[]): void {
+  const insertClaim = db.prepare(
+    'INSERT INTO claims (id, concept_id, section, statement, status, position) VALUES (?, ?, ?, ?, ?, ?)',
+  );
+  const insertEvidence = db.prepare(
+    'INSERT INTO claim_evidence (claim_id, source_id, locator, note, position) VALUES (?, ?, ?, ?, ?)',
+  );
+
+  for (const concept of concepts) {
+    const conceptId = concept.frontmatter.concept_id;
+    concept.frontmatter.claims.forEach((claim, position) => {
+      insertClaim.run(
+        claim.claim_id,
+        conceptId,
+        claim.section,
+        claim.statement,
+        claim.status,
+        position,
+      );
+      claim.evidence.forEach((evidence, evidencePosition) => {
+        insertEvidence.run(
+          claim.claim_id,
+          evidence.source_id,
+          evidence.locator,
+          evidence.note ?? null,
+          evidencePosition,
+        );
+      });
+    });
   }
 }
 
 /** Record the facts a reader needs to know which corpus this index came from. */
 function writeBuildMeta(
   db: DatabaseType,
-  meta: { corpusHash: string; builtAt: string; conceptCount: number },
+  meta: {
+    corpusHash: string;
+    atlasHash: string;
+    builtAt: string;
+    conceptCount: number;
+    candidateCount: number;
+  },
 ): void {
   const insert = db.prepare('INSERT INTO build_meta (key, value) VALUES (?, ?)');
   const rows: [string, string][] = [
     ['schema_version', String(SCHEMA_VERSION)],
     ['corpus_hash', meta.corpusHash],
+    // Separate from corpus_hash: the atlas is editorial structure, so editing
+    // it must be visible without looking like a change to what the corpus says.
+    ['atlas_hash', meta.atlasHash],
     ['built_at', meta.builtAt],
     ['concept_count', String(meta.conceptCount)],
+    ['candidate_count', String(meta.candidateCount)],
     ['generator', '@navigator/core'],
   ];
   for (const [key, value] of rows) insert.run(key, value);
@@ -290,6 +486,14 @@ function collectStats(db: DatabaseType): CompileStats {
     sources: countRows(db, 'sources'),
     conceptSources: countRows(db, 'concept_sources'),
     ftsRows: countRows(db, 'concepts_fts'),
+    graphOnlyConcepts: countRows(db, "concepts WHERE content_format = 'graph-only'"),
+    atlasAreas: countRows(db, 'atlas_areas'),
+    atlasCategories: countRows(db, 'atlas_categories'),
+    atlasCandidates: countRows(db, 'atlas_candidates'),
+    atlasCandidateCategories: countRows(db, 'atlas_candidate_categories'),
+    unresolvedReferences: countRows(db, 'unresolved_references'),
+    claims: countRows(db, 'claims'),
+    claimEvidence: countRows(db, 'claim_evidence'),
   };
 }
 
@@ -301,6 +505,7 @@ function collectStats(db: DatabaseType): CompileStats {
 function verifyDatabase(
   db: DatabaseType,
   concepts: readonly LoadedConcept[],
+  atlas: AtlasIndex,
   stats: CompileStats,
 ): void {
   const violations = db.pragma('foreign_key_check') as unknown[];
@@ -322,6 +527,23 @@ function verifyDatabase(
     conceptSources: concepts.reduce((n, c) => n + c.frontmatter.sources.length, 0),
     sources: new Set(concepts.flatMap((c) => c.frontmatter.sources.map((s) => s.source_id))).size,
     ftsRows: concepts.length,
+    graphOnlyConcepts: concepts.filter((c) => c.format === 'graph-only').length,
+    atlasAreas: atlas.areas.size,
+    atlasCategories: atlas.categories.size,
+    atlasCandidates: atlas.document.candidates.length,
+    atlasCandidateCategories: atlas.document.candidates.reduce(
+      (n, candidate) => n + candidate.categories.length,
+      0,
+    ),
+    unresolvedReferences: concepts.reduce(
+      (n, c) => n + c.frontmatter.unresolved_references.length,
+      0,
+    ),
+    claims: concepts.reduce((n, c) => n + c.frontmatter.claims.length, 0),
+    claimEvidence: concepts.reduce(
+      (n, c) => n + c.frontmatter.claims.reduce((m, claim) => m + claim.evidence.length, 0),
+      0,
+    ),
   };
   for (const [key, want] of Object.entries(expected) as [keyof typeof expected, number][]) {
     const got = stats[key];
@@ -351,6 +573,49 @@ function verifyDatabase(
       `primary category is missing or ambiguous for: ${mismatched.map((r) => r.id).join(', ')}`,
     );
   }
+
+  // A graph-only identity must never claim to have an article, and a Markdown
+  // page below Tier 3 must never claim not to.
+  const wrongArticleFlag = db
+    .prepare(
+      `SELECT id FROM concepts
+        WHERE has_article <> (CASE WHEN content_format = 'markdown' AND tier < 3 THEN 1 ELSE 0 END)`,
+    )
+    .all() as { id: string }[];
+  if (wrongArticleFlag.length > 0) {
+    throw new Error(
+      `has_article disagrees with content_format/tier for: ${wrongArticleFlag.map((r) => r.id).join(', ')}`,
+    );
+  }
+
+  // A covered candidate must resolve to exactly one concept that exists, and
+  // no two candidates may claim the same one. Validation already refuses both,
+  // so reaching here would mean the compiler had introduced the problem.
+  const danglingCover = db
+    .prepare(
+      `SELECT a.id FROM atlas_candidates a
+        WHERE a.canonical_concept_id IS NOT NULL
+          AND NOT EXISTS (SELECT 1 FROM concepts c WHERE c.id = a.canonical_concept_id)`,
+    )
+    .all() as { id: string }[];
+  if (danglingCover.length > 0) {
+    throw new Error(
+      `covered candidates name a concept that was not compiled: ${danglingCover.map((r) => r.id).join(', ')}`,
+    );
+  }
+
+  // Every atlas category must reach a root area that exists.
+  const orphanCategory = db
+    .prepare(
+      `SELECT id FROM atlas_categories
+        WHERE area_id NOT IN (SELECT id FROM atlas_areas)`,
+    )
+    .all() as { id: string }[];
+  if (orphanCategory.length > 0) {
+    throw new Error(
+      `atlas categories reach no root area: ${orphanCategory.map((r) => r.id).join(', ')}`,
+    );
+  }
 }
 
 /**
@@ -364,6 +629,7 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
       ok: false,
       stats: undefined,
       corpusHash: corpus.corpusHash,
+      atlasHash: corpus.atlasHash,
       builtAt: undefined,
       diagnostics: corpus.diagnostics,
       outputs: [],
@@ -386,14 +652,19 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
     insertRelationships(db, corpus.concepts);
     insertSources(db, corpus.concepts);
     insertFts(db, corpus.concepts);
+    insertAtlas(db, corpus.atlas);
+    insertUnresolvedReferences(db, corpus.concepts, corpus.atlas);
+    insertClaims(db, corpus.concepts);
     writeBuildMeta(db, {
       corpusHash: corpus.corpusHash,
+      atlasHash: corpus.atlasHash,
       builtAt,
       conceptCount: corpus.concepts.length,
+      candidateCount: corpus.atlas.document.candidates.length,
     });
     db.exec('COMMIT');
     stats = collectStats(db);
-    verifyDatabase(db, corpus.concepts, stats);
+    verifyDatabase(db, corpus.concepts, corpus.atlas, stats);
     db.close();
     db = undefined;
 
@@ -413,6 +684,7 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
       ok: false,
       stats: undefined,
       corpusHash: corpus.corpusHash,
+      atlasHash: corpus.atlasHash,
       builtAt: undefined,
       diagnostics: [
         {
@@ -436,6 +708,7 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
         const document = buildGraphDocument(readable, {
           builtAt,
           corpusHash: corpus.corpusHash,
+          atlasHash: corpus.atlasHash,
         });
         await mkdir(dirname(options.graphJsonPath), { recursive: true });
         await writeFile(options.graphJsonPath, serializeGraph(document), 'utf8');
@@ -451,5 +724,13 @@ export async function compileCorpus(options: CompileOptions): Promise<CompileRes
     }
   }
 
-  return { ok: true, stats, corpusHash: corpus.corpusHash, builtAt, diagnostics: [], outputs };
+  return {
+    ok: true,
+    stats,
+    corpusHash: corpus.corpusHash,
+    atlasHash: corpus.atlasHash,
+    builtAt,
+    diagnostics: [],
+    outputs,
+  };
 }

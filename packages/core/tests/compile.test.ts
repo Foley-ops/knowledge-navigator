@@ -84,7 +84,7 @@ describe('D00 — database schema', () => {
         ).map((row) => [row.key, row.value]),
       );
       expect(meta['schema_version']).toBe(String(SCHEMA_VERSION));
-      expect(meta['schema_version']).toBe('1');
+      expect(meta['schema_version']).toBe('2');
       expect(meta['concept_count']).toBe('0');
       expect(meta['generator']).toBe('@navigator/core');
       expect(meta['corpus_hash']).toMatch(/^[0-9a-f]{64}$/);

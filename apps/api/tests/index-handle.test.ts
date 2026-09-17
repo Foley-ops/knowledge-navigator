@@ -7,6 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import Database from 'better-sqlite3';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { SCHEMA_VERSION } from '@navigator/core';
 import { IndexUnavailableError, openIndex } from '../src/index-handle.js';
 import { compileAcceptanceCorpus } from './helpers.js';
 import type { CompiledCorpus } from './helpers.js';
@@ -29,7 +30,7 @@ describe('opening the compiled index', () => {
     const index = openIndex(corpus.databasePath);
     try {
       expect(index.available).toBe(true);
-      expect(index.schemaVersion).toBe(1);
+      expect(index.schemaVersion).toBe(SCHEMA_VERSION);
       expect(index.reason).toBeUndefined();
     } finally {
       index.close();
@@ -96,7 +97,10 @@ describe('opening the compiled index', () => {
     const path = join(scratch, 'empty.db');
     const db = new Database(path);
     db.exec('CREATE TABLE build_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
-    db.prepare('INSERT INTO build_meta VALUES (?, ?)').run('schema_version', '1');
+    db.prepare('INSERT INTO build_meta VALUES (?, ?)').run(
+      'schema_version',
+      String(SCHEMA_VERSION),
+    );
     db.close();
 
     const index = openIndex(path);
@@ -117,7 +121,7 @@ describe('opening the compiled index', () => {
     expect(index.available).toBe(false);
     expect(index.reason).toBe('schema-too-new');
     expect(index.message).toContain('schema version 99');
-    expect(index.message).toContain('version 1');
+    expect(index.message).toContain(`version ${String(SCHEMA_VERSION)}`);
   });
 
   it('rejects a database with no recorded schema version', async () => {

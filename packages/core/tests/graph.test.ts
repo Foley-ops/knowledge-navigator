@@ -8,6 +8,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { compileCorpus } from '../src/compile.js';
+import { SCHEMA_VERSION } from '../src/db.js';
 import type { GraphDocument } from '../src/graph.js';
 
 const CONTENT_DIR = join(
@@ -59,7 +60,8 @@ describe('graph export', () => {
 
   it('carries schema version, corpus hash and counts', async () => {
     const { graph } = await build({ SOURCE_DATE_EPOCH: '1700000000' });
-    expect(graph.schemaVersion).toBe(1);
+    expect(graph.schemaVersion).toBe(SCHEMA_VERSION);
+    expect(SCHEMA_VERSION).toBe(2);
     expect(graph.corpusHash).toMatch(/^[0-9a-f]{64}$/);
     expect(graph.counts.concepts).toBe(11);
     expect(graph.counts.concepts).toBe(graph.nodes.length);
@@ -160,6 +162,80 @@ describe('graph export', () => {
     expect(counts.size).toBe(graph.nodes.length);
     for (const node of graph.nodes) {
       expect(counts.get(node.id), node.id).toBe(1);
+    }
+  }, 60_000);
+});
+
+describe('graph coverage metadata (v2 runbook L05)', () => {
+  it('marks identity format and article availability on every node', async () => {
+    const { graph } = await build({ SOURCE_DATE_EPOCH: '1700000000' });
+    for (const node of graph.nodes) {
+      expect(['markdown', 'graph-only']).toContain(node.format);
+      expect(typeof node.hasArticle).toBe('boolean');
+      expect(node.hasArticle).toBe(node.format === 'markdown' && node.tier < 3);
+      expect(typeof node.unresolvedReferences).toBe('number');
+      expect(typeof node.claims).toBe('number');
+    }
+  }, 60_000);
+
+  it('names the atlas candidate that covers each concept', async () => {
+    const { graph } = await build({ SOURCE_DATE_EPOCH: '1700000000' });
+    const resnet = graph.nodes.find((n) => n.id === 'concept.deep_learning.resnet');
+    expect(resnet?.candidateId).toBe(
+      'candidate.artificial_intelligence.deep_learning_architectures.resnet',
+    );
+    expect(graph.nodes.every((n) => n.candidateId !== null)).toBe(true);
+  }, 60_000);
+
+  it('carries aggregate coverage counts that agree with the nodes', async () => {
+    const { graph } = await build({ SOURCE_DATE_EPOCH: '1700000000' });
+    expect(graph.atlasHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(graph.atlasHash).not.toBe(graph.corpusHash);
+    expect(graph.coverage.atlasAreas).toBe(3);
+    expect(graph.coverage.atlasCandidates).toBeGreaterThan(200);
+    expect(graph.coverage.candidatesByStatus['covered']).toBe(11);
+    expect(graph.coverage.conceptsWithArticle).toBe(graph.nodes.filter((n) => n.hasArticle).length);
+    expect(graph.coverage.conceptsByTier['1']).toBe(graph.nodes.filter((n) => n.tier === 1).length);
+    expect(graph.coverage.conceptsByFormat['markdown']).toBe(
+      graph.nodes.filter((n) => n.format === 'markdown').length,
+    );
+  }, 60_000);
+
+  it('leaks nothing private and no editorial prose', async () => {
+    const { text } = await build({ SOURCE_DATE_EPOCH: '1700000000' });
+    const lowered = text.toLowerCase();
+
+    // generated/graph.json is built into the web image and served to anyone who
+    // can reach the site. Nothing from the private database, the artifact
+    // store, the proposal workspace or the atlas notes may appear in it.
+    const forbidden = [
+      'personal',
+      'artifact',
+      'familiarity',
+      'saved_item',
+      'saveditem',
+      'research_session',
+      'proposal',
+      'export_history',
+      'exporthistory',
+      'candidate_note',
+      'apikey',
+      'api_key',
+      'password',
+      'secret',
+    ];
+    for (const needle of forbidden) {
+      expect(lowered.includes(needle), `graph.json contains "${needle}"`).toBe(false);
+    }
+
+    // Coverage is counts only: no candidate label and no backlog text.
+    const graph = JSON.parse(text) as { coverage: Record<string, unknown> };
+    for (const value of Object.values(graph.coverage)) {
+      if (typeof value === 'number') continue;
+      expect(typeof value).toBe('object');
+      for (const inner of Object.values(value as Record<string, unknown>)) {
+        expect(typeof inner).toBe('number');
+      }
     }
   }, 60_000);
 });

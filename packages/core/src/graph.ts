@@ -22,6 +22,18 @@ export interface GraphNode {
   readonly aliases: readonly string[];
   readonly primaryCategory: string;
   readonly categories: readonly string[];
+  /** `markdown` or `graph-only` (v2 runbook §4.2). */
+  readonly format: string;
+  /**
+   * False for a graph-only identity: the browser must open an identity panel
+   * rather than a route that would render an article nobody wrote.
+   */
+  readonly hasArticle: boolean;
+  /** The atlas candidate that covers this concept, when one does. */
+  readonly candidateId: string | null;
+  /** How many unresolved references this page is waiting on. */
+  readonly unresolvedReferences: number;
+  readonly claims: number;
 }
 
 export interface GraphEdge {
@@ -45,15 +57,40 @@ export interface GraphCategory {
   readonly conceptIds: readonly string[];
 }
 
+/**
+ * Aggregate coverage, so the browser can show the shape of what is known
+ * without a request. Counts only — no candidate labels, no backlog text, and
+ * nothing private: `generated/graph.json` is built into the web image and is
+ * served to anyone who can reach the site.
+ */
+export interface GraphCoverage {
+  readonly conceptsByTier: Readonly<Record<string, number>>;
+  readonly conceptsByFormat: Readonly<Record<string, number>>;
+  readonly conceptsByReviewState: Readonly<Record<string, number>>;
+  readonly conceptsWithArticle: number;
+  readonly atlasAreas: number;
+  readonly atlasCategories: number;
+  readonly atlasEmptyCategories: number;
+  readonly atlasCandidates: number;
+  readonly candidatesByStatus: Readonly<Record<string, number>>;
+  readonly unresolvedReferences: number;
+  readonly unresolvedGroups: number;
+  readonly blockingUnresolvedReferences: number;
+  readonly claims: number;
+  readonly claimsByStatus: Readonly<Record<string, number>>;
+}
+
 export interface GraphDocument {
   readonly schemaVersion: number;
   readonly builtAt: string;
   readonly corpusHash: string;
+  readonly atlasHash: string;
   readonly counts: {
     readonly concepts: number;
     readonly relationships: number;
     readonly categories: number;
   };
+  readonly coverage: GraphCoverage;
   readonly categories: readonly GraphCategory[];
   readonly nodes: readonly GraphNode[];
   readonly edges: readonly GraphEdge[];
@@ -67,12 +104,16 @@ export function edgeId(source: string, type: string, target: string): string {
 /** Read the whole graph out of a compiled database. */
 export function buildGraphDocument(
   db: DatabaseType,
-  meta: { builtAt: string; corpusHash: string },
+  meta: { builtAt: string; corpusHash: string; atlasHash: string },
 ): GraphDocument {
   const conceptRows = db
     .prepare(
-      `SELECT id, title, slug, kind, tier, review_state, summary, primary_category
-         FROM concepts ORDER BY id`,
+      `SELECT c.id, c.title, c.slug, c.kind, c.tier, c.review_state, c.summary,
+              c.primary_category, c.content_format, c.has_article,
+              (SELECT a.id FROM atlas_candidates a WHERE a.canonical_concept_id = c.id) AS candidate_id,
+              (SELECT COUNT(*) FROM unresolved_references u WHERE u.concept_id = c.id) AS unresolved_count,
+              (SELECT COUNT(*) FROM claims cl WHERE cl.concept_id = c.id) AS claim_count
+         FROM concepts c ORDER BY c.id`,
     )
     .all() as {
     id: string;
@@ -83,6 +124,11 @@ export function buildGraphDocument(
     review_state: string;
     summary: string;
     primary_category: string;
+    content_format: string;
+    has_article: number;
+    candidate_id: string | null;
+    unresolved_count: number;
+    claim_count: number;
   }[];
 
   const aliasRows = db
@@ -121,6 +167,11 @@ export function buildGraphDocument(
     aliases: aliasesByConcept.get(row.id) ?? [],
     primaryCategory: row.primary_category,
     categories: categoriesByConcept.get(row.id) ?? [],
+    format: row.content_format,
+    hasArticle: row.has_article === 1,
+    candidateId: row.candidate_id,
+    unresolvedReferences: row.unresolved_count,
+    claims: row.claim_count,
   }));
 
   const edgeRows = db
@@ -185,14 +236,65 @@ export function buildGraphDocument(
     schemaVersion: SCHEMA_VERSION,
     builtAt: meta.builtAt,
     corpusHash: meta.corpusHash,
+    atlasHash: meta.atlasHash,
     counts: {
       concepts: nodes.length,
       relationships: edges.length,
       categories: categories.length,
     },
+    coverage: buildCoverage(db),
     categories,
     nodes,
     edges,
+  };
+}
+
+/** Aggregate counts only. Nothing here carries text from the atlas or backlog. */
+function buildCoverage(db: DatabaseType): GraphCoverage {
+  const group = (sql: string, keys: readonly string[] = []): Record<string, number> => {
+    const out: Record<string, number> = Object.fromEntries(keys.map((key) => [key, 0]));
+    for (const row of db.prepare(sql).all() as { key: string | number; n: number }[]) {
+      out[String(row.key)] = row.n;
+    }
+    return out;
+  };
+  const count = (sql: string): number => (db.prepare(sql).get() as { n: number }).n;
+
+  return {
+    conceptsByTier: group(
+      'SELECT tier AS key, COUNT(*) AS n FROM concepts GROUP BY tier ORDER BY tier',
+      ['1', '2', '3'],
+    ),
+    conceptsByFormat: group(
+      'SELECT content_format AS key, COUNT(*) AS n FROM concepts GROUP BY content_format ORDER BY content_format',
+      ['markdown', 'graph-only'],
+    ),
+    conceptsByReviewState: group(
+      'SELECT review_state AS key, COUNT(*) AS n FROM concepts GROUP BY review_state ORDER BY review_state',
+    ),
+    conceptsWithArticle: count('SELECT COUNT(*) AS n FROM concepts WHERE has_article = 1'),
+    atlasAreas: count('SELECT COUNT(*) AS n FROM atlas_areas'),
+    atlasCategories: count('SELECT COUNT(*) AS n FROM atlas_categories'),
+    atlasEmptyCategories: count(
+      `SELECT COUNT(*) AS n FROM atlas_categories c
+        WHERE NOT EXISTS (SELECT 1 FROM atlas_candidate_categories cc WHERE cc.category_id = c.id)
+          AND NOT EXISTS (SELECT 1 FROM atlas_categories k WHERE k.parent_category_id = c.id)`,
+    ),
+    atlasCandidates: count('SELECT COUNT(*) AS n FROM atlas_candidates'),
+    candidatesByStatus: group(
+      'SELECT status AS key, COUNT(*) AS n FROM atlas_candidates GROUP BY status ORDER BY status',
+      ['candidate', 'proposed-tier-3', 'covered', 'deferred'],
+    ),
+    unresolvedReferences: count('SELECT COUNT(*) AS n FROM unresolved_references'),
+    unresolvedGroups: count('SELECT COUNT(DISTINCT group_id) AS n FROM unresolved_references'),
+    blockingUnresolvedReferences: count(
+      'SELECT COUNT(*) AS n FROM unresolved_references WHERE blocking = 1',
+    ),
+    claims: count('SELECT COUNT(*) AS n FROM claims'),
+    claimsByStatus: group(
+      'SELECT status AS key, COUNT(*) AS n FROM claims GROUP BY status ORDER BY status',
+      ['supported', 'conditional', 'disputed', 'unsupported'],
+    ),
   };
 }
 

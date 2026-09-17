@@ -2,6 +2,7 @@
  * E01 — health and build endpoints.
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { SCHEMA_VERSION } from '@navigator/core';
 import { buildAppWithoutIndex, buildTestApp, compileAcceptanceCorpus } from './helpers.js';
 import type { CompiledCorpus, TestApp } from './helpers.js';
 
@@ -27,7 +28,7 @@ describe('GET /api/health', () => {
     expect(response.statusCode).toBe(200);
     const body = response.json() as Record<string, unknown>;
     expect(body['status']).toBe('ok');
-    expect(body['database']).toEqual({ available: true, schemaVersion: 1 });
+    expect(body['database']).toEqual({ available: true, schemaVersion: SCHEMA_VERSION });
     expect(body['assistant']).toMatchObject({ provider: 'disabled' });
     expect(typeof body['requestId']).toBe('string');
   });
@@ -65,7 +66,7 @@ describe('GET /api/build', () => {
       tiers: Record<string, number>;
       reviewStates: Record<string, number>;
     };
-    expect(body.schemaVersion).toBe(1);
+    expect(body.schemaVersion).toBe(SCHEMA_VERSION);
     expect(body.corpusHash).toMatch(/^[0-9a-f]{64}$/);
     expect(body.builtAt).toBe('2023-11-14T22:13:20.000Z');
     expect(body.generator).toBe('@navigator/core');

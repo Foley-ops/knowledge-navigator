@@ -1,11 +1,47 @@
 {
-  "schemaVersion": 1,
-  "builtAt": "2026-09-17T05:37:24.918Z",
+  "schemaVersion": 2,
+  "builtAt": "2026-09-17T05:50:30.055Z",
   "corpusHash": "bb96930aab75dd2c3741c91919f65b8ba3ea53b5a7c13cea1588c7fd1edff96e",
+  "atlasHash": "94c2f74ce72c30063af005e62da1ba42dec003f9ca67b15a8d9cc17d40d79e71",
   "counts": {
     "concepts": 11,
     "relationships": 20,
     "categories": 6
+  },
+  "coverage": {
+    "conceptsByTier": {
+      "1": 11,
+      "2": 0,
+      "3": 0
+    },
+    "conceptsByFormat": {
+      "markdown": 11,
+      "graph-only": 0
+    },
+    "conceptsByReviewState": {
+      "generated-draft": 11
+    },
+    "conceptsWithArticle": 11,
+    "atlasAreas": 3,
+    "atlasCategories": 38,
+    "atlasEmptyCategories": 8,
+    "atlasCandidates": 291,
+    "candidatesByStatus": {
+      "candidate": 280,
+      "proposed-tier-3": 0,
+      "covered": 11,
+      "deferred": 0
+    },
+    "unresolvedReferences": 0,
+    "unresolvedGroups": 0,
+    "blockingUnresolvedReferences": 0,
+    "claims": 0,
+    "claimsByStatus": {
+      "supported": 0,
+      "conditional": 0,
+      "disputed": 0,
+      "unsupported": 0
+    }
   },
   "categories": [
     {
@@ -113,7 +149,12 @@
       "primaryCategory": "Mathematics/Analysis",
       "categories": [
         "Mathematics/Analysis"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.convolution",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.analysis.cross_correlation",
@@ -127,7 +168,12 @@
       "primaryCategory": "Mathematics/Analysis",
       "categories": [
         "Mathematics/Analysis"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.cross_correlation",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.analysis.translation_equivariance",
@@ -144,7 +190,12 @@
       "categories": [
         "Mathematics/Analysis",
         "Artificial Intelligence/Deep Learning — Architectures"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.translation_equivariance",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.backpropagation_through_convolution",
@@ -161,7 +212,12 @@
       "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
       "categories": [
         "Artificial Intelligence/Deep Learning — Training"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.backpropagation_through_convolution",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.convolutional_layer",
@@ -178,7 +234,12 @@
       "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
       "categories": [
         "Artificial Intelligence/Deep Learning — Architectures"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.convolutional_layer",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.lenet",
@@ -195,7 +256,12 @@
       "categories": [
         "Artificial Intelligence/Deep Learning — Architectures",
         "Artificial Intelligence/Computer Vision"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.lenet",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.pooling",
@@ -211,7 +277,12 @@
       "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
       "categories": [
         "Artificial Intelligence/Deep Learning — Architectures"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.pooling",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.receptive_field",
@@ -228,7 +299,12 @@
       "categories": [
         "Artificial Intelligence/Deep Learning — Architectures",
         "Artificial Intelligence/Computer Vision"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.receptive_field",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.residual_connection",
@@ -245,7 +321,12 @@
       "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
       "categories": [
         "Artificial Intelligence/Deep Learning — Architectures"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.residual_connection",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.resnet",
@@ -262,7 +343,12 @@
       "categories": [
         "Artificial Intelligence/Computer Vision",
         "Artificial Intelligence/Deep Learning — Architectures"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.resnet",
+      "unresolvedReferences": 0,
+      "claims": 0
     },
     {
       "id": "concept.deep_learning.vgg",
@@ -280,7 +366,12 @@
       "categories": [
         "Artificial Intelligence/Computer Vision",
         "Artificial Intelligence/Deep Learning — Architectures"
-      ]
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.vgg",
+      "unresolvedReferences": 0,
+      "claims": 0
     }
   ],
   "edges": [
