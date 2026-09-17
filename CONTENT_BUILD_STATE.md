@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 2 of 28.** 10 of 10 pages in it are still to write.
+**Batch 3 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/vector-calculus.md` — Vector Calculus (concept.analysis.vector_calculus)
-- `content/concepts/ordinary-differential-equations.md` — Ordinary Differential Equations (concept.analysis.ordinary_differential_equations)
-- `content/concepts/partial-differential-equations.md` — Partial Differential Equations (concept.analysis.partial_differential_equations)
-- `content/concepts/measure-theory.md` — Measure Theory (concept.analysis.measure_theory)
-- `content/concepts/complex-analysis.md` — Complex Analysis (concept.analysis.complex_analysis)
-- `content/concepts/fourier-analysis.md` — Fourier Analysis (concept.analysis.fourier_analysis)
-- `content/concepts/harmonic-analysis.md` — Harmonic Analysis (concept.analysis.harmonic_analysis)
-- `content/concepts/wavelets.md` — Wavelets (concept.analysis.wavelets)
-- `content/concepts/functional-analysis.md` — Functional Analysis (concept.analysis.functional_analysis)
-- `content/concepts/hilbert-spaces.md` — Hilbert Spaces (concept.analysis.hilbert_spaces)
+- `content/concepts/banach-spaces.md` — Banach Spaces (concept.analysis.banach_spaces)
+- `content/concepts/operators.md` — Operators (concept.analysis.operators)
+- `content/concepts/calculus-of-variations.md` — Calculus of Variations (concept.analysis.calculus_of_variations)
+- `content/concepts/dynamical-systems.md` — Dynamical Systems (concept.analysis.dynamical_systems)
+- `content/concepts/chaos.md` — Chaos (concept.analysis.chaos)
+- `content/concepts/vector-spaces.md` — Vector Spaces (concept.linear_algebra.vector_spaces)
+- `content/concepts/matrix-theory.md` — Matrix Theory (concept.linear_algebra.matrix_theory)
+- `content/concepts/matrix-decompositions.md` — Matrix Decompositions (concept.linear_algebra.matrix_decompositions)
+- `content/concepts/spectral-theory.md` — Spectral Theory (concept.linear_algebra.spectral_theory)
+- `content/concepts/tensors.md` — Tensors (concept.linear_algebra.tensors)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 21 |
-| Markdown pages in the corpus | 21 |
-| Tier 1 pages | 21 |
+| Candidates covered by a page | 31 |
+| Markdown pages in the corpus | 31 |
+| Tier 1 pages | 31 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 10 of 280 |
+| Planned pages written | 20 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 10 | 85 | 12% |
+| Mathematics | 20 | 85 | 24% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -68,7 +68,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
 | Mathematics/Algebra | 0 | 14 |  |
-| Mathematics/Analysis | 3 | 18 |  |
+| Mathematics/Analysis | 13 | 18 |  |
 | Mathematics/Foundations | 4 | 4 | complete |
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
 | Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-10 of the planned 280, in the order they were written.
+20 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -102,6 +102,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Single-Variable Calculus | `concept.analysis.single_variable_calculus` | tier 1 | covered |
 | Real Analysis | `concept.analysis.real_analysis` | tier 1 | covered |
 | Multivariable Calculus | `concept.analysis.multivariable_calculus` | tier 1 | covered |
+| Vector Calculus | `concept.analysis.vector_calculus` | tier 1 | covered |
+| Ordinary Differential Equations | `concept.analysis.ordinary_differential_equations` | tier 1 | covered |
+| Partial Differential Equations | `concept.analysis.partial_differential_equations` | tier 1 | covered |
+| Measure Theory | `concept.analysis.measure_theory` | tier 1 | covered |
+| Complex Analysis | `concept.analysis.complex_analysis` | tier 1 | covered |
+| Fourier Analysis | `concept.analysis.fourier_analysis` | tier 1 | covered |
+| Harmonic Analysis | `concept.analysis.harmonic_analysis` | tier 1 | covered |
+| Wavelets | `concept.analysis.wavelets` | tier 1 | covered |
+| Functional Analysis | `concept.analysis.functional_analysis` | tier 1 | covered |
+| Hilbert Spaces | `concept.analysis.hilbert_spaces` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -125,20 +135,20 @@ it. Batches are ten pages each.
 | x | Real Analysis | `concept.analysis.real_analysis` | Mathematics/Analysis |
 | x | Multivariable Calculus | `concept.analysis.multivariable_calculus` | Mathematics/Analysis |
 
-### Batch 2
+### Batch 2 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Vector Calculus | `concept.analysis.vector_calculus` | Mathematics/Analysis |
-|   | Ordinary Differential Equations | `concept.analysis.ordinary_differential_equations` | Mathematics/Analysis |
-|   | Partial Differential Equations | `concept.analysis.partial_differential_equations` | Mathematics/Analysis |
-|   | Measure Theory | `concept.analysis.measure_theory` | Mathematics/Analysis |
-|   | Complex Analysis | `concept.analysis.complex_analysis` | Mathematics/Analysis |
-|   | Fourier Analysis | `concept.analysis.fourier_analysis` | Mathematics/Analysis |
-|   | Harmonic Analysis | `concept.analysis.harmonic_analysis` | Mathematics/Analysis |
-|   | Wavelets | `concept.analysis.wavelets` | Mathematics/Analysis |
-|   | Functional Analysis | `concept.analysis.functional_analysis` | Mathematics/Analysis |
-|   | Hilbert Spaces | `concept.analysis.hilbert_spaces` | Mathematics/Analysis |
+| x | Vector Calculus | `concept.analysis.vector_calculus` | Mathematics/Analysis |
+| x | Ordinary Differential Equations | `concept.analysis.ordinary_differential_equations` | Mathematics/Analysis |
+| x | Partial Differential Equations | `concept.analysis.partial_differential_equations` | Mathematics/Analysis |
+| x | Measure Theory | `concept.analysis.measure_theory` | Mathematics/Analysis |
+| x | Complex Analysis | `concept.analysis.complex_analysis` | Mathematics/Analysis |
+| x | Fourier Analysis | `concept.analysis.fourier_analysis` | Mathematics/Analysis |
+| x | Harmonic Analysis | `concept.analysis.harmonic_analysis` | Mathematics/Analysis |
+| x | Wavelets | `concept.analysis.wavelets` | Mathematics/Analysis |
+| x | Functional Analysis | `concept.analysis.functional_analysis` | Mathematics/Analysis |
+| x | Hilbert Spaces | `concept.analysis.hilbert_spaces` | Mathematics/Analysis |
 
 ### Batch 3
 

@@ -11,8 +11,8 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 ## Result
 
 - Questions: **28** across 6 intent classes.
-- Complete retrieval (every needed concept reached): **25/28** (89%).
-- Concept recall (needed concepts reached): **33/37** (89%).
+- Complete retrieval (every needed concept reached): **24/28** (86%).
+- Concept recall (needed concepts reached): **32/37** (86%).
 - Answer quality: **not measured**. No model is involved in this evaluation.
 
 ## By intent
@@ -24,32 +24,39 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 | paraphrase | 5 | 3/5 (60%) | 3/6 (50%) |
 | symptom | 5 | 5/5 (100%) | 5/5 (100%) |
 | comparison | 4 | 4/4 (100%) | 8/8 (100%) |
-| path | 4 | 3/4 (75%) | 7/8 (88%) |
+| path | 4 | 2/4 (50%) | 6/8 (75%) |
 
 ## Where it fails
 
-3 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
+4 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
 
 ### P2 (paraphrase)
 
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.analysis.convolution`, `concept.analysis.single_variable_calculus`, `concept.deep_learning.resnet`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.analysis.single_variable_calculus`, `concept.analysis.convolution`
 
 ### P5 (paraphrase)
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.foundations.model_theory`, `concept.analysis.multivariable_calculus`, `concept.foundations.computability_theory`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.analysis.vector_calculus`, `concept.foundations.model_theory`, `concept.analysis.single_variable_calculus`, `concept.foundations.category_theory`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.logic.proof_theory`, `concept.analysis.single_variable_calculus`, `concept.deep_learning.resnet`, `concept.foundations.model_theory`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.analysis.wavelets`, `concept.deep_learning.resnet`, `concept.logic.proof_theory`, `concept.foundations.set_theory`
+
+### R3 (path)
+
+> What comes before a convolutional layer?
+
+- Needed but not retrieved: `concept.analysis.convolution`
+- Retrieved instead: `concept.deep_learning.convolutional_layer`, `concept.analysis.translation_equivariance`, `concept.deep_learning.resnet`, `concept.analysis.hilbert_spaces`, `concept.analysis.functional_analysis`
 
 ## Private context
 
@@ -89,5 +96,5 @@ Nothing here is evidence for embeddings yet. A miss on eleven pages is usually a
 | C4 | comparison | Should I use pooling or a strided convolutional layer? | `deep_learning.pooling`, `deep_learning.convolutional_layer` | yes |
 | R1 | path | What do I need to understand before ResNet? | `deep_learning.resnet`, `deep_learning.residual_connection` | yes |
 | R2 | path | I want to get to VGG. Where do I start? | `deep_learning.vgg`, `deep_learning.convolutional_layer` | no |
-| R3 | path | What comes before a convolutional layer? | `deep_learning.convolutional_layer`, `analysis.convolution` | yes |
+| R3 | path | What comes before a convolutional layer? | `deep_learning.convolutional_layer`, `analysis.convolution` | no |
 | R4 | path | In what order should I read about pooling and receptive fields? | `deep_learning.pooling`, `deep_learning.receptive_field` | yes |

@@ -1,35 +1,35 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T12:34:22.563Z",
-  "corpusHash": "2c9e0ad6e784cb4bd6ac423befe94357f5c7fca590b95d8a508a8fbc2e9bea98",
-  "atlasHash": "f6d0fac13e3ef818cb32c9c6d85706e7ed55a110a3cd38e8194b2ac89c1da678",
+  "builtAt": "2026-09-17T12:59:49.241Z",
+  "corpusHash": "d4d7ad1583e0ef3405789d253b72939d5d6167100855d8909684049882765d5d",
+  "atlasHash": "b0a7da0207f5bd9d8e2ee0f8bce4a405d73a6d1ed06975f3d334f928fa2ba0cf",
   "counts": {
-    "concepts": 21,
-    "relationships": 57,
+    "concepts": 31,
+    "relationships": 97,
     "categories": 8
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 21,
+      "1": 31,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 21,
+      "markdown": 31,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 21
+      "generated-draft": 31
     },
-    "conceptsWithArticle": 21,
+    "conceptsWithArticle": 31,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 270,
+      "candidate": 260,
       "proposed-tier-3": 0,
-      "covered": 21,
+      "covered": 31,
       "deferred": 0
     },
     "unresolvedReferences": 0,
@@ -123,20 +123,40 @@
       "depth": 2,
       "parent": "Mathematics",
       "primaryConceptIds": [
+        "concept.analysis.complex_analysis",
         "concept.analysis.convolution",
         "concept.analysis.cross_correlation",
+        "concept.analysis.fourier_analysis",
+        "concept.analysis.functional_analysis",
+        "concept.analysis.harmonic_analysis",
+        "concept.analysis.hilbert_spaces",
+        "concept.analysis.measure_theory",
         "concept.analysis.multivariable_calculus",
+        "concept.analysis.ordinary_differential_equations",
+        "concept.analysis.partial_differential_equations",
         "concept.analysis.real_analysis",
         "concept.analysis.single_variable_calculus",
-        "concept.analysis.translation_equivariance"
+        "concept.analysis.translation_equivariance",
+        "concept.analysis.vector_calculus",
+        "concept.analysis.wavelets"
       ],
       "conceptIds": [
+        "concept.analysis.complex_analysis",
         "concept.analysis.convolution",
         "concept.analysis.cross_correlation",
+        "concept.analysis.fourier_analysis",
+        "concept.analysis.functional_analysis",
+        "concept.analysis.harmonic_analysis",
+        "concept.analysis.hilbert_spaces",
+        "concept.analysis.measure_theory",
         "concept.analysis.multivariable_calculus",
+        "concept.analysis.ordinary_differential_equations",
+        "concept.analysis.partial_differential_equations",
         "concept.analysis.real_analysis",
         "concept.analysis.single_variable_calculus",
-        "concept.analysis.translation_equivariance"
+        "concept.analysis.translation_equivariance",
+        "concept.analysis.vector_calculus",
+        "concept.analysis.wavelets"
       ]
     },
     {
@@ -177,6 +197,28 @@
     }
   ],
   "nodes": [
+    {
+      "id": "concept.analysis.complex_analysis",
+      "title": "Complex Analysis",
+      "slug": "/concepts/complex-analysis",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of functions of a complex variable, where being differentiable once at every point of an open set forces infinite differentiability, a convergent power series and a rigidity that has no real-variable counterpart.",
+      "aliases": [
+        "theory of functions of a complex variable"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.complex_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
     {
       "id": "concept.analysis.convolution",
       "title": "Convolution",
@@ -220,6 +262,113 @@
       "claims": 0
     },
     {
+      "id": "concept.analysis.fourier_analysis",
+      "title": "Fourier Analysis",
+      "slug": "/concepts/fourier-analysis",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of functions decomposed into complex exponentials, which turns differentiation into multiplication by frequency and convolution into a pointwise product.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.fourier_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.functional_analysis",
+      "title": "Functional Analysis",
+      "slug": "/concepts/functional-analysis",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of infinite-dimensional vector spaces carrying a topology, where continuity of a linear map stops being automatic and four structural theorems — one from Zorn's lemma, three from Baire category — do most of the work.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.functional_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.harmonic_analysis",
+      "title": "Harmonic Analysis",
+      "slug": "/concepts/harmonic-analysis",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Fourier analysis rebuilt for an arbitrary group, where functions on a locally compact group decompose along its characters and every translation-invariant operator becomes multiplication in that basis.",
+      "aliases": [
+        "abstract harmonic analysis",
+        "Fourier analysis on groups"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.harmonic_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.hilbert_spaces",
+      "title": "Hilbert Spaces",
+      "slug": "/concepts/hilbert-spaces",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The infinite-dimensional setting in which Euclidean geometry survives — perpendiculars, coordinates and lengths all still work, because the norm comes from an inner product and no limit escapes the space.",
+      "aliases": [
+        "complete inner product space"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.hilbert_spaces",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.measure_theory",
+      "title": "Measure Theory",
+      "slug": "/concepts/measure-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The theory that assigns a consistent size to sets and builds an integral on top of it, so that limits and integrals can be exchanged under hypotheses a working mathematician can actually check.",
+      "aliases": [
+        "Lebesgue integration"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.measure_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.analysis.multivariable_calculus",
       "title": "Multivariable Calculus",
       "slug": "/concepts/multivariable-calculus",
@@ -238,6 +387,50 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.multivariable_calculus",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.ordinary_differential_equations",
+      "title": "Ordinary Differential Equations",
+      "slug": "/concepts/ordinary-differential-equations",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The theory of equations that pin down a function of one variable from its own rate of change, where a Lipschitz condition buys exactly one trajectory through each point and almost everything past the linear case must be computed rather than solved.",
+      "aliases": [
+        "ODE"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.ordinary_differential_equations",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.partial_differential_equations",
+      "title": "Partial Differential Equations",
+      "slug": "/concepts/partial-differential-equations",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Equations constraining an unknown function of several variables through its partial derivatives, whose second-order elliptic, parabolic and hyperbolic types behave so differently that the type decides what data may be imposed and what the solution will look like.",
+      "aliases": [
+        "PDE"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.partial_differential_equations",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -303,6 +496,51 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.translation_equivariance",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.vector_calculus",
+      "title": "Vector Calculus",
+      "slug": "/concepts/vector-calculus",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The calculus of vector fields — gradient, divergence and curl, together with line and surface integrals — whose three classical integral theorems are one statement that integrating a derivative over a region equals integrating the field over that region's boundary.",
+      "aliases": [
+        "vector analysis"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.vector_calculus",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.wavelets",
+      "title": "Wavelets",
+      "slug": "/concepts/wavelets",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of functions built by dilating and translating one short oscillating waveform, giving a basis in which a signal is resolved by position and by scale at the same time.",
+      "aliases": [
+        "multiresolution analysis",
+        "wavelet transform"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.wavelets",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -646,6 +884,38 @@
   ],
   "edges": [
     {
+      "id": "concept.analysis.complex_analysis|contributes_to|concept.analysis.fourier_analysis",
+      "source": "concept.analysis.complex_analysis",
+      "target": "concept.analysis.fourier_analysis",
+      "type": "contributes_to",
+      "note": "Contour shifting and residues evaluate Fourier and Laplace inversion integrals, and decay of a transform is read off the analyticity strip of the function.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.complex_analysis|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.complex_analysis",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "A contour integral is a line integral in the plane, Cauchy's theorem is Green's theorem in disguise, and the Cauchy-Riemann equations are a condition on the real Jacobian.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.complex_analysis|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.complex_analysis",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "The limit, uniform convergence and power series machinery is borrowed wholesale; only the field the quotient is taken in changes.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.complex_analysis|used_to_solve|concept.analysis.partial_differential_equations",
+      "source": "concept.analysis.complex_analysis",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "used_to_solve",
+      "note": "Real and imaginary parts of a holomorphic function are harmonic, so conformal maps transport solutions of Laplace's equation between plane domains.",
+      "condition": null
+    },
+    {
       "id": "concept.analysis.cross_correlation|contrasts_with|concept.analysis.convolution",
       "source": "concept.analysis.cross_correlation",
       "target": "concept.analysis.convolution",
@@ -659,6 +929,166 @@
       "target": "concept.analysis.convolution",
       "type": "requires",
       "note": "Cross-correlation is defined by contrast with convolution and shares its algebra apart from the reflection.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.fourier_analysis|equivalent_under|concept.analysis.convolution",
+      "source": "concept.analysis.fourier_analysis",
+      "target": "concept.analysis.convolution",
+      "type": "equivalent_under",
+      "note": "Under the Fourier transform, convolving two functions is exactly multiplying their transforms pointwise, which is why the FFT computes convolutions.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.fourier_analysis|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.fourier_analysis",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "Whether a Fourier series or inversion integral converges, and in what sense, is a question only the convergence machinery of real analysis can answer.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.fourier_analysis|specializes|concept.analysis.harmonic_analysis",
+      "source": "concept.analysis.fourier_analysis",
+      "target": "concept.analysis.harmonic_analysis",
+      "type": "specializes",
+      "note": "Fourier analysis on the circle and the line is the classical special case of harmonic analysis on a locally compact abelian group.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.fourier_analysis|used_to_solve|concept.analysis.partial_differential_equations",
+      "source": "concept.analysis.fourier_analysis",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "used_to_solve",
+      "note": "Exponentials are eigenfunctions of differentiation, so a linear constant-coefficient PDE becomes an algebraic or ordinary differential equation frequency by frequency.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.functional_analysis|generalizes|concept.analysis.hilbert_spaces",
+      "source": "concept.analysis.functional_analysis",
+      "target": "concept.analysis.hilbert_spaces",
+      "type": "generalizes",
+      "note": "A Hilbert space is a Banach space whose norm comes from an inner product; dropping the inner product loses orthogonal projection and self-duality but keeps the four core theorems.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.functional_analysis|requires|concept.analysis.measure_theory",
+      "source": "concept.analysis.functional_analysis",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "The standard examples are the $L^p$ spaces, whose points are equivalence classes of measurable functions and whose completeness is a measure-theoretic theorem.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.functional_analysis|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.functional_analysis",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "Completeness, Cauchy sequences and the compactness arguments of the real line are exactly what a Banach space abstracts, and every proof here reuses them.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.functional_analysis|used_to_solve|concept.analysis.partial_differential_equations",
+      "source": "concept.analysis.functional_analysis",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "used_to_solve",
+      "note": "Weak solutions are sought in Sobolev spaces, and existence is proved by functional-analytic arguments long before anything is known about smoothness.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.harmonic_analysis|contributes_to|concept.analysis.translation_equivariance",
+      "source": "concept.analysis.harmonic_analysis",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "contributes_to",
+      "note": "Harmonic analysis supplies the exact form of an equivariance claim, since the bounded operators commuting with a group action are convolutions and act diagonally on characters.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.harmonic_analysis|generalizes|concept.analysis.fourier_analysis",
+      "source": "concept.analysis.harmonic_analysis",
+      "target": "concept.analysis.fourier_analysis",
+      "type": "generalizes",
+      "note": "The classical transforms on the line, the circle and the finite cycle are the three cases where the underlying group is the reals, the torus and a finite cyclic group, and the abstract theory keeps the machinery while letting that group vary.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.harmonic_analysis|requires|concept.analysis.functional_analysis",
+      "source": "concept.analysis.harmonic_analysis",
+      "target": "concept.analysis.functional_analysis",
+      "type": "requires",
+      "note": "The dual group is recovered as the Gelfand spectrum of the commutative Banach algebra of integrable functions, and the Plancherel theorem is the statement that one specific operator between two Hilbert spaces is unitary.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.harmonic_analysis|requires|concept.analysis.measure_theory",
+      "source": "concept.analysis.harmonic_analysis",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "The transform is an integral against Haar measure, so the existence and essential uniqueness of a translation-invariant measure is the load-bearing hypothesis of the whole subject rather than a technicality.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.hilbert_spaces|contributes_to|concept.analysis.functional_analysis",
+      "source": "concept.analysis.hilbert_spaces",
+      "target": "concept.analysis.functional_analysis",
+      "type": "contributes_to",
+      "note": "Hilbert space is the corner of functional analysis where duality, projection and the spectral theorem are exact rather than partial, and it supplies the model results the general Banach theory then works to imitate.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.hilbert_spaces|prerequisite_of|concept.analysis.fourier_analysis",
+      "source": "concept.analysis.hilbert_spaces",
+      "target": "concept.analysis.fourier_analysis",
+      "type": "prerequisite_of",
+      "note": "Mean-square convergence of Fourier series and Plancherel's theorem are the assertion that a particular orthonormal system is a basis of a particular Hilbert space, so the abstract statement comes first.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.hilbert_spaces|requires|concept.analysis.measure_theory",
+      "source": "concept.analysis.hilbert_spaces",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "The running example needs the Lebesgue integral and almost-everywhere equivalence classes; with the Riemann integral the same formula gives an incomplete space and none of the theorems apply.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.hilbert_spaces|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.hilbert_spaces",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "Completeness, Cauchy sequences and norm convergence of series are the machinery a Hilbert space is assembled from, and the existence theorems below are proved by showing a minimising sequence is Cauchy.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.measure_theory|prerequisite_of|concept.analysis.functional_analysis",
+      "source": "concept.analysis.measure_theory",
+      "target": "concept.analysis.functional_analysis",
+      "type": "prerequisite_of",
+      "note": "The standard examples of Banach spaces are the $L^p(\\mu)$ spaces, and their completeness is the Riesz–Fischer theorem, proved from the convergence theorems on this page.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.measure_theory|prerequisite_of|concept.analysis.hilbert_spaces",
+      "source": "concept.analysis.measure_theory",
+      "target": "concept.analysis.hilbert_spaces",
+      "type": "prerequisite_of",
+      "note": "$L^2(\\mu)$ is the canonical infinite-dimensional Hilbert space, and it only becomes one once the Lebesgue integral supplies an inner product whose induced norm is complete.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.measure_theory|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.measure_theory",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "The construction assumes completeness of the reals and the epsilon-delta machinery, and the failure of the Riemann integral under limits — a real-analysis result — is the problem measure theory exists to fix.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.measure_theory|requires|concept.foundations.set_theory",
+      "source": "concept.analysis.measure_theory",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "A sigma-algebra is a closure condition on a family of subsets, and whether non-measurable sets exist at all is a question about the axiom of choice rather than about analysis.",
       "condition": null
     },
     {
@@ -683,6 +1113,70 @@
       "target": "concept.analysis.real_analysis",
       "type": "requires",
       "note": "Total differentiability is a limit statement about norms on an open set, so its content depends on the notions of limit, continuity and neighbourhood that real analysis makes precise.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.ordinary_differential_equations|prerequisite_of|concept.analysis.partial_differential_equations",
+      "source": "concept.analysis.ordinary_differential_equations",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "prerequisite_of",
+      "note": "Separation of variables and the method of characteristics both work by reducing a PDE to a family of ODEs, so the solvability and stability facts here are what those methods consume.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.ordinary_differential_equations|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.ordinary_differential_equations",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "A system is a vector field on $\\mathbb{R}^n$, and the standard stability test is the Jacobian of that field at an equilibrium, which is a multivariable Taylor expansion.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.ordinary_differential_equations|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.ordinary_differential_equations",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "Picard-Lindelof is a contraction-mapping argument in a complete space of continuous functions, so existence, uniqueness and continuous dependence are analysis theorems rather than calculations.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.ordinary_differential_equations|requires|concept.analysis.single_variable_calculus",
+      "source": "concept.analysis.ordinary_differential_equations",
+      "target": "concept.analysis.single_variable_calculus",
+      "type": "requires",
+      "note": "The subject is stated in derivatives, and its simplest case, $\\dot y = f(t)$, is exactly the antiderivative problem calculus already solves.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.partial_differential_equations|generalizes|concept.analysis.ordinary_differential_equations",
+      "source": "concept.analysis.partial_differential_equations",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "generalizes",
+      "note": "An equation with a single independent variable is an ODE, and separation of variables works precisely by reducing a PDE to a family of ODEs.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.partial_differential_equations|refined_by|concept.analysis.functional_analysis",
+      "source": "concept.analysis.partial_differential_equations",
+      "target": "concept.analysis.functional_analysis",
+      "type": "refined_by",
+      "note": "Weak solutions live in Sobolev spaces, and the existence theorems that replace classical solvability are functional-analytic statements about operators on those spaces.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.partial_differential_equations|requires|concept.analysis.fourier_analysis",
+      "source": "concept.analysis.partial_differential_equations",
+      "target": "concept.analysis.fourier_analysis",
+      "type": "requires",
+      "note": "The separation-of-variables solution of the heat and wave equations is a Fourier series, and whether that series converges to an actual solution is a Fourier-analytic question.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.partial_differential_equations|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.partial_differential_equations",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "The unknown is a function of several variables and the operators that appear — gradient, divergence, Laplacian — are defined by multivariable differentiation.",
       "condition": null
     },
     {
@@ -755,6 +1249,70 @@
       "target": "concept.analysis.convolution",
       "type": "requires",
       "note": "Convolution is the canonical translation-equivariant linear map, and the property is usually stated about it first.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.vector_calculus|generalizes|concept.analysis.single_variable_calculus",
+      "source": "concept.analysis.vector_calculus",
+      "target": "concept.analysis.single_variable_calculus",
+      "type": "generalizes",
+      "note": "The gradient theorem is the fundamental theorem of calculus with the interval replaced by an oriented curve, and Green, Stokes and Gauss are that same statement in two and three dimensions.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.vector_calculus|prerequisite_of|concept.analysis.complex_analysis",
+      "source": "concept.analysis.vector_calculus",
+      "target": "concept.analysis.complex_analysis",
+      "type": "prerequisite_of",
+      "note": "Green's theorem applied to a holomorphic integrand whose parts satisfy the Cauchy–Riemann equations yields Cauchy's theorem, so contour integration is a planar line integral.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.vector_calculus|prerequisite_of|concept.analysis.partial_differential_equations",
+      "source": "concept.analysis.vector_calculus",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "prerequisite_of",
+      "note": "The heat, wave and Laplace equations are derived by applying the divergence theorem to a conservation law on an arbitrary control volume, and Green's identities are integration by parts for the Laplacian.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.vector_calculus|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.vector_calculus",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "Divergence and curl are assembled from the partial derivatives of a map between several variables, and every proof here uses the chain rule to pull an integral back to a parameter domain.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.wavelets|contrasts_with|concept.analysis.fourier_analysis",
+      "source": "concept.analysis.wavelets",
+      "target": "concept.analysis.fourier_analysis",
+      "type": "contrasts_with",
+      "note": "A Fourier basis resolves frequency perfectly and position not at all; a wavelet basis gives up some frequency resolution to say where in the signal each component occurred.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.wavelets|requires|concept.analysis.convolution",
+      "source": "concept.analysis.wavelets",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "The discrete wavelet transform is computed as a cascade of convolutions with a two-filter bank followed by downsampling, not by integrating against each basis function separately.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.wavelets|requires|concept.analysis.hilbert_spaces",
+      "source": "concept.analysis.wavelets",
+      "target": "concept.analysis.hilbert_spaces",
+      "type": "requires",
+      "note": "Orthonormal wavelet bases, the nested approximation spaces of a multiresolution analysis and their orthogonal complements are all statements about the Hilbert space $L^2(\\mathbb{R})$.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.wavelets|specializes|concept.analysis.harmonic_analysis",
+      "source": "concept.analysis.wavelets",
+      "target": "concept.analysis.harmonic_analysis",
+      "type": "specializes",
+      "note": "Wavelet theory is the branch of harmonic analysis that decomposes functions over a dilation-and-translation family rather than over characters of a group.",
       "condition": null
     },
     {

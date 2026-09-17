@@ -346,8 +346,8 @@ candidates:
     title: Vector Calculus
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.vector_calculus
   - candidate_id: candidate.mathematics.analysis.real_analysis
     title: Real Analysis
     categories:
@@ -358,26 +358,26 @@ candidates:
     title: Complex Analysis
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.complex_analysis
   - candidate_id: candidate.mathematics.analysis.measure_theory
     title: Measure Theory
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.measure_theory
   - candidate_id: candidate.mathematics.analysis.functional_analysis
     title: Functional Analysis
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.functional_analysis
   - candidate_id: candidate.mathematics.analysis.hilbert_spaces
     title: Hilbert Spaces
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.hilbert_spaces
   - candidate_id: candidate.mathematics.analysis.banach_spaces
     title: Banach Spaces
     categories:
@@ -394,20 +394,20 @@ candidates:
     title: Harmonic Analysis
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.harmonic_analysis
   - candidate_id: candidate.mathematics.analysis.fourier_analysis
     title: Fourier Analysis
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.fourier_analysis
   - candidate_id: candidate.mathematics.analysis.wavelets
     title: Wavelets
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.wavelets
   - candidate_id: candidate.mathematics.analysis.convolution
     title: Convolution
     categories:
@@ -430,14 +430,14 @@ candidates:
     title: Ordinary Differential Equations
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.ordinary_differential_equations
   - candidate_id: candidate.mathematics.analysis.partial_differential_equations
     title: Partial Differential Equations
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.partial_differential_equations
   - candidate_id: candidate.mathematics.analysis.calculus_of_variations
     title: Calculus of Variations
     categories:
