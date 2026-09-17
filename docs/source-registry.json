@@ -1,5 +1,5 @@
 {
-  "$comment": "Curated sources for the content build. A page may cite ONLY what is listed here: an agent that needs a source not in this file reports it, a person checks it, and it is added. That is the control that keeps invented citations out of canonical content. `id`, `title`, `url` and `kind` must be copied verbatim — one source_id describes one source everywhere it is cited, and the validator enforces that across the whole corpus.",
+  "$comment": "Curated sources for the content build. A page may cite ONLY what is listed here: an agent that needs a source not in this file reports it, a person checks it, and it is added. That is the control that keeps invented citations out of canonical content. `id`, `title`, `url` and `kind` must be copied verbatim \u2014 one source_id describes one source everywhere it is cited, and the validator enforces that across the whole corpus.",
   "sources": [
     {
       "id": "source.mit_ocw.single_variable_calculus",
@@ -298,7 +298,7 @@
     },
     {
       "id": "source.deep_learning_book.convnets",
-      "title": "Deep Learning, Chapter 9 — Convolutional Networks",
+      "title": "Deep Learning, Chapter 9 \u2014 Convolutional Networks",
       "url": "https://www.deeplearningbook.org/contents/convnets.html",
       "kind": "authoritative-secondary",
       "topics": ["convolution", "pooling", "cnn", "equivariance"]
@@ -962,7 +962,7 @@
     },
     {
       "id": "source.planning_wiki.pddl",
-      "title": "The Planning Wiki — PDDL reference",
+      "title": "The Planning Wiki \u2014 PDDL reference",
       "url": "https://planning.wiki/",
       "kind": "reference-documentation",
       "topics": ["pddl", "planning", "domains", "problem files"]
@@ -976,7 +976,7 @@
     },
     {
       "id": "source.cppreference",
-      "title": "cppreference.com — C and C++ reference",
+      "title": "cppreference.com \u2014 C and C++ reference",
       "url": "https://en.cppreference.com/w/",
       "kind": "reference-documentation",
       "topics": ["c", "c++", "standard library", "language reference"]
@@ -1004,7 +1004,7 @@
     },
     {
       "id": "source.mdn.javascript",
-      "title": "MDN Web Docs — JavaScript",
+      "title": "MDN Web Docs \u2014 JavaScript",
       "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
       "kind": "reference-documentation",
       "topics": ["javascript", "event loop", "prototypes", "web"]
@@ -1039,7 +1039,7 @@
     },
     {
       "id": "source.cran.manuals",
-      "title": "The Comprehensive R Archive Network — manuals",
+      "title": "The Comprehensive R Archive Network \u2014 manuals",
       "url": "https://cran.r-project.org/manuals.html",
       "kind": "reference-documentation",
       "topics": ["r", "statistics", "data frames", "vectorisation"]
@@ -1165,7 +1165,7 @@
     },
     {
       "id": "source.fowler.refactoring_catalog",
-      "title": "Martin Fowler — Refactoring and design catalogue",
+      "title": "Martin Fowler \u2014 Refactoring and design catalogue",
       "url": "https://martinfowler.com/",
       "kind": "authoritative-secondary",
       "topics": [
@@ -1220,14 +1220,14 @@
     },
     {
       "id": "source.deep_learning_book.mlp",
-      "title": "Deep Learning, Chapter 6 — Deep Feedforward Networks",
+      "title": "Deep Learning, Chapter 6 \u2014 Deep Feedforward Networks",
       "url": "https://www.deeplearningbook.org/contents/mlp.html",
       "kind": "authoritative-secondary",
       "topics": ["feedforward networks", "backpropagation", "deep learning"]
     },
     {
       "id": "source.pytorch.conv2d",
-      "title": "torch.nn.Conv2d — PyTorch Documentation",
+      "title": "torch.nn.Conv2d \u2014 PyTorch Documentation",
       "url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html",
       "kind": "reference-documentation",
       "topics": ["pytorch", "convolution", "implementation"]
@@ -1301,6 +1301,540 @@
       "url": "https://arxiv.org/abs/1602.07576",
       "kind": "preprint",
       "topics": ["equivariance", "group theory", "convolutional networks"]
+    },
+    {
+      "id": "source.may.concise_course_algebraic_topology",
+      "title": "A Concise Course in Algebraic Topology",
+      "url": "https://www.math.uchicago.edu/~may/CONCISE/ConciseRevised.pdf",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "algebraic topology",
+        "fundamental group",
+        "covering spaces",
+        "fibrations",
+        "homotopy theory"
+      ]
+    },
+    {
+      "id": "source.morris.topology_without_tears",
+      "title": "Topology Without Tears",
+      "url": "https://www.topologywithouttears.net/",
+      "kind": "authoritative-secondary",
+      "topics": ["topology", "topological spaces", "metric spaces", "compactness", "continuity"]
+    },
+    {
+      "id": "source.plato.axiom_of_choice",
+      "title": "Stanford Encyclopedia of Philosophy: The Axiom of Choice",
+      "url": "https://plato.stanford.edu/entries/axiom-choice/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "axiom of choice",
+        "zorn lemma",
+        "set theory",
+        "well-ordering",
+        "tychonoff theorem"
+      ]
+    },
+    {
+      "id": "source.mactutor.history_of_topology",
+      "title": "MacTutor: A history of Topology",
+      "url": "https://mathshistory.st-andrews.ac.uk/HistTopics/Topology_in_mathematics/",
+      "kind": "reference-documentation",
+      "topics": ["topology", "history of mathematics", "euler", "poincare", "betti numbers"]
+    },
+    {
+      "id": "source.mactutor.aleksandrov",
+      "title": "MacTutor: Pavel Aleksandrov",
+      "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Aleksandrov/",
+      "kind": "reference-documentation",
+      "topics": ["aleksandrov", "urysohn", "compact spaces", "topology", "history of mathematics"]
+    },
+    {
+      "id": "source.nicolaescu.geometry_of_manifolds",
+      "title": "Lectures on the Geometry of Manifolds",
+      "url": "https://academicweb.nd.edu/~lnicolae/Lectures.pdf",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "manifolds",
+        "riemannian geometry",
+        "vector bundles",
+        "de rham cohomology",
+        "characteristic classes"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.geometry_of_manifolds",
+      "title": "MIT 18.965 Geometry of Manifolds (Fall 2004)",
+      "url": "https://ocw.mit.edu/courses/18-965-geometry-of-manifolds-fall-2004/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "manifolds",
+        "differential topology",
+        "de rham cohomology",
+        "morse theory",
+        "transversality",
+        "vector bundles"
+      ]
+    },
+    {
+      "id": "source.sjamaar.manifolds_and_differential_forms",
+      "title": "Manifolds and Differential Forms",
+      "url": "https://pi.math.cornell.edu/~sjamaar/manifolds/manifold.pdf",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "manifolds",
+        "differential forms",
+        "stokes theorem",
+        "exterior derivative",
+        "orientation",
+        "de rham"
+      ]
+    },
+    {
+      "id": "source.benedetti.lectures_differential_topology",
+      "title": "Lectures on Differential Topology",
+      "url": "https://arxiv.org/abs/1907.10297",
+      "kind": "preprint",
+      "topics": [
+        "differential topology",
+        "transversality",
+        "cobordism",
+        "morse theory",
+        "smooth manifolds",
+        "handle decomposition"
+      ]
+    },
+    {
+      "id": "source.nlab.smooth_manifold",
+      "title": "nLab: smooth manifold",
+      "url": "https://ncatlab.org/nlab/show/smooth+manifold",
+      "kind": "reference-documentation",
+      "topics": [
+        "smooth manifold",
+        "differentiable manifold",
+        "charts",
+        "sheaves",
+        "cartesian spaces",
+        "category theory"
+      ]
+    },
+    {
+      "id": "source.nlab.exotic_smooth_structure",
+      "title": "nLab: exotic smooth structure",
+      "url": "https://ncatlab.org/nlab/show/exotic+smooth+structure",
+      "kind": "reference-documentation",
+      "topics": [
+        "exotic smooth structure",
+        "exotic spheres",
+        "smooth structure",
+        "differential topology",
+        "four-manifolds"
+      ]
+    },
+    {
+      "id": "source.perelman2002.ricci_flow_entropy",
+      "title": "The entropy formula for the Ricci flow and its geometric applications",
+      "url": "https://arxiv.org/abs/math/0211159",
+      "kind": "preprint",
+      "topics": [
+        "ricci flow",
+        "entropy formula",
+        "geometrization conjecture",
+        "three-manifolds",
+        "singularity analysis",
+        "riemannian geometry"
+      ]
+    },
+    {
+      "id": "source.kirillov.intro_lie_groups_lie_algebras",
+      "title": "Introduction to Lie Groups and Lie Algebras",
+      "url": "https://www.math.stonybrook.edu/~kirillov/mat552/liegroups.pdf",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "lie groups",
+        "lie algebras",
+        "root systems",
+        "representation theory",
+        "dynkin diagrams",
+        "semisimple"
+      ]
+    },
+    {
+      "id": "source.hall.groups_and_representations",
+      "title": "An Elementary Introduction to Groups and Representations",
+      "url": "https://arxiv.org/abs/math-ph/0005032",
+      "kind": "preprint",
+      "topics": [
+        "lie groups",
+        "lie algebras",
+        "representation theory",
+        "exponential map",
+        "baker-campbell-hausdorff",
+        "su(3)"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.introduction_to_lie_groups",
+      "title": "MIT 18.755 Introduction to Lie Groups (Fall 2004)",
+      "url": "https://ocw.mit.edu/courses/18-755-introduction-to-lie-groups-fall-2004/pages/lecture-notes/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "lie groups",
+        "lie algebras",
+        "differential geometry",
+        "exponential map",
+        "symmetric spaces"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.lie_groups_and_lie_algebras",
+      "title": "MIT 18.745 Lie Groups and Lie Algebras I (Fall 2020)",
+      "url": "https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/lists/lecture-notes/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "lie algebras",
+        "root systems",
+        "dynkin diagrams",
+        "semisimple",
+        "weyl group",
+        "representation theory"
+      ]
+    },
+    {
+      "id": "source.encyclopedia_of_math.lie_group",
+      "title": "Encyclopedia of Mathematics: Lie group",
+      "url": "https://encyclopediaofmath.org/wiki/Lie_group",
+      "kind": "reference-documentation",
+      "topics": [
+        "lie group",
+        "lie algebra",
+        "exponential map",
+        "semisimple",
+        "classification",
+        "real forms"
+      ]
+    },
+    {
+      "id": "source.stacks_project.browse",
+      "title": "The Stacks Project",
+      "url": "https://stacks.math.columbia.edu/browse",
+      "kind": "reference-documentation",
+      "topics": ["schemes", "algebraic stacks", "commutative algebra", "algebraic spaces", "moduli"]
+    },
+    {
+      "id": "source.vakil.rising_sea_foag",
+      "title": "The Rising Sea: Foundations of Algebraic Geometry",
+      "url": "https://math.stanford.edu/~vakil/216blog/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "schemes",
+        "sheaves",
+        "algebraic geometry",
+        "cohomology",
+        "morphisms",
+        "category theory"
+      ]
+    },
+    {
+      "id": "source.milne.algebraic_geometry",
+      "title": "J. S. Milne, Algebraic Geometry (course notes)",
+      "url": "https://www.jmilne.org/math/CourseNotes/ag.html",
+      "kind": "lecture-or-course",
+      "topics": [
+        "algebraic varieties",
+        "nullstellensatz",
+        "affine varieties",
+        "projective varieties",
+        "regular maps"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.algebraic_geometry",
+      "title": "MIT 18.725 Algebraic Geometry (Fall 2015)",
+      "url": "https://ocw.mit.edu/courses/18-725-algebraic-geometry-fall-2015/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "algebraic varieties",
+        "schemes",
+        "algebraic curves",
+        "serre duality",
+        "zariski topology"
+      ]
+    },
+    {
+      "id": "source.nlab.scheme",
+      "title": "nLab: scheme",
+      "url": "https://ncatlab.org/nlab/show/scheme",
+      "kind": "reference-documentation",
+      "topics": [
+        "schemes",
+        "locally ringed spaces",
+        "functor of points",
+        "affine schemes",
+        "sheaves"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.convex_analysis_and_optimization",
+      "title": "MIT 6.253 Convex Analysis and Optimization (Spring 2012)",
+      "url": "https://ocw.mit.edu/courses/6-253-convex-analysis-and-optimization-spring-2012/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "convex analysis",
+        "optimization",
+        "duality",
+        "saddle point theory",
+        "lecture notes"
+      ]
+    },
+    {
+      "id": "source.ball.modern_convex_geometry",
+      "title": "An Elementary Introduction to Modern Convex Geometry",
+      "url": "https://library.slmath.org/books/Book31/files/ball.pdf",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "convex geometry",
+        "brunn-minkowski",
+        "dvoretzky theorem",
+        "concentration of measure",
+        "john's theorem"
+      ]
+    },
+    {
+      "id": "source.bubeck.convex_optimization_complexity",
+      "title": "Convex Optimization: Algorithms and Complexity",
+      "url": "https://arxiv.org/abs/1405.4980",
+      "kind": "preprint",
+      "topics": [
+        "convex optimization",
+        "gradient descent",
+        "mirror descent",
+        "complexity",
+        "frank-wolfe"
+      ]
+    },
+    {
+      "id": "source.nlab.krein_milman_theorem",
+      "title": "nLab: Krein-Milman theorem",
+      "url": "https://ncatlab.org/nlab/show/Krein-Milman+theorem",
+      "kind": "reference-documentation",
+      "topics": [
+        "krein-milman",
+        "extreme points",
+        "convex hull",
+        "functional analysis",
+        "locally convex spaces"
+      ]
+    },
+    {
+      "id": "source.stein.elementary_number_theory",
+      "title": "Elementary Number Theory: Primes, Congruences, and Secrets",
+      "url": "https://wstein.org/ent/",
+      "kind": "authoritative-secondary",
+      "topics": ["number theory", "primes", "congruences", "cryptography", "elliptic curves"]
+    },
+    {
+      "id": "source.mit_ocw.theory_of_numbers",
+      "title": "MIT 18.781 Theory of Numbers (Spring 2012)",
+      "url": "https://ocw.mit.edu/courses/18-781-theory-of-numbers-spring-2012/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "number theory",
+        "congruences",
+        "quadratic reciprocity",
+        "continued fractions",
+        "primes"
+      ]
+    },
+    {
+      "id": "source.dlmf.functions_of_number_theory",
+      "title": "NIST Digital Library of Mathematical Functions, Chapter 27: Functions of Number Theory",
+      "url": "https://dlmf.nist.gov/27",
+      "kind": "reference-documentation",
+      "topics": [
+        "number theory",
+        "dirichlet characters",
+        "multiplicative functions",
+        "partitions",
+        "primes"
+      ]
+    },
+    {
+      "id": "source.bombieri.riemann_hypothesis",
+      "title": "Problems of the Millennium: the Riemann Hypothesis",
+      "url": "https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "riemann hypothesis",
+        "zeta function",
+        "prime numbers",
+        "millennium prize",
+        "analytic number theory"
+      ]
+    },
+    {
+      "id": "source.agrawal2004.primes_is_in_p",
+      "title": "PRIMES is in P",
+      "url": "https://annals.math.princeton.edu/2004/160-2/p12",
+      "kind": "primary-research",
+      "topics": [
+        "primality testing",
+        "algorithms",
+        "computational complexity",
+        "number theory",
+        "polynomial time"
+      ]
+    },
+    {
+      "id": "source.rivest1978.rsa",
+      "title": "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems",
+      "url": "https://people.csail.mit.edu/rivest/Rsapaper.pdf",
+      "kind": "primary-research",
+      "topics": [
+        "rsa",
+        "public-key cryptography",
+        "digital signatures",
+        "integer factorization",
+        "modular arithmetic"
+      ]
+    },
+    {
+      "id": "source.mactutor.archive",
+      "title": "MacTutor History of Mathematics Archive",
+      "url": "https://mathshistory.st-andrews.ac.uk/",
+      "kind": "reference-documentation",
+      "topics": [
+        "history of mathematics",
+        "biographies",
+        "mathematicians",
+        "history topics",
+        "curves"
+      ]
+    },
+    {
+      "id": "source.plato.nineteenth_century_geometry",
+      "title": "Stanford Encyclopedia of Philosophy: Nineteenth Century Geometry",
+      "url": "https://plato.stanford.edu/entries/geometry-19th/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "nineteenth century geometry",
+        "lobachevskian geometry",
+        "projective geometry",
+        "erlangen program",
+        "riemannian geometry",
+        "lie groups"
+      ]
+    },
+    {
+      "id": "source.joyce.euclid_elements",
+      "title": "Euclid's Elements (D. E. Joyce edition)",
+      "url": "https://mathcs.clarku.edu/~djoyce/elements/elements.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "euclid",
+        "elements",
+        "plane geometry",
+        "number theory",
+        "axioms",
+        "solid geometry"
+      ]
+    },
+    {
+      "id": "source.riemann1854.bases_of_geometry",
+      "title": "On the Hypotheses which lie at the Bases of Geometry",
+      "url": "https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html",
+      "kind": "primary-research",
+      "topics": [
+        "riemannian geometry",
+        "manifolds",
+        "curvature",
+        "metric",
+        "foundations of geometry"
+      ]
+    },
+    {
+      "id": "source.beeson.proof_checking_euclid",
+      "title": "Proof-checking Euclid",
+      "url": "https://arxiv.org/abs/1710.00787",
+      "kind": "preprint",
+      "topics": [
+        "formal verification",
+        "euclidean geometry",
+        "tarski axioms",
+        "coq",
+        "hol light",
+        "interactive theorem proving"
+      ]
+    },
+    {
+      "id": "source.milnor.dynamics_one_complex_variable",
+      "title": "Dynamics in One Complex Variable: Introductory Lectures",
+      "url": "https://arxiv.org/abs/math/9201272",
+      "kind": "preprint",
+      "topics": [
+        "complex dynamics",
+        "julia set",
+        "riemann surfaces",
+        "rational maps",
+        "fatou",
+        "mandelbrot set"
+      ]
+    },
+    {
+      "id": "source.hutchinson1981.fractals_and_self_similarity",
+      "title": "Fractals and Self Similarity",
+      "url": "https://maths-people.anu.edu.au/~john/Assets/Research%20Papers/fractals_self-similarity.pdf",
+      "kind": "primary-research",
+      "topics": [
+        "fractals",
+        "self-similarity",
+        "hausdorff measure",
+        "invariant measures",
+        "similitudes",
+        "open set condition"
+      ]
+    },
+    {
+      "id": "source.wilson1982.renormalization_group",
+      "title": "The Renormalization Group and Critical Phenomena (Nobel Lecture)",
+      "url": "https://www.nobelprize.org/prizes/physics/1982/wilson/lecture/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "renormalization group",
+        "critical phenomena",
+        "phase transitions",
+        "scaling",
+        "epsilon expansion",
+        "statistical physics"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.statistical_physics_of_fields",
+      "title": "MIT 8.334 Statistical Mechanics II: Statistical Physics of Fields (Spring 2014)",
+      "url": "https://ocw.mit.edu/courses/8-334-statistical-mechanics-ii-statistical-physics-of-fields-spring-2014/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "statistical field theory",
+        "renormalization group",
+        "critical phenomena",
+        "landau-ginzburg",
+        "scaling hypothesis",
+        "epsilon expansion"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.nonlinear_dynamics_and_chaos",
+      "title": "MIT 12.006J Nonlinear Dynamics: Chaos (Fall 2022)",
+      "url": "https://ocw.mit.edu/courses/12-006j-nonlinear-dynamics-chaos-fall-2022/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "nonlinear dynamics",
+        "chaos",
+        "strange attractors",
+        "lyapunov exponents",
+        "period doubling",
+        "fractal dimension"
+      ]
     }
   ]
 }
