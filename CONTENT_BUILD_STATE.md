@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 12 of 28.** 10 of 10 pages in it are still to write.
+**Batch 14 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/networking.md` — Networking (concept.systems.networking)
-- `content/concepts/parallel-computing.md` — Parallel Computing (concept.systems.parallel_computing)
-- `content/concepts/distributed-systems.md` — Distributed Systems (concept.systems.distributed_systems)
-- `content/concepts/high-performance-computing.md` — High-Performance Computing (concept.systems.high_performance_computing)
-- `content/concepts/relational-databases.md` — Relational Databases (concept.systems.relational_databases)
-- `content/concepts/graph-databases.md` — Graph Databases (concept.systems.graph_databases)
-- `content/concepts/version-control.md` — Version Control (concept.software.version_control)
-- `content/concepts/testing.md` — Testing (concept.software.testing)
-- `content/concepts/design-patterns.md` — Design Patterns (concept.software.design_patterns)
-- `content/concepts/apis.md` — APIs (concept.software.apis)
+- `content/concepts/edge-inference.md` — Edge Inference (concept.ml_engineering.edge_inference)
+- `content/concepts/ollama.md` — Ollama (concept.ml_engineering.ollama)
+- `content/concepts/supervised-learning.md` — Supervised Learning (concept.learning.supervised_learning)
+- `content/concepts/unsupervised-learning.md` — Unsupervised Learning (concept.learning.unsupervised_learning)
+- `content/concepts/self-supervised-learning.md` — Self-Supervised Learning (concept.learning.self_supervised_learning)
+- `content/concepts/transfer-learning.md` — Transfer Learning (concept.learning.transfer_learning)
+- `content/concepts/contrastive-learning.md` — Contrastive Learning (concept.learning.contrastive_learning)
+- `content/concepts/meta-learning.md` — Meta-Learning (concept.learning.meta_learning)
+- `content/concepts/curriculum-learning.md` — Curriculum Learning (concept.learning.curriculum_learning)
+- `content/concepts/continual-learning.md` — Continual Learning (concept.learning.continual_learning)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,12 +36,12 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 121 |
-| Markdown pages in the corpus | 121 |
-| Tier 1 pages | 121 |
+| Candidates covered by a page | 141 |
+| Markdown pages in the corpus | 141 |
+| Tier 1 pages | 141 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 110 of 280 |
+| Planned pages written | 130 of 280 |
 
 ### By area
 
@@ -49,7 +49,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
 | Mathematics | 85 | 85 | 100% |
-| Programming | 25 | 47 | 53% |
+| Programming | 45 | 47 | 96% |
 
 ### By category
 
@@ -82,13 +82,13 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Programming/Data Structures & Algorithms | 5 | 5 | complete |
 | Programming/Languages | 15 | 15 | complete |
 | Programming/Languages/Paradigms | 4 | 4 | complete |
-| Programming/ML Engineering | 0 | 7 |  |
-| Programming/Software Practice | 0 | 9 |  |
-| Programming/Systems | 1 | 7 |  |
+| Programming/ML Engineering | 5 | 7 |  |
+| Programming/Software Practice | 9 | 9 | complete |
+| Programming/Systems | 7 | 7 | complete |
 
 ## Completed pages
 
-110 of the planned 280, in the order they were written.
+130 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -202,6 +202,26 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | CUDA | `concept.languages.cuda` | tier 1 | covered |
 | GPU Kernels | `concept.languages.gpu_kernels` | tier 1 | covered |
 | Operating Systems | `concept.systems.operating_systems` | tier 1 | covered |
+| Networking | `concept.systems.networking` | tier 1 | covered |
+| Parallel Computing | `concept.systems.parallel_computing` | tier 1 | covered |
+| Distributed Systems | `concept.systems.distributed_systems` | tier 1 | covered |
+| High-Performance Computing | `concept.systems.high_performance_computing` | tier 1 | covered |
+| Relational Databases | `concept.systems.relational_databases` | tier 1 | covered |
+| Graph Databases | `concept.systems.graph_databases` | tier 1 | covered |
+| Version Control | `concept.software.version_control` | tier 1 | covered |
+| Testing | `concept.software.testing` | tier 1 | covered |
+| Design Patterns | `concept.software.design_patterns` | tier 1 | covered |
+| APIs | `concept.software.apis` | tier 1 | covered |
+| Protocols | `concept.software.protocols` | tier 1 | covered |
+| Continuous Integration | `concept.software.continuous_integration` | tier 1 | covered |
+| Continuous Delivery | `concept.software.continuous_delivery` | tier 1 | covered |
+| Containers | `concept.software.containers` | tier 1 | covered |
+| Model Context Protocol | `concept.software.model_context_protocol` | tier 1 | covered |
+| PyTorch | `concept.ml_engineering.pytorch` | tier 1 | covered |
+| JAX | `concept.ml_engineering.jax` | tier 1 | covered |
+| Training Infrastructure | `concept.ml_engineering.training_infrastructure` | tier 1 | covered |
+| Experiment Tracking | `concept.ml_engineering.experiment_tracking` | tier 1 | covered |
+| Deployment | `concept.ml_engineering.deployment` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -375,35 +395,35 @@ it. Batches are ten pages each.
 | x | GPU Kernels | `concept.languages.gpu_kernels` | Programming/Languages |
 | x | Operating Systems | `concept.systems.operating_systems` | Programming/Systems |
 
-### Batch 12
+### Batch 12 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Networking | `concept.systems.networking` | Programming/Systems |
-|   | Parallel Computing | `concept.systems.parallel_computing` | Programming/Systems |
-|   | Distributed Systems | `concept.systems.distributed_systems` | Programming/Systems |
-|   | High-Performance Computing | `concept.systems.high_performance_computing` | Programming/Systems |
-|   | Relational Databases | `concept.systems.relational_databases` | Programming/Systems |
-|   | Graph Databases | `concept.systems.graph_databases` | Programming/Systems |
-|   | Version Control | `concept.software.version_control` | Programming/Software Practice |
-|   | Testing | `concept.software.testing` | Programming/Software Practice |
-|   | Design Patterns | `concept.software.design_patterns` | Programming/Software Practice |
-|   | APIs | `concept.software.apis` | Programming/Software Practice |
+| x | Networking | `concept.systems.networking` | Programming/Systems |
+| x | Parallel Computing | `concept.systems.parallel_computing` | Programming/Systems |
+| x | Distributed Systems | `concept.systems.distributed_systems` | Programming/Systems |
+| x | High-Performance Computing | `concept.systems.high_performance_computing` | Programming/Systems |
+| x | Relational Databases | `concept.systems.relational_databases` | Programming/Systems |
+| x | Graph Databases | `concept.systems.graph_databases` | Programming/Systems |
+| x | Version Control | `concept.software.version_control` | Programming/Software Practice |
+| x | Testing | `concept.software.testing` | Programming/Software Practice |
+| x | Design Patterns | `concept.software.design_patterns` | Programming/Software Practice |
+| x | APIs | `concept.software.apis` | Programming/Software Practice |
 
-### Batch 13
+### Batch 13 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Protocols | `concept.software.protocols` | Programming/Software Practice |
-|   | Continuous Integration | `concept.software.continuous_integration` | Programming/Software Practice |
-|   | Continuous Delivery | `concept.software.continuous_delivery` | Programming/Software Practice |
-|   | Containers | `concept.software.containers` | Programming/Software Practice |
-|   | Model Context Protocol | `concept.software.model_context_protocol` | Programming/Software Practice |
-|   | PyTorch | `concept.ml_engineering.pytorch` | Programming/ML Engineering |
-|   | JAX | `concept.ml_engineering.jax` | Programming/ML Engineering |
-|   | Training Infrastructure | `concept.ml_engineering.training_infrastructure` | Programming/ML Engineering |
-|   | Experiment Tracking | `concept.ml_engineering.experiment_tracking` | Programming/ML Engineering |
-|   | Deployment | `concept.ml_engineering.deployment` | Programming/ML Engineering |
+| x | Protocols | `concept.software.protocols` | Programming/Software Practice |
+| x | Continuous Integration | `concept.software.continuous_integration` | Programming/Software Practice |
+| x | Continuous Delivery | `concept.software.continuous_delivery` | Programming/Software Practice |
+| x | Containers | `concept.software.containers` | Programming/Software Practice |
+| x | Model Context Protocol | `concept.software.model_context_protocol` | Programming/Software Practice |
+| x | PyTorch | `concept.ml_engineering.pytorch` | Programming/ML Engineering |
+| x | JAX | `concept.ml_engineering.jax` | Programming/ML Engineering |
+| x | Training Infrastructure | `concept.ml_engineering.training_infrastructure` | Programming/ML Engineering |
+| x | Experiment Tracking | `concept.ml_engineering.experiment_tracking` | Programming/ML Engineering |
+| x | Deployment | `concept.ml_engineering.deployment` | Programming/ML Engineering |
 
 ### Batch 14
 

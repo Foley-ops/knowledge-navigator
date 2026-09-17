@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T22:31:17.384Z",
-  "corpusHash": "d28a0d376dbde66e042e8feca7b1fb0e4a08756f70a8b25ce75ca1a53b35197d",
-  "atlasHash": "0d07afc34d5112f782046f4a0a5696c7f48a0421442168dad05cdd8c57f513fa",
+  "builtAt": "2026-09-17T22:56:34.523Z",
+  "corpusHash": "454afe2acb47393a78f6f5a38afa1da1b53d05b814e207c33b236b71ed6ce483",
+  "atlasHash": "4b3b98a2440e60047bbac2167c27babdeec01828361a5b0c7bc9bd1710d498c0",
   "counts": {
-    "concepts": 121,
-    "relationships": 450,
-    "categories": 22
+    "concepts": 141,
+    "relationships": 524,
+    "categories": 24
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 121,
+      "1": 141,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 121,
+      "markdown": 141,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 121
+      "generated-draft": 141
     },
-    "conceptsWithArticle": 121,
+    "conceptsWithArticle": 141,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 170,
+      "candidate": 150,
       "proposed-tier-3": 0,
-      "covered": 121,
+      "covered": 141,
       "deferred": 0
     },
-    "unresolvedReferences": 136,
-    "unresolvedGroups": 136,
+    "unresolvedReferences": 178,
+    "unresolvedGroups": 178,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -515,16 +515,78 @@
       ]
     },
     {
+      "path": "Programming/ML Engineering",
+      "name": "ML Engineering",
+      "topLevel": "Programming",
+      "depth": 2,
+      "parent": "Programming",
+      "primaryConceptIds": [
+        "concept.ml_engineering.deployment",
+        "concept.ml_engineering.experiment_tracking",
+        "concept.ml_engineering.jax",
+        "concept.ml_engineering.pytorch",
+        "concept.ml_engineering.training_infrastructure"
+      ],
+      "conceptIds": [
+        "concept.ml_engineering.deployment",
+        "concept.ml_engineering.experiment_tracking",
+        "concept.ml_engineering.jax",
+        "concept.ml_engineering.pytorch",
+        "concept.ml_engineering.training_infrastructure"
+      ]
+    },
+    {
+      "path": "Programming/Software Practice",
+      "name": "Software Practice",
+      "topLevel": "Programming",
+      "depth": 2,
+      "parent": "Programming",
+      "primaryConceptIds": [
+        "concept.software.apis",
+        "concept.software.containers",
+        "concept.software.continuous_delivery",
+        "concept.software.continuous_integration",
+        "concept.software.design_patterns",
+        "concept.software.model_context_protocol",
+        "concept.software.protocols",
+        "concept.software.testing",
+        "concept.software.version_control"
+      ],
+      "conceptIds": [
+        "concept.software.apis",
+        "concept.software.containers",
+        "concept.software.continuous_delivery",
+        "concept.software.continuous_integration",
+        "concept.software.design_patterns",
+        "concept.software.model_context_protocol",
+        "concept.software.protocols",
+        "concept.software.testing",
+        "concept.software.version_control"
+      ]
+    },
+    {
       "path": "Programming/Systems",
       "name": "Systems",
       "topLevel": "Programming",
       "depth": 2,
       "parent": "Programming",
       "primaryConceptIds": [
-        "concept.systems.operating_systems"
+        "concept.systems.distributed_systems",
+        "concept.systems.graph_databases",
+        "concept.systems.high_performance_computing",
+        "concept.systems.networking",
+        "concept.systems.operating_systems",
+        "concept.systems.parallel_computing",
+        "concept.systems.relational_databases"
       ],
       "conceptIds": [
-        "concept.systems.operating_systems"
+        "concept.systems.distributed_systems",
+        "concept.systems.graph_databases",
+        "concept.systems.high_performance_computing",
+        "concept.systems.networking",
+        "concept.systems.operating_systems",
+        "concept.systems.parallel_computing",
+        "concept.systems.relational_databases"
       ]
     }
   ],
@@ -2573,6 +2635,112 @@
       "claims": 0
     },
     {
+      "id": "concept.ml_engineering.deployment",
+      "title": "Deployment",
+      "slug": "/concepts/deployment",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The engineering practice of putting a trained model behind a live request stream and keeping its predictions correct as traffic, features and the world underneath them change.",
+      "aliases": [
+        "model serving"
+      ],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.deployment",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.ml_engineering.experiment_tracking",
+      "title": "Experiment Tracking",
+      "slug": "/concepts/experiment-tracking",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice of recording, for every run of a machine learning experiment, the code, configuration, data version, environment and seeds that went in alongside the metrics and artefacts that came out, so results can be compared and traced instead of remembered.",
+      "aliases": [],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.experiment_tracking",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.ml_engineering.jax",
+      "title": "JAX",
+      "slug": "/concepts/jax",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A Python library whose central idea is composable function transformations — differentiation, vectorisation, parallelisation and just-in-time compilation — applied to pure functions written against a NumPy-like array API and compiled to CPU, GPU or TPU by XLA.",
+      "aliases": [],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.jax",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.ml_engineering.pytorch",
+      "title": "PyTorch",
+      "slug": "/concepts/pytorch",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A Python library for strided array computation on CPU and GPU whose defining feature is autograd — a tape of backward functions recorded by the operations that actually execute, so the gradient of anything you can write in Python comes back without being derived by hand.",
+      "aliases": [
+        "torch.autograd"
+      ],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.pytorch",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ml_engineering.training_infrastructure",
+      "title": "Training Infrastructure",
+      "slug": "/concepts/training-infrastructure",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The machinery that executes one optimisation run across many accelerators — how the model and batch are partitioned, what each partitioning costs in communication, how memory and precision are budgeted, and how the job survives hardware that fails mid-run.",
+      "aliases": [
+        "distributed training"
+      ],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.training_infrastructure",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
       "id": "concept.number_theory.algebraic_number_theory",
       "title": "Algebraic Number Theory",
       "slug": "/concepts/algebraic-number-theory",
@@ -3119,6 +3287,288 @@
       "claims": 0
     },
     {
+      "id": "concept.software.apis",
+      "title": "APIs",
+      "slug": "/concepts/apis",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An API is the contract a piece of software publishes to its callers — the calls they may make, the answers they may rely on, and the failures they must handle — and once callers exist that contract can be extended but never quietly changed.",
+      "aliases": [
+        "application programming interface"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.apis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.containers",
+      "title": "Containers",
+      "slug": "/concepts/containers",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Operating-system-level isolation in which an ordinary process runs on the shared host kernel with a restricted view of it, bought at near-native cost and packaged as a layered filesystem image.",
+      "aliases": [
+        "OS-level virtualisation",
+        "containerisation"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.containers",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.continuous_delivery",
+      "title": "Continuous Delivery",
+      "slug": "/concepts/continuous-delivery",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice of keeping software permanently releasable by promoting every change through an automated deployment pipeline, so that shipping becomes a business decision rather than a technical event.",
+      "aliases": [],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.continuous_delivery",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.continuous_integration",
+      "title": "Continuous Integration",
+      "slug": "/concepts/continuous-integration",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice of merging every developer's work into one shared mainline at least daily and verifying each merge with an automated build, so integration problems surface in minutes instead of accumulating inside long-lived branches.",
+      "aliases": [],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.continuous_integration",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.design_patterns",
+      "title": "Design Patterns",
+      "slug": "/concepts/design-patterns",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A catalogue of named solutions to recurring object-oriented design problems, valuable mostly for the shared vocabulary it gave programmers and criticised for encoding workarounds to missing language features.",
+      "aliases": [
+        "Gang of Four patterns",
+        "GoF patterns"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.design_patterns",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.model_context_protocol",
+      "title": "Model Context Protocol",
+      "slug": "/concepts/model-context-protocol",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An open client-server protocol, carried over JSON-RPC, that lets a host application discover and use tools, data and prompt templates offered by separate servers on behalf of a language model.",
+      "aliases": [
+        "MCP"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.model_context_protocol",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.protocols",
+      "title": "Protocols",
+      "slug": "/concepts/protocols",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The agreed contract — message format, legal message ordering, error handling and rules for change — that lets programs written by strangers and deployed years apart still interoperate.",
+      "aliases": [
+        "wire protocol"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.protocols",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.testing",
+      "title": "Testing",
+      "slug": "/concepts/testing",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Running a program on chosen inputs and checking the observed behaviour against an expected one, which can demonstrate that a defect exists but never that none remains.",
+      "aliases": [
+        "software testing"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.testing",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.software.version_control",
+      "title": "Version Control",
+      "slug": "/concepts/version-control",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice, and the systems that support it, of recording every state a project passes through so that any of them can be recovered, compared, attributed to a person, and reconciled with somebody else's concurrent work.",
+      "aliases": [
+        "revision control",
+        "source control"
+      ],
+      "primaryCategory": "Programming/Software Practice",
+      "categories": [
+        "Programming/Software Practice"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.software_practice.version_control",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.distributed_systems",
+      "title": "Distributed Systems",
+      "slug": "/concepts/distributed-systems",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of computation spread over machines that fail independently and share no clock, where the central difficulties are partial failure, agreement and what a replica is allowed to say when it cannot reach the others.",
+      "aliases": [],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.distributed_systems",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.graph_databases",
+      "title": "Graph Databases",
+      "slug": "/concepts/graph-databases",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A class of database systems that store nodes and edges as first-class records so that following a relationship is a pointer hop rather than a join, which makes deep and variable-length traversals cheap and most other workloads no better than relational.",
+      "aliases": [
+        "graph DBMS",
+        "property graph database"
+      ],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.graph_databases",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.high_performance_computing",
+      "title": "High-Performance Computing",
+      "slug": "/concepts/high-performance-computing",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice of running one numerical computation across thousands of nodes that share no memory, where the binding constraint is almost never arithmetic but the cost of moving operands through the cache, DRAM and interconnect hierarchy.",
+      "aliases": [],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.high_performance_computing",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.networking",
+      "title": "Networking",
+      "slug": "/concepts/networking",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The layered discipline of moving data between machines over a packet-switched, best-effort substrate, where bandwidth can be bought but latency is bounded below by the speed of light.",
+      "aliases": [
+        "computer networks"
+      ],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.networking",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
       "id": "concept.systems.operating_systems",
       "title": "Operating Systems",
       "slug": "/concepts/operating-systems",
@@ -3136,6 +3586,51 @@
       "candidateId": "candidate.programming.systems.operating_systems",
       "candidateStatus": "covered",
       "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.parallel_computing",
+      "title": "Parallel Computing",
+      "slug": "/concepts/parallel-computing",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Using several hardware execution units at the same instant to shorten the wall-clock time of one computation, which buys speed only in proportion to the part of the work that is genuinely independent.",
+      "aliases": [
+        "shared-memory parallelism"
+      ],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.parallel_computing",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.relational_databases",
+      "title": "Relational Databases",
+      "slug": "/concepts/relational-databases",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A storage system that represents data as typed tables and answers declarative queries over them, leaving the engine free to choose access paths and to interleave concurrent writers without breaking the invariants they share.",
+      "aliases": [
+        "RDBMS",
+        "relational model"
+      ],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.relational_databases",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     }
   ],
@@ -5917,6 +6412,158 @@
       "condition": null
     },
     {
+      "id": "concept.ml_engineering.deployment|contrasts_with|concept.ml_engineering.training_infrastructure",
+      "source": "concept.ml_engineering.deployment",
+      "target": "concept.ml_engineering.training_infrastructure",
+      "type": "contrasts_with",
+      "note": "Training optimises throughput over a fixed offline dataset where a slow step costs minutes; serving optimises tail latency over an arriving request stream where a slow step costs a user.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.deployment|requires|concept.software.containers",
+      "source": "concept.ml_engineering.deployment",
+      "target": "concept.software.containers",
+      "type": "requires",
+      "note": "A serving replica is built from a pinned image, and without that pinning the runtime a model is validated in is not the runtime it executes in.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.deployment|supported_by|concept.software.continuous_delivery",
+      "source": "concept.ml_engineering.deployment",
+      "target": "concept.software.continuous_delivery",
+      "type": "supported_by",
+      "note": "Staged rollout, versioned artefacts and automated rollback are continuous delivery machinery that a model release reuses rather than reinvents.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.experiment_tracking|assumes|concept.software.containers",
+      "source": "concept.ml_engineering.experiment_tracking",
+      "target": "concept.software.containers",
+      "type": "assumes",
+      "note": "Re-deriving a recorded run assumes its software environment can be restored, which in practice means a pinned image digest rather than a list of package names.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.experiment_tracking|contrasts_with|concept.software.continuous_integration",
+      "source": "concept.ml_engineering.experiment_tracking",
+      "target": "concept.software.continuous_integration",
+      "type": "contrasts_with",
+      "note": "Both are provenance systems over the same commits, but CI re-runs a deterministic build to gate a change, whereas tracking records a stochastic experiment whose value is comparison across runs rather than a pass or fail.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.experiment_tracking|contributes_to|concept.ml_engineering.training_infrastructure",
+      "source": "concept.ml_engineering.experiment_tracking",
+      "target": "concept.ml_engineering.training_infrastructure",
+      "type": "contributes_to",
+      "note": "Tracking is the instrumentation layer a training system carries; without a per-run record, a cluster that can launch a thousand jobs produces a thousand results nobody can attribute to a change.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.experiment_tracking|unreliable_when|concept.languages.gpu_kernels",
+      "source": "concept.ml_engineering.experiment_tracking",
+      "target": "concept.languages.gpu_kernels",
+      "type": "unreliable_when",
+      "note": "Nondeterministic GPU kernels — atomic accumulation, autotuned algorithm selection — break the bitwise re-execution people read into a complete run record, even when every seed was logged.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.jax|contrasts_with|concept.ml_engineering.pytorch",
+      "source": "concept.ml_engineering.jax",
+      "target": "concept.ml_engineering.pytorch",
+      "type": "contrasts_with",
+      "note": "PyTorch records a tape over mutable tensors as an eager program runs, whereas JAX traces a pure function to an intermediate representation before anything executes, which is why one framework tolerates in-place updates and Python control flow and the other does not.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.jax|contributes_to|concept.ml_engineering.training_infrastructure",
+      "source": "concept.ml_engineering.jax",
+      "target": "concept.ml_engineering.training_infrastructure",
+      "type": "contributes_to",
+      "note": "Large-model training in JAX is expressed by annotating arrays with shardings over a device mesh and letting the compiler partition the program, which is a different division of labour between researcher and infrastructure than manual data and pipeline parallelism.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.jax|implements|concept.paradigms.array_programming",
+      "source": "concept.ml_engineering.jax",
+      "target": "concept.paradigms.array_programming",
+      "type": "implements",
+      "note": "jax.numpy reproduces NumPy's whole-array interface almost operation for operation, and that array surface is precisely what the transformations rewrite — there is no scalar-loop dialect underneath for them to work on.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.jax|requires|concept.paradigms.functional_programming",
+      "source": "concept.ml_engineering.jax",
+      "target": "concept.paradigms.functional_programming",
+      "type": "requires",
+      "note": "Every JAX transformation is sound only on a referentially transparent function, so a reader who does not already have the idea of a pure function cannot make sense of why a stray global or a print statement silently produces the wrong program.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.pytorch|contrasts_with|concept.ml_engineering.jax",
+      "source": "concept.ml_engineering.pytorch",
+      "target": "concept.ml_engineering.jax",
+      "type": "contrasts_with",
+      "note": "Both give reverse-mode autodiff over arrays, but PyTorch records a tape from executed stateful objects while JAX traces pure functions into a graph that is then transformed and compiled.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.pytorch|implements|concept.deep_learning.backpropagation_through_convolution",
+      "source": "concept.ml_engineering.pytorch",
+      "target": "concept.deep_learning.backpropagation_through_convolution",
+      "type": "implements",
+      "note": "The gradients derived by hand for a convolution on that page are exactly what autograd produces automatically for a Conv2d module — same chain rule, applied by a recorded graph instead of by a person.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.pytorch|requires|concept.languages.python",
+      "source": "concept.ml_engineering.pytorch",
+      "target": "concept.languages.python",
+      "type": "requires",
+      "note": "PyTorch's user-facing surface is a Python library, and its define-by-run design means Python's own control flow and object model are part of how a model is specified.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.pytorch|specializes|concept.paradigms.array_programming",
+      "source": "concept.ml_engineering.pytorch",
+      "target": "concept.paradigms.array_programming",
+      "type": "specializes",
+      "note": "The tensor API is array programming — broadcasting, whole-array elementwise operations, reductions — extended with a device axis and a recorded derivative for every operation.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.training_infrastructure|contrasts_with|concept.ml_engineering.deployment",
+      "source": "concept.ml_engineering.training_infrastructure",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contrasts_with",
+      "note": "Serving optimises tail latency under continuous availability with independent requests, whereas a training job is one long gang-scheduled batch computation optimised for aggregate throughput — which is why their failure handling and hardware choices diverge.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.training_infrastructure|contrasts_with|concept.systems.operating_systems",
+      "source": "concept.ml_engineering.training_infrastructure",
+      "target": "concept.systems.operating_systems",
+      "type": "contrasts_with",
+      "note": "The operating system's guarantees stop at the process boundary; a training job's ranks are coupled by collective calls into a single all-or-nothing entity, so one dead process kills a job that the OS considers hundreds of healthy ones.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.training_infrastructure|requires|concept.languages.gpu_kernels",
+      "source": "concept.ml_engineering.training_infrastructure",
+      "target": "concept.languages.gpu_kernels",
+      "type": "requires",
+      "note": "Every trade-off on this page is a trade-off against the accelerator's arithmetic throughput and memory hierarchy, so a reader who does not know what a kernel is and where its data lives cannot tell why moving bytes is the expensive part.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.training_infrastructure|used_to_solve|concept.optimization.stochastic_optimization",
+      "source": "concept.ml_engineering.training_infrastructure",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "used_to_solve",
+      "note": "Data parallelism, gradient accumulation and sharding are all ways of forming one minibatch stochastic gradient estimate that no single device could form alone; the optimiser being served is unchanged.",
+      "condition": null
+    },
+    {
       "id": "concept.number_theory.algebraic_number_theory|contrasts_with|concept.number_theory.analytic_number_theory",
       "source": "concept.number_theory.algebraic_number_theory",
       "target": "concept.number_theory.analytic_number_theory",
@@ -6709,6 +7356,382 @@
       "condition": null
     },
     {
+      "id": "concept.software.apis|contrasts_with|concept.software.version_control",
+      "source": "concept.software.apis",
+      "target": "concept.software.version_control",
+      "type": "contrasts_with",
+      "note": "Version control versions an implementation's history and can rewrite it; an API version is a promise already in other people's hands and cannot be taken back.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.apis|contributes_to|concept.software.design_patterns",
+      "source": "concept.software.apis",
+      "target": "concept.software.design_patterns",
+      "type": "contributes_to",
+      "note": "Facade, Adapter and programming-to-an-interface are API design decisions at the scale of a single object, governed by the same contract discipline as a network endpoint.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.apis|contributes_to|concept.systems.distributed_systems",
+      "source": "concept.software.apis",
+      "target": "concept.systems.distributed_systems",
+      "type": "contributes_to",
+      "note": "Every boundary between independently deployed services is an API, and compatibility across versions is precisely what allows those services to be deployed independently.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.apis|requires|concept.systems.networking",
+      "source": "concept.software.apis",
+      "target": "concept.systems.networking",
+      "type": "requires",
+      "note": "The HTTP and RPC half of this page assumes the reader already knows what a request/response exchange over an unreliable network is, including latency and partial failure.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.containers|contributes_to|concept.ml_engineering.training_infrastructure",
+      "source": "concept.software.containers",
+      "target": "concept.ml_engineering.training_infrastructure",
+      "type": "contributes_to",
+      "note": "Cluster schedulers dispatch training jobs as images carrying a pinned CUDA userspace, which is how a fleet of heterogeneous nodes runs one reproducible software stack, subject to the host GPU driver being new enough.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.containers|contributes_to|concept.software.continuous_delivery",
+      "source": "concept.software.containers",
+      "target": "concept.software.continuous_delivery",
+      "type": "contributes_to",
+      "note": "The immutable, content-addressed image is the artifact a delivery pipeline builds once and promotes unchanged through staging to production, so the thing tested is bit-for-bit the thing released.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.containers|requires|concept.systems.operating_systems",
+      "source": "concept.software.containers",
+      "target": "concept.systems.operating_systems",
+      "type": "requires",
+      "note": "Namespaces and cgroups are kernel mechanisms for partitioning the process table, mount table, network stack and scheduler, so a reader without the process abstraction and the user/kernel boundary cannot follow what a container actually is.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.containers|used_to_solve|concept.ml_engineering.deployment",
+      "source": "concept.software.containers",
+      "target": "concept.ml_engineering.deployment",
+      "type": "used_to_solve",
+      "note": "An image freezes the whole userspace a service needs into one artifact that the same runtime starts identically on a laptop and on a cluster node, which is what makes deployment a matter of moving a digest rather than reinstalling dependencies.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.continuous_delivery|contributes_to|concept.ml_engineering.deployment",
+      "source": "concept.software.continuous_delivery",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contributes_to",
+      "note": "Shipping a model to serving traffic is a release like any other, and canary rollout, rollback and the deploy-release split are borrowed wholesale from this practice.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.continuous_delivery|requires|concept.software.continuous_integration",
+      "source": "concept.software.continuous_delivery",
+      "target": "concept.software.continuous_integration",
+      "type": "requires",
+      "note": "The pipeline's first stage is the integration build, and a trunk that is not continuously integrated has no green state to promote, so nothing downstream of it means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.continuous_delivery|useful_when|concept.software.containers",
+      "source": "concept.software.continuous_delivery",
+      "target": "concept.software.containers",
+      "type": "useful_when",
+      "note": "A container image is an immutable, content-addressed artifact that can be built once and run unchanged in every environment, which is exactly the property the promotion model depends on.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.continuous_integration|contrasts_with|concept.ml_engineering.experiment_tracking",
+      "source": "concept.software.continuous_integration",
+      "target": "concept.ml_engineering.experiment_tracking",
+      "type": "contrasts_with",
+      "note": "Experiment tracking records results of runs far too slow and too stochastic to gate a merge, which is exactly the regime where commit-level gating does not apply.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.continuous_integration|contributes_to|concept.ml_engineering.deployment",
+      "source": "concept.software.continuous_integration",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contributes_to",
+      "note": "The artifact a deployment ships is the output of a green pipeline run, so what the pipeline gates on determines what deployment is allowed to assume.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.continuous_integration|prerequisite_of|concept.software.continuous_delivery",
+      "source": "concept.software.continuous_integration",
+      "target": "concept.software.continuous_delivery",
+      "type": "prerequisite_of",
+      "note": "Continuous delivery is the claim that every mainline commit is releasable, which is only meaningful once every commit has actually been integrated and verified.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.design_patterns|contrasts_with|concept.paradigms.functional_programming",
+      "source": "concept.software.design_patterns",
+      "target": "concept.paradigms.functional_programming",
+      "type": "contrasts_with",
+      "note": "A substantial share of the catalogue dissolves when functions are values — Strategy becomes a function argument, Command a closure, Template Method a higher-order function — which makes the two a genuine comparison rather than a layering.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.design_patterns|contributes_to|concept.software.apis",
+      "source": "concept.software.design_patterns",
+      "target": "concept.software.apis",
+      "type": "contributes_to",
+      "note": "Pattern names became the working vocabulary for describing the shape of a library's surface, so adapter, facade, factory and observer appear in interface documentation as design terms rather than as implementation details.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.design_patterns|contributes_to|concept.software.testing",
+      "source": "concept.software.design_patterns",
+      "target": "concept.software.testing",
+      "type": "contributes_to",
+      "note": "The patterns that separate constructing a collaborator from using it are what let a test substitute a fake for the real thing, which is why the catalogue and automated unit testing spread through the same codebases.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.design_patterns|requires|concept.paradigms.object_oriented_programming",
+      "source": "concept.software.design_patterns",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "requires",
+      "note": "Every pattern in the canonical catalogue is stated in terms of classes, interfaces, inheritance and dynamic dispatch, so a reader who does not already have those mechanisms cannot read a pattern's structure at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.model_context_protocol|contrasts_with|concept.software.containers",
+      "source": "concept.software.model_context_protocol",
+      "target": "concept.software.containers",
+      "type": "contrasts_with",
+      "note": "Both are invoked when people talk about running a tool server safely, but a container bounds what a process can reach while MCP constrains only the messages on the wire.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.model_context_protocol|contributes_to|concept.ml_engineering.deployment",
+      "source": "concept.software.model_context_protocol",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contributes_to",
+      "note": "Exposing a model-facing capability through MCP turns it into a service that has to be shipped, versioned and operated like any other deployed process.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.model_context_protocol|specializes|concept.software.protocols",
+      "source": "concept.software.model_context_protocol",
+      "target": "concept.software.protocols",
+      "type": "specializes",
+      "note": "MCP is one application-layer protocol among many, fixing a particular wire format, role split and version negotiation for the general pattern.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.protocols|contrasts_with|concept.paradigms.object_oriented_programming",
+      "source": "concept.software.protocols",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "contrasts_with",
+      "note": "An object interface is a contract you can change by recompiling every caller; a protocol is a contract whose other side you can never recompile, which is why the same change is trivial in one and impossible in the other.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.protocols|contributes_to|concept.software.continuous_delivery",
+      "source": "concept.software.protocols",
+      "target": "concept.software.continuous_delivery",
+      "type": "contributes_to",
+      "note": "Shipping services independently is only safe when the protocol between them tolerates both the old and the new version at once, so a protocol's compatibility rules set the ceiling on release cadence.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.protocols|prerequisite_of|concept.software.model_context_protocol",
+      "source": "concept.software.protocols",
+      "target": "concept.software.model_context_protocol",
+      "type": "prerequisite_of",
+      "note": "MCP's initialize exchange, JSON-RPC message framing and dated version string only make sense once message format, lifecycle and version negotiation are understood in general.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.testing|contrasts_with|concept.formal_verification.coq",
+      "source": "concept.software.testing",
+      "target": "concept.formal_verification.coq",
+      "type": "contrasts_with",
+      "note": "A machine-checked proof establishes a property for every input in the domain, where a suite establishes it only for the finitely many inputs it actually ran.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.testing|contributes_to|concept.software.version_control",
+      "source": "concept.software.testing",
+      "target": "concept.software.version_control",
+      "type": "contributes_to",
+      "note": "Continuous integration works by running the suite against every commit, so tests are the gate that makes frequent merging into shared history safe.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.testing|unreliable_when|concept.systems.distributed_systems",
+      "source": "concept.software.testing",
+      "target": "concept.systems.distributed_systems",
+      "type": "unreliable_when",
+      "note": "Tests need a reproducible run, and thread interleavings, clocks and network timing make the same test pass and fail on the same code.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.testing|useful_when|concept.software.apis",
+      "source": "concept.software.testing",
+      "target": "concept.software.apis",
+      "type": "useful_when",
+      "note": "A test binds to whatever surface it calls, so testing pays off where a component exposes a stable interface rather than where the test must reach into internals.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.version_control|contrasts_with|concept.systems.relational_databases",
+      "source": "concept.software.version_control",
+      "target": "concept.systems.relational_databases",
+      "type": "contrasts_with",
+      "note": "Both manage durable shared state, but a database serialises concurrent writers through transactions and keeps one current value per row, whereas version control lets writers diverge on purpose and keeps every past value forever.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.version_control|contributes_to|concept.software.testing",
+      "source": "concept.software.version_control",
+      "target": "concept.software.testing",
+      "type": "contributes_to",
+      "note": "A test result only means something against an identified revision, and binary search over commit history is the standard way of tracing a newly failing test to the change that caused it.",
+      "condition": null
+    },
+    {
+      "id": "concept.software.version_control|specializes|concept.systems.distributed_systems",
+      "source": "concept.software.version_control",
+      "target": "concept.systems.distributed_systems",
+      "type": "specializes",
+      "note": "A distributed version control system is optimistic replication in miniature — every clone is a full replica that accepts writes while disconnected, and divergence is reconciled at merge time rather than prevented by coordination.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.distributed_systems|assumes|concept.systems.networking",
+      "source": "concept.systems.distributed_systems",
+      "target": "concept.systems.networking",
+      "type": "assumes",
+      "note": "Every result here is stated against a model of what the network may do — drop, delay, duplicate and reorder messages with no bound on delivery time — so the network's actual guarantees fix which theorems apply.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.distributed_systems|contrasts_with|concept.systems.parallel_computing",
+      "source": "concept.systems.distributed_systems",
+      "target": "concept.systems.parallel_computing",
+      "type": "contrasts_with",
+      "note": "Parallel computing splits work across cores that share memory and a clock and fail together, so its hard problem is throughput; distribution removes both the shared clock and the joint failure, and the hard problem becomes agreement.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.distributed_systems|contributes_to|concept.software.apis",
+      "source": "concept.systems.distributed_systems",
+      "target": "concept.software.apis",
+      "type": "contributes_to",
+      "note": "A remote call inherits partial failure — the caller cannot distinguish a lost request from a lost response — which is why idempotency, retry policy and request deduplication are questions of API design rather than of plumbing.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.distributed_systems|contributes_to|concept.systems.relational_databases",
+      "source": "concept.systems.distributed_systems",
+      "target": "concept.systems.relational_databases",
+      "type": "contributes_to",
+      "note": "Replication, partitioning, synchronous commit and the isolation hierarchy in any multi-node SQL deployment are distributed-systems problems, and a single-node ACID guarantee stops at the edge of the replica set.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.graph_databases|contrasts_with|concept.systems.relational_databases",
+      "source": "concept.systems.graph_databases",
+      "target": "concept.systems.relational_databases",
+      "type": "contrasts_with",
+      "note": "They store the same information — entities and the links between them — but a relational engine reconstructs a link by matching key values at query time while a graph engine has it materialised as a stored pointer.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.graph_databases|requires|concept.algorithms.core_data_structures",
+      "source": "concept.systems.graph_databases",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "requires",
+      "note": "The comparison is literally adjacency lists of pointer records against B-tree index probes, so neither side of it can be evaluated without those two structures.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.graph_databases|requires|concept.algorithms.graph_algorithms",
+      "source": "concept.systems.graph_databases",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "requires",
+      "note": "The whole design exists to make breadth-first expansion from an anchor node cheap, and the cost argument is unreadable without knowing what a traversal is and what it costs.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.graph_databases|unreliable_when|concept.systems.distributed_systems",
+      "source": "concept.systems.graph_databases",
+      "target": "concept.systems.distributed_systems",
+      "type": "unreliable_when",
+      "note": "Index-free adjacency degrades to a network round trip as soon as the graph is partitioned across machines, and power-law graphs admit no good balanced edge cut, so the traversal advantage is weakest exactly where scale forces sharding.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.high_performance_computing|assumes|concept.systems.networking",
+      "source": "concept.systems.high_performance_computing",
+      "target": "concept.systems.networking",
+      "type": "assumes",
+      "note": "Every performance model here assumes a dedicated, non-oversubscribed, microsecond-latency fabric with hardware RDMA; on commodity TCP over Ethernet the collective costs quoted in this page are wrong by one to two orders of magnitude.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.high_performance_computing|contrasts_with|concept.systems.distributed_systems",
+      "source": "concept.systems.high_performance_computing",
+      "target": "concept.systems.distributed_systems",
+      "type": "contrasts_with",
+      "note": "Distributed systems treat partial failure and asynchrony as the normal case and pay for it in coordination, while an HPC job is gang-scheduled, synchronous, and recovers from any node loss by killing the whole job and restarting from a checkpoint.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.high_performance_computing|specializes|concept.systems.parallel_computing",
+      "source": "concept.systems.high_performance_computing",
+      "target": "concept.systems.parallel_computing",
+      "type": "specializes",
+      "note": "HPC is parallel computing narrowed to one regime — large regular numerical workloads on dedicated hardware, where the machine is assumed reliable and the only question is efficiency.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.high_performance_computing|used_to_solve|concept.analysis.partial_differential_equations",
+      "source": "concept.systems.high_performance_computing",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "used_to_solve",
+      "note": "Domain decomposition with halo exchange is the standard parallelisation of a discretised PDE, and PDE solvers are the workload most of this machinery was built for.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.networking|assumes|concept.systems.operating_systems",
+      "source": "concept.systems.networking",
+      "target": "concept.systems.operating_systems",
+      "type": "assumes",
+      "note": "The protocol stack below the application lives in the kernel, and sockets, buffering, interrupts and timers are operating-system mechanisms that the network's observable behaviour depends on.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.networking|contrasts_with|concept.systems.parallel_computing",
+      "source": "concept.systems.networking",
+      "target": "concept.systems.parallel_computing",
+      "type": "contrasts_with",
+      "note": "Shared-memory parallelism communicates in tens of nanoseconds while a wide-area round trip costs tens of milliseconds, so an algorithm that is communication-bound on one is fine on the other and the two demand opposite decompositions.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.networking|contributes_to|concept.software.apis",
+      "source": "concept.systems.networking",
+      "target": "concept.software.apis",
+      "type": "contributes_to",
+      "note": "A remote API call is an application-layer message carried over TCP, so the API's latency budget, timeout policy and idempotency requirements are inherited from the transport beneath it.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.networking|prerequisite_of|concept.systems.distributed_systems",
+      "source": "concept.systems.networking",
+      "target": "concept.systems.distributed_systems",
+      "type": "prerequisite_of",
+      "note": "Every failure model in distributed systems — dropped messages, unbounded delay, the impossibility of distinguishing a slow node from a dead one — is a restatement of what a packet network does and does not guarantee.",
+      "condition": null
+    },
+    {
       "id": "concept.systems.operating_systems|assumes|concept.languages.assembly",
       "source": "concept.systems.operating_systems",
       "target": "concept.languages.assembly",
@@ -6738,6 +7761,70 @@
       "target": "concept.algorithms.core_data_structures",
       "type": "requires",
       "note": "A multi-level page table, an inode index and a scheduler run queue are trees, arrays and queues under other names, and the mechanisms cannot be read without them.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.parallel_computing|contrasts_with|concept.algorithms.complexity_analysis",
+      "source": "concept.systems.parallel_computing",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contrasts_with",
+      "note": "Asymptotic operation counts say nothing about the serial fraction, the memory bandwidth ceiling or the synchronisation cost, so the best sequential algorithm is often the wrong parallel one.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.parallel_computing|contrasts_with|concept.systems.distributed_systems",
+      "source": "concept.systems.parallel_computing",
+      "target": "concept.systems.distributed_systems",
+      "type": "contrasts_with",
+      "note": "Both run many things at once, but a parallel machine assumes reliable hardware, a shared clock domain and a defined memory model, while a distributed system treats partial failure and unbounded message delay as the normal case.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.parallel_computing|contributes_to|concept.systems.high_performance_computing",
+      "source": "concept.systems.parallel_computing",
+      "target": "concept.systems.high_performance_computing",
+      "type": "contributes_to",
+      "note": "HPC is largely this material applied at cluster scale, where the decomposition, the scaling law and the communication cost decide whether a machine-year of compute is worth buying.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.parallel_computing|requires|concept.systems.operating_systems",
+      "source": "concept.systems.parallel_computing",
+      "target": "concept.systems.operating_systems",
+      "type": "requires",
+      "note": "Threads, processes and address spaces are kernel abstractions, and the scheduler decides when a runnable thread actually occupies a core, so the mechanics here are unreadable without them.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.relational_databases|assumes|concept.logic.first_order_logic",
+      "source": "concept.systems.relational_databases",
+      "target": "concept.logic.first_order_logic",
+      "type": "assumes",
+      "note": "The declarative half is first-order logic over finite relations — a WHERE clause is a formula, and two queries are interchangeable exactly when the formulas are logically equivalent.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.relational_databases|challenged_by|concept.systems.distributed_systems",
+      "source": "concept.systems.relational_databases",
+      "target": "concept.systems.distributed_systems",
+      "type": "challenged_by",
+      "note": "Single-node ACID is cheap because one process sees every write; replicating and partitioning the data turns atomicity and isolation into consensus problems with latency and availability costs.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.relational_databases|contrasts_with|concept.systems.graph_databases",
+      "source": "concept.systems.relational_databases",
+      "target": "concept.systems.graph_databases",
+      "type": "contrasts_with",
+      "note": "Both persist entities and the links between them, but a graph database makes multi-hop traversal a primitive where the relational model expresses it as a self-join or a recursive query.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.relational_databases|requires|concept.algorithms.core_data_structures",
+      "source": "concept.systems.relational_databases",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "requires",
+      "note": "An index is a B-tree or a hash table on disk and a join is a hash table or a merge of sorted runs, so the physical half of the system cannot be read without those structures.",
       "condition": null
     }
   ]

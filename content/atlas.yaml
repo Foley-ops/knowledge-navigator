@@ -1757,50 +1757,50 @@ candidates:
     title: Networking
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.networking
   - candidate_id: candidate.programming.systems.distributed_systems
     title: Distributed Systems
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.distributed_systems
   - candidate_id: candidate.programming.systems.relational_databases
     title: Relational Databases
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.relational_databases
   - candidate_id: candidate.programming.systems.graph_databases
     title: Graph Databases
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.graph_databases
   - candidate_id: candidate.programming.systems.parallel_computing
     title: Parallel Computing
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.parallel_computing
   - candidate_id: candidate.programming.systems.high_performance_computing
     title: High-Performance Computing
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.high_performance_computing
   - candidate_id: candidate.programming.ml_engineering.pytorch
     title: PyTorch
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.pytorch
   - candidate_id: candidate.programming.ml_engineering.jax
     title: JAX
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.jax
   - candidate_id: candidate.programming.ml_engineering.ollama
     title: Ollama
     categories:
@@ -1811,20 +1811,20 @@ candidates:
     title: Training Infrastructure
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.training_infrastructure
   - candidate_id: candidate.programming.ml_engineering.experiment_tracking
     title: Experiment Tracking
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.experiment_tracking
   - candidate_id: candidate.programming.ml_engineering.deployment
     title: Deployment
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.deployment
   - candidate_id: candidate.programming.ml_engineering.edge_inference
     title: Edge Inference
     categories:
@@ -1835,53 +1835,53 @@ candidates:
     title: Version Control
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.version_control
   - candidate_id: candidate.programming.software_practice.testing
     title: Testing
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.testing
   - candidate_id: candidate.programming.software_practice.continuous_integration
     title: Continuous Integration
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.continuous_integration
   - candidate_id: candidate.programming.software_practice.continuous_delivery
     title: Continuous Delivery
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.continuous_delivery
   - candidate_id: candidate.programming.software_practice.containers
     title: Containers
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.containers
   - candidate_id: candidate.programming.software_practice.design_patterns
     title: Design Patterns
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.design_patterns
   - candidate_id: candidate.programming.software_practice.apis
     title: APIs
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.apis
   - candidate_id: candidate.programming.software_practice.protocols
     title: Protocols
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.protocols
   - candidate_id: candidate.programming.software_practice.model_context_protocol
     title: Model Context Protocol
     categories:
       - atlas.programming.software_practice
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.software.model_context_protocol
