@@ -5,9 +5,11 @@ import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { Identifier, Page, ReviewStateBadge, Section, State } from '@site/src/components/Ui';
 import { Confidence } from '@site/src/components/Confidence';
+import { SaveAnswer } from '@site/src/components/SaveAnswer';
 import { ApiError, api, isAbort } from '@site/src/lib/api';
-import type { AssistantResponse, AssistantStatus } from '@site/src/lib/api';
+import type { AssistantResponse, AssistantStatus, ResearchSession } from '@site/src/lib/api';
 import { railClass } from '@site/src/lib/review-state';
+import { useWorkspaceSelection } from '@site/src/lib/workspace';
 
 const MODES = [
   { value: 'unstick', label: 'Help me get unstuck' },
@@ -58,6 +60,8 @@ function AnswerSection({
 }
 
 export default function AskPage(): ReactNode {
+  // Sessions of the current project, so an answer can be filed under one.
+  const [sessions, setSessions] = useState<ResearchSession[]>([]);
   const location = useLocation();
   const initialMode = new URLSearchParams(location.search).get('mode');
 
@@ -72,6 +76,27 @@ export default function AskPage(): ReactNode {
   const [working, setWorking] = useState(false);
   const [response, setResponse] = useState<AssistantResponse | null>(null);
   const [transportError, setTransportError] = useState<string | null>(null);
+
+  const workspace = useWorkspaceSelection();
+  useEffect(() => {
+    const projectId = workspace.projectId;
+    if (projectId === null) {
+      setSessions([]);
+      return;
+    }
+    const controller = new AbortController();
+    api
+      .listSessions(projectId, controller.signal)
+      .then((page) => {
+        setSessions(page.items);
+      })
+      .catch(() => {
+        setSessions([]);
+      });
+    return () => {
+      controller.abort();
+    };
+  }, [workspace.projectId]);
   const inFlight = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -414,10 +439,18 @@ export default function AskPage(): ReactNode {
               {response?.model === null || response?.model === undefined
                 ? ''
                 : ` using ${response.model}`}{' '}
-              in {Math.round((response?.elapsedMs ?? 0) / 100) / 10}s. This answer is not saved and
-              does not change any canonical page. Request{' '}
-              <Identifier>{response?.requestId}</Identifier>.
+              in {Math.round((response?.elapsedMs ?? 0) / 100) / 10}s. Nothing was stored, and no
+              canonical page changed. Request <Identifier>{response?.requestId}</Identifier>.
             </p>
+
+            {response !== null && (
+              <SaveAnswer
+                response={response}
+                question={question}
+                context={context}
+                sessions={sessions}
+              />
+            )}
           </Section>
         )}
         {response !== null && !working && (

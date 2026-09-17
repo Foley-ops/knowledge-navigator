@@ -343,11 +343,97 @@ export interface ConceptEvidenceResponse {
   }[];
 }
 
+/* ------------------------------ personal ---------------------------------- */
+
+export interface PersonalStatus {
+  available: boolean;
+  schemaVersion?: number;
+  reason?: string;
+  message?: string;
+  counts?: { projects: number; sessions: number; notes: number; savedItems: number };
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  archivedAt: string | null;
+}
+
+export interface ProjectContents {
+  sessions: number;
+  notes: number;
+  savedItems: number;
+  artifacts: number;
+}
+
+export interface ResearchSession {
+  id: string;
+  projectId: string;
+  title: string;
+  startingQuestion: string | null;
+  contextSummary: string | null;
+  createdAt: string;
+  updatedAt: string;
+  archivedAt: string | null;
+}
+
+export interface PrivateNote {
+  id: string;
+  projectId: string;
+  sessionId: string | null;
+  conceptId: string | null;
+  savedItemId: string | null;
+  artifactId: string | null;
+  body: string;
+  createdAt: string;
+  updatedAt: string;
+  archivedAt: string | null;
+}
+
+export type FamiliarityLevel = 'unfamiliar' | 'recognize' | 'working' | 'strong';
+
+export interface FamiliarityRecord {
+  conceptId: string;
+  level: FamiliarityLevel;
+  note: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type SavedItemType =
+  'concept' | 'source' | 'assistant-answer' | 'comparison' | 'path' | 'next-check';
+
+export interface SavedItem {
+  id: string;
+  projectId: string;
+  sessionId: string | null;
+  itemType: SavedItemType;
+  itemKey: string;
+  label: string;
+  payloadVersion: number;
+  payload: Record<string, unknown>;
+  createdAt: string;
+  updatedAt: string;
+  archivedAt: string | null;
+}
+
 export interface AssistantAsk {
   question: string;
   context?: string;
   mode: string;
   depth: string;
+}
+
+/** POST JSON and decode the reply. Used by every personal mutation. */
+function post<T>(path: string, body: unknown): Promise<T> {
+  return request<T>(path, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(body),
+  });
 }
 
 /* -------------------------------- endpoints ------------------------------- */
@@ -407,6 +493,152 @@ export const api = {
     request<ConceptEvidenceResponse>(
       `/evidence/${encodeURIComponent(conceptId)}`,
       signal === undefined ? {} : { signal },
+    ),
+
+  /* ----------------------------- personal ------------------------------- */
+
+  personalStatus: (signal?: AbortSignal): Promise<PersonalStatus> =>
+    request<PersonalStatus>('/personal/status', signal === undefined ? {} : { signal }),
+
+  listProjects: (
+    includeArchived = false,
+    signal?: AbortSignal,
+  ): Promise<{ items: Project[]; total: number }> =>
+    request<{ items: Project[]; total: number }>(
+      `/personal/projects${includeArchived ? '?includeArchived=true' : ''}`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  createProject: (input: { title: string; description?: string }): Promise<Project> =>
+    post<Project>('/personal/projects', input),
+
+  getProject: (
+    id: string,
+    signal?: AbortSignal,
+  ): Promise<{ project: Project; contents: ProjectContents }> =>
+    request<{ project: Project; contents: ProjectContents }>(
+      `/personal/projects/${id}`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  updateProject: (id: string, input: { title?: string; description?: string }): Promise<Project> =>
+    request<Project>(`/personal/projects/${id}`, {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(input),
+    }),
+
+  archiveProject: (id: string): Promise<Project> =>
+    post<Project>(`/personal/projects/${id}/archive`, {}),
+
+  restoreProject: (id: string): Promise<Project> =>
+    post<Project>(`/personal/projects/${id}/restore`, {}),
+
+  listSessions: (projectId: string, signal?: AbortSignal): Promise<{ items: ResearchSession[] }> =>
+    request<{ items: ResearchSession[] }>(
+      `/personal/projects/${projectId}/sessions`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  createSession: (
+    projectId: string,
+    input: { title: string; startingQuestion?: string; contextSummary?: string },
+  ): Promise<ResearchSession> =>
+    post<ResearchSession>(`/personal/projects/${projectId}/sessions`, input),
+
+  archiveSession: (projectId: string, id: string): Promise<ResearchSession> =>
+    post<ResearchSession>(`/personal/projects/${projectId}/sessions/${id}/archive`, {}),
+
+  listNotes: (
+    projectId: string,
+    query: { conceptId?: string; sessionId?: string } = {},
+    signal?: AbortSignal,
+  ): Promise<{ items: PrivateNote[] }> => {
+    const params = new URLSearchParams();
+    if (query.conceptId !== undefined) params.set('conceptId', query.conceptId);
+    if (query.sessionId !== undefined) params.set('sessionId', query.sessionId);
+    const suffix = params.toString();
+    return request<{ items: PrivateNote[] }>(
+      `/personal/projects/${projectId}/notes${suffix === '' ? '' : `?${suffix}`}`,
+      signal === undefined ? {} : { signal },
+    );
+  },
+
+  createNote: (
+    projectId: string,
+    input: { body: string; conceptId?: string; sessionId?: string },
+  ): Promise<PrivateNote> => post<PrivateNote>(`/personal/projects/${projectId}/notes`, input),
+
+  updateNote: (projectId: string, id: string, body: string): Promise<PrivateNote> =>
+    request<PrivateNote>(`/personal/projects/${projectId}/notes/${id}`, {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ body }),
+    }),
+
+  archiveNote: (projectId: string, id: string): Promise<PrivateNote> =>
+    post<PrivateNote>(`/personal/projects/${projectId}/notes/${id}/archive`, {}),
+
+  restoreNote: (projectId: string, id: string): Promise<PrivateNote> =>
+    post<PrivateNote>(`/personal/projects/${projectId}/notes/${id}/restore`, {}),
+
+  listSaved: (
+    projectId: string,
+    query: { itemType?: SavedItemType; sessionId?: string } = {},
+    signal?: AbortSignal,
+  ): Promise<{ items: SavedItem[] }> => {
+    const params = new URLSearchParams();
+    if (query.itemType !== undefined) params.set('itemType', query.itemType);
+    if (query.sessionId !== undefined) params.set('sessionId', query.sessionId);
+    const suffix = params.toString();
+    return request<{ items: SavedItem[] }>(
+      `/personal/projects/${projectId}/saved${suffix === '' ? '' : `?${suffix}`}`,
+      signal === undefined ? {} : { signal },
+    );
+  },
+
+  save: (
+    projectId: string,
+    input: {
+      itemType: SavedItemType;
+      label: string;
+      sessionId?: string;
+      payload: Record<string, unknown>;
+    },
+  ): Promise<{ item: SavedItem; deduplicated: boolean }> =>
+    post<{ item: SavedItem; deduplicated: boolean }>(
+      `/personal/projects/${projectId}/saved`,
+      input,
+    ),
+
+  archiveSaved: (projectId: string, id: string): Promise<SavedItem> =>
+    post<SavedItem>(`/personal/projects/${projectId}/saved/${id}/archive`, {}),
+
+  getFamiliarity: (
+    conceptId: string,
+    signal?: AbortSignal,
+  ): Promise<{ conceptId: string; familiarity: FamiliarityRecord | null }> =>
+    request<{ conceptId: string; familiarity: FamiliarityRecord | null }>(
+      `/personal/familiarity/${encodeURIComponent(conceptId)}`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  listFamiliarity: (signal?: AbortSignal): Promise<{ items: FamiliarityRecord[] }> =>
+    request<{ items: FamiliarityRecord[] }>(
+      '/personal/familiarity',
+      signal === undefined ? {} : { signal },
+    ),
+
+  setFamiliarity: (
+    conceptId: string,
+    input: { level: FamiliarityLevel; note?: string },
+  ): Promise<FamiliarityRecord> =>
+    post<FamiliarityRecord>(`/personal/familiarity/${encodeURIComponent(conceptId)}`, input),
+
+  clearFamiliarity: (conceptId: string): Promise<{ conceptId: string; cleared: boolean }> =>
+    post<{ conceptId: string; cleared: boolean }>(
+      `/personal/familiarity/${encodeURIComponent(conceptId)}/clear`,
+      {},
     ),
 
   assistantStatus: (signal?: AbortSignal): Promise<AssistantStatus> =>

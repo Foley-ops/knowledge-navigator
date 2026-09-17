@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import { Badge, Fact, Identifier, ReviewStateBadge, Section } from '@site/src/components/Ui';
 import { ConceptNeighborhood } from '@site/src/components/ConceptNeighborhood';
+import { ConceptPrivate } from '@site/src/components/ConceptPrivate';
 import { claimStatusInfo, relationshipPhrase } from '@site/src/lib/concept-frontmatter';
 import type { ConceptClaim, ConceptFrontmatter } from '@site/src/lib/concept-frontmatter';
 import { nodesById } from '@site/src/lib/graph-data';
@@ -251,6 +252,13 @@ export function ConceptFooter({ concept }: { concept: ConceptFrontmatter }): Rea
       <ConceptClaims concept={concept} />
       <ConceptSources concept={concept} />
       <ConceptUnresolved concept={concept} />
+      <ConceptPrivate
+        conceptId={concept.concept_id}
+        title={concept.title}
+        slug={concept.slug}
+        reviewState={concept.review_state}
+        summary={concept.summary}
+      />
     </>
   );
 }

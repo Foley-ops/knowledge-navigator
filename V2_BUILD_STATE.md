@@ -24,7 +24,7 @@ honouring its **Depends on** line.
 
 ## Current checkpoint
 
-N08
+O07
 
 ## Completed checkpoints
 
@@ -71,6 +71,15 @@ N08
 - **N06** — Saved items support concept, source, assistant-answer, comparison, path and next-check, each with its own Zod payload schema and a payload_version. A saved assistant answer keeps the model, mode, depth, timestamp, resolved citations and the exact structured result the API returned. Concepts, sources, comparisons and paths deduplicate on a derived key inside a project; answers and next-checks do not, because each is a distinct event.
 - **N07** — Versioned JSON endpoints under /api/personal/ for status, projects, sessions, notes, saved items and familiarity. POST creates, PATCH updates, and archive/restore are POST actions — there is no DELETE anywhere in the product. Every child route resolves through the project, so an id from one project cannot be reached through another. The personal-data volume was added to Compose and the Dockerfile at the same time so the container stays usable at this phase boundary; S00 re-verifies it.
 - **N08** — Log redaction extended from two fields to eighteen, covering project titles and descriptions, note bodies, session questions and context, saved labels, statements, rationales and payloads, familiarity notes, artifact names and extracted text, and answer and interpretation text. Each is redacted at the top level of a log object and under req.body and res.body.
+- **N09** — Phase N committed as d9e468a. make check 9/9 in 14 s with 627 unit tests across 28 files; 32 browser journeys passed; make security-review 23 checks, 22 pass / 0 fail / 1 documented note. data/personal.db and data/personal.db-* are ignored by Git and no database file is staged.
+- **O00** — /workspace added with a Workspace link in the main navigation. Its opening section states where the data lives — locally, in its own database only this service opens, not in Git, not in an image, and not recoverable from anywhere else — and points at the export. The empty state explains what a project is before there is one.
+- **O01** — Project create, choose, rename, archive and restore. Archive asks for confirmation and says in the prompt that nothing is deleted; restore needs none. The chosen project is remembered in localStorage and carried in ?project= so a project view is linkable.
+- **O02** — The project view has Overview, Sessions, Notes, Saved, Artifacts and Export as buttons over one route — headings and state, not a router. Overview carries the description, four counts, the created date, the id, the rename form and the archive action.
+- **O03** — Concept pages and identity panels carry a private layer: add a note, see the notes already on this concept, and the plain statement that nothing there changes the page above. Notes render as text with white-space preserved, never as markup.
+- **O04** — Familiarity controls on concept pages and identity panels: Not set plus the four levels, each with its meaning shown, changing or clearing in one click. Familiarity is per concept rather than per project, because it describes the person rather than a piece of work.
+- **O05** — Save to project on concept pages, showing what will be saved and to which project before the action. The button reads Saved to project once the concept is already in the project, so a second save is visibly a no-op.
+- **O06** — Save result to project on the Ask page. It keeps the structured result, citations, mode, depth, provider, model and time, and the question. The research context is a separate opt-in tick box, because context describes unpublished work and is the most sensitive thing typed here. An answer can be filed under a session.
+- **O07** — Sessions are created from the project view and are offered on the Ask save panel. Reopening a project shows its sessions in the same order.
 
 ## Last successful checks
 
@@ -121,6 +130,15 @@ N08
 - **N06** `npx vitest run apps/api/tests/personal-store.test.ts` → all six types round-trip; saving the same concept twice returns the existing item while two answers stay two items; an unknown field, a fabricated canonical id, a one-concept comparison, an unknown item type and a file:// source URL are each rejected; archive, restore and un-archive-on-repeat-save behave; and a saved answer keeps its result and citations verbatim with no context unless the researcher chose to keep it
 - **N07** `npx vitest run apps/api/tests/personal-api.test.ts` → 16 tests passed — full project lifecycle; invalid bodies, unknown fields, malformed ids and unknown ids each with the right status; DELETE is 404; cross-project access to a session, note and saved item is 404; sessions, notes and saved items round-trip with dedup; archive and restore for every child type; four invalid list filters rejected; familiarity set/read/list/clear; a concept outside the corpus refused; and with the store unavailable every personal route is 503 with a reason and no path while canonical routes still answer 200
 - **N08** `npx vitest run apps/api/tests/personal-api.test.ts (the redaction audit)` → eleven unique sentinel strings were written through create, update, archive, list and three deliberate failure paths plus an assistant query, and the captured log was searched for every one: none appears. The log does contain the route and the status code, which is what it is for.
+- **N09** `make check && npx playwright test && make security-review && git status` → 627 tests; 32 journeys; security 22 pass 0 fail 1 note; commit d9e468a; tree clean; no .db file tracked
+- **O00** `npx playwright test tests/browser/workspace.spec.ts` → the page states the boundary in those words; neither "personal.db" nor "/private" appears anywhere in the rendered body; the nav link is reachable and activatable by keyboard; and the empty state explains a project and offers the form
+- **O01** `npx playwright test tests/browser/workspace.spec.ts` → one journey creates a project with a description, renames it, confirms the URL carries the project id, archives it through the confirmation dialog, finds it under Archived projects, restores it and finds it back in the chooser
+- **O02** `npx playwright test tests/browser/workspace.spec.ts` → all six sections are present and every one has a meaningful empty state: no sessions, no notes, nothing saved, no uploaded context, and an export section explaining that this is the only data that cannot be rebuilt
+- **O03** `npx playwright test tests/browser/workspace.spec.ts` → a note added from a concept page survives a reload, appears in its project with a link back to the concept, and leaves the corpus hash identical before and after. A note containing <img src=x onerror=alert(1)> and **bold** renders as exactly those characters, with zero img and zero strong elements created.
+- **O04** `npx playwright test tests/browser/workspace.spec.ts` → visiting a concept page twice leaves the level at Not set and the panel says "only you set it"; setting Working shows its meaning and survives a reload; Not set clears it in one action; and the same control is present on a graph-only identity
+- **O05** `npx playwright test tests/browser/workspace.spec.ts` → opening two concepts leaves the Saved section empty; one click saves exactly one item; reloading shows it already saved; and the project holds exactly one item, not two
+- **O06** `npx playwright test tests/browser/workspace.spec.ts` → an unsaved answer is gone after a reload; asking again and saving puts it in the project with its question visible; the panel states that context is not kept unless the box is ticked; and the answer section says "Nothing was stored" before any save
+- **O07** `npx playwright test tests/browser/workspace.spec.ts` → two sessions in one project both appear and reopen in the same order after a reload; the section states that asking a question never creates one; and an answer can be attached to a named session and saved
 
 ## Blockers
 
@@ -143,7 +161,9 @@ _none_
 - The personal-data Docker volume and the /private directory in Dockerfile.api were added at N07 rather than waiting for S00. Without them the container would open the personal store at a path it cannot write for the whole of phases O through R, leaving the product unusable at every phase boundary in between, which execution rule 11 forbids. S00 still runs and re-verifies that only the API mounts the volume.
 - CORS was widened from GET/POST/OPTIONS to include PATCH, for the personal update routes. DELETE is deliberately still absent: nothing in this product hard-deletes a researcher work, so there is no method for it to allow.
 - The security review was strengthened rather than adjusted at N08. Its "no filesystem write in the API" check pinned a pattern list that never included mkdirSync, so it would have passed a real write; it is now call-shaped, covers the *Sync variants, and excludes only apps/api/src/personal, with four further checks that the private store never names a canonical path, that no database is opened outside it, that the assistant reads nothing from it, and that only the API mounts its volume. Its redaction check pinned two literal strings; it now asserts all eighteen PRIVATE_FIELDS entries and that the paths are derived from that list. 15 checks became 23.
+- The browser suite gives each run its own personal database under a per-run temporary directory, set in playwright.config.ts. Deleting the file in a global setup does not work: the API already holds it open, and SQLite keeps writing to the unlinked inode, so the reset silently did nothing and the first workspace journey saw the previous run work.
+- Two product defects were found by the workspace journeys and fixed. The Archived projects panel loaded once on mount, so archiving a project left it absent from both lists until a manual reload; it now reloads on a token bumped by archive and restore. And the create-project form is behind a New project disclosure once a project exists, which the journeys now open the way a researcher would.
 
 ## Next action
 
-N09 — run the API tests, security review and v1 regression, then commit Phase N.
+O08 — run browser journeys, API tests and the v1 regression suite, then commit Phase O.

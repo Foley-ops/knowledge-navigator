@@ -128,6 +128,7 @@ const config: Config = {
         // Backlog is deliberately not a top-level item: it is reached from
         // Coverage, which is where a reader learns what a gap means.
         { to: '/coverage', label: 'Coverage', position: 'left' },
+        { to: '/workspace', label: 'Workspace', position: 'left' },
         { to: '/about', label: 'About', position: 'right' },
       ],
     },

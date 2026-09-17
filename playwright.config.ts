@@ -1,3 +1,5 @@
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -15,10 +17,21 @@ export const BASE_URL = `http://127.0.0.1:${String(WEB_PORT)}`;
 export const FIXTURE_API = `http://127.0.0.1:${String(FIXTURE_API_PORT)}/api`;
 export const DISABLED_API = `http://127.0.0.1:${String(DISABLED_API_PORT)}/api`;
 
+/**
+ * Each run gets its own private store, in a directory named for this run.
+ *
+ * A journey therefore always starts from an empty workspace, which is what a
+ * new researcher sees, and nothing a test writes can reach a real one. Deleting
+ * a database file the API already has open would not work — SQLite keeps
+ * writing to the unlinked inode — so a fresh path is used instead.
+ */
+const RUN_ID = `${String(process.pid)}-${String(Date.now())}`;
+const PRIVATE_DIR = join(tmpdir(), `navigator-browser-${RUN_ID}`);
 const apiEnvironment = (port: number, provider: string): Record<string, string> => ({
   NODE_ENV: 'development',
   ASSISTANT_PROVIDER: provider,
   DATABASE_PATH: `${process.cwd()}/data/knowledge.db`,
+  PERSONAL_DATABASE_PATH: join(PRIVATE_DIR, `personal-${String(port)}.db`),
   CONTENT_PATH: `${process.cwd()}/content/concepts`,
   PORT: String(port),
   HOST: '127.0.0.1',

@@ -1605,3 +1605,167 @@ details[open] > summary.coverage-branch__name::before {
   margin: 0 0 0.2rem;
   color: var(--nav-ink-faint);
 }
+
+/* ==========================================================================
+   The private workspace — yours, local, and never canonical
+   ========================================================================== */
+
+.workspace-explainer,
+.workspace-description {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  max-width: 52rem;
+  margin: 0 0 1rem;
+}
+
+.workspace-form,
+.workspace-inline-form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 44rem;
+  margin: 0 0 1.25rem;
+  justify-items: start;
+}
+
+.workspace-projects,
+.workspace-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.workspace-new {
+  margin-top: 0.5rem;
+}
+
+.workspace-new > summary {
+  cursor: pointer;
+  font-size: var(--nav-size-sm);
+  color: var(--nav-accent);
+}
+
+.workspace-counts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-size: var(--nav-size-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.workspace-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.workspace-item {
+  border-left: 2px solid var(--nav-rule-strong);
+  padding-left: 0.85rem;
+}
+
+.workspace-item__title {
+  margin: 0 0 0.2rem;
+  font-size: var(--nav-size-md);
+  font-weight: 600;
+}
+
+.workspace-item__where {
+  margin: 0 0 0.2rem;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+.workspace-item__body {
+  margin: 0 0 0.25rem;
+  font-size: var(--nav-size-sm);
+  line-height: 1.55;
+}
+
+/* A note is shown as the text it is. Whitespace is kept so a list stays a
+   list, and nothing in it is ever interpreted as markup. */
+.workspace-note {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--nav-serif);
+}
+
+.workspace-item__meta {
+  margin: 0;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.workspace-action {
+  font: inherit;
+  font-size: var(--nav-size-2xs);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--nav-accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.workspace-code {
+  background: var(--nav-surface-sunken);
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  font-size: var(--nav-size-sm);
+  overflow-x: auto;
+}
+
+/* ==========================================================================
+   The private layer on a concept page
+   ========================================================================== */
+
+.private-block {
+  margin: 0 0 1.5rem;
+}
+
+.private-heading {
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  color: var(--nav-ink-muted);
+}
+
+.private-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.private-meaning,
+.private-what {
+  font-size: var(--nav-size-xs);
+  color: var(--nav-ink-faint);
+  margin: 0 0 0.6rem;
+  max-width: 46rem;
+}
+
+.private-message {
+  font-size: var(--nav-size-xs);
+  color: var(--nav-accent);
+  margin: 0.5rem 0 0;
+}
+
+.save-answer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--nav-rule);
+  display: grid;
+  gap: 0.6rem;
+  justify-items: start;
+  max-width: 44rem;
+}

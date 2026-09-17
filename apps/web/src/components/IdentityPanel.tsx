@@ -6,6 +6,7 @@ import { useLocation } from '@docusaurus/router';
 import { Fact, Identifier, Page, ReviewStateBadge, Section, State } from '@site/src/components/Ui';
 import { api, isAbort } from '@site/src/lib/api';
 import type { ConceptEvidenceResponse } from '@site/src/lib/api';
+import { ConceptPrivate } from '@site/src/components/ConceptPrivate';
 import { destinationFor, graphData, identityKey, nodesById } from '@site/src/lib/graph-data';
 import type { GraphDataNode } from '@site/src/lib/graph-data';
 import { railClass } from '@site/src/lib/review-state';
@@ -208,6 +209,14 @@ export default function IdentityPanel(): ReactNode {
             </ul>
           </Section>
         )}
+
+        <ConceptPrivate
+          conceptId={node.id}
+          title={node.title}
+          slug={node.slug}
+          reviewState={node.reviewState}
+          summary={node.summary}
+        />
 
         {node.unresolvedReferences > 0 && (
           <Section heading="Waiting on">
