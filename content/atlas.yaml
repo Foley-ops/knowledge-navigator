@@ -196,8 +196,8 @@ candidates:
     title: Elementary Number Theory
     categories:
       - atlas.mathematics.number_theory
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.number_theory.elementary_number_theory
   - candidate_id: candidate.mathematics.number_theory.analytic_number_theory
     title: Analytic Number Theory
     categories:
@@ -538,32 +538,32 @@ candidates:
     title: Differential Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.differential_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.manifolds
     title: Manifolds
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.manifolds
   - candidate_id: candidate.mathematics.geometry_and_topology.lie_groups
     title: Lie Groups
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.lie_groups
   - candidate_id: candidate.mathematics.geometry_and_topology.curvature
     title: Curvature
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.curvature
   - candidate_id: candidate.mathematics.geometry_and_topology.algebraic_geometry
     title: Algebraic Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.algebraic_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.convex_geometry
     title: Convex Geometry
     categories:
@@ -580,26 +580,26 @@ candidates:
     title: Algebraic Topology
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.algebraic_topology
   - candidate_id: candidate.mathematics.geometry_and_topology.differential_topology
     title: Differential Topology
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.differential_topology
   - candidate_id: candidate.mathematics.geometry_and_topology.fractal_geometry
     title: Fractal Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.fractal_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.renormalization
     title: Renormalization
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.renormalization
   - candidate_id: candidate.mathematics.optimization.convex_optimization
     title: Convex Optimization
     categories:

@@ -39,6 +39,31 @@ sources:
       - uses-and-applicability
       - variants-and-alternatives
     checked_on: 2026-09-17
+  - source_id: source.mit_ocw.convex_analysis_and_optimization
+    title: MIT 6.253 Convex Analysis and Optimization (Spring 2012)
+    url: https://ocw.mit.edu/courses/6-253-convex-analysis-and-optimization-spring-2012/
+    source_kind: lecture-or-course
+    supports:
+      - formal-treatment
+      - assumptions-and-requirements
+    checked_on: 2026-09-17
+  - source_id: source.ball.modern_convex_geometry
+    title: An Elementary Introduction to Modern Convex Geometry
+    url: https://library.slmath.org/books/Book31/files/ball.pdf
+    source_kind: authoritative-secondary
+    supports:
+      - why-it-matters
+      - variants-and-alternatives
+      - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.nlab.krein_milman_theorem
+    title: 'nLab: Krein-Milman theorem'
+    url: https://ncatlab.org/nlab/show/Krein-Milman+theorem
+    source_kind: reference-documentation
+    supports:
+      - formal-treatment
+      - history-and-attribution
+    checked_on: 2026-09-17
   - source_id: source.mathworld
     title: Wolfram MathWorld
     url: https://mathworld.wolfram.com/
@@ -46,6 +71,13 @@ sources:
     supports:
       - formal-treatment
       - variants-and-alternatives
+      - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.mactutor.archive
+    title: MacTutor History of Mathematics Archive
+    url: https://mathshistory.st-andrews.ac.uk/
+    source_kind: reference-documentation
+    supports:
       - history-and-attribution
     checked_on: 2026-09-17
   - source_id: source.shalev_shwartz.understanding_machine_learning
@@ -64,14 +96,8 @@ sources:
       - limitations-and-common-mistakes
     checked_on: 2026-09-17
 unresolved_references:
-  - label: Rockafellar, Convex Analysis (1970)
-    reason: The registry holds no convex analysis or convex geometry monograph. The relative-interior refinements of the separation theorems, the conjugacy calculus and the post-war attribution history are standard there and only partly covered by Boyd and Vandenberghe or by MathWorld.
-    sections:
-      - formal-treatment
-      - assumptions-and-requirements
-      - history-and-attribution
-  - label: A functional analysis text covering Krein-Milman and non-locally-convex spaces
-    reason: No registry source states Krein-Milman with its hypotheses or documents the failure of separation in a topological vector space that is not locally convex, such as the trivial continuous dual of L^p on the unit interval for p between 0 and 1.
+  - label: A functional analysis text covering separation in non-locally-convex spaces
+    reason: nLab now states Krein-Milman with its hypotheses, but no registry source shows why the closure cannot be dropped from it, and none documents the failure of separation in a topological vector space that is not locally convex, such as the trivial continuous dual of L^p on the unit interval for p between 0 and 1. The registry holds no functional analysis text at all.
     sections:
       - formal-treatment
       - assumptions-and-requirements
@@ -296,11 +322,15 @@ growing convex relaxations.
 
 ## History and attribution
 
-Convexity became a subject of its own with Brunn in the 1880s and Minkowski
-around 1900. Minkowski's motivation was number-theoretic — counting lattice
-points in convex bodies — and along the way he introduced support functions,
-mixed volumes and the gauge functional named after him. Carathéodory's bound on
-convex combinations and Helly's intersection theorem followed shortly after.
+Convexity became a subject of its own with Brunn in the 1880s and with
+Minkowski, who initiated the geometry of numbers around 1890 and whose
+_Geometrie der Zahlen_ appeared in part in 1896 and in full in 1910. Minkowski's
+motivation was number-theoretic — counting lattice points in convex bodies — and
+along the way he introduced support functions, mixed volumes and the gauge
+functional named after him. Brunn's inequality was proved for convex bodies; the
+general statement for arbitrary non-empty compact sets came later, with
+Lusternik in 1935. Carathéodory's bound on convex combinations and Helly's
+intersection theorem followed shortly after.
 
 The analytic turn came with the Hahn-Banach theorem, proved by Hahn in 1927 and
 independently by Banach in 1929, whose geometric separation form was developed
@@ -321,12 +351,27 @@ self-concordant barrier theory in the 1990s.
 Boyd and Vandenberghe's _Convex Optimization_ is the working reference for
 almost all of this: convex sets and functions, the separating and supporting
 hyperplane theorems with their hypotheses, polyhedra, cones and their duals,
-conjugate functions, and the optimisation consequences. MathWorld supplies
+conjugate functions, and the optimisation consequences. Bertsekas' MIT 6.253
+notes carry the convex analysis a step further, and are what the relative
+interior claims rest on: relative interiors and closures and the algebra of
+them, recession cones and the existence of minimisers, hyperplane separation,
+the conjugacy theorem and Fenchel duality. Ball's _Elementary Introduction to
+Modern Convex Geometry_ is the geometric side: the Brunn-Minkowski inequality
+for non-empty compact sets, the isoperimetric inequality derived from it, and
+concentration of measure on convex bodies in high dimensions. nLab states
+Krein-Milman with its hypotheses and names the 1940 paper. MathWorld supplies
 statements and attributions for the named classical theorems — Carathéodory,
-Helly, Krein-Milman, Brunn-Minkowski. Shalev-Shwartz and Ben-David cover the
-machine learning side: convex learning problems, surrogate losses and the
+Helly, Krein-Milman, Brunn-Minkowski — and MacTutor the biographical dates for
+Minkowski, Hahn, Dantzig, Kuhn and Tucker. Shalev-Shwartz and Ben-David cover
+the machine learning side: convex learning problems, surrogate losses and the
 support vector machine. Goodfellow, Bengio and Courville is cited only for deep
 learning's non-convex objective.
+
+Two things here outrun the sources. The later optimisation attributions —
+Fenchel, Rockafellar, Karush, Khachiyan, Karmarkar, Nesterov and Nemirovskii —
+have no biography or history source cited behind them, and the behaviour of
+separation in spaces that are not locally convex is recorded in the page's
+unresolved references rather than cited.
 
 ## Prerequisites and next connections
 

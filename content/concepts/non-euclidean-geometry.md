@@ -49,6 +49,21 @@ sources:
     supports:
       - formal-treatment
     checked_on: 2026-09-17
+  - source_id: source.mactutor.archive
+    title: MacTutor History of Mathematics Archive
+    url: https://mathshistory.st-andrews.ac.uk/
+    source_kind: reference-documentation
+    supports:
+      - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.plato.nineteenth_century_geometry
+    title: 'Stanford Encyclopedia of Philosophy: Nineteenth Century Geometry'
+    url: https://plato.stanford.edu/entries/geometry-19th/
+    source_kind: authoritative-secondary
+    supports:
+      - history-and-attribution
+      - variants-and-alternatives
+    checked_on: 2026-09-17
   - source_id: source.bronstein2021.geometric_deep_learning
     title: 'Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges'
     url: https://arxiv.org/abs/2104.13478
@@ -58,10 +73,6 @@ sources:
       - limitations-and-common-mistakes
     checked_on: 2026-09-17
 unresolved_references:
-  - label: Primary historical record for the Gauss–Bolyai–Lobachevsky priority question
-    reason: The registry holds no history-of-mathematics source, so the correspondence, publication dates and the contested priority are stated from general knowledge rather than from a cited document.
-    sections:
-      - history-and-attribution
   - label: Tarski's completeness and decidability of elementary geometry
     reason: No registry source covers the first-order axiomatization of geometry or its decision procedure, so the claim is flagged rather than attached to a source that does not contain it.
     sections:
@@ -248,14 +259,16 @@ the eventual generalization, with constant curvature one case among many.
 
 Saccheri (1733) attempted a reductio, derived consequences of the acute-angle
 hypothesis without reaching a contradiction, and rejected it anyway as repugnant
-to the nature of the straight line; Lambert reached similar results in the 1760s.
-The first genuine development belongs to three people independently: Gauss, who
-worked it out privately and did not publish; Lobachevsky, who published from 1829
-in Kazan; and János Bolyai, whose _Appendix_ appeared in 1832 in his father's
-_Tentamen_. Priority is genuinely contested — Lobachevsky published first, Bolyai
-arrived independently, and Gauss had earlier unpublished results but declined to
-defend them, replying to Farkas Bolyai that he could not praise the work without
-praising himself. None of the three proved consistency.
+to the nature of the straight line; Lambert reached similar results in 1766. The
+first genuine development belongs to three people independently: Gauss, who worked
+it out privately and did not publish; Lobachevsky, who published from 1829 in
+Kazan; and János Bolyai, whose _Appendix_ was in print by June 1831 and appeared
+with his father's _Tentamen_ in 1832. Priority is genuinely contested —
+Lobachevsky published first, Bolyai arrived independently and only learned of the
+Kazan work in 1848, and Gauss had earlier unpublished results but declined to
+defend them, replying to Farkas Bolyai that to praise the work would be to praise
+himself, its content coinciding with meditations of his own of the previous thirty
+to thirty-five years. None of the three proved consistency.
 
 That came later: Beltrami (1868) gave the first models interpreting hyperbolic
 geometry inside Euclidean geometry, Klein (1871) the projective metric on the
@@ -274,6 +287,15 @@ surfaces and carries none of the axiomatics. The Stanford Encyclopedia entry on 
 and what relative consistency establishes. The geometric deep learning paper is
 cited only for learning on non-flat domains and the looser sense of
 "non-Euclidean" used there.
+
+The history is carried by the MacTutor archive — Saccheri's 1733 verdict, Lambert,
+the three independent discoveries with their dates, Gauss's reply to Farkas
+Bolyai, Bolyai's 1848 discovery of Lobachevsky's paper, Beltrami and Klein — and
+by the Stanford Encyclopedia entry on nineteenth-century geometry, which also
+carries Klein's projective metric, the elliptic case he found there, and the
+Erlangen programme. Neither covers Tarski's completeness and decidability result
+or the neutral-geometry axiomatics; both remain uncited and are listed as
+unresolved references.
 
 ## Prerequisites and next connections
 

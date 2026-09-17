@@ -57,20 +57,41 @@ sources:
     supports:
       - assumptions-and-requirements
     checked_on: 2026-09-17
-unresolved_references:
-  - label: Open-cover compactness, Heine-Borel and the metric-space counterexamples
-    reason: The registry's only analysis course, MIT 18.100A, is analysis on the real line and stops at power series, so it covers neither metric spaces nor open covers nor Heine-Borel; no registry source supplies the compactness material or the counterexamples built on it, and they are stated here uncited.
-    sections:
+  - source_id: source.morris.topology_without_tears
+    title: Topology Without Tears
+    url: https://www.topologywithouttears.net/
+    source_kind: authoritative-secondary
+    supports:
+      - definition
       - formal-treatment
       - concrete-example
       - limitations-and-common-mistakes
-  - label: Tychonoff's theorem and its equivalence with the axiom of choice
-    reason: No source in the registry covers general-topology theorems beyond the metric-space setting, so the product theorem and its choice-theoretic strength are stated here uncited.
-    sections:
+    checked_on: 2026-09-17
+  - source_id: source.plato.axiom_of_choice
+    title: 'Stanford Encyclopedia of Philosophy: The Axiom of Choice'
+    url: https://plato.stanford.edu/entries/axiom-choice/
+    source_kind: authoritative-secondary
+    supports:
       - formal-treatment
       - assumptions-and-requirements
-  - label: Early history of the topological space axioms (Frechet 1906, Hausdorff 1914, Kuratowski 1922, Bourbaki 1940)
-    reason: The registry has no history-of-mathematics source and no general topology text, so the attributions rest on nothing cited here.
+    checked_on: 2026-09-17
+  - source_id: source.mactutor.history_of_topology
+    title: 'MacTutor: A history of Topology'
+    url: https://mathshistory.st-andrews.ac.uk/HistTopics/Topology_in_mathematics/
+    source_kind: reference-documentation
+    supports:
+      - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.mactutor.archive
+    title: MacTutor History of Mathematics Archive
+    url: https://mathshistory.st-andrews.ac.uk/
+    source_kind: reference-documentation
+    supports:
+      - history-and-attribution
+    checked_on: 2026-09-17
+unresolved_references:
+  - label: Bourbaki's Topologie generale (1940) as the source of the open-set axioms in their usual form
+    reason: MacTutor's history of topology stops well before Bourbaki, and the archive's Bourbaki biography names neither Topologie generale nor a date for it, so the claim that the open-set axioms took their present form - Hausdorffness demoted to an optional hypothesis - in Bourbaki's 1940 volume rests on no registry source.
     sections:
       - history-and-attribution
 claims: []
@@ -180,7 +201,8 @@ characterisation is _complete and totally bounded_; in a general topological
 space boundedness is not expressible at all. Compactness also interacts with
 separation: a compact subset of a Hausdorff space is closed, and a continuous
 bijection from a compact space to a Hausdorff space is a homeomorphism.
-Tychonoff's theorem says an arbitrary product of compact spaces is compact.
+Tychonoff's theorem (1930) says an arbitrary product of compact spaces is
+compact.
 
 $X$ is **connected** when it is not the union of two disjoint nonempty open
 sets. Path-connectedness implies connectedness; the converse fails, the standard
@@ -192,8 +214,9 @@ regular Hausdorff space with a countable basis is metrisable.
 
 The axioms presuppose ordinary ZFC set theory, since (2) quantifies over
 arbitrary families of subsets. Choice is not idle: Tychonoff's theorem for
-arbitrary spaces is equivalent to the axiom of choice, and the Hausdorff case is
-strictly weaker, so a constructively minded reader gets a different theory.
+arbitrary spaces is equivalent to the axiom of choice, while for compact
+Hausdorff spaces it is equivalent to the Boolean prime ideal theorem and so
+strictly weaker, meaning a constructively minded reader gets a different theory.
 Finiteness in (3) is load-bearing too — closure under arbitrary intersections
 gives the Alexandrov spaces, equivalent to preorders, which cannot carry the
 standard topology on $\mathbb{R}$.
@@ -262,30 +285,42 @@ the subject, nets and filters describe convergence where sequences cannot.
 ## History and attribution
 
 The subject has several roots rather than one. Cantor's study of point sets of
-reals in the 1870s, driven by uniqueness questions for trigonometric series,
-produced limit points and derived sets; Poincaré's _Analysis Situs_ (1895)
-started the qualitative geometric side. Fréchet's 1906 thesis introduced metric
-spaces as an abstract setting for convergence, and Hausdorff's _Grundzüge der
-Mengenlehre_ (1914) gave the first general definition of a topological space via
-neighbourhood axioms — with the separation property that now bears his name
-built in as an axiom. Kuratowski's closure-operator axiomatisation followed in
-1922, and the open-set axioms above, with Hausdorffness demoted to an optional
-hypothesis, were fixed in the form most people learn by Bourbaki's _Topologie
-générale_ (1940).
+reals, driven by uniqueness questions for trigonometric series, produced the
+first derived set — the set of limit points — in 1872, along with the open and
+closed subsets of the line; Poincaré's _Analysis Situs_ (1895) started the
+qualitative geometric side, and with it homology, the Betti numbers and the
+fundamental group. Fréchet's 1906 thesis introduced metric spaces as an abstract
+setting for convergence. Riesz then proposed dropping the metric altogether,
+axiomatising a space through its limit points, in a paper to the 1909 congress
+in Rome; and Hausdorff's _Grundzüge der Mengenlehre_ (1914) settled on the
+definition that stuck, four neighbourhood axioms with no distance anywhere — the
+last of them the separation property that now bears his name. Kuratowski's
+closure-operator axiomatisation followed in 1922, and the open-set axioms above,
+with Hausdorffness demoted to an optional hypothesis, were fixed in the form
+most people learn by Bourbaki's _Topologie générale_ (1940).
 
 ## Sources
 
 Wolfram MathWorld is the quickest reference for the definitions and the
 separation-axiom vocabulary — good for checking a statement, not for proofs.
-MIT 18.100A supplies the concrete case every definition here abstracts, but only
-on the real line: convergent sequences, limits and continuity, Bolzano–Weierstrass,
-and the extreme value and intermediate value theorems. It never reaches metric
-spaces, open covers or Heine–Borel, so the compactness material on this page —
-including both counterexamples — rests on no cited source and is recorded in the
-unresolved references. Hatcher's _Algebraic Topology_ shows the apparatus in
-use — quotient topologies, CW complexes, and the appendix on compactly generated
-spaces. The Stanford Encyclopedia entry on set theory gives the ZFC background,
-including the axiom of choice whose strength the product theorem matches.
+Morris's _Topology Without Tears_ is the general-topology text this page leans
+on wherever a real-analysis course stops: the open-set axioms, the finite-closed
+(cofinite) topology, metric spaces, compactness by open covers with Heine–Borel
+as a theorem about $\mathbb{R}^n$ rather than a definition, and Tychonoff's
+theorem for arbitrary products. MIT 18.100A supplies the concrete case every
+definition here abstracts, but only on the real line: convergent sequences,
+limits and continuity, Bolzano–Weierstrass, and the extreme value and
+intermediate value theorems; it never reaches metric spaces or open covers.
+Hatcher's _Algebraic Topology_ shows the apparatus in use — quotient topologies,
+CW complexes, and the appendix on compactly generated spaces. The Stanford
+Encyclopedia entry on set theory gives the ZFC background, and its entry on the
+axiom of choice is where the product theorem's equivalence with choice is
+recorded, together with the Boolean prime ideal theorem that the compact
+Hausdorff case matches instead. For the history, MacTutor's _A history of
+Topology_ carries Cantor's derived sets, Poincaré's _Analysis Situs_, Fréchet's
+metric spaces and Hausdorff's neighbourhood axioms, and the archive's Kuratowski
+biography carries the closure axioms of 1922; neither reaches Bourbaki, which is
+why that one attribution stays in the unresolved references.
 
 ## Prerequisites and next connections
 

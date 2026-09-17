@@ -54,13 +54,27 @@ sources:
       - formal-treatment
       - limitations-and-common-mistakes
     checked_on: 2026-09-17
-unresolved_references:
-  - label: Clifford's 1878 paper and the later development by Lipschitz, Cartan, Chevalley, Atiyah–Bott–Shapiro and Hestenes
-    reason: No source in the registry covers the history of Clifford algebras; the attributions here are stated from general knowledge and should be checked against the primary papers before this page leaves draft state.
-    sections:
+  - source_id: source.nicolaescu.geometry_of_manifolds
+    title: Lectures on the Geometry of Manifolds
+    url: https://academicweb.nd.edu/~lnicolae/Lectures.pdf
+    source_kind: authoritative-secondary
+    supports:
+      - why-it-matters
+      - concrete-example
+      - formal-treatment
+      - assumptions-and-requirements
+      - uses-and-applicability
+    checked_on: 2026-09-17
+  - source_id: source.mactutor.archive
+    title: MacTutor History of Mathematics Archive
+    url: https://mathshistory.st-andrews.ac.uk/
+    source_kind: reference-documentation
+    supports:
       - history-and-attribution
-  - label: Spin geometry, the spin groups and the Clifford classification, the Dirac operator, and the physics applications (gamma matrices, the Dirac equation, conformal geometric algebra)
-    reason: The registry has no text on spin geometry, relativistic quantum mechanics or geometric algebra for graphics, so the applications section rests on uncited general knowledge. The same gap covers the spin-group and classification material in the formal treatment — the $\mathrm{Spin}(n) \to \mathrm{SO}(n)$ double cover, the bivector Lie algebra, the exceptional isomorphisms and the mod-$8$ real and mod-$2$ complex periodicity — which 18.702 (rings, modules, Galois theory, group representations) and mathlib do not support.
+    checked_on: 2026-09-17
+unresolved_references:
+  - label: The physics of Clifford algebras (gamma matrices and the Dirac equation), the conformal and projective models of geometric algebra, and the mod-$8$ real periodicity with its K-theoretic reading
+    reason: Nicolaescu covers the spin groups, the double cover, the bivector Lie algebra and the complex mod-$2$ classification, so that part of the formal treatment is now cited. What no registry source covers is relativistic quantum mechanics, geometric algebra for graphics and robotics, the eight-fold periodicity of the real Clifford algebras and its reading as Bott periodicity in K-theory, or the exceptional isomorphisms above $\mathrm{Spin}(4)$; those claims still rest on uncited general knowledge.
     sections:
       - why-it-matters
       - formal-treatment
@@ -198,7 +212,9 @@ $$
 1 \to \{\pm 1\} \to \mathrm{Spin}(n) \to \mathrm{SO}(n) \to 1
 $$
 
-is a double cover, nontrivial for $n \ge 2$ and universal for $n \ge 3$. The
+is a double cover: $\mathrm{Spin}(n)$ is connected for $n \ge 2$ and simply
+connected for $n \ge 3$, so it is the universal cover of $\mathrm{SO}(n)$ from
+dimension three up. The
 bivectors $e_ie_j$ span a Lie algebra under commutator isomorphic to
 $\mathfrak{so}(n)$, which is why rotors are exponentials of bivectors. Low
 dimensions give the exceptional isomorphisms $\mathrm{Spin}(3) \cong
@@ -305,16 +321,19 @@ Two systems came first: Hamilton's quaternions (1843) and Grassmann's exterior
 algebra (1844). William Kingdon Clifford combined them in 1878, in a paper
 applying Grassmann's calculus, and named the resulting systems _geometric
 algebras_ — the modern revival of that phrase is a restoration, not a coinage.
-Clifford died the following year, aged 33, and Rudolf Lipschitz took up the
-subject around 1880, introducing the group of products of vectors that still
-carries his name.
+Clifford died the following year, aged 33. Rudolf Lipschitz arrived at the same
+algebras independently and was the first to use them to represent rotations of
+Euclidean space, introducing both the group of products of vectors that still
+carries his name and the spin groups themselves.
 
-The objects were rediscovered from the physics side: Élie Cartan found spinors
-in 1913 while classifying representations of simple Lie algebras, and Dirac's
-1928 gamma matrices are a Clifford algebra of Minkowski space, though Dirac was
-after a first-order wave equation rather than an algebra. Brauer and Weyl
-systematised spinors in $n$ dimensions in the 1930s; Chevalley's _The Algebraic
-Theory of Spinors_ (1954) gave the basis-free treatment valid over any field;
+The objects were rediscovered from the physics side: Élie Cartan discovered
+spinors in 1913 in his work on the linear representations of simple groups —
+and later stressed their connection with the Clifford–Lipschitz hypercomplex
+numbers — while Dirac's 1928 gamma matrices are a Clifford algebra of Minkowski
+space, though Dirac was after a first-order wave equation rather than an
+algebra. Brauer and Weyl systematised spinors in $n$ dimensions in the 1930s;
+Chevalley's _The Algebraic Theory of Spinors_ (1954) gave the basis-free
+treatment, new at the time and valid over any field;
 Atiyah, Bott and Shapiro connected Clifford modules to K-theory in 1964. David
 Hestenes revived the geometric reading from 1966 onwards. The subject genuinely
 has several independent origins, which is why its terminology is still not
@@ -330,8 +349,24 @@ MathWorld is the quick reference for the definition and the neighbouring algebra
 named under variants. Lean's mathlib is the best check on the fine print: it
 defines the Clifford algebra of a quadratic form on a module over a commutative
 ring through the universal property, precisely to avoid the characteristic-$2$
-trap. None of them covers spin geometry, the Dirac operator or the history,
-which is why those sit in the unresolved references.
+trap.
+
+Nicolaescu's _Lectures on the Geometry of Manifolds_ carries the spinorial half
+of this page. Its chapter on Dirac operators builds $\mathrm{Cl}(V,q)$ from the
+same quotient and universal property, identifies $\mathrm{Cl}_2$ with the
+quaternions, shows that twisted conjugation by a unit vector is a hyperplane
+reflection and that the Clifford group therefore surjects onto
+$\mathrm{O}(V)$, proves $\mathrm{Spin}(V) \to \mathrm{SO}(V)$ is a double cover
+that is connected in dimension $\ge 2$ and simply connected in dimension
+$\ge 3$, identifies the Lie algebra of $\mathrm{Spin}(V)$ with the bivectors
+under commutator, and classifies the complex Clifford modules as one or two
+matrix blocks. MacTutor's biographies of Clifford, Lipschitz, Cartan, Chevalley,
+Hamilton and Grassmann carry the attributions in the history below.
+
+What remains uncited is the physics — gamma matrices and the Dirac equation —
+the conformal and projective geometric algebras used in graphics and robotics,
+and the eight-fold periodicity of the real Clifford algebras with its reading as
+Bott periodicity; those sit in the unresolved references.
 
 ## Prerequisites and next connections
 

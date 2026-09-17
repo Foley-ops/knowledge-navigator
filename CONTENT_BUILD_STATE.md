@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 7 of 28.** 10 of 10 pages in it are still to write.
+**Batch 8 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/algebraic-topology.md` — Algebraic Topology (concept.geometry.algebraic_topology)
-- `content/concepts/manifolds.md` — Manifolds (concept.geometry.manifolds)
-- `content/concepts/differential-geometry.md` — Differential Geometry (concept.geometry.differential_geometry)
-- `content/concepts/differential-topology.md` — Differential Topology (concept.geometry.differential_topology)
-- `content/concepts/curvature.md` — Curvature (concept.geometry.curvature)
-- `content/concepts/lie-groups.md` — Lie Groups (concept.geometry.lie_groups)
-- `content/concepts/algebraic-geometry.md` — Algebraic Geometry (concept.geometry.algebraic_geometry)
-- `content/concepts/fractal-geometry.md` — Fractal Geometry (concept.geometry.fractal_geometry)
-- `content/concepts/renormalization.md` — Renormalization (concept.geometry.renormalization)
-- `content/concepts/elementary-number-theory.md` — Elementary Number Theory (concept.number_theory.elementary_number_theory)
+- `content/concepts/analytic-number-theory.md` — Analytic Number Theory (concept.number_theory.analytic_number_theory)
+- `content/concepts/algebraic-number-theory.md` — Algebraic Number Theory (concept.number_theory.algebraic_number_theory)
+- `content/concepts/automata.md` — Automata (concept.computation.automata)
+- `content/concepts/computational-complexity.md` — Computational Complexity (concept.computation.computational_complexity)
+- `content/concepts/convex-optimization.md` — Convex Optimization (concept.optimization.convex_optimization)
+- `content/concepts/nonconvex-optimization.md` — Nonconvex Optimization (concept.optimization.nonconvex_optimization)
+- `content/concepts/stochastic-optimization.md` — Stochastic Optimization (concept.optimization.stochastic_optimization)
+- `content/concepts/combinatorial-optimization.md` — Combinatorial Optimization (concept.optimization.combinatorial_optimization)
+- `content/concepts/integer-programming.md` — Integer Programming (concept.optimization.integer_programming)
+- `content/concepts/variational-methods.md` — Variational Methods (concept.optimization.variational_methods)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 71 |
-| Markdown pages in the corpus | 71 |
-| Tier 1 pages | 71 |
+| Candidates covered by a page | 81 |
+| Markdown pages in the corpus | 81 |
+| Tier 1 pages | 81 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 60 of 280 |
+| Planned pages written | 70 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 60 | 85 | 71% |
+| Mathematics | 70 | 85 | 82% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -72,10 +72,10 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Mathematics/Foundations | 4 | 4 | complete |
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
 | Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
-| Mathematics/Geometry & Topology | 6 | 15 |  |
+| Mathematics/Geometry & Topology | 15 | 15 | complete |
 | Mathematics/Linear & Multilinear Algebra | 6 | 6 | complete |
 | Mathematics/Mathematical Physics | 0 | 2 |  |
-| Mathematics/Number Theory | 0 | 3 |  |
+| Mathematics/Number Theory | 1 | 3 |  |
 | Mathematics/Optimization | 0 | 7 |  |
 | Mathematics/Probability & Statistics | 9 | 9 | complete |
 | Mathematics/Theory of Computation | 0 | 2 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-60 of the planned 280, in the order they were written.
+70 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -152,6 +152,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Hyperbolic Geometry | `concept.geometry.hyperbolic_geometry` | tier 1 | covered |
 | Convex Geometry | `concept.geometry.convex_geometry` | tier 1 | covered |
 | Point-Set Topology | `concept.geometry.point_set_topology` | tier 1 | covered |
+| Algebraic Topology | `concept.geometry.algebraic_topology` | tier 1 | covered |
+| Manifolds | `concept.geometry.manifolds` | tier 1 | covered |
+| Differential Geometry | `concept.geometry.differential_geometry` | tier 1 | covered |
+| Differential Topology | `concept.geometry.differential_topology` | tier 1 | covered |
+| Curvature | `concept.geometry.curvature` | tier 1 | covered |
+| Lie Groups | `concept.geometry.lie_groups` | tier 1 | covered |
+| Algebraic Geometry | `concept.geometry.algebraic_geometry` | tier 1 | covered |
+| Fractal Geometry | `concept.geometry.fractal_geometry` | tier 1 | covered |
+| Renormalization | `concept.geometry.renormalization` | tier 1 | covered |
+| Elementary Number Theory | `concept.number_theory.elementary_number_theory` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -250,20 +260,20 @@ it. Batches are ten pages each.
 | x | Convex Geometry | `concept.geometry.convex_geometry` | Mathematics/Geometry & Topology |
 | x | Point-Set Topology | `concept.geometry.point_set_topology` | Mathematics/Geometry & Topology |
 
-### Batch 7
+### Batch 7 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Algebraic Topology | `concept.geometry.algebraic_topology` | Mathematics/Geometry & Topology |
-|   | Manifolds | `concept.geometry.manifolds` | Mathematics/Geometry & Topology |
-|   | Differential Geometry | `concept.geometry.differential_geometry` | Mathematics/Geometry & Topology |
-|   | Differential Topology | `concept.geometry.differential_topology` | Mathematics/Geometry & Topology |
-|   | Curvature | `concept.geometry.curvature` | Mathematics/Geometry & Topology |
-|   | Lie Groups | `concept.geometry.lie_groups` | Mathematics/Geometry & Topology |
-|   | Algebraic Geometry | `concept.geometry.algebraic_geometry` | Mathematics/Geometry & Topology |
-|   | Fractal Geometry | `concept.geometry.fractal_geometry` | Mathematics/Geometry & Topology |
-|   | Renormalization | `concept.geometry.renormalization` | Mathematics/Geometry & Topology |
-|   | Elementary Number Theory | `concept.number_theory.elementary_number_theory` | Mathematics/Number Theory |
+| x | Algebraic Topology | `concept.geometry.algebraic_topology` | Mathematics/Geometry & Topology |
+| x | Manifolds | `concept.geometry.manifolds` | Mathematics/Geometry & Topology |
+| x | Differential Geometry | `concept.geometry.differential_geometry` | Mathematics/Geometry & Topology |
+| x | Differential Topology | `concept.geometry.differential_topology` | Mathematics/Geometry & Topology |
+| x | Curvature | `concept.geometry.curvature` | Mathematics/Geometry & Topology |
+| x | Lie Groups | `concept.geometry.lie_groups` | Mathematics/Geometry & Topology |
+| x | Algebraic Geometry | `concept.geometry.algebraic_geometry` | Mathematics/Geometry & Topology |
+| x | Fractal Geometry | `concept.geometry.fractal_geometry` | Mathematics/Geometry & Topology |
+| x | Renormalization | `concept.geometry.renormalization` | Mathematics/Geometry & Topology |
+| x | Elementary Number Theory | `concept.number_theory.elementary_number_theory` | Mathematics/Number Theory |
 
 ### Batch 8
 
@@ -606,6 +616,35 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batch 7 — the registry expansion, and what it did and did not fix
+
+Before writing this batch the registry was extended by forty-two sources across
+topology, differential geometry, Lie theory, algebraic geometry, convex analysis,
+number theory, history of mathematics and fractals. Every URL was fetched by the
+agent proposing it and fetched again by an independent auditor, which corrected
+several `kind` values and dropped two entries already present.
+
+The batch 6 pages were then revisited against the larger registry. Their backlog
+fell from 22 entries to 15, and their citation counts rose — convex geometry from
+two sources to eight, point-set topology from three to eight — as gap
+declarations were replaced by real citations. The entries that remain were left
+deliberately: MacTutor documents Clifford and Lipschitz but has no page for
+Hestenes; nLab states Krein-Milman but says nothing about why the closure cannot
+be dropped. Agents were told that resolving two of four and leaving two standing
+is a good outcome, and that is what they did.
+
+Batch 7 then declared 22 new entries of its own, so the corpus total is 37. These
+were read rather than assumed: general relativity, information geometry, CAT(k)
+comparison geometry, Hilbert's tenth problem and Diffie-Hellman are genuinely
+uncovered. Some history entries are probably citable to MacTutor and are worth a
+second resolution pass; that is queued rather than done, and the entries are
+honest in the meantime.
+
+**Standing gap for the registry:** a spin-geometry monograph, a functional
+analysis text, a geometric-algebra-for-computation reference, a relativistic
+quantum mechanics text, an information geometry source and a metric geometry
+text would close most of what remains.
 
 ### Batch 6 — the source registry does not cover geometry
 

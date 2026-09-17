@@ -56,13 +56,38 @@ sources:
       - assumptions-and-requirements
       - variants-and-alternatives
     checked_on: 2026-09-17
-unresolved_references:
-  - label: Euclid's Elements and the modern axiom systems (Hilbert 1899, Birkhoff 1932, Tarski)
-    reason: The registry holds no edition of the Elements and no text on the axiomatic foundations of geometry, so the postulates as quoted, the gap in Proposition I.1 and the later repairs rest on a general mathematical reference rather than on the primary texts.
-    sections:
+  - source_id: source.joyce.euclid_elements
+    title: Euclid's Elements (D. E. Joyce edition)
+    url: https://mathcs.clarku.edu/~djoyce/elements/elements.html
+    source_kind: authoritative-secondary
+    supports:
       - formal-treatment
       - limitations-and-common-mistakes
+    checked_on: 2026-09-17
+  - source_id: source.beeson.proof_checking_euclid
+    title: Proof-checking Euclid
+    url: https://arxiv.org/abs/1710.00787
+    source_kind: preprint
+    supports:
+      - formal-treatment
+      - limitations-and-common-mistakes
+    checked_on: 2026-09-17
+  - source_id: source.plato.nineteenth_century_geometry
+    title: 'Stanford Encyclopedia of Philosophy: Nineteenth Century Geometry'
+    url: https://plato.stanford.edu/entries/geometry-19th/
+    source_kind: authoritative-secondary
+    supports:
+      - variants-and-alternatives
       - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.mactutor.archive
+    title: MacTutor History of Mathematics Archive
+    url: https://mathshistory.st-andrews.ac.uk/
+    source_kind: reference-documentation
+    supports:
+      - history-and-attribution
+    checked_on: 2026-09-17
+unresolved_references:
   - label: Tarski's first-order axiomatisation of elementary Euclidean geometry and its decidability
     reason: No registry source covers the first-order theory of elementary geometry or the decision procedure for it, so the completeness and decidability claim is stated without support.
     sections:
@@ -235,8 +260,11 @@ its negation both yield consistent theories.
 
 The second is that Euclid proved the _Elements_ from the postulates. He proved a
 great deal, but with unstated appeals to continuity, betweenness and rigid
-motion. Reading Euclid as a fully formal system is a nineteenth-century
-achievement, not a third-century-BCE one.
+motion. The size of the shortfall is now measurable: a machine-checked
+reconstruction of Book I needed 235 theorems to carry Euclid's 48 propositions,
+the surplus being foundational preliminaries, steps he used implicitly and the
+extra results required to close his gaps. Reading Euclid as a fully formal system
+is a nineteenth-century achievement, not a third-century-BCE one.
 
 A third is arithmetic: assuming any metric on $\mathbb{R}^n$ is Euclidean. The
 $\ell_1$ metric has no inner product behind it — take $x = (1,0)$, $y = (0,1)$
@@ -292,14 +320,24 @@ first-order treatment in the decades after.
 
 ## Sources
 
-Wolfram MathWorld is the quickest reference for the postulates, Playfair's axiom,
-Hilbert's axiom groups and the construction results. Axler's _Linear Algebra Done
-Right_ is the clean source for the inner-product side — Cauchy–Schwarz, the
-Pythagorean identity, orthogonal projection and the parallelogram law, all with
-the positive-definiteness hypothesis visible. MIT 18.701 covers the orthogonal
-group and the classification of plane isometries, the group picture of
-congruence. MIT 18.950 supplies the curvature framing that makes "Euclidean
-geometry is the flat case" a definition rather than a slogan.
+Joyce's edition of the _Elements_ is the primary text: the postulates and common
+notions as Euclid states them, with commentary that marks where Proposition I.1
+asserts a point of intersection nothing has licensed and says what postulate
+would be needed to supply it. _Proof-checking Euclid_ is that repair carried
+through by machine — Book I redone in a first-order language close to Tarski's,
+with Euclid's gaps filled and his errors corrected — and is the source for how
+much had to be added. Wolfram MathWorld is the quickest reference for Playfair's
+axiom, Hilbert's and Birkhoff's axiom groups and the construction results.
+Axler's _Linear Algebra Done Right_ is the clean source for the inner-product
+side — Cauchy–Schwarz, the Pythagorean identity, orthogonal projection and the
+parallelogram law, all with the positive-definiteness hypothesis visible. MIT
+18.701 covers the orthogonal group and the classification of plane isometries,
+the group picture of congruence. MIT 18.950 supplies the curvature framing that
+makes "Euclidean geometry is the flat case" a definition rather than a slogan.
+For the history, the MacTutor archive carries Saccheri, Lobachevsky, Bolyai and
+Beltrami, and the Stanford Encyclopedia's _Nineteenth Century Geometry_ covers
+the same century from the foundational side: Pasch's betweenness axioms, Klein's
+Erlangen program and Hilbert's _Grundlagen_.
 
 ## Prerequisites and next connections
 

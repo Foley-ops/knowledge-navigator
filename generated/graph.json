@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T18:21:13.061Z",
-  "corpusHash": "dd307a42f0ae799a237e7e626f324c8eff9a3ade588c612371d6dfddece9279c",
-  "atlasHash": "ed44faf526cd86c51c2baa07c421d3d12ef1700b630a5bf63a96461f7112bb97",
+  "builtAt": "2026-09-17T19:58:04.555Z",
+  "corpusHash": "e1d493862cc86b614dd47c556330f5fc63b8c76ad2ce72a71ffb7ec4b6ae21cb",
+  "atlasHash": "711c9120ae0690e9eb7a9f29f0e3d80f9191d26febdda0f27fb785240802d843",
   "counts": {
-    "concepts": 71,
-    "relationships": 255,
-    "categories": 12
+    "concepts": 81,
+    "relationships": 295,
+    "categories": 13
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 71,
+      "1": 81,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 71,
+      "markdown": 81,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 71
+      "generated-draft": 81
     },
-    "conceptsWithArticle": 71,
+    "conceptsWithArticle": 81,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 220,
+      "candidate": 210,
       "proposed-tier-3": 0,
-      "covered": 71,
+      "covered": 81,
       "deferred": 0
     },
-    "unresolvedReferences": 22,
-    "unresolvedGroups": 22,
+    "unresolvedReferences": 37,
+    "unresolvedGroups": 37,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -251,19 +251,37 @@
       "depth": 2,
       "parent": "Mathematics",
       "primaryConceptIds": [
+        "concept.geometry.algebraic_geometry",
+        "concept.geometry.algebraic_topology",
         "concept.geometry.convex_geometry",
+        "concept.geometry.curvature",
+        "concept.geometry.differential_geometry",
+        "concept.geometry.differential_topology",
         "concept.geometry.euclidean_geometry",
+        "concept.geometry.fractal_geometry",
         "concept.geometry.hyperbolic_geometry",
+        "concept.geometry.lie_groups",
+        "concept.geometry.manifolds",
         "concept.geometry.non_euclidean_geometry",
         "concept.geometry.point_set_topology",
+        "concept.geometry.renormalization",
         "concept.geometry.spherical_geometry"
       ],
       "conceptIds": [
+        "concept.geometry.algebraic_geometry",
+        "concept.geometry.algebraic_topology",
         "concept.geometry.convex_geometry",
+        "concept.geometry.curvature",
+        "concept.geometry.differential_geometry",
+        "concept.geometry.differential_topology",
         "concept.geometry.euclidean_geometry",
+        "concept.geometry.fractal_geometry",
         "concept.geometry.hyperbolic_geometry",
+        "concept.geometry.lie_groups",
+        "concept.geometry.manifolds",
         "concept.geometry.non_euclidean_geometry",
         "concept.geometry.point_set_topology",
+        "concept.geometry.renormalization",
         "concept.geometry.spherical_geometry"
       ]
     },
@@ -288,6 +306,19 @@
         "concept.linear_algebra.tensor_decomposition",
         "concept.linear_algebra.tensors",
         "concept.linear_algebra.vector_spaces"
+      ]
+    },
+    {
+      "path": "Mathematics/Number Theory",
+      "name": "Number Theory",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.number_theory.elementary_number_theory"
+      ],
+      "conceptIds": [
+        "concept.number_theory.elementary_number_theory"
       ]
     },
     {
@@ -338,7 +369,7 @@
       "hasArticle": true,
       "candidateId": "candidate.mathematics.algebra.clifford_algebra",
       "candidateStatus": "covered",
-      "unresolvedReferences": 2,
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1345,6 +1376,48 @@
       "claims": 0
     },
     {
+      "id": "concept.geometry.algebraic_geometry",
+      "title": "Algebraic Geometry",
+      "slug": "/concepts/algebraic-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of solution sets of polynomial systems as geometric objects, built on a dictionary that turns questions about shapes into questions about ideals in a commutative ring.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.algebraic_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.algebraic_topology",
+      "title": "Algebraic Topology",
+      "slug": "/concepts/algebraic-topology",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The practice of turning spaces into groups and continuous maps into homomorphisms, so that a question about whether some map can exist becomes a question about whether some homomorphism can exist.",
+      "aliases": [
+        "combinatorial topology"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.algebraic_topology",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.geometry.convex_geometry",
       "title": "Convex Geometry",
       "slug": "/concepts/convex-geometry",
@@ -1363,7 +1436,70 @@
       "hasArticle": true,
       "candidateId": "candidate.mathematics.geometry_and_topology.convex_geometry",
       "candidateStatus": "covered",
-      "unresolvedReferences": 2,
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.curvature",
+      "title": "Curvature",
+      "slug": "/concepts/curvature",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The family of local invariants measuring how far a curve, surface or Riemannian manifold departs from the flat model — a single number for a plane curve, a pair for a surface, and a four-index tensor whose evaluation on 2-planes gives the sectional curvature and whose successive traces give the Ricci and scalar curvature in higher dimensions.",
+      "aliases": [
+        "Gaussian curvature",
+        "Riemann curvature tensor"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.curvature",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 5,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.differential_geometry",
+      "title": "Differential Geometry",
+      "slug": "/concepts/differential-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of smooth manifolds carrying a metric and a connection, which together make length, angle, parallel transport, geodesics and curvature computable from inside the space with no surrounding space to refer to.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.differential_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.differential_topology",
+      "title": "Differential Topology",
+      "slug": "/concepts/differential-topology",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of smooth manifolds up to diffeomorphism, using calculus to extract invariants — degree, transversal intersection numbers, Morse indices — that no smooth deformation can change.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.differential_topology",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1383,7 +1519,27 @@
       "hasArticle": true,
       "candidateId": "candidate.mathematics.geometry_and_topology.euclidean_geometry",
       "candidateStatus": "covered",
-      "unresolvedReferences": 2,
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.fractal_geometry",
+      "title": "Fractal Geometry",
+      "slug": "/concepts/fractal-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The geometry of sets too irregular for calculus, which replaces length and area with a scaling exponent — a dimension that need not be a whole number — as the primary invariant of a set's fine structure.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.fractal_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -1407,6 +1563,48 @@
       "claims": 0
     },
     {
+      "id": "concept.geometry.lie_groups",
+      "title": "Lie Groups",
+      "slug": "/concepts/lie-groups",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A symmetry you can differentiate — a group whose elements form a smooth manifold, so rotations, rigid motions and gauge transformations can be reached by calculus rather than enumeration.",
+      "aliases": [
+        "continuous transformation group"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.lie_groups",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.manifolds",
+      "title": "Manifolds",
+      "slug": "/concepts/manifolds",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The spaces on which calculus still works without a preferred coordinate system, built by gluing pieces of Euclidean space along smooth overlaps so that curvature, topology and dynamics can be studied intrinsically.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.manifolds",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.geometry.non_euclidean_geometry",
       "title": "Non-Euclidean Geometry",
       "slug": "/concepts/non-euclidean-geometry",
@@ -1423,7 +1621,7 @@
       "hasArticle": true,
       "candidateId": "candidate.mathematics.geometry_and_topology.non_euclidean_geometry",
       "candidateStatus": "covered",
-      "unresolvedReferences": 3,
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -1446,7 +1644,30 @@
       "hasArticle": true,
       "candidateId": "candidate.mathematics.geometry_and_topology.point_set_topology",
       "candidateStatus": "covered",
-      "unresolvedReferences": 3,
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.renormalization",
+      "title": "Renormalization",
+      "slug": "/concepts/renormalization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The systematic construction of coarser descriptions of a system at successively larger scales, whose induced flow on parameter space has fixed points that explain why physically unrelated systems share the same critical exponents.",
+      "aliases": [
+        "renormalization group",
+        "RG flow"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.renormalization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -1469,7 +1690,7 @@
       "hasArticle": true,
       "candidateId": "candidate.mathematics.geometry_and_topology.spherical_geometry",
       "candidateStatus": "covered",
-      "unresolvedReferences": 2,
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1662,6 +1883,28 @@
       "candidateId": "candidate.mathematics.foundations.logic_and_proof.propositional_logic",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.number_theory.elementary_number_theory",
+      "title": "Elementary Number Theory",
+      "slug": "/concepts/elementary-number-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The arithmetic of the integers — divisibility, primes, and congruences — developed with methods that stay inside the integers, and the source of almost every algorithm in public-key cryptography.",
+      "aliases": [
+        "higher arithmetic"
+      ],
+      "primaryCategory": "Mathematics/Number Theory",
+      "categories": [
+        "Mathematics/Number Theory"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.number_theory.elementary_number_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 5,
       "claims": 0
     },
     {
@@ -3152,6 +3395,70 @@
       "condition": null
     },
     {
+      "id": "concept.geometry.algebraic_geometry|contrasts_with|concept.geometry.differential_geometry",
+      "source": "concept.geometry.algebraic_geometry",
+      "target": "concept.geometry.differential_geometry",
+      "type": "contrasts_with",
+      "note": "Both describe spaces by the functions on them, but algebraic geometry allows only polynomials and gets a coarse non-Hausdorff topology with rigid global structure, where smooth geometry allows bump functions and gets local flexibility instead.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_geometry|contributes_to|concept.number_theory.elementary_number_theory",
+      "source": "concept.geometry.algebraic_geometry",
+      "target": "concept.number_theory.elementary_number_theory",
+      "type": "contributes_to",
+      "note": "Diophantine questions are polynomial systems over non-closed fields and over the integers, and the scheme-theoretic machinery of algebraic geometry is what lets them be studied geometrically.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_geometry|requires|concept.algebra.field_theory",
+      "source": "concept.geometry.algebraic_geometry",
+      "target": "concept.algebra.field_theory",
+      "type": "requires",
+      "note": "The Nullstellensatz holds only over an algebraically closed field, so knowing what an algebraic closure is and how a field can fail to be closed is what makes its hypothesis meaningful rather than decorative.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_geometry|requires|concept.algebra.ring_theory",
+      "source": "concept.geometry.algebraic_geometry",
+      "target": "concept.algebra.ring_theory",
+      "type": "requires",
+      "note": "Every object here is an ideal, a quotient ring or a localisation of a polynomial ring, so a reader without radicals, prime ideals and quotients cannot parse a single statement on this page.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_topology|contributes_to|concept.algebra.homological_algebra",
+      "source": "concept.geometry.algebraic_topology",
+      "target": "concept.algebra.homological_algebra",
+      "type": "contributes_to",
+      "note": "Chain complexes, exact sequences and derived functors were abstracted out of singular and simplicial homology, and homological algebra is what remains once the topology is deleted.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_topology|contributes_to|concept.foundations.category_theory",
+      "source": "concept.geometry.algebraic_topology",
+      "target": "concept.foundations.category_theory",
+      "type": "contributes_to",
+      "note": "Functor and natural transformation were introduced to make precise the sense in which the invariants of algebraic topology depend naturally on the space, and functoriality is still the mechanism by which every argument here works.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_topology|requires|concept.algebra.group_theory",
+      "source": "concept.geometry.algebraic_topology",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "The invariants are groups, and the arguments are statements about homomorphisms, normal subgroups and conjugacy, so a reader without group theory cannot follow what the fundamental group is saying.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.algebraic_topology|requires|concept.geometry.point_set_topology",
+      "source": "concept.geometry.algebraic_topology",
+      "target": "concept.geometry.point_set_topology",
+      "type": "requires",
+      "note": "Every object here — homotopy, path, covering map, quotient, CW complex — is defined in terms of open sets and continuity, so the open-set axioms have to be in hand before the first definition can be read.",
+      "condition": null
+    },
+    {
       "id": "concept.geometry.convex_geometry|contrasts_with|concept.geometry.euclidean_geometry",
       "source": "concept.geometry.convex_geometry",
       "target": "concept.geometry.euclidean_geometry",
@@ -3181,6 +3488,102 @@
       "target": "concept.linear_algebra.vector_spaces",
       "type": "requires",
       "note": "Convex combinations, affine hulls and hyperplanes are all statements about a real vector space and its linear functionals, so none of the definitions can even be written without that structure.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.curvature|assumes|concept.geometry.manifolds",
+      "source": "concept.geometry.curvature",
+      "target": "concept.geometry.manifolds",
+      "type": "assumes",
+      "note": "Beyond curves and surfaces in space, curvature is defined only on a smooth manifold carrying a metric; charts, tangent spaces and tensor fields are the setting the definition lives in, not a consequence of it.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.curvature|contributes_to|concept.geometry.differential_geometry",
+      "source": "concept.geometry.curvature",
+      "target": "concept.geometry.differential_geometry",
+      "type": "contributes_to",
+      "note": "Curvature is the central local invariant differential geometry computes, and most of its theorems relate curvature to geodesics, volume or topology.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.curvature|contributes_to|concept.geometry.non_euclidean_geometry",
+      "source": "concept.geometry.curvature",
+      "target": "concept.geometry.non_euclidean_geometry",
+      "type": "contributes_to",
+      "note": "The sign of the constant curvature is what quantitatively separates the model geometries — positive for spherical, zero for Euclidean, negative for hyperbolic.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.curvature|requires|concept.linear_algebra.tensors",
+      "source": "concept.geometry.curvature",
+      "target": "concept.linear_algebra.tensors",
+      "type": "requires",
+      "note": "The Riemann curvature tensor is a multilinear object, sectional curvature is its evaluation on a 2-plane and Ricci and scalar curvature are contractions of it, so a reader who cannot read index notation or take a trace cannot follow the higher-dimensional half of this page.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_geometry|contrasts_with|concept.geometry.differential_topology",
+      "source": "concept.geometry.differential_geometry",
+      "target": "concept.geometry.differential_topology",
+      "type": "contrasts_with",
+      "note": "Differential topology studies what survives any smooth deformation, while differential geometry fixes a metric and studies precisely the local invariants that deformation destroys.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_geometry|contributes_to|concept.geometry.curvature",
+      "source": "concept.geometry.differential_geometry",
+      "target": "concept.geometry.curvature",
+      "type": "contributes_to",
+      "note": "The Riemann tensor is assembled from the Levi-Civita connection defined here, so this page supplies the machinery that curvature is measured with.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_geometry|generalizes|concept.geometry.spherical_geometry",
+      "source": "concept.geometry.differential_geometry",
+      "target": "concept.geometry.spherical_geometry",
+      "type": "generalizes",
+      "note": "The round sphere is one Riemannian manifold, and its great circles and constant curvature fall out of the general geodesic equation and curvature tensor as a special case.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_geometry|requires|concept.geometry.manifolds",
+      "source": "concept.geometry.differential_geometry",
+      "target": "concept.geometry.manifolds",
+      "type": "requires",
+      "note": "Every object on this page — tangent spaces, vector fields, differential forms — lives on a smooth manifold, so a reader without charts and tangent spaces cannot parse the first definition.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_topology|contrasts_with|concept.geometry.differential_geometry",
+      "source": "concept.geometry.differential_topology",
+      "target": "concept.geometry.differential_geometry",
+      "type": "contrasts_with",
+      "note": "Both study smooth manifolds, but differential geometry measures metric quantities that a deformation changes, while differential topology keeps only what survives every diffeomorphism.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_topology|contributes_to|concept.geometry.algebraic_topology",
+      "source": "concept.geometry.differential_topology",
+      "target": "concept.geometry.algebraic_topology",
+      "type": "contributes_to",
+      "note": "Morse theory, degree and transversality compute homology, Euler characteristics and intersection numbers from smooth data, supplying algebraic topology with both invariants and general-position arguments.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_topology|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.geometry.differential_topology",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "The regular value theorem is the implicit function theorem transported to manifolds, and rank, Jacobian and Hessian are used throughout without re-derivation.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.differential_topology|requires|concept.geometry.manifolds",
+      "source": "concept.geometry.differential_topology",
+      "target": "concept.geometry.manifolds",
+      "type": "requires",
+      "note": "Every statement here is about smooth manifolds, charts and tangent spaces, so a reader who does not already have those objects cannot parse a regular value or a Morse index.",
       "condition": null
     },
     {
@@ -3216,6 +3619,38 @@
       "condition": null
     },
     {
+      "id": "concept.geometry.fractal_geometry|contrasts_with|concept.geometry.manifolds",
+      "source": "concept.geometry.fractal_geometry",
+      "target": "concept.geometry.manifolds",
+      "type": "contrasts_with",
+      "note": "A manifold is locally Euclidean and therefore has an integer dimension by construction; fractal sets are the standard examples of what geometry looks like when that assumption is dropped.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.fractal_geometry|contributes_to|concept.analysis.chaos",
+      "source": "concept.geometry.fractal_geometry",
+      "target": "concept.analysis.chaos",
+      "type": "contributes_to",
+      "note": "Fractal dimension is the standard quantitative descriptor of a strange attractor, which is how a chaotic system's invariant set is summarised in one number.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.fractal_geometry|contributes_to|concept.geometry.renormalization",
+      "source": "concept.geometry.fractal_geometry",
+      "target": "concept.geometry.renormalization",
+      "type": "contributes_to",
+      "note": "Exact self-similarity is the clean case of the scale invariance renormalisation exploits, and fractal dimensions are among the exponents measured on critical configurations.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.fractal_geometry|requires|concept.analysis.measure_theory",
+      "source": "concept.geometry.fractal_geometry",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "Hausdorff dimension is defined through the Hausdorff outer measures, so the definition cannot even be stated without outer measure and countable covers.",
+      "condition": null
+    },
+    {
       "id": "concept.geometry.hyperbolic_geometry|contrasts_with|concept.geometry.euclidean_geometry",
       "source": "concept.geometry.hyperbolic_geometry",
       "target": "concept.geometry.euclidean_geometry",
@@ -3245,6 +3680,70 @@
       "target": "concept.geometry.non_euclidean_geometry",
       "type": "specializes",
       "note": "It is the constant-negative-curvature case of the non-Euclidean programme, the half that keeps lines infinite and admits many parallels.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.lie_groups|equivalent_under|concept.algebra.lie_algebras",
+      "source": "concept.geometry.lie_groups",
+      "target": "concept.algebra.lie_algebras",
+      "type": "equivalent_under",
+      "note": "Differentiating at the identity is an equivalence of categories only after restricting to simply connected groups; without that restriction the correspondence is purely local, as SU(2) and SO(3) show.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.lie_groups|generalizes|concept.analysis.translation_equivariance",
+      "source": "concept.geometry.lie_groups",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "generalizes",
+      "note": "Translation equivariance is equivariance under the Lie group $(\\mathbb{R}^n,+)$, and replacing that group by SO(3) or SE(2) is what group-equivariant architectures do.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.lie_groups|requires|concept.algebra.group_theory",
+      "source": "concept.geometry.lie_groups",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "Subgroups, quotients, homomorphisms and conjugation are the algebraic content being made smooth; the geometry only constrains what those constructions may look like.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.lie_groups|requires|concept.geometry.manifolds",
+      "source": "concept.geometry.lie_groups",
+      "target": "concept.geometry.manifolds",
+      "type": "requires",
+      "note": "\"Multiplication is smooth\" is a statement about charts and tangent spaces, and none of it parses without the manifold definition first.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.manifolds|contributes_to|concept.geometry.differential_geometry",
+      "source": "concept.geometry.manifolds",
+      "target": "concept.geometry.differential_geometry",
+      "type": "contributes_to",
+      "note": "A Riemannian metric, a connection and curvature are extra structure laid on top of a smooth manifold, which supplies the space they are defined on.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.manifolds|contributes_to|concept.geometry.lie_groups",
+      "source": "concept.geometry.manifolds",
+      "target": "concept.geometry.lie_groups",
+      "type": "contributes_to",
+      "note": "A Lie group is a group whose underlying space is a smooth manifold with smooth multiplication and inversion, so the manifold axioms are half of its definition.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.manifolds|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.geometry.manifolds",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "Smoothness of a manifold is smoothness of its transition maps between open subsets of R^n, and the tangent space is the chart-independent form of the total derivative.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.manifolds|requires|concept.geometry.point_set_topology",
+      "source": "concept.geometry.manifolds",
+      "target": "concept.geometry.point_set_topology",
+      "type": "requires",
+      "note": "The definition is three conditions on a topological space — locally Euclidean, Hausdorff, second countable — and none of them can be read without open sets, homeomorphisms and countable bases.",
       "condition": null
     },
     {
@@ -3309,6 +3808,38 @@
       "target": "concept.foundations.set_theory",
       "type": "requires",
       "note": "A topology is a family of subsets closed under arbitrary unions indexed by arbitrary sets, so the axioms cannot even be stated without set-theoretic language for families, unions and power sets.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.renormalization|contrasts_with|concept.geometry.fractal_geometry",
+      "source": "concept.geometry.renormalization",
+      "target": "concept.geometry.fractal_geometry",
+      "type": "contrasts_with",
+      "note": "A fixed point of a renormalization flow is statistically self-similar rather than exactly self-similar, so critical configurations are random fractals that no single iterated function system produces as its attractor, even though their dimensions are ordinary real numbers an iterated function system could match.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.renormalization|contributes_to|concept.analysis.chaos",
+      "source": "concept.geometry.renormalization",
+      "target": "concept.analysis.chaos",
+      "type": "contributes_to",
+      "note": "Feigenbaum's doubling operator explains why the period-doubling route to chaos has the same two constants in every smooth unimodal map with a non-degenerate quadratic critical point, maps with a degenerate turning point forming their own universality class with their own constants, which is a result about chaos obtained by renormalizing.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.renormalization|contributes_to|concept.probability.probability_theory",
+      "source": "concept.geometry.renormalization",
+      "target": "concept.probability.probability_theory",
+      "type": "contributes_to",
+      "note": "The central limit theorem reads as a renormalization statement, with rescaled convolution as the coarse-graining map, the Gaussian as its attracting fixed point and the stable laws as the other fixed points.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.renormalization|requires|concept.analysis.dynamical_systems",
+      "source": "concept.geometry.renormalization",
+      "target": "concept.analysis.dynamical_systems",
+      "type": "requires",
+      "note": "The renormalization transformation is an iterated map on a space of models, and every statement made about it — fixed point, linearization, stable manifold, unstable eigenvalue — is borrowed wholesale from the theory of iterated maps.",
       "condition": null
     },
     {
@@ -3621,6 +4152,38 @@
       "target": "concept.logic.proof_theory",
       "type": "prerequisite_of",
       "note": "The propositional fragment is where natural deduction, sequent calculus and cut elimination are first defined and first proved to behave.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.elementary_number_theory|contrasts_with|concept.foundations.computability_theory",
+      "source": "concept.number_theory.elementary_number_theory",
+      "target": "concept.foundations.computability_theory",
+      "type": "contrasts_with",
+      "note": "Every individual question here is settled by a finite computation and primality is even in P, yet no algorithm decides whether an arbitrary Diophantine equation has an integer solution.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.elementary_number_theory|contributes_to|concept.algebra.field_theory",
+      "source": "concept.number_theory.elementary_number_theory",
+      "target": "concept.algebra.field_theory",
+      "type": "contributes_to",
+      "note": "Z/pZ is the finite field with p elements, the first field of positive characteristic most readers meet, and the cyclicity of its multiplicative group is a number-theoretic theorem field theory borrows.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.elementary_number_theory|contributes_to|concept.algebra.group_theory",
+      "source": "concept.number_theory.elementary_number_theory",
+      "target": "concept.algebra.group_theory",
+      "type": "contributes_to",
+      "note": "Euler's theorem is Lagrange's theorem applied to the unit group of Z/nZ, which is also where group theory gets its standard supply of explicit finite abelian groups.",
+      "condition": null
+    },
+    {
+      "id": "concept.number_theory.elementary_number_theory|contributes_to|concept.algebra.ring_theory",
+      "source": "concept.number_theory.elementary_number_theory",
+      "target": "concept.algebra.ring_theory",
+      "type": "contributes_to",
+      "note": "Unique factorisation in the integers and the quotients Z/nZ are the concrete cases that ring theory abstracts into unique factorisation domains, ideals and quotient rings.",
       "condition": null
     },
     {

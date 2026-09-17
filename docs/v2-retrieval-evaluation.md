@@ -42,14 +42,14 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.foundations.model_theory`, `concept.analysis.multivariable_calculus`, `concept.analysis.cross_correlation`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.foundations.model_theory`, `concept.analysis.cross_correlation`, `concept.analysis.multivariable_calculus`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.probability.martingales`, `concept.probability.stochastic_processes`, `concept.geometry.euclidean_geometry`, `concept.deep_learning.resnet`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.probability.martingales`, `concept.geometry.euclidean_geometry`, `concept.probability.stochastic_processes`, `concept.deep_learning.resnet`
 
 ### R3 (path)
 

@@ -56,11 +56,29 @@ sources:
     supports:
       - uses-and-applicability
     checked_on: 2026-09-17
-unresolved_references:
-  - label: Primary history of spherical trigonometry and of the term "elliptic geometry"
-    reason: No registry source covers Menelaus, Girard, Harriot, Riemann's 1854 lecture or Klein's naming; the attributions given are standard but uncited here.
-    sections:
+  - source_id: source.mactutor.archive
+    title: MacTutor History of Mathematics Archive
+    url: https://mathshistory.st-andrews.ac.uk/
+    source_kind: reference-documentation
+    supports:
       - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.riemann1854.bases_of_geometry
+    title: On the Hypotheses which lie at the Bases of Geometry
+    url: https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html
+    source_kind: primary-research
+    supports:
+      - history-and-attribution
+    checked_on: 2026-09-17
+  - source_id: source.plato.nineteenth_century_geometry
+    title: 'Stanford Encyclopedia of Philosophy: Nineteenth Century Geometry'
+    url: https://plato.stanford.edu/entries/geometry-19th/
+    source_kind: authoritative-secondary
+    supports:
+      - why-it-matters
+      - history-and-attribution
+    checked_on: 2026-09-17
+unresolved_references:
   - label: Ellipsoidal geodesy (Vincenty's and Karney's algorithms, WGS-84 error magnitudes)
     reason: The registry has no geodesy reference, so the size of the sphere-versus-ellipsoid discrepancy is stated as an order of magnitude only.
     sections:
@@ -275,11 +293,13 @@ the seventeenth century, and to Albert Girard, who published it shortly
 afterwards; it carries Girard's name.
 
 Treating the sphere as a _geometry_ rather than a surface inside Euclidean space
-belongs to the nineteenth century: Riemann's 1854 habilitation lecture proposed
-geometries of constant positive curvature, and Klein supplied the names
-elliptic, parabolic and hyperbolic and the identification of the elliptic plane
-with the projective plane. Note the ordering — people computed on the sphere for
-eighteen centuries before anyone treated it as a rival to Euclid.
+belongs to the nineteenth century: Riemann's habilitation lecture _On the
+Hypotheses which lie at the Bases of Geometry_, delivered at Göttingen in 1854
+and published only after his death, proposed geometries of constant positive
+curvature, and Klein supplied the names elliptic, parabolic and hyperbolic in
+1871, along with the identification of the elliptic plane with the projective
+plane. Note the ordering — people computed on the sphere for eighteen
+centuries before anyone treated it as a rival to Euclid.
 
 ## Sources
 
@@ -290,6 +310,17 @@ that makes the excess formula an instance of a general theorem. Hatcher is cited
 only for the topological fact that $S^2 \to \mathbb{RP}^2$ is a two-sheeted
 covering; it says nothing about elliptic geometry. _Spherical CNNs_ is the
 reference for the machine-learning use.
+
+For the history, the MacTutor archive carries the biographies behind the early
+attributions — Menelaus, Abu al-Wafa, al-Biruni, al-Tusi, Harriot and Girard.
+Riemann's habilitation lecture is the primary text for the proposal of spaces of
+constant positive curvature, and the _Stanford Encyclopedia_ article on
+nineteenth-century geometry is the reference for Klein's naming, his
+identification of the elliptic plane with the projective plane, and the models
+of Beltrami, Klein and Poincaré that settled the independence of the parallel
+postulate. Ellipsoidal geodesy has no registry source, so the figures here for
+the sphere-versus-ellipsoid discrepancy are order-of-magnitude only; that gap is
+flagged in the frontmatter.
 
 ## Prerequisites and next connections
 
