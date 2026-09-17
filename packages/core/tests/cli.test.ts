@@ -3,7 +3,8 @@
  * acceptance corpus so the shipped entry point is what gets tested.
  */
 import { execFile } from 'node:child_process';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { mkdtemp, readdir, readFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -38,6 +39,104 @@ async function navigator(...args: string[]): Promise<Run> {
   }
 }
 
+/* ---------------------------------------------------------------------------
+ * Counting without counting on a number.
+ *
+ * The corpus is being filled: it held eleven pages when this file was written
+ * and it will hold hundreds. So no printed count below is checked against a
+ * literal. Each is checked against the same quantity arrived at another way —
+ * the files on disk, or a second count the CLI itself reports — which is what
+ * the literals were standing in for, and which stays true at any corpus size.
+ * ------------------------------------------------------------------------- */
+
+interface Corpus {
+  /** Markdown pages in content/concepts. */
+  readonly markdown: number;
+  /** Graph-only identities in content/graph-only. */
+  readonly graphOnly: number;
+  readonly total: number;
+  /** The `concept_id` every one of those files declares. */
+  readonly conceptIds: ReadonlySet<string>;
+}
+
+/**
+ * The canonical corpus as the file system sees it, found the way the loader
+ * finds it: `.md` in content/concepts and `.yaml` in content/graph-only, with
+ * the `_` and `.` prefixes that keep a file out of the corpus skipped.
+ */
+async function corpusOnDisk(): Promise<Corpus> {
+  const load = async (directory: string, extension: string): Promise<string[]> => {
+    let names: string[];
+    try {
+      names = await readdir(directory);
+    } catch {
+      return []; // a corpus need not carry graph-only identities at all
+    }
+    const canonical = names.filter(
+      (name) => name.endsWith(extension) && !name.startsWith('_') && !name.startsWith('.'),
+    );
+    return Promise.all(canonical.map((name) => readFile(join(directory, name), 'utf8')));
+  };
+
+  const markdown = await load(join(REPO_ROOT, 'content', 'concepts'), '.md');
+  const graphOnly = await load(join(REPO_ROOT, 'content', 'graph-only'), '.yaml');
+  const conceptIds = new Set<string>();
+  for (const text of [...markdown, ...graphOnly]) {
+    // Frontmatter only: a page is free to quote `concept_id:` in its prose.
+    const fenced = /^---\n([\s\S]*?)\n---/.exec(text);
+    const declared = /^concept_id:\s*(\S+)$/m.exec(fenced?.[1] ?? text);
+    if (declared !== null) conceptIds.add(declared[1]!);
+  }
+  const total = markdown.length + graphOnly.length;
+  // The eleven acceptance pages are committed and the corpus only grows, so a
+  // smaller reading means the derivation above stopped seeing the corpus — and
+  // comparisons against nothing would agree with anything.
+  if (total < 11) throw new Error(`only ${String(total)} concept file(s) found under content/`);
+  return { markdown: markdown.length, graphOnly: graphOnly.length, total, conceptIds };
+}
+
+interface Report {
+  /** Counts printed flush left, e.g. `concepts` or `full-text rows`. */
+  readonly counts: ReadonlyMap<string, number>;
+  /** Counts indented beneath the flush-left label above them, e.g. `tier 1`. */
+  readonly breakdowns: ReadonlyMap<string, ReadonlyMap<string, number>>;
+}
+
+/**
+ * Read a `navigator` report back as numbers, keeping the indentation that says
+ * which total a line breaks down. A line that does not end in a bare count — a
+ * hash, a written path, `unresolved refs` and its sentence — is not a count and
+ * does not appear.
+ */
+function parseReport(text: string): Report {
+  const counts = new Map<string, number>();
+  const breakdowns = new Map<string, Map<string, number>>();
+  let parent = '';
+  for (const line of text.split('\n')) {
+    const match = /^(\s*)(\S.*?):?\s\s+(\d+)$/.exec(line);
+    if (match === null) continue;
+    const [, indent, label, value] = match;
+    if (indent === '') {
+      parent = label!;
+      counts.set(label!, Number(value));
+      continue;
+    }
+    const breakdown = breakdowns.get(parent) ?? new Map<string, number>();
+    breakdown.set(label!, Number(value));
+    breakdowns.set(parent, breakdown);
+  }
+  return { counts, breakdowns };
+}
+
+function sum(values: Iterable<number>): number {
+  let total = 0;
+  for (const value of values) total += value;
+  return total;
+}
+
+const isTier = (label: string): boolean => /^tier \d+$/.test(label);
+const isFormat = (label: string): boolean => label === 'markdown' || label === 'graph only';
+
 beforeAll(async () => {
   if (!existsSync(CLI)) {
     await run('npm', ['run', 'build', '--workspace', '@navigator/core'], { cwd: REPO_ROOT });
@@ -51,12 +150,27 @@ afterAll(async () => {
 });
 
 describe('navigator command line', () => {
-  it('validate reports the acceptance corpus and exits zero', async () => {
+  it('validate reports the corpus it read and exits zero', async () => {
+    const corpus = await corpusOnDisk();
     const result = await navigator('validate');
     expect(result.code).toBe(0);
-    expect(result.stdout).toContain('concepts:           11');
-    expect(result.stdout).toContain('tier 1:          11');
-    expect(result.stdout).toContain('generated-draft   11');
+    const report = parseReport(result.stdout);
+    // What `concepts: 11` meant was "it counted the pages that are there".
+    // Against the files on disk it keeps meaning that as the corpus fills.
+    expect(report.counts.get('concepts')).toBe(corpus.total);
+
+    const concepts = report.breakdowns.get('concepts') ?? new Map<string, number>();
+    expect(concepts.get('markdown')).toBe(corpus.markdown);
+    expect(concepts.get('graph only')).toBe(corpus.graphOnly);
+    // `tier 1: 11` and `generated-draft: 11` were true because every page then
+    // was a Tier 1 draft. The property beneath them is that each breakdown is a
+    // partition of the corpus: every concept counted once, whatever its tier
+    // and whatever its review state — including states nobody has used yet.
+    const under = (keep: (label: string) => boolean): number =>
+      sum([...concepts].filter(([label]) => keep(label)).map(([, count]) => count));
+    expect(under(isTier)).toBe(corpus.total);
+    expect(under(isFormat)).toBe(corpus.total);
+    expect(under((label) => !isTier(label) && !isFormat(label))).toBe(corpus.total);
     expect(result.stdout).toContain('0 errors');
   }, 60_000);
 
@@ -74,11 +188,18 @@ describe('navigator command line', () => {
   }, 60_000);
 
   it('compile writes the database and reports what it wrote', async () => {
+    const corpus = await corpusOnDisk();
     const result = await navigator('compile', '--database', databasePath);
     expect(result.code).toBe(0);
     expect(result.stdout).toContain('compiled the canonical corpus');
-    expect(result.stdout).toContain('concepts:           11');
-    expect(result.stdout).toContain('full-text rows:     11');
+    const report = parseReport(result.stdout);
+    expect(report.counts.get('concepts')).toBe(corpus.total);
+    // The pair of elevens was one claim, not two: everything compiled is
+    // findable. Every concept earns a full-text row, a graph-only identity
+    // included — it is indexed by its names and its one sentence, so the row
+    // count has to match the corpus rather than the page count.
+    expect(report.counts.get('full-text rows')).toBe(corpus.total);
+    expect(report.breakdowns.get('full-text rows')?.get('graph only')).toBe(corpus.graphOnly);
     expect(result.stdout).toMatch(/corpus hash:\s+[0-9a-f]{64}/);
     expect(existsSync(databasePath)).toBe(true);
   }, 120_000);
@@ -123,7 +244,13 @@ describe('navigator command line', () => {
     expect(limited.code).toBe(0);
     expect(limited.stdout).toContain('2 result(s)');
 
-    const empty = await navigator('search', 'quaternion');
+    // A query that finds nothing has to find nothing by construction, not by
+    // luck: "quaternion" stood here until a page on multivariable calculus
+    // mentioned one. A freshly drawn nonsense token is in no corpus, at any
+    // size, so what is under test stays "how an empty result reads", not which
+    // words the corpus happens to be missing today.
+    const absent = `zz${randomUUID().replace(/[^a-z]/g, '')}`;
+    const empty = await navigator('search', absent);
     expect(empty.code).toBe(0);
     expect(empty.stdout).toContain('no concept matches');
   }, 60_000);
@@ -176,11 +303,24 @@ describe('navigator coverage (v2 runbook L06)', () => {
     expect(first.code).toBe(0);
     expect(first.stdout).toBe(second.stdout);
 
+    const corpus = await corpusOnDisk();
     const summary = JSON.parse(first.stdout) as {
-      concepts: { total: number };
+      concepts: {
+        total: number;
+        byTier: Record<string, number>;
+        byFormat: Record<string, number>;
+        byReviewState: Record<string, number>;
+      };
       atlas: { areas: number; candidates: number };
     };
-    expect(summary.concepts.total).toBe(11);
+    // This command counts rows in the database compiled two tests ago from the
+    // files on disk, so the two counts are of one corpus and must agree; and
+    // each tally it prints accounts for every concept exactly once.
+    expect(summary.concepts.total).toBe(corpus.total);
+    expect(summary.concepts.byFormat['markdown']).toBe(corpus.markdown);
+    expect(summary.concepts.byFormat['graph-only']).toBe(corpus.graphOnly);
+    expect(sum(Object.values(summary.concepts.byTier))).toBe(summary.concepts.total);
+    expect(sum(Object.values(summary.concepts.byReviewState))).toBe(summary.concepts.total);
     expect(summary.atlas.areas).toBe(3);
     expect(summary.atlas.candidates).toBeGreaterThan(200);
   }, 60_000);
@@ -216,8 +356,24 @@ describe('navigator coverage (v2 runbook L06)', () => {
       total: number;
       items: { canonicalConceptId: string | null }[];
     };
-    expect(coveredPage.total).toBe(11);
+    // Covered was 11 because the atlas covered all eleven pages; the number is
+    // not the point. Covered means a candidate names a canonical concept, so:
+    // the whole covered set comes back in one page, every one of them names a
+    // concept that exists on disk, and no two claim the same concept.
+    const corpus = await corpusOnDisk();
+    expect(coveredPage.items).toHaveLength(coveredPage.total);
     expect(coveredPage.items.every((item) => item.canonicalConceptId !== null)).toBe(true);
+    const named = coveredPage.items.map((item) => item.canonicalConceptId);
+    expect(new Set(named).size).toBe(coveredPage.total);
+    expect(named.every((id) => id !== null && corpus.conceptIds.has(id))).toBe(true);
+    // Not vacuous: the page the rest of this file inspects is one of them.
+    expect(named).toContain('concept.deep_learning.resnet');
+
+    // `summary` tallies the same rows by status. Two counts of one set.
+    const tallied = JSON.parse((await navigator('coverage', 'summary', '--json')).stdout) as {
+      atlas: { byStatus: Record<string, number> };
+    };
+    expect(coveredPage.total).toBe(tallied.atlas.byStatus['covered']);
   }, 60_000);
 
   it('candidates returns an empty page rather than failing', async () => {

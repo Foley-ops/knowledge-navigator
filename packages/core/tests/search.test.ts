@@ -1,10 +1,11 @@
 /**
- * D04 — search over the compiled index, exercised against the real
- * eleven-page acceptance corpus so the ranking is judged on real prose.
+ * D04 — search over the compiled index, exercised against the real canonical
+ * corpus so the ranking is judged on real prose rather than on fixture text.
+ * The corpus grows page by page, so nothing here may depend on its size.
  */
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Database from 'better-sqlite3';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -17,8 +18,30 @@ const CONTENT_DIR = join(
   'concepts',
 );
 
+const GRAPH_ONLY_DIR = join(dirname(CONTENT_DIR), 'graph-only');
+
 let root: string;
 let db: Database.Database;
+/**
+ * How many canonical files the compiler had to read, counted on disk rather
+ * than asked of the index under test — an independent witness to the corpus
+ * size, so it stays true as pages are added.
+ */
+let canonicalFileCount: number;
+
+/** The same selection the loader makes: `_` and `.` prefixes are not content. */
+const countCanonicalFiles = async (directory: string, extension: string): Promise<number> => {
+  let entries: string[];
+  try {
+    entries = await readdir(directory);
+  } catch {
+    // A corpus with no graph-only identities is a legitimate corpus.
+    return 0;
+  }
+  return entries.filter(
+    (name) => name.endsWith(extension) && !name.startsWith('_') && !name.startsWith('.'),
+  ).length;
+};
 
 beforeAll(async () => {
   root = await mkdtemp(join(tmpdir(), 'navigator-search-'));
@@ -29,6 +52,9 @@ beforeAll(async () => {
     env: { SOURCE_DATE_EPOCH: '1700000000' },
   });
   if (!result.ok) throw new Error('acceptance corpus failed to compile');
+  canonicalFileCount =
+    (await countCanonicalFiles(CONTENT_DIR, '.md')) +
+    (await countCanonicalFiles(GRAPH_ONLY_DIR, '.yaml'));
   db = new Database(databasePath, { readonly: true, fileMustExist: true });
 }, 60_000);
 
@@ -178,13 +204,30 @@ describe('query hardening', () => {
   });
 
   it('leaves the database unchanged after hostile input', () => {
-    const before = (db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n;
+    const count = (): number =>
+      (db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n;
+    /** Identity *and* content, so an edit that kept the row count is caught too. */
+    const snapshot = (): readonly { id: string; content_hash: string }[] =>
+      db.prepare('SELECT id, content_hash FROM concepts ORDER BY id').all() as {
+        id: string;
+        content_hash: string;
+      }[];
+
+    const before = count();
+    const rowsBefore = snapshot();
     for (const query of ["'; DELETE FROM concepts; --", 'resnet" OR "1"="1']) {
       searchConcepts(db, query);
     }
-    const after = (db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n;
+    const after = count();
     expect(after).toBe(before);
-    expect(before).toBe(11);
+    expect(snapshot()).toEqual(rowsBefore);
+
+    // This assertion used to read `toBe(11)`, the size of the seed corpus. The
+    // number was never the point: it made the comparison above non-vacuous, by
+    // proving the table had rows to lose. The corpus size is not a constant, so
+    // pin it to the corpus instead — every canonical file on disk is one
+    // indexed concept, which also catches a compiler that silently drops pages.
+    expect(before).toBe(canonicalFileCount);
   });
 
   it('does not let a LIKE wildcard in the query widen the prefix search', () => {

@@ -7,14 +7,14 @@
  * archive rather than delete, deduplicate rather than double, and refuse a
  * record that points at something in another project.
  */
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readdir, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import Database from 'better-sqlite3';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import type { Database as DatabaseType } from 'better-sqlite3';
-import { openDatabaseReadOnly } from '@navigator/core';
+import { GRAPH_ONLY_DIR_NAME, openDatabaseReadOnly } from '@navigator/core';
 import {
   MIGRATIONS,
   PERSONAL_SCHEMA_VERSION,
@@ -51,7 +51,7 @@ import {
   updateProject,
   updateSession,
 } from '../src/personal/index.js';
-import { compileAcceptanceCorpus } from './helpers.js';
+import { CONTENT_DIR, compileAcceptanceCorpus } from './helpers.js';
 import type { CompiledCorpus } from './helpers.js';
 
 let scratch = '';
@@ -123,6 +123,39 @@ describe('opening the personal database', () => {
   });
 });
 
+/**
+ * How many concepts the canonical index holds is not a number this file may
+ * know: it is however many concept files the corpus was compiled from. One
+ * Markdown page and one graph-only identity each become exactly one row, and a
+ * name beginning with `_` or `.` is a draft the compiler ignores, so counting
+ * the sources the same way the compiler does gives the same answer at eleven
+ * concepts or at two hundred and ninety-one.
+ */
+async function countConceptSources(): Promise<number> {
+  const count = async (directory: string, extension: string): Promise<number> => {
+    let entries: string[];
+    try {
+      entries = await readdir(directory);
+    } catch {
+      // A corpus may legitimately have no graph-only directory at all.
+      return 0;
+    }
+    return entries.filter(
+      (name) => name.endsWith(extension) && !name.startsWith('_') && !name.startsWith('.'),
+    ).length;
+  };
+  return (
+    (await count(CONTENT_DIR, '.md')) +
+    (await count(join(dirname(CONTENT_DIR), GRAPH_ONLY_DIR_NAME), '.yaml'))
+  );
+}
+
+/** One row of the canonical concepts table, as this file reads it. */
+interface ConceptRow {
+  readonly id: string;
+  readonly title: string;
+}
+
 describe('the two databases are genuinely separate', () => {
   let corpus: CompiledCorpus;
 
@@ -134,20 +167,40 @@ describe('the two databases are genuinely separate', () => {
     await corpus.cleanup();
   });
 
-  it('still refuses every write to the canonical index', () => {
+  it('still refuses every write to the canonical index', async () => {
+    const expectedConcepts = await countConceptSources();
+    // An empty corpus would make everything below vacuously true.
+    expect(expectedConcepts).toBeGreaterThan(0);
+
     const canonical = openDatabaseReadOnly(corpus.databasePath);
+    const conceptRows = (): number =>
+      (canonical.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n;
     try {
+      expect(conceptRows()).toBe(expectedConcepts);
+      // The row the UPDATE aims at is taken from the index itself rather than
+      // named here: a refusal to change a concept that has since been renamed
+      // away would prove nothing.
+      const target = canonical
+        .prepare('SELECT id, title FROM concepts ORDER BY id LIMIT 1')
+        .get() as ConceptRow;
+
       expect(() => canonical.prepare('DELETE FROM concepts').run()).toThrow(/readonly/i);
       expect(() =>
-        canonical
-          .prepare("UPDATE concepts SET title = 'x' WHERE id = 'concept.analysis.convolution'")
-          .run(),
+        canonical.prepare('UPDATE concepts SET title = ? WHERE id = ?').run('x', target.id),
       ).toThrow(/readonly/i);
       expect(() => canonical.exec('CREATE TABLE sneaky (x TEXT)')).toThrow(/readonly/i);
-      // And it still reads.
-      expect(
-        (canonical.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n,
-      ).toBe(11);
+
+      // And it still reads: every concept the corpus compiled is still there,
+      // the count the compiler recorded at build time still agrees with the
+      // rows it wrote, and the row the update aimed at still says what it said.
+      expect(conceptRows()).toBe(expectedConcepts);
+      const recorded = canonical
+        .prepare("SELECT value FROM build_meta WHERE key = 'concept_count'")
+        .get() as { value: string } | undefined;
+      expect(recorded?.value).toBe(String(expectedConcepts));
+      expect(canonical.prepare('SELECT title FROM concepts WHERE id = ?').get(target.id)).toEqual({
+        title: target.title,
+      });
     } finally {
       canonical.close();
     }
@@ -693,7 +746,9 @@ describe('saved items', () => {
       expect(result.item.payloadVersion).toBe(1);
       expect(result.item.payload, itemType).toMatchObject(payload as Record<string, unknown>);
     }
-    expect(listSavedItems(db, project.id)).toHaveLength(6);
+    // One row per item type and not one fewer: adding a seventh type to the
+    // table above must extend this test rather than quietly pass it.
+    expect(listSavedItems(db, project.id)).toHaveLength(Object.keys(PAYLOADS).length);
   });
 
   it('deduplicates a concept and a source, but not an answer', () => {

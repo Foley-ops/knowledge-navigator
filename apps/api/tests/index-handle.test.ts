@@ -2,22 +2,55 @@
  * E00 — the API opens the compiled index read-only and refuses anything it
  * cannot safely serve.
  */
-import { copyFile, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdtemp, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import Database from 'better-sqlite3';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { SCHEMA_VERSION } from '@navigator/core';
 import { IndexUnavailableError, openIndex } from '../src/index-handle.js';
-import { compileAcceptanceCorpus } from './helpers.js';
+import { CONTENT_DIR, compileAcceptanceCorpus } from './helpers.js';
 import type { CompiledCorpus } from './helpers.js';
 
 let corpus: CompiledCorpus;
 let scratch: string;
 
+/**
+ * The source files the acceptance corpus was compiled from, spelled the way
+ * the compiler records them in `concepts.source_path`.
+ *
+ * The corpus grows with every content batch, so the number of rows the index
+ * serves is not a constant worth pinning; what must hold at any size is that
+ * the index serves exactly the corpus on disk. `compileAcceptanceCorpus`
+ * refuses to return unless every file compiled cleanly, so each file here is
+ * one row in the table and there are no rows besides.
+ */
+let sourcePaths: string[];
+
+/**
+ * The corpus loader ignores names beginning with `_` or `.` — Docusaurus
+ * partials and drafts are not pages — so the derivation must ignore them too,
+ * or it would expect rows the compiler never wrote.
+ */
+async function listCorpusFiles(directory: string, extension: string): Promise<string[]> {
+  try {
+    return (await readdir(directory)).filter(
+      (name) => name.endsWith(extension) && !name.startsWith('_') && !name.startsWith('.'),
+    );
+  } catch {
+    // A corpus may legitimately have no graph-only directory.
+    return [];
+  }
+}
+
 beforeAll(async () => {
   corpus = await compileAcceptanceCorpus();
   scratch = await mkdtemp(join(tmpdir(), 'navigator-index-'));
+  const graphOnlyDir = join(dirname(CONTENT_DIR), 'graph-only');
+  sourcePaths = [
+    ...(await listCorpusFiles(CONTENT_DIR, '.md')).map((name) => `content/concepts/${name}`),
+    ...(await listCorpusFiles(graphOnlyDir, '.yaml')).map((name) => `content/graph-only/${name}`),
+  ].sort();
 }, 60_000);
 
 afterAll(async () => {
@@ -40,8 +73,18 @@ describe('opening the compiled index', () => {
   it('serves read queries', () => {
     const index = openIndex(corpus.databasePath);
     try {
+      // Guards the rest of this test against passing over an empty corpus.
+      expect(sourcePaths.length).toBeGreaterThan(0);
       const row = index.db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number };
-      expect(row.n).toBe(11);
+      expect(row.n).toBe(sourcePaths.length);
+      // A matching count alone would survive one row lost and one duplicated,
+      // so compare the rows themselves against the files they came from.
+      const served = (
+        index.db.prepare('SELECT source_path FROM concepts ORDER BY source_path').all() as {
+          source_path: string;
+        }[]
+      ).map((record) => record.source_path);
+      expect(served).toEqual(sourcePaths);
     } finally {
       index.close();
     }
@@ -67,10 +110,18 @@ describe('opening the compiled index', () => {
 
   it('leaves the database unchanged after a rejected write', () => {
     const index = openIndex(corpus.databasePath);
+    const countConcepts = (): number =>
+      (index.db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n;
     try {
+      // The number that matters is the one the index held a moment ago, not
+      // any particular corpus size: a refused DELETE must take nothing, and a
+      // partial delete is caught at any size. The count must also be non-zero,
+      // or a DELETE that removed everything would be indistinguishable from
+      // one that was refused.
+      const before = countConcepts();
+      expect(before).toBeGreaterThan(0);
       expect(() => index.db.prepare('DELETE FROM concepts').run()).toThrow();
-      const row = index.db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number };
-      expect(row.n).toBe(11);
+      expect(countConcepts()).toBe(before);
     } finally {
       index.close();
     }

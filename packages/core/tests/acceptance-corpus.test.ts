@@ -1,20 +1,97 @@
 /**
- * Integration tests against the real eleven-page acceptance corpus in
- * content/concepts. These assert the specific facts the runbook's checkpoint
- * checks name, so a content change that breaks an acceptance property fails
- * here rather than in a browser.
+ * Integration tests against the real acceptance corpus in content/concepts.
+ * These assert the specific facts the runbook's checkpoint checks name, so a
+ * content change that breaks an acceptance property fails here rather than in
+ * a browser.
+ *
+ * The corpus was eleven pages when these were written and grows a batch at a
+ * time towards the whole atlas. Nothing here may depend on its size: the
+ * acceptance properties are about the eleven runbook pages, which stay, and
+ * about the compiler agreeing with the files it was handed, which holds at
+ * any size.
  */
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Database from 'better-sqlite3';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { compileCorpus } from '../src/compile.js';
-import { normalizeName } from '../src/normalize.js';
+import { compareStrings, normalizeName } from '../src/normalize.js';
 
 const REPO_ROOT = fileURLToPath(new URL('../../..', import.meta.url));
 const CONTENT_DIR = join(REPO_ROOT, 'content', 'concepts');
+const GRAPH_ONLY_DIR = join(REPO_ROOT, 'content', 'graph-only');
+
+/**
+ * The eleven pages the runbook's acceptance checkpoints are written against.
+ * Every other test in this file names one of them. They were the whole corpus
+ * once; now they are the slice that must survive every content batch, which is
+ * why this list is asserted by containment and never by length.
+ */
+const ACCEPTANCE_SLICE = [
+  'concept.analysis.convolution',
+  'concept.analysis.cross_correlation',
+  'concept.analysis.translation_equivariance',
+  'concept.deep_learning.backpropagation_through_convolution',
+  'concept.deep_learning.convolutional_layer',
+  'concept.deep_learning.lenet',
+  'concept.deep_learning.pooling',
+  'concept.deep_learning.receptive_field',
+  'concept.deep_learning.residual_connection',
+  'concept.deep_learning.resnet',
+  'concept.deep_learning.vgg',
+] as const;
+
+interface ConceptRow {
+  id: string;
+  tier: number;
+  review_state: string;
+}
+
+/**
+ * Read one scalar out of a page's frontmatter block with a regular expression
+ * rather than through the loader. The expectation has to be derived from the
+ * files independently, or the test would only be watching the compiler agree
+ * with itself.
+ */
+function frontmatterField(text: string, field: string, fileName: string): string {
+  const close = text.indexOf('\n---', 3);
+  const block = close === -1 ? text : text.slice(0, close);
+  const match = new RegExp(`^${field}:[ \\t]*(.+)$`, 'm').exec(block);
+  if (!match?.[1]) throw new Error(`${fileName} has no frontmatter field "${field}"`);
+  return match[1].trim().replace(/^['"](.*)['"]$/, '$1');
+}
+
+/**
+ * Every Markdown page the corpus loader would pick up, with the identity, tier
+ * and review state it declares. The `_` and `.` prefixes are skipped here for
+ * the same reason the loader skips them: those files are not pages.
+ */
+async function pagesOnDisk(): Promise<ConceptRow[]> {
+  const fileNames = (await readdir(CONTENT_DIR)).filter(
+    (name) => name.endsWith('.md') && !name.startsWith('_') && !name.startsWith('.'),
+  );
+  const pages = await Promise.all(
+    fileNames.map(async (fileName) => {
+      const text = await readFile(join(CONTENT_DIR, fileName), 'utf8');
+      return {
+        id: frontmatterField(text, 'concept_id', fileName),
+        tier: Number(frontmatterField(text, 'tier', fileName)),
+        review_state: frontmatterField(text, 'review_state', fileName),
+      };
+    }),
+  );
+  return pages.sort((a, b) => compareStrings(a.id, b.id));
+}
+
+/** Tier 3 identities carry no page; they are files under content/graph-only. */
+async function graphOnlyFilesOnDisk(): Promise<string[]> {
+  const entries = await readdir(GRAPH_ONLY_DIR).catch(() => [] as string[]);
+  return entries.filter(
+    (name) => name.endsWith('.yaml') && !name.startsWith('_') && !name.startsWith('.'),
+  );
+}
 
 let root: string;
 let databasePath: string;
@@ -44,28 +121,41 @@ afterAll(async () => {
 });
 
 describe('the acceptance corpus', () => {
-  it('holds exactly eleven Tier 1 generated-draft concepts', () => {
-    const rows = db.prepare('SELECT id, tier, review_state FROM concepts ORDER BY id').all() as {
-      id: string;
-      tier: number;
-      review_state: string;
-    }[];
-    expect(rows).toHaveLength(11);
-    expect(rows.every((r) => r.tier === 1)).toBe(true);
-    expect(rows.every((r) => r.review_state === 'generated-draft')).toBe(true);
-    expect(rows.map((r) => r.id)).toEqual([
-      'concept.analysis.convolution',
-      'concept.analysis.cross_correlation',
-      'concept.analysis.translation_equivariance',
-      'concept.deep_learning.backpropagation_through_convolution',
-      'concept.deep_learning.convolutional_layer',
-      'concept.deep_learning.lenet',
-      'concept.deep_learning.pooling',
-      'concept.deep_learning.receptive_field',
-      'concept.deep_learning.residual_connection',
-      'concept.deep_learning.resnet',
-      'concept.deep_learning.vgg',
-    ]);
+  it('compiles one faithful concept row per page, the acceptance slice among them', async () => {
+    const rows = db
+      .prepare(
+        "SELECT id, tier, review_state FROM concepts WHERE content_format = 'markdown' ORDER BY id",
+      )
+      .all() as ConceptRow[];
+
+    // What the old count of eleven was really protecting is agreement between
+    // the files and the table: every page compiles to exactly one row, no page
+    // is dropped, no row is invented, and the tier and review state each page
+    // declares arrive unchanged. Comparing whole rows to the frontmatter on
+    // disk says all of that at any corpus size, which a number never could.
+    expect(rows).toEqual(await pagesOnDisk());
+
+    // The id is the join key for aliases, categories, relationships and
+    // sources, so two rows may never share one.
+    expect(new Set(rows.map((r) => r.id)).size).toBe(rows.length);
+
+    // Tier 3 identities are concepts with no page. They belong to the same
+    // table, so the table may hold exactly as many of them as there are files.
+    const graphOnly = db
+      .prepare("SELECT COUNT(*) AS n FROM concepts WHERE content_format = 'graph-only'")
+      .get() as { n: number };
+    expect(graphOnly.n).toBe((await graphOnlyFilesOnDisk()).length);
+
+    // The acceptance slice itself. Every checkpoint below reads one of these
+    // pages, and each is a Tier 1 generated draft however far the corpus grows.
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    for (const id of ACCEPTANCE_SLICE) {
+      expect(byId.get(id), `acceptance page ${id}`).toEqual({
+        id,
+        tier: 1,
+        review_state: 'generated-draft',
+      });
+    }
   });
 
   it('passes a foreign key check with no dangling rows', () => {
@@ -113,13 +203,38 @@ describe('the acceptance corpus', () => {
     ]);
   });
 
-  it('exposes only the atlas areas the slice actually uses', () => {
-    // The atlas has three areas (Artificial Intelligence, Mathematics,
-    // Programming); the eleven-page slice populates two of them.
-    const areas = db
-      .prepare('SELECT DISTINCT top_level FROM categories ORDER BY top_level')
-      .all() as { top_level: string }[];
-    expect(areas.map((a) => a.top_level)).toEqual(['Artificial Intelligence', 'Mathematics']);
+  it('exposes only the atlas areas the corpus actually inhabits', () => {
+    // The atlas names more areas than the corpus fills — Programming had no
+    // pages when this was written, and which areas are empty changes with every
+    // batch. The property that does not change: an area reaches the compiled
+    // categories only because a concept sits in it. Naming the two areas the
+    // seed corpus happened to use only restated that fact for one corpus size.
+    const exposed = (
+      db.prepare('SELECT DISTINCT top_level FROM categories ORDER BY top_level').all() as {
+        top_level: string;
+      }[]
+    ).map((a) => a.top_level);
+    const inhabited = (
+      db
+        .prepare(
+          `SELECT DISTINCT cat.top_level FROM concept_categories cc
+             JOIN categories cat ON cat.id = cc.category_id
+            ORDER BY cat.top_level`,
+        )
+        .all() as { top_level: string }[]
+    ).map((a) => a.top_level);
+    expect(exposed).toEqual(inhabited);
+
+    // Nor may an area appear that the atlas does not name: the compiled
+    // categories are a subset of the curated atlas, never an invention.
+    const atlasAreas = (
+      db.prepare('SELECT title FROM atlas_areas').all() as { title: string }[]
+    ).map((a) => a.title);
+    expect(atlasAreas).toEqual(expect.arrayContaining(exposed));
+
+    // The acceptance slice is filed across both of these, so both are exposed
+    // however the rest of the corpus grows.
+    expect(exposed).toEqual(expect.arrayContaining(['Artificial Intelligence', 'Mathematics']));
   });
 
   it('reaches residual connection and an earlier architecture within two hops of ResNet', () => {

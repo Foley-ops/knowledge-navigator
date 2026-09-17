@@ -15,6 +15,7 @@
  */
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadConceptFromText, validateConceptPage } from '../packages/core/dist/index.js';
 
 /**
@@ -59,6 +60,27 @@ const PLACEHOLDERS = [
   'to be written',
   'XXX',
 ];
+
+/**
+ * The curated sources, read once and kept.
+ *
+ * Every page in a batch is checked in the same process, and the registry does
+ * not change while a batch runs.
+ */
+let registryCache;
+function registry() {
+  if (registryCache === undefined) {
+    const file = resolve(
+      dirname(fileURLToPath(import.meta.url)),
+      '..',
+      'docs',
+      'source-registry.json',
+    );
+    const parsed = JSON.parse(readFileSync(file, 'utf8'));
+    registryCache = new Map(parsed.sources.map((source) => [source.id, source]));
+  }
+  return registryCache;
+}
 
 function sectionsOf(concept) {
   const body = concept.body;
@@ -183,6 +205,29 @@ export function checkPage(path) {
       problems.push(
         `${fileName} sources.${index}.supports: a source must name the sections it supports`,
       );
+    }
+
+    // The registry is the whole defence against invented citations. A page may
+    // cite a source only if a person has already put it in the registry, and
+    // must quote it exactly, so a plausible-looking arXiv id that nobody
+    // checked cannot reach the corpus by being well formatted.
+    const registered = registry().get(source.source_id);
+    if (registered === undefined) {
+      problems.push(
+        `${fileName} sources.${index}.source_id: ${source.source_id} is not in docs/source-registry.json; a page may only cite registered sources`,
+      );
+      continue;
+    }
+    for (const [field, mine, theirs] of [
+      ['url', source.url, registered.url],
+      ['title', source.title, registered.title],
+      ['source_kind', source.source_kind, registered.kind],
+    ]) {
+      if (mine !== theirs) {
+        problems.push(
+          `${fileName} sources.${index}.${field}: does not match the registry for ${source.source_id} (page: ${mine}; registry: ${theirs})`,
+        );
+      }
     }
   }
 

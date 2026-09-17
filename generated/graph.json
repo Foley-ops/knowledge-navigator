@@ -1,35 +1,35 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T09:16:09.544Z",
-  "corpusHash": "bb96930aab75dd2c3741c91919f65b8ba3ea53b5a7c13cea1588c7fd1edff96e",
-  "atlasHash": "94c2f74ce72c30063af005e62da1ba42dec003f9ca67b15a8d9cc17d40d79e71",
+  "builtAt": "2026-09-17T12:34:22.563Z",
+  "corpusHash": "2c9e0ad6e784cb4bd6ac423befe94357f5c7fca590b95d8a508a8fbc2e9bea98",
+  "atlasHash": "f6d0fac13e3ef818cb32c9c6d85706e7ed55a110a3cd38e8194b2ac89c1da678",
   "counts": {
-    "concepts": 11,
-    "relationships": 20,
-    "categories": 6
+    "concepts": 21,
+    "relationships": 57,
+    "categories": 8
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 11,
+      "1": 21,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 11,
+      "markdown": 21,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 11
+      "generated-draft": 21
     },
-    "conceptsWithArticle": 11,
+    "conceptsWithArticle": 21,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 280,
+      "candidate": 270,
       "proposed-tier-3": 0,
-      "covered": 11,
+      "covered": 21,
       "deferred": 0
     },
     "unresolvedReferences": 0,
@@ -125,12 +125,54 @@
       "primaryConceptIds": [
         "concept.analysis.convolution",
         "concept.analysis.cross_correlation",
+        "concept.analysis.multivariable_calculus",
+        "concept.analysis.real_analysis",
+        "concept.analysis.single_variable_calculus",
         "concept.analysis.translation_equivariance"
       ],
       "conceptIds": [
         "concept.analysis.convolution",
         "concept.analysis.cross_correlation",
+        "concept.analysis.multivariable_calculus",
+        "concept.analysis.real_analysis",
+        "concept.analysis.single_variable_calculus",
         "concept.analysis.translation_equivariance"
+      ]
+    },
+    {
+      "path": "Mathematics/Foundations",
+      "name": "Foundations",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.foundations.category_theory",
+        "concept.foundations.computability_theory",
+        "concept.foundations.model_theory",
+        "concept.foundations.set_theory"
+      ],
+      "conceptIds": [
+        "concept.foundations.category_theory",
+        "concept.foundations.computability_theory",
+        "concept.foundations.model_theory",
+        "concept.foundations.set_theory"
+      ]
+    },
+    {
+      "path": "Mathematics/Foundations/Logic & Proof",
+      "name": "Logic & Proof",
+      "topLevel": "Mathematics",
+      "depth": 3,
+      "parent": "Mathematics/Foundations",
+      "primaryConceptIds": [
+        "concept.logic.first_order_logic",
+        "concept.logic.proof_theory",
+        "concept.logic.propositional_logic"
+      ],
+      "conceptIds": [
+        "concept.logic.first_order_logic",
+        "concept.logic.proof_theory",
+        "concept.logic.propositional_logic"
       ]
     }
   ],
@@ -173,6 +215,71 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.cross_correlation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.multivariable_calculus",
+      "title": "Multivariable Calculus",
+      "slug": "/concepts/multivariable-calculus",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The calculus of functions of several variables, in which the derivative at a point is a linear map rather than a number, and whose chain rule is the identity backpropagation implements.",
+      "aliases": [
+        "calculus of several variables",
+        "multivariate calculus"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.multivariable_calculus",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.real_analysis",
+      "title": "Real Analysis",
+      "slug": "/concepts/real-analysis",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The rigorous theory of limits on the real line, where a single axiom — completeness of the reals — is what makes continuity, convergence and integration behave.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.real_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.single_variable_calculus",
+      "title": "Single-Variable Calculus",
+      "slug": "/concepts/single-variable-calculus",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The computational layer of real analysis — limits, derivatives and integrals of functions of one real variable, tied together by the fundamental theorem that makes differentiation and integration inverse operations.",
+      "aliases": [
+        "one-variable calculus"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.single_variable_calculus",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -383,6 +490,158 @@
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
+    },
+    {
+      "id": "concept.foundations.category_theory",
+      "title": "Category Theory",
+      "slug": "/concepts/category-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A mathematical language that describes structures by the maps between them rather than by their elements, so that constructions from algebra, topology, logic and programming turn out to be the same definition read in different settings.",
+      "aliases": [
+        "general abstract nonsense"
+      ],
+      "primaryCategory": "Mathematics/Foundations",
+      "categories": [
+        "Mathematics/Foundations"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.category_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.foundations.computability_theory",
+      "title": "Computability Theory",
+      "slug": "/concepts/computability-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The mathematical study of which problems admit an algorithm at all, which fixes a precise machine model and then proves that specific, clearly stated questions — the halting problem first among them — have no algorithmic answer.",
+      "aliases": [
+        "recursion theory"
+      ],
+      "primaryCategory": "Mathematics/Foundations",
+      "categories": [
+        "Mathematics/Foundations"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.computability_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.foundations.model_theory",
+      "title": "Model Theory",
+      "slug": "/concepts/model-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The branch of mathematical logic that studies which structures satisfy which formal sentences, and what a theory can and cannot pin down about the structures satisfying it.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Foundations",
+      "categories": [
+        "Mathematics/Foundations"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.model_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.foundations.set_theory",
+      "title": "Set Theory",
+      "slug": "/concepts/set-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of collections under a single membership relation, rebuilt on explicit axioms after naive comprehension turned out to be contradictory, and now the standard foundation in which most other mathematics can be encoded.",
+      "aliases": [
+        "axiomatic set theory"
+      ],
+      "primaryCategory": "Mathematics/Foundations",
+      "categories": [
+        "Mathematics/Foundations"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.set_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.logic.first_order_logic",
+      "title": "First-Order Logic",
+      "slug": "/concepts/first-order-logic",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The logic of quantifiers, variables and predicates in which most of modern mathematics is actually written, a logic whose provability and truth-in-every-structure coincide while its validity problem stays undecidable.",
+      "aliases": [
+        "predicate calculus",
+        "quantificational logic"
+      ],
+      "primaryCategory": "Mathematics/Foundations/Logic & Proof",
+      "categories": [
+        "Mathematics/Foundations/Logic & Proof"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.logic_and_proof.first_order_logic",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.logic.proof_theory",
+      "title": "Proof Theory",
+      "slug": "/concepts/proof-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Proof theory studies formal derivations as finite mathematical objects, asking what transformations they admit — above all the elimination of cuts — and what those transformations reveal about the strength of the theories that produce them.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Foundations/Logic & Proof",
+      "categories": [
+        "Mathematics/Foundations/Logic & Proof"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.logic_and_proof.proof_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.logic.propositional_logic",
+      "title": "Propositional Logic",
+      "slug": "/concepts/propositional-logic",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The logic of whole statements joined by not, and, or and if-then, where meaning is fixed by two-valued truth tables — which makes validity decidable, and makes satisfiability the original NP-complete problem.",
+      "aliases": [
+        "sentential logic",
+        "propositional calculus"
+      ],
+      "primaryCategory": "Mathematics/Foundations/Logic & Proof",
+      "categories": [
+        "Mathematics/Foundations/Logic & Proof"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.foundations.logic_and_proof.propositional_logic",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
     }
   ],
   "edges": [
@@ -400,6 +659,94 @@
       "target": "concept.analysis.convolution",
       "type": "requires",
       "note": "Cross-correlation is defined by contrast with convolution and shares its algebra apart from the reflection.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.multivariable_calculus|generalizes|concept.analysis.single_variable_calculus",
+      "source": "concept.analysis.multivariable_calculus",
+      "target": "concept.analysis.single_variable_calculus",
+      "type": "generalizes",
+      "note": "Setting n = m = 1 recovers the ordinary derivative, and each partial derivative is literally a one-variable derivative taken along a coordinate line.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.multivariable_calculus|prerequisite_of|concept.deep_learning.backpropagation_through_convolution",
+      "source": "concept.analysis.multivariable_calculus",
+      "target": "concept.deep_learning.backpropagation_through_convolution",
+      "type": "prerequisite_of",
+      "note": "That backward pass is the multivariable chain rule applied to a linear layer, so its formulas are transposed-Jacobian products and cannot be derived without this page.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.multivariable_calculus|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.multivariable_calculus",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "Total differentiability is a limit statement about norms on an open set, so its content depends on the notions of limit, continuity and neighbourhood that real analysis makes precise.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.real_analysis|prerequisite_of|concept.analysis.convolution",
+      "source": "concept.analysis.real_analysis",
+      "target": "concept.analysis.convolution",
+      "type": "prerequisite_of",
+      "note": "Whether the convolution integral exists, and whether one may differentiate under it, are exactly the convergence and interchange questions real analysis answers.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.real_analysis|prerequisite_of|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.real_analysis",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "prerequisite_of",
+      "note": "Many of the one-dimensional arguments about limits, continuity and integration carry over verbatim with the absolute value replaced by a norm, which is why analysis comes first — though higher dimensions add genuinely new phenomena, from partial derivatives that do not imply differentiability to Fubini and the Jacobian change of variables.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.real_analysis|requires|concept.analysis.single_variable_calculus",
+      "source": "concept.analysis.real_analysis",
+      "target": "concept.analysis.single_variable_calculus",
+      "type": "requires",
+      "note": "Analysis takes the objects calculus already manipulates and asks which of its manipulations are actually valid, so a reader needs the computations first.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.real_analysis|requires|concept.foundations.set_theory",
+      "source": "concept.analysis.real_analysis",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "The reals are built as a set with structure — Dedekind cuts or equivalence classes of Cauchy sequences — and the supremum axiom quantifies over arbitrary subsets.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.single_variable_calculus|prerequisite_of|concept.analysis.convolution",
+      "source": "concept.analysis.single_variable_calculus",
+      "target": "concept.analysis.convolution",
+      "type": "prerequisite_of",
+      "note": "Continuous convolution is defined by a definite integral in one variable, and its differentiation properties follow from the one-variable rules.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.single_variable_calculus|prerequisite_of|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.single_variable_calculus",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "prerequisite_of",
+      "note": "A partial derivative is a single-variable derivative taken along one coordinate with the others frozen, so the one-variable rules are the computational content.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.single_variable_calculus|prerequisite_of|concept.deep_learning.backpropagation_through_convolution",
+      "source": "concept.analysis.single_variable_calculus",
+      "target": "concept.deep_learning.backpropagation_through_convolution",
+      "type": "prerequisite_of",
+      "note": "Each primitive in the computational graph has a local derivative supplied by the one-variable rules; composing them across the graph is the multivariable chain rule, which sums over every path out of a node.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.single_variable_calculus|refined_by|concept.analysis.real_analysis",
+      "source": "concept.analysis.single_variable_calculus",
+      "target": "concept.analysis.real_analysis",
+      "type": "refined_by",
+      "note": "Real analysis supplies the epsilon-delta proofs and completeness arguments that calculus uses operationally without establishing.",
       "condition": null
     },
     {
@@ -544,6 +891,214 @@
       "target": "concept.deep_learning.pooling",
       "type": "requires",
       "note": "Five max-pooling stages separate VGG's convolutional blocks and set its resolution schedule.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.category_theory|contrasts_with|concept.foundations.model_theory",
+      "source": "concept.foundations.category_theory",
+      "target": "concept.foundations.model_theory",
+      "type": "contrasts_with",
+      "note": "Model theory studies a structure through the formulas its elements satisfy, whereas category theory refuses to look inside an object and characterises it by the arrows around it.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.category_theory|contributes_to|concept.logic.proof_theory",
+      "source": "concept.foundations.category_theory",
+      "target": "concept.logic.proof_theory",
+      "type": "contributes_to",
+      "note": "Cartesian closed categories are models of intuitionistic propositional proof, which lets proofs themselves be treated as morphisms that compose rather than as mere witnesses to provability.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.category_theory|requires|concept.foundations.set_theory",
+      "source": "concept.foundations.category_theory",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "The standard definitions quantify over sets — a locally small category has a set of morphisms between each pair of objects — and the size distinctions that keep the subject consistent are stated set-theoretically.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.computability_theory|contributes_to|concept.logic.first_order_logic",
+      "source": "concept.foundations.computability_theory",
+      "target": "concept.logic.first_order_logic",
+      "type": "contributes_to",
+      "note": "Church and Turing answered the Entscheidungsproblem with it: validity of first-order sentences is recognizable but not decidable.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.computability_theory|contributes_to|concept.logic.proof_theory",
+      "source": "concept.foundations.computability_theory",
+      "target": "concept.logic.proof_theory",
+      "type": "contributes_to",
+      "note": "\"Effectively axiomatizable\" is a decidability condition on a theory's axiom set, and the incompleteness theorems are stated only for theories that satisfy it.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.computability_theory|requires|concept.foundations.set_theory",
+      "source": "concept.foundations.computability_theory",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "Its objects are sets of strings and partial functions, and the halting argument is Cantor's diagonal method applied to the countable set of machine descriptions.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.model_theory|contrasts_with|concept.logic.proof_theory",
+      "source": "concept.foundations.model_theory",
+      "target": "concept.logic.proof_theory",
+      "type": "contrasts_with",
+      "note": "Proof theory studies what is derivable from axioms by rules; model theory studies what is true in structures, and the completeness theorem is the bridge between the two.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.model_theory|contributes_to|concept.foundations.computability_theory",
+      "source": "concept.foundations.model_theory",
+      "target": "concept.foundations.computability_theory",
+      "type": "contributes_to",
+      "note": "Model-theoretic completeness plus a recursive axiomatisation yields decidability, which is how quantifier elimination produces decision procedures for real closed and algebraically closed fields.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.model_theory|requires|concept.foundations.set_theory",
+      "source": "concept.foundations.model_theory",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "A structure is a set with distinguished relations and functions, and the cardinality arguments behind Lowenheim-Skolem are set-theoretic.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.model_theory|requires|concept.logic.first_order_logic",
+      "source": "concept.foundations.model_theory",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "Model theory interprets first-order syntax; without the formal language of quantifiers and terms there is nothing for a structure to satisfy.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.set_theory|contrasts_with|concept.foundations.category_theory",
+      "source": "concept.foundations.set_theory",
+      "target": "concept.foundations.category_theory",
+      "type": "contrasts_with",
+      "note": "Both are offered as foundations, but one identifies objects by what they contain and the other by the maps between them.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.set_theory|contributes_to|concept.foundations.model_theory",
+      "source": "concept.foundations.set_theory",
+      "target": "concept.foundations.model_theory",
+      "type": "contributes_to",
+      "note": "Independence results are proved by constructing models of the axioms, so the questions set theory cannot settle internally are settled model-theoretically.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.set_theory|prerequisite_of|concept.analysis.real_analysis",
+      "source": "concept.foundations.set_theory",
+      "target": "concept.analysis.real_analysis",
+      "type": "prerequisite_of",
+      "note": "Real analysis works with a set of reals whose existence, completeness and uncountability are set-theoretic facts about that construction.",
+      "condition": null
+    },
+    {
+      "id": "concept.foundations.set_theory|requires|concept.logic.first_order_logic",
+      "source": "concept.foundations.set_theory",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "ZFC is stated as a first-order theory with one binary relation symbol, and two of its axioms are schemas over first-order formulas.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.first_order_logic|generalizes|concept.logic.propositional_logic",
+      "source": "concept.logic.first_order_logic",
+      "target": "concept.logic.propositional_logic",
+      "type": "generalizes",
+      "note": "Every propositional connective and tautology schema survives unchanged; first-order logic adds terms, predicates and quantification over domain elements on top of them.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.first_order_logic|prerequisite_of|concept.foundations.model_theory",
+      "source": "concept.logic.first_order_logic",
+      "target": "concept.foundations.model_theory",
+      "type": "prerequisite_of",
+      "note": "Model theory takes the satisfaction relation between first-order sentences and structures as its object of study, so the syntax and semantics defined here are its starting data.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.first_order_logic|prerequisite_of|concept.foundations.set_theory",
+      "source": "concept.logic.first_order_logic",
+      "target": "concept.foundations.set_theory",
+      "type": "prerequisite_of",
+      "note": "ZFC is presented as a first-order theory in the signature containing the single binary relation symbol for membership, and its separation and replacement axioms are first-order schemas.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.first_order_logic|prerequisite_of|concept.logic.proof_theory",
+      "source": "concept.logic.first_order_logic",
+      "target": "concept.logic.proof_theory",
+      "type": "prerequisite_of",
+      "note": "The derivability relation whose calculi proof theory analyses is the one first-order completeness matches against semantic consequence.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.proof_theory|contrasts_with|concept.foundations.model_theory",
+      "source": "concept.logic.proof_theory",
+      "target": "concept.foundations.model_theory",
+      "type": "contrasts_with",
+      "note": "Proof theory studies the syntactic relation of derivability and model theory the semantic relation of truth in a structure; the completeness theorem is the bridge, not an identity of method.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.proof_theory|contributes_to|concept.foundations.computability_theory",
+      "source": "concept.logic.proof_theory",
+      "target": "concept.foundations.computability_theory",
+      "type": "contributes_to",
+      "note": "Ordinal analysis converts proof-theoretic strength into a class of computable functions — the functions Peano arithmetic proves total are exactly those definable by recursion below epsilon-zero.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.proof_theory|requires|concept.logic.first_order_logic",
+      "source": "concept.logic.proof_theory",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "Gentzen's calculi are proof systems for first-order languages, and the quantifier rules with their eigenvariable conditions are where the real difficulty of cut elimination lives.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.proof_theory|requires|concept.logic.propositional_logic",
+      "source": "concept.logic.proof_theory",
+      "target": "concept.logic.propositional_logic",
+      "type": "requires",
+      "note": "The connective rules of natural deduction and the sequent calculus are stated first for the propositional fragment, which is also the fragment where cut-free proof search is a decision procedure.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.propositional_logic|contributes_to|concept.foundations.computability_theory",
+      "source": "concept.logic.propositional_logic",
+      "target": "concept.foundations.computability_theory",
+      "type": "contributes_to",
+      "note": "Propositional satisfiability is the problem the Cook-Levin theorem proved NP-complete, making it the reduction target complexity theory is built on.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.propositional_logic|prerequisite_of|concept.foundations.model_theory",
+      "source": "concept.logic.propositional_logic",
+      "target": "concept.foundations.model_theory",
+      "type": "prerequisite_of",
+      "note": "A truth assignment is the simplest possible model, so propositional semantics is the degenerate case that model-theoretic structures generalise.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.propositional_logic|prerequisite_of|concept.logic.first_order_logic",
+      "source": "concept.logic.propositional_logic",
+      "target": "concept.logic.first_order_logic",
+      "type": "prerequisite_of",
+      "note": "First-order logic is this system plus predicates, variables and quantifiers, and it inherits the connectives and their truth tables unchanged.",
+      "condition": null
+    },
+    {
+      "id": "concept.logic.propositional_logic|prerequisite_of|concept.logic.proof_theory",
+      "source": "concept.logic.propositional_logic",
+      "target": "concept.logic.proof_theory",
+      "type": "prerequisite_of",
+      "note": "The propositional fragment is where natural deduction, sequent calculus and cut elimination are first defined and first proved to behave.",
       "condition": null
     }
   ]

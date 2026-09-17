@@ -62,7 +62,31 @@ const sidebars: SidebarsConfig = {
           items: [
             { type: 'doc', id: "convolution", label: "Convolution" },
             { type: 'doc', id: "cross-correlation", label: "Cross-Correlation" },
+            { type: 'doc', id: "multivariable-calculus", label: "Multivariable Calculus" },
+            { type: 'doc', id: "real-analysis", label: "Real Analysis" },
+            { type: 'doc', id: "single-variable-calculus", label: "Single-Variable Calculus" },
             { type: 'doc', id: "translation-equivariance", label: "Translation Equivariance" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Foundations",
+          collapsed: true,
+          items: [
+            {
+              type: 'category',
+              label: "Logic & Proof",
+              collapsed: true,
+              items: [
+                { type: 'doc', id: "first-order-logic", label: "First-Order Logic" },
+                { type: 'doc', id: "proof-theory", label: "Proof Theory" },
+                { type: 'doc', id: "propositional-logic", label: "Propositional Logic" },
+              ],
+            },
+            { type: 'doc', id: "category-theory", label: "Category Theory" },
+            { type: 'doc', id: "computability-theory", label: "Computability Theory" },
+            { type: 'doc', id: "model-theory", label: "Model Theory" },
+            { type: 'doc', id: "set-theory", label: "Set Theory" },
           ],
         },
       ],

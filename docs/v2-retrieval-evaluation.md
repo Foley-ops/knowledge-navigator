@@ -11,8 +11,8 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 ## Result
 
 - Questions: **28** across 6 intent classes.
-- Complete retrieval (every needed concept reached): **27/28** (96%).
-- Concept recall (needed concepts reached): **36/37** (97%).
+- Complete retrieval (every needed concept reached): **25/28** (89%).
+- Concept recall (needed concepts reached): **33/37** (89%).
 - Answer quality: **not measured**. No model is involved in this evaluation.
 
 ## By intent
@@ -21,21 +21,35 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 | --- | --- | --- | --- |
 | title | 5 | 5/5 (100%) | 5/5 (100%) |
 | alias | 5 | 5/5 (100%) | 5/5 (100%) |
-| paraphrase | 5 | 5/5 (100%) | 6/6 (100%) |
+| paraphrase | 5 | 3/5 (60%) | 3/6 (50%) |
 | symptom | 5 | 5/5 (100%) | 5/5 (100%) |
 | comparison | 4 | 4/4 (100%) | 8/8 (100%) |
 | path | 4 | 3/4 (75%) | 7/8 (88%) |
 
 ## Where it fails
 
-1 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
+3 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
+
+### P2 (paraphrase)
+
+> How does a network see a wider area of the input as it gets deeper?
+
+- Needed but not retrieved: `concept.deep_learning.receptive_field`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.analysis.convolution`, `concept.analysis.single_variable_calculus`, `concept.deep_learning.resnet`
+
+### P5 (paraphrase)
+
+> Is the operation in a CNN really the mathematical one, or the flipped version?
+
+- Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.foundations.model_theory`, `concept.analysis.multivariable_calculus`, `concept.foundations.computability_theory`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.residual_connection`, `concept.deep_learning.resnet`, `concept.analysis.convolution`, `concept.analysis.cross_correlation`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.logic.proof_theory`, `concept.analysis.single_variable_calculus`, `concept.deep_learning.resnet`, `concept.foundations.model_theory`
 
 ## Private context
 
@@ -60,10 +74,10 @@ Nothing here is evidence for embeddings yet. A miss on eleven pages is usually a
 | A4 | alias | What is max pooling? | `deep_learning.pooling` | yes |
 | A5 | alias | What is a skip connection? | `deep_learning.residual_connection` | yes |
 | P1 | paraphrase | Why does sliding a filter over an image work the same wherever the object is? | `analysis.translation_equivariance` | yes |
-| P2 | paraphrase | How does a network see a wider area of the input as it gets deeper? | `deep_learning.receptive_field` | yes |
+| P2 | paraphrase | How does a network see a wider area of the input as it gets deeper? | `deep_learning.receptive_field` | no |
 | P3 | paraphrase | What lets a very deep network train without the signal dying on the way back? | `deep_learning.residual_connection` | yes |
 | P4 | paraphrase | How do you shrink a feature map without learning any parameters? | `deep_learning.pooling` | yes |
-| P5 | paraphrase | Is the operation in a CNN really the mathematical one, or the flipped version? | `analysis.convolution`, `analysis.cross_correlation` | yes |
+| P5 | paraphrase | Is the operation in a CNN really the mathematical one, or the flipped version? | `analysis.convolution`, `analysis.cross_correlation` | no |
 | S1 | symptom | My detector keeps losing small objects after a few downsampling stages. Why? | `deep_learning.pooling` | yes |
 | S2 | symptom | Training a 40-layer plain network is worse than my 20-layer one. What is going on? | `deep_learning.residual_connection` | yes |
 | S3 | symptom | My model only sees a tiny patch of the image. How do I widen what it looks at? | `deep_learning.receptive_field` | yes |

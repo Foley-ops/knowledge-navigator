@@ -8,11 +8,14 @@ import type { CompiledCorpus, TestApp } from './helpers.js';
 let corpus: CompiledCorpus;
 let api: TestApp;
 let degraded: TestApp;
+/** The build report as it stood before any request in this file was served. */
+let buildBeforeAnyQuery: Record<string, any>;
 
 beforeAll(async () => {
   corpus = await compileAcceptanceCorpus();
   api = await buildTestApp(corpus.databasePath);
   degraded = await buildAppWithoutIndex();
+  buildBeforeAnyQuery = (await get('/api/build')).body;
 }, 60_000);
 
 afterAll(async () => {
@@ -25,6 +28,18 @@ const get = async (url: string): Promise<{ status: number; body: Record<string, 
   const response = await api.app.inject({ method: 'GET', url });
   return { status: response.statusCode, body: response.json() as Record<string, any> };
 };
+
+/** The tables `/api/build` counts, so a test can count them for itself. */
+const COUNTED_TABLES = ['concepts', 'relationships', 'categories', 'sources'] as const;
+
+/**
+ * Rows actually present in the compiled index, read straight off the handle
+ * rather than through the endpoint under test. A literal count only tells the
+ * truth about the corpus that existed the day it was written; the rows tell it
+ * at any corpus size, and catch a miscount that a literal never could.
+ */
+const rowCount = (table: (typeof COUNTED_TABLES)[number]): number =>
+  (api.index.db.prepare(`SELECT COUNT(*) AS n FROM ${table}`).get() as { n: number }).n;
 
 /* ------------------------------ E02 concepts ------------------------------ */
 
@@ -201,8 +216,18 @@ describe('GET /api/search', () => {
   ])('handles injection-shaped query %j safely', async (q) => {
     const { status } = await get(`/api/search?q=${encodeURIComponent(q)}`);
     expect(status).toBe(200);
+    // What survives the query is the point, not how big the corpus happens to
+    // be: this once read `toBe(11)`, which was simply the whole corpus the
+    // week it was written. Two invariants replace it. The build report still
+    // agrees, table by table, with the rows in the index — nothing dropped,
+    // nothing deleted, nothing miscounted — and the whole report is identical
+    // to the one taken before a single query was served.
     const after = await get('/api/build');
-    expect(after.body['counts']['concepts']).toBe(11);
+    const counts = after.body['counts'] as Record<string, number>;
+    for (const table of COUNTED_TABLES) {
+      expect(counts[table], table).toBe(rowCount(table));
+    }
+    expect(after.body).toEqual(buildBeforeAnyQuery);
   });
 
   it('returns 503 when the index is unavailable', async () => {

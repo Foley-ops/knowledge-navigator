@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 1 of 28.** 10 of 10 pages in it are still to write.
+**Batch 2 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/set-theory.md` — Set Theory (concept.foundations.set_theory)
-- `content/concepts/category-theory.md` — Category Theory (concept.foundations.category_theory)
-- `content/concepts/model-theory.md` — Model Theory (concept.foundations.model_theory)
-- `content/concepts/computability-theory.md` — Computability Theory (concept.foundations.computability_theory)
-- `content/concepts/propositional-logic.md` — Propositional Logic (concept.logic.propositional_logic)
-- `content/concepts/first-order-logic.md` — First-Order Logic (concept.logic.first_order_logic)
-- `content/concepts/proof-theory.md` — Proof Theory (concept.logic.proof_theory)
-- `content/concepts/single-variable-calculus.md` — Single-Variable Calculus (concept.analysis.single_variable_calculus)
-- `content/concepts/real-analysis.md` — Real Analysis (concept.analysis.real_analysis)
-- `content/concepts/multivariable-calculus.md` — Multivariable Calculus (concept.analysis.multivariable_calculus)
+- `content/concepts/vector-calculus.md` — Vector Calculus (concept.analysis.vector_calculus)
+- `content/concepts/ordinary-differential-equations.md` — Ordinary Differential Equations (concept.analysis.ordinary_differential_equations)
+- `content/concepts/partial-differential-equations.md` — Partial Differential Equations (concept.analysis.partial_differential_equations)
+- `content/concepts/measure-theory.md` — Measure Theory (concept.analysis.measure_theory)
+- `content/concepts/complex-analysis.md` — Complex Analysis (concept.analysis.complex_analysis)
+- `content/concepts/fourier-analysis.md` — Fourier Analysis (concept.analysis.fourier_analysis)
+- `content/concepts/harmonic-analysis.md` — Harmonic Analysis (concept.analysis.harmonic_analysis)
+- `content/concepts/wavelets.md` — Wavelets (concept.analysis.wavelets)
+- `content/concepts/functional-analysis.md` — Functional Analysis (concept.analysis.functional_analysis)
+- `content/concepts/hilbert-spaces.md` — Hilbert Spaces (concept.analysis.hilbert_spaces)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 11 |
-| Markdown pages in the corpus | 11 |
-| Tier 1 pages | 11 |
+| Candidates covered by a page | 21 |
+| Markdown pages in the corpus | 21 |
+| Tier 1 pages | 21 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 0 of 280 |
+| Planned pages written | 10 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 0 | 85 | 0% |
+| Mathematics | 10 | 85 | 12% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -68,10 +68,10 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
 | Mathematics/Algebra | 0 | 14 |  |
-| Mathematics/Analysis | 0 | 18 |  |
-| Mathematics/Foundations | 0 | 4 |  |
+| Mathematics/Analysis | 3 | 18 |  |
+| Mathematics/Foundations | 4 | 4 | complete |
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
-| Mathematics/Foundations/Logic & Proof | 0 | 3 |  |
+| Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
 | Mathematics/Geometry & Topology | 0 | 15 |  |
 | Mathematics/Linear & Multilinear Algebra | 0 | 6 |  |
 | Mathematics/Mathematical Physics | 0 | 2 |  |
@@ -88,7 +88,20 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-None yet.
+10 of the planned 280, in the order they were written.
+
+| Title | Concept id | Tier | Atlas |
+| --- | --- | --- | --- |
+| Set Theory | `concept.foundations.set_theory` | tier 1 | covered |
+| Category Theory | `concept.foundations.category_theory` | tier 1 | covered |
+| Model Theory | `concept.foundations.model_theory` | tier 1 | covered |
+| Computability Theory | `concept.foundations.computability_theory` | tier 1 | covered |
+| Propositional Logic | `concept.logic.propositional_logic` | tier 1 | covered |
+| First-Order Logic | `concept.logic.first_order_logic` | tier 1 | covered |
+| Proof Theory | `concept.logic.proof_theory` | tier 1 | covered |
+| Single-Variable Calculus | `concept.analysis.single_variable_calculus` | tier 1 | covered |
+| Real Analysis | `concept.analysis.real_analysis` | tier 1 | covered |
+| Multivariable Calculus | `concept.analysis.multivariable_calculus` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -97,20 +110,20 @@ they are written: the mathematics a concept rests on before the concept, the pro
 foundations before the engineering, the machine learning before the architectures that assume
 it. Batches are ten pages each.
 
-### Batch 1
+### Batch 1 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Set Theory | `concept.foundations.set_theory` | Mathematics/Foundations |
-|   | Category Theory | `concept.foundations.category_theory` | Mathematics/Foundations |
-|   | Model Theory | `concept.foundations.model_theory` | Mathematics/Foundations |
-|   | Computability Theory | `concept.foundations.computability_theory` | Mathematics/Foundations |
-|   | Propositional Logic | `concept.logic.propositional_logic` | Mathematics/Foundations/Logic & Proof |
-|   | First-Order Logic | `concept.logic.first_order_logic` | Mathematics/Foundations/Logic & Proof |
-|   | Proof Theory | `concept.logic.proof_theory` | Mathematics/Foundations/Logic & Proof |
-|   | Single-Variable Calculus | `concept.analysis.single_variable_calculus` | Mathematics/Analysis |
-|   | Real Analysis | `concept.analysis.real_analysis` | Mathematics/Analysis |
-|   | Multivariable Calculus | `concept.analysis.multivariable_calculus` | Mathematics/Analysis |
+| x | Set Theory | `concept.foundations.set_theory` | Mathematics/Foundations |
+| x | Category Theory | `concept.foundations.category_theory` | Mathematics/Foundations |
+| x | Model Theory | `concept.foundations.model_theory` | Mathematics/Foundations |
+| x | Computability Theory | `concept.foundations.computability_theory` | Mathematics/Foundations |
+| x | Propositional Logic | `concept.logic.propositional_logic` | Mathematics/Foundations/Logic & Proof |
+| x | First-Order Logic | `concept.logic.first_order_logic` | Mathematics/Foundations/Logic & Proof |
+| x | Proof Theory | `concept.logic.proof_theory` | Mathematics/Foundations/Logic & Proof |
+| x | Single-Variable Calculus | `concept.analysis.single_variable_calculus` | Mathematics/Analysis |
+| x | Real Analysis | `concept.analysis.real_analysis` | Mathematics/Analysis |
+| x | Multivariable Calculus | `concept.analysis.multivariable_calculus` | Mathematics/Analysis |
 
 ### Batch 2
 
@@ -521,19 +534,59 @@ it. Batches are ten pages each.
 
 ## Failed checks
 
-Nothing yet. Every check that fails during a batch is recorded here with what it
-was, what caused it, and what fixed it.
+Every check that fails during a batch is recorded here with what it was, what
+caused it, and what fixed it.
+
+### Batch 1 — the learning path put a concept before its own prerequisite
+
+`apps/api/tests/evaluation.test.ts` asserted that the route to ResNet was ten
+steps long. Batch 1 made it sixteen, which is expected; replacing the constant
+with the invariant it stood for — no step appears before something it requires —
+exposed a real bug rather than a stale number. The emitted route read
+`… real_analysis, convolution, multivariable_calculus, single_variable_calculus …`,
+placing three concepts ahead of a prerequisite they declare.
+
+`buildLearningPath` sorted its steps by `depth`, which breadth-first discovery
+assigns as the *shortest* chain from the target. Sorting by that descending is
+not a topological order: a concept reached both near the target and deep below it
+keeps the shallow number and is scheduled too late. The eleven seed pages
+contained no such diamond, so the ordering looked correct until real analysis and
+single-variable calculus grew one. Fixed in `packages/core/src/learning-paths.ts`
+with Kahn's algorithm over the edges the search already collects, `depth` kept as
+the tie-break so the order stays deterministic and foundational concepts still
+come first among equals. Cycles, already reported as missing information, are
+appended rather than dropped.
+
+### Batch 1 — twelve test files pinned the corpus at eleven concepts
+
+Expected, and not a bug: assertions such as `expect(counts.concepts).toBe(11)`,
+a path of exactly ten steps, and "convolution has no prerequisites" recorded the
+seed moment rather than a property worth defending. Each was replaced with the
+invariant behind it — a count checked against the corpus on disk or against a
+second code path, a route checked for well-formedness and for equalling the set
+the corpus declares, and "records no route" moved onto a fixture corpus where it
+holds by construction instead of by accident. None was deleted, skipped or
+loosened; several are now strictly stronger than the constant they replaced,
+because a count derived from the corpus catches a miscount at any size.
 
 ## Decisions
 
 - **The tier the task asks for.** Every new page is written to the same bar: a
   definition, why it matters, intuition, a concrete example, a technical
   treatment, uses, limitations, sources and connections. That is Tier 2 in this
-  corpus — shorter than Tier 1, which additionally carries assumptions,
-  variants and history — and `scripts/check-page.mjs` enforces it on every page,
-  including a 450-word floor for Tier 2 and 800 for Tier 1. The Tier 1 floor is
-  set just under the shortest of the eleven pages version 1 wrote, so the bar is
-  the corpus's own rather than one invented here.
+  corpus — and `scripts/check-page.mjs` enforces it on every page, including a
+  450-word floor for Tier 2 and 800 for Tier 1. The Tier 1 floor is set just
+  under the shortest of the eleven pages version 1 wrote, so the bar is the
+  corpus's own rather than one invented here.
+
+  **Pages are written at Tier 1, not Tier 2.** Tier 1 is this same template plus
+  assumptions, variants and history, in the order the validator already enforces,
+  and the drafts were arriving long enough to carry them. Writing the full
+  template once is better than writing 280 short pages and promoting them later,
+  and it means the task's goal — Tier 1 in dependency order — is met as the
+  corpus is built rather than after it. Batch 1 was written at Tier 2 and
+  promoted; every batch after it is written at Tier 1 directly. `claims` stay
+  empty, as the contract allows for a `generated-draft`.
 
 - **Sources may be cited only from `docs/source-registry.json`.** The contract
   forbids inventing a citation or a URL, and the most likely way to break it
@@ -544,11 +597,24 @@ was, what caused it, and what fixed it.
   `source_id` describing one source, which the corpus validator enforces
   globally.
 
+  The rule is now mechanical: `scripts/check-page.mjs` rejects a `source_id`
+  absent from the registry, and a page whose title, URL or kind has drifted from
+  the registry entry. The thirteen sources the eleven reviewed pages cited were
+  added to the registry so the rule could apply to the whole corpus rather than
+  only to new pages.
+
 - **Concept ids follow the eleven pages version 1 wrote**, not the atlas
   category ids: `concept.deep_learning.resnet`, not
   `concept.deep_learning_architectures.resnet`. The map from category to id
   prefix is frozen in `scripts/content-order.mjs`. An id is an address, and
   inconsistent addresses are the thing ids exist to prevent.
+
+- **Batch numbers never move.** `plan()` originally skipped candidates the atlas
+  already recorded as covered, which re-derived the whole plan every time a batch
+  landed: batch 3 became batch 2, and the state file reported nothing as done.
+  The plan now enumerates all 280 candidates that had no page when this build
+  began, so a batch keeps its number for the life of the build and the state file
+  can say what was written.
 
 - **The build order is a dependency order**, frozen in the same file: the
   mathematics a concept rests on is written before the concept, the programming

@@ -141,44 +141,44 @@ candidates:
     title: Propositional Logic
     categories:
       - atlas.mathematics.foundations.logic_and_proof
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.logic.propositional_logic
   - candidate_id: candidate.mathematics.foundations.logic_and_proof.first_order_logic
     title: First-Order Logic
     categories:
       - atlas.mathematics.foundations.logic_and_proof
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.logic.first_order_logic
   - candidate_id: candidate.mathematics.foundations.logic_and_proof.proof_theory
     title: Proof Theory
     categories:
       - atlas.mathematics.foundations.logic_and_proof
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.logic.proof_theory
   - candidate_id: candidate.mathematics.foundations.set_theory
     title: Set Theory
     categories:
       - atlas.mathematics.foundations
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.foundations.set_theory
   - candidate_id: candidate.mathematics.foundations.category_theory
     title: Category Theory
     categories:
       - atlas.mathematics.foundations
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.foundations.category_theory
   - candidate_id: candidate.mathematics.foundations.model_theory
     title: Model Theory
     categories:
       - atlas.mathematics.foundations
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.foundations.model_theory
   - candidate_id: candidate.mathematics.foundations.computability_theory
     title: Computability Theory
     categories:
       - atlas.mathematics.foundations
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.foundations.computability_theory
   - candidate_id: candidate.mathematics.foundations.formal_verification.lean
     title: Lean
     categories:
@@ -334,14 +334,14 @@ candidates:
     title: Single-Variable Calculus
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.single_variable_calculus
   - candidate_id: candidate.mathematics.analysis.multivariable_calculus
     title: Multivariable Calculus
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.multivariable_calculus
   - candidate_id: candidate.mathematics.analysis.vector_calculus
     title: Vector Calculus
     categories:
@@ -352,8 +352,8 @@ candidates:
     title: Real Analysis
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.real_analysis
   - candidate_id: candidate.mathematics.analysis.complex_analysis
     title: Complex Analysis
     categories:

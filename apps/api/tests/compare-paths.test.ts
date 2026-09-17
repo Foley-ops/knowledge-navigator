@@ -3,8 +3,15 @@
  *
  * Two corpora are used. The real acceptance corpus exercises the ordinary
  * cases; a small mixed-tier corpus adds a Tier 2 stub, a Tier 3 graph-only
- * identity and a deliberately empty section, so "missing" is tested as a
- * first-class outcome rather than assumed never to happen.
+ * identity, a deliberately empty section and a concept with no prerequisites,
+ * so "missing" is tested as a first-class outcome rather than assumed never to
+ * happen.
+ *
+ * Anything the acceptance corpus would only accidentally provide — a root with
+ * nothing before it, a section left blank — is built into the mixed corpus
+ * instead. The acceptance corpus grows page by page, and a fact that is true of
+ * it today ("convolution has no prerequisites") is a fact about this week, not
+ * a property worth defending.
  *
  * The property defended hardest is Q03's: a synthesis that fabricates a
  * citation is discarded, and the deterministic table survives untouched.
@@ -35,6 +42,8 @@ const LENET = 'concept.deep_learning.lenet';
 const M_ALPHA = 'concept.mixed.alpha';
 const M_STUB = 'concept.mixed.stub';
 const M_IDENTITY = 'concept.mixed.identity';
+/** A concept nothing can come before: its only edge is not a prerequisite. */
+const M_ROOT = 'concept.mixed.root';
 
 let corpus: CompiledCorpus;
 let app: FastifyInstance;
@@ -154,7 +163,10 @@ ${options.body}`;
 
 /**
  * A corpus that spans the coverage tiers: a Tier 1 page with one empty section,
- * a Tier 2 stub with no template at all, and a Tier 3 identity with no article.
+ * a Tier 2 stub with no template at all, a Tier 3 identity with no article, and
+ * a Tier 1 root whose only relationship is not a prerequisite, so that "the
+ * corpus records no route here" is true by construction and stays true however
+ * much the real corpus grows.
  */
 async function compileMixedCorpus(): Promise<{ root: string; databasePath: string }> {
   const root = await mkdtemp(join(tmpdir(), 'navigator-api-mixed-'));
@@ -192,6 +204,25 @@ async function compileMixedCorpus(): Promise<{ root: string; databasePath: strin
     target: ${M_IDENTITY}
     note: The stub cannot be read without the identity behind it.`,
       body: 'A short orienting paragraph, which is all a Tier 2 stub promises.\n',
+    }),
+    'utf8',
+  );
+
+  await writeFile(
+    join(contentDir, 'root.md'),
+    mixedPage({
+      conceptId: M_ROOT,
+      title: 'Root',
+      slug: '/concepts/root',
+      tier: 1,
+      // contrasts_with keeps the page connected — the corpus rejects an
+      // orphan — without putting anything before it, which requires and
+      // prerequisite_of both would.
+      relationships: `relationships:
+  - type: contrasts_with
+    target: ${M_ALPHA}
+    note: The root is read against alpha, but neither has to come first.`,
+      body: mixedBody('Root'),
     }),
     'utf8',
   );
@@ -240,6 +271,27 @@ async function post(url: string, payload: unknown) {
 async function postMixed(url: string, payload: unknown) {
   const response = await mixedApp.inject({ method: 'POST', url, payload: payload as object });
   return { status: response.statusCode, body: response.json() as any };
+}
+
+/**
+ * The concepts the graph says come *before* this one, read from the graph
+ * endpoint rather than from the path endpoint under test. A `requires` edge out
+ * of the concept and a `prerequisite_of` edge into it both place something
+ * first; every other type places nothing.
+ */
+async function prerequisitesOf(conceptId: string): Promise<string[]> {
+  const response = await mixedApp.inject({ method: 'GET', url: `/api/graph/${conceptId}?depth=1` });
+  const graph = response.json() as {
+    edges: { source: string; target: string; type: string }[];
+  };
+  return graph.edges
+    .filter(
+      (edge) =>
+        (edge.type === 'requires' && edge.source === conceptId) ||
+        (edge.type === 'prerequisite_of' && edge.target === conceptId),
+    )
+    .map((edge) => (edge.type === 'requires' ? edge.target : edge.source))
+    .sort();
 }
 
 beforeAll(async () => {
@@ -520,11 +572,38 @@ describe('POST /api/paths', () => {
   });
 
   it('says so when the corpus records no route, instead of inventing one', async () => {
-    const { body } = await post('/api/paths', { targetId: CONVOLUTION });
+    // This once asked the acceptance corpus about convolution, which had no
+    // prerequisites when there were eleven pages and legitimately has them now.
+    // Rootness is a property of a corpus, not of an id, so it is asked of the
+    // mixed corpus, where M_ROOT is written with no prerequisite edge at all.
+    const { body } = await postMixed('/api/paths', { targetId: M_ROOT });
     expect(body.reachable).toBe(false);
-    expect(body.steps.map((step: { conceptId: string }) => step.conceptId)).toEqual([CONVOLUTION]);
+    expect(body.steps.map((step: { conceptId: string }) => step.conceptId)).toEqual([M_ROOT]);
     expect(body.edges).toEqual([]);
+    expect(body.missing).toHaveLength(1);
+    expect(body.missing[0].conceptId).toBe(M_ROOT);
     expect(body.missing[0].reason).toContain('records no route');
+
+    // And "no route" is a claim about the graph, so the graph has to agree —
+    // for this concept and for every other one, not just for the root. A route
+    // exists exactly when some page declares a prerequisite leading to it,
+    // which is the invariant the old `reachable: false` was standing in for,
+    // and it holds at any corpus size.
+    for (const conceptId of [M_ROOT, M_IDENTITY, M_STUB, M_ALPHA]) {
+      const path = await postMixed('/api/paths', { targetId: conceptId });
+      const before = await prerequisitesOf(conceptId);
+      expect(path.body.reachable, conceptId).toBe(before.length > 0);
+      // A reachable concept's own prerequisites are all in the route ahead of
+      // it; an unreachable one has nothing to put there.
+      const ids = path.body.steps.map((step: { conceptId: string }) => step.conceptId);
+      expect(
+        ids
+          .slice(0, -1)
+          .filter((id: string) => before.includes(id))
+          .sort(),
+        conceptId,
+      ).toEqual(before);
+    }
   });
 
   it('reports an unknown target', async () => {

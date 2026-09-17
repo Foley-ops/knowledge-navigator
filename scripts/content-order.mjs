@@ -528,8 +528,12 @@ export function plan() {
       if (candidate === undefined) throw new Error(`no atlas candidate titled ${title}`);
       if (seen.has(candidate.candidate_id)) throw new Error(`${title} is planned twice`);
       seen.add(candidate.candidate_id);
-      if (candidate.status === 'covered') continue;
 
+      // Deliberately not skipped once the candidate is covered. The order is
+      // frozen: ORDER names the 280 candidates that had no page when this build
+      // began, and a batch keeps its number for the life of the build. Dropping
+      // finished work from the plan would renumber every later batch as pages
+      // landed, and would leave the state file unable to say what was done.
       const { slugTail, segment } = names(title);
       const categories = candidate.categories.map((id) => atlas.categories.get(id)?.path ?? id);
       items.push({

@@ -321,9 +321,63 @@ export function buildLearningPath(
 
   /* ---------------------------- the route -------------------------------- */
 
-  // Deepest first: a concept with the longest chain below it is read earliest.
+  // Prerequisites first, by topological order over the edges actually collected.
+  //
+  // `depth` cannot do this job. It is assigned by breadth-first discovery, so it
+  // holds the SHORTEST chain from the target, and sorting by it descending is
+  // not a topological order: a concept reached both near the target and deep
+  // below it keeps the shallow number and is then scheduled after concepts that
+  // require it. The seed corpus had no such diamond, which is why sorting by
+  // depth looked right until real analysis and single-variable calculus grew one.
+  //
+  // Kahn's algorithm gives the guarantee the page actually promises — no step
+  // appears before something it requires — and `depth` survives as the
+  // tie-break, so among concepts that are equally ready the more foundational
+  // one still comes first, and the result stays deterministic.
   const visited = [...seen].filter((id) => !known.has(id) || id === targetId);
-  visited.sort((a, b) => (depth.get(b) ?? 0) - (depth.get(a) ?? 0) || compareStrings(a, b));
+  const inRoute = new Set(visited);
+
+  const blocking = new Map<string, number>();
+  const dependents = new Map<string, string[]>();
+  for (const id of visited) {
+    let count = 0;
+    for (const edge of incoming.get(id) ?? []) {
+      if (!inRoute.has(edge.beforeId) || edge.beforeId === id) continue;
+      count += 1;
+      const list = dependents.get(edge.beforeId);
+      if (list === undefined) dependents.set(edge.beforeId, [id]);
+      else list.push(id);
+    }
+    blocking.set(id, count);
+  }
+
+  const readyFirst = (a: string, b: string) =>
+    (depth.get(b) ?? 0) - (depth.get(a) ?? 0) || compareStrings(a, b);
+
+  const ordered: string[] = [];
+  const ready = visited.filter((id) => (blocking.get(id) ?? 0) === 0).sort(readyFirst);
+  while (ready.length > 0) {
+    const id = ready.shift() as string;
+    ordered.push(id);
+    for (const dependent of dependents.get(id) ?? []) {
+      const left = (blocking.get(dependent) ?? 0) - 1;
+      blocking.set(dependent, left);
+      if (left === 0) {
+        ready.push(dependent);
+        ready.sort(readyFirst);
+      }
+    }
+  }
+
+  // Anything still blocked sits in a prerequisite cycle, already reported above
+  // as missing information. It is appended rather than dropped: the reader is
+  // better served by an incomplete order plus a note than by a vanished step.
+  if (ordered.length < visited.length) {
+    const placed = new Set(ordered);
+    ordered.push(...visited.filter((id) => !placed.has(id)).sort(readyFirst));
+  }
+  visited.length = 0;
+  visited.push(...ordered);
 
   const steps: PathStep[] = visited.map((id, index) => {
     const node = nodes.get(id);

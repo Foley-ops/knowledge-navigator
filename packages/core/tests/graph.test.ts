@@ -2,7 +2,7 @@
  * D05 — deterministic graph export, exercised against the real acceptance
  * corpus so node, edge and category counts are the ones a reader will see.
  */
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readdir, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,11 +11,36 @@ import { compileCorpus } from '../src/compile.js';
 import { SCHEMA_VERSION } from '../src/db.js';
 import type { GraphDocument } from '../src/graph.js';
 
-const CONTENT_DIR = join(
-  fileURLToPath(new URL('../../..', import.meta.url)),
-  'content',
-  'concepts',
-);
+const REPO_ROOT = fileURLToPath(new URL('../../..', import.meta.url));
+const CONTENT_DIR = join(REPO_ROOT, 'content', 'concepts');
+/** `loadCorpus` defaults to this sibling of the Markdown pages. */
+const GRAPH_ONLY_DIR = join(REPO_ROOT, 'content', 'graph-only');
+
+/**
+ * How many canonical identities the corpus holds right now.
+ *
+ * The corpus is still being written, so its size is not a fact worth pinning to
+ * a number: what the export owes the reader is that it carries *every* identity
+ * on disk and invents none. Counted here the way the loader counts — Markdown
+ * pages plus graph-only YAML, skipping the `_` and `.` prefixes it treats as
+ * drafts rather than corpus — so the assertion holds at eleven concepts and at
+ * two hundred and ninety-one.
+ */
+async function countCanonicalIdentities(): Promise<number> {
+  const countIn = async (directory: string, extension: string): Promise<number> => {
+    let names: string[];
+    try {
+      names = await readdir(directory);
+    } catch {
+      // A missing content/graph-only is not an error: it means no identities.
+      return 0;
+    }
+    return names.filter(
+      (name) => name.endsWith(extension) && !name.startsWith('_') && !name.startsWith('.'),
+    ).length;
+  };
+  return (await countIn(CONTENT_DIR, '.md')) + (await countIn(GRAPH_ONLY_DIR, '.yaml'));
+}
 
 interface Built {
   readonly text: string;
@@ -63,10 +88,16 @@ describe('graph export', () => {
     expect(graph.schemaVersion).toBe(SCHEMA_VERSION);
     expect(SCHEMA_VERSION).toBe(2);
     expect(graph.corpusHash).toMatch(/^[0-9a-f]{64}$/);
-    expect(graph.counts.concepts).toBe(11);
+    // The count the header reports is the count of files the build read: one
+    // node per canonical identity, nothing dropped and nothing conjured.
+    expect(graph.counts.concepts).toBe(await countCanonicalIdentities());
     expect(graph.counts.concepts).toBe(graph.nodes.length);
     expect(graph.counts.relationships).toBe(graph.edges.length);
     expect(graph.counts.categories).toBe(graph.categories.length);
+    // One node per identity only means something if the ids really are distinct.
+    expect(new Set(graph.nodes.map((n) => n.id)).size).toBe(graph.nodes.length);
+    expect(new Set(graph.edges.map((e) => e.id)).size).toBe(graph.edges.length);
+    expect(new Set(graph.categories.map((c) => c.path)).size).toBe(graph.categories.length);
   }, 60_000);
 
   it('sorts nodes, edges and categories semantically', async () => {
@@ -193,7 +224,16 @@ describe('graph coverage metadata (v2 runbook L05)', () => {
     expect(graph.atlasHash).not.toBe(graph.corpusHash);
     expect(graph.coverage.atlasAreas).toBe(3);
     expect(graph.coverage.atlasCandidates).toBeGreaterThan(200);
-    expect(graph.coverage.candidatesByStatus['covered']).toBe(11);
+    // `covered` climbs with every page written, so the number is not the point:
+    // the schema makes "covered" and "names a canonical concept" the same fact,
+    // and validation lets exactly one candidate cover a concept. So the
+    // aggregate is precisely the set of nodes a candidate covers — one to one.
+    const covered = graph.nodes.filter((n) => n.candidateStatus === 'covered');
+    expect(graph.coverage.candidatesByStatus['covered']).toBe(covered.length);
+    expect(new Set(covered.map((n) => n.candidateId)).size).toBe(covered.length);
+    expect(
+      graph.nodes.every((n) => (n.candidateId === null) === (n.candidateStatus === null)),
+    ).toBe(true);
     expect(graph.coverage.conceptsWithArticle).toBe(graph.nodes.filter((n) => n.hasArticle).length);
     expect(graph.coverage.conceptsByTier['1']).toBe(graph.nodes.filter((n) => n.tier === 1).length);
     expect(graph.coverage.conceptsByFormat['markdown']).toBe(

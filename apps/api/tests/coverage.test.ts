@@ -5,15 +5,29 @@
  * database, so what is tested is what ships.
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { MAX_COVERAGE_PAGE } from '@navigator/core';
-import { buildAppWithoutIndex, buildTestApp, compileAcceptanceCorpus } from './helpers.js';
+import { ATLAS_ROOT_AREA_TITLES, MAX_COVERAGE_PAGE, loadCorpus } from '@navigator/core';
+import type { AtlasCandidate, AtlasIndex, AtlasStatus, CorpusResult } from '@navigator/core';
+import {
+  CONTENT_DIR,
+  buildAppWithoutIndex,
+  buildTestApp,
+  compileAcceptanceCorpus,
+} from './helpers.js';
 import type { CompiledCorpus, TestApp } from './helpers.js';
 
 let corpus: CompiledCorpus;
 let app: TestApp;
+/**
+ * The same corpus read straight from the files, beside the database compiled
+ * from it. The corpus grows a batch of pages at a time, so no count here is
+ * written as a number: each one is checked against what was actually compiled,
+ * which catches a miscount at any corpus size — something a constant never did.
+ */
+let source: CorpusResult;
 
 beforeAll(async () => {
   corpus = await compileAcceptanceCorpus();
+  source = await loadCorpus(CONTENT_DIR);
   app = await buildTestApp(corpus.databasePath);
 }, 180_000);
 
@@ -27,28 +41,67 @@ async function get(url: string) {
   return { status: response.statusCode, body: response.json() as any };
 }
 
+/** An article is what a Markdown page below Tier 3 has; nothing else has one. */
+function conceptsWithArticle(loaded: CorpusResult): number {
+  return loaded.concepts.filter((c) => c.format === 'markdown' && c.frontmatter.tier < 3).length;
+}
+
+/** The candidates the curated atlas itself marks covered. */
+function coveredCandidates(atlas: AtlasIndex): AtlasCandidate[] {
+  return [...atlas.candidates.values()].filter((c) => c.status === 'covered');
+}
+
+/** Distinct candidates the atlas files somewhere inside one area. */
+function candidatesInArea(atlas: AtlasIndex, areaId: string, status?: AtlasStatus): number {
+  let found = 0;
+  for (const candidate of atlas.candidates.values()) {
+    if (status !== undefined && candidate.status !== status) continue;
+    if (candidate.categories.some((id) => atlas.categories.get(id)?.areaId === areaId)) found += 1;
+  }
+  return found;
+}
+
 /* -------------------------------------------------------------------------- */
 
 describe('GET /api/coverage/summary', () => {
   it('reports identities, the atlas, the backlog and evidence separately', async () => {
     const { status, body } = await get('/api/coverage/summary');
     expect(status).toBe(200);
-    expect(body.concepts.total).toBe(11);
-    expect(body.concepts.withArticle).toBe(11);
-    expect(body.concepts.byTier['1']).toBe(11);
-    expect(body.concepts.byFormat['markdown']).toBe(11);
-    expect(body.atlas.areas).toBe(3);
-    expect(body.atlas.candidates).toBeGreaterThan(200);
-    expect(body.atlas.byStatus.covered).toBe(11);
-    expect(body.backlog).toEqual({ references: 0, groups: 0, blocking: 0 });
-    expect(body.evidence.claims).toBe(0);
+
+    // Not "eleven concepts": the summary must count the corpus it compiled,
+    // whatever size that is. The whole tier and format tallies are compared,
+    // not one bucket, so a concept counted into the wrong bucket fails here.
+    expect(body.concepts.total).toBe(source.concepts.length);
+    expect(body.concepts.withArticle).toBe(conceptsWithArticle(source));
+    expect(body.concepts.byTier).toEqual(source.coverage.conceptsByTier);
+    expect(body.concepts.byFormat).toEqual(source.coverage.conceptsByFormat);
+
+    // Three areas is a contract rather than a count: the brief fixes them.
+    expect(body.atlas.areas).toBe(ATLAS_ROOT_AREA_TITLES.length);
+    expect(body.atlas.candidates).toBe(source.atlas.candidates.size);
+    expect(body.atlas.byStatus).toEqual(source.coverage.candidatesByStatus);
+
+    // The backlog and the evidence are whatever the pages record. They record
+    // nothing today; the endpoint has to keep reporting the corpus on the day
+    // one of them files an unresolved reference or a claim.
+    expect(body.backlog).toEqual({
+      references: source.coverage.unresolvedReferences,
+      groups: source.coverage.unresolvedGroups,
+      blocking: source.coverage.blockingUnresolvedReferences,
+    });
+    expect(body.evidence.claims).toBe(source.coverage.claims);
+
+    // The hashes name *which* corpus and atlas were compiled, so they are held
+    // against that corpus and not merely checked for being hex.
     expect(body.corpusHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(body.corpusHash).toBe(source.corpusHash);
     expect(body.atlasHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(body.atlasHash).toBe(source.atlasHash);
   });
 });
 
 describe('GET /api/coverage/atlas', () => {
-  it('returns all three areas including one with no canonical page', async () => {
+  it('returns all three areas, each carrying the coverage the atlas records', async () => {
     const { status, body } = await get('/api/coverage/atlas');
     expect(status).toBe(200);
     expect(body.areas.map((a: any) => a.title)).toEqual([
@@ -56,8 +109,22 @@ describe('GET /api/coverage/atlas', () => {
       'Artificial Intelligence',
       'Programming',
     ]);
+
+    // This used to pin "Programming: 0 covered", which was a fact about a
+    // corpus with no Programming page rather than a property. The property is
+    // that every area reports the covered and candidate counts the atlas
+    // implies — zero for Programming today, and still right the day a
+    // Programming page lands. Quantified over all three, not one.
+    for (const area of body.areas as any[]) {
+      expect(area.covered, area.areaId).toBe(
+        candidatesInArea(source.atlas, area.areaId, 'covered'),
+      );
+      expect(area.candidates, area.areaId).toBe(candidatesInArea(source.atlas, area.areaId));
+    }
+
+    // An area is returned whether or not the corpus has reached it: Programming
+    // has leads and neighbourhoods to show even before it has pages.
     const programming = body.areas.find((a: any) => a.title === 'Programming');
-    expect(programming.covered).toBe(0);
     expect(programming.candidates).toBeGreaterThan(0);
     expect(programming.children.length).toBeGreaterThan(0);
   });
@@ -76,9 +143,20 @@ describe('GET /api/coverage/atlas', () => {
 
   it('counts what it returned', async () => {
     const { body } = await get('/api/coverage/atlas');
-    expect(body.counts.areas).toBe(3);
-    expect(body.counts.categories).toBe(38);
-    expect(body.counts.candidates).toBeGreaterThan(200);
+
+    // `counts` is the endpoint's own arithmetic over the tree it just sent, so
+    // the invariant is that the two agree — at 38 categories or at 380. A
+    // number here would have checked the atlas file, never the arithmetic.
+    const nodes = (categories: any[]): number =>
+      categories.reduce((n: number, c: any) => n + 1 + nodes(c.children), 0);
+    expect(body.counts.areas).toBe(body.areas.length);
+    expect(body.counts.categories).toBe(
+      (body.areas as any[]).reduce((n: number, area: any) => n + nodes(area.children), 0),
+    );
+
+    // And that the tree it sent is the whole curated atlas, not part of it.
+    expect(body.counts.categories).toBe(source.atlas.categories.size);
+    expect(body.counts.candidates).toBe(source.atlas.candidates.size);
   });
 });
 
@@ -88,14 +166,22 @@ describe('GET /api/coverage/candidates', () => {
     expect(status).toBe(200);
     expect(body.limit).toBe(MAX_COVERAGE_PAGE);
     expect(body.offset).toBe(0);
-    expect(body.total).toBeGreaterThan(200);
-    expect(body.items.length).toBeLessThanOrEqual(MAX_COVERAGE_PAGE);
-    expect(body.truncated).toBe(false);
+    // The page is the whole atlas until the atlas outgrows one page. Saying
+    // "more than 200, not truncated" only described an atlas of 291; the
+    // arithmetic between total, page and flag is what has to hold at any size.
+    expect(body.total).toBe(source.atlas.candidates.size);
+    expect(body.items.length).toBe(Math.min(body.total, MAX_COVERAGE_PAGE));
+    expect(body.truncated).toBe(body.total > body.items.length);
   });
 
   it('filters by status, area and category', async () => {
+    // The atlas decides how many candidates are covered, and it gains one
+    // every time a page lands — so the filter is held against the atlas, and
+    // every row it returned has to be one the atlas actually marks covered.
+    const coveredIds = new Set(coveredCandidates(source.atlas).map((c) => c.candidate_id));
     const covered = await get('/api/coverage/candidates?status=covered');
-    expect(covered.body.total).toBe(11);
+    expect(covered.body.total).toBe(coveredIds.size);
+    expect(covered.body.items.every((c: any) => coveredIds.has(c.candidateId))).toBe(true);
     expect(covered.body.items.every((c: any) => c.canonicalConceptId !== null)).toBe(true);
     expect(covered.body.items.every((c: any) => c.canonicalHasArticle === true)).toBe(true);
 
@@ -113,7 +199,11 @@ describe('GET /api/coverage/candidates', () => {
   });
 
   it('returns an empty page rather than an error', async () => {
-    const { status, body } = await get('/api/coverage/candidates?status=deferred');
+    // Empty by construction, not by today's atlas: `status=deferred` matched
+    // nothing only because nobody had deferred a candidate yet, so one
+    // editorial decision would have quietly turned this test into a lie. A
+    // well-formed id naming no category can never match, at any corpus size.
+    const { status, body } = await get('/api/coverage/candidates?category=atlas.no.such.category');
     expect(status).toBe(200);
     expect(body.total).toBe(0);
     expect(body.items).toEqual([]);
@@ -152,10 +242,24 @@ describe('GET /api/coverage/candidates', () => {
 });
 
 describe('GET /api/coverage/unresolved', () => {
-  it('returns an empty backlog for a corpus with no unresolved references', async () => {
+  it('returns exactly the backlog the corpus records', async () => {
     const { status, body } = await get('/api/coverage/unresolved');
+    const summary = await get('/api/coverage/summary');
     expect(status).toBe(200);
-    expect(body).toMatchObject({ total: 0, items: [], truncated: false });
+
+    // This page is empty today because no page has hit a gap yet — a fact
+    // about the corpus, not a contract. The contract is that the backlog is
+    // grouped one group per label, counted the same way the summary counts it,
+    // and honest about truncation. That survives the first page that files an
+    // unresolved reference, which an asserted `{ total: 0 }` would not.
+    expect(body.total).toBe(summary.body.backlog.groups);
+    expect(body.items).toHaveLength(Math.min(body.total, MAX_COVERAGE_PAGE));
+    expect(body.truncated).toBe(body.total > body.items.length);
+    expect(body.items.every((g: any) => g.sourceCount === g.sources.length)).toBe(true);
+    if (!body.truncated) {
+      const references = body.items.reduce((n: number, g: any) => n + g.sources.length, 0);
+      expect(references).toBe(summary.body.backlog.references);
+    }
   });
 
   it('accepts the blocking filter in every shape', async () => {
