@@ -24,7 +24,7 @@ honouring its **Depends on** line.
 
 ## Current checkpoint
 
-Q08
+R00
 
 ## Completed checkpoints
 
@@ -99,6 +99,7 @@ Q08
 - **Q05** — Familiarity applied transparently: strong becomes a starting point, working stays in the route marked likely known, unfamiliar and recognize change nothing, include puts a skipped concept back, and every record that changed the result is named in familiarityEffects.
 - **Q06** — POST /api/paths and the /path page: target search, optional project for familiarity, ordered steps numbered in reading order, the declared edge behind every step, familiarity effects named, missing graph information, canonical links, and no invented edge anywhere.
 - **Q07** — Comparisons and paths are saved whole and exported as Markdown. The saved shapes live in packages/core/src/export.ts so the private store and the exporter share one definition; navigator export list and navigator export saved <id> read the private database read-only and write one file to .navigator/exports with canonical page URLs and source URLs.
+- **Q08** — Phase Q committed as fc7f48a with a clean working tree.
 
 ## Last successful checks
 
@@ -179,6 +180,7 @@ Q08
 - **Q06** `npm run test:browser` → 69 passed — the whole browser suite, including every v1 journey, with Compare and Path added to the navigation.
 - **Q07** `npx vitest run --root packages/core tests/export.test.ts && npx vitest run --root apps/api tests/export-cli.test.ts` → 12 + 8 passed — the saved shape accepts exactly what the comparison and path engines produce and rejects an unknown field; the export carries every id, source URL, review state and missing marker, is byte-identical when nothing changed, and the corpus hash is unchanged after exporting.
 - **Q07** `npm run test:browser -- tests/browser/path.spec.ts tests/browser/compare.spec.ts` → 16 passed — a comparison and a route are each saved to a project from the keyboard, and the workspace shows the exact export command for each.
+- **Q08** `npm run check && npm run test:browser && bash scripts/security-review.sh` → 9/9 stages, 758 unit and API tests, 69 browser journeys, security review 24 passed 0 failed 1 documented note; two new review checks assert the exporter opens the private store read-only and defaults to .navigator/exports.
 
 ## Blockers
 
@@ -211,4 +213,4 @@ _none_
 
 ## Next action
 
-Q08 — run every test and commit Phase Q.
+R00 — define the proposal bundle: manifest schema, status transitions, and path safety.
