@@ -416,13 +416,40 @@ describe('navigator coverage (v2 runbook L06)', () => {
     expect(first.items).toHaveLength(5);
   }, 60_000);
 
-  it('unresolved says so plainly when the backlog is empty', async () => {
+  it('unresolved tells the truth about the backlog, empty or not', async () => {
+    // The backlog is whatever the corpus currently declares: a page that rests
+    // on something no source covers says so in `unresolved_references`, and is
+    // right to. So this checks that the prose and the JSON agree rather than
+    // that either reports a particular number — the property the old assertion
+    // was standing in for, and one that holds at any size of backlog.
     const result = await navigator('coverage', 'unresolved');
     expect(result.code).toBe(0);
-    expect(result.stdout).toContain('nothing is waiting on a missing concept');
 
-    const json = await navigator('coverage', 'unresolved', '--blocking', '--json');
-    expect(JSON.parse(json.stdout)).toMatchObject({ total: 0, items: [] });
+    const json = await navigator('coverage', 'unresolved', '--json');
+    const backlog = JSON.parse(json.stdout) as {
+      total: number;
+      items: { label: string; groupId: string; blocking: boolean }[];
+    };
+
+    if (backlog.total === 0) {
+      expect(backlog.items).toEqual([]);
+      expect(result.stdout).toContain('nothing is waiting on a missing concept');
+    } else {
+      expect(result.stdout).toContain(`of ${String(backlog.total)} backlog item(s)`);
+      expect(result.stdout).not.toContain('nothing is waiting on a missing concept');
+      // Every group the JSON reports is named in the prose, so the summary
+      // cannot quietly stand for a list it does not show.
+      for (const item of backlog.items) {
+        expect(result.stdout).toContain(item.label);
+        expect(result.stdout).toContain(item.groupId);
+      }
+    }
+
+    // --blocking is a filter over the same backlog, never a different one.
+    const blocking = await navigator('coverage', 'unresolved', '--blocking', '--json');
+    const blocked = JSON.parse(blocking.stdout) as { total: number; items: { label: string }[] };
+    expect(blocked.total).toBe(backlog.items.filter((item) => item.blocking).length);
+    expect(blocked.items).toHaveLength(blocked.total);
   }, 60_000);
 
   it('rejects an unknown subcommand', async () => {

@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 5 of 28.** 10 of 10 pages in it are still to write.
+**Batch 6 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/group-theory.md` — Group Theory (concept.algebra.group_theory)
-- `content/concepts/ring-theory.md` — Ring Theory (concept.algebra.ring_theory)
-- `content/concepts/field-theory.md` — Field Theory (concept.algebra.field_theory)
-- `content/concepts/order-theory.md` — Order Theory (concept.algebra.order_theory)
-- `content/concepts/lattice-theory.md` — Lattice Theory (concept.algebra.lattice_theory)
-- `content/concepts/galois-theory.md` — Galois Theory (concept.algebra.galois_theory)
-- `content/concepts/representation-theory.md` — Representation Theory (concept.algebra.representation_theory)
-- `content/concepts/lie-algebras.md` — Lie Algebras (concept.algebra.lie_algebras)
-- `content/concepts/homological-algebra.md` — Homological Algebra (concept.algebra.homological_algebra)
-- `content/concepts/complex-numbers.md` — Complex Numbers (concept.algebra.complex_numbers)
+- `content/concepts/quaternions.md` — Quaternions (concept.algebra.quaternions)
+- `content/concepts/octonions.md` — Octonions (concept.algebra.octonions)
+- `content/concepts/clifford-algebra.md` — Clifford Algebra (concept.algebra.clifford_algebra)
+- `content/concepts/geometric-algebra.md` — Geometric Algebra (concept.algebra.geometric_algebra)
+- `content/concepts/euclidean-geometry.md` — Euclidean Geometry (concept.geometry.euclidean_geometry)
+- `content/concepts/non-euclidean-geometry.md` — Non-Euclidean Geometry (concept.geometry.non_euclidean_geometry)
+- `content/concepts/spherical-geometry.md` — Spherical Geometry (concept.geometry.spherical_geometry)
+- `content/concepts/hyperbolic-geometry.md` — Hyperbolic Geometry (concept.geometry.hyperbolic_geometry)
+- `content/concepts/convex-geometry.md` — Convex Geometry (concept.geometry.convex_geometry)
+- `content/concepts/point-set-topology.md` — Point-Set Topology (concept.geometry.point_set_topology)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 51 |
-| Markdown pages in the corpus | 51 |
-| Tier 1 pages | 51 |
+| Candidates covered by a page | 61 |
+| Markdown pages in the corpus | 61 |
+| Tier 1 pages | 61 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 40 of 280 |
+| Planned pages written | 50 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 40 | 85 | 47% |
+| Mathematics | 50 | 85 | 59% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -67,7 +67,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Symbolic AI | 0 | 5 |  |
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
-| Mathematics/Algebra | 0 | 14 |  |
+| Mathematics/Algebra | 10 | 14 |  |
 | Mathematics/Analysis | 18 | 18 | complete |
 | Mathematics/Foundations | 4 | 4 | complete |
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-40 of the planned 280, in the order they were written.
+50 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -132,6 +132,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | High-Dimensional Statistics | `concept.probability.high_dimensional_statistics` | tier 1 | covered |
 | Random Matrix Theory | `concept.probability.random_matrix_theory` | tier 1 | covered |
 | Probability and Computing | `concept.probability.probability_and_computing` | tier 1 | covered |
+| Group Theory | `concept.algebra.group_theory` | tier 1 | covered |
+| Ring Theory | `concept.algebra.ring_theory` | tier 1 | covered |
+| Field Theory | `concept.algebra.field_theory` | tier 1 | covered |
+| Order Theory | `concept.algebra.order_theory` | tier 1 | covered |
+| Lattice Theory | `concept.algebra.lattice_theory` | tier 1 | covered |
+| Galois Theory | `concept.algebra.galois_theory` | tier 1 | covered |
+| Representation Theory | `concept.algebra.representation_theory` | tier 1 | covered |
+| Lie Algebras | `concept.algebra.lie_algebras` | tier 1 | covered |
+| Homological Algebra | `concept.algebra.homological_algebra` | tier 1 | covered |
+| Complex Numbers | `concept.algebra.complex_numbers` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -200,20 +210,20 @@ it. Batches are ten pages each.
 | x | Random Matrix Theory | `concept.probability.random_matrix_theory` | Mathematics/Probability & Statistics |
 | x | Probability and Computing | `concept.probability.probability_and_computing` | Mathematics/Probability & Statistics |
 
-### Batch 5
+### Batch 5 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Group Theory | `concept.algebra.group_theory` | Mathematics/Algebra |
-|   | Ring Theory | `concept.algebra.ring_theory` | Mathematics/Algebra |
-|   | Field Theory | `concept.algebra.field_theory` | Mathematics/Algebra |
-|   | Order Theory | `concept.algebra.order_theory` | Mathematics/Algebra |
-|   | Lattice Theory | `concept.algebra.lattice_theory` | Mathematics/Algebra |
-|   | Galois Theory | `concept.algebra.galois_theory` | Mathematics/Algebra |
-|   | Representation Theory | `concept.algebra.representation_theory` | Mathematics/Algebra |
-|   | Lie Algebras | `concept.algebra.lie_algebras` | Mathematics/Algebra |
-|   | Homological Algebra | `concept.algebra.homological_algebra` | Mathematics/Algebra |
-|   | Complex Numbers | `concept.algebra.complex_numbers` | Mathematics/Algebra |
+| x | Group Theory | `concept.algebra.group_theory` | Mathematics/Algebra |
+| x | Ring Theory | `concept.algebra.ring_theory` | Mathematics/Algebra |
+| x | Field Theory | `concept.algebra.field_theory` | Mathematics/Algebra |
+| x | Order Theory | `concept.algebra.order_theory` | Mathematics/Algebra |
+| x | Lattice Theory | `concept.algebra.lattice_theory` | Mathematics/Algebra |
+| x | Galois Theory | `concept.algebra.galois_theory` | Mathematics/Algebra |
+| x | Representation Theory | `concept.algebra.representation_theory` | Mathematics/Algebra |
+| x | Lie Algebras | `concept.algebra.lie_algebras` | Mathematics/Algebra |
+| x | Homological Algebra | `concept.algebra.homological_algebra` | Mathematics/Algebra |
+| x | Complex Numbers | `concept.algebra.complex_numbers` | Mathematics/Algebra |
 
 ### Batch 6
 
@@ -586,6 +596,20 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batch 5 — the first honest backlog entry
+
+Homological algebra discusses persistent homology, which no page in this corpus
+covers and no registry source supports. Rather than stretch a citation to reach
+it, the page declared an `unresolved_references` entry naming exactly what is
+uncited and in which sections. That is what the field is for, and it is the
+behaviour the citation rule should produce, so the entry stays and the writing
+brief now asks for it explicitly instead of demanding the list stay empty.
+
+One test asserted the backlog was empty — true of the seed corpus and not a
+property worth defending. It now checks that the prose and the JSON agree at any
+backlog size, that every group the JSON reports is named in the prose, and that
+`--blocking` is a filter over the same backlog rather than a different one.
 
 ### Batch 4 — the writing run hit the session limit mid-batch
 

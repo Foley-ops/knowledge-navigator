@@ -57,6 +57,23 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
+          label: "Algebra",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "complex-numbers", label: "Complex Numbers" },
+            { type: 'doc', id: "field-theory", label: "Field Theory" },
+            { type: 'doc', id: "galois-theory", label: "Galois Theory" },
+            { type: 'doc', id: "group-theory", label: "Group Theory" },
+            { type: 'doc', id: "homological-algebra", label: "Homological Algebra" },
+            { type: 'doc', id: "lattice-theory", label: "Lattice Theory" },
+            { type: 'doc', id: "lie-algebras", label: "Lie Algebras" },
+            { type: 'doc', id: "order-theory", label: "Order Theory" },
+            { type: 'doc', id: "representation-theory", label: "Representation Theory" },
+            { type: 'doc', id: "ring-theory", label: "Ring Theory" },
+          ],
+        },
+        {
+          type: 'category',
           label: "Analysis",
           collapsed: true,
           items: [

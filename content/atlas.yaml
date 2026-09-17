@@ -214,32 +214,32 @@ candidates:
     title: Group Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.group_theory
   - candidate_id: candidate.mathematics.algebra.ring_theory
     title: Ring Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.ring_theory
   - candidate_id: candidate.mathematics.algebra.field_theory
     title: Field Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.field_theory
   - candidate_id: candidate.mathematics.algebra.galois_theory
     title: Galois Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.galois_theory
   - candidate_id: candidate.mathematics.algebra.complex_numbers
     title: Complex Numbers
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.complex_numbers
   - candidate_id: candidate.mathematics.algebra.quaternions
     title: Quaternions
     categories:
@@ -268,32 +268,32 @@ candidates:
     title: Representation Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.representation_theory
   - candidate_id: candidate.mathematics.algebra.lie_algebras
     title: Lie Algebras
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.lie_algebras
   - candidate_id: candidate.mathematics.algebra.homological_algebra
     title: Homological Algebra
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.homological_algebra
   - candidate_id: candidate.mathematics.algebra.lattice_theory
     title: Lattice Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.lattice_theory
   - candidate_id: candidate.mathematics.algebra.order_theory
     title: Order Theory
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.order_theory
   - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.vector_spaces
     title: Vector Spaces
     categories:

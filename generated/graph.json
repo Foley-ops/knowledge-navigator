@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T17:22:38.644Z",
-  "corpusHash": "b2f9beb7c491f3ff8495640ea67eef95e5427e1d3cc016bcd5bb6e6329c4a821",
-  "atlasHash": "d1a1f11f935d2875832f8006881a4cde385aa14452bb243abc579adf2295334a",
+  "builtAt": "2026-09-17T17:50:31.928Z",
+  "corpusHash": "2931bd114277247f2a4f47124984854c9dd6f851013ac1e6aa21dd8344054610",
+  "atlasHash": "9b31197bb6c3332f9bfd31b2622356bcb7e4f99b8185fa1d07fbe0ede9455c51",
   "counts": {
-    "concepts": 51,
-    "relationships": 176,
-    "categories": 10
+    "concepts": 61,
+    "relationships": 216,
+    "categories": 11
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 51,
+      "1": 61,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 51,
+      "markdown": 61,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 51
+      "generated-draft": 61
     },
-    "conceptsWithArticle": 51,
+    "conceptsWithArticle": 61,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 240,
+      "candidate": 230,
       "proposed-tier-3": 0,
-      "covered": 51,
+      "covered": 61,
       "deferred": 0
     },
-    "unresolvedReferences": 0,
-    "unresolvedGroups": 0,
+    "unresolvedReferences": 1,
+    "unresolvedGroups": 1,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -115,6 +115,37 @@
       "parent": null,
       "primaryConceptIds": [],
       "conceptIds": []
+    },
+    {
+      "path": "Mathematics/Algebra",
+      "name": "Algebra",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.algebra.complex_numbers",
+        "concept.algebra.field_theory",
+        "concept.algebra.galois_theory",
+        "concept.algebra.group_theory",
+        "concept.algebra.homological_algebra",
+        "concept.algebra.lattice_theory",
+        "concept.algebra.lie_algebras",
+        "concept.algebra.order_theory",
+        "concept.algebra.representation_theory",
+        "concept.algebra.ring_theory"
+      ],
+      "conceptIds": [
+        "concept.algebra.complex_numbers",
+        "concept.algebra.field_theory",
+        "concept.algebra.galois_theory",
+        "concept.algebra.group_theory",
+        "concept.algebra.homological_algebra",
+        "concept.algebra.lattice_theory",
+        "concept.algebra.lie_algebras",
+        "concept.algebra.order_theory",
+        "concept.algebra.representation_theory",
+        "concept.algebra.ring_theory"
+      ]
     },
     {
       "path": "Mathematics/Analysis",
@@ -259,6 +290,215 @@
     }
   ],
   "nodes": [
+    {
+      "id": "concept.algebra.complex_numbers",
+      "title": "Complex Numbers",
+      "slug": "/concepts/complex-numbers",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The two-dimensional field obtained by adjoining a root of x squared plus one to the reals, in which every polynomial equation has a solution and no ordering compatible with arithmetic survives.",
+      "aliases": [
+        "complex plane",
+        "Argand plane"
+      ],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.complex_numbers",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.field_theory",
+      "title": "Field Theory",
+      "slug": "/concepts/field-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of algebraic systems in which addition, subtraction, multiplication and division all work, and of how one such system extends another as a finite-dimensional vector space, which turns questions about roots of polynomials into questions about dimension.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.field_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.galois_theory",
+      "title": "Galois Theory",
+      "slug": "/concepts/galois-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Galois theory converts questions about polynomial equations into questions about a finite group, by matching the intermediate fields of a normal separable extension one-for-one with the subgroups of its automorphism group.",
+      "aliases": [
+        "Galois correspondence"
+      ],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.galois_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.group_theory",
+      "title": "Group Theory",
+      "slug": "/concepts/group-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The algebraic theory of symmetry, which strips a set of transformations down to the bare facts that they compose associatively and can be undone, and gets from that surprisingly strong theorems in return.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.group_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.homological_algebra",
+      "title": "Homological Algebra",
+      "slug": "/concepts/homological-algebra",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of chain complexes — sequences of maps whose consecutive composites vanish — and of the homology groups that measure exactly how far such a sequence is from being exact, turning questions of solvability and obstruction into computable invariants.",
+      "aliases": [
+        "chain complex theory"
+      ],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.homological_algebra",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.lattice_theory",
+      "title": "Lattice Theory",
+      "slug": "/concepts/lattice-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The algebra of partial orders in which any two elements have a greatest lower bound and a least upper bound, giving one vocabulary for intersection and union, gcd and lcm, conjunction and disjunction, and the fixed points that program analyses compute.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.lattice_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.lie_algebras",
+      "title": "Lie Algebras",
+      "slug": "/concepts/lie-algebras",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The linearisation of a continuous symmetry group — a vector space carrying an antisymmetric bracket that records, to first order, how far two infinitesimal motions fail to commute.",
+      "aliases": [
+        "infinitesimal group"
+      ],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.lie_algebras",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.order_theory",
+      "title": "Order Theory",
+      "slug": "/concepts/order-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of relations that say one thing comes before another without requiring that every two things be comparable, and of what follows from that — bounds, suprema, maximal elements, Zorn's lemma and the fixed-point theorems behind the semantics of recursion.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.order_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.representation_theory",
+      "title": "Representation Theory",
+      "slug": "/concepts/representation-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of abstract algebraic structures by making their elements act as matrices, so that symmetry can be analysed with the tools of linear algebra.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.representation_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.ring_theory",
+      "title": "Ring Theory",
+      "slug": "/concepts/ring-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Ring theory studies sets carrying a compatible addition and multiplication — integers, polynomials, matrices and functions at once — together with the ideals that let you take quotients, so one argument serves every object satisfying the axioms.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.ring_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
     {
       "id": "concept.analysis.banach_spaces",
       "title": "Banach Spaces",
@@ -1380,6 +1620,326 @@
     }
   ],
   "edges": [
+    {
+      "id": "concept.algebra.complex_numbers|contrasts_with|concept.algebra.order_theory",
+      "source": "concept.algebra.complex_numbers",
+      "target": "concept.algebra.order_theory",
+      "type": "contrasts_with",
+      "note": "C carries no total order compatible with both addition and multiplication, so the order-theoretic reasoning that works throughout the reals has no counterpart here.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.complex_numbers|contributes_to|concept.linear_algebra.spectral_theory",
+      "source": "concept.algebra.complex_numbers",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "contributes_to",
+      "note": "Algebraic closure makes every characteristic polynomial split, which is why every square complex matrix has an eigenvalue and real rotation matrices do not.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.complex_numbers|prerequisite_of|concept.analysis.complex_analysis",
+      "source": "concept.algebra.complex_numbers",
+      "target": "concept.analysis.complex_analysis",
+      "type": "prerequisite_of",
+      "note": "Holomorphy is a statement about division by a complex increment, so the field structure and the polar form must be in hand before the first definition of that subject can be read.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.complex_numbers|specializes|concept.algebra.field_theory",
+      "source": "concept.algebra.complex_numbers",
+      "target": "concept.algebra.field_theory",
+      "type": "specializes",
+      "note": "C is one particular field extension, a degree-two extension of R, and the general theory of extensions, irreducible polynomials and algebraic closure is what makes the construction routine rather than magical.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.field_theory|contributes_to|concept.linear_algebra.vector_spaces",
+      "source": "concept.algebra.field_theory",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "contributes_to",
+      "note": "A vector space is defined over a field, and conversely an extension is studied as a vector space over the base field whose dimension is the degree.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.field_theory|generalizes|concept.algebra.complex_numbers",
+      "source": "concept.algebra.field_theory",
+      "target": "concept.algebra.complex_numbers",
+      "type": "generalizes",
+      "note": "The complex numbers are the quotient of the real polynomial ring by the ideal generated by x squared plus one, the prototype of the root-adjoining construction field theory treats in general.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.field_theory|prerequisite_of|concept.algebra.galois_theory",
+      "source": "concept.algebra.field_theory",
+      "target": "concept.algebra.galois_theory",
+      "type": "prerequisite_of",
+      "note": "Galois theory studies the automorphism groups of field extensions, so degrees, splitting fields and separability have to be in hand before its correspondence means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.field_theory|requires|concept.algebra.ring_theory",
+      "source": "concept.algebra.field_theory",
+      "target": "concept.algebra.ring_theory",
+      "type": "requires",
+      "note": "A field is a commutative ring in which every nonzero element is a unit, and every extension is built as a quotient of a polynomial ring by a maximal ideal.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.galois_theory|contributes_to|concept.algebra.complex_numbers",
+      "source": "concept.algebra.galois_theory",
+      "target": "concept.algebra.complex_numbers",
+      "type": "contributes_to",
+      "note": "The shortest algebraic proof that the complex numbers are algebraically closed is Galois-theoretic, using Sylow subgroups plus one analytic fact about real polynomials.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.galois_theory|contributes_to|concept.algebra.order_theory",
+      "source": "concept.algebra.galois_theory",
+      "target": "concept.algebra.order_theory",
+      "type": "contributes_to",
+      "note": "The inclusion-reversing bijection between subfields and subgroups is the original example after which order-theoretic Galois connections are named.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.galois_theory|requires|concept.algebra.field_theory",
+      "source": "concept.algebra.galois_theory",
+      "target": "concept.algebra.field_theory",
+      "type": "requires",
+      "note": "The statement is about field extensions, and its hypotheses — normality, separability, splitting fields, degree — are field-theoretic notions a reader must already have.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.galois_theory|requires|concept.algebra.group_theory",
+      "source": "concept.algebra.galois_theory",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "The subgroup side of the correspondence is unreadable without subgroups, normal subgroups, quotient groups and solvability.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.group_theory|contributes_to|concept.algebra.galois_theory",
+      "source": "concept.algebra.group_theory",
+      "target": "concept.algebra.galois_theory",
+      "type": "contributes_to",
+      "note": "Galois theory converts a question about roots of a polynomial into a question about the subgroup lattice of its automorphism group.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.group_theory|contributes_to|concept.algebra.ring_theory",
+      "source": "concept.algebra.group_theory",
+      "target": "concept.algebra.ring_theory",
+      "type": "contributes_to",
+      "note": "A ring is an abelian group under addition, and ideals and quotient rings are the normal-subgroup and quotient machinery transplanted.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.group_theory|contributes_to|concept.analysis.translation_equivariance",
+      "source": "concept.algebra.group_theory",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "contributes_to",
+      "note": "Translations form a group, and equivariance is exactly the statement that a map commutes with that group's action on its input and output.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.group_theory|prerequisite_of|concept.algebra.representation_theory",
+      "source": "concept.algebra.group_theory",
+      "target": "concept.algebra.representation_theory",
+      "type": "prerequisite_of",
+      "note": "A representation is by definition a homomorphism from a group into the invertible linear maps on a vector space, so the group axioms and homomorphisms must come first.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.homological_algebra|contributes_to|concept.algebra.group_theory",
+      "source": "concept.algebra.homological_algebra",
+      "target": "concept.algebra.group_theory",
+      "type": "contributes_to",
+      "note": "Group cohomology is homological algebra applied to modules over a group ring, and its low-degree groups classify group extensions.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.homological_algebra|contributes_to|concept.foundations.category_theory",
+      "source": "concept.algebra.homological_algebra",
+      "target": "concept.foundations.category_theory",
+      "type": "contributes_to",
+      "note": "Categories, functors and natural transformations were introduced to say precisely what it means for the maps arising in homology to be natural, and abelian categories were axiomatised to carry homological arguments.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.homological_algebra|generalizes|concept.linear_algebra.vector_spaces",
+      "source": "concept.algebra.homological_algebra",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "generalizes",
+      "note": "For a complex of vector spaces homology is nothing but rank–nullity bookkeeping; homological algebra is what survives that bookkeeping when the modules are not free.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.homological_algebra|requires|concept.algebra.ring_theory",
+      "source": "concept.algebra.homological_algebra",
+      "target": "concept.algebra.ring_theory",
+      "type": "requires",
+      "note": "A chain complex is a complex of modules over a ring, and the ring controls what homology can look like — over a field it is a dimension count, over the integers it carries torsion.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lattice_theory|contributes_to|concept.algebra.group_theory",
+      "source": "concept.algebra.lattice_theory",
+      "target": "concept.algebra.group_theory",
+      "type": "contributes_to",
+      "note": "The subgroups of a group form a complete lattice, and the modular law was abstracted from the behaviour of that lattice for normal subgroups and modules.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lattice_theory|contributes_to|concept.logic.propositional_logic",
+      "source": "concept.algebra.lattice_theory",
+      "target": "concept.logic.propositional_logic",
+      "type": "contributes_to",
+      "note": "The Lindenbaum–Tarski algebra of classical propositional logic is a Boolean algebra, so lattice theory supplies the algebraic semantics of the connectives.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lattice_theory|requires|concept.algebra.order_theory",
+      "source": "concept.algebra.lattice_theory",
+      "target": "concept.algebra.order_theory",
+      "type": "requires",
+      "note": "A lattice is a partially ordered set with extra existence hypotheses, so partial orders, upper bounds and monotone maps have to be in hand before any of this parses.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lattice_theory|specializes|concept.foundations.category_theory",
+      "source": "concept.algebra.lattice_theory",
+      "target": "concept.foundations.category_theory",
+      "type": "specializes",
+      "note": "A poset is a category with at most one arrow between any two objects, and under that reading meets and joins are limits and colimits and Galois connections are adjunctions.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lie_algebras|contributes_to|concept.algebra.representation_theory",
+      "source": "concept.algebra.lie_algebras",
+      "target": "concept.algebra.representation_theory",
+      "type": "contributes_to",
+      "note": "Representations of a connected Lie group are studied on its Lie algebra, where the irreducibles of a semisimple algebra are classified by highest weight.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lie_algebras|requires|concept.algebra.group_theory",
+      "source": "concept.algebra.lie_algebras",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "The bracket is defined by differentiating group conjugation, and subalgebras, ideals and quotients are the infinitesimal shadows of subgroups, normal subgroups and quotient groups.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lie_algebras|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.algebra.lie_algebras",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "A Lie algebra is a vector space before it is anything else, and bilinearity of the bracket has no meaning without that structure.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.lie_algebras|used_to_solve|concept.analysis.ordinary_differential_equations",
+      "source": "concept.algebra.lie_algebras",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "used_to_solve",
+      "note": "Lie built the theory to find continuous symmetries of differential equations, and the matrix exponential that solves a linear system is the exponential map of the general linear group.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.order_theory|contributes_to|concept.foundations.category_theory",
+      "source": "concept.algebra.order_theory",
+      "target": "concept.foundations.category_theory",
+      "type": "contributes_to",
+      "note": "A preorder is exactly a category with at most one arrow between any two objects, and a partially ordered set is such a category in which isomorphic objects are equal, so monotone maps are functors, Galois connections are adjunctions, and suprema are colimits.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.order_theory|contributes_to|concept.foundations.computability_theory",
+      "source": "concept.algebra.order_theory",
+      "target": "concept.foundations.computability_theory",
+      "type": "contributes_to",
+      "note": "Least fixed points of monotone operators on complete lattices are what gives inductive definitions and recursive programs a meaning, which is where the Knaster-Tarski theorem is actually used.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.order_theory|generalizes|concept.algebra.lattice_theory",
+      "source": "concept.algebra.order_theory",
+      "target": "concept.algebra.lattice_theory",
+      "type": "generalizes",
+      "note": "A lattice is a partially ordered set in which every pair happens to have a supremum and an infimum, so lattice theory is order theory with an extra existence axiom imposed.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.order_theory|requires|concept.foundations.set_theory",
+      "source": "concept.algebra.order_theory",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "An order is a set together with a distinguished subset of its square, and the two central existence results — Zorn's lemma and the well-ordering theorem — are theorems about the axiom of choice.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.representation_theory|contributes_to|concept.algebra.lie_algebras",
+      "source": "concept.algebra.representation_theory",
+      "target": "concept.algebra.lie_algebras",
+      "type": "contributes_to",
+      "note": "A smooth representation of a Lie group differentiates to a representation of its Lie algebra, and the irreducible representations of a semisimple Lie algebra are classified by highest weight.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.representation_theory|contributes_to|concept.analysis.harmonic_analysis",
+      "source": "concept.algebra.representation_theory",
+      "target": "concept.analysis.harmonic_analysis",
+      "type": "contributes_to",
+      "note": "The irreducible unitary representations of a locally compact group are its Fourier modes, so Peter-Weyl and the Plancherel theorem are representation theory carried into analysis.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.representation_theory|requires|concept.algebra.group_theory",
+      "source": "concept.algebra.representation_theory",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "A representation is a homomorphism out of a group, so the notions of subgroup, conjugacy class and quotient are used before the first theorem is stated.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.representation_theory|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.algebra.representation_theory",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "The target of a representation is the general linear group of a vector space, and every construction here is a statement about invariant subspaces and direct sums.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.ring_theory|contributes_to|concept.algebra.galois_theory",
+      "source": "concept.algebra.ring_theory",
+      "target": "concept.algebra.galois_theory",
+      "type": "contributes_to",
+      "note": "Galois theory builds its field extensions as quotients of polynomial rings by maximal ideals, so the construction K[x]/(f) is a ring-theoretic input to it.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.ring_theory|contributes_to|concept.algebra.homological_algebra",
+      "source": "concept.algebra.ring_theory",
+      "target": "concept.algebra.homological_algebra",
+      "type": "contributes_to",
+      "note": "Homological algebra takes modules over a fixed ring as its objects, and Ext and Tor are invariants computed from that ring's structure.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.ring_theory|generalizes|concept.algebra.field_theory",
+      "source": "concept.algebra.ring_theory",
+      "target": "concept.algebra.field_theory",
+      "type": "generalizes",
+      "note": "A field is exactly a commutative ring with 1 ≠ 0 in which every nonzero element is invertible, so field theory is ring theory with the strongest possible divisibility hypothesis.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.ring_theory|requires|concept.algebra.group_theory",
+      "source": "concept.algebra.ring_theory",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "The additive structure of a ring is an abelian group, and ideals, quotient rings and the isomorphism theorems are the group-theoretic machinery of normal subgroups carried over verbatim.",
+      "condition": null
+    },
     {
       "id": "concept.analysis.banach_spaces|contributes_to|concept.analysis.functional_analysis",
       "source": "concept.analysis.banach_spaces",
