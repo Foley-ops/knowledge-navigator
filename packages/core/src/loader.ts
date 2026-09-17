@@ -30,10 +30,21 @@ export interface MarkdownLink {
   readonly line: number;
 }
 
+/**
+ * How a canonical identity is stored.
+ *
+ * `markdown` is a reader-facing page in `content/concepts/`. `graph-only` is a
+ * Tier 3 identity in `content/graph-only/`: a stable id with relationships and
+ * no article (v2 runbook §4.2).
+ */
+export const conceptFormats = ['markdown', 'graph-only'] as const;
+export type ConceptFormat = (typeof conceptFormats)[number];
+
 export interface LoadedConcept {
   /** Path relative to the content directory, e.g. `convolution.md`. */
   readonly fileName: string;
   readonly absolutePath: string;
+  readonly format: ConceptFormat;
   readonly frontmatter: ConceptFrontmatter;
   /** Markdown body exactly as written, with the frontmatter block removed. */
   readonly body: string;
@@ -213,6 +224,7 @@ export function loadConceptFromText(text: string, fileName: string): LoadResult 
     concept: {
       fileName,
       absolutePath,
+      format: 'markdown',
       frontmatter: parsed.value,
       body: split.body,
       plainText: extracted.plainText,

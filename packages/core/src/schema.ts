@@ -19,6 +19,7 @@ import {
 /* -------------------------------------------------------------------------- */
 
 export const conceptKinds = [
+  // The twelve v1 kinds, unchanged. Every existing page keeps its kind.
   'concept',
   'method',
   'algorithm',
@@ -31,8 +32,27 @@ export const conceptKinds = [
   'example',
   'implementation',
   'tool',
+  // Added in v2 (checkpoint K03) so the graph can name the non-concept objects
+  // the product vision promised — the paper a result came from, the person who
+  // proposed it, the moment it changed, and what it was measured on. No
+  // instance of these exists yet; the enumeration comes first so a future
+  // identity does not have to be mislabelled as a `concept`.
+  'paper',
+  'person',
+  'historical-event',
+  'dataset',
+  'benchmark',
 ] as const;
 export type ConceptKind = (typeof conceptKinds)[number];
+
+/** The kinds v2 added. Used by tests and by the content-contract audit. */
+export const v2ConceptKinds = [
+  'paper',
+  'person',
+  'historical-event',
+  'dataset',
+  'benchmark',
+] as const;
 
 export const tiers = [1, 2, 3] as const;
 export type Tier = (typeof tiers)[number];
@@ -118,13 +138,22 @@ export const atlasTopLevelCategories = [
 /* Formats                                                                     */
 /* -------------------------------------------------------------------------- */
 
-/** Lowercase dotted identifier, e.g. `concept.deep_learning.convolutional_layer`. */
-export const DOTTED_ID = /^[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+$/;
+/**
+ * Lowercase dotted identifier, e.g. `concept.deep_learning.convolutional_layer`.
+ *
+ * The first segment must begin with a letter, so an id never starts with a
+ * digit. Later segments may begin with a digit, because real names do:
+ * `paper.resnet.2015` is the worked example in v2 runbook §4.4, and a concept
+ * such as `3-SAT` has the slug `/concepts/3-sat`, whose final segment the id
+ * has to match. Hyphens remain forbidden; underscores separate words.
+ */
+export const DOTTED_ID = /^[a-z][a-z0-9_]*(?:\.[a-z0-9][a-z0-9_]*)+$/;
 
 /** Canonical page URL, e.g. `/concepts/convolutional-layer`. */
 export const CONCEPT_SLUG = /^\/concepts\/[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-const dottedId = (label: string) =>
+/** Build a validator for a lowercase dotted identifier field named `label`. */
+export const dottedId = (label: string) =>
   z
     .string()
     .min(1)
@@ -148,7 +177,8 @@ const httpUrl = z
 
 const isoDate = z.iso.date('checked_on must be an ISO calendar date formatted YYYY-MM-DD');
 
-const nonEmptyText = (label: string, max = 4_000) =>
+/** Build a validator for a trimmed, non-empty, length-capped text field. */
+export const nonEmptyText = (label: string, max = 4_000) =>
   z
     .string()
     .min(1, `${label} must not be empty`)
@@ -171,6 +201,58 @@ const categoryPath = z
 /* -------------------------------------------------------------------------- */
 /* Object schemas                                                              */
 /* -------------------------------------------------------------------------- */
+
+/**
+ * A dangling intellectual dependency (v2 runbook §4.3).
+ *
+ * When a page needs to mention an idea this corpus does not explain yet, the
+ * honest move is to write the name as plain text and record *here* that the
+ * link is missing, rather than inventing a stub so a link resolves. Each entry
+ * becomes one traceable backlog item, grouped across pages by its normalised
+ * label so two pages waiting on the same idea are one piece of work.
+ */
+export const unresolvedReferenceSchema = z.strictObject({
+  label: nonEmptyText('unresolved_references[].label', 200),
+  reason: nonEmptyText('unresolved_references[].reason', 1_000),
+  /**
+   * Which sections of this page feel the gap. A graph-only identity has no
+   * sections, so the list must be empty there.
+   */
+  sections: z
+    .array(z.enum(supportedSections))
+    .default([])
+    .refine(
+      (values) => new Set(values).size === values.length,
+      'unresolved_references[].sections must not repeat a section',
+    ),
+  blocking: z.boolean().default(false),
+  proposed_kind: z.enum(conceptKinds).optional(),
+  proposed_categories: z.array(categoryPath).default([]),
+});
+export type UnresolvedReference = z.infer<typeof unresolvedReferenceSchema>;
+
+/**
+ * Stable id for one unresolved reference: its source concept plus the
+ * normalised label. Deterministic, so the same corpus always compiles the same
+ * backlog ids.
+ */
+export function unresolvedReferenceId(conceptId: string, label: string): string {
+  return `unresolved.${conceptId.replace(/^concept\./, '')}.${labelKey(label)}`;
+}
+
+/** Stable id for the backlog group every page waiting on this label shares. */
+export function backlogGroupId(label: string): string {
+  return `backlog.${labelKey(label)}`;
+}
+
+/** Normalised label reduced to one dotted-identifier segment. */
+export function labelKey(label: string): string {
+  const key = normalizeName(label)
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .replace(/_+/g, '_');
+  return key === '' ? 'unlabelled' : key;
+}
 
 export const relationshipSchema = z.strictObject({
   type: z.enum(relationshipTypes),
@@ -196,6 +278,45 @@ export const sourceSchema = z.strictObject({
 });
 export type Source = z.infer<typeof sourceSchema>;
 
+/**
+ * How strongly the corpus stands behind one statement (v2 runbook §4.4).
+ *
+ * - `supported` — the cited evidence says this.
+ * - `conditional` — it holds, but only under a stated condition.
+ * - `disputed` — sources disagree, and both are cited.
+ * - `unsupported` — stated deliberately with no evidence behind it, so a reader
+ *   knows it is unverified rather than assuming someone checked.
+ */
+export const claimStatuses = ['supported', 'conditional', 'disputed', 'unsupported'] as const;
+export type ClaimStatus = (typeof claimStatuses)[number];
+
+/** Review states a human — never an agent — may set, and which require claims. */
+export const promotedReviewStates = [
+  'source-checked',
+  'expert-reviewed',
+  'formally-verified',
+] as const;
+
+/**
+ * One pointer into a source. Locators are written for a human to follow; the
+ * system never pretends to parse or verify them.
+ */
+export const claimEvidenceSchema = z.strictObject({
+  source_id: dottedId('claims[].evidence[].source_id'),
+  locator: nonEmptyText('claims[].evidence[].locator', 200),
+  note: nonEmptyText('claims[].evidence[].note', 500).optional(),
+});
+export type ClaimEvidence = z.infer<typeof claimEvidenceSchema>;
+
+export const claimSchema = z.strictObject({
+  claim_id: dottedId('claims[].claim_id'),
+  section: z.enum(supportedSections),
+  statement: nonEmptyText('claims[].statement', 2_000),
+  status: z.enum(claimStatuses),
+  evidence: z.array(claimEvidenceSchema).default([]),
+});
+export type Claim = z.infer<typeof claimSchema>;
+
 export const conceptFrontmatterSchema = z
   .strictObject({
     concept_id: dottedId('concept_id'),
@@ -210,6 +331,8 @@ export const conceptFrontmatterSchema = z
     primary_category: categoryPath,
     relationships: z.array(relationshipSchema).default([]),
     sources: z.array(sourceSchema).default([]),
+    unresolved_references: z.array(unresolvedReferenceSchema).default([]),
+    claims: z.array(claimSchema).default([]),
   })
   .superRefine((value, ctx) => {
     if (!value.categories.includes(value.primary_category)) {
@@ -266,6 +389,93 @@ export const conceptFrontmatterSchema = z
           message: 'a concept must not declare a relationship to itself',
         });
       }
+    });
+
+    // An unresolved reference names something this corpus does NOT have, so it
+    // may not repeat a label, and it may not point at the page it sits on.
+    const ownNames = new Set<string>([
+      normalizeName(value.title),
+      ...value.aliases.map(normalizeName),
+    ]);
+    const seenLabels = new Map<string, number>();
+    value.unresolved_references.forEach((reference, index) => {
+      const normalized = normalizeName(reference.label);
+      const first = seenLabels.get(normalized);
+      if (first !== undefined) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['unresolved_references', index, 'label'],
+          message: `"${reference.label}" normalises to "${normalized}", the same as unresolved_references[${String(first)}]; one label is one backlog item`,
+        });
+      } else {
+        seenLabels.set(normalized, index);
+      }
+      if (ownNames.has(normalized)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['unresolved_references', index, 'label'],
+          message: `"${reference.label}" is this concept's own name; a concept cannot be an unresolved reference to itself`,
+        });
+      }
+      if (value.tier === 3 && reference.sections.length > 0) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['unresolved_references', index, 'sections'],
+          message:
+            'a graph-only identity has no sections, so an unresolved reference on it must not name any',
+        });
+      }
+    });
+
+    // Claims and their evidence. Source ids are resolved against THIS page's
+    // `sources`, so a locator can never point at a work the page does not cite.
+    const declaredSources = new Set(value.sources.map((source) => source.source_id));
+    const seenClaimIds = new Set<string>();
+    value.claims.forEach((claim, index) => {
+      if (seenClaimIds.has(claim.claim_id)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['claims', index, 'claim_id'],
+          message: `duplicate claim_id ${claim.claim_id} on this page`,
+        });
+      }
+      seenClaimIds.add(claim.claim_id);
+
+      if (claim.status === 'unsupported') {
+        if (claim.evidence.length > 0) {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['claims', index, 'evidence'],
+            message: `claim ${claim.claim_id} is marked unsupported but cites evidence; either the evidence supports it or the status is wrong`,
+          });
+        }
+      } else if (claim.evidence.length === 0) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['claims', index, 'evidence'],
+          message: `claim ${claim.claim_id} is "${claim.status}" and must cite at least one piece of evidence; mark it unsupported if nothing does`,
+        });
+      }
+
+      const seenLocators = new Set<string>();
+      claim.evidence.forEach((evidence, evidenceIndex) => {
+        if (!declaredSources.has(evidence.source_id)) {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['claims', index, 'evidence', evidenceIndex, 'source_id'],
+            message: `evidence source ${evidence.source_id} is not listed in this page's sources`,
+          });
+        }
+        const key = `${evidence.source_id}|${evidence.locator}`;
+        if (seenLocators.has(key)) {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['claims', index, 'evidence', evidenceIndex],
+            message: `claim ${claim.claim_id} cites ${evidence.source_id} at "${evidence.locator}" twice`,
+          });
+        }
+        seenLocators.add(key);
+      });
     });
 
     const seenSources = new Set<string>();

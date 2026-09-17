@@ -1,8 +1,8 @@
 {
-  "$id": "https://knowledge-navigator.local/schemas/concept.schema.json",
+  "$id": "https://knowledge-navigator.local/schemas/graph-only.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
-  "description": "Generated from packages/core/src/schema.ts — do not edit by hand. JSON Schema cannot express this contract completely: primary_category must also appear in categories, the slug name must match the last segment of concept_id, aliases and unresolved-reference labels must be unique once normalised, a concept must not relate to itself, source_id must be unique within a page, claim ids must be unique across the corpus, claim evidence must cite a source the page lists, a claim that is not \"unsupported\" must cite evidence and an \"unsupported\" one must not, and a page above generated-draft must carry a claim for every substantive section. Those rules are enforced by `navigator validate`, which is authoritative.",
+  "description": "Generated from packages/core/src/graph-only.ts — do not edit by hand. A graph-only identity is the concept frontmatter contract with tier pinned to 3, stored as one YAML document in content/graph-only/ with no Markdown body and no reader-facing route. JSON Schema cannot express this contract completely: primary_category must also appear in categories, the slug name must match the last segment of concept_id, aliases and unresolved-reference labels must be unique once normalised, a concept must not relate to itself, source_id must be unique within a page, claim ids must be unique across the corpus, claim evidence must cite a source the page lists, a claim that is not \"unsupported\" must cite evidence and an \"unsupported\" one must not, and a page above generated-draft must carry a claim for every substantive section. Those rules are enforced by `navigator validate`, which is authoritative.",
   "properties": {
     "aliases": {
       "default": [],
@@ -383,6 +383,6 @@
     "categories",
     "primary_category"
   ],
-  "title": "Knowledge Navigator canonical concept frontmatter",
+  "title": "Knowledge Navigator graph-only identity",
   "type": "object"
 }

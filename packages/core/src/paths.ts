@@ -14,6 +14,10 @@ import { fileURLToPath } from 'node:url';
 export interface ProjectPaths {
   readonly root: string;
   readonly contentDir: string;
+  /** Tier 3 graph-only YAML identities (v2 runbook §4.2). */
+  readonly graphOnlyDir: string;
+  /** The curated broad atlas (v2 runbook §4.1). */
+  readonly atlasFile: string;
   readonly generatedDir: string;
   readonly dataDir: string;
   readonly schemasDir: string;
@@ -50,6 +54,8 @@ export function projectPaths(explicitRoot?: string): ProjectPaths {
   return {
     root,
     contentDir: resolve(root, 'content', 'concepts'),
+    graphOnlyDir: resolve(root, 'content', 'graph-only'),
+    atlasFile: resolve(root, 'content', 'atlas.yaml'),
     generatedDir: resolve(root, 'generated'),
     dataDir: resolve(root, 'data'),
     schemasDir: resolve(root, 'schemas'),

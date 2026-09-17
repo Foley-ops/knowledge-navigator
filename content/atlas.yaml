@@ -1,0 +1,1887 @@
+# The curated broad atlas (v2 runbook section 4.1 and Appendix A).
+#
+# This file is EDITORIAL STRUCTURE, not knowledge. A candidate is a label and
+# at most an editorial note: a lead for a page that does not exist yet. It is
+# never canonical, never evidence, and never grounds an assistant answer. The
+# schema has no field for a factual summary, and adding one is rejected.
+#
+# Areas, categories and labels come from Appendix A and are frozen. Empty
+# categories are deliberate: an unexplained neighbourhood should stay visible.
+schema_version: 1
+
+areas:
+  - area_id: atlas.mathematics
+    title: Mathematics
+    categories:
+      - category_id: atlas.mathematics.foundations
+        title: Foundations
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.foundations.logic_and_proof
+        title: 'Logic & Proof'
+        parent_id: atlas.mathematics.foundations
+      - category_id: atlas.mathematics.foundations.formal_verification
+        title: Formal Verification
+        parent_id: atlas.mathematics.foundations
+      - category_id: atlas.mathematics.number_theory
+        title: Number Theory
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.algebra
+        title: Algebra
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.linear_and_multilinear_algebra
+        title: 'Linear & Multilinear Algebra'
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.analysis
+        title: Analysis
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.probability_and_statistics
+        title: 'Probability & Statistics'
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.combinatorics
+        title: Combinatorics
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.graph_theory
+        title: Graph Theory
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.spectral_graph_theory
+        title: Spectral Graph Theory
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.geometry_and_topology
+        title: 'Geometry & Topology'
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.optimization
+        title: Optimization
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.discrete_mathematics
+        title: Discrete Mathematics
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.numerical_analysis
+        title: Numerical Analysis
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.information_theory
+        title: Information Theory
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.game_theory
+        title: Game Theory
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.operations_research
+        title: Operations Research
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.theory_of_computation
+        title: Theory of Computation
+        parent_id: atlas.mathematics
+      - category_id: atlas.mathematics.mathematical_physics
+        title: Mathematical Physics
+        parent_id: atlas.mathematics
+
+  - area_id: atlas.artificial_intelligence
+    title: Artificial Intelligence
+    categories:
+      - category_id: atlas.artificial_intelligence.symbolic_ai
+        title: Symbolic AI
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.symbolic_ai.search
+        title: Search
+        parent_id: atlas.artificial_intelligence.symbolic_ai
+      - category_id: atlas.artificial_intelligence.symbolic_ai.planning
+        title: Planning
+        parent_id: atlas.artificial_intelligence.symbolic_ai
+      - category_id: atlas.artificial_intelligence.classical_machine_learning
+        title: Classical Machine Learning
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.deep_learning_architectures
+        title: Deep Learning — Architectures
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.deep_learning_training
+        title: Deep Learning — Training
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.reinforcement_learning
+        title: Reinforcement Learning
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.learning_paradigms
+        title: Learning Paradigms
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.domains
+        title: Domains
+        parent_id: atlas.artificial_intelligence
+      - category_id: atlas.artificial_intelligence.domains.computer_vision
+        title: Computer Vision
+        parent_id: atlas.artificial_intelligence.domains
+      - category_id: atlas.artificial_intelligence.domains.natural_language_processing
+        title: Natural Language Processing
+        parent_id: atlas.artificial_intelligence.domains
+      - category_id: atlas.artificial_intelligence.other_traditions_and_frontiers
+        title: 'Other Traditions & Frontiers'
+        parent_id: atlas.artificial_intelligence
+
+  - area_id: atlas.programming
+    title: Programming
+    categories:
+      - category_id: atlas.programming.languages
+        title: Languages
+        parent_id: atlas.programming
+      - category_id: atlas.programming.languages.paradigms
+        title: Paradigms
+        parent_id: atlas.programming.languages
+      - category_id: atlas.programming.data_structures_and_algorithms
+        title: 'Data Structures & Algorithms'
+        parent_id: atlas.programming
+      - category_id: atlas.programming.systems
+        title: Systems
+        parent_id: atlas.programming
+      - category_id: atlas.programming.ml_engineering
+        title: ML Engineering
+        parent_id: atlas.programming
+      - category_id: atlas.programming.software_practice
+        title: Software Practice
+        parent_id: atlas.programming
+
+candidates:
+  - candidate_id: candidate.mathematics.foundations.logic_and_proof.propositional_logic
+    title: Propositional Logic
+    categories:
+      - atlas.mathematics.foundations.logic_and_proof
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.logic_and_proof.first_order_logic
+    title: First-Order Logic
+    categories:
+      - atlas.mathematics.foundations.logic_and_proof
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.logic_and_proof.proof_theory
+    title: Proof Theory
+    categories:
+      - atlas.mathematics.foundations.logic_and_proof
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.set_theory
+    title: Set Theory
+    categories:
+      - atlas.mathematics.foundations
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.category_theory
+    title: Category Theory
+    categories:
+      - atlas.mathematics.foundations
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.model_theory
+    title: Model Theory
+    categories:
+      - atlas.mathematics.foundations
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.computability_theory
+    title: Computability Theory
+    categories:
+      - atlas.mathematics.foundations
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.formal_verification.lean
+    title: Lean
+    categories:
+      - atlas.mathematics.foundations.formal_verification
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.foundations.formal_verification.coq
+    title: Coq
+    categories:
+      - atlas.mathematics.foundations.formal_verification
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.number_theory.elementary_number_theory
+    title: Elementary Number Theory
+    categories:
+      - atlas.mathematics.number_theory
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.number_theory.analytic_number_theory
+    title: Analytic Number Theory
+    categories:
+      - atlas.mathematics.number_theory
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.number_theory.algebraic_number_theory
+    title: Algebraic Number Theory
+    categories:
+      - atlas.mathematics.number_theory
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.group_theory
+    title: Group Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.ring_theory
+    title: Ring Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.field_theory
+    title: Field Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.galois_theory
+    title: Galois Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.complex_numbers
+    title: Complex Numbers
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.quaternions
+    title: Quaternions
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.octonions
+    title: Octonions
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.clifford_algebra
+    title: Clifford Algebra
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.geometric_algebra
+    title: Geometric Algebra
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.representation_theory
+    title: Representation Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.lie_algebras
+    title: Lie Algebras
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.homological_algebra
+    title: Homological Algebra
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.lattice_theory
+    title: Lattice Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.algebra.order_theory
+    title: Order Theory
+    categories:
+      - atlas.mathematics.algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.vector_spaces
+    title: Vector Spaces
+    categories:
+      - atlas.mathematics.linear_and_multilinear_algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.matrix_theory
+    title: Matrix Theory
+    categories:
+      - atlas.mathematics.linear_and_multilinear_algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.matrix_decompositions
+    title: Matrix Decompositions
+    categories:
+      - atlas.mathematics.linear_and_multilinear_algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.tensors
+    title: Tensors
+    categories:
+      - atlas.mathematics.linear_and_multilinear_algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.tensor_decomposition
+    title: Tensor Decomposition
+    categories:
+      - atlas.mathematics.linear_and_multilinear_algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.spectral_theory
+    title: Spectral Theory
+    categories:
+      - atlas.mathematics.linear_and_multilinear_algebra
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.single_variable_calculus
+    title: Single-Variable Calculus
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.multivariable_calculus
+    title: Multivariable Calculus
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.vector_calculus
+    title: Vector Calculus
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.real_analysis
+    title: Real Analysis
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.complex_analysis
+    title: Complex Analysis
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.measure_theory
+    title: Measure Theory
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.functional_analysis
+    title: Functional Analysis
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.hilbert_spaces
+    title: Hilbert Spaces
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.banach_spaces
+    title: Banach Spaces
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.operators
+    title: Operators
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.harmonic_analysis
+    title: Harmonic Analysis
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.fourier_analysis
+    title: Fourier Analysis
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.wavelets
+    title: Wavelets
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.convolution
+    title: Convolution
+    categories:
+      - atlas.mathematics.analysis
+    status: covered
+    canonical_concept_id: concept.analysis.convolution
+  - candidate_id: candidate.mathematics.analysis.cross_correlation
+    title: Cross-Correlation
+    categories:
+      - atlas.mathematics.analysis
+    status: covered
+    canonical_concept_id: concept.analysis.cross_correlation
+  - candidate_id: candidate.mathematics.analysis.translation_equivariance
+    title: Translation Equivariance
+    categories:
+      - atlas.mathematics.analysis
+    status: covered
+    canonical_concept_id: concept.analysis.translation_equivariance
+  - candidate_id: candidate.mathematics.analysis.ordinary_differential_equations
+    title: Ordinary Differential Equations
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.partial_differential_equations
+    title: Partial Differential Equations
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.calculus_of_variations
+    title: Calculus of Variations
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.dynamical_systems
+    title: Dynamical Systems
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.analysis.chaos
+    title: Chaos
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.probability_theory
+    title: Probability Theory
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.stochastic_processes
+    title: Stochastic Processes
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.martingales
+    title: Martingales
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.concentration_inequalities
+    title: Concentration Inequalities
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.probability_and_computing
+    title: Probability and Computing
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.frequentist_inference
+    title: Frequentist Inference
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.bayesian_inference
+    title: Bayesian Inference
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.high_dimensional_statistics
+    title: High-Dimensional Statistics
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.probability_and_statistics.random_matrix_theory
+    title: Random Matrix Theory
+    categories:
+      - atlas.mathematics.probability_and_statistics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.euclidean_geometry
+    title: Euclidean Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.non_euclidean_geometry
+    title: Non-Euclidean Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.spherical_geometry
+    title: Spherical Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.hyperbolic_geometry
+    title: Hyperbolic Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.differential_geometry
+    title: Differential Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.manifolds
+    title: Manifolds
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.lie_groups
+    title: Lie Groups
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.curvature
+    title: Curvature
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.algebraic_geometry
+    title: Algebraic Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.convex_geometry
+    title: Convex Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.point_set_topology
+    title: Point-Set Topology
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.algebraic_topology
+    title: Algebraic Topology
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.differential_topology
+    title: Differential Topology
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.fractal_geometry
+    title: Fractal Geometry
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.geometry_and_topology.renormalization
+    title: Renormalization
+    categories:
+      - atlas.mathematics.geometry_and_topology
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.convex_optimization
+    title: Convex Optimization
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.nonconvex_optimization
+    title: Nonconvex Optimization
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.stochastic_optimization
+    title: Stochastic Optimization
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.combinatorial_optimization
+    title: Combinatorial Optimization
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.integer_programming
+    title: Integer Programming
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.variational_methods
+    title: Variational Methods
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.optimization.optimal_transport
+    title: Optimal Transport
+    categories:
+      - atlas.mathematics.optimization
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.theory_of_computation.automata
+    title: Automata
+    categories:
+      - atlas.mathematics.theory_of_computation
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.theory_of_computation.computational_complexity
+    title: Computational Complexity
+    categories:
+      - atlas.mathematics.theory_of_computation
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.mathematical_physics.hamiltonian_mechanics
+    title: Hamiltonian Mechanics
+    categories:
+      - atlas.mathematics.mathematical_physics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.mathematics.mathematical_physics.statistical_mechanics
+    title: Statistical Mechanics
+    categories:
+      - atlas.mathematics.mathematical_physics
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.uninformed_search
+    title: Uninformed Search
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.search
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.a_star
+    title: A*
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.search
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.adversarial_search
+    title: Adversarial Search
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.search
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.minimax
+    title: Minimax
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.search
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.monte_carlo_tree_search
+    title: Monte Carlo Tree Search
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.search
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.planning.strips
+    title: STRIPS
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.planning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.planning.pddl
+    title: PDDL
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.planning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.planning.hierarchical_planning
+    title: Hierarchical Planning
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai.planning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.knowledge_representation
+    title: Knowledge Representation
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.ontologies
+    title: Ontologies
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.logic_programming
+    title: Logic Programming
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai
+      - atlas.programming.languages.paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.expert_systems
+    title: Expert Systems
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.symbolic_ai.constraint_satisfaction
+    title: Constraint Satisfaction
+    categories:
+      - atlas.artificial_intelligence.symbolic_ai
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.linear_regression
+    title: Linear Regression
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.logistic_regression
+    title: Logistic Regression
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.generalized_linear_models
+    title: Generalized Linear Models
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.support_vector_machines
+    title: Support Vector Machines
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.kernel_methods
+    title: Kernel Methods
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.decision_trees
+    title: Decision Trees
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.random_forests
+    title: Random Forests
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.gradient_boosting
+    title: Gradient Boosting
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.k_nearest_neighbors
+    title: k-Nearest Neighbors
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.naive_bayes
+    title: Naive Bayes
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.k_means
+    title: k-Means
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.hierarchical_clustering
+    title: Hierarchical Clustering
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.dbscan
+    title: DBSCAN
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.spectral_clustering
+    title: Spectral Clustering
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.principal_component_analysis
+    title: Principal Component Analysis
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.independent_component_analysis
+    title: Independent Component Analysis
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.t_sne
+    title: t-SNE
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.umap
+    title: UMAP
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.gaussian_processes
+    title: Gaussian Processes
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.hidden_markov_models
+    title: Hidden Markov Models
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.bayesian_networks
+    title: Bayesian Networks
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.conditional_random_fields
+    title: Conditional Random Fields
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.pac_learning
+    title: PAC Learning
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.vc_dimension
+    title: VC Dimension
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.bias_variance
+    title: Bias-Variance
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.classical_machine_learning.generalization
+    title: Generalization
+    categories:
+      - atlas.artificial_intelligence.classical_machine_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.perceptron
+    title: Perceptron
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.hopfield_networks
+    title: Hopfield Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.boltzmann_machines
+    title: Boltzmann Machines
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.radial_basis_function_networks
+    title: Radial Basis Function Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.self_organizing_maps
+    title: Self-Organizing Maps
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.multilayer_perceptrons
+    title: Multilayer Perceptrons
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.convolutional_networks
+    title: Convolutional Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.convolutional_layer
+    title: Convolutional Layer
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.convolutional_layer
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.pooling
+    title: Pooling
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.pooling
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.receptive_field
+    title: Receptive Field
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.receptive_field
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.residual_connection
+    title: Residual Connection
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.residual_connection
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.lenet
+    title: LeNet
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.lenet
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.vgg
+    title: VGG
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.vgg
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.resnet
+    title: ResNet
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: covered
+    canonical_concept_id: concept.deep_learning.resnet
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.convnext
+    title: ConvNeXt
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.capsule_networks
+    title: Capsule Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.recurrent_neural_networks
+    title: Recurrent Neural Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.lstm
+    title: LSTM
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.gru
+    title: GRU
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.xlstm
+    title: xLSTM
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.rwkv
+    title: RWKV
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.transformers
+    title: Transformers
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.attention
+    title: Attention
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.positional_encoding
+    title: Positional Encoding
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.mixture_of_experts
+    title: Mixture of Experts
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.vision_transformer
+    title: Vision Transformer
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.state_space_models
+    title: State Space Models
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.s4
+    title: S4
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.mamba
+    title: Mamba
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.autoencoders
+    title: Autoencoders
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.variational_autoencoders
+    title: Variational Autoencoders
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.generative_adversarial_networks
+    title: Generative Adversarial Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.diffusion_models
+    title: Diffusion Models
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.normalizing_flows
+    title: Normalizing Flows
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.flow_matching
+    title: Flow Matching
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.energy_based_models
+    title: Energy-Based Models
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.neural_odes
+    title: Neural ODEs
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.graph_neural_networks
+    title: Graph Neural Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.graph_convolutional_networks
+    title: Graph Convolutional Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.graph_attention_networks
+    title: Graph Attention Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.message_passing
+    title: Message Passing
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.geometric_deep_learning
+    title: Geometric Deep Learning
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.equivariance
+    title: Equivariance
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.spherical_cnns
+    title: Spherical CNNs
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.quaternion_neural_networks
+    title: Quaternion Neural Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.clifford_neural_networks
+    title: Clifford Neural Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.kolmogorov_arnold_networks
+    title: Kolmogorov-Arnold Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.spiking_neural_networks
+    title: Spiking Neural Networks
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.neuromorphic_computing
+    title: Neuromorphic Computing
+    categories:
+      - atlas.artificial_intelligence.deep_learning_architectures
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.backpropagation
+    title: Backpropagation
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.backpropagation_through_convolution
+    title: Backpropagation Through Convolution
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: covered
+    canonical_concept_id: concept.deep_learning.backpropagation_through_convolution
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.stochastic_gradient_descent
+    title: Stochastic Gradient Descent
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.adam
+    title: Adam
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.learning_rate_schedules
+    title: Learning-Rate Schedules
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.loss_functions
+    title: Loss Functions
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.regularization
+    title: Regularization
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.batch_normalization
+    title: Batch Normalization
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.layer_normalization
+    title: Layer Normalization
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.initialization
+    title: Initialization
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.distillation
+    title: Distillation
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.pruning
+    title: Pruning
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.deep_learning_training.quantization
+    title: Quantization
+    categories:
+      - atlas.artificial_intelligence.deep_learning_training
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.multi_armed_bandits
+    title: Multi-Armed Bandits
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.markov_decision_processes
+    title: Markov Decision Processes
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.dynamic_programming
+    title: Dynamic Programming
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.monte_carlo_methods
+    title: Monte Carlo Methods
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.temporal_difference_learning
+    title: Temporal-Difference Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.q_learning
+    title: Q-Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.dqn
+    title: DQN
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.policy_gradients
+    title: Policy Gradients
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.reinforce
+    title: REINFORCE
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.ppo
+    title: PPO
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.sac
+    title: SAC
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.actor_critic
+    title: Actor-Critic
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.model_based_reinforcement_learning
+    title: Model-Based Reinforcement Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.offline_reinforcement_learning
+    title: Offline Reinforcement Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.inverse_reinforcement_learning
+    title: Inverse Reinforcement Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.imitation_learning
+    title: Imitation Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.multi_agent_reinforcement_learning
+    title: Multi-Agent Reinforcement Learning
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.rlhf
+    title: RLHF
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.reinforcement_learning.rlaif
+    title: RLAIF
+    categories:
+      - atlas.artificial_intelligence.reinforcement_learning
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.supervised_learning
+    title: Supervised Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.unsupervised_learning
+    title: Unsupervised Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.self_supervised_learning
+    title: Self-Supervised Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.contrastive_learning
+    title: Contrastive Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.meta_learning
+    title: Meta-Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.continual_learning
+    title: Continual Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.transfer_learning
+    title: Transfer Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.federated_learning
+    title: Federated Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.learning_paradigms.curriculum_learning
+    title: Curriculum Learning
+    categories:
+      - atlas.artificial_intelligence.learning_paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.computer_vision.classification
+    title: Classification
+    categories:
+      - atlas.artificial_intelligence.domains.computer_vision
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.computer_vision.detection
+    title: Detection
+    categories:
+      - atlas.artificial_intelligence.domains.computer_vision
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.computer_vision.segmentation
+    title: Segmentation
+    categories:
+      - atlas.artificial_intelligence.domains.computer_vision
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.computer_vision.visual_place_recognition
+    title: Visual Place Recognition
+    categories:
+      - atlas.artificial_intelligence.domains.computer_vision
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.tokenization
+    title: Tokenization
+    categories:
+      - atlas.artificial_intelligence.domains.natural_language_processing
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.embeddings
+    title: Embeddings
+    categories:
+      - atlas.artificial_intelligence.domains.natural_language_processing
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.bert
+    title: BERT
+    categories:
+      - atlas.artificial_intelligence.domains.natural_language_processing
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.gpt
+    title: GPT
+    categories:
+      - atlas.artificial_intelligence.domains.natural_language_processing
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.agents
+    title: Agents
+    categories:
+      - atlas.artificial_intelligence.domains.natural_language_processing
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.speech
+    title: Speech
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.audio
+    title: Audio
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.time_series
+    title: Time Series
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.forecasting
+    title: Forecasting
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.robotics
+    title: Robotics
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.control
+    title: Control
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.domains.recommender_systems
+    title: Recommender Systems
+    categories:
+      - atlas.artificial_intelligence.domains
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.evolutionary_computation
+    title: Evolutionary Computation
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.genetic_algorithms
+    title: Genetic Algorithms
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.neuroevolution
+    title: Neuroevolution
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.swarm_intelligence
+    title: Swarm Intelligence
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.fuzzy_logic
+    title: Fuzzy Logic
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.neuro_symbolic_ai
+    title: Neuro-Symbolic AI
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.causal_inference
+    title: Causal Inference
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.interpretability
+    title: Interpretability
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.mechanistic_interpretability
+    title: Mechanistic Interpretability
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.alignment
+    title: Alignment
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.ai_safety
+    title: AI Safety
+    categories:
+      - atlas.artificial_intelligence.other_traditions_and_frontiers
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.paradigms.imperative_programming
+    title: Imperative Programming
+    categories:
+      - atlas.programming.languages.paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.paradigms.object_oriented_programming
+    title: Object-Oriented Programming
+    categories:
+      - atlas.programming.languages.paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.paradigms.functional_programming
+    title: Functional Programming
+    categories:
+      - atlas.programming.languages.paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.paradigms.array_programming
+    title: Array Programming
+    categories:
+      - atlas.programming.languages.paradigms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.python
+    title: Python
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.c
+    title: C
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.c_plus_plus
+    title: C++
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.rust
+    title: Rust
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.julia
+    title: Julia
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.r
+    title: R
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.matlab
+    title: MATLAB
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.haskell
+    title: Haskell
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.lisp
+    title: Lisp
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.javascript
+    title: JavaScript
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.typescript
+    title: TypeScript
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.go
+    title: Go
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.cuda
+    title: CUDA
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.gpu_kernels
+    title: GPU Kernels
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.languages.assembly
+    title: Assembly
+    categories:
+      - atlas.programming.languages
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.data_structures_and_algorithms.core_data_structures
+    title: Core Data Structures
+    categories:
+      - atlas.programming.data_structures_and_algorithms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.data_structures_and_algorithms.sorting
+    title: Sorting
+    categories:
+      - atlas.programming.data_structures_and_algorithms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.data_structures_and_algorithms.searching
+    title: Searching
+    categories:
+      - atlas.programming.data_structures_and_algorithms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.data_structures_and_algorithms.graph_algorithms
+    title: Graph Algorithms
+    categories:
+      - atlas.programming.data_structures_and_algorithms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.data_structures_and_algorithms.complexity_analysis
+    title: Complexity Analysis
+    categories:
+      - atlas.programming.data_structures_and_algorithms
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.operating_systems
+    title: Operating Systems
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.networking
+    title: Networking
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.distributed_systems
+    title: Distributed Systems
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.relational_databases
+    title: Relational Databases
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.graph_databases
+    title: Graph Databases
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.parallel_computing
+    title: Parallel Computing
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.systems.high_performance_computing
+    title: High-Performance Computing
+    categories:
+      - atlas.programming.systems
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.pytorch
+    title: PyTorch
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.jax
+    title: JAX
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.ollama
+    title: Ollama
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.training_infrastructure
+    title: Training Infrastructure
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.experiment_tracking
+    title: Experiment Tracking
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.deployment
+    title: Deployment
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.ml_engineering.edge_inference
+    title: Edge Inference
+    categories:
+      - atlas.programming.ml_engineering
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.version_control
+    title: Version Control
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.testing
+    title: Testing
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.continuous_integration
+    title: Continuous Integration
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.continuous_delivery
+    title: Continuous Delivery
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.containers
+    title: Containers
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.design_patterns
+    title: Design Patterns
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.apis
+    title: APIs
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.protocols
+    title: Protocols
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null
+  - candidate_id: candidate.programming.software_practice.model_context_protocol
+    title: Model Context Protocol
+    categories:
+      - atlas.programming.software_practice
+    status: candidate
+    canonical_concept_id: null

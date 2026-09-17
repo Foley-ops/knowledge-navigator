@@ -8,48 +8,36 @@
  */
 import { createHash } from 'node:crypto';
 import { readdir } from 'node:fs/promises';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { compareStrings, normalizeName, slugName } from './normalize.js';
+import { atlasCounts, emptyAtlasIndex, loadAtlasFile, resolveAtlasCategoryPath } from './atlas.js';
+import type { AtlasIndex, AtlasStatus } from './atlas.js';
+import { loadGraphOnlyFile } from './graph-only.js';
+import { ATLAS_FILE_NAME, GRAPH_ONLY_DIR_NAME } from './atlas-paths.js';
+import { TIER_1_HEADINGS } from './headings.js';
+import { nonEmptySectionKeys } from './sections.js';
+import { sortDiagnostics } from './diagnostics.js';
+import type { Diagnostic } from './diagnostics.js';
 import { loadConceptFile } from './loader.js';
 import type { LoadedConcept } from './loader.js';
-import type { Source, Tier } from './schema.js';
+import {
+  claimStatuses,
+  promotedReviewStates as PROMOTED_REVIEW_STATES,
+  reviewStates,
+} from './schema.js';
+import type { ClaimStatus, ReviewState, Source, Tier } from './schema.js';
+import type { ConceptFormat } from './loader.js';
 
-export interface Diagnostic {
-  /** File the problem belongs to, or `(corpus)` for cross-file problems. */
-  readonly file: string;
-  /** Field path, heading name, or other locator within the file. */
-  readonly field: string;
-  readonly message: string;
-}
+// `Diagnostic` and `sortDiagnostics` moved to ./diagnostics.js so the atlas and
+// graph-only validators can use them without importing this module. They are
+// re-exported here because every existing caller imports them from ./validate.
+export { sortDiagnostics };
+export type { Diagnostic };
 
-/** Sort diagnostics by file, then field, then message. Stable and locale-free. */
-export function sortDiagnostics(diagnostics: readonly Diagnostic[]): Diagnostic[] {
-  return [...diagnostics].sort(
-    (a, b) =>
-      compareStrings(a.file, b.file) ||
-      compareStrings(a.field, b.field) ||
-      compareStrings(a.message, b.message),
-  );
-}
-
-/**
- * The Tier 1 page template (runbook §4.1): these level-2 headings must each
- * appear exactly once, in this order, and no other level-2 heading may appear.
- */
-export const TIER_1_HEADINGS = [
-  'Definition',
-  'Why it matters',
-  'Intuition',
-  'Concrete example',
-  'Formal treatment',
-  'Assumptions and requirements',
-  'Uses and applicability',
-  'Limitations and common mistakes',
-  'Variants and alternatives',
-  'History and attribution',
-  'Sources',
-  'Prerequisites and next connections',
-] as const;
+// The Tier 1 template moved to ./headings.js so section splitting can use it
+// without depending on the validator. Re-exported because every existing caller
+// imports it from here.
+export { TIER_1_HEADINGS };
 
 function headingIssues(concept: LoadedConcept): Diagnostic[] {
   const file = concept.fileName;
@@ -187,11 +175,24 @@ function push<K, V>(map: Map<K, V[]>, key: K, value: V): void {
   else existing.push(value);
 }
 
+export interface CorpusValidationOptions {
+  /**
+   * The curated atlas, when one is available. Rules that need it — currently
+   * "a proposed category must be a category that exists" — are skipped when it
+   * is absent, so a caller validating a fixture in isolation still works.
+   * `loadCorpus` always supplies it.
+   */
+  readonly atlas?: AtlasIndex;
+}
+
 /**
  * Validate rules that span more than one file. Every rule runs; the caller
  * receives every problem in the corpus in one pass rather than the first.
  */
-export function validateCorpus(concepts: readonly LoadedConcept[]): Diagnostic[] {
+export function validateCorpus(
+  concepts: readonly LoadedConcept[],
+  options: CorpusValidationOptions = {},
+): Diagnostic[] {
   const diagnostics: Diagnostic[] = [];
   const knownFiles = new Set(concepts.map((concept) => concept.fileName));
 
@@ -220,13 +221,33 @@ export function validateCorpus(concepts: readonly LoadedConcept[]): Diagnostic[]
     }
 
     // The file name is the Docusaurus document id and the target of every
-    // relative concept link, so it must agree with the canonical slug.
-    const expectedFile = `${slugName(fm.slug)}.md`;
+    // relative concept link, so it must agree with the canonical slug. A
+    // graph-only identity has no document, but the same rule keeps its address
+    // predictable and makes a Tier 3 → Tier 2 promotion a rename of one file.
+    const expectedFile = `${slugName(fm.slug)}.${concept.format === 'graph-only' ? 'yaml' : 'md'}`;
     if (fileName !== expectedFile) {
       diagnostics.push({
         file: fileName,
         field: 'slug',
         message: `slug ${fm.slug} requires the file to be named ${expectedFile}`,
+      });
+    }
+
+    // Tier and storage format must agree in both directions: a Markdown page is
+    // a reader-facing article, a graph-only identity never is.
+    if (concept.format === 'graph-only' && fm.tier !== 3) {
+      diagnostics.push({
+        file: fileName,
+        field: 'tier',
+        message: `tier ${String(fm.tier)} cannot be stored as a graph-only identity; a reader-facing page belongs in content/concepts as Markdown`,
+      });
+    }
+    if (concept.format === 'markdown' && fm.tier === 3) {
+      diagnostics.push({
+        file: fileName,
+        field: 'tier',
+        message:
+          'tier 3 has no article, so it belongs in content/graph-only as YAML rather than in content/concepts',
       });
     }
   }
@@ -347,6 +368,151 @@ export function validateCorpus(concepts: readonly LoadedConcept[]): Diagnostic[]
     });
   }
 
+  /* ------------------------------- claims --------------------------------- */
+
+  // A claim_id is an address a reviewer, an export or a saved item can point
+  // at, so it has to be unique across the whole corpus, not just its own page.
+  const byClaimId = new Map<string, { file: string; index: number }[]>();
+  for (const concept of concepts) {
+    concept.frontmatter.claims.forEach((claim, index) => {
+      push(byClaimId, claim.claim_id, { file: concept.fileName, index });
+    });
+  }
+  for (const [claimId, group] of byClaimId) {
+    if (group.length < 2) continue;
+    for (const entry of group) {
+      diagnostics.push({
+        file: entry.file,
+        field: `claims.${String(entry.index)}.claim_id`,
+        message: `duplicate claim_id ${claimId}, also declared in ${group
+          .filter((other) => other !== entry)
+          .map((other) => other.file)
+          .join(', ')}`,
+      });
+    }
+  }
+
+  // Claim-level evidence is optional for a generated draft — v1's eleven pages
+  // predate it and stay valid. It becomes mandatory the moment a human raises a
+  // page above generated-draft, because that promotion is precisely the claim
+  // that each statement was checked against its source.
+  for (const concept of concepts) {
+    const { frontmatter: fm } = concept;
+    if (!(PROMOTED_REVIEW_STATES as readonly string[]).includes(fm.review_state)) continue;
+
+    if (fm.tier === 1) {
+      const covered = new Set(fm.claims.map((claim) => claim.section));
+      const missing = [...nonEmptySectionKeys(concept.body)]
+        .filter((section) => !covered.has(section))
+        .sort(compareStrings);
+      for (const section of missing) {
+        diagnostics.push({
+          file: concept.fileName,
+          field: `claims:${section}`,
+          message: `review_state ${fm.review_state} requires at least one claim for every substantive section; "${section}" has prose but no claim`,
+        });
+      }
+      continue;
+    }
+
+    if (fm.claims.length === 0) {
+      diagnostics.push({
+        file: concept.fileName,
+        field: 'claims',
+        message: `review_state ${fm.review_state} requires at least one claim with evidence; only generated-draft may have none`,
+      });
+    }
+  }
+
+  /* ------------------------- unresolved references ------------------------ */
+
+  const atlasForRules =
+    options.atlas !== undefined && options.atlas.areas.size > 0 ? options.atlas : undefined;
+
+  // A label is "unresolved" only while nothing in the corpus answers to it.
+  // Once a concept with that name exists the entry is stale: it would keep an
+  // item in the backlog that is already done, and hide a link that should be
+  // written. Names are compared with the same normalisation used everywhere.
+  const conceptByName = new Map<string, string>();
+  for (const concept of concepts) {
+    const { frontmatter: fm } = concept;
+    conceptByName.set(normalizeName(fm.title), fm.concept_id);
+    for (const alias of fm.aliases) conceptByName.set(normalizeName(alias), fm.concept_id);
+  }
+
+  for (const concept of concepts) {
+    concept.frontmatter.unresolved_references.forEach((reference, index) => {
+      const field = `unresolved_references.${String(index)}`;
+      const resolved = conceptByName.get(normalizeName(reference.label));
+      if (resolved !== undefined) {
+        diagnostics.push({
+          file: concept.fileName,
+          field: `${field}.label`,
+          message: `"${reference.label}" now resolves to ${resolved}; link it and remove this entry, or defer it deliberately`,
+        });
+      }
+
+      if (atlasForRules === undefined) return;
+      reference.proposed_categories.forEach((category, categoryIndex) => {
+        if (resolveAtlasCategoryPath(atlasForRules, category) !== undefined) return;
+        diagnostics.push({
+          file: concept.fileName,
+          field: `${field}.proposed_categories.${String(categoryIndex)}`,
+          message: `proposed category "${category}" is not a category in the atlas`,
+        });
+      });
+    });
+  }
+
+  /* ------------------------------- the atlas ------------------------------ */
+
+  // An empty index means "no atlas was supplied", not "an atlas with nothing in
+  // it", so atlas-dependent rules are skipped rather than failing everything.
+  const atlas =
+    options.atlas !== undefined && options.atlas.areas.size > 0 ? options.atlas : undefined;
+  if (atlas !== undefined) {
+    const coveredBy = new Map<string, string[]>();
+    atlas.document.candidates.forEach((candidate, index) => {
+      if (candidate.status !== 'covered' || candidate.canonical_concept_id === null) return;
+      push(coveredBy, candidate.canonical_concept_id, candidate.candidate_id);
+      if (conceptIds.has(candidate.canonical_concept_id)) return;
+      diagnostics.push({
+        file: ATLAS_FILE_NAME,
+        field: `candidates.${String(index)}.canonical_concept_id`,
+        message: `candidate ${candidate.candidate_id} is covered by ${candidate.canonical_concept_id}, which does not exist in the corpus`,
+      });
+    });
+
+    for (const [conceptId, candidates] of coveredBy) {
+      if (candidates.length < 2) continue;
+      diagnostics.push({
+        file: ATLAS_FILE_NAME,
+        field: 'candidates',
+        message: `concept ${conceptId} is claimed by ${candidates.sort(compareStrings).join(', ')}; exactly one candidate may cover a concept`,
+      });
+    }
+
+    // A candidate whose label already names a canonical concept is covered in
+    // fact, so saying otherwise would make Coverage under-report what exists.
+    const conceptByNameForAtlas = new Map<string, string>();
+    for (const concept of concepts) {
+      const { frontmatter: fm } = concept;
+      conceptByNameForAtlas.set(normalizeName(fm.title), fm.concept_id);
+      for (const alias of fm.aliases)
+        conceptByNameForAtlas.set(normalizeName(alias), fm.concept_id);
+    }
+    atlas.document.candidates.forEach((candidate, index) => {
+      if (candidate.status === 'covered') return;
+      const match = conceptByNameForAtlas.get(normalizeName(candidate.title));
+      if (match === undefined) return;
+      diagnostics.push({
+        file: ATLAS_FILE_NAME,
+        field: `candidates.${String(index)}.status`,
+        message: `candidate ${candidate.candidate_id} has the same name as concept ${match}; mark it covered and name that concept`,
+      });
+    });
+  }
+
   /* ---------------------------- relative links ---------------------------- */
 
   for (const concept of concepts) {
@@ -380,12 +546,42 @@ export function validateCorpus(concepts: readonly LoadedConcept[]): Diagnostic[]
 /* Loading and validating a whole directory                                    */
 /* -------------------------------------------------------------------------- */
 
+export interface CoverageSummary {
+  readonly areas: number;
+  readonly categories: number;
+  readonly emptyCategories: number;
+  readonly candidates: number;
+  readonly candidatesByStatus: Readonly<Record<AtlasStatus, number>>;
+  readonly concepts: number;
+  readonly conceptsByTier: Readonly<Record<'1' | '2' | '3', number>>;
+  readonly conceptsByFormat: Readonly<Record<ConceptFormat, number>>;
+  readonly conceptsByReviewState: Readonly<Record<ReviewState, number>>;
+  /** Concepts a covered candidate names, and concepts no candidate names. */
+  readonly conceptsInAtlas: number;
+  readonly conceptsOutsideAtlas: number;
+  readonly unresolvedReferences: number;
+  readonly blockingUnresolvedReferences: number;
+  /** Distinct normalised labels behind those references. */
+  readonly unresolvedGroups: number;
+  readonly claims: number;
+  readonly claimsByStatus: Readonly<Record<ClaimStatus, number>>;
+}
+
 export interface CorpusResult {
   readonly ok: boolean;
+  /** Every canonical identity, Markdown and graph-only alike, sorted by id. */
   readonly concepts: readonly LoadedConcept[];
   readonly diagnostics: readonly Diagnostic[];
-  /** SHA-256 over every file name and content hash, in sorted order. */
+  /** SHA-256 over every canonical file name and content hash, in sorted order. */
   readonly corpusHash: string;
+  /**
+   * The curated atlas. Editorial structure, kept deliberately separate from the
+   * canonical identities above: a candidate is never a concept.
+   */
+  readonly atlas: AtlasIndex;
+  /** SHA-256 of the atlas file, so an atlas edit is visible without changing corpusHash. */
+  readonly atlasHash: string;
+  readonly coverage: CoverageSummary;
 }
 
 /** Deterministic hash identifying the exact canonical corpus that was read. */
@@ -397,39 +593,133 @@ export function computeCorpusHash(concepts: readonly LoadedConcept[]): string {
   return hash.digest('hex');
 }
 
-/**
- * Load and validate every `.md` file in a content directory.
- *
- * Names beginning with `_` or `.` are ignored, matching the Docusaurus
- * convention for partials, so a draft can sit beside canonical content without
- * entering the corpus.
- */
-export async function loadCorpus(contentDir: string): Promise<CorpusResult> {
-  let entries: string[];
-  try {
-    entries = (await readdir(contentDir)).filter(
-      (name) => name.endsWith('.md') && !name.startsWith('_') && !name.startsWith('.'),
-    );
-  } catch (error) {
-    return {
-      ok: false,
-      concepts: [],
-      diagnostics: [
-        {
-          file: '(corpus)',
-          field: 'contentDir',
-          message: `could not read ${contentDir}: ${error instanceof Error ? error.message : String(error)}`,
-        },
-      ],
-      corpusHash: computeCorpusHash([]),
-    };
+/** Count everything Coverage and the CLI report, deterministically. */
+export function summarizeCoverage(
+  concepts: readonly LoadedConcept[],
+  atlas: AtlasIndex,
+): CoverageSummary {
+  const counts = atlasCounts(atlas);
+
+  const conceptsByTier: Record<'1' | '2' | '3', number> = { '1': 0, '2': 0, '3': 0 };
+  const conceptsByFormat: Record<ConceptFormat, number> = { markdown: 0, 'graph-only': 0 };
+  const conceptsByReviewState = Object.fromEntries(
+    reviewStates.map((state) => [state, 0]),
+  ) as Record<ReviewState, number>;
+  const claimsByStatus = Object.fromEntries(claimStatuses.map((status) => [status, 0])) as Record<
+    ClaimStatus,
+    number
+  >;
+
+  let unresolvedReferences = 0;
+  let blocking = 0;
+  let claims = 0;
+  const groups = new Set<string>();
+
+  for (const concept of concepts) {
+    const { frontmatter: fm } = concept;
+    conceptsByTier[String(fm.tier) as '1' | '2' | '3'] += 1;
+    conceptsByFormat[concept.format] += 1;
+    conceptsByReviewState[fm.review_state] += 1;
+    for (const reference of fm.unresolved_references) {
+      unresolvedReferences += 1;
+      if (reference.blocking) blocking += 1;
+      groups.add(normalizeName(reference.label));
+    }
+    for (const claim of fm.claims) {
+      claims += 1;
+      claimsByStatus[claim.status] += 1;
+    }
   }
-  entries.sort(compareStrings);
+
+  const covered = new Set<string>();
+  for (const candidate of atlas.document.candidates) {
+    if (candidate.status === 'covered' && candidate.canonical_concept_id !== null) {
+      covered.add(candidate.canonical_concept_id);
+    }
+  }
+  let conceptsInAtlas = 0;
+  for (const concept of concepts) {
+    if (covered.has(concept.frontmatter.concept_id)) conceptsInAtlas += 1;
+  }
+
+  return {
+    areas: counts.areas,
+    categories: counts.categories,
+    emptyCategories: counts.emptyCategories,
+    candidates: counts.candidates,
+    candidatesByStatus: counts.byStatus,
+    concepts: concepts.length,
+    conceptsByTier,
+    conceptsByFormat,
+    conceptsByReviewState,
+    conceptsInAtlas,
+    conceptsOutsideAtlas: concepts.length - conceptsInAtlas,
+    unresolvedReferences,
+    blockingUnresolvedReferences: blocking,
+    unresolvedGroups: groups.size,
+    claims,
+    claimsByStatus,
+  };
+}
+
+export interface LoadCorpusOptions {
+  /** Defaults to `<contentDir>/../graph-only`. */
+  readonly graphOnlyDir?: string;
+  /** Defaults to `<contentDir>/../atlas.yaml`. A missing file is not an error. */
+  readonly atlasFile?: string;
+}
+
+async function listFiles(directory: string, extension: string): Promise<string[] | undefined> {
+  try {
+    const entries = (await readdir(directory)).filter(
+      (name) => name.endsWith(extension) && !name.startsWith('_') && !name.startsWith('.'),
+    );
+    entries.sort(compareStrings);
+    return entries;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Load and validate the whole canonical corpus: Markdown pages, graph-only
+ * identities and the atlas, checked together in one pass.
+ *
+ * File names beginning with `_` or `.` are ignored, matching the Docusaurus
+ * convention for partials, so a draft can sit beside canonical content without
+ * entering the corpus. Ordering is by file name within each format and by
+ * concept id in the result, so two runs over the same files agree exactly.
+ *
+ * A missing `content/graph-only/` or `content/atlas.yaml` is not an error: a
+ * corpus may legitimately have neither, and fixtures usually do not.
+ */
+export async function loadCorpus(
+  contentDir: string,
+  options: LoadCorpusOptions = {},
+): Promise<CorpusResult> {
+  const contentRoot = dirname(contentDir);
+  const graphOnlyDir = options.graphOnlyDir ?? join(contentRoot, GRAPH_ONLY_DIR_NAME);
+  const atlasFile = options.atlasFile ?? join(contentRoot, ATLAS_FILE_NAME);
 
   const concepts: LoadedConcept[] = [];
   const diagnostics: Diagnostic[] = [];
 
-  for (const fileName of entries) {
+  const markdownFiles = await listFiles(contentDir, '.md');
+  if (markdownFiles === undefined) {
+    return {
+      ok: false,
+      concepts: [],
+      diagnostics: [
+        { file: '(corpus)', field: 'contentDir', message: `could not read ${contentDir}` },
+      ],
+      corpusHash: computeCorpusHash([]),
+      atlas: emptyAtlasIndex(),
+      atlasHash: createHash('sha256').digest('hex'),
+      coverage: summarizeCoverage([], emptyAtlasIndex()),
+    };
+  }
+
+  for (const fileName of markdownFiles) {
     const result = await loadConceptFile(join(contentDir, fileName), fileName);
     if (!result.ok || result.concept === undefined) {
       for (const issue of result.issues) {
@@ -441,7 +731,23 @@ export async function loadCorpus(contentDir: string): Promise<CorpusResult> {
     diagnostics.push(...validateConceptPage(result.concept));
   }
 
-  diagnostics.push(...validateCorpus(concepts));
+  for (const fileName of (await listFiles(graphOnlyDir, '.yaml')) ?? []) {
+    const result = await loadGraphOnlyFile(join(graphOnlyDir, fileName), fileName);
+    if (!result.ok || result.identity === undefined) {
+      for (const issue of result.issues) {
+        diagnostics.push({ file: fileName, field: issue.path, message: issue.message });
+      }
+      continue;
+    }
+    concepts.push(result.identity);
+    diagnostics.push(...validateConceptPage(result.identity));
+  }
+
+  const atlasResult = await loadAtlasFile(atlasFile);
+  diagnostics.push(...atlasResult.diagnostics);
+  const atlas = atlasResult.atlas ?? emptyAtlasIndex();
+
+  diagnostics.push(...validateCorpus(concepts, { atlas }));
   concepts.sort((a, b) => compareStrings(a.frontmatter.concept_id, b.frontmatter.concept_id));
 
   const sorted = sortDiagnostics(diagnostics);
@@ -450,5 +756,8 @@ export async function loadCorpus(contentDir: string): Promise<CorpusResult> {
     concepts,
     diagnostics: sorted,
     corpusHash: computeCorpusHash(concepts),
+    atlasHash: atlasResult.contentHash,
+    atlas,
+    coverage: summarizeCoverage(concepts, atlas),
   };
 }

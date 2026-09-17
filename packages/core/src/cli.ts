@@ -7,10 +7,11 @@
  */
 import { existsSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { join, resolve } from 'node:path';
 import type { Database as DatabaseType } from 'better-sqlite3';
-import { serializeConceptJsonSchema } from './json-schema.js';
+import { allJsonSchemas } from './json-schema.js';
 import { projectPaths } from './paths.js';
+import { atlasStatuses } from './atlas.js';
 import { loadCorpus } from './validate.js';
 import type { CorpusResult } from './validate.js';
 import { compileCorpus } from './compile.js';
@@ -21,7 +22,7 @@ import { compareStrings } from './normalize.js';
 const USAGE = `navigator <command> [options]
 
 Commands:
-  schema [--out <path>]   Write the canonical concept JSON Schema
+  schema [--out <dir>]    Write the concept, graph-only and atlas JSON Schemas
   validate                Validate the canonical corpus
   compile                 Compile the corpus into SQLite, graph JSON and sidebars
   inspect <concept-id>    Show one compiled concept
@@ -72,24 +73,46 @@ export function summarizeCorpus(result: CorpusResult): string {
     ...[...reviewStates.entries()]
       .sort((a, b) => compareStrings(a[0], b[0]))
       .map(([state, count]) => `  ${state.padEnd(16)}  ${String(count)}`),
+    `  markdown:         ${String(result.coverage.conceptsByFormat.markdown)}`,
+    `  graph only:       ${String(result.coverage.conceptsByFormat['graph-only'])}`,
     `categories:         ${String(categories.size)}`,
     `relationships:      ${String(relationships)}`,
     `internal links:     ${String(conceptLinks)}`,
     `distinct sources:   ${String(sourceIds.size)}`,
     `source citations:   ${String(sourceCitations)}`,
+    `claims:             ${String(result.coverage.claims)}`,
+    `unresolved refs:    ${String(result.coverage.unresolvedReferences)} in ${String(result.coverage.unresolvedGroups)} group(s), ${String(result.coverage.blockingUnresolvedReferences)} blocking`,
     `corpus hash:        ${result.corpusHash}`,
+    '',
+    // The atlas is editorial structure, reported apart from canonical
+    // knowledge so a candidate is never mistaken for a concept.
+    `atlas areas:        ${String(result.coverage.areas)}`,
+    `atlas categories:   ${String(result.coverage.categories)} (${String(result.coverage.emptyCategories)} empty)`,
+    `atlas candidates:   ${String(result.coverage.candidates)}`,
+    ...atlasStatuses.map(
+      (status) => `  ${status.padEnd(16)}  ${String(result.coverage.candidatesByStatus[status])}`,
+    ),
+    `atlas hash:         ${result.atlasHash}`,
   ];
   return lines.join('\n');
 }
 
+/**
+ * Write every published JSON Schema: the concept frontmatter contract, the
+ * graph-only identity contract and the atlas contract. `--out` names a
+ * directory; without it they go to `schemas/`.
+ */
 async function commandSchema(args: readonly string[]): Promise<number> {
   const explicitOut = optionValue(args, '--out');
-  const target =
-    explicitOut === undefined
-      ? projectPaths().conceptJsonSchema
-      : resolve(process.cwd(), explicitOut);
-  await writeFile(target, serializeConceptJsonSchema(), 'utf8');
-  console.log(`wrote ${target}`);
+  const directory =
+    explicitOut === undefined ? projectPaths().schemasDir : resolve(process.cwd(), explicitOut);
+  for (const [name, contents] of Object.entries(allJsonSchemas()).sort(([a], [b]) =>
+    compareStrings(a, b),
+  )) {
+    const target = join(directory, name);
+    await writeFile(target, contents, 'utf8');
+    console.log(`wrote ${target}`);
+  }
   return 0;
 }
 

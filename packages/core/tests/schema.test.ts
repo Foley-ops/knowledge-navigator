@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   conceptKinds,
+  v2ConceptKinds,
   parseFrontmatter,
   relationshipTypes,
   reviewStates,
@@ -84,12 +85,44 @@ describe('concept frontmatter contract', () => {
   });
 
   it('exposes exactly the enumerations named in the runbook', () => {
-    expect(conceptKinds).toHaveLength(12);
+    // v1 §4.1 froze twelve kinds; v2 K03 added five more without removing or
+    // renaming any of them, so every existing page keeps the kind it declared.
+    const v1Kinds = [
+      'concept',
+      'method',
+      'algorithm',
+      'theorem',
+      'mathematical-object',
+      'assumption',
+      'property',
+      'problem',
+      'failure-mode',
+      'example',
+      'implementation',
+      'tool',
+    ];
+    expect(conceptKinds.slice(0, 12)).toEqual(v1Kinds);
+    expect(conceptKinds).toHaveLength(17);
+    expect([...v2ConceptKinds]).toEqual([
+      'paper',
+      'person',
+      'historical-event',
+      'dataset',
+      'benchmark',
+    ]);
     expect(tiers).toEqual([1, 2, 3]);
     expect(reviewStates).toHaveLength(5);
     expect(relationshipTypes).toHaveLength(21);
     expect(sourceKinds.includes('authoritative-secondary')).toBe(true);
     expect(supportedSections.includes('uses-and-applicability')).toBe(true);
+  });
+
+  it('accepts every kind, old and new', () => {
+    for (const kind of conceptKinds) {
+      const result = parseFrontmatter(withPatch({ kind }));
+      expect(result.ok, `kind ${kind} should be accepted`).toBe(true);
+      expect(result.value?.kind).toBe(kind);
+    }
   });
 
   /* ---------------- enumerations: one invalid example each ---------------- */
@@ -153,6 +186,18 @@ describe('concept frontmatter contract', () => {
 
   it('rejects a concept_id with a hyphen', () => {
     expectRejected(withPatch({ concept_id: 'concept.deep-learning.conv' }), 'concept_id');
+  });
+
+  it('rejects an id whose first segment starts with a digit', () => {
+    expectRejected(withPatch({ concept_id: '3sat.logic.problem' }), 'concept_id');
+  });
+
+  it('accepts a later segment that starts with a digit', () => {
+    // v2 §4.4 uses `paper.resnet.2015`, and a concept named 3-SAT has the slug
+    // /concepts/3-sat, whose final segment an id has to be able to match.
+    const sources = validFrontmatter()['sources'] as Record<string, unknown>[];
+    sources[0]!['source_id'] = 'paper.resnet.2015';
+    expect(parseFrontmatter(withPatch({ sources })).ok).toBe(true);
   });
 
   it('rejects a relationship target that is not a dotted identifier', () => {

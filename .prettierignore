@@ -7,7 +7,7 @@ apps/web/.docusaurus/
 apps/web/build/
 apps/web/sidebars.generated.ts
 generated/graph.json
-schemas/concept.schema.json
+schemas/
 package-lock.json
 test-results/
 playwright-report/

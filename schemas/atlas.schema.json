@@ -1,0 +1,151 @@
+{
+  "$id": "https://knowledge-navigator.local/schemas/atlas.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Generated from packages/core/src/atlas.ts — do not edit by hand. The atlas is editorial structure, not knowledge: a candidate carries labels and an optional editorial note and has no field for a factual summary. JSON Schema cannot express the structural rules — exactly three root areas, acyclic categories each reaching one root, unique category titles within an area, candidate labels unique once normalised, and a covered candidate naming exactly one canonical concept that exists. Those are enforced by `navigator validate`, which is authoritative.",
+  "properties": {
+    "areas": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "area_id": {
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "categories": {
+            "default": [],
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "category_id": {
+                  "minLength": 1,
+                  "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9][a-z0-9_]*)+$",
+                  "type": "string"
+                },
+                "parent_id": {
+                  "minLength": 1,
+                  "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9][a-z0-9_]*)+$",
+                  "type": "string"
+                },
+                "title": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category_id",
+                "title",
+                "parent_id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "area_id",
+          "title"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "candidates": {
+      "default": [],
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "aliases": {
+            "default": [],
+            "items": {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "candidate_id": {
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "canonical_concept_id": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9][a-z0-9_]*)+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "categories": {
+            "items": {
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9][a-z0-9_]*)+$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 1000,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "status": {
+            "enum": [
+              "candidate",
+              "proposed-tier-3",
+              "covered",
+              "deferred"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "title",
+          "categories",
+          "status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1,
+      "type": "number"
+    }
+  },
+  "required": [
+    "schema_version",
+    "areas"
+  ],
+  "title": "Knowledge Navigator atlas",
+  "type": "object"
+}

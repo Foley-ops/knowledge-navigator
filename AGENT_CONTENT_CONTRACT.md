@@ -4,10 +4,75 @@ This file binds any AI agent that writes, edits, or proposes canonical content
 for the Knowledge Navigator.
 
 The authority for the content format is
-[`KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md`](./KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md),
-section 4.1, and its executable form is `packages/core/src/schema.ts`. Where this
-file and the runbook appear to disagree, the runbook wins and this file is the
-thing that needs fixing.
+[`KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md`](./KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md)
+§4.1 together with
+[`KNOWLEDGE_NAVIGATOR_V2_BUILD_RUNBOOK.md`](./KNOWLEDGE_NAVIGATOR_V2_BUILD_RUNBOOK.md)
+§4.1–§4.4. Their executable forms are `packages/core/src/schema.ts`,
+`packages/core/src/graph-only.ts` and `packages/core/src/atlas.ts`, published as
+JSON Schema in [`schemas/`](./schemas). Where this file and a runbook appear to
+disagree, the runbook wins and this file is the thing that needs fixing.
+
+## What is canonical and what is not
+
+Four things live in `content/`, and only three of them are canonical knowledge.
+
+| Thing                      | Where                       | Canonical? | Grounds an answer? |
+| -------------------------- | --------------------------- | ---------- | ------------------ |
+| Tier 1 page                | `content/concepts/*.md`     | Yes        | Yes                |
+| Tier 2 stub                | `content/concepts/*.md`     | Yes        | Yes                |
+| Tier 3 graph-only identity | `content/graph-only/*.yaml` | Yes        | Yes                |
+| Atlas candidate            | `content/atlas.yaml`        | **No**     | **Never**          |
+
+A **candidate** is an editorial lead: a label, its categories, a status and at
+most a note about why it is worth writing. It has no summary field, no sources
+and no relationships, and the schema rejects an attempt to give it any. It is
+not Tier 3, it is not evidence, and it must never be quoted, cited, summarised
+or used to answer a question. If an agent knows something about a candidate,
+that knowledge belongs in a proposed page with sources, not in the atlas.
+
+Private research material — projects, notes, artifacts, saved answers — is not
+canonical either, and never becomes canonical. It reaches a model only when the
+researcher explicitly selects it for one request.
+
+### The shape of a candidate
+
+```yaml
+candidates:
+  - candidate_id: candidate.mathematics.analysis.fourier_analysis
+    title: Fourier Analysis
+    aliases: []
+    categories:
+      - atlas.mathematics.analysis
+    status: candidate
+    canonical_concept_id: null
+    note: null
+```
+
+`status` is one of:
+
+| Status            | Means                                                            |
+| ----------------- | ---------------------------------------------------------------- |
+| `candidate`       | A lead nobody has committed to yet.                              |
+| `proposed-tier-3` | Worth a stable identity; the identity does not exist yet.        |
+| `covered`         | A canonical concept exists, and `canonical_concept_id` names it. |
+| `deferred`        | Deliberately out of scope for now, kept so it stays visible.     |
+
+Only a `covered` candidate names a concept, and it names exactly one. A covered
+candidate may fall back to `candidate` if its concept is removed; it may not be
+deferred or re-proposed while the corpus still explains it.
+
+## Coverage tiers are content depths, not product versions
+
+- **Tier 1** — a complete page using the full template below.
+- **Tier 2** — a concise stub: a definition paragraph, sources, and at least one
+  relationship or category. Same frontmatter contract, shorter body.
+- **Tier 3** — a **graph-only identity**: `content/graph-only/<slug-tail>.yaml`,
+  one YAML document, no Markdown body, no reader-facing page. It exists so the
+  graph can name something honestly before anyone has written about it.
+
+Promoting Tier 3 to Tier 2 replaces the YAML file with a Markdown file **in one
+reviewed change, keeping `concept_id` and `slug` exactly as they were**. The id
+and the slug are permanent addresses; the tier is not.
 
 ## The five rules that matter most
 
@@ -39,8 +104,11 @@ thing that needs fixing.
 - Present a plausible reconstruction as a checked fact.
 - Create a stub concept merely so a link or a relationship target resolves.
   If a concept does not exist, write its name as plain text.
-- Add a relationship type, `kind`, `review_state`, `source_kind` or `supports`
-  value that is not in the enumerations in `packages/core/src/schema.ts`.
+- Add a relationship type, `kind`, `review_state`, `source_kind`, `supports`,
+  claim `status` or atlas `status` value that is not in the enumerations in
+  `packages/core/src/schema.ts` and `packages/core/src/atlas.ts`.
+- Treat an atlas candidate, a backlog label, or any private research material as
+  evidence for a claim.
 - Change another page while editing one, unless the change is required to keep
   the corpus valid and is called out explicitly in the proposal.
 - Write raw HTML into canonical Markdown. Validation rejects it.
@@ -84,6 +152,8 @@ sources:
       - definition
       - formal-treatment
     checked_on: 2026-09-16
+unresolved_references: [] # see "Unresolved references" below
+claims: [] # see "Claims and evidence" below
 ---
 ```
 
@@ -103,6 +173,106 @@ Constraints the validator enforces, so check them before proposing:
 - One `source_id` describes one source: `title`, `url` and `source_kind` must
   agree everywhere it is cited. `supports` and `checked_on` may differ per
   citation.
+- An identifier's first segment starts with a letter; later segments may start
+  with a digit, so `paper.resnet.2015` is valid and `2015.resnet.paper` is not.
+
+### Kinds
+
+```text
+concept, method, algorithm, theorem, mathematical-object, assumption,
+property, problem, failure-mode, example, implementation, tool,
+paper, person, historical-event, dataset, benchmark
+```
+
+The last five were added in v2 so the graph can name a paper, a person, a
+moment, a dataset or a benchmark instead of mislabelling it a `concept`. Do not
+create one to decorate a page; create one when something needs a stable address.
+
+## Graph-only identities
+
+A Tier 3 file is one YAML document with the same frontmatter fields, `tier: 3`,
+and nothing else — no body, no second document, no `body:` key. Its file name is
+the final segment of its slug plus `.yaml`.
+
+```yaml
+concept_id: concept.deep_learning.state_space_model
+title: State Space Model
+slug: /concepts/state-space-model
+aliases: []
+kind: concept
+tier: 3
+review_state: generated-draft
+summary: One cautious sentence saying what this identity denotes.
+categories:
+  - Artificial Intelligence/Deep Learning — Architectures
+primary_category: Artificial Intelligence/Deep Learning — Architectures
+relationships: []
+sources: []
+unresolved_references: []
+claims: []
+```
+
+Its title, aliases, id and slug share one namespace with every Markdown page, so
+a collision with a page is a validation error, not a merge.
+
+## Unresolved references
+
+When a page must mention an idea this corpus does not explain, **do not create a
+stub so a link resolves**. Write the name as plain text and record the gap:
+
+```yaml
+unresolved_references:
+  - label: Strided convolution
+    reason: Needed to explain the alternative to pooling without inventing a link.
+    sections:
+      - variants-and-alternatives
+    blocking: false
+    proposed_kind: method
+    proposed_categories:
+      - Artificial Intelligence/Deep Learning — Architectures
+```
+
+- `label` is the name as a reader would look for it. Two labels that normalise
+  to the same string are one backlog item, and repeating one on a page is an
+  error. A label that already names a concept is an error too: link it instead.
+- `reason` says what cannot be explained without it. It is read by whoever picks
+  the item up, so write it for them.
+- `sections` names the sections that feel the gap, from the vocabulary below. A
+  graph-only identity has no sections and must name none.
+- `blocking: true` means the page is materially incomplete without it.
+- `proposed_categories` must name categories that exist in `content/atlas.yaml`.
+
+## Claims and evidence
+
+A claim ties one statement to the evidence behind it.
+
+```yaml
+claims:
+  - claim_id: claim.resnet.degradation_problem
+    section: history-and-attribution
+    statement: Plain networks became harder to optimize as depth increased even when training error was measured.
+    status: supported
+    evidence:
+      - source_id: source.he2016.deep_residual_learning
+        locator: Section 4.1, Figure 4
+        note: Training-error comparison for plain networks.
+```
+
+- `status` is `supported`, `conditional`, `disputed` or `unsupported`.
+- `supported`, `conditional` and `disputed` must each cite at least one piece of
+  evidence. `unsupported` must cite none — it is how a page says out loud that a
+  statement is unverified.
+- Every `source_id` must appear in that page's own `sources`.
+- `claim_id` is unique across the whole corpus.
+- `locator` is written for a human to follow. Nothing parses or verifies it, so
+  it must be honest: a section, a figure, a theorem number, a page.
+
+Claims are optional on a `generated-draft`. They are **required** the moment a
+page is raised to `source-checked`, `expert-reviewed` or `formally-verified`: a
+Tier 1 page then needs at least one claim for every substantive section that has
+prose, and a Tier 2 or Tier 3 identity needs at least one. An agent never makes
+that promotion, so an agent never has to satisfy that rule — but it is why the
+rule exists, and why writing claims as you go makes a later review possible.
 
 ## Page template
 
@@ -165,6 +335,21 @@ qualification to stay inside it.
 - **Sources** — what each cited source actually supports.
 - **Prerequisites and next connections** — where to read before and after.
 
+### Section vocabulary
+
+`sources[].supports`, `unresolved_references[].sections` and `claims[].section`
+all draw from the same ten substantive sections:
+
+```text
+definition, why-it-matters, intuition, concrete-example, formal-treatment,
+assumptions-and-requirements, uses-and-applicability,
+limitations-and-common-mistakes, variants-and-alternatives,
+history-and-attribution
+```
+
+`Sources` and `Prerequisites and next connections` are navigational, so nothing
+can support them or make a claim about them.
+
 ### Linking
 
 Link the first mention of an existing concept in each section as
@@ -203,7 +388,12 @@ Before proposing a change, confirm every line:
 - [ ] No source, URL, date, author or result was invented or reconstructed.
 - [ ] Every arithmetic example was computed, not estimated.
 - [ ] Every relative link resolves to a file that exists.
-- [ ] No new concept stub exists solely to satisfy a link or relationship.
+- [ ] No new concept stub exists solely to satisfy a link or relationship; a
+      genuinely missing idea is recorded in `unresolved_references` instead.
+- [ ] No atlas candidate was treated as evidence, quoted, or given a summary.
+- [ ] Any Tier 3 promotion kept `concept_id` and `slug` unchanged.
+- [ ] Every claim's evidence names a source the page cites, and an `unsupported`
+      claim cites none.
 - [ ] Uncertainty is stated in the prose where it exists.
 - [ ] The diff touches only the files the task called for.
 - [ ] The proposal says, in one paragraph, what changed and what a human
