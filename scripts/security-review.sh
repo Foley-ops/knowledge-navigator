@@ -76,9 +76,31 @@ if [ -z "$hits" ]; then ok "no credential-shaped string in tracked files"; else 
 echo
 echo "== 5. the API cannot write canonical knowledge =="
 grep -rqE "readonly:\s*true" packages/core/src/db.ts && ok "openDatabaseReadOnly passes readonly:true" || bad "the read-only open is missing"
-if git grep -nE "writeFile|appendFile|createWriteStream|unlink|rename\(" -- apps/api/src | grep -q .; then
-  bad "the API writes to the filesystem:"; git grep -nE "writeFile|appendFile|createWriteStream|unlink|rename\(" -- apps/api/src | sed 's/^/        /'
-else ok "no filesystem write call anywhere in the API source"; fi
+# The API may write exactly one thing: the private personal store, through
+# apps/api/src/personal/. Everywhere else a filesystem write is a defect, and
+# the pattern now includes the *Sync variants the earlier list missed.
+# Call-shaped so that a word such as `truncated` is not mistaken for `truncate(`.
+WRITE_CALLS='\b(writeFile|writeFileSync|appendFile|appendFileSync|createWriteStream|unlink|unlinkSync|rename|renameSync|mkdir|mkdirSync|rmdir|rmdirSync|rm|rmSync|truncate|truncateSync|chmod|chmodSync|chown|chownSync|copyFile|copyFileSync|open)\s*\('
+if git grep -nE "$WRITE_CALLS" -- apps/api/src ':!apps/api/src/personal' | grep -q .; then
+  bad "the API writes to the filesystem outside the private store:"
+  git grep -nE "$WRITE_CALLS" -- apps/api/src ':!apps/api/src/personal' | sed 's/^/        /'
+else ok "the only filesystem writes in the API are in the private store"; fi
+# And the private store may touch nothing but its own path.
+# Comment lines are excluded: the module explains *why* it is separate from
+# knowledge.db, and naming it in prose is the opposite of a leak.
+canon=$(git grep -nE "DATABASE_PATH|CONTENT_PATH|content/concepts|knowledge\.db" -- apps/api/src/personal \
+        | grep -vE ':[0-9]+: *(\*|//|/\*)')
+if [ -n "$canon" ]; then
+  bad "the private store references canonical paths in code:"; printf '%s\n' "$canon" | sed 's/^/        /'
+else ok "the private store never opens the canonical database or content"; fi
+# The canonical index is opened read-only everywhere the API opens it.
+if git grep -n "openDatabaseReadOnly" -- apps/api/src | grep -q .; then
+  ok "the API opens the canonical index only through openDatabaseReadOnly"
+else bad "the API does not use openDatabaseReadOnly"; fi
+if git grep -nE "new Database\(" -- apps/api/src ':!apps/api/src/personal' | grep -q .; then
+  bad "the API opens a database directly outside the private store:"
+  git grep -nE "new Database\(" -- apps/api/src ':!apps/api/src/personal' | sed 's/^/        /'
+else ok "no direct database handle is opened outside the private store"; fi
 if git grep -nE "CONTENT_PATH" -- apps/api/src | grep -vE 'config\.ts' | grep -q .; then
   info "CONTENT_PATH referenced outside config; reviewed:"; git grep -nE "CONTENT_PATH" -- apps/api/src | grep -v config.ts | sed 's/^/        /'
 else ok "content/ is never opened by the API at all"; fi
@@ -92,11 +114,51 @@ docker run --rm --entrypoint sh ${API_IMAGE:-knowledge-navigator-api:local} -c '
 
 echo
 echo "== 7. questions and research context are never logged =="
-grep -q "'req.body.question'" apps/api/src/logger.ts && grep -q "'req.body.context'" apps/api/src/logger.ts \
-  && ok "the logger redacts question and context" || bad "the logger does not redact question and context"
+# Every field name that may hold something a person wrote must be in
+# PRIVATE_FIELDS, and the redact paths must be derived from that list rather
+# than typed out — a hand-written list is a list that goes stale.
+missing=""
+for field in question context title description body label note statement rationale \
+             startingQuestion contextSummary payload answer interpretation \
+             extractedText originalName filename; do
+  grep -qE "^  '${field}',$" apps/api/src/logger.ts || missing="${missing} ${field}"
+done
+if [ -n "$missing" ]; then bad "PRIVATE_FIELDS is missing:${missing}"
+else ok "PRIVATE_FIELDS names every field that can hold what a person wrote"; fi
+grep -q "PRIVATE_FIELDS.map((field) => \`req.body.\${field}\`)" apps/api/src/logger.ts \
+  && ok "redact paths are derived from PRIVATE_FIELDS, not hand-written" \
+  || bad "redact paths are not derived from PRIVATE_FIELDS"
 if git grep -nE "log\.(info|warn|error|debug)\(" -- apps/api/src | grep -E "question[^L]|context[^L]" | grep -vq "questionLength\|contextLength"; then
   bad "a log call carries the question or context"
 else ok "every assistant log line carries lengths and counts only"; fi
+
+# The private store must never reach a model prompt on its own.
+if git grep -nE "personal|artifact|familiarity|savedItem" -- apps/api/src/assistant | grep -q .; then
+  info "the assistant references private types; reviewed for explicit selection:"
+  git grep -nE "personal|artifact|familiarity|savedItem" -- apps/api/src/assistant | sed 's/^/        /'
+else ok "the assistant reads nothing from the private store"; fi
+
+echo
+echo "== 7b. the private store is separate and never published =="
+python3 - <<'PY'
+import json
+c = json.load(open('/tmp/kn-config.json'))
+mounters = [
+    name
+    for name, svc in c['services'].items()
+    if any(v.get('source') == 'personal-data' for v in svc.get('volumes', []) or [])
+]
+if mounters == ['api']:
+    print('  PASS  personal-data is mounted by the API and by nothing else')
+else:
+    print(f'  FAIL  personal-data is mounted by {mounters or "no service"}')
+PY
+if [ -n "$(git ls-files | grep -E 'personal\.db|\.navigator/')" ]; then
+  bad "a private file is tracked in Git"
+else ok "no private database or proposal workspace is tracked"; fi
+if git check-ignore -q data/personal.db && git check-ignore -q .navigator/proposals/x; then
+  ok "the private paths are ignored by Git"
+else bad "a private path is not ignored"; fi
 
 echo
 echo "== 8. no externally hosted asset in the shipped site =="

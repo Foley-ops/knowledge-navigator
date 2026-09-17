@@ -36,7 +36,9 @@ export async function registerSafety(app: FastifyInstance): Promise<void> {
       }
       callback(null, config.ALLOWED_ORIGINS.includes(origin));
     },
-    methods: ['GET', 'POST', 'OPTIONS'],
+    // PATCH is here for the personal update routes. DELETE deliberately is
+    // not: nothing in this product hard-deletes a researcher's work.
+    methods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
     credentials: false,
     maxAge: 600,
   });

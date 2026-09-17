@@ -26,6 +26,12 @@ export const configSchema = z.object({
    */
   ASSISTANT_CHARACTER_BUDGET: z.coerce.number().int().min(500).max(200_000).default(14_000),
   DATABASE_PATH: trimmed.min(1).default('/data/knowledge.db'),
+  /**
+   * The private personal database. A separate file, in a separate volume that
+   * only the API mounts, because it is the one thing here that nothing can
+   * regenerate. `/private` in a container; `data/personal.db` on a host.
+   */
+  PERSONAL_DATABASE_PATH: trimmed.min(1).default('/private/personal.db'),
   CONTENT_PATH: trimmed.min(1).default('/app/content/concepts'),
   PORT: portSchema.default(8000),
   HOST: trimmed.min(1).default('0.0.0.0'),

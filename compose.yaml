@@ -33,6 +33,7 @@ services:
       ASSISTANT_TIMEOUT_MS: ${ASSISTANT_TIMEOUT_MS:-120000}
       ASSISTANT_CHARACTER_BUDGET: ${ASSISTANT_CHARACTER_BUDGET:-14000}
       DATABASE_PATH: /data/knowledge.db
+      PERSONAL_DATABASE_PATH: /private/personal.db
       CONTENT_PATH: /app/content/concepts
       PORT: '8000'
       HOST: 0.0.0.0
@@ -40,6 +41,10 @@ services:
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://127.0.0.1:3000,http://localhost:3000}
     volumes:
       - navigator-data:/data
+      # Private research work. Mounted by the API and by nothing else: the web
+      # container has no reason to see it, and `docker compose down --volumes`
+      # is the only thing that removes it.
+      - personal-data:/private
     # Docker Desktop resolves host.docker.internal on its own; Linux engines
     # need it mapped explicitly, so the same host-Ollama configuration works
     # on both.
@@ -121,7 +126,10 @@ services:
       - navigator
 
 volumes:
+  # Disposable: rebuilt from canonical Markdown on every start.
   navigator-data:
+  # Irreplaceable: private research work, mounted only by the API.
+  personal-data:
   ollama-data:
 
 networks:
