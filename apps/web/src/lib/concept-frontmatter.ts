@@ -21,6 +21,27 @@ export interface ConceptSource {
   readonly checked_on: string;
 }
 
+export interface ConceptClaimEvidence {
+  readonly source_id: string;
+  readonly locator: string;
+  readonly note?: string;
+}
+
+export interface ConceptClaim {
+  readonly claim_id: string;
+  readonly section: string;
+  readonly statement: string;
+  readonly status: string;
+  readonly evidence: readonly ConceptClaimEvidence[];
+}
+
+export interface ConceptUnresolvedReference {
+  readonly label: string;
+  readonly reason: string;
+  readonly sections: readonly string[];
+  readonly blocking: boolean;
+}
+
 export interface ConceptFrontmatter {
   readonly concept_id: string;
   readonly title: string;
@@ -34,6 +55,8 @@ export interface ConceptFrontmatter {
   readonly primary_category: string;
   readonly relationships: readonly ConceptRelationship[];
   readonly sources: readonly ConceptSource[];
+  readonly claims: readonly ConceptClaim[];
+  readonly unresolved_references: readonly ConceptUnresolvedReference[];
 }
 
 function str(value: unknown): string | undefined {
@@ -92,6 +115,69 @@ function sources(value: unknown): ConceptSource[] {
   return out;
 }
 
+const CLAIM_STATUSES = ['supported', 'conditional', 'disputed', 'unsupported'];
+
+function claims(value: unknown): ConceptClaim[] {
+  if (!Array.isArray(value)) return [];
+  const out: ConceptClaim[] = [];
+  for (const raw of value) {
+    if (raw === null || typeof raw !== 'object') continue;
+    const record = raw as Record<string, unknown>;
+    const claimId = str(record['claim_id']);
+    const statement = str(record['statement']);
+    const status = str(record['status']);
+    // An unrecognised status would be rendered as if it meant something, so a
+    // claim that does not declare one of the four is dropped rather than shown.
+    if (claimId === undefined || statement === undefined || status === undefined) continue;
+    if (!CLAIM_STATUSES.includes(status)) continue;
+
+    const evidence: ConceptClaimEvidence[] = [];
+    if (Array.isArray(record['evidence'])) {
+      for (const rawEvidence of record['evidence']) {
+        if (rawEvidence === null || typeof rawEvidence !== 'object') continue;
+        const item = rawEvidence as Record<string, unknown>;
+        const sourceId = str(item['source_id']);
+        const locator = str(item['locator']);
+        if (sourceId === undefined || locator === undefined) continue;
+        const note = str(item['note']);
+        evidence.push({
+          source_id: sourceId,
+          locator,
+          ...(note === undefined ? {} : { note }),
+        });
+      }
+    }
+
+    out.push({
+      claim_id: claimId,
+      section: str(record['section']) ?? '',
+      statement,
+      status,
+      evidence,
+    });
+  }
+  return out;
+}
+
+function unresolvedReferences(value: unknown): ConceptUnresolvedReference[] {
+  if (!Array.isArray(value)) return [];
+  const out: ConceptUnresolvedReference[] = [];
+  for (const raw of value) {
+    if (raw === null || typeof raw !== 'object') continue;
+    const record = raw as Record<string, unknown>;
+    const label = str(record['label']);
+    const reason = str(record['reason']);
+    if (label === undefined || reason === undefined) continue;
+    out.push({
+      label,
+      reason,
+      sections: strings(record['sections']),
+      blocking: record['blocking'] === true,
+    });
+  }
+  return out;
+}
+
 /** Returns undefined when the page is not a canonical concept page. */
 export function readConceptFrontmatter(raw: unknown): ConceptFrontmatter | undefined {
   if (raw === null || typeof raw !== 'object') return undefined;
@@ -116,7 +202,32 @@ export function readConceptFrontmatter(raw: unknown): ConceptFrontmatter | undef
     primary_category: str(record['primary_category']) ?? categories[0] ?? '',
     relationships: relationships(record['relationships']),
     sources: sources(record['sources']),
+    claims: claims(record['claims']),
+    unresolved_references: unresolvedReferences(record['unresolved_references']),
   };
+}
+
+/** Plain words for a claim status, and what it commits the page to. */
+export function claimStatusInfo(status: string): { label: string; meaning: string } {
+  const info: Record<string, { label: string; meaning: string }> = {
+    supported: {
+      label: 'Supported',
+      meaning: 'The cited evidence says this.',
+    },
+    conditional: {
+      label: 'Conditional',
+      meaning: 'It holds, but only under the stated condition.',
+    },
+    disputed: {
+      label: 'Disputed',
+      meaning: 'Sources disagree, and both are cited.',
+    },
+    unsupported: {
+      label: 'Unsupported',
+      meaning: 'Stated deliberately with no evidence behind it. Nobody has checked this.',
+    },
+  };
+  return info[status] ?? { label: status, meaning: 'Unrecognised status. Treat it as unchecked.' };
 }
 
 /** Human wording for a relationship type, in the direction it is declared. */

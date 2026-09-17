@@ -18,6 +18,31 @@ export interface GraphDataNode {
   readonly aliases: readonly string[];
   readonly primaryCategory: string;
   readonly categories: readonly string[];
+  /** `markdown` or `graph-only`. */
+  readonly format: string;
+  /** False for a Tier 3 identity: link to /identity/<id>, never to a page. */
+  readonly hasArticle: boolean;
+  readonly candidateId: string | null;
+  readonly candidateStatus: string | null;
+  readonly unresolvedReferences: number;
+  readonly claims: number;
+}
+
+export interface GraphDataCoverage {
+  readonly conceptsByTier: Readonly<Record<string, number>>;
+  readonly conceptsByFormat: Readonly<Record<string, number>>;
+  readonly conceptsByReviewState: Readonly<Record<string, number>>;
+  readonly conceptsWithArticle: number;
+  readonly atlasAreas: number;
+  readonly atlasCategories: number;
+  readonly atlasEmptyCategories: number;
+  readonly atlasCandidates: number;
+  readonly candidatesByStatus: Readonly<Record<string, number>>;
+  readonly unresolvedReferences: number;
+  readonly unresolvedGroups: number;
+  readonly blockingUnresolvedReferences: number;
+  readonly claims: number;
+  readonly claimsByStatus: Readonly<Record<string, number>>;
 }
 
 export interface GraphDataCategory {
@@ -34,7 +59,9 @@ export interface GraphData {
   readonly schemaVersion: number;
   readonly builtAt: string;
   readonly corpusHash: string;
+  readonly atlasHash: string;
   readonly counts: { concepts: number; relationships: number; categories: number };
+  readonly coverage: GraphDataCoverage;
   readonly categories: readonly GraphDataCategory[];
   readonly nodes: readonly GraphDataNode[];
   readonly edges: readonly {
@@ -67,6 +94,30 @@ export function atlasAreas(): GraphDataCategory[] {
     )
     .filter((category, index, all) => all.findIndex((c) => c.path === category.path) === index)
     .sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
+}
+
+/**
+ * The identity panel's address.
+ *
+ * The final segment of the canonical slug, not the dotted concept id: a path
+ * segment containing dots is read as a file name by ordinary static servers,
+ * which 404 on it. The schema forces the slug's last segment to match the last
+ * segment of the concept id, and slugs are unique, so this is a one-to-one
+ * encoding of the identity rather than a second, weaker address.
+ */
+export function identityPath(node: { slug: string }): string {
+  return `/identity/${identityKey(node.slug)}`;
+}
+
+/** The identity key for a canonical slug: `/concepts/resnet` → `resnet`. */
+export function identityKey(slug: string): string {
+  const parts = slug.split('/');
+  return parts[parts.length - 1] ?? slug;
+}
+
+/** Where this identity should be linked: its article, or its identity panel. */
+export function destinationFor(node: GraphDataNode): string {
+  return node.hasArticle ? node.slug : identityPath(node);
 }
 
 export function childrenOf(path: string): GraphDataCategory[] {

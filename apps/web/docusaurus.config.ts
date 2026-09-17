@@ -1,6 +1,7 @@
+import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import type { Config } from '@docusaurus/types';
+import type { Config, Plugin, PluginContentLoadedActions } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -56,6 +57,39 @@ const config: Config = {
         }),
       };
     },
+
+    /**
+     * One identity route per canonical concept, generated from the compiled
+     * graph (v2 runbook M04).
+     *
+     * Routes are created at build time rather than matched at runtime so that
+     * every identity is real static HTML. A client-side catch-all would render
+     * correctly after a click and 404 on a direct link or a refresh, which is
+     * exactly the case a stable address exists to serve.
+     */
+    function navigatorIdentityRoutes(): Plugin<unknown> {
+      const here = dirname(fileURLToPath(import.meta.url));
+      return {
+        name: 'navigator-identity-routes',
+        async contentLoaded({ actions }: { actions: PluginContentLoadedActions }) {
+          const graphPath = resolve(here, '../../generated/graph.json');
+          const graph = JSON.parse(await readFile(graphPath, 'utf8')) as {
+            nodes: { id: string; slug: string }[];
+          };
+          for (const node of graph.nodes) {
+            // The slug's final segment, never the dotted concept id: a path
+            // segment containing dots is read as a file name by ordinary static
+            // servers, which then 404 on a direct link.
+            const key = node.slug.slice(node.slug.lastIndexOf('/') + 1);
+            actions.addRoute({
+              path: `/identity/${key}`,
+              component: '@site/src/components/IdentityPanel.tsx',
+              exact: true,
+            });
+          }
+        },
+      };
+    },
   ],
 
   presets: [
@@ -91,6 +125,9 @@ const config: Config = {
         { to: '/explore', label: 'Explore', position: 'left' },
         { to: '/search', label: 'Search', position: 'left' },
         { to: '/ask', label: 'Ask', position: 'left' },
+        // Backlog is deliberately not a top-level item: it is reached from
+        // Coverage, which is where a reader learns what a gap means.
+        { to: '/coverage', label: 'Coverage', position: 'left' },
         { to: '/about', label: 'About', position: 'right' },
       ],
     },

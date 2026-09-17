@@ -1021,3 +1021,587 @@ body {
     min-width: 0;
   }
 }
+
+/* ==========================================================================
+   Coverage — the difference between a label, an identity and an explanation
+   ========================================================================== */
+
+.coverage-explainer {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  max-width: 52rem;
+  margin: 0 0 1.25rem;
+}
+
+.coverage-tallies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1px;
+  background: var(--nav-rule);
+  border: 1px solid var(--nav-rule);
+  margin-bottom: 1.25rem;
+}
+
+.coverage-tally {
+  background: var(--nav-surface);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.coverage-tally__value {
+  font-size: var(--nav-size-2xl);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  color: var(--nav-ink);
+}
+
+.coverage-tally__label {
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  color: var(--nav-ink);
+}
+
+.coverage-tally__hint {
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+  line-height: 1.45;
+}
+
+.coverage-breakdown__heading {
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: var(--nav-ink-muted);
+}
+
+.coverage-breakdown__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.coverage-breakdown__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: var(--nav-size-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Candidate status reads differently from review state on purpose: a candidate
+   is not knowledge, so it never borrows the evidence palette. */
+.coverage-status {
+  color: var(--nav-ink-faint);
+  background: transparent;
+  border-style: dashed;
+  font-weight: 500;
+}
+
+.coverage-status--covered {
+  color: var(--nav-accent);
+  background: var(--nav-accent-quiet);
+  border-style: solid;
+  font-weight: 600;
+}
+
+.coverage-status--deferred {
+  opacity: 0.75;
+}
+
+.coverage-filters,
+.backlog-views,
+.backlog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.coverage-area {
+  margin: 1.75rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--nav-rule);
+}
+
+.coverage-area__name {
+  font-size: var(--nav-size-xl);
+  margin: 0;
+}
+
+.coverage-area__count {
+  font-size: var(--nav-size-xs);
+  color: var(--nav-ink-faint);
+  margin: 0.2rem 0 1rem;
+}
+
+.coverage-branch {
+  margin: 0 0 0.35rem;
+}
+
+details[open].coverage-branch {
+  margin-bottom: 1rem;
+}
+
+.coverage-branch__name {
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  margin: 0.75rem 0 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.coverage-branch__count {
+  font-size: var(--nav-size-2xs);
+  font-weight: 400;
+  color: var(--nav-ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.coverage-branch__empty {
+  font-size: var(--nav-size-xs);
+  color: var(--nav-ink-faint);
+  margin: 0 0 0.5rem;
+  font-style: italic;
+}
+
+.coverage-entries {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.coverage-entry {
+  font-size: var(--nav-size-sm);
+  display: block;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--nav-rule);
+}
+
+.coverage-entry.nav-rail {
+  padding-left: 0.75rem;
+}
+
+.coverage-entry__title {
+  font-weight: 600;
+  color: var(--nav-ink);
+}
+
+a.coverage-entry__title {
+  color: var(--nav-accent);
+}
+
+.coverage-entry__note,
+.coverage-entry__elsewhere {
+  flex-basis: 100%;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+/* ==========================================================================
+   Backlog — editorial work, never knowledge
+   ========================================================================== */
+
+.backlog-count {
+  font-size: var(--nav-size-xs);
+  color: var(--nav-ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.backlog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.backlog-item {
+  border: 1px solid var(--nav-rule);
+  border-left-width: 3px;
+  padding: 0.85rem 1rem;
+  background: var(--nav-surface);
+}
+
+.backlog-item--blocking {
+  border-left-color: var(--nav-alert);
+}
+
+.backlog-item__label {
+  margin: 0 0 0.4rem;
+  font-size: var(--nav-size-lg);
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.backlog-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: var(--nav-size-sm);
+}
+
+.backlog-sources__reason {
+  color: var(--nav-ink-muted);
+}
+
+.backlog-sources__sections,
+.backlog-item__where,
+.backlog-item__proposal {
+  font-size: var(--nav-size-xs);
+  color: var(--nav-ink-faint);
+}
+
+.backlog-item__proposal,
+.backlog-item__where {
+  margin: 0 0 0.3rem;
+}
+
+.backlog-item__id {
+  margin: 0.35rem 0 0;
+  font-size: var(--nav-size-2xs);
+}
+
+.nav-check {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Identity panel — a stable address, honestly empty when there is no article
+   ========================================================================== */
+
+.identity-summary {
+  font-family: var(--nav-serif);
+  font-size: var(--nav-size-lg);
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.identity-has-article {
+  margin: 0;
+}
+
+.identity-read {
+  font-weight: 600;
+}
+
+.identity-subheading {
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  color: var(--nav-ink-muted);
+  margin: 0.9rem 0 0.35rem;
+}
+
+.identity-edges {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.identity-edge {
+  font-size: var(--nav-size-sm);
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--nav-rule);
+}
+
+.identity-edge__type {
+  font-family: var(--nav-mono);
+  font-size: 0.85em;
+  color: var(--nav-ink-faint);
+}
+
+.identity-edge__direction {
+  color: var(--nav-ink-faint);
+}
+
+.identity-edge__note {
+  display: block;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+.identity-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+  font-size: var(--nav-size-sm);
+}
+
+.identity-source__meta {
+  display: block;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+/* ==========================================================================
+   Claim-level evidence — four statuses that must never look alike
+   ========================================================================== */
+
+.concept-claims {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.concept-claim {
+  border-left: 3px solid var(--nav-rule-strong);
+  padding-left: 1rem;
+}
+
+.concept-claim--supported {
+  border-left-style: solid;
+  border-left-color: var(--nav-accent);
+}
+
+.concept-claim--conditional {
+  border-left-style: dashed;
+  border-left-color: var(--nav-accent);
+}
+
+.concept-claim--disputed {
+  border-left-style: dotted;
+  border-left-color: var(--nav-alert);
+}
+
+.concept-claim--unsupported {
+  border-left-style: dashed;
+  border-left-color: var(--nav-caution);
+}
+
+.concept-claim__head {
+  margin: 0 0 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.claim-status--supported {
+  color: var(--nav-accent);
+  background: var(--nav-accent-quiet);
+}
+
+.claim-status--conditional {
+  color: var(--nav-accent);
+  background: transparent;
+  border-style: dashed;
+}
+
+.claim-status--disputed {
+  color: var(--nav-alert);
+  background: var(--nav-alert-quiet);
+}
+
+.claim-status--unsupported {
+  color: var(--nav-caution);
+  background: var(--nav-caution-quiet);
+  border-style: dashed;
+}
+
+.concept-claim__section {
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+  text-transform: lowercase;
+}
+
+.concept-claim__statement {
+  margin: 0 0 0.35rem;
+  font-size: var(--nav-size-sm);
+  line-height: 1.55;
+}
+
+.concept-claim__evidence {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+  font-size: var(--nav-size-xs);
+}
+
+.concept-claim__locator {
+  display: block;
+  color: var(--nav-ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.concept-claim__note,
+.concept-claim__none,
+.concept-claim__id {
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+  margin: 0.2rem 0 0;
+  display: block;
+}
+
+.concept-unresolved {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.concept-unresolved li {
+  border-left: 2px dashed var(--nav-rule-strong);
+  padding-left: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: var(--nav-size-sm);
+}
+
+.concept-unresolved__label {
+  font-weight: 600;
+}
+
+.concept-unresolved__reason,
+.concept-unresolved__sections {
+  flex-basis: 100%;
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+}
+
+/* The atlas outline is large on purpose, so it is a set of disclosures. */
+.coverage-outline-note {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  max-width: 52rem;
+  margin: 0 0 1rem;
+}
+
+.coverage-select {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.coverage-select select {
+  font: inherit;
+  font-size: var(--nav-size-sm);
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--nav-rule-strong);
+  border-radius: 3px;
+  background: var(--nav-surface);
+  color: var(--nav-ink);
+}
+
+details.coverage-branch {
+  border-left: 1px solid var(--nav-rule);
+  padding-left: 0.75rem;
+}
+
+summary.coverage-branch__name {
+  cursor: pointer;
+  padding: 0.2rem 0;
+  list-style: none;
+}
+
+summary.coverage-branch__name::-webkit-details-marker {
+  display: none;
+}
+
+/* Drawn rather than native: Infima hides the built-in marker, and a category
+   that cannot be seen to open is a category nobody opens. */
+summary.coverage-branch__name::before {
+  content: '▸';
+  color: var(--nav-ink-faint);
+  font-size: 0.85em;
+  display: inline-block;
+  width: 1em;
+  transition: transform var(--nav-transition);
+}
+
+details[open] > summary.coverage-branch__name::before {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  summary.coverage-branch__name::before {
+    transition: none;
+  }
+}
+
+.coverage-entry__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.coverage-entry__toggle {
+  font: inherit;
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--nav-ink);
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px dotted var(--nav-rule-strong);
+}
+
+.coverage-entry__toggle:hover {
+  color: var(--nav-accent);
+  border-bottom-color: var(--nav-accent);
+}
+
+.coverage-entry__open {
+  font-size: var(--nav-size-2xs);
+  font-weight: 600;
+}
+
+.coverage-panel {
+  max-width: 42rem;
+  margin: 0.35rem 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--nav-surface-sunken);
+  border-left: 2px solid var(--nav-rule-strong);
+}
+
+.coverage-panel__what {
+  font-size: var(--nav-size-xs);
+  margin: 0 0 0.35rem;
+  color: var(--nav-ink);
+}
+
+.coverage-panel__note {
+  font-size: var(--nav-size-xs);
+  margin: 0 0 0.35rem;
+  color: var(--nav-ink-muted);
+  font-style: italic;
+}
+
+.coverage-panel__meta {
+  font-size: var(--nav-size-2xs);
+  margin: 0 0 0.2rem;
+  color: var(--nav-ink-faint);
+}

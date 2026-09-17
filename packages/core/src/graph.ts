@@ -31,6 +31,8 @@ export interface GraphNode {
   readonly hasArticle: boolean;
   /** The atlas candidate that covers this concept, when one does. */
   readonly candidateId: string | null;
+  /** That candidate's editorial status, so Coverage needs no second request. */
+  readonly candidateStatus: string | null;
   /** How many unresolved references this page is waiting on. */
   readonly unresolvedReferences: number;
   readonly claims: number;
@@ -111,6 +113,7 @@ export function buildGraphDocument(
       `SELECT c.id, c.title, c.slug, c.kind, c.tier, c.review_state, c.summary,
               c.primary_category, c.content_format, c.has_article,
               (SELECT a.id FROM atlas_candidates a WHERE a.canonical_concept_id = c.id) AS candidate_id,
+              (SELECT a.status FROM atlas_candidates a WHERE a.canonical_concept_id = c.id) AS candidate_status,
               (SELECT COUNT(*) FROM unresolved_references u WHERE u.concept_id = c.id) AS unresolved_count,
               (SELECT COUNT(*) FROM claims cl WHERE cl.concept_id = c.id) AS claim_count
          FROM concepts c ORDER BY c.id`,
@@ -127,6 +130,7 @@ export function buildGraphDocument(
     content_format: string;
     has_article: number;
     candidate_id: string | null;
+    candidate_status: string | null;
     unresolved_count: number;
     claim_count: number;
   }[];
@@ -170,6 +174,7 @@ export function buildGraphDocument(
     format: row.content_format,
     hasArticle: row.has_article === 1,
     candidateId: row.candidate_id,
+    candidateStatus: row.candidate_status,
     unresolvedReferences: row.unresolved_count,
     claims: row.claim_count,
   }));

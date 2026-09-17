@@ -198,6 +198,151 @@ export interface AssistantResponse {
   result: AssistantResult | null;
 }
 
+/* ------------------------------ coverage ---------------------------------- */
+
+export interface CoverageSummary {
+  corpusHash: string;
+  atlasHash: string;
+  builtAt: string;
+  concepts: {
+    total: number;
+    withArticle: number;
+    byTier: Record<string, number>;
+    byFormat: Record<string, number>;
+    byReviewState: Record<string, number>;
+  };
+  atlas: {
+    areas: number;
+    categories: number;
+    emptyCategories: number;
+    candidates: number;
+    byStatus: Record<string, number>;
+  };
+  backlog: { references: number; groups: number; blocking: number };
+  evidence: {
+    claims: number;
+    byStatus: Record<string, number>;
+    locators: number;
+    conceptsWithClaims: number;
+  };
+}
+
+export interface AtlasCategoryNode {
+  categoryId: string;
+  title: string;
+  path: string;
+  areaId: string;
+  parentCategoryId: string | null;
+  depth: number;
+  candidates: number;
+  covered: number;
+  children: AtlasCategoryNode[];
+}
+
+export interface AtlasAreaNode {
+  areaId: string;
+  title: string;
+  categories: number;
+  candidates: number;
+  covered: number;
+  children: AtlasCategoryNode[];
+}
+
+export interface AtlasResponse {
+  areas: AtlasAreaNode[];
+  counts: { areas: number; categories: number; candidates: number };
+}
+
+export interface CandidateCategoryRef {
+  categoryId: string;
+  title: string;
+  path: string;
+  areaId: string;
+}
+
+export interface CandidateItem {
+  candidateId: string;
+  title: string;
+  aliases: string[];
+  status: string;
+  note: string | null;
+  categories: CandidateCategoryRef[];
+  canonicalConceptId: string | null;
+  canonicalTitle: string | null;
+  canonicalSlug: string | null;
+  canonicalHasArticle: boolean | null;
+}
+
+export interface BacklogSourceItem {
+  referenceId: string;
+  conceptId: string;
+  conceptTitle: string;
+  conceptSlug: string;
+  conceptHasArticle: boolean;
+  reason: string;
+  blocking: boolean;
+  sections: string[];
+  proposedKind: string | null;
+  proposedCategories: string[];
+}
+
+export interface BacklogGroupItem {
+  groupId: string;
+  label: string;
+  normalizedLabel: string;
+  blocking: boolean;
+  sourceCount: number;
+  proposedKinds: string[];
+  proposedCategories: string[];
+  sources: BacklogSourceItem[];
+}
+
+export interface CoveragePage<T> {
+  items: T[];
+  total: number;
+  limit: number;
+  offset: number;
+  truncated: boolean;
+}
+
+export interface ClaimEvidenceItem {
+  sourceId: string;
+  sourceTitle: string;
+  sourceUrl: string;
+  sourceKind: string;
+  locator: string;
+  note: string | null;
+}
+
+export interface ClaimItem {
+  claimId: string;
+  section: string;
+  statement: string;
+  status: string;
+  evidence: ClaimEvidenceItem[];
+}
+
+export interface ConceptEvidenceResponse {
+  conceptId: string;
+  title: string;
+  slug: string;
+  tier: number;
+  reviewState: string;
+  hasArticle: boolean;
+  hasClaimMapping: boolean;
+  claims: ClaimItem[];
+  sectionsWithClaims: string[];
+  sources: {
+    sourceId: string;
+    title: string;
+    url: string;
+    sourceKind: string;
+    supports: string[];
+    checkedOn: string;
+    claimCount: number;
+  }[];
+}
+
 export interface AssistantAsk {
   question: string;
   context?: string;
@@ -217,6 +362,50 @@ export const api = {
   graph: (conceptId: string, depth: number, signal?: AbortSignal): Promise<GraphResponse> =>
     request<GraphResponse>(
       `/graph/${encodeURIComponent(conceptId)}?depth=${String(depth)}`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  coverageSummary: (signal?: AbortSignal): Promise<CoverageSummary> =>
+    request<CoverageSummary>('/coverage/summary', signal === undefined ? {} : { signal }),
+
+  coverageAtlas: (signal?: AbortSignal): Promise<AtlasResponse> =>
+    request<AtlasResponse>('/coverage/atlas', signal === undefined ? {} : { signal }),
+
+  coverageCandidates: (
+    query: { area?: string; category?: string; status?: string; limit?: number; offset?: number },
+    signal?: AbortSignal,
+  ): Promise<CoveragePage<CandidateItem>> => {
+    const params = new URLSearchParams();
+    if (query.area !== undefined) params.set('area', query.area);
+    if (query.category !== undefined) params.set('category', query.category);
+    if (query.status !== undefined) params.set('status', query.status);
+    if (query.limit !== undefined) params.set('limit', String(query.limit));
+    if (query.offset !== undefined) params.set('offset', String(query.offset));
+    const suffix = params.toString();
+    return request<CoveragePage<CandidateItem>>(
+      `/coverage/candidates${suffix === '' ? '' : `?${suffix}`}`,
+      signal === undefined ? {} : { signal },
+    );
+  },
+
+  coverageUnresolved: (
+    query: { blocking?: boolean; limit?: number; offset?: number },
+    signal?: AbortSignal,
+  ): Promise<CoveragePage<BacklogGroupItem>> => {
+    const params = new URLSearchParams();
+    if (query.blocking === true) params.set('blocking', 'true');
+    if (query.limit !== undefined) params.set('limit', String(query.limit));
+    if (query.offset !== undefined) params.set('offset', String(query.offset));
+    const suffix = params.toString();
+    return request<CoveragePage<BacklogGroupItem>>(
+      `/coverage/unresolved${suffix === '' ? '' : `?${suffix}`}`,
+      signal === undefined ? {} : { signal },
+    );
+  },
+
+  evidence: (conceptId: string, signal?: AbortSignal): Promise<ConceptEvidenceResponse> =>
+    request<ConceptEvidenceResponse>(
+      `/evidence/${encodeURIComponent(conceptId)}`,
       signal === undefined ? {} : { signal },
     ),
 

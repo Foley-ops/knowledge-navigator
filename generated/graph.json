@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T05:50:30.055Z",
+  "builtAt": "2026-09-17T06:11:10.069Z",
   "corpusHash": "bb96930aab75dd2c3741c91919f65b8ba3ea53b5a7c13cea1588c7fd1edff96e",
   "atlasHash": "94c2f74ce72c30063af005e62da1ba42dec003f9ca67b15a8d9cc17d40d79e71",
   "counts": {
@@ -153,6 +153,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.convolution",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -172,6 +173,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.cross_correlation",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -194,6 +196,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.translation_equivariance",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -216,6 +219,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_training.backpropagation_through_convolution",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -238,6 +242,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.convolutional_layer",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -260,6 +265,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.lenet",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -281,6 +287,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.pooling",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -303,6 +310,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.receptive_field",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -325,6 +333,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.residual_connection",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -347,6 +356,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.resnet",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     },
@@ -370,6 +380,7 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.vgg",
+      "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
     }
