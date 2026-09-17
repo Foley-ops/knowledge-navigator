@@ -24,7 +24,7 @@ honouring its **Depends on** line.
 
 ## Current checkpoint
 
-R10
+S00
 
 ## Completed checkpoints
 
@@ -110,6 +110,7 @@ R10
 - **R07** — --execute --confirm <proposal-id> dispatches through spawn with an argument array and no shell. It requires a matching confirmation, a proposal still in prepared, a clean repository, a Hermes that has every required flag, and an existing project and board; it records the returned task id, moves the proposal to running, and never creates Hermes configuration.
 - **R08** — navigator proposal import-hermes <id> --worktree <path> confirms the worktree shares this repository's common git directory, requires it to still be at the recorded base with the change uncommitted, turns the worktree into a patch through a throwaway index, copies RESULT.md into the bundle, runs validation, writes validation.json, and sets the status to review. Nothing is merged or accepted.
 - **R09** — README section 'Proposing content with an agent': prepare, read the brief, one-time Hermes setup run by the person, dry run, dispatch with a confirmation, inspect the task, import, validate, read, then accept or reject. It states that the Hermes gateway warning after an update is the reader's to act on and that neither the product nor its tests restarts anything. Added an npm run navigator script so the documented commands are runnable as written.
+- **R10** — Phase R committed as 0402cb4 with a clean working tree.
 
 ## Last successful checks
 
@@ -201,6 +202,7 @@ R10
 - **R07** `npx vitest run --root packages/core tests/hermes-execute.test.ts` → 12 passed against a fake that logs every invocation — a missing and a wrong confirmation, a dirty repository, missing setup, a proposal past dispatching, a nonzero exit leaving it prepared, an unreadable reply that still moves it to running with a warning, a refused second dispatch, five reply shapes for the task id, and a log showing five read-only probes then exactly one create.
 - **R08** `npx vitest run --root packages/core tests/proposal-import.test.ts` → 11 passed on real git worktrees of a temporary repository — a valid result reaching review with a passing verdict, a foreign clone refused, a committed worktree refused, a missing RESULT.md refused, a worktree with no change refused, a proposal past review refused, and a dirty unrelated path imported to review carrying the reason it fails. Ignored paths never enter the patch, and neither tree is committed to.
 - **R09** `npx vitest run --root packages/core tests/readme-workflow.test.ts` → 12 passed — every npm script named in the README exists, every navigator subcommand is one the CLI dispatches, every adapter and CLI flag is one they offer, the eight steps appear in order, every relative link resolves to a file and every anchor to a heading, and nothing documents an automatic restart.
+- **R10** `npm run check && npm run test:browser && bash scripts/security-review.sh && git ls-files | grep -cE '.navigator/|worktree-|task_'` → 9/9 stages with 946 unit and API tests, 70 browser journeys, security review 27 passed 0 failed 1 documented note, and zero tracked files matching a proposal workspace, an agent worktree or a task id. Three new review checks assert the Hermes adapter never installs, updates, configures or restarts anything, spawns only through an argument array, and that no bundle is tracked.
 
 ## Blockers
 
@@ -238,4 +240,4 @@ _none_
 
 ## Next action
 
-R10 — run the proposal, Hermes fake-executable, security and regression suites, then commit Phase R.
+S00 — audit the personal data volume.
