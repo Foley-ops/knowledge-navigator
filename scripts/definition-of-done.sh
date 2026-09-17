@@ -98,9 +98,21 @@ judge "$([[ "${TRACKED}" == "0" ]] && echo 0 || echo 1)" \
   "no secret, private database, artifact, export or proposal workspace is tracked" "git ls-files — ${TRACKED} match(es)"
 PHASES="$(git log --oneline --grep '^Phase [J-S]' | wc -l | tr -d ' ')"
 ok "every v2 phase has one local commit" "git log --grep '^Phase' — ${PHASES} phase commits"
-DIRTY="$(git status --porcelain | wc -l | tr -d ' ')"
-judge "$([[ "${DIRTY}" == "0" ]] && echo 0 || echo 1)" \
-  "the final working tree is clean" "git status --porcelain — ${DIRTY} change(s); this is the one item that can only pass once the phase it belongs to is committed"
+# This audit compiles, so generated/graph.json's builtAt timestamp moves while
+# the audit runs. That one difference is expected and documented; any other
+# change means the tree was not clean, and the difference itself is checked
+# rather than assumed.
+DIRTY="$(git status --porcelain)"
+DIRTY_COUNT="$(printf '%s' "${DIRTY}" | grep -c . || true)"
+ONLY_TIMESTAMP=1
+if [[ -z "${DIRTY}" ]]; then
+  ONLY_TIMESTAMP=0
+elif [[ "$(printf '%s' "${DIRTY}" | awk '{print $2}')" == "generated/graph.json" ]]; then
+  CHANGED_KEYS="$(git diff -U0 generated/graph.json | grep -E '^[+-]  "' | grep -oE '"[a-zA-Z]+"' | sort -u | tr '\n' ' ')"
+  [[ "${CHANGED_KEYS}" == '"builtAt" ' ]] && ONLY_TIMESTAMP=0
+fi
+judge "${ONLY_TIMESTAMP}" \
+  "the final working tree is clean" "git status --porcelain — ${DIRTY_COUNT} change(s)$([[ "${DIRTY_COUNT}" != "0" ]] && echo ", and the only one is generated/graph.json builtAt, which this audit moved by compiling")"
 
 section "Atlas and coverage"
 AREAS="$(node packages/core/dist/cli.js coverage summary --json 2>/dev/null | python3 -c 'import json,sys; print(json.load(sys.stdin)["atlas"]["areas"])')"
