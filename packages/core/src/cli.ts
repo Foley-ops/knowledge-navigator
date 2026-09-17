@@ -7,7 +7,8 @@
  */
 import { existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import type { Database as DatabaseType } from 'better-sqlite3';
 import { allJsonSchemas } from './json-schema.js';
@@ -27,6 +28,21 @@ import { findProposalTarget, prepareProposal, slugNameFromLabel } from './propos
 import { validateProposal, writeProposalValidation } from './proposal-validate.js';
 import { acceptProposal, rejectProposal } from './proposal-accept.js';
 import { importHermesResult } from './proposal-import.js';
+import {
+  ARCHIVE_FILES,
+  archiveRecordCount,
+  readPersonalArchive,
+  recordExport,
+  renderPersonalSummary,
+  serializePersonalArchive,
+} from './personal-archive.js';
+import {
+  PersonalImportError,
+  applyPersonalImport,
+  openPersonalForImport,
+  parsePersonalArchive,
+  planPersonalImport,
+} from './personal-import.js';
 
 const USAGE = `navigator <command> [options]
 
@@ -58,6 +74,11 @@ Commands:
   proposal reject <proposal-id>           Record a refusal, applying nothing
                   --confirm <proposal-id>
                   --reason <text>
+
+  personal export [--output <dir>]        Write a versioned archive of your own
+                  [--allow-external-output] private work, and a summary to read
+  personal import <archive.json>          Restore private work. Shows what it
+                  [--confirm-import]      would do unless you confirm.
 
   export saved <saved-item-id>            Write one saved comparison or path to
                       [--out <dir>]       .navigator/exports/ as Markdown
@@ -725,12 +746,29 @@ function proposalsDir(): string {
   return join(projectPaths().navigatorDir, 'proposals');
 }
 
-/** The commit a proposal is written against: whatever HEAD is right now. */
+/**
+ * The commit a proposal is written against: whatever HEAD is right now.
+ *
+ * A proposal without a base commit cannot be validated or accepted, so there is
+ * no useful fallback here. Preparing one is something you do in the repository,
+ * not inside a container image that has no history to point at.
+ */
 function headCommit(): string {
-  return execFileSync('git', ['rev-parse', 'HEAD'], {
-    cwd: projectPaths().root,
-    encoding: 'utf8',
-  }).trim();
+  try {
+    return execFileSync('git', ['rev-parse', 'HEAD'], {
+      cwd: projectPaths().root,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim();
+  } catch {
+    throw new ProposalError(
+      'this is not a git checkout, so a proposal cannot record the commit it was written against',
+      [
+        'prepare proposals in the repository itself',
+        'a container image carries the content but not its history',
+      ],
+    );
+  }
 }
 
 /**
@@ -1078,6 +1116,203 @@ async function commandProposal(args: readonly string[]): Promise<number> {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/* Private export (v2 runbook S01)                                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Where an export may be written.
+ *
+ * `.navigator/exports` is ignored by Git and by Docker, so an export left there
+ * cannot be committed or baked into an image by accident. Anywhere else is
+ * allowed, but only when the person says so in as many words: the whole point
+ * of this file is that it contains work nothing else can reproduce.
+ */
+function resolveExportDirectory(args: readonly string[], name: string): string | undefined {
+  const override = optionValue(args, '--output');
+  if (override === undefined) return join(projectPaths().exportsDir, name);
+  const target = resolve(process.cwd(), override);
+  const inside = projectPaths().exportsDir;
+  if (target === inside || target.startsWith(`${inside}/`)) return target;
+  if (args.includes('--allow-external-output')) return target;
+  console.error(`navigator personal export: ${target} is outside ${inside}.`);
+  console.error(
+    '  An export holds work that exists nowhere else. Writing it somewhere Git or Docker',
+  );
+  console.error(
+    '  might pick up is a decision, not a default: pass --allow-external-output to make it.',
+  );
+  return undefined;
+}
+
+async function commandPersonalExport(args: readonly string[]): Promise<number> {
+  const personalPath = resolvePersonalPath(args);
+  if (!existsSync(personalPath)) {
+    console.error(
+      `navigator personal export: no private database at ${personalPath}. There is nothing to export yet.`,
+    );
+    return 2;
+  }
+
+  const startedAt = new Date().toISOString();
+  const name = `personal-${startedAt.replace(/[:.]/g, '-')}`;
+  const directory = resolveExportDirectory(args, name);
+  if (directory === undefined) return 2;
+
+  const archive = withPersonal(args, (db) => readPersonalArchive(db, { now: () => startedAt }));
+  const json = serializePersonalArchive(archive);
+  const summary = renderPersonalSummary(archive);
+
+  await mkdir(directory, { recursive: true });
+  const dataPath = join(directory, ARCHIVE_FILES.data);
+  const summaryPath = join(directory, ARCHIVE_FILES.summary);
+  await writeFile(dataPath, json, 'utf8');
+  await writeFile(summaryPath, summary, 'utf8');
+
+  const records = archiveRecordCount(archive);
+  const bytes = Buffer.byteLength(json, 'utf8') + Buffer.byteLength(summary, 'utf8');
+  // Recorded after the files are safely written, so nothing claims an export
+  // that did not happen. Metadata only: never the contents.
+  recordExport(personalPath, {
+    id: randomUUID(),
+    kind: 'personal-archive',
+    destination: directory,
+    recordCount: records,
+    byteCount: bytes,
+    createdAt: startedAt,
+  });
+
+  if (wantsJson(args)) {
+    printJson({
+      directory,
+      archive: dataPath,
+      summary: summaryPath,
+      archiveVersion: archive.archiveVersion,
+      schemaVersion: archive.schemaVersion,
+      records,
+      counts: archive.counts,
+    });
+    return 0;
+  }
+
+  console.log(`exported ${String(records)} record(s)`);
+  console.log(`  archive  ${dataPath}`);
+  console.log(`  summary  ${summaryPath}`);
+  console.log('');
+  for (const table of Object.keys(archive.counts).sort()) {
+    console.log(`  ${String(archive.counts[table] ?? 0).padStart(5)}  ${table}`);
+  }
+  console.log('');
+  console.log('This is the only data here that cannot be rebuilt. Keep it somewhere you trust.');
+  return 0;
+}
+
+async function commandPersonalImport(args: readonly string[]): Promise<number> {
+  const file = args.find((arg) => !arg.startsWith('--'));
+  if (file === undefined) {
+    console.error('navigator personal import: an archive file is required\n\n' + USAGE);
+    return 2;
+  }
+  const archivePath = resolve(process.cwd(), file);
+  if (!existsSync(archivePath)) {
+    console.error(`navigator personal import: no archive at ${archivePath}`);
+    return 2;
+  }
+  const personalPath = resolvePersonalPath(args);
+  if (!existsSync(personalPath)) {
+    console.error(
+      `navigator personal import: no private database at ${personalPath}. Start the product once so it can create one, or pass --personal <path>.`,
+    );
+    return 2;
+  }
+
+  let archive;
+  try {
+    archive = parsePersonalArchive(await readFile(archivePath, 'utf8'));
+  } catch (error) {
+    if (error instanceof PersonalImportError) {
+      console.error(`navigator personal import: ${error.message}`);
+      for (const line of error.detail.slice(0, 10)) console.error(`  ${line}`);
+      return 2;
+    }
+    throw error;
+  }
+
+  const confirmed = args.includes('--confirm-import');
+  const db = openPersonalForImport(personalPath);
+  try {
+    const plan = planPersonalImport(db, archive);
+
+    if (wantsJson(args)) {
+      printJson({ ...plan, applied: false, confirmed });
+      if (!plan.ok) return 1;
+      if (!confirmed) return 0;
+    } else {
+      console.log(`archive   ${archivePath}`);
+      console.log(`exported  ${plan.exportedAt}`);
+      console.log(`format    ${String(plan.archiveVersion)}, schema ${String(plan.schemaVersion)}`);
+      console.log('');
+      for (const table of plan.order) {
+        console.log(
+          `  ${String(plan.insert[table] ?? 0).padStart(5)} new  ${String(plan.skip[table] ?? 0).padStart(5)} already here   ${table}`,
+        );
+      }
+      console.log('');
+      for (const conflict of plan.conflicts.slice(0, 20)) {
+        console.log(
+          `  CONFLICT  ${conflict.table} ${conflict.id} differs in ${conflict.columns.join(', ')}`,
+        );
+      }
+      for (const problem of plan.problems) console.log(`  FAIL  ${problem}`);
+      if (!plan.ok) {
+        console.log('');
+        console.log('Nothing was changed.');
+        return 1;
+      }
+    }
+
+    if (!confirmed) {
+      if (!wantsJson(args)) {
+        console.log('This was a dry run. Nothing was changed.');
+        console.log('Run it again with --confirm-import to restore this work.');
+      }
+      return 0;
+    }
+
+    const result = applyPersonalImport(db, archive);
+    if (wantsJson(args)) {
+      printJson({ ...plan, applied: true, ...result });
+      return 0;
+    }
+    console.log(
+      `imported ${String(result.inserted)} record(s), skipped ${String(result.skipped)} already here`,
+    );
+    return 0;
+  } catch (error) {
+    if (error instanceof PersonalImportError) {
+      console.error(`navigator personal import: ${error.message}`);
+      for (const line of error.detail.slice(0, 20)) console.error(`  ${line}`);
+      return 1;
+    }
+    throw error;
+  } finally {
+    db.close();
+  }
+}
+
+async function commandPersonal(args: readonly string[]): Promise<number> {
+  const [subcommand, ...rest] = args;
+  switch (subcommand) {
+    case 'export':
+      return commandPersonalExport(rest);
+    case 'import':
+      return commandPersonalImport(rest);
+    default:
+      console.error(`navigator personal: unknown subcommand "${subcommand ?? ''}"\n\n${USAGE}`);
+      return 2;
+  }
+}
+
 async function main(argv: readonly string[]): Promise<number> {
   const [command, ...args] = argv;
   switch (command) {
@@ -1099,6 +1334,8 @@ async function main(argv: readonly string[]): Promise<number> {
       return commandExport(args);
     case 'proposal':
       return commandProposal(args);
+    case 'personal':
+      return commandPersonal(args);
     case undefined:
     case '--help':
     case '-h':

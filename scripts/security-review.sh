@@ -85,9 +85,10 @@ grep -rqE "readonly:\s*true" packages/core/src/db.ts && ok "openDatabaseReadOnly
 # the pattern now includes the *Sync variants the earlier list missed.
 # Call-shaped so that a word such as `truncated` is not mistaken for `truncate(`.
 WRITE_CALLS='\b(writeFile|writeFileSync|appendFile|appendFileSync|createWriteStream|unlink|unlinkSync|rename|renameSync|mkdir|mkdirSync|rmdir|rmdirSync|rm|rmSync|truncate|truncateSync|chmod|chmodSync|chown|chownSync|copyFile|copyFileSync|open)\s*\('
-if git grep -nE "$WRITE_CALLS" -- apps/api/src ':!apps/api/src/personal' | grep -q .; then
+hits0=$(git grep -nE "$WRITE_CALLS" -- apps/api/src ':!apps/api/src/personal' || true)
+if [ -n "$hits0" ]; then
   bad "the API writes to the filesystem outside the private store:"
-  git grep -nE "$WRITE_CALLS" -- apps/api/src ':!apps/api/src/personal' | sed 's/^/        /'
+  printf '%s\n' "$hits0" | sed 's/^/        /'
 else ok "the only filesystem writes in the API are in the private store"; fi
 # And the private store may touch nothing but its own path.
 # Comment lines are excluded: the module explains *why* it is separate from
@@ -98,14 +99,17 @@ if [ -n "$canon" ]; then
   bad "the private store references canonical paths in code:"; printf '%s\n' "$canon" | sed 's/^/        /'
 else ok "the private store never opens the canonical database or content"; fi
 # The canonical index is opened read-only everywhere the API opens it.
-if git grep -n "openDatabaseReadOnly" -- apps/api/src | grep -q .; then
+hits1=$(git grep -n "openDatabaseReadOnly" -- apps/api/src || true)
+if [ -n "$hits1" ]; then
   ok "the API opens the canonical index only through openDatabaseReadOnly"
 else bad "the API does not use openDatabaseReadOnly"; fi
-if git grep -nE "new Database\(" -- apps/api/src ':!apps/api/src/personal' | grep -q .; then
+hits2=$(git grep -nE "new Database\(" -- apps/api/src ':!apps/api/src/personal' || true)
+if [ -n "$hits2" ]; then
   bad "the API opens a database directly outside the private store:"
-  git grep -nE "new Database\(" -- apps/api/src ':!apps/api/src/personal' | sed 's/^/        /'
+  printf '%s\n' "$hits2" | sed 's/^/        /'
 else ok "no direct database handle is opened outside the private store"; fi
-if git grep -nE "CONTENT_PATH" -- apps/api/src | grep -vE 'config\.ts' | grep -q .; then
+hits3=$(git grep -nE "CONTENT_PATH" -- apps/api/src | grep -vE 'config\.ts' || true)
+if [ -n "$hits3" ]; then
   info "CONTENT_PATH referenced outside config; reviewed:"; git grep -nE "CONTENT_PATH" -- apps/api/src | grep -v config.ts | sed 's/^/        /'
 else ok "content/ is never opened by the API at all"; fi
 
@@ -137,9 +141,10 @@ if git grep -nE "log\.(info|warn|error|debug)\(" -- apps/api/src | grep -E "ques
 else ok "every assistant log line carries lengths and counts only"; fi
 
 # The private store must never reach a model prompt on its own.
-if git grep -nE "personal|artifact|familiarity|savedItem" -- apps/api/src/assistant | grep -q .; then
+hits4=$(git grep -nE "personal|artifact|familiarity|savedItem" -- apps/api/src/assistant || true)
+if [ -n "$hits4" ]; then
   info "the assistant references private types; reviewed for explicit selection:"
-  git grep -nE "personal|artifact|familiarity|savedItem" -- apps/api/src/assistant | sed 's/^/        /'
+  printf '%s\n' "$hits4" | sed 's/^/        /'
 else ok "the assistant reads nothing from the private store"; fi
 
 echo
@@ -175,9 +180,10 @@ else bad "the export command does not default to .navigator/exports"; fi
 # The Hermes adapter (R05-R07) is the only thing here that talks to another
 # agent runner. It may read its help and create one task; it may not change it.
 adapter=scripts/hermes-content-task.mjs
-if grep -nE "(npm|brew|pip|cargo) install|hermes (install|update|config)|restart" "$adapter" | grep -q .; then
+hits5=$(grep -nE "(npm|brew|pip|cargo) install|hermes (install|update|config)|restart" "$adapter" || true)
+if [ -n "$hits5" ]; then
   bad "the Hermes adapter contains an install, update or restart command:"
-  grep -nE "(npm|brew|pip|cargo) install|hermes (install|update|config)|restart" "$adapter" | sed 's/^/        /'
+  printf '%s\n' "$hits5" | sed 's/^/        /'
 else ok "the Hermes adapter never installs, updates, configures or restarts Hermes"; fi
 if grep -qE "shell:\s*false" "$adapter" && ! grep -qE "shell:\s*true|exec\(" "$adapter"; then
   ok "the Hermes adapter spawns with an argument array and never through a shell"
@@ -206,6 +212,60 @@ print('  PASS  the container-ollama profile publishes no port' if not extra else
 echo
 echo "== 10. no authentication is claimed anywhere =="
 grep -qi "has no authentication of any kind" README.md && ok "the README states plainly that there is no authentication" || bad "the no-authentication warning is missing"
+
+echo
+echo "== 11. the private write surface (v2 S04) =="
+# Every write to the private store goes through apps/api/src/personal, which
+# validates first. A route that ran its own SQL against it would bypass that.
+hits6=$(git grep -nE "personal\.db\.prepare\(" -- apps/api/src/routes || true)
+if [ -n "$hits6" ]; then
+  bad "a route runs SQL against the private store directly:"
+  printf '%s\n' "$hits6" | sed 's/^/        /'
+else ok "personal writes go through the validated store, never raw SQL in a route"; fi
+hits7=$(git grep -nE "z\.(strictObject|object)\(" -- apps/api/src/personal || true)
+if [ -n "$hits7" ]; then
+  ok "the private store validates its input with schemas"
+else bad "the private store has no input validation"; fi
+
+# Uploads are bounded, and nothing extracted is ever executed.
+for limit in MAX_UPLOAD_BYTES MAX_PDF_PAGES MAX_EXTRACTED_CHARACTERS EXTRACTION_TIMEOUT_MS; do
+  grep -q "$limit" apps/api/src/artifacts/limits.ts \
+    && ok "uploads are bounded by $limit" || bad "$limit is missing"
+done
+hits8=$(git grep -nE "\beval\(|new Function\(|child_process|execFile|spawn\(" -- apps/api/src || true)
+if [ -n "$hits8" ]; then
+  bad "the API can execute something:"
+  printf '%s\n' "$hits8" | sed 's/^/        /'
+else ok "nothing uploaded can be executed: the API never spawns or evaluates"; fi
+grep -q "isEvalSupported: false" apps/api/src/artifacts/extract.ts \
+  && ok "the PDF reader runs with evaluation disabled" || bad "the PDF reader may evaluate"
+
+# Private data never reaches anything published.
+if grep -qiE "personal|artifact|familiarity|private" generated/graph.json; then
+  bad "the published graph mentions private data"
+else ok "the published graph contains no private data"; fi
+if [ -d apps/web/build ]; then
+  if grep -rqiE "personal\.db|extracted_text|export_history" apps/web/build 2>/dev/null; then
+    bad "the built site mentions the private store"
+  else ok "the built site never names the private store"; fi
+fi
+
+# Exports and acceptance are both explicit actions.
+grep -q "allow-external-output" packages/core/src/cli.ts \
+  && ok "an export outside .navigator/exports needs an explicit flag" \
+  || bad "the export path guard is missing"
+grep -q "confirm-import" packages/core/src/cli.ts \
+  && ok "an import applies nothing without --confirm-import" \
+  || bad "the import confirmation is missing"
+grep -q "the confirmation does not match" packages/core/src/proposal-accept.ts \
+  && ok "accepting a proposal requires a confirmation that names it" \
+  || bad "proposal acceptance has no confirmation guard"
+hits9=$(git grep -nE "personal (export|import)" -- apps/api/src || true)
+if [ -n "$hits9" ]; then
+  bad "the API can export or import private data without a person asking"
+else ok "only the command line exports or imports private data"; fi
+
+echo
 
 echo
 printf 'REVIEW: %d passed, %d failed, %d notes\n' "$pass" "$fail" "$note"

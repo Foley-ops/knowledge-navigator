@@ -436,3 +436,25 @@ test.describe('the workspace does not disturb anything else', () => {
     }
   });
 });
+
+/* ----------------------------------------------------------------- S01 ---- */
+
+test.describe('exporting your own work', () => {
+  test('names the command that saves it, and says where it lands', async ({
+    page,
+    withFixtureProvider,
+  }) => {
+    void withFixtureProvider;
+    await createProject(page, 'Export drill');
+
+    await page.getByRole('button', { name: 'Export', exact: true }).click();
+    const section = page
+      .locator('.nav-section')
+      .filter({ has: page.getByRole('heading', { name: 'Export', exact: true }) });
+
+    await expect(section).toContainText('cannot be rebuilt');
+    await expect(section.locator('.workspace-code code')).toHaveText('npm run personal:export');
+    await expect(section).toContainText('.navigator/exports/');
+    await expect(section).toContainText('Git ignores');
+  });
+});

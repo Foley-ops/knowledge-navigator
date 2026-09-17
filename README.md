@@ -185,9 +185,10 @@ Markdown, and the API recompiles the index on every start, so
 
 ## Backup and recovery
 
-**Only one thing here is irreplaceable: the Markdown in `content/concepts/`.**
-Everything else is derived from it, and the compiled database is never the
-authority for anything.
+**Two things here are irreplaceable, and only two.** The Markdown in
+`content/concepts/` is canonical knowledge, and the private store is your own
+research. Everything else — the compiled database, the graph, the site — is
+derived, and the compiled database is never the authority for anything.
 
 ### Back up
 
@@ -215,6 +216,47 @@ content hash, so it changes if and only if canonical content changes:
 ```bash
 curl -s http://127.0.0.1:3000/api/build | grep -o '"corpusHash":"[^"]*"'
 ```
+
+### Back up your own research
+
+Your projects, sessions, notes, familiarity, saved comparisons and paths, and
+the text extracted from files you uploaded, exist in exactly one place: the
+`personal-data` volume. Nothing rebuilds them.
+
+```bash
+npm run personal:export                       # writes .navigator/exports/personal-<time>/
+```
+
+That directory holds `archive.json` — every record, in a versioned format — and
+`SUMMARY.md`, which is the same work in a form you can read. Keep it somewhere
+you trust. To write it elsewhere, pass `--output <dir> --allow-external-output`:
+the extra flag is there because an export is the only copy of work nothing else
+can reproduce, and putting it where Git or Docker might pick it up should be a
+decision rather than a default.
+
+### Restore your own research
+
+```bash
+npm run navigator -- personal import path/to/archive.json                    # shows what it would do
+npm run navigator -- personal import path/to/archive.json --confirm-import   # does it
+```
+
+The first form changes nothing: it prints what would be inserted and what is
+already there. A record that is already present and identical is skipped. A
+record that is already present and _different_ aborts the whole import and names
+the fields that disagree — the two stores disagree about your work, and only you
+can say which is right.
+
+To prove all of this rather than trust it, run the drill. It builds an isolated
+stack on its own port with its own volumes, creates private records, exports
+them, destroys the volume, restarts, imports, and compares:
+
+```bash
+bash scripts/recovery-drill.sh
+```
+
+It never touches your own stack, and it refuses to run if the project name it
+was given is the real one.
 
 ### Restore canonical content
 

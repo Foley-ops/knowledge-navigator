@@ -27,3 +27,5 @@ export * from './proposal-request.js';
 export * from './proposal-validate.js';
 export * from './proposal-accept.js';
 export * from './proposal-import.js';
+export * from './personal-archive.js';
+export * from './personal-import.js';
