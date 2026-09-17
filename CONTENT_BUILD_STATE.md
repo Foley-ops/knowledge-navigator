@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 6 of 28.** 10 of 10 pages in it are still to write.
+**Batch 7 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/quaternions.md` — Quaternions (concept.algebra.quaternions)
-- `content/concepts/octonions.md` — Octonions (concept.algebra.octonions)
-- `content/concepts/clifford-algebra.md` — Clifford Algebra (concept.algebra.clifford_algebra)
-- `content/concepts/geometric-algebra.md` — Geometric Algebra (concept.algebra.geometric_algebra)
-- `content/concepts/euclidean-geometry.md` — Euclidean Geometry (concept.geometry.euclidean_geometry)
-- `content/concepts/non-euclidean-geometry.md` — Non-Euclidean Geometry (concept.geometry.non_euclidean_geometry)
-- `content/concepts/spherical-geometry.md` — Spherical Geometry (concept.geometry.spherical_geometry)
-- `content/concepts/hyperbolic-geometry.md` — Hyperbolic Geometry (concept.geometry.hyperbolic_geometry)
-- `content/concepts/convex-geometry.md` — Convex Geometry (concept.geometry.convex_geometry)
-- `content/concepts/point-set-topology.md` — Point-Set Topology (concept.geometry.point_set_topology)
+- `content/concepts/algebraic-topology.md` — Algebraic Topology (concept.geometry.algebraic_topology)
+- `content/concepts/manifolds.md` — Manifolds (concept.geometry.manifolds)
+- `content/concepts/differential-geometry.md` — Differential Geometry (concept.geometry.differential_geometry)
+- `content/concepts/differential-topology.md` — Differential Topology (concept.geometry.differential_topology)
+- `content/concepts/curvature.md` — Curvature (concept.geometry.curvature)
+- `content/concepts/lie-groups.md` — Lie Groups (concept.geometry.lie_groups)
+- `content/concepts/algebraic-geometry.md` — Algebraic Geometry (concept.geometry.algebraic_geometry)
+- `content/concepts/fractal-geometry.md` — Fractal Geometry (concept.geometry.fractal_geometry)
+- `content/concepts/renormalization.md` — Renormalization (concept.geometry.renormalization)
+- `content/concepts/elementary-number-theory.md` — Elementary Number Theory (concept.number_theory.elementary_number_theory)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 61 |
-| Markdown pages in the corpus | 61 |
-| Tier 1 pages | 61 |
+| Candidates covered by a page | 71 |
+| Markdown pages in the corpus | 71 |
+| Tier 1 pages | 71 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 50 of 280 |
+| Planned pages written | 60 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 50 | 85 | 59% |
+| Mathematics | 60 | 85 | 71% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -67,12 +67,12 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Symbolic AI | 0 | 5 |  |
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
-| Mathematics/Algebra | 10 | 14 |  |
+| Mathematics/Algebra | 14 | 14 | complete |
 | Mathematics/Analysis | 18 | 18 | complete |
 | Mathematics/Foundations | 4 | 4 | complete |
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
 | Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
-| Mathematics/Geometry & Topology | 0 | 15 |  |
+| Mathematics/Geometry & Topology | 6 | 15 |  |
 | Mathematics/Linear & Multilinear Algebra | 6 | 6 | complete |
 | Mathematics/Mathematical Physics | 0 | 2 |  |
 | Mathematics/Number Theory | 0 | 3 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-50 of the planned 280, in the order they were written.
+60 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -142,6 +142,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Lie Algebras | `concept.algebra.lie_algebras` | tier 1 | covered |
 | Homological Algebra | `concept.algebra.homological_algebra` | tier 1 | covered |
 | Complex Numbers | `concept.algebra.complex_numbers` | tier 1 | covered |
+| Quaternions | `concept.algebra.quaternions` | tier 1 | covered |
+| Octonions | `concept.algebra.octonions` | tier 1 | covered |
+| Clifford Algebra | `concept.algebra.clifford_algebra` | tier 1 | covered |
+| Geometric Algebra | `concept.algebra.geometric_algebra` | tier 1 | covered |
+| Euclidean Geometry | `concept.geometry.euclidean_geometry` | tier 1 | covered |
+| Non-Euclidean Geometry | `concept.geometry.non_euclidean_geometry` | tier 1 | covered |
+| Spherical Geometry | `concept.geometry.spherical_geometry` | tier 1 | covered |
+| Hyperbolic Geometry | `concept.geometry.hyperbolic_geometry` | tier 1 | covered |
+| Convex Geometry | `concept.geometry.convex_geometry` | tier 1 | covered |
+| Point-Set Topology | `concept.geometry.point_set_topology` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -225,20 +235,20 @@ it. Batches are ten pages each.
 | x | Homological Algebra | `concept.algebra.homological_algebra` | Mathematics/Algebra |
 | x | Complex Numbers | `concept.algebra.complex_numbers` | Mathematics/Algebra |
 
-### Batch 6
+### Batch 6 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Quaternions | `concept.algebra.quaternions` | Mathematics/Algebra |
-|   | Octonions | `concept.algebra.octonions` | Mathematics/Algebra |
-|   | Clifford Algebra | `concept.algebra.clifford_algebra` | Mathematics/Algebra |
-|   | Geometric Algebra | `concept.algebra.geometric_algebra` | Mathematics/Algebra |
-|   | Euclidean Geometry | `concept.geometry.euclidean_geometry` | Mathematics/Geometry & Topology |
-|   | Non-Euclidean Geometry | `concept.geometry.non_euclidean_geometry` | Mathematics/Geometry & Topology |
-|   | Spherical Geometry | `concept.geometry.spherical_geometry` | Mathematics/Geometry & Topology |
-|   | Hyperbolic Geometry | `concept.geometry.hyperbolic_geometry` | Mathematics/Geometry & Topology |
-|   | Convex Geometry | `concept.geometry.convex_geometry` | Mathematics/Geometry & Topology |
-|   | Point-Set Topology | `concept.geometry.point_set_topology` | Mathematics/Geometry & Topology |
+| x | Quaternions | `concept.algebra.quaternions` | Mathematics/Algebra |
+| x | Octonions | `concept.algebra.octonions` | Mathematics/Algebra |
+| x | Clifford Algebra | `concept.algebra.clifford_algebra` | Mathematics/Algebra |
+| x | Geometric Algebra | `concept.algebra.geometric_algebra` | Mathematics/Algebra |
+| x | Euclidean Geometry | `concept.geometry.euclidean_geometry` | Mathematics/Geometry & Topology |
+| x | Non-Euclidean Geometry | `concept.geometry.non_euclidean_geometry` | Mathematics/Geometry & Topology |
+| x | Spherical Geometry | `concept.geometry.spherical_geometry` | Mathematics/Geometry & Topology |
+| x | Hyperbolic Geometry | `concept.geometry.hyperbolic_geometry` | Mathematics/Geometry & Topology |
+| x | Convex Geometry | `concept.geometry.convex_geometry` | Mathematics/Geometry & Topology |
+| x | Point-Set Topology | `concept.geometry.point_set_topology` | Mathematics/Geometry & Topology |
 
 ### Batch 7
 
@@ -596,6 +606,29 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batch 6 — the source registry does not cover geometry
+
+The backlog went from one entry to twenty-two in a single batch. Inspected rather
+than assumed to be noise: every entry names a specific gap, and the gaps are
+real. The registry was assembled for machine learning, computer science and
+analysis, and holds no geometry or topology text, no history-of-mathematics
+source, no convex analysis monograph, and no edition of the Elements. So the
+pages on Euclidean, non-Euclidean, spherical, hyperbolic and convex geometry,
+point-set topology, Clifford and geometric algebra, octonions and quaternions
+correctly report that parts of what they say rest on nothing the registry can
+support.
+
+This is the citation rule working — the alternative was ten pages quietly
+stretching MIT 18.100A and a linear algebra text to cover spin geometry and
+Tarski's decision procedure — but it leaves a real task behind: **the registry
+needs a geometry, topology, convex analysis and history expansion, with each
+source checked by a person before it is added.** Until then these pages carry
+honest gap declarations, all non-blocking, and validation passes.
+
+Nothing about this is a defect in the corpus or the application. It is recorded
+here because twenty-two backlog items look alarming in the coverage report and a
+later reader deserves to know they were read one by one.
 
 ### Batch 5 — the first honest backlog entry
 

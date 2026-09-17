@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T17:50:31.928Z",
-  "corpusHash": "2931bd114277247f2a4f47124984854c9dd6f851013ac1e6aa21dd8344054610",
-  "atlasHash": "9b31197bb6c3332f9bfd31b2622356bcb7e4f99b8185fa1d07fbe0ede9455c51",
+  "builtAt": "2026-09-17T18:21:13.061Z",
+  "corpusHash": "dd307a42f0ae799a237e7e626f324c8eff9a3ade588c612371d6dfddece9279c",
+  "atlasHash": "ed44faf526cd86c51c2baa07c421d3d12ef1700b630a5bf63a96461f7112bb97",
   "counts": {
-    "concepts": 61,
-    "relationships": 216,
-    "categories": 11
+    "concepts": 71,
+    "relationships": 255,
+    "categories": 12
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 61,
+      "1": 71,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 61,
+      "markdown": 71,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 61
+      "generated-draft": 71
     },
-    "conceptsWithArticle": 61,
+    "conceptsWithArticle": 71,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 230,
+      "candidate": 220,
       "proposed-tier-3": 0,
-      "covered": 61,
+      "covered": 71,
       "deferred": 0
     },
-    "unresolvedReferences": 1,
-    "unresolvedGroups": 1,
+    "unresolvedReferences": 22,
+    "unresolvedGroups": 22,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -123,26 +123,34 @@
       "depth": 2,
       "parent": "Mathematics",
       "primaryConceptIds": [
+        "concept.algebra.clifford_algebra",
         "concept.algebra.complex_numbers",
         "concept.algebra.field_theory",
         "concept.algebra.galois_theory",
+        "concept.algebra.geometric_algebra",
         "concept.algebra.group_theory",
         "concept.algebra.homological_algebra",
         "concept.algebra.lattice_theory",
         "concept.algebra.lie_algebras",
+        "concept.algebra.octonions",
         "concept.algebra.order_theory",
+        "concept.algebra.quaternions",
         "concept.algebra.representation_theory",
         "concept.algebra.ring_theory"
       ],
       "conceptIds": [
+        "concept.algebra.clifford_algebra",
         "concept.algebra.complex_numbers",
         "concept.algebra.field_theory",
         "concept.algebra.galois_theory",
+        "concept.algebra.geometric_algebra",
         "concept.algebra.group_theory",
         "concept.algebra.homological_algebra",
         "concept.algebra.lattice_theory",
         "concept.algebra.lie_algebras",
+        "concept.algebra.octonions",
         "concept.algebra.order_theory",
+        "concept.algebra.quaternions",
         "concept.algebra.representation_theory",
         "concept.algebra.ring_theory"
       ]
@@ -237,6 +245,29 @@
       ]
     },
     {
+      "path": "Mathematics/Geometry & Topology",
+      "name": "Geometry & Topology",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.geometry.convex_geometry",
+        "concept.geometry.euclidean_geometry",
+        "concept.geometry.hyperbolic_geometry",
+        "concept.geometry.non_euclidean_geometry",
+        "concept.geometry.point_set_topology",
+        "concept.geometry.spherical_geometry"
+      ],
+      "conceptIds": [
+        "concept.geometry.convex_geometry",
+        "concept.geometry.euclidean_geometry",
+        "concept.geometry.hyperbolic_geometry",
+        "concept.geometry.non_euclidean_geometry",
+        "concept.geometry.point_set_topology",
+        "concept.geometry.spherical_geometry"
+      ]
+    },
+    {
       "path": "Mathematics/Linear & Multilinear Algebra",
       "name": "Linear & Multilinear Algebra",
       "topLevel": "Mathematics",
@@ -290,6 +321,26 @@
     }
   ],
   "nodes": [
+    {
+      "id": "concept.algebra.clifford_algebra",
+      "title": "Clifford Algebra",
+      "slug": "/concepts/clifford-algebra",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The associative algebra built from a vector space in which every vector squares to the value of a fixed quadratic form on it — one relation that produces the complex numbers, the quaternions, the matrix algebras of the Dirac equation, and the spin groups that double-cover the rotation groups.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.clifford_algebra",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
     {
       "id": "concept.algebra.complex_numbers",
       "title": "Complex Numbers",
@@ -353,6 +404,26 @@
       "candidateId": "candidate.mathematics.algebra.galois_theory",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.geometric_algebra",
+      "title": "Geometric Algebra",
+      "slug": "/concepts/geometric-algebra",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A presentation of real Clifford algebra as a working language for geometry, in which one invertible product of vectors carries both their alignment and the oriented plane they span, and rotations are conjugations by unit elements.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.geometric_algebra",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -440,6 +511,28 @@
       "claims": 0
     },
     {
+      "id": "concept.algebra.octonions",
+      "title": "Octonions",
+      "slug": "/concepts/octonions",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The eight-dimensional real algebra in which division still works but multiplication no longer associates, and the last algebra of its kind that Hurwitz's theorem permits.",
+      "aliases": [
+        "Cayley numbers"
+      ],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.octonions",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.algebra.order_theory",
       "title": "Order Theory",
       "slug": "/concepts/order-theory",
@@ -457,6 +550,28 @@
       "candidateId": "candidate.mathematics.algebra.order_theory",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.algebra.quaternions",
+      "title": "Quaternions",
+      "slug": "/concepts/quaternions",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The four-dimensional real division algebra whose multiplication is associative but not commutative, and whose unit elements act on three-dimensional space by conjugation to cover the rotation group exactly twice.",
+      "aliases": [
+        "Hamilton's quaternions"
+      ],
+      "primaryCategory": "Mathematics/Algebra",
+      "categories": [
+        "Mathematics/Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.algebra.quaternions",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1230,6 +1345,134 @@
       "claims": 0
     },
     {
+      "id": "concept.geometry.convex_geometry",
+      "title": "Convex Geometry",
+      "slug": "/concepts/convex-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The geometry of sets closed under line segments, where hyperplane separation, extreme points and duality do the work that distance and angle do in Euclidean geometry, and where one closure property is enough to make every local minimum global.",
+      "aliases": [
+        "theory of convex bodies"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.convex_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.euclidean_geometry",
+      "title": "Euclidean Geometry",
+      "slug": "/concepts/euclidean-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The geometry of flat space — the one model among several in which parallels stay parallel, triangle angles sum to a straight angle, and figures can be scaled without distortion.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.euclidean_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.hyperbolic_geometry",
+      "title": "Hyperbolic Geometry",
+      "slug": "/concepts/hyperbolic-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The geometry of constant negative curvature, where a point off a line admits infinitely many parallels, triangles have angle sums below pi, and the amount of space within radius r grows exponentially rather than polynomially.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.hyperbolic_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.non_euclidean_geometry",
+      "title": "Non-Euclidean Geometry",
+      "slug": "/concepts/non-euclidean-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The family of geometries that deny the parallel postulate — hyperbolic, which keeps Euclid's other axioms, and elliptic, which also revises the order axioms and the second postulate — whose existence settled a two-thousand-year question by model construction rather than by proof.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.non_euclidean_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.point_set_topology",
+      "title": "Point-Set Topology",
+      "slug": "/concepts/point-set-topology",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The theory of spaces carrying nothing but a family of open sets, which is the least structure that still makes continuity, compactness and connectedness mean something.",
+      "aliases": [
+        "general topology",
+        "set-theoretic topology"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.point_set_topology",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.geometry.spherical_geometry",
+      "title": "Spherical Geometry",
+      "slug": "/concepts/spherical-geometry",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The geometry of a sphere's surface, where straight lines are great circles, no two lines are parallel, and a triangle's angles exceed a straight angle by exactly its area divided by the squared radius.",
+      "aliases": [
+        "spherical trigonometry",
+        "double elliptic geometry"
+      ],
+      "primaryCategory": "Mathematics/Geometry & Topology",
+      "categories": [
+        "Mathematics/Geometry & Topology"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.geometry_and_topology.spherical_geometry",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.linear_algebra.matrix_decompositions",
       "title": "Matrix Decompositions",
       "slug": "/concepts/matrix-decompositions",
@@ -1621,6 +1864,38 @@
   ],
   "edges": [
     {
+      "id": "concept.algebra.clifford_algebra|contributes_to|concept.algebra.representation_theory",
+      "source": "concept.algebra.clifford_algebra",
+      "target": "concept.algebra.representation_theory",
+      "type": "contributes_to",
+      "note": "Spinor representations of the spin groups are constructed as modules over the Clifford algebra, and they do not arise from any tensor construction on the underlying vector space.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.clifford_algebra|equivalent_under|concept.algebra.geometric_algebra",
+      "source": "concept.algebra.clifford_algebra",
+      "target": "concept.algebra.geometric_algebra",
+      "type": "equivalent_under",
+      "note": "Over the reals the two names denote the same algebra; geometric algebra is the real Clifford algebra presented for geometric computation rather than for classification and spin representations.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.clifford_algebra|generalizes|concept.algebra.quaternions",
+      "source": "concept.algebra.clifford_algebra",
+      "target": "concept.algebra.quaternions",
+      "type": "generalizes",
+      "note": "The quaternions are exactly the Clifford algebra of a negative-definite plane, $\\mathrm{Cl}_{0,2}(\\mathbb{R})$, and the Clifford construction produces their higher-dimensional successors from the same recipe.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.clifford_algebra|requires|concept.algebra.ring_theory",
+      "source": "concept.algebra.clifford_algebra",
+      "target": "concept.algebra.ring_theory",
+      "type": "requires",
+      "note": "The algebra is defined as the quotient of a tensor algebra by the two-sided ideal generated by $v \\otimes v - Q(v)1$, so ideals and quotient rings are needed before the construction means anything.",
+      "condition": null
+    },
+    {
       "id": "concept.algebra.complex_numbers|contrasts_with|concept.algebra.order_theory",
       "source": "concept.algebra.complex_numbers",
       "target": "concept.algebra.order_theory",
@@ -1714,6 +1989,38 @@
       "target": "concept.algebra.group_theory",
       "type": "requires",
       "note": "The subgroup side of the correspondence is unreadable without subgroups, normal subgroups, quotient groups and solvability.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.geometric_algebra|generalizes|concept.algebra.complex_numbers",
+      "source": "concept.algebra.geometric_algebra",
+      "target": "concept.algebra.complex_numbers",
+      "type": "generalizes",
+      "note": "The even subalgebra of the two-dimensional geometric algebra is isomorphic to the complex numbers, with the unit bivector of the plane playing the role of the imaginary unit.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.geometric_algebra|generalizes|concept.algebra.quaternions",
+      "source": "concept.algebra.geometric_algebra",
+      "target": "concept.algebra.quaternions",
+      "type": "generalizes",
+      "note": "The even subalgebra of the three-dimensional geometric algebra is isomorphic to the quaternions, and unit rotors are unit quaternions acting by the same sandwich formula.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.geometric_algebra|used_to_solve|concept.geometry.euclidean_geometry",
+      "source": "concept.algebra.geometric_algebra",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "used_to_solve",
+      "note": "Reflections, rotations and rigid motions of Euclidean space are expressed as products and conjugations in the algebra without choosing coordinates.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.geometric_algebra|variant_of|concept.algebra.clifford_algebra",
+      "source": "concept.algebra.geometric_algebra",
+      "target": "concept.algebra.clifford_algebra",
+      "type": "variant_of",
+      "note": "The algebra is literally a real Clifford algebra; what differs is the insistence on real scalars, a geometric reading of every grade, and notation built for computation rather than classification.",
       "condition": null
     },
     {
@@ -1845,6 +2152,38 @@
       "condition": null
     },
     {
+      "id": "concept.algebra.octonions|contrasts_with|concept.algebra.clifford_algebra",
+      "source": "concept.algebra.octonions",
+      "target": "concept.algebra.clifford_algebra",
+      "type": "contrasts_with",
+      "note": "Both answer the question of what algebra a quadratic form generates, but a Clifford algebra keeps associativity and, beyond the two smallest negative-definite cases (which are just $\\mathbb{C}$ and $\\mathbb{H}$), gives up division, while the octonions keep division and give up associativity.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.octonions|contrasts_with|concept.algebra.ring_theory",
+      "source": "concept.algebra.octonions",
+      "target": "concept.algebra.ring_theory",
+      "type": "contrasts_with",
+      "note": "Ring theory takes an associative multiplication as an axiom, so the octonions sit outside it and none of the module, ideal or matrix-representation machinery transfers unchanged.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.octonions|contributes_to|concept.algebra.lie_algebras",
+      "source": "concept.algebra.octonions",
+      "target": "concept.algebra.lie_algebras",
+      "type": "contributes_to",
+      "note": "The derivations of the octonions form the exceptional Lie algebra g2, and the other four exceptional simple Lie algebras are all built from octonionic data, so this algebra is what makes the exceptional series a construction rather than a list.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.octonions|requires|concept.algebra.quaternions",
+      "source": "concept.algebra.octonions",
+      "target": "concept.algebra.quaternions",
+      "type": "requires",
+      "note": "The octonions are literally built as a pair of quaternions with a twisted product, and the eight-dimensional multiplication table is only readable as seven interlocking copies of the quaternion table.",
+      "condition": null
+    },
+    {
       "id": "concept.algebra.order_theory|contributes_to|concept.foundations.category_theory",
       "source": "concept.algebra.order_theory",
       "target": "concept.foundations.category_theory",
@@ -1874,6 +2213,38 @@
       "target": "concept.foundations.set_theory",
       "type": "requires",
       "note": "An order is a set together with a distinguished subset of its square, and the two central existence results — Zorn's lemma and the well-ordering theorem — are theorems about the axiom of choice.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.quaternions|contrasts_with|concept.algebra.octonions",
+      "source": "concept.algebra.quaternions",
+      "target": "concept.algebra.octonions",
+      "type": "contrasts_with",
+      "note": "The next Cayley-Dickson doubling buys four more dimensions but loses associativity, which is exactly what makes quaternions the largest normed real algebra whose elements can still be composed like matrices.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.quaternions|generalizes|concept.algebra.complex_numbers",
+      "source": "concept.algebra.quaternions",
+      "target": "concept.algebra.complex_numbers",
+      "type": "generalizes",
+      "note": "Every unit imaginary quaternion squares to minus one and spans a subalgebra isomorphic to C, so H contains a whole sphere of complex planes and extends conjugation, modulus and the exponential form to four dimensions at the price of commutativity.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.quaternions|specializes|concept.algebra.clifford_algebra",
+      "source": "concept.algebra.quaternions",
+      "target": "concept.algebra.clifford_algebra",
+      "type": "specializes",
+      "note": "H is isomorphic to the Clifford algebra of a two-dimensional negative-definite space and to the even subalgebra of the Clifford algebra of Euclidean three-space, so quaternion conjugation is the three-dimensional instance of the general rotor construction.",
+      "condition": null
+    },
+    {
+      "id": "concept.algebra.quaternions|used_to_solve|concept.geometry.euclidean_geometry",
+      "source": "concept.algebra.quaternions",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "used_to_solve",
+      "note": "Unit quaternions parameterize the orientation-preserving isometries of Euclidean three-space that fix a point, and do so with no coordinate singularity, which is the standard way rotations are stored and composed.",
       "condition": null
     },
     {
@@ -2778,6 +3149,190 @@
       "target": "concept.logic.first_order_logic",
       "type": "requires",
       "note": "ZFC is stated as a first-order theory with one binary relation symbol, and two of its axioms are schemas over first-order formulas.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.convex_geometry|contrasts_with|concept.geometry.euclidean_geometry",
+      "source": "concept.geometry.convex_geometry",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "contrasts_with",
+      "note": "Both live in the same space, but convex geometry keeps only the affine structure plus a linear functional, so its central theorems are invariant under shear while Euclidean congruence is not.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.convex_geometry|contributes_to|concept.analysis.functional_analysis",
+      "source": "concept.geometry.convex_geometry",
+      "target": "concept.analysis.functional_analysis",
+      "type": "contributes_to",
+      "note": "The geometric Hahn-Banach theorems and Krein-Milman are the infinite-dimensional continuation of separation and extreme points, and convexity is what makes the dual space useful at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.convex_geometry|contributes_to|concept.probability.high_dimensional_statistics",
+      "source": "concept.geometry.convex_geometry",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "contributes_to",
+      "note": "Convex bodies are where high-dimensional concentration is stated and where estimators like the lasso get their geometry, the sparsity of its solutions coming from the vertices of the L1 ball.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.convex_geometry|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.geometry.convex_geometry",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "Convex combinations, affine hulls and hyperplanes are all statements about a real vector space and its linear functionals, so none of the definitions can even be written without that structure.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.euclidean_geometry|contrasts_with|concept.geometry.non_euclidean_geometry",
+      "source": "concept.geometry.euclidean_geometry",
+      "target": "concept.geometry.non_euclidean_geometry",
+      "type": "contrasts_with",
+      "note": "The two agree on Euclid's first four postulates and differ on the fifth; the existence of models of the negation is what proved the fifth independent rather than false.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.euclidean_geometry|contributes_to|concept.algebra.clifford_algebra",
+      "source": "concept.geometry.euclidean_geometry",
+      "target": "concept.algebra.clifford_algebra",
+      "type": "contributes_to",
+      "note": "The Clifford construction takes a vector space with a quadratic form as input, and the Euclidean form $Q(x) = \\lVert x \\rVert^2$ is the case whose even subalgebra encodes Euclidean rotations.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.euclidean_geometry|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.geometry.euclidean_geometry",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "The modern presentation is $\\mathbb{R}^n$ with an inner product, so distance, angle and the isometry group are all defined on top of the linear structure and cannot be stated before it.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.euclidean_geometry|specializes|concept.analysis.hilbert_spaces",
+      "source": "concept.geometry.euclidean_geometry",
+      "target": "concept.analysis.hilbert_spaces",
+      "type": "specializes",
+      "note": "$\\mathbb{R}^n$ with the standard dot product is a finite-dimensional Hilbert space, and orthogonality, the Pythagorean identity and orthogonal projection are the same theorems in both settings.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.hyperbolic_geometry|contrasts_with|concept.geometry.euclidean_geometry",
+      "source": "concept.geometry.hyperbolic_geometry",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "contrasts_with",
+      "note": "Both satisfy Euclid's first four postulates; hyperbolic geometry denies the fifth, and the consequences separate them quantitatively at every scale.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.hyperbolic_geometry|contrasts_with|concept.geometry.spherical_geometry",
+      "source": "concept.geometry.hyperbolic_geometry",
+      "target": "concept.geometry.spherical_geometry",
+      "type": "contrasts_with",
+      "note": "Curvature $+1$ gives no parallels, angle sums above $\\pi$ and finite total area; curvature $-1$ gives infinitely many parallels, angle sums below $\\pi$ and exponential growth.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.hyperbolic_geometry|contributes_to|concept.analysis.complex_analysis",
+      "source": "concept.geometry.hyperbolic_geometry",
+      "target": "concept.analysis.complex_analysis",
+      "type": "contributes_to",
+      "note": "The Poincaré models are domains in $\\mathbb{C}$ whose isometries are Möbius transformations, and the hyperbolic metric is the object behind the Schwarz–Pick lemma.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.hyperbolic_geometry|specializes|concept.geometry.non_euclidean_geometry",
+      "source": "concept.geometry.hyperbolic_geometry",
+      "target": "concept.geometry.non_euclidean_geometry",
+      "type": "specializes",
+      "note": "It is the constant-negative-curvature case of the non-Euclidean programme, the half that keeps lines infinite and admits many parallels.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.non_euclidean_geometry|contrasts_with|concept.geometry.euclidean_geometry",
+      "source": "concept.geometry.non_euclidean_geometry",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "contrasts_with",
+      "note": "Hyperbolic geometry keeps Euclid's remaining axioms and negates the parallel postulate; elliptic geometry additionally revises the order axioms and the second postulate, so either way the family is only intelligible against Euclidean geometry.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.non_euclidean_geometry|generalizes|concept.geometry.hyperbolic_geometry",
+      "source": "concept.geometry.non_euclidean_geometry",
+      "target": "concept.geometry.hyperbolic_geometry",
+      "type": "generalizes",
+      "note": "Hyperbolic geometry is the case where a point off a line admits infinitely many non-intersecting lines; this page frames the family it belongs to.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.non_euclidean_geometry|generalizes|concept.geometry.spherical_geometry",
+      "source": "concept.geometry.non_euclidean_geometry",
+      "target": "concept.geometry.spherical_geometry",
+      "type": "generalizes",
+      "note": "The sphere, with antipodal points identified, realizes the elliptic case in which no parallels exist at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.non_euclidean_geometry|supported_by|concept.foundations.model_theory",
+      "source": "concept.geometry.non_euclidean_geometry",
+      "target": "concept.foundations.model_theory",
+      "type": "supported_by",
+      "note": "The independence of the parallel postulate is a relative-consistency argument — an interpretation of one axiom system inside a model built from another.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.point_set_topology|contrasts_with|concept.geometry.euclidean_geometry",
+      "source": "concept.geometry.point_set_topology",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "contrasts_with",
+      "note": "Euclidean geometry treats distance and angle as the primary data, while a topology remembers none of it, so congruence is invisible and only properties preserved by homeomorphism survive.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.point_set_topology|contributes_to|concept.analysis.functional_analysis",
+      "source": "concept.geometry.point_set_topology",
+      "target": "concept.analysis.functional_analysis",
+      "type": "contributes_to",
+      "note": "The weak and weak-star topologies are defined by open sets rather than a norm, and results like Banach-Alaoglu are compactness statements that only make sense in the open-cover setting.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.point_set_topology|generalizes|concept.analysis.real_analysis",
+      "source": "concept.geometry.point_set_topology",
+      "target": "concept.analysis.real_analysis",
+      "type": "generalizes",
+      "note": "The open-set axioms are an abstraction of how open intervals behave on the real line, and continuity-by-preimages is the epsilon-delta definition with the numbers deleted.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.point_set_topology|requires|concept.foundations.set_theory",
+      "source": "concept.geometry.point_set_topology",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "A topology is a family of subsets closed under arbitrary unions indexed by arbitrary sets, so the axioms cannot even be stated without set-theoretic language for families, unions and power sets.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.spherical_geometry|contrasts_with|concept.geometry.euclidean_geometry",
+      "source": "concept.geometry.spherical_geometry",
+      "target": "concept.geometry.euclidean_geometry",
+      "type": "contrasts_with",
+      "note": "Both are two-dimensional geometries of constant curvature, but on the sphere lines are closed and finite, parallels do not exist, and angle sums exceed pi.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.spherical_geometry|contrasts_with|concept.geometry.hyperbolic_geometry",
+      "source": "concept.geometry.spherical_geometry",
+      "target": "concept.geometry.hyperbolic_geometry",
+      "type": "contrasts_with",
+      "note": "The two are mirror images across zero curvature — excess versus defect, no parallels versus infinitely many, finite total area versus infinite.",
+      "condition": null
+    },
+    {
+      "id": "concept.geometry.spherical_geometry|specializes|concept.geometry.non_euclidean_geometry",
+      "source": "concept.geometry.spherical_geometry",
+      "target": "concept.geometry.non_euclidean_geometry",
+      "type": "specializes",
+      "note": "It is the constant positive curvature member of the family of geometries obtained by changing the sign of the curvature away from zero.",
       "condition": null
     },
     {

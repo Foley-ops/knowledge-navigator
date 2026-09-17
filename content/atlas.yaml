@@ -244,26 +244,26 @@ candidates:
     title: Quaternions
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.quaternions
   - candidate_id: candidate.mathematics.algebra.octonions
     title: Octonions
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.octonions
   - candidate_id: candidate.mathematics.algebra.clifford_algebra
     title: Clifford Algebra
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.clifford_algebra
   - candidate_id: candidate.mathematics.algebra.geometric_algebra
     title: Geometric Algebra
     categories:
       - atlas.mathematics.algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.algebra.geometric_algebra
   - candidate_id: candidate.mathematics.algebra.representation_theory
     title: Representation Theory
     categories:
@@ -514,26 +514,26 @@ candidates:
     title: Euclidean Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.euclidean_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.non_euclidean_geometry
     title: Non-Euclidean Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.non_euclidean_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.spherical_geometry
     title: Spherical Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.spherical_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.hyperbolic_geometry
     title: Hyperbolic Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.hyperbolic_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.differential_geometry
     title: Differential Geometry
     categories:
@@ -568,14 +568,14 @@ candidates:
     title: Convex Geometry
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.convex_geometry
   - candidate_id: candidate.mathematics.geometry_and_topology.point_set_topology
     title: Point-Set Topology
     categories:
       - atlas.mathematics.geometry_and_topology
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.geometry.point_set_topology
   - candidate_id: candidate.mathematics.geometry_and_topology.algebraic_topology
     title: Algebraic Topology
     categories:

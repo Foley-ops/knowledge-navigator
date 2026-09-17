@@ -35,7 +35,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`, `concept.analysis.single_variable_calculus`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`, `concept.analysis.convolution`
 
 ### P5 (paraphrase)
 
@@ -49,7 +49,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.probability.martingales`, `concept.probability.stochastic_processes`, `concept.algebra.ring_theory`, `concept.deep_learning.resnet`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.probability.martingales`, `concept.probability.stochastic_processes`, `concept.geometry.euclidean_geometry`, `concept.deep_learning.resnet`
 
 ### R3 (path)
 
