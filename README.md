@@ -16,6 +16,10 @@ experiences carry that work:
 - **Unstick me** — submit a question plus optional research context and receive
   a structured interpretation, candidate routes, assumptions, disqualifiers,
   missing information, next checks, citations, and an explicit confidence level.
+- **Compare** — put two to four concepts side by side, field by field, quoted
+  from the pages themselves, with every gap marked as a gap.
+- **Build a path** — get the order to read things in, built only from
+  prerequisites a page actually declares, shortened by what you already know.
 
 > **This is a personal, experimental, single-user project.** It is private by
 > default, binds to localhost, has no authentication of any kind, and is not
@@ -32,6 +36,9 @@ experiences carry that work:
 - [Where data lives](#where-data-lives)
 - [Backup and recovery](#backup-and-recovery)
 - [Editing content](#editing-content)
+- [Comparing concepts and building paths](#comparing-concepts-and-building-paths)
+- [Uploading your own material](#uploading-your-own-material)
+- [What this does not do](#what-this-does-not-do)
 - [Proposing content with an agent](#proposing-content-with-an-agent)
 - [Architecture](#architecture)
 - [Working on the source](#working-on-the-source)
@@ -44,39 +51,98 @@ experiences carry that work:
 
 ## Status
 
-Version 1 is complete and runs. The build was executed checkpoint by checkpoint
-from
-[`KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md`](./KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md),
-which remains the authoritative product brief and build plan.
-[`BUILD_STATE.md`](./BUILD_STATE.md) records every checkpoint, the exact check
-that was run, its result, and every decision taken where the runbook left a
-choice open. Read it before assuming a feature exists or works differently from
-how it is described here.
+Versions 1 and 2 are complete and run. Each was executed checkpoint by
+checkpoint from its runbook —
+[`KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md`](./KNOWLEDGE_NAVIGATOR_BUILD_RUNBOOK.md)
+and
+[`KNOWLEDGE_NAVIGATOR_V2_BUILD_RUNBOOK.md`](./KNOWLEDGE_NAVIGATOR_V2_BUILD_RUNBOOK.md)
+— and each records what was actually run in
+[`BUILD_STATE.md`](./BUILD_STATE.md) and
+[`V2_BUILD_STATE.md`](./V2_BUILD_STATE.md): every checkpoint, the exact check,
+its result, and every decision taken where the runbook left a choice open. Read
+them before assuming a feature exists or works differently from how it is
+described here.
 
-The content is a deliberately small slice: eleven connected concepts about
+### What Version 2 added
+
+- **A map of the whole subject**, not just what is written. The curated atlas
+  names three areas and their categories, and Coverage shows how little of it
+  exists: eleven pages against hundreds of candidate labels.
+- **Coverage tiers.** A concept can be a full page, a short stub, or a
+  graph-only identity with a stable address and no article at all.
+- **An editorial backlog.** When a page needs an idea this corpus does not have,
+  it records an unresolved reference instead of inventing a stub, and those
+  group into a traceable list of what to write next.
+- **Claim-level evidence.** A page may attach claims to sources with locators,
+  and a page above `generated-draft` must.
+- **A private research workspace.** Projects, sessions, notes, familiarity,
+  saved results and uploaded material, in a separate database that is yours.
+- **Compare and Path**, both deterministic and both honest about what the corpus
+  does not record.
+- **Reviewable agent proposals**, including a Hermes adapter that is dry-run by
+  default and can never accept its own work.
+
+### What has not changed
+
+The content is still a deliberately small slice: eleven connected concepts about
 convolutional networks and their mathematical foundations. It exists to exercise
-the system end to end. It is not a claim about final scope.
+the system end to end, and it is not a claim about final scope.
 
-**Every page is currently a `generated-draft`** — written by an AI agent and not
-yet checked against its sources by a person. The interface says so on every
-page, and the left edge of every knowledge block carries a dashed rule that
-means exactly that.
+**All eleven pages are still `generated-draft`** — written by an AI agent and not
+yet checked against their sources by a person. Version 2 did not promote a
+single one, because promoting a page is a person reading it against its sources,
+and that has not happened. The interface says so on every page, and the left
+edge of every knowledge block carries a dashed rule that means exactly that.
 
 ## What is canonical and what is disposable
 
-Canonical knowledge is the Markdown in [`content/concepts/`](./content/concepts).
-It is the only irreplaceable data this project owns, and it is tracked in Git.
+Four kinds of thing live here, and the product never blurs them.
 
-Everything derived from it is a compiled artifact and can be rebuilt at any
-time: the SQLite index, the full-text search tables,
-[`generated/graph.json`](./generated), and
-[`apps/web/sidebars.generated.ts`](./apps/web). Deleting them costs nothing but
-the time to run `npm run compile`. The containers rebuild the index on every
-start.
+**Canonical knowledge** is the Markdown in
+[`content/concepts/`](./content/concepts) and the YAML identities in
+[`content/graph-only/`](./content/graph-only). It is tracked in Git, it is what
+answers are grounded in, and it is the only thing an assistant may cite.
+
+**Your private research** — projects, sessions, notes, familiarity, saved
+comparisons and paths, and the text extracted from files you uploaded — lives in
+a separate SQLite database in its own Docker volume. It is never tracked, never
+compiled, never published, and never reaches a model unless you tick a box for
+that one request. It is the other irreplaceable thing here: see
+[Back up your own research](#back-up-your-own-research).
+
+**Atlas candidates** are labels on the map: names somebody thought worth
+recording, with nothing behind them. A candidate is not knowledge. It is never
+cited, never retrieved, never used to ground an answer, and the Coverage page
+says so in those words. An unresolved reference is the same idea from the other
+direction — a gap a page ran into while being written.
+
+**Everything else is disposable**: the SQLite index, the full-text search
+tables, [`generated/graph.json`](./generated), and
+[`apps/web/sidebars.generated.ts`](./apps/web) are compiled artifacts. Deleting
+them costs the time to run `npm run compile`, and the containers rebuild the
+index on every start.
 
 AI-generated output never silently changes canonical knowledge. An agent
 proposes a change; a person reviews it; only a person may raise a page's review
 state. See [`AGENT_CONTENT_CONTRACT.md`](./AGENT_CONTENT_CONTRACT.md).
+
+### Coverage tiers are depths, not versions
+
+A tier says how much has been written about a concept. It has nothing to do with
+the version of this product, and it is not a quality score.
+
+| Tier | What it is            | What it has                                                                                   |
+| ---- | --------------------- | --------------------------------------------------------------------------------------------- |
+| 1    | A full page           | The complete template: definition, intuition, example, formal treatment, limitations, sources |
+| 2    | A stub                | A definition paragraph, sources, and at least one relationship                                |
+| 3    | A graph-only identity | A stable id, slug and summary. No article, and no pretence of one                             |
+
+Promotion — Tier 3 to Tier 2 to Tier 1 — **keeps the concept id and the slug
+exactly as they were**. Those are permanent addresses: every relationship,
+citation and link points at them, and a promotion that changed one would break
+all of it silently. The review state is a separate axis entirely: a Tier 1 page
+can be a generated draft, and a Tier 3 identity could in principle be
+source-checked.
 
 ## Requirements
 
@@ -433,6 +499,95 @@ and a compile against the result, and commits nothing. Read the change, run
 The contract an agent works under is
 [`HERMES_CONTENT_PROFILE.md`](./HERMES_CONTENT_PROFILE.md), alongside
 [`AGENT_CONTENT_CONTRACT.md`](./AGENT_CONTENT_CONTRACT.md).
+
+## Comparing concepts and building paths
+
+### Compare
+
+`/compare` puts two to four concepts side by side, field by field: summary,
+definition, assumptions and requirements, uses and applicability, limitations
+and common mistakes, variants and alternatives.
+
+Every cell is **quoted from the canonical page**. No model writes any of it, and
+no model is needed to read it. A cell the corpus does not have says which kind
+of nothing it is — the page has the section and it is empty, the page has no
+such section because it is a stub, or this is a graph-only identity with no
+article at all. A blank cell would read as "nothing to say", which is a
+different claim entirely.
+
+_Explain this comparison_ is optional and strictly downstream. The local model
+receives the rendered table and nothing else — not the rest of either page — and
+may cite only the compared concepts and the sources they cite. If it cites
+anything else, the synthesis is discarded and the table stays exactly as it was,
+because the table was true before any model was asked.
+
+### Path
+
+`/path` builds the order to read things in, from `requires` and
+`prerequisite_of` relationships **and nothing else**. Other relationship types
+describe how ideas relate, not what has to be understood first, and treating
+them as ordering would invent a curriculum nobody checked.
+
+When the corpus declares no route to something, the page says so and lists what
+is missing. It does not arrange related concepts into a plausible order.
+
+Telling it what you already know shortens the route, and so does familiarity you
+recorded in a project — but only when you point at that project, and every
+record that changed the result is named in the output. A shorter path with no
+explanation is indistinguishable from a wrong one.
+
+Both can be saved to a project and exported as Markdown with canonical page URLs
+and source URLs:
+
+```bash
+npm run navigator -- export list                    # what can be exported, with ids
+npm run navigator -- export saved <saved-item-id>   # writes .navigator/exports/<file>.md
+```
+
+## Uploading your own material
+
+A project can hold files you are working from: text, code, Markdown, LaTeX,
+Lean, JSON, CSV, Jupyter notebooks, and text-layer PDFs.
+
+What actually happens to a file you upload:
+
+- the text is extracted in the API process, and **the original bytes are
+  discarded**. Nothing here stores a file you gave it;
+- extraction is bounded — at most 10 MiB, 300 PDF pages, 200,000 characters and
+  60 seconds — and an input that exceeds a limit fails with a reason;
+- notebook outputs and attachments are dropped, because a notebook's output is
+  usually the largest and least reviewable thing in it;
+- nothing is ever executed. Uploaded code is text;
+- an encrypted PDF, an image-only scan, a binary file and a malformed one each
+  fail with a message saying which, rather than producing plausible nonsense.
+
+Extracted text reaches the model **only when you tick it for that request**.
+Nothing is included because it is in the current project, because it was
+uploaded recently, or because it looks relevant. The answer then shows which
+private material was used, visually separated from canonical citations, and
+nothing private is ever written to a log.
+
+## What this does not do
+
+Being clear about this is part of the product.
+
+- **No accounts, no authentication, no sharing.** One person, one machine.
+- **No public hosting.** It binds to loopback and is not hardened for anything
+  else.
+- **No embeddings or vector search.** Retrieval is titles, aliases, full text
+  and one hop of the graph. Whether that is enough is measured rather than
+  assumed: see [`docs/v2-retrieval-evaluation.md`](./docs/v2-retrieval-evaluation.md).
+- **No OCR, images, audio, video, Office documents or web capture.** A PDF
+  without a text layer is refused, not guessed at.
+- **No automatic publication.** No agent, and no part of this product, can
+  promote a page's review state or commit canonical content.
+- **No stale-claim detection.** If a source changes, nothing here notices.
+- **No streaming.** Answers arrive whole.
+- **Eleven pages.** This is a working instrument over a small corpus, not a
+  reference work.
+
+Version 3 candidates are listed at the end of the version 2 runbook. They are
+possibilities with evidence attached, not promises.
 
 ## Architecture
 

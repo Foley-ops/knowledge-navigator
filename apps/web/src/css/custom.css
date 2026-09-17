@@ -2233,3 +2233,9 @@ details[open] > summary.coverage-branch__name::before {
 .workspace-export > code {
   overflow-wrap: anywhere;
 }
+
+.about-review-counts {
+  font-size: var(--nav-size-sm);
+  color: var(--nav-ink-muted);
+  margin: 0.75rem 0 0;
+}

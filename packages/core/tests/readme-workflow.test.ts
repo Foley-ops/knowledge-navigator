@@ -143,3 +143,98 @@ describe('what the documentation promises about Hermes', () => {
     expect(readme).toContain('AGENT_CONTENT_CONTRACT.md');
   });
 });
+
+/* ----------------------------------------------------------------- T03 ---- */
+
+describe('the README covers the complete product', () => {
+  const collapsed = readme.replace(/\s+/g, ' ');
+
+  it('says what version 2 added', () => {
+    expect(collapsed).toContain('What Version 2 added');
+    for (const addition of [
+      'curated atlas',
+      'Coverage tiers',
+      'editorial backlog',
+      'Claim-level evidence',
+      'private research workspace',
+      'Compare and Path',
+      'Reviewable agent proposals',
+    ]) {
+      expect(collapsed, addition).toContain(addition);
+    }
+  });
+
+  it('draws the canonical, personal and candidate boundaries exactly', () => {
+    expect(collapsed).toContain('Canonical knowledge');
+    expect(collapsed).toContain('content/concepts/');
+    expect(collapsed).toContain('content/graph-only/');
+    expect(collapsed).toContain('Your private research');
+    expect(collapsed).toContain('never reaches a model unless you tick a box');
+    expect(collapsed).toContain('Atlas candidates');
+    expect(collapsed).toContain('A candidate is not knowledge');
+    expect(collapsed).toContain('never used to ground an answer');
+  });
+
+  it('separates coverage tiers from product versions', () => {
+    expect(collapsed).toContain('Coverage tiers are depths, not versions');
+    expect(collapsed).toContain('nothing to do with the version of this product');
+    expect(collapsed).toContain('keeps the concept id and the slug');
+    expect(collapsed).toContain('review state is a separate axis');
+  });
+
+  it('says how to back up private work', () => {
+    expect(collapsed).toContain('npm run personal:export');
+    expect(collapsed).toContain('personal import');
+    expect(collapsed).toContain('--confirm-import');
+    expect(collapsed).toContain('recovery-drill.sh');
+  });
+
+  it('says exactly what happens to an uploaded file', () => {
+    expect(collapsed).toContain('the original bytes are discarded');
+    expect(collapsed).toContain('10 MiB');
+    expect(collapsed).toContain('300 PDF pages');
+    expect(collapsed).toContain('200,000 characters');
+    expect(collapsed).toContain('nothing is ever executed');
+    expect(collapsed).toContain('only when you tick it for that request');
+  });
+
+  it('explains Compare and Path, including what they refuse to do', () => {
+    expect(collapsed).toContain('quoted from the canonical page');
+    expect(collapsed).toContain('which kind of nothing it is');
+    expect(collapsed).toContain('the synthesis is discarded');
+    expect(collapsed).toContain('`requires` and `prerequisite_of`');
+    expect(collapsed).toContain('does not arrange related concepts into a plausible order');
+    expect(collapsed).toContain('every record that changed the result is named');
+  });
+
+  it('explains the Hermes proposal loop', () => {
+    expect(collapsed).toContain('Proposing content with an agent');
+    expect(collapsed).toContain('It may not publish it');
+    expect(collapsed).toContain('hermes-content-task.mjs');
+  });
+
+  it('says what remains out of scope', () => {
+    expect(collapsed).toContain('What this does not do');
+    for (const excluded of [
+      'No accounts, no authentication',
+      'No public hosting',
+      'No embeddings or vector search',
+      'No OCR, images, audio, video',
+      'No automatic publication',
+      'No stale-claim detection',
+      'No streaming',
+    ]) {
+      expect(collapsed, excluded).toContain(excluded);
+    }
+  });
+
+  it('says the original eleven pages are still generated drafts', () => {
+    expect(collapsed).toContain('All eleven pages are still `generated-draft`');
+    expect(collapsed).toContain('Version 2 did not promote a single one');
+  });
+
+  it('points at the retrieval evaluation rather than claiming a need for embeddings', () => {
+    expect(collapsed).toContain('docs/v2-retrieval-evaluation.md');
+    expect(collapsed).toContain('measured rather than assumed');
+  });
+});

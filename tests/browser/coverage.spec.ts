@@ -5,6 +5,7 @@
  * model is contacted, and nothing here writes.
  */
 import { expect, test } from './fixtures';
+import { FIXTURE_API } from '../../playwright.config';
 
 /* ----------------------------------------------------------------- M01 ---- */
 
@@ -370,6 +371,93 @@ test.describe('navigation', () => {
     for (const route of ['/', '/explore', '/search', '/ask', '/about', '/concepts/pooling']) {
       const response = await page.goto(route);
       expect(response?.status(), route).toBe(200);
+    }
+  });
+});
+
+/* ----------------------------------------------------------------- T04 ---- */
+
+test.describe('the About page', () => {
+  test('shows live counts that match the API, by tier and by review state', async ({
+    page,
+    request,
+    withFixtureProvider,
+  }) => {
+    void withFixtureProvider;
+    const summary = (await (await request.get(`${FIXTURE_API}/coverage/summary`)).json()) as {
+      concepts: { byTier: Record<string, number>; byReviewState: Record<string, number> };
+      atlas: { candidates: number; emptyCategories: number };
+      backlog: { groups: number };
+    };
+
+    await page.goto('/about');
+    const tallies = page.locator('.coverage-tally');
+    const value = (label: string) =>
+      tallies.filter({ hasText: label }).first().locator('.coverage-tally__value');
+
+    await expect(value('Tier 1 pages')).toHaveText(String(summary.concepts.byTier['1'] ?? 0));
+    await expect(value('Tier 2 stubs')).toHaveText(String(summary.concepts.byTier['2'] ?? 0));
+    await expect(value('Tier 3 identities')).toHaveText(String(summary.concepts.byTier['3'] ?? 0));
+    await expect(value('Atlas candidates')).toHaveText(String(summary.atlas.candidates));
+    await expect(value('Unresolved references')).toHaveText(String(summary.backlog.groups));
+    await expect(value('Empty categories')).toHaveText(String(summary.atlas.emptyCategories));
+
+    const total = Object.values(summary.concepts.byTier).reduce((sum, count) => sum + count, 0);
+    await expect(page.locator('.about-review-counts')).toContainText(
+      `${String(total)} canonical concepts by review state`,
+    );
+    await expect(page.locator('.about-review-counts')).toContainText(
+      `${String(summary.concepts.byReviewState['generated-draft'] ?? 0)} generated draft`,
+    );
+  });
+
+  test('says what is not evidence, in the product itself', async ({
+    page,
+    withFixtureProvider,
+  }) => {
+    void withFixtureProvider;
+    await page.goto('/about');
+
+    const notEvidence = page
+      .locator('.nav-section')
+      .filter({ has: page.getByRole('heading', { name: 'What is not evidence' }) });
+    await expect(notEvidence).toContainText('never used to ground an answer');
+    await expect(notEvidence).toContainText('Your own material is not evidence either');
+    await expect(notEvidence).toContainText('never cited as a source');
+  });
+
+  test('describes the private boundary and the limits on uploaded files', async ({
+    page,
+    withFixtureProvider,
+  }) => {
+    void withFixtureProvider;
+    await page.goto('/about');
+
+    const private_ = page
+      .locator('.nav-section')
+      .filter({ has: page.getByRole('heading', { name: 'Your private work' }) });
+    await expect(private_).toContainText('separate database on your machine');
+    await expect(private_).toContainText('Nothing is stored because you read it');
+    await expect(private_).toContainText('npm run personal:export');
+
+    const files = page
+      .locator('.nav-section')
+      .filter({ has: page.getByRole('heading', { name: 'Files you upload' }) });
+    await expect(files).toContainText('the original bytes are discarded');
+    await expect(files).toContainText('10 MiB');
+    await expect(files).toContainText('300 PDF pages');
+    await expect(files).toContainText('is ever executed');
+    await expect(files).toContainText('no OCR');
+  });
+
+  test('contains no private record of any kind', async ({ page, withFixtureProvider }) => {
+    void withFixtureProvider;
+    // Everything a researcher wrote lives behind the API and is never compiled
+    // into this page. A project created by another journey must not appear here.
+    await page.goto('/about');
+    const body = (await page.locator('body').innerText()).toLowerCase();
+    for (const forbidden of ['sentinel', 'small detector recall', 'drill-note', 'personal.db']) {
+      expect(body, forbidden).not.toContain(forbidden);
     }
   });
 });

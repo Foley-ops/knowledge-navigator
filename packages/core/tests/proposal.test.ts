@@ -97,7 +97,42 @@ describe('the manifest', () => {
       parseProposalManifest(
         manifest({ requestedTier: 2, allowedPaths: ['content/graph-only/x.yaml'] }),
       ),
-    ).toThrow(/only write content\/concepts/);
+    ).toThrow(/writes exactly one page/);
+  });
+
+  it('lets a Tier 2 proposal replace the identity it is promoting', () => {
+    // The one case where a proposal touches two files: a graph-only identity
+    // becomes a page, and the YAML goes away in the same reviewed change.
+    const promotion = parseProposalManifest(
+      manifest({
+        requestedTier: 2,
+        allowedPaths: ['content/concepts/mamba.md', 'content/graph-only/mamba.yaml'],
+      }),
+    );
+    expect(promotion.allowedPaths).toHaveLength(2);
+  });
+
+  it('refuses a promotion that would delete a different identity', () => {
+    expect(() =>
+      parseProposalManifest(
+        manifest({
+          requestedTier: 2,
+          allowedPaths: ['content/concepts/mamba.md', 'content/graph-only/resnet.yaml'],
+        }),
+      ),
+    ).toThrow(/different identities/);
+    expect(() =>
+      parseProposalManifest(
+        manifest({
+          requestedTier: 2,
+          allowedPaths: [
+            'content/concepts/mamba.md',
+            'content/graph-only/mamba.yaml',
+            'content/graph-only/resnet.yaml',
+          ],
+        }),
+      ),
+    ).toThrow(/at most one graph-only identity/);
   });
 
   it('requires at least one allowed path and rejects a repeat', () => {

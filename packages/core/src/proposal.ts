@@ -147,6 +147,12 @@ export const proposalPathSchema = z.string().superRefine((value, ctx) => {
 /* The manifest                                                                */
 /* -------------------------------------------------------------------------- */
 
+/** The file name without its directory or extension: `a-star.md` -> `a-star`. */
+export function fileStem(path: string): string {
+  const name = path.split('/').pop() ?? '';
+  return name.replace(/\.(md|yaml)$/, '');
+}
+
 /** Proposal ids are generated, not typed, so the shape can be narrow. */
 export const PROPOSAL_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export const COMMIT_SHA = /^[0-9a-f]{40}$/;
@@ -203,12 +209,36 @@ export const proposalManifestSchema = z
         message: 'a Tier 3 proposal may only write content/graph-only/*.yaml',
       });
     }
-    if (manifest.requestedTier === 2 && yaml.length > 0) {
-      ctx.addIssue({
-        code: 'custom',
-        path: ['allowedPaths'],
-        message: 'a Tier 2 proposal may only write content/concepts/*.md',
-      });
+    if (manifest.requestedTier === 2) {
+      if (markdown.length !== 1) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['allowedPaths'],
+          message: 'a Tier 2 proposal writes exactly one page under content/concepts/',
+        });
+      }
+      // Promotion is the one case where a proposal touches two files: a Tier 3
+      // identity becomes a page, and the YAML it replaces goes away in the same
+      // reviewed change. They must be the same identity, or this would be a
+      // licence to delete one thing while writing another.
+      if (yaml.length > 1) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['allowedPaths'],
+          message: 'a Tier 2 proposal may replace at most one graph-only identity',
+        });
+      }
+      if (
+        yaml.length === 1 &&
+        markdown.length === 1 &&
+        fileStem(yaml[0] ?? '') !== fileStem(markdown[0] ?? '')
+      ) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['allowedPaths'],
+          message: `a Tier 2 proposal may only replace the identity it is promoting: ${fileStem(markdown[0] ?? '')} and ${fileStem(yaml[0] ?? '')} are different identities`,
+        });
+      }
     }
     if (manifest.status !== 'rejected' && manifest.rejectedReason !== undefined) {
       ctx.addIssue({

@@ -34,6 +34,7 @@ import {
   PROPOSAL_FILES,
   ProposalError,
   baseCommitPresent,
+  fileStem,
   parseProposalManifest,
   pathProblem,
 } from './proposal.js';
@@ -100,6 +101,19 @@ function git(repoRoot: string, args: readonly string[], env: NodeJS.ProcessEnv =
     stdio: ['ignore', 'pipe', 'pipe'],
     maxBuffer: 64 * 1024 * 1024,
   });
+}
+
+/** Run git, returning nothing when it fails. Used for "is this here at all". */
+function gitOrUndefined(
+  repoRoot: string,
+  args: readonly string[],
+  env: NodeJS.ProcessEnv = {},
+): string | undefined {
+  try {
+    return git(repoRoot, args, env);
+  } catch {
+    return undefined;
+  }
 }
 
 /** What git said about a failure, in one line. */
@@ -332,9 +346,40 @@ export async function validateProposal(
       const afterPath = join(worktree, path);
       const after = existsSync(afterPath) ? await readFile(afterPath, 'utf8') : undefined;
       if (after === undefined) {
-        problems.push(
-          `the patch deletes ${path}; a proposal adds or edits content, never removes it`,
+        // A deletion is allowed in exactly one case: a graph-only identity
+        // being promoted to a page in the same change. The page has to be in
+        // the same patch, under the same name, carrying the same address —
+        // otherwise this is a proposal that removes knowledge.
+        const replacement = filesTouched.find(
+          (candidate) => candidate.endsWith('.md') && fileStem(candidate) === fileStem(path),
         );
+        if (!path.endsWith('.yaml') || replacement === undefined) {
+          problems.push(
+            `the patch deletes ${path} without replacing it; a proposal adds, edits or promotes content, never removes it`,
+          );
+          continue;
+        }
+        const wasText = gitOrUndefined(repoRoot, [
+          'cat-file',
+          '-p',
+          `${manifest.baseCommit}:${path}`,
+        ]);
+        const replacementText = existsSync(join(worktree, replacement))
+          ? await readFile(join(worktree, replacement), 'utf8')
+          : undefined;
+        const was = readIdentity(path, wasText ?? '');
+        const now = readIdentity(replacement, replacementText ?? '');
+        for (const key of ['concept_id', 'slug'] as const) {
+          if (field(was, key) !== field(now, key)) {
+            problems.push(
+              `${replacement} promotes ${path} but changes ${key} from ${field(was, key) ?? '(missing)'} to ${field(now, key) ?? '(missing)'}; a promotion keeps the address it is promoting`,
+            );
+          }
+        }
+        if (field(now, 'tier') === '3' || now?.['tier'] === 3) {
+          problems.push(`${replacement} promotes ${path} but is still tier 3`);
+        }
+        passed.push(`${path} is promoted to ${replacement}, keeping its address`);
         continue;
       }
       const afterDocument = readIdentity(path, after);

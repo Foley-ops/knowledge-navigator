@@ -43,6 +43,8 @@ export interface ProposalTarget {
   readonly categories: readonly ProposalTargetCategory[];
   readonly proposedKinds: readonly string[];
   readonly sources: readonly ProposalTargetSource[];
+  /** Set when this target already has a canonical identity behind it. */
+  readonly canonicalConceptId: string | null;
 }
 
 /**
@@ -65,6 +67,7 @@ export function findProposalTarget(db: DatabaseType, id: string): ProposalTarget
         .sort(compareStrings)
         .map((path) => ({ categoryId: '', path })),
       proposedKinds: [...group.proposedKinds].sort(compareStrings),
+      canonicalConceptId: null,
       sources: [...group.sources]
         .sort((a, b) => compareStrings(a.conceptId, b.conceptId))
         .map((source) => ({
@@ -90,8 +93,33 @@ export function findProposalTarget(db: DatabaseType, id: string): ProposalTarget
       .sort((a, b) => compareStrings(a.categoryId, b.categoryId))
       .map((category) => ({ categoryId: category.categoryId, path: category.path })),
     proposedKinds: [],
+    canonicalConceptId: candidate.canonicalConceptId,
     sources: [],
   };
+}
+
+interface IdentityRow {
+  id: string;
+  slug: string;
+  tier: number;
+  has_article: number;
+  title: string;
+}
+
+/**
+ * The identity a Tier 2 proposal would be promoting, if there is one.
+ *
+ * A promotion is not a new concept: it is the same address gaining an article.
+ * Finding the existing identity here is what makes the brief say "keep this id
+ * and this slug" rather than deriving a fresh pair that would break every
+ * relationship pointing at the old one.
+ */
+function promotableIdentity(db: DatabaseType, conceptId: string | null): IdentityRow | undefined {
+  if (conceptId === null) return undefined;
+  const row = db
+    .prepare('SELECT id, slug, tier, has_article, title FROM concepts WHERE id = ?')
+    .get(conceptId) as IdentityRow | undefined;
+  return row !== undefined && row.has_article === 0 ? row : undefined;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -254,6 +282,8 @@ export function buildProposalRequest(prepared: {
   readonly title: string;
   readonly slug: string;
   readonly allowedPath: string;
+  /** The graph-only identity this page replaces, when it is a promotion. */
+  readonly replacing?: string | null | undefined;
   readonly categories: readonly string[];
   readonly primaryCategory: string;
   readonly kind: string;
@@ -279,8 +309,19 @@ export function buildProposalRequest(prepared: {
   lines.push(`- Created: ${prepared.createdAt}`);
   lines.push('');
 
-  lines.push('## The one file you may write', '');
+  lines.push(
+    prepared.replacing === undefined || prepared.replacing === null
+      ? '## The one file you may write'
+      : '## The two files this promotion touches',
+    '',
+  );
   lines.push(`\`${prepared.allowedPath}\``, '');
+  if (prepared.replacing !== undefined && prepared.replacing !== null) {
+    lines.push(
+      `and \`${prepared.replacing}\`, which this page replaces. Delete it in the same change: the identity is not disappearing, it is gaining an article, and its id and slug above are the ones it already has.`,
+      '',
+    );
+  }
   lines.push(
     'Creating, editing, moving or deleting any other file makes this proposal invalid. That includes the atlas, other concept pages, tests, configuration and workflow files.',
     '',
@@ -430,15 +471,24 @@ export function prepareProposal(db: DatabaseType, input: PrepareInput): Prepared
     );
   }
 
-  const slugTail = input.name ?? slugNameFromLabel(target.label);
-  const slug = `/concepts/${slugTail}`;
+  // A Tier 3 identity being promoted keeps the address it already has.
+  const promoting =
+    input.tier === 2 ? promotableIdentity(db, target.canonicalConceptId) : undefined;
+  const slugTail =
+    promoting === undefined
+      ? (input.name ?? slugNameFromLabel(target.label))
+      : (promoting.slug.split('/').pop() ?? '');
+  const slug = promoting === undefined ? `/concepts/${slugTail}` : promoting.slug;
   if (!CONCEPT_SLUG.test(slug)) {
     throw new ProposalError(`"${target.label}" does not make a usable address (${slug})`, [
       'pass --name <lowercase-dashed-name> to choose one deliberately',
     ]);
   }
 
-  const conceptId = conceptIdFor(chosen.categoryId || chosen.path, slugTail);
+  const conceptId =
+    promoting === undefined
+      ? conceptIdFor(chosen.categoryId || chosen.path, slugTail)
+      : promoting.id;
   if (!DOTTED_ID.test(conceptId)) {
     throw new ProposalError(`the derived concept id ${conceptId} is not a valid identifier`, [
       'pass --name <lowercase-dashed-name>, or choose a different category',
@@ -447,16 +497,22 @@ export function prepareProposal(db: DatabaseType, input: PrepareInput): Prepared
 
   const allowedPath =
     input.tier === 3 ? `content/graph-only/${slugTail}.yaml` : `content/concepts/${slugTail}.md`;
-  const problem = pathProblem(allowedPath);
-  if (problem !== undefined) {
-    throw new ProposalError(`the file this proposal would write ${problem}`, [allowedPath]);
+  // A promotion replaces the identity file in the same reviewed change, so the
+  // file it removes is named here too. Nothing else may ever be removed.
+  const allowedPaths =
+    promoting === undefined ? [allowedPath] : [allowedPath, `content/graph-only/${slugTail}.yaml`];
+  for (const path of allowedPaths) {
+    const problem = pathProblem(path);
+    if (problem !== undefined) {
+      throw new ProposalError(`the file this proposal would write ${problem}`, [path]);
+    }
   }
 
   const manifest: ProposalManifest = {
     proposalId: input.proposalId,
     targetBacklogId: target.id,
     requestedTier: input.tier,
-    allowedPaths: [allowedPath],
+    allowedPaths,
     baseCommit: input.baseCommit,
     createdAt: input.createdAt,
     status: 'prepared',
@@ -469,9 +525,10 @@ export function prepareProposal(db: DatabaseType, input: PrepareInput): Prepared
     createdAt: input.createdAt,
     baseCommit: input.baseCommit,
     conceptId,
-    title: target.label,
+    title: promoting?.title ?? target.label,
     slug,
     allowedPath,
+    replacing: promoting === undefined ? null : `content/graph-only/${slugTail}.yaml`,
     categories: [chosen.path],
     primaryCategory: chosen.path,
     kind: target.proposedKinds[0] ?? 'concept',
