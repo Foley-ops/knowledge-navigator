@@ -100,6 +100,7 @@ export function createOllamaProvider(options: OllamaOptions): AssistantProvider 
     async generate({
       request,
       retrieval,
+      privateContext,
       timeoutMs,
       signal,
     }: GenerateInput): Promise<ProviderOutcome> {
@@ -121,7 +122,7 @@ export function createOllamaProvider(options: OllamaOptions): AssistantProvider 
             think: false,
             messages: [
               { role: 'system', content: SYSTEM_PROMPT },
-              { role: 'user', content: buildUserPrompt(request, retrieval) },
+              { role: 'user', content: buildUserPrompt(request, retrieval, privateContext) },
             ],
           }),
         });

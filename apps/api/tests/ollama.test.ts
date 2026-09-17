@@ -23,6 +23,9 @@ const request: AssistantRequest = {
   question: 'My image model keeps losing small spatial details after repeated downsampling.',
   mode: 'unstick',
   depth: 'intuitive',
+  // No private material: the default for every request that does not select any.
+  artifactIds: [],
+  noteIds: [],
 };
 
 type Handler = (req: IncomingMessage, res: ServerResponse, body: string) => void;

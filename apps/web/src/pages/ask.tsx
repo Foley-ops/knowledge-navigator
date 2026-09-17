@@ -6,6 +6,12 @@ import { useLocation } from '@docusaurus/router';
 import { Identifier, Page, ReviewStateBadge, Section, State } from '@site/src/components/Ui';
 import { Confidence } from '@site/src/components/Confidence';
 import { SaveAnswer } from '@site/src/components/SaveAnswer';
+import {
+  NO_SELECTION,
+  PrivateContextPicker,
+  PrivateContextUsed,
+} from '@site/src/components/PrivateContextPicker';
+import type { PrivateSelectionState } from '@site/src/components/PrivateContextPicker';
 import { ApiError, api, isAbort } from '@site/src/lib/api';
 import type { AssistantResponse, AssistantStatus, ResearchSession } from '@site/src/lib/api';
 import { railClass } from '@site/src/lib/review-state';
@@ -62,6 +68,8 @@ function AnswerSection({
 export default function AskPage(): ReactNode {
   // Sessions of the current project, so an answer can be filed under one.
   const [sessions, setSessions] = useState<ResearchSession[]>([]);
+  // Private material selected for the next question. Empty unless ticked.
+  const [selection, setSelection] = useState<PrivateSelectionState>(NO_SELECTION);
   const location = useLocation();
   const initialMode = new URLSearchParams(location.search).get('mode');
 
@@ -133,6 +141,15 @@ export default function AskPage(): ReactNode {
             ...(context.trim() === '' ? {} : { context: context.trim() }),
             mode: askMode,
             depth: askDepth,
+            // Only what was ticked, and only when a project is chosen.
+            ...(selection.projectId !== undefined &&
+            (selection.artifactIds.length > 0 || selection.noteIds.length > 0)
+              ? {
+                  projectId: selection.projectId,
+                  artifactIds: [...selection.artifactIds],
+                  noteIds: [...selection.noteIds],
+                }
+              : {}),
           },
           controller.signal,
         );
@@ -150,7 +167,7 @@ export default function AskPage(): ReactNode {
         if (!controller.signal.aborted) setWorking(false);
       }
     },
-    [question, context],
+    [question, context, selection],
   );
 
   const submit = (event: FormEvent): void => {
@@ -231,6 +248,8 @@ export default function AskPage(): ReactNode {
               maxLength={8000}
             />
           </label>
+
+          <PrivateContextPicker value={selection} onChange={setSelection} />
 
           <div className="nav-field">
             <span className="nav-field__label" id="mode-label">
@@ -451,6 +470,11 @@ export default function AskPage(): ReactNode {
                 sessions={sessions}
               />
             )}
+          </Section>
+        )}
+        {response !== null && !working && response.privateContext.items.length > 0 && (
+          <Section heading="Private context used">
+            <PrivateContextUsed context={response.privateContext} />
           </Section>
         )}
         {response !== null && !working && (

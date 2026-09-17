@@ -17,7 +17,11 @@
 #   * `password:` in publish-images.yml — the input name of
 #     docker/login-action, fed GitHub's built-in ephemeral token;
 #   * `/etc/passwd` in three test files — path-traversal inputs used to prove
-#     the API refuses them.
+#     the API refuses them;
+#   * the assistant's references to private types — apps/api/src/assistant/
+#     private-context.ts is the explicit-selection path itself, so it must name
+#     them. The check prints the matches rather than hiding them, and the
+#     containment property is proved by apps/api/tests/private-context.test.ts.
 # ---------------------------------------------------------------------------
 set -uo pipefail
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

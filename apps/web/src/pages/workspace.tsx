@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import { Artifacts } from '@site/src/components/Artifacts';
 import { Identifier, Page, Section, State } from '@site/src/components/Ui';
 import { api, isAbort } from '@site/src/lib/api';
 import type {
@@ -632,10 +633,7 @@ export default function WorkspacePage(): ReactNode {
             )}
             {section === 'artifacts' && (
               <Section heading="Artifacts">
-                <Empty what="No uploaded context yet">
-                  Local papers, notebooks and code files you choose to upload will appear here, as
-                  extracted text. The original file is never kept.
-                </Empty>
+                <Artifacts projectId={projectId} />
               </Section>
             )}
             {section === 'export' && (

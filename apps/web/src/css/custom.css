@@ -1769,3 +1769,76 @@ details[open] > summary.coverage-branch__name::before {
   justify-items: start;
   max-width: 44rem;
 }
+
+/* ==========================================================================
+   Artifacts and private context — the researcher's own material
+   ========================================================================== */
+
+.artifact-preview {
+  max-height: 22rem;
+  overflow: auto;
+  background: var(--nav-surface-sunken);
+  padding: 0.6rem 0.8rem;
+  font-size: var(--nav-size-xs);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0.4rem 0 0;
+}
+
+.artifact-warnings {
+  list-style: none;
+  padding: 0 0 0 0.75rem;
+  margin: 0 0 0.3rem;
+  border-left: 2px dashed var(--nav-caution);
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-caution);
+}
+
+.private-picker {
+  margin: 0 0 1rem;
+  border: 1px solid var(--nav-rule);
+  padding: 0.5rem 0.75rem;
+  background: var(--nav-surface);
+}
+
+.private-picker > summary {
+  cursor: pointer;
+  font-size: var(--nav-size-sm);
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.private-picker__group {
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.6rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.private-picker__group > legend {
+  font-size: var(--nav-size-2xs);
+  color: var(--nav-ink-faint);
+  padding: 0;
+  margin-bottom: 0.2rem;
+}
+
+/* Private context is visually separate from canonical citations on purpose:
+   it borrows none of the evidence palette, and carries a dashed rule. */
+.private-used {
+  border-left: 3px dashed var(--nav-ink-faint);
+  padding-left: 1rem;
+}
+
+.private-used__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: var(--nav-size-sm);
+}

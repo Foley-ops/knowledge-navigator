@@ -9,6 +9,7 @@
  */
 import { z } from 'zod';
 import type { AssistantProviderName } from '../config.js';
+import type { PrivateContext } from './private-context.js';
 
 export const assistantModes = ['understand', 'unstick', 'compare', 'path'] as const;
 export type AssistantMode = (typeof assistantModes)[number];
@@ -36,6 +37,18 @@ export const assistantRequestSchema = z.object({
     .optional(),
   mode: z.enum(assistantModes).default('unstick'),
   depth: z.enum(assistantDepths).default('intuitive'),
+  /**
+   * Private material the researcher selected for THIS request (v2 §4.9).
+   *
+   * Absent by default. Nothing is included because it exists, was uploaded
+   * recently, or belongs to the current project: only ids listed here reach
+   * the model, and only from the project named here. The caps are the
+   * contract's — at most five artifacts and five notes.
+   */
+  projectId: z.string().uuid().optional(),
+  sessionId: z.string().uuid().optional(),
+  artifactIds: z.array(z.string().uuid()).max(5).default([]),
+  noteIds: z.array(z.string().uuid()).max(5).default([]),
 });
 export type AssistantRequest = z.infer<typeof assistantRequestSchema>;
 
@@ -152,6 +165,12 @@ export type ProviderOutcome =
 export interface GenerateInput {
   readonly request: AssistantRequest;
   readonly retrieval: Retrieval;
+  /**
+   * Private material the researcher selected for this request. Optional, and
+   * empty unless they selected something: a provider must work identically
+   * with and without it.
+   */
+  readonly privateContext?: PrivateContext | undefined;
   readonly timeoutMs: number;
   readonly signal?: AbortSignal | undefined;
 }

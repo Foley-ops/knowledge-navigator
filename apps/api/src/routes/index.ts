@@ -5,6 +5,7 @@ import { registerSearchRoutes } from './search.js';
 import { registerGraphRoutes } from './graph.js';
 import { registerCoverageRoutes } from './coverage.js';
 import { registerPersonalRoutes } from './personal.js';
+import { registerArtifactRoutes } from './artifacts.js';
 import { registerAssistantRoutes } from './assistant.js';
 
 export async function registerRoutes(app: FastifyInstance): Promise<void> {
@@ -14,5 +15,6 @@ export async function registerRoutes(app: FastifyInstance): Promise<void> {
   await registerGraphRoutes(app);
   await registerCoverageRoutes(app);
   await registerPersonalRoutes(app);
+  await registerArtifactRoutes(app);
   await registerAssistantRoutes(app);
 }

@@ -194,6 +194,7 @@ export interface AssistantResponse {
   latencyMs: number;
   elapsedMs: number;
   retrieval: RetrievalView;
+  privateContext: PrivateContextView;
   error: { code: string; message: string; detail?: string } | null;
   result: AssistantResult | null;
 }
@@ -420,11 +421,53 @@ export interface SavedItem {
   archivedAt: string | null;
 }
 
+export interface Artifact {
+  id: string;
+  projectId: string;
+  label: string;
+  originalName: string;
+  mediaType: string;
+  byteCount: number;
+  characterCount: number;
+  sha256: string;
+  warnings: string[];
+  createdAt: string;
+  updatedAt: string;
+  archivedAt: string | null;
+}
+
+export interface ArtifactWithText extends Artifact {
+  extractedText: string;
+}
+
+export interface PrivateContextItem {
+  kind: 'artifact' | 'note';
+  id: string;
+  label: string;
+  characterCount: number;
+  totalCharacters: number;
+  truncated: boolean;
+}
+
+export interface PrivateContextView {
+  projectId: string | null;
+  items: PrivateContextItem[];
+  unresolved: string[];
+  characterCount: number;
+  characterBudget: number;
+  truncated: boolean;
+}
+
 export interface AssistantAsk {
   question: string;
   context?: string;
   mode: string;
   depth: string;
+  /** Private material selected for this one request. Absent means none. */
+  projectId?: string;
+  sessionId?: string;
+  artifactIds?: string[];
+  noteIds?: string[];
 }
 
 /** POST JSON and decode the reply. Used by every personal mutation. */
@@ -640,6 +683,46 @@ export const api = {
       `/personal/familiarity/${encodeURIComponent(conceptId)}/clear`,
       {},
     ),
+
+  listArtifacts: (
+    projectId: string,
+    includeArchived = false,
+    signal?: AbortSignal,
+  ): Promise<{ items: Artifact[] }> =>
+    request<{ items: Artifact[] }>(
+      `/personal/projects/${projectId}/artifacts${includeArchived ? '?includeArchived=true' : ''}`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  getArtifact: (projectId: string, id: string, signal?: AbortSignal): Promise<ArtifactWithText> =>
+    request<ArtifactWithText>(
+      `/personal/projects/${projectId}/artifacts/${id}`,
+      signal === undefined ? {} : { signal },
+    ),
+
+  /**
+   * Upload one local file. The browser sends the bytes; the API extracts the
+   * text, keeps that, and drops the bytes. There is no path that stores a file.
+   */
+  uploadArtifact: (
+    projectId: string,
+    file: File,
+    label?: string,
+  ): Promise<{ artifact: Artifact; deduplicated: boolean }> => {
+    const body = new FormData();
+    if (label !== undefined && label.trim() !== '') body.append('label', label.trim());
+    body.append('file', file, file.name);
+    return request<{ artifact: Artifact; deduplicated: boolean }>(
+      `/personal/projects/${projectId}/artifacts`,
+      { method: 'POST', body },
+    );
+  },
+
+  archiveArtifact: (projectId: string, id: string): Promise<Artifact> =>
+    post<Artifact>(`/personal/projects/${projectId}/artifacts/${id}/archive`, {}),
+
+  restoreArtifact: (projectId: string, id: string): Promise<Artifact> =>
+    post<Artifact>(`/personal/projects/${projectId}/artifacts/${id}/restore`, {}),
 
   assistantStatus: (signal?: AbortSignal): Promise<AssistantStatus> =>
     request<AssistantStatus>('/assistant/status', signal === undefined ? {} : { signal }),

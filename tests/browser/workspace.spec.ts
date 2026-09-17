@@ -64,8 +64,14 @@ test.describe('the empty workspace', () => {
     await expect(page).toHaveURL(/\/workspace/);
   });
 
-  test('explains what a project is before there is one', async ({ page, withFixtureProvider }) => {
-    void withFixtureProvider;
+  /**
+   * Run against the generation-off API, which has its own private store that no
+   * other journey writes to. Tests share one store per API within a run, so a
+   * genuinely empty workspace has to be looked for somewhere nothing has been
+   * created — and this also proves the workspace works with generation off.
+   */
+  test('explains what a project is before there is one', async ({ page, withGenerationOff }) => {
+    void withGenerationOff;
     await page.goto('/workspace');
     await expect(page.getByText('No projects yet')).toBeVisible();
     await expect(page.getByLabel('Project name')).toBeVisible();

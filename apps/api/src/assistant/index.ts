@@ -8,6 +8,14 @@ import type { AssistantProvider, ProviderStatus } from './types.js';
 export * from './types.js';
 export { retrieve, MAX_RETRIEVED_CONCEPTS } from './retrieval.js';
 export {
+  EMPTY_PRIVATE_CONTEXT,
+  MAX_PRIVATE_SELECTIONS,
+  PRIVATE_CONTEXT_BUDGET,
+  buildPrivateContext,
+  describePrivateContext,
+} from './private-context.js';
+export type { PrivateContext, PrivateContextItem, PrivateSelection } from './private-context.js';
+export {
   buildUserPrompt,
   citableIds,
   extractJson,

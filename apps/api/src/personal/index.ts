@@ -6,3 +6,4 @@ export * from './sessions.js';
 export * from './notes.js';
 export * from './familiarity.js';
 export * from './saved.js';
+export * from './artifacts.js';

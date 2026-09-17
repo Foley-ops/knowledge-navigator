@@ -71,7 +71,13 @@ describe('GET /api/personal/status', () => {
     expect(status).toBe(200);
     expect(body.available).toBe(true);
     expect(body.schemaVersion).toBe(1);
-    expect(body.counts).toEqual({ projects: 0, sessions: 0, notes: 0, savedItems: 0 });
+    expect(body.counts).toEqual({
+      projects: 0,
+      sessions: 0,
+      notes: 0,
+      savedItems: 0,
+      artifacts: 0,
+    });
     expect(JSON.stringify(body)).not.toContain(scratch);
     expect(JSON.stringify(body)).not.toContain('personal.db');
   });
@@ -337,7 +343,13 @@ describe('ordinary browsing stores nothing', () => {
     });
 
     const { body } = await call('GET', '/api/personal/status');
-    expect(body.counts).toEqual({ projects: 0, sessions: 0, notes: 0, savedItems: 0 });
+    expect(body.counts).toEqual({
+      projects: 0,
+      sessions: 0,
+      notes: 0,
+      savedItems: 0,
+      artifacts: 0,
+    });
   });
 });
 

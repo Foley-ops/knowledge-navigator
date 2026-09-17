@@ -2,6 +2,11 @@ import type { FastifyInstance } from 'fastify';
 import { getConceptById } from '@navigator/core';
 import type { Database as DatabaseType } from 'better-sqlite3';
 import { assistantRequestSchema, retrieve } from '../assistant/index.js';
+import {
+  EMPTY_PRIVATE_CONTEXT,
+  buildPrivateContext,
+  describePrivateContext,
+} from '../assistant/private-context.js';
 import type {
   Citation,
   ProviderFailureCode,
@@ -124,6 +129,33 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
       characterBudget: app.config.ASSISTANT_CHARACTER_BUDGET,
     });
 
+    // Private material, only when the researcher named some and only from the
+    // project they named. Retrieval above has already run against canonical
+    // content alone, so private material can never enter the evidence list or
+    // the citable ids.
+    const wants =
+      parsed.data.projectId !== undefined &&
+      (parsed.data.artifactIds.length > 0 || parsed.data.noteIds.length > 0);
+    let privateContext = EMPTY_PRIVATE_CONTEXT;
+    if (wants && !app.personal.available) {
+      return sendError(
+        request,
+        reply,
+        503,
+        'personal_store_unavailable',
+        app.personal.message ??
+          'The private research store is unavailable, so the material you selected could not be read. Ask without it, or fix the store first.',
+        { reason: app.personal.reason ?? 'unknown' },
+      );
+    }
+    if (wants) {
+      privateContext = buildPrivateContext(app.personal.db, {
+        projectId: parsed.data.projectId!,
+        artifactIds: parsed.data.artifactIds,
+        noteIds: parsed.data.noteIds,
+      });
+    }
+
     // Counts only. The question and the research context stay out of the log.
     request.log.info(
       {
@@ -133,6 +165,8 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
         questionLength: parsed.data.question.length,
         contextLength: parsed.data.context?.length ?? 0,
         retrievedConcepts: retrieval.concepts.length,
+        privateItems: privateContext.items.length,
+        privateCharacters: privateContext.characterCount,
       },
       'assistant query',
     );
@@ -140,6 +174,7 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
     const outcome = await app.assistant.generate({
       request: parsed.data,
       retrieval,
+      privateContext,
       timeoutMs: app.config.ASSISTANT_TIMEOUT_MS,
     });
 
@@ -152,6 +187,9 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
       latencyMs: outcome.latencyMs,
       elapsedMs: Date.now() - askedAt,
       retrieval: retrievalView(retrieval),
+      // Kept beside the canonical evidence, never merged into it: ids, labels
+      // and counts only, and never a word of the material itself.
+      privateContext: describePrivateContext(privateContext),
     };
 
     if (!outcome.ok) {

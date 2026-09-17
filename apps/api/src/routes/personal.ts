@@ -14,6 +14,7 @@ import {
   clearFamiliarity,
   countNotes,
   countProjects,
+  countArtifacts,
   countSavedItems,
   countSessions,
   createNote,
@@ -161,6 +162,7 @@ export async function registerPersonalRoutes(app: FastifyInstance): Promise<void
         sessions: countSessions(handle),
         notes: countNotes(handle),
         savedItems: countSavedItems(handle),
+        artifacts: countArtifacts(handle),
       },
       requestId: request.id,
     });
