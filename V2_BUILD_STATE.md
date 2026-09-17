@@ -24,7 +24,7 @@ honouring its **Depends on** line.
 
 ## Current checkpoint
 
-S06
+T00
 
 ## Completed checkpoints
 
@@ -117,6 +117,7 @@ S06
 - **S03** — scripts/recovery-drill.sh proves private work survives the loss of its volume: it builds an isolated stack under its own Compose project name, port and volumes, creates real records through the running product, exports, destroys the personal volume, restarts, imports, and compares the two exports. It refuses to run against the real project name and never touches the researcher's own store. Documented in the README beside export and import.
 - **S04** — The security review gained a section over the new write surface: personal writes go through the validated store rather than raw SQL in a route, uploads are bounded by all four limits, the API never spawns or evaluates anything and the PDF reader runs with evaluation disabled, the published graph and the built site carry no private data, and exports, imports and proposal acceptance each require an explicit flag or a confirmation that names what it is confirming.
 - **S05** — The smoke test now exercises every v2 surface through the one published port — coverage, compare, path, workspace and backlog pages, the coverage, evidence and personal-status APIs, POST /api/compare and /api/paths including a refusal, a private export inside the running container, a proposal prepared on the host, and the Hermes adapter's read-only check — and it runs the whole set twice, restarting the containers in between. A browser journey covers the workspace Export tab; selected private context in Ask, ingestion, Coverage, Compare, Path and workspace persistence were already covered.
+- **S06** — Phase S committed as 9c45f42 with a clean working tree; both images build.
 
 ## Last successful checks
 
@@ -215,6 +216,7 @@ S06
 - **S03** `bash scripts/recovery-drill.sh` → Passed. 1 project, 1 session, 1 note and 1 familiarity record created; volume navigator-recovery-drill_personal-data removed; the product restarted with an empty store; 4 records imported; the second export is byte-identical to the first once exportedAt and the export_history row are normalised; corpus hash bb96930aab75dd2c3741c91919f65b8ba3ea53b5a7c13cea1588c7fd1edff96e before and after.
 - **S04** `bash scripts/security-review.sh` → 40 passed, 0 failed, 2 documented notes — credential-shaped strings in tracked files (a GitHub Actions input name, path-traversal test inputs and the review's own documentation of them), and the assistant naming private types because private-context.ts is the explicit-selection path itself.
 - **S05** `bash scripts/smoke.sh && npm run test:browser` → Smoke: 66 checks passed, 33 before and 33 after a container restart. Browser: 71 journeys passed, every v1 journey included.
+- **S06** `npm run check && docker compose build && bash scripts/smoke.sh` → 9/9 stages, 991 unit and API tests, 71 browser journeys, smoke 66 checks across a restart, security review 40 passed 0 failed 2 documented notes. Images: knowledge-navigator-api:local 556MB, knowledge-navigator-web:local 88.2MB.
 
 ## Blockers
 
@@ -256,4 +258,4 @@ _none_
 
 ## Next action
 
-S06 — run the full checks, confirm both images build, and commit Phase S.
+T00 — read Phase T and begin the evaluation harness.
