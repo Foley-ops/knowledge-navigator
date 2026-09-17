@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T22:03:54.978Z",
-  "corpusHash": "a207f67a73f653dfcb9ce62127e8def0a01c0902f9c4a2ad01cebb0be97e8202",
-  "atlasHash": "f2e31713f89db613c3160ee618b90f960b901ee1b1f18d67d0bd016f75496c37",
+  "builtAt": "2026-09-17T22:31:17.384Z",
+  "corpusHash": "d28a0d376dbde66e042e8feca7b1fb0e4a08756f70a8b25ce75ca1a53b35197d",
+  "atlasHash": "0d07afc34d5112f782046f4a0a5696c7f48a0421442168dad05cdd8c57f513fa",
   "counts": {
-    "concepts": 101,
-    "relationships": 374,
-    "categories": 19
+    "concepts": 121,
+    "relationships": 450,
+    "categories": 22
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 101,
+      "1": 121,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 101,
+      "markdown": 121,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 101
+      "generated-draft": 121
     },
-    "conceptsWithArticle": 101,
+    "conceptsWithArticle": 121,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 190,
+      "candidate": 170,
       "proposed-tier-3": 0,
-      "covered": 101,
+      "covered": 121,
       "deferred": 0
     },
-    "unresolvedReferences": 88,
-    "unresolvedGroups": 88,
+    "unresolvedReferences": 136,
+    "unresolvedGroups": 136,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -452,6 +452,79 @@
         "concept.algorithms.graph_algorithms",
         "concept.algorithms.searching",
         "concept.algorithms.sorting"
+      ]
+    },
+    {
+      "path": "Programming/Languages",
+      "name": "Languages",
+      "topLevel": "Programming",
+      "depth": 2,
+      "parent": "Programming",
+      "primaryConceptIds": [
+        "concept.languages.assembly",
+        "concept.languages.c_language",
+        "concept.languages.cpp",
+        "concept.languages.cuda",
+        "concept.languages.go",
+        "concept.languages.gpu_kernels",
+        "concept.languages.haskell",
+        "concept.languages.javascript",
+        "concept.languages.julia",
+        "concept.languages.lisp",
+        "concept.languages.matlab",
+        "concept.languages.python",
+        "concept.languages.r_language",
+        "concept.languages.rust",
+        "concept.languages.typescript"
+      ],
+      "conceptIds": [
+        "concept.languages.assembly",
+        "concept.languages.c_language",
+        "concept.languages.cpp",
+        "concept.languages.cuda",
+        "concept.languages.go",
+        "concept.languages.gpu_kernels",
+        "concept.languages.haskell",
+        "concept.languages.javascript",
+        "concept.languages.julia",
+        "concept.languages.lisp",
+        "concept.languages.matlab",
+        "concept.languages.python",
+        "concept.languages.r_language",
+        "concept.languages.rust",
+        "concept.languages.typescript"
+      ]
+    },
+    {
+      "path": "Programming/Languages/Paradigms",
+      "name": "Paradigms",
+      "topLevel": "Programming",
+      "depth": 3,
+      "parent": "Programming/Languages",
+      "primaryConceptIds": [
+        "concept.paradigms.array_programming",
+        "concept.paradigms.functional_programming",
+        "concept.paradigms.imperative_programming",
+        "concept.paradigms.object_oriented_programming"
+      ],
+      "conceptIds": [
+        "concept.paradigms.array_programming",
+        "concept.paradigms.functional_programming",
+        "concept.paradigms.imperative_programming",
+        "concept.paradigms.object_oriented_programming"
+      ]
+    },
+    {
+      "path": "Programming/Systems",
+      "name": "Systems",
+      "topLevel": "Programming",
+      "depth": 2,
+      "parent": "Programming",
+      "primaryConceptIds": [
+        "concept.systems.operating_systems"
+      ],
+      "conceptIds": [
+        "concept.systems.operating_systems"
       ]
     }
   ],
@@ -1993,6 +2066,321 @@
       "claims": 0
     },
     {
+      "id": "concept.languages.assembly",
+      "title": "Assembly",
+      "slug": "/concepts/assembly",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The symbolic notation for one processor's instruction set, where a line of text names a single machine instruction and an assembler turns it into the bytes the hardware decodes.",
+      "aliases": [
+        "assembly language"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.assembly",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.c_language",
+      "title": "C",
+      "slug": "/concepts/c-language",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A small statically typed systems language in which the programmer allocates memory and controls object layout by hand, and whose calling convention became the interface almost every other language uses to reach native code.",
+      "aliases": [
+        "ANSI C",
+        "K&R C"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.c",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.cpp",
+      "title": "C++",
+      "slug": "/concepts/cpp",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A compiled, statically typed language that layers classes, templates and deterministic resource management onto C's machine model under a rule that abstraction must cost nothing at run time — and that inherits C's undefined behaviour in the bargain.",
+      "aliases": [
+        "zero-overhead abstraction"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.c_plus_plus",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.cuda",
+      "title": "CUDA",
+      "slug": "/concepts/cuda",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "NVIDIA's platform for general-purpose GPU programming, in which a C++ function is launched as a grid of thread blocks whose threads execute 32 at a time in warps over an explicitly managed memory hierarchy.",
+      "aliases": [
+        "Compute Unified Device Architecture"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.cuda",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.go",
+      "title": "Go",
+      "slug": "/concepts/go",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A small statically typed, garbage-collected language from Google in which concurrency is expressed with goroutines and channels rather than threads and locks, and interfaces are satisfied structurally rather than by declaration.",
+      "aliases": [
+        "golang"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.go",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.gpu_kernels",
+      "title": "GPU Kernels",
+      "slug": "/concepts/gpu-kernels",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The unit of work dispatched to a GPU — one function run by a grid of threads — whose speed is usually decided by how many bytes it moves rather than how many operations it performs.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.gpu_kernels",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 5,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.haskell",
+      "title": "Haskell",
+      "slug": "/concepts/haskell",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A purely functional, non-strict, statically typed language, standardised in 1990 and again in 2010, in which effects are values of type IO a and overloading is resolved by type classes rather than by subtyping.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.haskell",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.javascript",
+      "title": "JavaScript",
+      "slug": "/concepts/javascript",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The dynamically typed, prototype-based language standardised as ECMAScript, whose first-class functions and single-threaded event loop make it the default language of the browser and a common one on the server.",
+      "aliases": [
+        "ECMAScript"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.javascript",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.julia",
+      "title": "Julia",
+      "slug": "/concepts/julia",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Julia is a dynamically typed language for technical computing in which every function call selects a method from the runtime types of all its arguments, and the compiler specialises each method on the argument types it is actually called with, so generic code compiles to machine code of the kind a static compiler emits.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.julia",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.lisp",
+      "title": "Lisp",
+      "slug": "/concepts/lisp",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of languages — Common Lisp, Scheme, Clojure and Emacs Lisp among them — whose programs are written as the same nested-list data structure the evaluator consumes, which makes a macro an ordinary program that rewrites syntax trees rather than text.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.lisp",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.matlab",
+      "title": "MATLAB",
+      "slug": "/concepts/matlab",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "MATLAB is a proprietary interactive environment and language in which the primitive value is a dense matrix, which makes numerical linear algebra terse to write and fast to run, at the price of a licence that its code carries with it.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.matlab",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.python",
+      "title": "Python",
+      "slug": "/concepts/python",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A dynamically typed, garbage-collected, multi-paradigm language whose place in machine learning rests not on the speed of its interpreter but on how comfortably it drives compiled numerical libraries written in C, C++, Fortran and CUDA.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.python",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.r_language",
+      "title": "R",
+      "slug": "/concepts/r-language",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "R is a language and runtime for statistical computing in which the vector rather than the scalar is the primitive datum, tabular data frames and model formulas are built into the base library, and CRAN hosts more than twenty thousand contributed packages behind an automated check suite, new statistical methodology commonly being published alongside a companion package.",
+      "aliases": [
+        "GNU R"
+      ],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.r",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.rust",
+      "title": "Rust",
+      "slug": "/concepts/rust",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Rust is a compiled systems language whose type system tracks who owns each value and how long references to it may live, so the compiler rejects use-after-free and data races before the program ever runs — with no garbage collector, and with the ownership and aliasing discipline checked entirely at compile time rather than by a run-time barrier or lock.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.rust",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.languages.typescript",
+      "title": "TypeScript",
+      "slug": "/concepts/typescript",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "TypeScript adds a structural static type layer to JavaScript that the compiler checks and then erases, buying editor tooling and refactoring safety at the price of a type system that is knowingly unsound and enforces nothing at runtime.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages",
+      "categories": [
+        "Programming/Languages"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.typescript",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.linear_algebra.matrix_decompositions",
       "title": "Matrix Decompositions",
       "slug": "/concepts/matrix-decompositions",
@@ -2403,6 +2791,92 @@
       "claims": 0
     },
     {
+      "id": "concept.paradigms.array_programming",
+      "title": "Array Programming",
+      "slug": "/concepts/array-programming",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A style of programming in which operations apply to whole arrays at once rather than to elements one at a time, moving the iteration out of the interpreter and into compiled kernels.",
+      "aliases": [
+        "array-oriented programming"
+      ],
+      "primaryCategory": "Programming/Languages/Paradigms",
+      "categories": [
+        "Programming/Languages/Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.paradigms.array_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.paradigms.functional_programming",
+      "title": "Functional Programming",
+      "slug": "/concepts/functional-programming",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A way of programming in which computation is the evaluation of expressions rather than the execution of state changes, so functions are ordinary values and a call can be replaced by its result without changing what the program means.",
+      "aliases": [],
+      "primaryCategory": "Programming/Languages/Paradigms",
+      "categories": [
+        "Programming/Languages/Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.paradigms.functional_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.paradigms.imperative_programming",
+      "title": "Imperative Programming",
+      "slug": "/concepts/imperative-programming",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The style in which a program is an ordered sequence of statements that overwrite a shared mutable state, with assignment as the primitive step and explicit control flow deciding what runs next.",
+      "aliases": [
+        "imperative paradigm"
+      ],
+      "primaryCategory": "Programming/Languages/Paradigms",
+      "categories": [
+        "Programming/Languages/Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.paradigms.imperative_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.paradigms.object_oriented_programming",
+      "title": "Object-Oriented Programming",
+      "slug": "/concepts/object-oriented-programming",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A way of structuring programs around objects that own state and expose operations over it, where the receiver of a call selects the code that runs.",
+      "aliases": [
+        "OOP"
+      ],
+      "primaryCategory": "Programming/Languages/Paradigms",
+      "categories": [
+        "Programming/Languages/Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.languages.paradigms.object_oriented_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
       "id": "concept.physics.hamiltonian_mechanics",
       "title": "Hamiltonian Mechanics",
       "slug": "/concepts/hamiltonian-mechanics",
@@ -2642,6 +3116,26 @@
       "candidateId": "candidate.mathematics.probability_and_statistics.stochastic_processes",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.systems.operating_systems",
+      "title": "Operating Systems",
+      "slug": "/concepts/operating-systems",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The privileged software layer that multiplexes CPUs, memory and devices among mutually distrusting programs, giving each the illusion of a private machine through a narrow, hardware-enforced call boundary.",
+      "aliases": [],
+      "primaryCategory": "Programming/Systems",
+      "categories": [
+        "Programming/Systems"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.systems.operating_systems",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     }
   ],
@@ -4687,6 +5181,454 @@
       "condition": null
     },
     {
+      "id": "concept.languages.assembly|contrasts_with|concept.algorithms.complexity_analysis",
+      "source": "concept.languages.assembly",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contrasts_with",
+      "note": "Asymptotic analysis deliberately discards the constants — instruction count, cache behaviour, branch prediction — that are exactly what reading assembly makes visible.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.assembly|contrasts_with|concept.languages.gpu_kernels",
+      "source": "concept.languages.assembly",
+      "target": "concept.languages.gpu_kernels",
+      "type": "contrasts_with",
+      "note": "PTX and SASS are the GPU's assembly layers, but a GPU kernel is written against thousands of concurrent threads rather than the single instruction stream that CPU assembly presents.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.assembly|contributes_to|concept.systems.operating_systems",
+      "source": "concept.languages.assembly",
+      "target": "concept.systems.operating_systems",
+      "type": "contributes_to",
+      "note": "Every kernel keeps a small irreducible core of assembly — boot entry, context switch, trap and system-call entry — because those sequences run where no compiled language's assumptions hold yet.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.c_language|contrasts_with|concept.languages.cpp",
+      "source": "concept.languages.c_language",
+      "target": "concept.languages.cpp",
+      "type": "contrasts_with",
+      "note": "C++ grew out of C and shares its declaration syntax and memory model, but it is not a superset — code legal in one is routinely illegal or differently meaning in the other.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.c_language|contrasts_with|concept.languages.rust",
+      "source": "concept.languages.c_language",
+      "target": "concept.languages.rust",
+      "type": "contrasts_with",
+      "note": "Rust occupies the same niche of no garbage collector and full layout control, but moves the memory discipline C leaves to the programmer into a compile-time check.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.c_language|contributes_to|concept.languages.python",
+      "source": "concept.languages.c_language",
+      "target": "concept.languages.python",
+      "type": "contributes_to",
+      "note": "The reference Python implementation is written in C, and its C API and ctypes module are how Python programs reach native libraries at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.c_language|specializes|concept.paradigms.imperative_programming",
+      "source": "concept.languages.c_language",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "specializes",
+      "note": "C narrows the imperative model to the machine — statements sequenced over a mutable store that is literally addressable memory, with no facility borrowed from any other paradigm.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cpp|contrasts_with|concept.languages.python",
+      "source": "concept.languages.cpp",
+      "target": "concept.languages.python",
+      "type": "contrasts_with",
+      "note": "The two are routinely paired rather than compared, with C++ doing the numerical work underneath and Python driving it, because each is strong exactly where the other is weak.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cpp|contrasts_with|concept.languages.rust",
+      "source": "concept.languages.cpp",
+      "target": "concept.languages.rust",
+      "type": "contrasts_with",
+      "note": "Rust targets the same niche — systems code without a garbage collector — but makes ownership a checked property of the type system instead of a convention enforced by the programmer.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cpp|implements|concept.paradigms.object_oriented_programming",
+      "source": "concept.languages.cpp",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "implements",
+      "note": "Classes, single and multiple inheritance, and virtual dispatch through a per-class function-pointer table are C++'s concrete realisation of dynamic polymorphism.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cpp|requires|concept.languages.c_language",
+      "source": "concept.languages.cpp",
+      "target": "concept.languages.c_language",
+      "type": "requires",
+      "note": "C++ began as an extension of C and still inherits its declaration syntax, pointer arithmetic, integer promotions and undefined behaviour, so the inherited half of the language is unreadable without C first.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cuda|contrasts_with|concept.languages.assembly",
+      "source": "concept.languages.cuda",
+      "target": "concept.languages.assembly",
+      "type": "contrasts_with",
+      "note": "CUDA compiles to PTX, a virtual ISA that the driver JIT-compiles to the SASS of the installed architecture, so unlike x86 assembly the published instruction layer is deliberately not the machine's own.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cuda|contrasts_with|concept.systems.operating_systems",
+      "source": "concept.languages.cuda",
+      "target": "concept.systems.operating_systems",
+      "type": "contrasts_with",
+      "note": "The operating system owns the device only through the driver; inside a kernel, warps are scheduled by hardware with no preemptive time-slicing, no per-thread virtual address spaces and no OS-visible thread objects.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cuda|implements|concept.languages.gpu_kernels",
+      "source": "concept.languages.cuda",
+      "target": "concept.languages.gpu_kernels",
+      "type": "implements",
+      "note": "CUDA is the concrete vendor realisation of the GPU kernel programming model — the launch syntax, the block and warp hierarchy and the shared-memory scratchpad are where the general idea acquires an actual compiler and runtime.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.cuda|used_to_solve|concept.deep_learning.convolutional_layer",
+      "source": "concept.languages.cuda",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "used_to_solve",
+      "note": "Convolutional layers are executed on GPUs as CUDA kernels — usually an implicit-GEMM formulation inside cuDNN — and the practicality of training deep convolutional networks came directly from that implementation.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.go|contrasts_with|concept.languages.c_language",
+      "source": "concept.languages.go",
+      "target": "concept.languages.c_language",
+      "type": "contrasts_with",
+      "note": "Go keeps C's syntax family, value semantics and static compilation to a native binary, and drops manual memory management, the preprocessor, undefined behaviour on out-of-range access, and C's separate-compilation model.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.go|contrasts_with|concept.languages.rust",
+      "source": "concept.languages.go",
+      "target": "concept.languages.rust",
+      "type": "contrasts_with",
+      "note": "Both were designed to replace C++ for systems work, but Go buys memory safety with a garbage collector and a runtime while Rust buys it at compile time with ownership, and only Rust's type system rules out data races.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.go|contrasts_with|concept.paradigms.object_oriented_programming",
+      "source": "concept.languages.go",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "contrasts_with",
+      "note": "Go has methods and interfaces but no classes, no inheritance and no subtype declarations, so polymorphism is structural and composition through embedding replaces the class hierarchy.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.go|specializes|concept.paradigms.imperative_programming",
+      "source": "concept.languages.go",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "specializes",
+      "note": "Go is an ordinary statement-and-assignment imperative language with a specific, opinionated restriction of the paradigm — no inheritance, no exceptions, and concurrency as a first-class statement.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.gpu_kernels|contrasts_with|concept.algorithms.complexity_analysis",
+      "source": "concept.languages.gpu_kernels",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contrasts_with",
+      "note": "Operation counting predicts GPU runtime badly: two kernels with identical FLOP counts can differ tenfold because arithmetic intensity, not operation count, decides which resource saturates.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.gpu_kernels|contrasts_with|concept.languages.cuda",
+      "source": "concept.languages.gpu_kernels",
+      "target": "concept.languages.cuda",
+      "type": "contrasts_with",
+      "note": "CUDA is the vendor platform, language extension and toolchain; this page is the performance craft of arranging threads and data, which carries over to ROCm, Triton and SYCL largely unchanged.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.gpu_kernels|implements|concept.deep_learning.convolutional_layer",
+      "source": "concept.languages.gpu_kernels",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "implements",
+      "note": "A convolutional layer runs not as its mathematical definition but as a chosen kernel — im2col plus GEMM, an implicit-GEMM tiling, or a direct fused kernel — and that choice changes runtime by more than the layer's design does.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.haskell|approximates|concept.foundations.category_theory",
+      "source": "concept.languages.haskell",
+      "target": "concept.foundations.category_theory",
+      "type": "approximates",
+      "note": "The Functor, Applicative and Monad classes are the Kleisli-triple axioms written as a programming interface, but the correspondence is approximate because bottom and seq break the equations the underlying category would need.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.haskell|contrasts_with|concept.algorithms.complexity_analysis",
+      "source": "concept.languages.haskell",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contrasts_with",
+      "note": "Standard cost models assume an expression is evaluated where it is written, whereas under call-by-need the time and especially the space a Haskell program uses depend on demand and sharing rather than on the shape of the source.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.haskell|contrasts_with|concept.languages.lisp",
+      "source": "concept.languages.haskell",
+      "target": "concept.languages.lisp",
+      "type": "contrasts_with",
+      "note": "Both descend from the lambda calculus, but Lisp is dynamically typed, strict and macro-driven, where Haskell fixes types before it runs, evaluates only on demand and has no macro layer in the standard.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.haskell|contrasts_with|concept.languages.typescript",
+      "source": "concept.languages.haskell",
+      "target": "concept.languages.typescript",
+      "type": "contrasts_with",
+      "note": "Both infer types, but TypeScript's structural types are erased before a dynamically typed runtime, while Haskell's nominal type classes survive to direct dispatch and can even be selected by a function's return type.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.javascript|contrasts_with|concept.languages.python",
+      "source": "concept.languages.javascript",
+      "target": "concept.languages.python",
+      "type": "contrasts_with",
+      "note": "Both are dynamically typed and garbage collected, but Python builds objects from classes and runs threads under a global lock, where JavaScript delegates to prototypes and runs one event loop with no shared mutable memory between workers.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.javascript|implements|concept.paradigms.functional_programming",
+      "source": "concept.languages.javascript",
+      "target": "concept.paradigms.functional_programming",
+      "type": "implements",
+      "note": "Functions are ordinary values that close over their defining scope, so higher-order style is idiomatic, but the language enforces neither purity nor immutability.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.javascript|implements|concept.paradigms.imperative_programming",
+      "source": "concept.languages.javascript",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "implements",
+      "note": "The core of the language is statements that mutate bindings and objects in a defined order, and async/await exists precisely to keep asynchronous code looking imperative.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.javascript|implements|concept.paradigms.object_oriented_programming",
+      "source": "concept.languages.javascript",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "implements",
+      "note": "JavaScript provides objects and inheritance by delegation along a prototype chain rather than by instantiating classes, and the `class` keyword is surface syntax over that same mechanism.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.julia|contrasts_with|concept.languages.lisp",
+      "source": "concept.languages.julia",
+      "target": "concept.languages.lisp",
+      "type": "contrasts_with",
+      "note": "Julia's generic functions and macros descend directly from Common Lisp's CLOS and its macro system, but Julia drops s-expression syntax and ties dispatch to a compiler that specialises on concrete types.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.julia|contrasts_with|concept.languages.matlab",
+      "source": "concept.languages.julia",
+      "target": "concept.languages.matlab",
+      "type": "contrasts_with",
+      "note": "Both target the same numerical-computing audience, but MATLAB reaches speed by making you phrase work as calls into precompiled array kernels, whereas Julia compiles your own loops after inferring their types.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.julia|contrasts_with|concept.languages.typescript",
+      "source": "concept.languages.julia",
+      "target": "concept.languages.typescript",
+      "type": "contrasts_with",
+      "note": "Both attach types to an otherwise dynamic language, but TypeScript's types are erased before execution and its overloads resolved statically, while Julia's types are runtime values that choose the method and drive code generation.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.julia|used_to_solve|concept.analysis.ordinary_differential_equations",
+      "source": "concept.languages.julia",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "used_to_solve",
+      "note": "Numerical integration of ODEs is Julia's flagship application area, and it is the setting where the claim that independently written packages compose is usually demonstrated.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.lisp|contrasts_with|concept.languages.haskell",
+      "source": "concept.languages.lisp",
+      "target": "concept.languages.haskell",
+      "type": "contrasts_with",
+      "note": "Both bet on functions over statements, but Haskell buys guarantees from a static type system and a fixed grammar while Lisp buys extensibility from a dynamic, almost syntax-free representation.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.lisp|contributes_to|concept.foundations.computability_theory",
+      "source": "concept.languages.lisp",
+      "target": "concept.foundations.computability_theory",
+      "type": "contributes_to",
+      "note": "McCarthy's eval was a recursive definition of a universal function over symbolic expressions, and implementing it turned a computability argument into a working interpreter.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.lisp|contributes_to|concept.languages.julia",
+      "source": "concept.languages.lisp",
+      "target": "concept.languages.julia",
+      "type": "contributes_to",
+      "note": "Julia keeps Lisp's expansion-time macros over parsed expression objects while abandoning s-expression surface syntax, and its own parser was written in a Scheme dialect.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.lisp|requires|concept.algorithms.core_data_structures",
+      "source": "concept.languages.lisp",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "requires",
+      "note": "A Lisp program is a binary tree of cons cells, so the reader cannot see why code-as-data is cheap without already knowing linked lists and trees.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.matlab|contrasts_with|concept.languages.julia",
+      "source": "concept.languages.matlab",
+      "target": "concept.languages.julia",
+      "type": "contrasts_with",
+      "note": "Julia targets the same numerical audience and inherits one-based indexing and column-major storage from MATLAB, but is free, compiles user-written scalar code, and resolves operators by multiple dispatch rather than by fixed array semantics.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.matlab|implements|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.languages.matlab",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "implements",
+      "note": "MATLAB exposes LU, Cholesky, QR, eigendecomposition and the SVD as ordinary operators and one-word functions, and the backslash operator picks which decomposition to run from the shape and detected structure of the matrix.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.matlab|requires|concept.linear_algebra.matrix_theory",
+      "source": "concept.languages.matlab",
+      "target": "concept.linear_algebra.matrix_theory",
+      "type": "requires",
+      "note": "The language's semantics are matrix semantics — a reader who does not already know what matrix multiplication, rank and solving a linear system mean cannot read a MATLAB expression, because the operators are those operations.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.matlab|used_to_solve|concept.analysis.ordinary_differential_equations",
+      "source": "concept.languages.matlab",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "used_to_solve",
+      "note": "Its ODE suite — ode45 and the stiff solvers ode15s and ode23s — is one of the most widely used front ends for numerically integrating initial value problems.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.python|contrasts_with|concept.languages.c_language",
+      "source": "concept.languages.python",
+      "target": "concept.languages.c_language",
+      "type": "contrasts_with",
+      "note": "The two sit on opposite sides of the same programs — Python trades C's static types, manual memory management and ahead-of-time compilation for run-time flexibility, and then calls into C for the arithmetic it cannot afford to do itself.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.python|contributes_to|concept.paradigms.array_programming",
+      "source": "concept.languages.python",
+      "target": "concept.paradigms.array_programming",
+      "type": "contributes_to",
+      "note": "NumPy made Python the most common host language for whole-array operations, so most array-programming code written today is written in Python syntax even though the arithmetic happens in compiled kernels.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.python|implements|concept.paradigms.imperative_programming",
+      "source": "concept.languages.python",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "implements",
+      "note": "Python's default mode is a sequence of statements mutating bindings and objects in place, with explicit control flow and no restriction on side effects.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.python|implements|concept.paradigms.object_oriented_programming",
+      "source": "concept.languages.python",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "implements",
+      "note": "Every value is an object with a class, attribute lookup runs through the descriptor protocol and a C3-linearised method resolution order, and operators are dispatched to special methods on the receiver.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.r_language|contrasts_with|concept.languages.julia",
+      "source": "concept.languages.r_language",
+      "target": "concept.languages.julia",
+      "type": "contrasts_with",
+      "note": "Julia was designed to keep the interactive array-oriented feel of R while compiling to native code, so it directly targets the performance ceiling R hits whenever a computation cannot be vectorised.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.r_language|contrasts_with|concept.languages.matlab",
+      "source": "concept.languages.r_language",
+      "target": "concept.languages.matlab",
+      "type": "contrasts_with",
+      "note": "Both are interactive array languages with one-based indexing, but R's primitive is a named heterogeneous table of statistical variables while MATLAB's is a dense numeric matrix, and the two ecosystems reflect that split.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.r_language|used_to_solve|concept.probability.frequentist_inference",
+      "source": "concept.languages.r_language",
+      "target": "concept.probability.frequentist_inference",
+      "type": "used_to_solve",
+      "note": "The standard frequentist apparatus — t-tests, linear and generalised linear models, contrasts, confidence intervals, p-values — is in R's base library under consistent names, so a textbook procedure is usually one call rather than an implementation project.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.rust|contrasts_with|concept.languages.c_language",
+      "source": "concept.languages.rust",
+      "target": "concept.languages.c_language",
+      "type": "contrasts_with",
+      "note": "C offers the same manual control with no static ownership or lifetime checking, so the exact programs Rust rejects at compile time are ordinary, compilable C that fails at run time or not at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.rust|contrasts_with|concept.languages.cpp",
+      "source": "concept.languages.rust",
+      "target": "concept.languages.cpp",
+      "type": "contrasts_with",
+      "note": "Both compile to native code with deterministic destruction and no garbage collector, but C++ leaves the aliasing discipline to convention and tooling while Rust makes violating it a compile error.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.rust|contrasts_with|concept.languages.go",
+      "source": "concept.languages.rust",
+      "target": "concept.languages.go",
+      "type": "contrasts_with",
+      "note": "Go reaches memory safety through a garbage collector and run-time bounds checks, paying at run time for what Rust pays for in compile-time proof obligations and rejected programs; data races are not ruled out in Go, and its race detector is an opt-in dynamic tool for testing rather than part of the guarantee.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.rust|specializes|concept.paradigms.imperative_programming",
+      "source": "concept.languages.rust",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "specializes",
+      "note": "Rust is an imperative language of statements, mutation and explicit control flow; what distinguishes it is a type system that decides which mutations the compiler will accept.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.typescript|contrasts_with|concept.formal_verification.lean",
+      "source": "concept.languages.typescript",
+      "target": "concept.formal_verification.lean",
+      "type": "contrasts_with",
+      "note": "Lean's dependent types are checked by a kernel whose soundness is the point and whose terms are proofs, while TypeScript's types are a best-effort description with documented escape hatches and no metatheorem behind them.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.typescript|contrasts_with|concept.languages.haskell",
+      "source": "concept.languages.typescript",
+      "target": "concept.languages.haskell",
+      "type": "contrasts_with",
+      "note": "Haskell's type system is nominal at the data declaration, inferred globally and designed for soundness, whereas TypeScript's is structural, locally inferred and deliberately unsound in order to describe JavaScript that already exists.",
+      "condition": null
+    },
+    {
+      "id": "concept.languages.typescript|contrasts_with|concept.languages.julia",
+      "source": "concept.languages.typescript",
+      "target": "concept.languages.julia",
+      "type": "contrasts_with",
+      "note": "Julia keeps types at runtime and uses them to dispatch and specialise code, so its types have computational content; TypeScript's are deleted before the program runs and can change nothing about its behaviour.",
+      "condition": null
+    },
+    {
       "id": "concept.linear_algebra.matrix_decompositions|contributes_to|concept.analysis.operators",
       "source": "concept.linear_algebra.matrix_decompositions",
       "target": "concept.analysis.operators",
@@ -5295,6 +6237,134 @@
       "condition": null
     },
     {
+      "id": "concept.paradigms.array_programming|contrasts_with|concept.algorithms.complexity_analysis",
+      "source": "concept.paradigms.array_programming",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contrasts_with",
+      "note": "Vectorisation changes the constant factor and leaves the asymptotics untouched, so the benefit that motivates the whole style is invisible to complexity analysis.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.array_programming|contrasts_with|concept.linear_algebra.tensors",
+      "source": "concept.paradigms.array_programming",
+      "target": "concept.linear_algebra.tensors",
+      "type": "contrasts_with",
+      "note": "An n-dimensional array is a rectangular block of numbers with a shape and strides, not a multilinear map, so the word \"tensor\" in array libraries means much less than it does in tensor algebra.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.array_programming|contrasts_with|concept.paradigms.imperative_programming",
+      "source": "concept.paradigms.array_programming",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "contrasts_with",
+      "note": "The explicit index-by-index loop is the imperative form of exactly the computation an array expression states in one line, and the two differ in who runs the loop rather than in what is computed.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.array_programming|useful_when|concept.languages.python",
+      "source": "concept.paradigms.array_programming",
+      "target": "concept.languages.python",
+      "type": "useful_when",
+      "note": "Python's per-element dispatch cost is large enough that array expressions are the standard way to make numerical code fast without leaving the language.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.functional_programming|contrasts_with|concept.paradigms.imperative_programming",
+      "source": "concept.paradigms.functional_programming",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "contrasts_with",
+      "note": "The two paradigms compute the same class of functions but disagree about what a program denotes — a sequence of changes to a store, or the value of an expression — and that disagreement is exactly what referential transparency turns on.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.functional_programming|contrasts_with|concept.paradigms.object_oriented_programming",
+      "source": "concept.paradigms.functional_programming",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "contrasts_with",
+      "note": "Object orientation gives data an identity that persists while its contents mutate behind methods, whereas functional programming keeps data transparent and immutable and puts the behaviour in functions over it.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.functional_programming|contributes_to|concept.languages.rust",
+      "source": "concept.paradigms.functional_programming",
+      "target": "concept.languages.rust",
+      "type": "contributes_to",
+      "note": "Rust's enums, exhaustive pattern matching, iterator combinators and immutable-by-default bindings come from the ML branch of functional programming, reused in a language that keeps mutation under an ownership discipline.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.functional_programming|refined_by|concept.foundations.category_theory",
+      "source": "concept.paradigms.functional_programming",
+      "target": "concept.foundations.category_theory",
+      "type": "refined_by",
+      "note": "Moggi's categorical semantics of effects supplied monads as the structure for sequencing input, output and state inside a pure language, which is how Haskell came to organise effects the way it does.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.imperative_programming|contrasts_with|concept.paradigms.array_programming",
+      "source": "concept.paradigms.imperative_programming",
+      "target": "concept.paradigms.array_programming",
+      "type": "contrasts_with",
+      "note": "Array programming keeps mutation but writes whole-array statements instead of explicit element-by-element loops, which is the same state model at a coarser grain.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.imperative_programming|contrasts_with|concept.paradigms.functional_programming",
+      "source": "concept.paradigms.imperative_programming",
+      "target": "concept.paradigms.functional_programming",
+      "type": "contrasts_with",
+      "note": "The two differ on exactly one question — whether the primitive step is overwriting a location or evaluating an expression — so each is the clearest way to see what the other assumes.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.imperative_programming|contributes_to|concept.algorithms.core_data_structures",
+      "source": "concept.paradigms.imperative_programming",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "contributes_to",
+      "note": "The textbook presentations of arrays, linked lists and hash tables are defined by in-place update, and their space accounting assumes a store that can be overwritten.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.imperative_programming|contributes_to|concept.paradigms.object_oriented_programming",
+      "source": "concept.paradigms.imperative_programming",
+      "target": "concept.paradigms.object_oriented_programming",
+      "type": "contributes_to",
+      "note": "Mainstream object-oriented languages keep assignment and loops and only partition the store, so an object is encapsulated mutable state updated by imperative method bodies.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.object_oriented_programming|contrasts_with|concept.languages.rust",
+      "source": "concept.paradigms.object_oriented_programming",
+      "target": "concept.languages.rust",
+      "type": "contrasts_with",
+      "note": "Rust deliberately provides dynamic dispatch and substitutability through traits while omitting implementation inheritance entirely, which isolates which parts of the paradigm are load-bearing.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.object_oriented_programming|contrasts_with|concept.paradigms.functional_programming",
+      "source": "concept.paradigms.object_oriented_programming",
+      "target": "concept.paradigms.functional_programming",
+      "type": "contrasts_with",
+      "note": "Both answer the question of where state and behaviour live, and they answer it oppositely: objects bind them together and mutate in place, while functional code separates them and prefers values that do not change.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.object_oriented_programming|contributes_to|concept.languages.cpp",
+      "source": "concept.paradigms.object_oriented_programming",
+      "target": "concept.languages.cpp",
+      "type": "contributes_to",
+      "note": "C++ began as an attempt to carry Simula's class and virtual-function machinery into a language with C's performance, so this paradigm is a direct input to that language's design.",
+      "condition": null
+    },
+    {
+      "id": "concept.paradigms.object_oriented_programming|specializes|concept.paradigms.imperative_programming",
+      "source": "concept.paradigms.object_oriented_programming",
+      "target": "concept.paradigms.imperative_programming",
+      "type": "specializes",
+      "note": "Mainstream object-oriented code is imperative code with a discipline imposed on it — mutable state is partitioned into objects and procedures acquire a privileged receiver argument.",
+      "condition": null
+    },
+    {
       "id": "concept.physics.hamiltonian_mechanics|contributes_to|concept.physics.statistical_mechanics",
       "source": "concept.physics.hamiltonian_mechanics",
       "target": "concept.physics.statistical_mechanics",
@@ -5636,6 +6706,38 @@
       "target": "concept.probability.probability_theory",
       "type": "requires",
       "note": "A process is a family of random variables on one probability space, and its defining properties are statements about conditional expectation and joint distributions, so none of it can be stated before those are.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.operating_systems|assumes|concept.languages.assembly",
+      "source": "concept.systems.operating_systems",
+      "target": "concept.languages.assembly",
+      "type": "assumes",
+      "note": "The user/kernel boundary is an instruction-set feature — privilege levels, trap and return-from-trap instructions, and a control register naming the current page table — so the whole design rests on what the machine architecture provides.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.operating_systems|contrasts_with|concept.algorithms.complexity_analysis",
+      "source": "concept.systems.operating_systems",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "contrasts_with",
+      "note": "Scheduling and page-replacement policies are judged by measured latency, throughput and fairness on real workloads rather than by asymptotic cost, and the constant factors asymptotics discard are exactly what a cache miss is made of.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.operating_systems|contributes_to|concept.languages.cuda",
+      "source": "concept.systems.operating_systems",
+      "target": "concept.languages.cuda",
+      "type": "contributes_to",
+      "note": "Every CUDA allocation, kernel launch and host transfer is a system call into a driver, and unified memory is implemented on top of the host page-fault path.",
+      "condition": null
+    },
+    {
+      "id": "concept.systems.operating_systems|requires|concept.algorithms.core_data_structures",
+      "source": "concept.systems.operating_systems",
+      "target": "concept.algorithms.core_data_structures",
+      "type": "requires",
+      "note": "A multi-level page table, an inode index and a scheduler run queue are trees, arrays and queues under other names, and the mechanisms cannot be read without them.",
       "condition": null
     }
   ]

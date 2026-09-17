@@ -12,7 +12,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 
 - Questions: **28** across 6 intent classes.
 - Complete retrieval (every needed concept reached): **23/28** (82%).
-- Concept recall (needed concepts reached): **32/37** (86%).
+- Concept recall (needed concepts reached): **31/37** (84%).
 - Answer quality: **not measured**. No model is involved in this evaluation.
 
 ## By intent
@@ -21,7 +21,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 | --- | --- | --- | --- |
 | title | 5 | 5/5 (100%) | 5/5 (100%) |
 | alias | 5 | 5/5 (100%) | 5/5 (100%) |
-| paraphrase | 5 | 2/5 (40%) | 3/6 (50%) |
+| paraphrase | 5 | 2/5 (40%) | 2/6 (33%) |
 | symptom | 5 | 5/5 (100%) | 5/5 (100%) |
 | comparison | 4 | 4/4 (100%) | 8/8 (100%) |
 | path | 4 | 2/4 (50%) | 6/8 (75%) |
@@ -35,7 +35,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`, `concept.analysis.convolution`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`, `concept.languages.go`
 
 ### P3 (paraphrase)
 
@@ -48,15 +48,15 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
-- Needed but not retrieved: `concept.analysis.convolution`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.category_theory`, `concept.algorithms.core_data_structures`, `concept.foundations.model_theory`, `concept.analysis.multivariable_calculus`
+- Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.paradigms.imperative_programming`, `concept.analysis.multivariable_calculus`, `concept.foundations.category_theory`, `concept.algorithms.core_data_structures`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.geometry.euclidean_geometry`, `concept.probability.martingales`, `concept.probability.stochastic_processes`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.geometry.euclidean_geometry`, `concept.probability.martingales`
 
 ### R3 (path)
 

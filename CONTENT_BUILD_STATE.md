@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 10 of 28.** 10 of 10 pages in it are still to write.
+**Batch 12 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/imperative-programming.md` — Imperative Programming (concept.paradigms.imperative_programming)
-- `content/concepts/object-oriented-programming.md` — Object-Oriented Programming (concept.paradigms.object_oriented_programming)
-- `content/concepts/functional-programming.md` — Functional Programming (concept.paradigms.functional_programming)
-- `content/concepts/array-programming.md` — Array Programming (concept.paradigms.array_programming)
-- `content/concepts/python.md` — Python (concept.languages.python)
-- `content/concepts/c-language.md` — C (concept.languages.c_language)
-- `content/concepts/cpp.md` — C++ (concept.languages.cpp)
-- `content/concepts/rust.md` — Rust (concept.languages.rust)
-- `content/concepts/go.md` — Go (concept.languages.go)
-- `content/concepts/javascript.md` — JavaScript (concept.languages.javascript)
+- `content/concepts/networking.md` — Networking (concept.systems.networking)
+- `content/concepts/parallel-computing.md` — Parallel Computing (concept.systems.parallel_computing)
+- `content/concepts/distributed-systems.md` — Distributed Systems (concept.systems.distributed_systems)
+- `content/concepts/high-performance-computing.md` — High-Performance Computing (concept.systems.high_performance_computing)
+- `content/concepts/relational-databases.md` — Relational Databases (concept.systems.relational_databases)
+- `content/concepts/graph-databases.md` — Graph Databases (concept.systems.graph_databases)
+- `content/concepts/version-control.md` — Version Control (concept.software.version_control)
+- `content/concepts/testing.md` — Testing (concept.software.testing)
+- `content/concepts/design-patterns.md` — Design Patterns (concept.software.design_patterns)
+- `content/concepts/apis.md` — APIs (concept.software.apis)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,12 +36,12 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 101 |
-| Markdown pages in the corpus | 101 |
-| Tier 1 pages | 101 |
+| Candidates covered by a page | 121 |
+| Markdown pages in the corpus | 121 |
+| Tier 1 pages | 121 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 90 of 280 |
+| Planned pages written | 110 of 280 |
 
 ### By area
 
@@ -49,7 +49,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
 | Mathematics | 85 | 85 | 100% |
-| Programming | 5 | 47 | 11% |
+| Programming | 25 | 47 | 53% |
 
 ### By category
 
@@ -80,15 +80,15 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Mathematics/Probability & Statistics | 9 | 9 | complete |
 | Mathematics/Theory of Computation | 2 | 2 | complete |
 | Programming/Data Structures & Algorithms | 5 | 5 | complete |
-| Programming/Languages | 0 | 15 |  |
-| Programming/Languages/Paradigms | 0 | 4 |  |
+| Programming/Languages | 15 | 15 | complete |
+| Programming/Languages/Paradigms | 4 | 4 | complete |
 | Programming/ML Engineering | 0 | 7 |  |
 | Programming/Software Practice | 0 | 9 |  |
-| Programming/Systems | 0 | 7 |  |
+| Programming/Systems | 1 | 7 |  |
 
 ## Completed pages
 
-90 of the planned 280, in the order they were written.
+110 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -182,6 +182,26 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Sorting | `concept.algorithms.sorting` | tier 1 | covered |
 | Searching | `concept.algorithms.searching` | tier 1 | covered |
 | Graph Algorithms | `concept.algorithms.graph_algorithms` | tier 1 | covered |
+| Imperative Programming | `concept.paradigms.imperative_programming` | tier 1 | covered |
+| Object-Oriented Programming | `concept.paradigms.object_oriented_programming` | tier 1 | covered |
+| Functional Programming | `concept.paradigms.functional_programming` | tier 1 | covered |
+| Array Programming | `concept.paradigms.array_programming` | tier 1 | covered |
+| Python | `concept.languages.python` | tier 1 | covered |
+| C | `concept.languages.c_language` | tier 1 | covered |
+| C++ | `concept.languages.cpp` | tier 1 | covered |
+| Rust | `concept.languages.rust` | tier 1 | covered |
+| Go | `concept.languages.go` | tier 1 | covered |
+| JavaScript | `concept.languages.javascript` | tier 1 | covered |
+| TypeScript | `concept.languages.typescript` | tier 1 | covered |
+| Haskell | `concept.languages.haskell` | tier 1 | covered |
+| Lisp | `concept.languages.lisp` | tier 1 | covered |
+| Julia | `concept.languages.julia` | tier 1 | covered |
+| R | `concept.languages.r_language` | tier 1 | covered |
+| MATLAB | `concept.languages.matlab` | tier 1 | covered |
+| Assembly | `concept.languages.assembly` | tier 1 | covered |
+| CUDA | `concept.languages.cuda` | tier 1 | covered |
+| GPU Kernels | `concept.languages.gpu_kernels` | tier 1 | covered |
+| Operating Systems | `concept.systems.operating_systems` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -325,35 +345,35 @@ it. Batches are ten pages each.
 | x | Searching | `concept.algorithms.searching` | Programming/Data Structures & Algorithms |
 | x | Graph Algorithms | `concept.algorithms.graph_algorithms` | Programming/Data Structures & Algorithms |
 
-### Batch 10
+### Batch 10 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Imperative Programming | `concept.paradigms.imperative_programming` | Programming/Languages/Paradigms |
-|   | Object-Oriented Programming | `concept.paradigms.object_oriented_programming` | Programming/Languages/Paradigms |
-|   | Functional Programming | `concept.paradigms.functional_programming` | Programming/Languages/Paradigms |
-|   | Array Programming | `concept.paradigms.array_programming` | Programming/Languages/Paradigms |
-|   | Python | `concept.languages.python` | Programming/Languages |
-|   | C | `concept.languages.c_language` | Programming/Languages |
-|   | C++ | `concept.languages.cpp` | Programming/Languages |
-|   | Rust | `concept.languages.rust` | Programming/Languages |
-|   | Go | `concept.languages.go` | Programming/Languages |
-|   | JavaScript | `concept.languages.javascript` | Programming/Languages |
+| x | Imperative Programming | `concept.paradigms.imperative_programming` | Programming/Languages/Paradigms |
+| x | Object-Oriented Programming | `concept.paradigms.object_oriented_programming` | Programming/Languages/Paradigms |
+| x | Functional Programming | `concept.paradigms.functional_programming` | Programming/Languages/Paradigms |
+| x | Array Programming | `concept.paradigms.array_programming` | Programming/Languages/Paradigms |
+| x | Python | `concept.languages.python` | Programming/Languages |
+| x | C | `concept.languages.c_language` | Programming/Languages |
+| x | C++ | `concept.languages.cpp` | Programming/Languages |
+| x | Rust | `concept.languages.rust` | Programming/Languages |
+| x | Go | `concept.languages.go` | Programming/Languages |
+| x | JavaScript | `concept.languages.javascript` | Programming/Languages |
 
-### Batch 11
+### Batch 11 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | TypeScript | `concept.languages.typescript` | Programming/Languages |
-|   | Haskell | `concept.languages.haskell` | Programming/Languages |
-|   | Lisp | `concept.languages.lisp` | Programming/Languages |
-|   | Julia | `concept.languages.julia` | Programming/Languages |
-|   | R | `concept.languages.r_language` | Programming/Languages |
-|   | MATLAB | `concept.languages.matlab` | Programming/Languages |
-|   | Assembly | `concept.languages.assembly` | Programming/Languages |
-|   | CUDA | `concept.languages.cuda` | Programming/Languages |
-|   | GPU Kernels | `concept.languages.gpu_kernels` | Programming/Languages |
-|   | Operating Systems | `concept.systems.operating_systems` | Programming/Systems |
+| x | TypeScript | `concept.languages.typescript` | Programming/Languages |
+| x | Haskell | `concept.languages.haskell` | Programming/Languages |
+| x | Lisp | `concept.languages.lisp` | Programming/Languages |
+| x | Julia | `concept.languages.julia` | Programming/Languages |
+| x | R | `concept.languages.r_language` | Programming/Languages |
+| x | MATLAB | `concept.languages.matlab` | Programming/Languages |
+| x | Assembly | `concept.languages.assembly` | Programming/Languages |
+| x | CUDA | `concept.languages.cuda` | Programming/Languages |
+| x | GPU Kernels | `concept.languages.gpu_kernels` | Programming/Languages |
+| x | Operating Systems | `concept.systems.operating_systems` | Programming/Systems |
 
 ### Batch 12
 
@@ -636,6 +656,24 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batches 10 and 11 — the backlog is now the thing to watch
+
+One hundred and ten of 280 pages written, and the unresolved-reference backlog
+has grown to 136 entries across 60 pages, never more than five on any one page.
+Sampled and counted rather than assumed: they are specific, named gaps — a
+dedicated analytic number theory text, a functional analysis treatment of
+separation in non-locally-convex spaces, accelerator hardware specifications —
+and not manufactured filler. All are non-blocking and validation is clean.
+
+This is the citation rule behaving correctly at scale: 221 sources cannot cover
+everything 121 pages legitimately touch, and the alternative to declaring a gap
+is stretching a citation until it does not hold. But the number is now large
+enough to deserve one consolidated pass rather than a detour per batch. **Queued
+for after the pages are written: a second registry expansion aimed at the
+recurring gaps, then a backlog-resolution sweep across the whole corpus.** The
+first such pass took batch 6 from 22 entries to 15 while raising citation counts,
+so the mechanism is known to work.
 
 ### Batches 8 and 9 — the session limit again, and what survived it
 

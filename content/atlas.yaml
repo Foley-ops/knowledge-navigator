@@ -1607,116 +1607,116 @@ candidates:
     title: Imperative Programming
     categories:
       - atlas.programming.languages.paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.paradigms.imperative_programming
   - candidate_id: candidate.programming.languages.paradigms.object_oriented_programming
     title: Object-Oriented Programming
     categories:
       - atlas.programming.languages.paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.paradigms.object_oriented_programming
   - candidate_id: candidate.programming.languages.paradigms.functional_programming
     title: Functional Programming
     categories:
       - atlas.programming.languages.paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.paradigms.functional_programming
   - candidate_id: candidate.programming.languages.paradigms.array_programming
     title: Array Programming
     categories:
       - atlas.programming.languages.paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.paradigms.array_programming
   - candidate_id: candidate.programming.languages.python
     title: Python
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.python
   - candidate_id: candidate.programming.languages.c
     title: C
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.c_language
   - candidate_id: candidate.programming.languages.c_plus_plus
     title: C++
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.cpp
   - candidate_id: candidate.programming.languages.rust
     title: Rust
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.rust
   - candidate_id: candidate.programming.languages.julia
     title: Julia
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.julia
   - candidate_id: candidate.programming.languages.r
     title: R
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.r_language
   - candidate_id: candidate.programming.languages.matlab
     title: MATLAB
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.matlab
   - candidate_id: candidate.programming.languages.haskell
     title: Haskell
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.haskell
   - candidate_id: candidate.programming.languages.lisp
     title: Lisp
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.lisp
   - candidate_id: candidate.programming.languages.javascript
     title: JavaScript
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.javascript
   - candidate_id: candidate.programming.languages.typescript
     title: TypeScript
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.typescript
   - candidate_id: candidate.programming.languages.go
     title: Go
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.go
   - candidate_id: candidate.programming.languages.cuda
     title: CUDA
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.cuda
   - candidate_id: candidate.programming.languages.gpu_kernels
     title: GPU Kernels
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.gpu_kernels
   - candidate_id: candidate.programming.languages.assembly
     title: Assembly
     categories:
       - atlas.programming.languages
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.languages.assembly
   - candidate_id: candidate.programming.data_structures_and_algorithms.core_data_structures
     title: Core Data Structures
     categories:
@@ -1751,8 +1751,8 @@ candidates:
     title: Operating Systems
     categories:
       - atlas.programming.systems
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.systems.operating_systems
   - candidate_id: candidate.programming.systems.networking
     title: Networking
     categories:
