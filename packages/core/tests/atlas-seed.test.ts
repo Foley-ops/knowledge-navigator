@@ -94,7 +94,11 @@ describe('content/atlas.yaml', () => {
     expect(present).toEqual(uniqueWanted);
   });
 
-  it('keeps Programming visible with no canonical page behind it', () => {
+  it('keeps Programming visible, with categories and candidates of its own', () => {
+    // When this was first written it also asserted that nothing in Programming
+    // was covered, which was true of the seed and is not a property of the
+    // atlas: the area exists to be written about, and pages have since been
+    // written. What matters is that the area is present and populated.
     const programming = [...atlas.areas.values()].find((area) => area.title === 'Programming');
     expect(programming).toBeDefined();
     expect(programming!.childCategoryIds.length).toBeGreaterThan(0);
@@ -103,28 +107,53 @@ describe('content/atlas.yaml', () => {
       candidate.categories.some((id) => atlas.categories.get(id)?.areaId === programming!.areaId),
     );
     expect(inProgramming.length).toBeGreaterThan(0);
-    expect(inProgramming.every((candidate) => candidate.status !== 'covered')).toBe(true);
   });
 
-  it('marks exactly the eleven existing concepts as covered', () => {
+  it('still covers the eleven concepts version 1 wrote', () => {
+    // This used to assert that these were the ONLY covered candidates, which
+    // was a fact about the seed rather than a rule: covering a candidate is
+    // what writing a page is for. What must stay true is that none of the
+    // original eleven quietly lost its place on the map.
+    const covered = [...atlas.candidates.values()]
+      .filter((c) => c.status === 'covered')
+      .map((c) => c.canonical_concept_id);
+    for (const conceptId of ELEVEN_CONCEPTS) {
+      expect(covered, conceptId).toContain(conceptId);
+    }
+  });
+
+  it('never lets two candidates claim one concept, or an uncovered one claim any', () => {
     const covered = [...atlas.candidates.values()].filter((c) => c.status === 'covered');
-    expect(covered.map((c) => c.canonical_concept_id).sort()).toEqual(ELEVEN_CONCEPTS);
-    expect(new Set(covered.map((c) => c.canonical_concept_id)).size).toBe(ELEVEN_CONCEPTS.length);
-  });
+    const claimed = covered.map((c) => c.canonical_concept_id);
+    expect(new Set(claimed).size).toBe(claimed.length);
+    expect(covered.every((c) => c.canonical_concept_id !== null)).toBe(true);
 
-  it('leaves every other candidate uncovered and unmapped', () => {
     const others = [...atlas.candidates.values()].filter((c) => c.status !== 'covered');
     expect(others.every((c) => c.canonical_concept_id === null)).toBe(true);
-    expect(others.every((c) => c.status === 'candidate')).toBe(true);
   });
 
-  it('keeps empty categories rather than hiding unexplained neighbourhoods', () => {
-    expect(atlasCounts(atlas).emptyCategories).toBeGreaterThan(0);
-    const empty = [...atlas.categories.values()]
+  it('keeps categories Appendix A names but filed nothing under', () => {
+    // The atlas does not drop a neighbourhood because nobody has written about
+    // it yet. Counted against the atlas alone — with no corpus supplied — these
+    // categories have no candidate of their own and no children, and that is
+    // true of the seed for as long as the seed is frozen.
+    const withoutCandidates = [...atlas.categories.values()]
       .filter((node) => node.candidateIds.length === 0 && node.childCategoryIds.length === 0)
       .map((node) => node.path)
       .sort();
-    expect(empty).toContain('Mathematics/Information Theory');
+    expect(withoutCandidates).toContain('Mathematics/Information Theory');
+    expect(atlasCounts(atlas).emptyCategories).toBe(withoutCandidates.length);
+  });
+
+  it('stops calling a category empty once a concept sits in it', () => {
+    // A category holding a page is not an empty part of the map. Before any
+    // content existed outside the candidate list the two were indistinguishable;
+    // they are not the same thing, and Coverage must not report otherwise.
+    const information = resolveAtlasCategoryPath(atlas, 'Mathematics/Information Theory');
+    expect(information).toBeDefined();
+    const before = atlasCounts(atlas).emptyCategories;
+    const after = atlasCounts(atlas, new Set([information!])).emptyCategories;
+    expect(after).toBe(before - 1);
   });
 
   it('resolves every category path the canonical corpus already uses', () => {

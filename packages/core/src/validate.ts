@@ -598,7 +598,16 @@ export function summarizeCoverage(
   concepts: readonly LoadedConcept[],
   atlas: AtlasIndex,
 ): CoverageSummary {
-  const counts = atlasCounts(atlas);
+  // A category holding a canonical concept is not an empty part of the map,
+  // even when no candidate label was ever filed under it.
+  const occupied = new Set<string>();
+  for (const concept of concepts) {
+    for (const path of concept.frontmatter.categories) {
+      const categoryId = resolveAtlasCategoryPath(atlas, path);
+      if (categoryId !== undefined) occupied.add(categoryId);
+    }
+  }
+  const counts = atlasCounts(atlas, occupied);
 
   const conceptsByTier: Record<'1' | '2' | '3', number> = { '1': 0, '2': 0, '3': 0 };
   const conceptsByFormat: Record<ConceptFormat, number> = { markdown: 0, 'graph-only': 0 };

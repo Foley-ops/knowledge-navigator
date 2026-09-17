@@ -675,8 +675,19 @@ export interface AtlasCounts {
   readonly byStatus: Readonly<Record<AtlasStatus, number>>;
 }
 
-/** Deterministic counts for Coverage and for the CLI. */
-export function atlasCounts(index: AtlasIndex): AtlasCounts {
+/**
+ * Deterministic counts for Coverage and for the CLI.
+ *
+ * `occupiedCategoryIds` names categories that hold a canonical concept. A
+ * category with a page in it is not empty, whether or not a candidate label was
+ * ever filed there — before any content existed the two were the same thing,
+ * and they stopped being the same the moment pages were written outside the
+ * candidate list. Callers that have no corpus to hand may omit it.
+ */
+export function atlasCounts(
+  index: AtlasIndex,
+  occupiedCategoryIds: ReadonlySet<string> = new Set(),
+): AtlasCounts {
   const byStatus: Record<AtlasStatus, number> = {
     candidate: 0,
     'proposed-tier-3': 0,
@@ -687,7 +698,13 @@ export function atlasCounts(index: AtlasIndex): AtlasCounts {
 
   let emptyCategories = 0;
   for (const node of index.categories.values()) {
-    if (node.candidateIds.length === 0 && node.childCategoryIds.length === 0) emptyCategories += 1;
+    if (
+      node.candidateIds.length === 0 &&
+      node.childCategoryIds.length === 0 &&
+      !occupiedCategoryIds.has(node.categoryId)
+    ) {
+      emptyCategories += 1;
+    }
   }
 
   return {

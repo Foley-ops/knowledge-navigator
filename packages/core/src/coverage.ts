@@ -103,11 +103,21 @@ export function getCoverageSummary(db: DatabaseType): CompiledCoverageSummary {
     atlas: {
       areas: scalar(db, 'SELECT COUNT(*) AS n FROM atlas_areas'),
       categories: scalar(db, 'SELECT COUNT(*) AS n FROM atlas_categories'),
+      // Empty means nothing at all is in it: no candidate label, no child
+      // category, and no canonical concept. A concept reaches a category by
+      // path, in either of the two forms the atlas registers — the full display
+      // path, and the short `Area/Title` form.
       emptyCategories: scalar(
         db,
         `SELECT COUNT(*) AS n FROM atlas_categories c
           WHERE NOT EXISTS (SELECT 1 FROM atlas_candidate_categories cc WHERE cc.category_id = c.id)
-            AND NOT EXISTS (SELECT 1 FROM atlas_categories k WHERE k.parent_category_id = c.id)`,
+            AND NOT EXISTS (SELECT 1 FROM atlas_categories k WHERE k.parent_category_id = c.id)
+            AND NOT EXISTS (
+              SELECT 1 FROM concept_categories cc
+                JOIN categories cat ON cat.id = cc.category_id
+                JOIN atlas_areas a ON a.id = c.area_id
+               WHERE cat.path = c.path OR cat.path = a.title || '/' || c.title
+            )`,
       ),
       candidates: scalar(db, 'SELECT COUNT(*) AS n FROM atlas_candidates'),
       byStatus: tally(
