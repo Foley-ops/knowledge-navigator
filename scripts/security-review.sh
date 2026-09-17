@@ -22,6 +22,9 @@
 #     private-context.ts is the explicit-selection path itself, so it must name
 #     them. The check prints the matches rather than hiding them, and the
 #     containment property is proved by apps/api/tests/private-context.test.ts.
+#   * `sk-abcdefghijklmnopqrstuvwxyz012345` in
+#     packages/core/tests/proposal-validate.test.ts — an invented key pasted
+#     into a fixture to prove the proposal validator refuses one.
 # ---------------------------------------------------------------------------
 set -uo pipefail
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
