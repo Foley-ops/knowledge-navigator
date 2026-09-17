@@ -298,26 +298,26 @@ candidates:
     title: Vector Spaces
     categories:
       - atlas.mathematics.linear_and_multilinear_algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.linear_algebra.vector_spaces
   - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.matrix_theory
     title: Matrix Theory
     categories:
       - atlas.mathematics.linear_and_multilinear_algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.linear_algebra.matrix_theory
   - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.matrix_decompositions
     title: Matrix Decompositions
     categories:
       - atlas.mathematics.linear_and_multilinear_algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.linear_algebra.matrix_decompositions
   - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.tensors
     title: Tensors
     categories:
       - atlas.mathematics.linear_and_multilinear_algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.linear_algebra.tensors
   - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.tensor_decomposition
     title: Tensor Decomposition
     categories:
@@ -328,8 +328,8 @@ candidates:
     title: Spectral Theory
     categories:
       - atlas.mathematics.linear_and_multilinear_algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.linear_algebra.spectral_theory
   - candidate_id: candidate.mathematics.analysis.single_variable_calculus
     title: Single-Variable Calculus
     categories:
@@ -382,14 +382,14 @@ candidates:
     title: Banach Spaces
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.banach_spaces
   - candidate_id: candidate.mathematics.analysis.operators
     title: Operators
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.operators
   - candidate_id: candidate.mathematics.analysis.harmonic_analysis
     title: Harmonic Analysis
     categories:
@@ -442,20 +442,20 @@ candidates:
     title: Calculus of Variations
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.calculus_of_variations
   - candidate_id: candidate.mathematics.analysis.dynamical_systems
     title: Dynamical Systems
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.dynamical_systems
   - candidate_id: candidate.mathematics.analysis.chaos
     title: Chaos
     categories:
       - atlas.mathematics.analysis
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.analysis.chaos
   - candidate_id: candidate.mathematics.probability_and_statistics.probability_theory
     title: Probability Theory
     categories:

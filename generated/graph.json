@@ -1,35 +1,35 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T12:59:49.241Z",
-  "corpusHash": "d4d7ad1583e0ef3405789d253b72939d5d6167100855d8909684049882765d5d",
-  "atlasHash": "b0a7da0207f5bd9d8e2ee0f8bce4a405d73a6d1ed06975f3d334f928fa2ba0cf",
+  "builtAt": "2026-09-17T13:33:53.452Z",
+  "corpusHash": "dfbbeabc3c74ef539d7aff2b4042a0e435c2bac2af2fba89993a483b48fd97ca",
+  "atlasHash": "dfb21e5834c05556cbf2bd823d0dd7876a22cf325150de3721d2ada46e162ae0",
   "counts": {
-    "concepts": 31,
-    "relationships": 97,
-    "categories": 8
+    "concepts": 41,
+    "relationships": 137,
+    "categories": 9
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 31,
+      "1": 41,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 31,
+      "markdown": 41,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 31
+      "generated-draft": 41
     },
-    "conceptsWithArticle": 31,
+    "conceptsWithArticle": 41,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 260,
+      "candidate": 250,
       "proposed-tier-3": 0,
-      "covered": 31,
+      "covered": 41,
       "deferred": 0
     },
     "unresolvedReferences": 0,
@@ -123,15 +123,20 @@
       "depth": 2,
       "parent": "Mathematics",
       "primaryConceptIds": [
+        "concept.analysis.banach_spaces",
+        "concept.analysis.calculus_of_variations",
+        "concept.analysis.chaos",
         "concept.analysis.complex_analysis",
         "concept.analysis.convolution",
         "concept.analysis.cross_correlation",
+        "concept.analysis.dynamical_systems",
         "concept.analysis.fourier_analysis",
         "concept.analysis.functional_analysis",
         "concept.analysis.harmonic_analysis",
         "concept.analysis.hilbert_spaces",
         "concept.analysis.measure_theory",
         "concept.analysis.multivariable_calculus",
+        "concept.analysis.operators",
         "concept.analysis.ordinary_differential_equations",
         "concept.analysis.partial_differential_equations",
         "concept.analysis.real_analysis",
@@ -141,15 +146,20 @@
         "concept.analysis.wavelets"
       ],
       "conceptIds": [
+        "concept.analysis.banach_spaces",
+        "concept.analysis.calculus_of_variations",
+        "concept.analysis.chaos",
         "concept.analysis.complex_analysis",
         "concept.analysis.convolution",
         "concept.analysis.cross_correlation",
+        "concept.analysis.dynamical_systems",
         "concept.analysis.fourier_analysis",
         "concept.analysis.functional_analysis",
         "concept.analysis.harmonic_analysis",
         "concept.analysis.hilbert_spaces",
         "concept.analysis.measure_theory",
         "concept.analysis.multivariable_calculus",
+        "concept.analysis.operators",
         "concept.analysis.ordinary_differential_equations",
         "concept.analysis.partial_differential_equations",
         "concept.analysis.real_analysis",
@@ -194,9 +204,98 @@
         "concept.logic.proof_theory",
         "concept.logic.propositional_logic"
       ]
+    },
+    {
+      "path": "Mathematics/Linear & Multilinear Algebra",
+      "name": "Linear & Multilinear Algebra",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.linear_algebra.matrix_decompositions",
+        "concept.linear_algebra.matrix_theory",
+        "concept.linear_algebra.spectral_theory",
+        "concept.linear_algebra.tensors",
+        "concept.linear_algebra.vector_spaces"
+      ],
+      "conceptIds": [
+        "concept.linear_algebra.matrix_decompositions",
+        "concept.linear_algebra.matrix_theory",
+        "concept.linear_algebra.spectral_theory",
+        "concept.linear_algebra.tensors",
+        "concept.linear_algebra.vector_spaces"
+      ]
     }
   ],
   "nodes": [
+    {
+      "id": "concept.analysis.banach_spaces",
+      "title": "Banach Spaces",
+      "slug": "/concepts/banach-spaces",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A vector space with a length that loses no limits — the setting where infinite-dimensional analysis still works, but without angles, so projections and duality stop being free.",
+      "aliases": [
+        "complete normed space",
+        "B-space"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.banach_spaces",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.calculus_of_variations",
+      "title": "Calculus of Variations",
+      "slug": "/concepts/calculus-of-variations",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The branch of analysis that optimises over a space of functions rather than a space of points, converting \"which curve minimises this integral?\" into a differential equation the curve must satisfy.",
+      "aliases": [
+        "variational calculus"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.calculus_of_variations",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.chaos",
+      "title": "Chaos",
+      "slug": "/concepts/chaos",
+      "kind": "property",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The property of a deterministic system whose bounded orbits separate exponentially, spread from any region to any other, and are threaded everywhere by periodic points, so that individual trajectories become unpredictable, while under an ergodic physical measure their long-run statistics are stable.",
+      "aliases": [
+        "deterministic chaos",
+        "Devaney chaos"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.chaos",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
     {
       "id": "concept.analysis.complex_analysis",
       "title": "Complex Analysis",
@@ -257,6 +356,28 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.cross_correlation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.dynamical_systems",
+      "title": "Dynamical Systems",
+      "slug": "/concepts/dynamical-systems",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of a state space carrying a fixed evolution rule, asking not what the trajectory through a point is but what the whole family of trajectories does in the long run — where it settles, what it circles, and which of that structure survives a perturbation of the rule.",
+      "aliases": [
+        "dynamical system"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.dynamical_systems",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -387,6 +508,28 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.analysis.multivariable_calculus",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.analysis.operators",
+      "title": "Operators",
+      "slug": "/concepts/operators",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The linear maps between normed spaces — differentiation, integration, convolution, the Fourier transform — treated as objects in their own right, where continuity is exactly boundedness and the set of bad $\\lambda$ is far larger than the set of eigenvalues.",
+      "aliases": [
+        "bounded linear operator"
+      ],
+      "primaryCategory": "Mathematics/Analysis",
+      "categories": [
+        "Mathematics/Analysis"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.analysis.operators",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -816,6 +959,110 @@
       "claims": 0
     },
     {
+      "id": "concept.linear_algebra.matrix_decompositions",
+      "title": "Matrix Decompositions",
+      "slug": "/concepts/matrix-decompositions",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The family of factorisations — LU, QR, Cholesky, eigendecomposition and the SVD — that rewrite a matrix as a product of structured factors so that solving, least squares, rank and approximation become easy, and that differ above all in what they assume about the matrix.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
+      "categories": [
+        "Mathematics/Linear & Multilinear Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.linear_and_multilinear_algebra.matrix_decompositions",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.linear_algebra.matrix_theory",
+      "title": "Matrix Theory",
+      "slug": "/concepts/matrix-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The finite-dimensional theory of linear maps written in coordinates, where composition becomes matrix multiplication and rank, determinant and trace are the quantities that survive a change of basis.",
+      "aliases": [
+        "matrix algebra"
+      ],
+      "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
+      "categories": [
+        "Mathematics/Linear & Multilinear Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.linear_and_multilinear_algebra.matrix_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.linear_algebra.spectral_theory",
+      "title": "Spectral Theory",
+      "slug": "/concepts/spectral-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of what a linear operator does along its own preferred directions, and of the conditions — normality, self-adjointness, compactness — under which those directions form a coordinate system good enough to reduce the operator to multiplication by numbers.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
+      "categories": [
+        "Mathematics/Linear & Multilinear Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.linear_and_multilinear_algebra.spectral_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.linear_algebra.tensors",
+      "title": "Tensors",
+      "slug": "/concepts/tensors",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "One word covers three different things — a multilinear map on a vector space and its dual, an array of components obeying a fixed transformation law, and the plain multidimensional array a deep learning framework allocates — and only the first two are tensors in the mathematical sense.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
+      "categories": [
+        "Mathematics/Linear & Multilinear Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.linear_and_multilinear_algebra.tensors",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.linear_algebra.vector_spaces",
+      "title": "Vector Spaces",
+      "slug": "/concepts/vector-spaces",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The structure linear algebra is actually about — a set you can add and scale by a field, carrying exactly enough to define span, independence and dimension, and deliberately not enough to define length or angle.",
+      "aliases": [
+        "linear space"
+      ],
+      "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
+      "categories": [
+        "Mathematics/Linear & Multilinear Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.linear_and_multilinear_algebra.vector_spaces",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.logic.first_order_logic",
       "title": "First-Order Logic",
       "slug": "/concepts/first-order-logic",
@@ -884,6 +1131,102 @@
   ],
   "edges": [
     {
+      "id": "concept.analysis.banach_spaces|contributes_to|concept.analysis.functional_analysis",
+      "source": "concept.analysis.banach_spaces",
+      "target": "concept.analysis.functional_analysis",
+      "type": "contributes_to",
+      "note": "Banach spaces are the objects the subject is largely about, and three of its four cornerstone theorems hold precisely because the space is complete.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.banach_spaces|generalizes|concept.analysis.hilbert_spaces",
+      "source": "concept.analysis.banach_spaces",
+      "target": "concept.analysis.hilbert_spaces",
+      "type": "generalizes",
+      "note": "Every Hilbert space is a Banach space under the norm its inner product induces, but a norm is Hilbertian only when it obeys the parallelogram law, which $\\ell^1$ and the sup norm do not.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.banach_spaces|prerequisite_of|concept.analysis.operators",
+      "source": "concept.analysis.banach_spaces",
+      "target": "concept.analysis.operators",
+      "type": "prerequisite_of",
+      "note": "Boundedness, the operator norm, and the open mapping and closed graph theorems are all statements about maps between Banach spaces, so the spaces have to be defined before the operators on them.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.banach_spaces|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.analysis.banach_spaces",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "A Banach space is a vector space first; the norm and completeness are extra structure laid on top of addition and scalar multiplication, and every statement below uses linearity.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.calculus_of_variations|contributes_to|concept.analysis.partial_differential_equations",
+      "source": "concept.analysis.calculus_of_variations",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "contributes_to",
+      "note": "Energy functionals over a multidimensional domain have PDEs as their stationarity conditions, and the direct method is a standard way to prove those PDEs have solutions.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.calculus_of_variations|generalizes|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.calculus_of_variations",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "generalizes",
+      "note": "The domain of the objective changes from a finite-dimensional space to a space of functions, and the condition $\\nabla f = 0$ becomes the Euler–Lagrange equation.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.calculus_of_variations|requires|concept.analysis.banach_spaces",
+      "source": "concept.analysis.calculus_of_variations",
+      "target": "concept.analysis.banach_spaces",
+      "type": "requires",
+      "note": "The direct method is stated in a reflexive Banach space, where coercivity plus weak sequential compactness of bounded sets supplies a candidate minimiser.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.calculus_of_variations|requires|concept.analysis.ordinary_differential_equations",
+      "source": "concept.analysis.calculus_of_variations",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "requires",
+      "note": "For a one-dimensional integral the Euler–Lagrange condition is a second-order ODE with two-point boundary data, so extracting an extremal means solving a boundary-value problem.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.chaos|contrasts_with|concept.analysis.ordinary_differential_equations",
+      "source": "concept.analysis.chaos",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "contrasts_with",
+      "note": "Picard-Lindelöf gives unique solutions depending continuously on data, and chaos shows that this well-posedness is compatible with total loss of predictive power.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.chaos|requires|concept.analysis.dynamical_systems",
+      "source": "concept.analysis.chaos",
+      "target": "concept.analysis.dynamical_systems",
+      "type": "requires",
+      "note": "Chaos is not a system but a property of one, predicated of a map or flow together with an invariant set it acts on.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.chaos|requires|concept.analysis.measure_theory",
+      "source": "concept.analysis.chaos",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "Lyapunov exponents are guaranteed to exist only almost everywhere with respect to an invariant probability measure, which is what Oseledets' theorem is stated for.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.chaos|requires|concept.analysis.real_analysis",
+      "source": "concept.analysis.chaos",
+      "target": "concept.analysis.real_analysis",
+      "type": "requires",
+      "note": "Every clause of the definition is metric-topological — a uniform separation constant, density of periodic points, openness of the sets transitivity quantifies over.",
+      "condition": null
+    },
+    {
       "id": "concept.analysis.complex_analysis|contributes_to|concept.analysis.fourier_analysis",
       "source": "concept.analysis.complex_analysis",
       "target": "concept.analysis.fourier_analysis",
@@ -929,6 +1272,38 @@
       "target": "concept.analysis.convolution",
       "type": "requires",
       "note": "Cross-correlation is defined by contrast with convolution and shares its algebra apart from the reflection.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.dynamical_systems|prerequisite_of|concept.analysis.chaos",
+      "source": "concept.analysis.dynamical_systems",
+      "target": "concept.analysis.chaos",
+      "type": "prerequisite_of",
+      "note": "Sensitive dependence, strange attractors and topological transitivity are all properties of orbits and invariant sets, which is what this page defines.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.dynamical_systems|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.analysis.dynamical_systems",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "The evolution rule in continuous time is a vector field on an open subset of $\\mathbb{R}^n$, and its linearisation at a fixed point is the Jacobian of that field.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.dynamical_systems|requires|concept.analysis.ordinary_differential_equations",
+      "source": "concept.analysis.dynamical_systems",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "requires",
+      "note": "A continuous-time system is the solution operator of an autonomous ODE, so Picard-Lindelof existence and uniqueness is what makes the flow a well-defined map at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.dynamical_systems|requires|concept.linear_algebra.spectral_theory",
+      "source": "concept.analysis.dynamical_systems",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "requires",
+      "note": "Stability and hyperbolicity are conditions on the spectrum of the derivative at a fixed point — real parts for flows, moduli for maps — so the local classification is an eigenvalue computation.",
       "condition": null
     },
     {
@@ -1113,6 +1488,38 @@
       "target": "concept.analysis.real_analysis",
       "type": "requires",
       "note": "Total differentiability is a limit statement about norms on an open set, so its content depends on the notions of limit, continuity and neighbourhood that real analysis makes precise.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.operators|contributes_to|concept.analysis.functional_analysis",
+      "source": "concept.analysis.operators",
+      "target": "concept.analysis.functional_analysis",
+      "type": "contributes_to",
+      "note": "Operators are the objects the four structural theorems of functional analysis are about, and the subject is largely the study of what those theorems say about particular classes of them.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.operators|generalizes|concept.linear_algebra.matrix_theory",
+      "source": "concept.analysis.operators",
+      "target": "concept.linear_algebra.matrix_theory",
+      "type": "generalizes",
+      "note": "Fix bases on finite-dimensional spaces and every operator is a matrix; the infinite-dimensional theory keeps the algebra and loses the guarantees that every linear map is continuous and that non-invertibility means a vanishing determinant.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.operators|prerequisite_of|concept.linear_algebra.spectral_theory",
+      "source": "concept.analysis.operators",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "prerequisite_of",
+      "note": "The spectrum is defined as the set of $\\lambda$ for which $T - \\lambda I$ fails to be invertible as an operator, so the notions of boundedness, adjoint and invertibility have to be in place before any spectral statement can be made.",
+      "condition": null
+    },
+    {
+      "id": "concept.analysis.operators|requires|concept.analysis.banach_spaces",
+      "source": "concept.analysis.operators",
+      "target": "concept.analysis.banach_spaces",
+      "type": "requires",
+      "note": "An operator is only as good as the spaces at its ends; completeness of the target is what makes the space of operators itself complete, and completeness of the domain is the hypothesis behind the open mapping and closed graph theorems.",
       "condition": null
     },
     {
@@ -1561,6 +1968,166 @@
       "target": "concept.logic.first_order_logic",
       "type": "requires",
       "note": "ZFC is stated as a first-order theory with one binary relation symbol, and two of its axioms are schemas over first-order formulas.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_decompositions|contributes_to|concept.analysis.operators",
+      "source": "concept.linear_algebra.matrix_decompositions",
+      "target": "concept.analysis.operators",
+      "type": "contributes_to",
+      "note": "The singular value decomposition of a compact operator between Hilbert spaces is the same theorem in infinite dimensions, and the finite-dimensional construction is where it can actually be seen — an illuminating parallel rather than something an operator theorist has to read first.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_decompositions|prerequisite_of|concept.linear_algebra.tensors",
+      "source": "concept.linear_algebra.matrix_decompositions",
+      "target": "concept.linear_algebra.tensors",
+      "type": "prerequisite_of",
+      "note": "CP and Tucker decompositions are defined by analogy with the SVD, and the instructive fact about them is precisely which SVD guarantees — uniqueness, nestedness, best rank-k truncation — stop holding.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_decompositions|requires|concept.linear_algebra.matrix_theory",
+      "source": "concept.linear_algebra.matrix_decompositions",
+      "target": "concept.linear_algebra.matrix_theory",
+      "type": "requires",
+      "note": "Rank, invertibility, the conjugate transpose and positive definiteness are the vocabulary in which each factorisation's existence hypothesis is stated, so the hypotheses are unreadable without them.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_decompositions|requires|concept.linear_algebra.spectral_theory",
+      "source": "concept.linear_algebra.matrix_decompositions",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "requires",
+      "note": "The unitary eigendecomposition is the spectral theorem for normal matrices, and the SVD is obtained by applying that theorem to the Hermitian positive semidefinite matrix A*A.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_theory|prerequisite_of|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.linear_algebra.matrix_theory",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "prerequisite_of",
+      "note": "Every factorisation is a statement about writing one matrix as a product of structured ones, which presupposes the multiplication rule, rank and invertibility developed here.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_theory|prerequisite_of|concept.linear_algebra.spectral_theory",
+      "source": "concept.linear_algebra.matrix_theory",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "prerequisite_of",
+      "note": "Eigenvalues are defined through the characteristic polynomial of a matrix and are meaningful for the underlying operator only because similarity leaves that polynomial fixed.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_theory|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.linear_algebra.matrix_theory",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "A matrix means nothing until a basis is chosen for the domain and the codomain, so the vector space and its bases are logically prior to the array of numbers.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.matrix_theory|specializes|concept.analysis.operators",
+      "source": "concept.linear_algebra.matrix_theory",
+      "target": "concept.analysis.operators",
+      "type": "specializes",
+      "note": "A matrix is the finite-dimensional case of a linear operator; in infinite dimensions an array against a basis no longer determines the operator, and determinant and trace must be rebuilt, when they exist at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.spectral_theory|contributes_to|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.linear_algebra.spectral_theory",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "contributes_to",
+      "note": "The orthogonal eigendecomposition is the factorisation the spectral theorem licenses, and the singular value decomposition is obtained by applying it to the Hermitian matrix $A^*A$.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.spectral_theory|requires|concept.analysis.hilbert_spaces",
+      "source": "concept.linear_algebra.spectral_theory",
+      "target": "concept.analysis.hilbert_spaces",
+      "type": "requires",
+      "note": "The infinite-dimensional statement needs an inner product to define adjoints and orthogonal projections, and completeness for the projection-valued measure to converge to anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.spectral_theory|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.linear_algebra.spectral_theory",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "An eigenvector is a nonzero vector spanning a one-dimensional invariant subspace, so the whole subject presupposes the linear structure in which \"invariant subspace\" makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.spectral_theory|used_to_solve|concept.analysis.ordinary_differential_equations",
+      "source": "concept.linear_algebra.spectral_theory",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "used_to_solve",
+      "note": "Diagonalising the coefficient matrix decouples a linear constant-coefficient system into independent scalar equations, and the eigenvalues' real parts decide asymptotic stability.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensors|contrasts_with|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.linear_algebra.tensors",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "contrasts_with",
+      "note": "Almost nothing from the matrix case survives to order 3 — rank can depend on the field, best low-rank approximations can fail to exist, and computing rank is NP-hard — so tensor decomposition is a different subject rather than SVD with more indices.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensors|generalizes|concept.linear_algebra.matrix_theory",
+      "source": "concept.linear_algebra.tensors",
+      "target": "concept.linear_algebra.matrix_theory",
+      "type": "generalizes",
+      "note": "A matrix is the order-2 case written in a basis, and the three different transformation rules for one 2x2 array of numbers are exactly what matrix notation hides by giving every such array the same name.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensors|prerequisite_of|concept.deep_learning.convolutional_layer",
+      "source": "concept.linear_algebra.tensors",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "prerequisite_of",
+      "note": "The four-axis arrays a convolutional layer consumes and produces are called tensors by every framework, and a reader needs to know that this usage carries none of the multilinear structure before reading the layer's index arithmetic.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensors|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.linear_algebra.tensors",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "A tensor is defined on a vector space and its dual, and the whole construction rests on bases, dual bases and the change-of-basis matrix the transformation law is written in terms of.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.vector_spaces|generalizes|concept.analysis.banach_spaces",
+      "source": "concept.linear_algebra.vector_spaces",
+      "target": "concept.analysis.banach_spaces",
+      "type": "generalizes",
+      "note": "A Banach space is a vector space plus a complete norm; strip the norm and exactly this structure remains, which is why no statement about length, convergence or approximation can be proved at this level.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.vector_spaces|prerequisite_of|concept.linear_algebra.matrix_theory",
+      "source": "concept.linear_algebra.vector_spaces",
+      "target": "concept.linear_algebra.matrix_theory",
+      "type": "prerequisite_of",
+      "note": "A matrix is what a linear map between finite-dimensional vector spaces becomes after a basis is chosen at each end, so the basis-independent object has to be understood before the array of numbers means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.vector_spaces|prerequisite_of|concept.linear_algebra.tensors",
+      "source": "concept.linear_algebra.vector_spaces",
+      "target": "concept.linear_algebra.tensors",
+      "type": "prerequisite_of",
+      "note": "Tensors are elements of a tensor product of vector spaces, defined by a basis-free universal property and identified with multilinear maps on them in finite dimension, so the spaces themselves have to be understood first; bases enter only when one wants components.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.vector_spaces|requires|concept.foundations.set_theory",
+      "source": "concept.linear_algebra.vector_spaces",
+      "target": "concept.foundations.set_theory",
+      "type": "requires",
+      "note": "The definition is a set with operations, and the two headline theorems about infinite-dimensional spaces — that a basis exists and that any two have the same cardinality — are statements about ZFC and the axiom of choice rather than about algebra.",
       "condition": null
     },
     {

@@ -3,13 +3,14 @@
  *
  * The fixture is a small corpus with a real prerequisite chain, a Tier 2 stub
  * that has no template sections, a graph-only identity with no article at all,
- * and a deliberate cycle — so "missing" and "unreachable" are exercised as
- * first-class outcomes rather than as edge cases.
+ * and a cycle injected below the validator — so "missing" and "unreachable" are
+ * exercised as first-class outcomes rather than as edge cases.
  */
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import Database from 'better-sqlite3';
 import type { Database as DatabaseType } from 'better-sqlite3';
 import { compileCorpus } from '../src/compile.js';
 import { openDatabaseReadOnly } from '../src/db.js';
@@ -582,12 +583,56 @@ describe('cycles', () => {
         'utf8',
       );
 
-      const result = await compileCorpus({
+      // The corpus validator now refuses a prerequisite cycle outright, so this
+      // pair of pages cannot compile. That is the first half of the guarantee.
+      const refused = await compileCorpus({
         contentDir,
         databasePath: join(cycleRoot, 'knowledge.db'),
         env: { SOURCE_DATE_EPOCH: '1700000000' },
       });
-      expect(result.ok, JSON.stringify(result.diagnostics)).toBe(true);
+      expect(refused.ok).toBe(false);
+      expect(refused.diagnostics.map((diagnostic) => diagnostic.message).join(' ')).toContain(
+        'prerequisite cycle',
+      );
+
+      // The second half is that the path builder still survives one. Validation
+      // runs when a corpus is compiled; the reader holds an index compiled
+      // earlier, and the defensive branch exists for a graph that changed
+      // underneath it. Reaching that branch now means putting the closing edge
+      // into the database directly, which is the only way it can still happen.
+      await rm(join(contentDir, 'beta.md'));
+      await writeFile(
+        join(contentDir, 'beta.md'),
+        conceptMarkdown({
+          conceptId: 'concept.loop.beta',
+          title: 'Beta',
+          slug: '/concepts/beta',
+          aliases: [],
+          categories: ['Mathematics/Analysis'],
+          relationships: [{ type: 'contrasts_with', target: 'concept.loop.alpha' }],
+          sources: [SOURCE],
+          body: body('Beta'),
+        }),
+        'utf8',
+      );
+      const compiled = await compileCorpus({
+        contentDir,
+        databasePath: join(cycleRoot, 'knowledge.db'),
+        env: { SOURCE_DATE_EPOCH: '1700000000' },
+      });
+      expect(compiled.ok, JSON.stringify(compiled.diagnostics)).toBe(true);
+
+      const writable = new Database(join(cycleRoot, 'knowledge.db'));
+      try {
+        writable
+          .prepare(
+            `INSERT INTO relationships (source_concept_id, type, target_concept_id, note, condition, position)
+             VALUES ('concept.loop.beta', 'requires', 'concept.loop.alpha', NULL, NULL, 1)`,
+          )
+          .run();
+      } finally {
+        writable.close();
+      }
 
       const cycleDb = openDatabaseReadOnly(join(cycleRoot, 'knowledge.db'));
       try {

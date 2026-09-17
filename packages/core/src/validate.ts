@@ -368,6 +368,67 @@ export function validateCorpus(
     });
   }
 
+  /* --------------------------- prerequisite order ------------------------- */
+
+  // `requires` and `prerequisite_of` are the only two relationships that claim
+  // a reading order, and a cycle among them is a corpus that asks a reader to
+  // understand three things before any of them. Each edge in such a cycle can
+  // look perfectly defensible alone — spectral theory needs operators, which
+  // need matrix decompositions, which need spectral theory — so nothing but a
+  // whole-corpus check finds it. The learning path survives a cycle by
+  // reporting it as missing information, but the order it then emits places a
+  // concept before something it requires, which is the promise the page makes.
+  const prerequisites = new Map<string, string[]>();
+  for (const concept of concepts) {
+    const id = concept.frontmatter.concept_id;
+    for (const relationship of concept.frontmatter.relationships) {
+      const [after, before] =
+        relationship.type === 'requires'
+          ? [id, relationship.target]
+          : relationship.type === 'prerequisite_of'
+            ? [relationship.target, id]
+            : [undefined, undefined];
+      if (after === undefined || before === undefined) continue;
+      const list = prerequisites.get(after);
+      if (list === undefined) prerequisites.set(after, [before]);
+      else list.push(before);
+    }
+  }
+
+  const visitState = new Map<string, 'visiting' | 'done'>();
+  const trail: string[] = [];
+  const reportedCycles = new Set<string>();
+
+  const walk = (id: string): void => {
+    visitState.set(id, 'visiting');
+    trail.push(id);
+    for (const before of [...(prerequisites.get(id) ?? [])].sort(compareStrings)) {
+      if (visitState.get(before) === 'visiting') {
+        // Name the cycle by its smallest member so the same loop is reported
+        // once however many of its concepts the walk happens to enter first.
+        const loop = trail.slice(trail.indexOf(before));
+        const key = [...loop].sort(compareStrings).join(' ');
+        if (!reportedCycles.has(key)) {
+          reportedCycles.add(key);
+          const owner = concepts.find((concept) => concept.frontmatter.concept_id === before);
+          diagnostics.push({
+            file: owner?.fileName ?? before,
+            field: 'relationships',
+            message: `prerequisite cycle: ${[...loop, before].join(' is required by ')}; the corpus cannot say which of these to read first`,
+          });
+        }
+        continue;
+      }
+      if (visitState.get(before) === undefined && prerequisites.has(before)) walk(before);
+    }
+    trail.pop();
+    visitState.set(id, 'done');
+  };
+
+  for (const id of [...prerequisites.keys()].sort(compareStrings)) {
+    if (visitState.get(id) === undefined) walk(id);
+  }
+
   /* ------------------------------- claims --------------------------------- */
 
   // A claim_id is an address a reviewer, an export or a saved item can point

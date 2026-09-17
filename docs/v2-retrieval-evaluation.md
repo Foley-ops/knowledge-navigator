@@ -35,28 +35,28 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.analysis.single_variable_calculus`, `concept.analysis.convolution`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.analysis.single_variable_calculus`, `concept.deep_learning.resnet`, `concept.analysis.calculus_of_variations`
 
 ### P5 (paraphrase)
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.analysis.vector_calculus`, `concept.foundations.model_theory`, `concept.analysis.single_variable_calculus`, `concept.foundations.category_theory`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.foundations.model_theory`, `concept.foundations.category_theory`, `concept.analysis.vector_calculus`, `concept.analysis.single_variable_calculus`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.analysis.wavelets`, `concept.deep_learning.resnet`, `concept.logic.proof_theory`, `concept.foundations.set_theory`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.analysis.wavelets`, `concept.deep_learning.resnet`, `concept.analysis.banach_spaces`, `concept.logic.proof_theory`
 
 ### R3 (path)
 
 > What comes before a convolutional layer?
 
 - Needed but not retrieved: `concept.analysis.convolution`
-- Retrieved instead: `concept.deep_learning.convolutional_layer`, `concept.analysis.translation_equivariance`, `concept.deep_learning.resnet`, `concept.analysis.hilbert_spaces`, `concept.analysis.functional_analysis`
+- Retrieved instead: `concept.deep_learning.convolutional_layer`, `concept.analysis.translation_equivariance`, `concept.deep_learning.resnet`, `concept.deep_learning.backpropagation_through_convolution`, `concept.deep_learning.lenet`
 
 ## Private context
 

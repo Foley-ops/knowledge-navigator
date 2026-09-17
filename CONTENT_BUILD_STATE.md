@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 3 of 28.** 10 of 10 pages in it are still to write.
+**Batch 4 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/banach-spaces.md` — Banach Spaces (concept.analysis.banach_spaces)
-- `content/concepts/operators.md` — Operators (concept.analysis.operators)
-- `content/concepts/calculus-of-variations.md` — Calculus of Variations (concept.analysis.calculus_of_variations)
-- `content/concepts/dynamical-systems.md` — Dynamical Systems (concept.analysis.dynamical_systems)
-- `content/concepts/chaos.md` — Chaos (concept.analysis.chaos)
-- `content/concepts/vector-spaces.md` — Vector Spaces (concept.linear_algebra.vector_spaces)
-- `content/concepts/matrix-theory.md` — Matrix Theory (concept.linear_algebra.matrix_theory)
-- `content/concepts/matrix-decompositions.md` — Matrix Decompositions (concept.linear_algebra.matrix_decompositions)
-- `content/concepts/spectral-theory.md` — Spectral Theory (concept.linear_algebra.spectral_theory)
-- `content/concepts/tensors.md` — Tensors (concept.linear_algebra.tensors)
+- `content/concepts/tensor-decomposition.md` — Tensor Decomposition (concept.linear_algebra.tensor_decomposition)
+- `content/concepts/probability-theory.md` — Probability Theory (concept.probability.probability_theory)
+- `content/concepts/stochastic-processes.md` — Stochastic Processes (concept.probability.stochastic_processes)
+- `content/concepts/martingales.md` — Martingales (concept.probability.martingales)
+- `content/concepts/concentration-inequalities.md` — Concentration Inequalities (concept.probability.concentration_inequalities)
+- `content/concepts/frequentist-inference.md` — Frequentist Inference (concept.probability.frequentist_inference)
+- `content/concepts/bayesian-inference.md` — Bayesian Inference (concept.probability.bayesian_inference)
+- `content/concepts/high-dimensional-statistics.md` — High-Dimensional Statistics (concept.probability.high_dimensional_statistics)
+- `content/concepts/random-matrix-theory.md` — Random Matrix Theory (concept.probability.random_matrix_theory)
+- `content/concepts/probability-and-computing.md` — Probability and Computing (concept.probability.probability_and_computing)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 31 |
-| Markdown pages in the corpus | 31 |
-| Tier 1 pages | 31 |
+| Candidates covered by a page | 41 |
+| Markdown pages in the corpus | 41 |
+| Tier 1 pages | 41 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 20 of 280 |
+| Planned pages written | 30 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 20 | 85 | 24% |
+| Mathematics | 30 | 85 | 35% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -68,12 +68,12 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
 | Mathematics/Algebra | 0 | 14 |  |
-| Mathematics/Analysis | 13 | 18 |  |
+| Mathematics/Analysis | 18 | 18 | complete |
 | Mathematics/Foundations | 4 | 4 | complete |
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
 | Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
 | Mathematics/Geometry & Topology | 0 | 15 |  |
-| Mathematics/Linear & Multilinear Algebra | 0 | 6 |  |
+| Mathematics/Linear & Multilinear Algebra | 5 | 6 |  |
 | Mathematics/Mathematical Physics | 0 | 2 |  |
 | Mathematics/Number Theory | 0 | 3 |  |
 | Mathematics/Optimization | 0 | 7 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-20 of the planned 280, in the order they were written.
+30 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -112,6 +112,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Wavelets | `concept.analysis.wavelets` | tier 1 | covered |
 | Functional Analysis | `concept.analysis.functional_analysis` | tier 1 | covered |
 | Hilbert Spaces | `concept.analysis.hilbert_spaces` | tier 1 | covered |
+| Banach Spaces | `concept.analysis.banach_spaces` | tier 1 | covered |
+| Operators | `concept.analysis.operators` | tier 1 | covered |
+| Calculus of Variations | `concept.analysis.calculus_of_variations` | tier 1 | covered |
+| Dynamical Systems | `concept.analysis.dynamical_systems` | tier 1 | covered |
+| Chaos | `concept.analysis.chaos` | tier 1 | covered |
+| Vector Spaces | `concept.linear_algebra.vector_spaces` | tier 1 | covered |
+| Matrix Theory | `concept.linear_algebra.matrix_theory` | tier 1 | covered |
+| Matrix Decompositions | `concept.linear_algebra.matrix_decompositions` | tier 1 | covered |
+| Spectral Theory | `concept.linear_algebra.spectral_theory` | tier 1 | covered |
+| Tensors | `concept.linear_algebra.tensors` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -150,20 +160,20 @@ it. Batches are ten pages each.
 | x | Functional Analysis | `concept.analysis.functional_analysis` | Mathematics/Analysis |
 | x | Hilbert Spaces | `concept.analysis.hilbert_spaces` | Mathematics/Analysis |
 
-### Batch 3
+### Batch 3 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Banach Spaces | `concept.analysis.banach_spaces` | Mathematics/Analysis |
-|   | Operators | `concept.analysis.operators` | Mathematics/Analysis |
-|   | Calculus of Variations | `concept.analysis.calculus_of_variations` | Mathematics/Analysis |
-|   | Dynamical Systems | `concept.analysis.dynamical_systems` | Mathematics/Analysis |
-|   | Chaos | `concept.analysis.chaos` | Mathematics/Analysis |
-|   | Vector Spaces | `concept.linear_algebra.vector_spaces` | Mathematics/Linear & Multilinear Algebra |
-|   | Matrix Theory | `concept.linear_algebra.matrix_theory` | Mathematics/Linear & Multilinear Algebra |
-|   | Matrix Decompositions | `concept.linear_algebra.matrix_decompositions` | Mathematics/Linear & Multilinear Algebra |
-|   | Spectral Theory | `concept.linear_algebra.spectral_theory` | Mathematics/Linear & Multilinear Algebra |
-|   | Tensors | `concept.linear_algebra.tensors` | Mathematics/Linear & Multilinear Algebra |
+| x | Banach Spaces | `concept.analysis.banach_spaces` | Mathematics/Analysis |
+| x | Operators | `concept.analysis.operators` | Mathematics/Analysis |
+| x | Calculus of Variations | `concept.analysis.calculus_of_variations` | Mathematics/Analysis |
+| x | Dynamical Systems | `concept.analysis.dynamical_systems` | Mathematics/Analysis |
+| x | Chaos | `concept.analysis.chaos` | Mathematics/Analysis |
+| x | Vector Spaces | `concept.linear_algebra.vector_spaces` | Mathematics/Linear & Multilinear Algebra |
+| x | Matrix Theory | `concept.linear_algebra.matrix_theory` | Mathematics/Linear & Multilinear Algebra |
+| x | Matrix Decompositions | `concept.linear_algebra.matrix_decompositions` | Mathematics/Linear & Multilinear Algebra |
+| x | Spectral Theory | `concept.linear_algebra.spectral_theory` | Mathematics/Linear & Multilinear Algebra |
+| x | Tensors | `concept.linear_algebra.tensors` | Mathematics/Linear & Multilinear Algebra |
 
 ### Batch 4
 
@@ -566,6 +576,29 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batch 3 — the corpus grew a prerequisite cycle
+
+Spectral theory declared that operators come first; operators, that matrix
+decompositions come first; matrix decompositions, that spectral theory comes
+first. Every edge was defensible on its own page, and each page was individually
+valid, so only a whole-corpus check could see it. The learning path survived —
+it reports a cycle as missing information — but the order it then emitted put a
+concept before something it requires, which is the one promise that page makes.
+
+Broken in the content, not the tooling: matrix decompositions claimed to be a
+prerequisite of operators on the strength of the finite-dimensional SVD being
+the visible case of the compact-operator SVD. That is an illuminating parallel,
+not something an operator theorist must read first, so the edge is now
+`contributes_to`, which orders nothing.
+
+`validateCorpus` now rejects prerequisite cycles outright, with
+`packages/core/tests/prerequisite-cycles.test.ts` covering chains, diamonds,
+both spellings of the edge, several disjoint cycles, and the fact that a
+non-ordering relationship may loop freely. One existing test deliberately
+compiled a cyclic corpus to exercise the path builder's defensive branch; it now
+asserts both halves — that compiling such a corpus is refused, and that the path
+builder still survives a cycle reaching it through an index compiled earlier.
 
 ### Batch 1 — twelve test files pinned the corpus at eleven concepts
 
