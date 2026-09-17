@@ -70,10 +70,10 @@ export const ID_PREFIX = {
 /** Names an automatic slug would mangle, fixed by hand once. */
 export const NAME_OVERRIDES = {
   'A*': ['a-star', 'a_star'],
-  'C': ['c-language', 'c_language'],
+  C: ['c-language', 'c_language'],
   'C++': ['cpp', 'cpp'],
-  'R': ['r-language', 'r_language'],
-  'S4': ['s4', 's4'],
+  R: ['r-language', 'r_language'],
+  S4: ['s4', 's4'],
   'k-Means': ['k-means', 'k_means'],
   'k-Nearest Neighbors': ['k-nearest-neighbors', 'k_nearest_neighbors'],
   't-SNE': ['t-sne', 't_sne'],
@@ -117,7 +117,10 @@ export const ORDER = [
     'Mathematics/Foundations',
     ['Set Theory', 'Category Theory', 'Model Theory', 'Computability Theory'],
   ],
-  ['Mathematics/Foundations/Logic & Proof', ['Propositional Logic', 'First-Order Logic', 'Proof Theory']],
+  [
+    'Mathematics/Foundations/Logic & Proof',
+    ['Propositional Logic', 'First-Order Logic', 'Proof Theory'],
+  ],
   [
     'Mathematics/Analysis',
     [

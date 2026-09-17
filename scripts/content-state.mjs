@@ -29,7 +29,9 @@ export const HAND_WRITTEN_MARKER = '<!-- hand-written below this line -->';
 
 function pages() {
   const loaded = [];
-  for (const name of readdirSync(CONTENT).filter((file) => file.endsWith('.md')).sort()) {
+  for (const name of readdirSync(CONTENT)
+    .filter((file) => file.endsWith('.md'))
+    .sort()) {
     const result = loadConceptFromText(readFileSync(join(CONTENT, name), 'utf8'), name);
     if (result.ok) loaded.push({ file: name, fm: result.concept.frontmatter });
   }
@@ -55,7 +57,6 @@ export function render() {
   const byConceptId = new Map(written.map((page) => [page.fm.concept_id, page]));
 
   const done = items.filter((item) => byConceptId.has(item.conceptId));
-  const remaining = items.filter((item) => !byConceptId.has(item.conceptId));
   const currentBatch = batches.find((batch) =>
     batch.items.some((item) => !byConceptId.has(item.conceptId)),
   );

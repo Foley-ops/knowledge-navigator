@@ -47,7 +47,9 @@ export function coverCandidate(candidateId, conceptId) {
 
   if (block.includes(`canonical_concept_id: ${conceptId}`)) return false;
   if (!block.includes('status: candidate') || !block.includes('canonical_concept_id: null')) {
-    throw new Error(`candidate ${candidateId} is not an uncovered candidate; refusing to rewrite it`);
+    throw new Error(
+      `candidate ${candidateId} is not an uncovered candidate; refusing to rewrite it`,
+    );
   }
 
   const updated = block
@@ -75,11 +77,9 @@ function main(argv) {
   /* ------------------------------ every page ----------------------------- */
 
   let failed = 0;
-  const missing = [];
   for (const item of batch.items) {
     const path = join(ROOT, item.file);
     if (!existsSync(path)) {
-      missing.push(item);
       console.log(`  MISSING  ${item.file}`);
       failed += 1;
       continue;
