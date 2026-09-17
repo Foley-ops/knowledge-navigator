@@ -32,6 +32,7 @@ experiences carry that work:
 - [Where data lives](#where-data-lives)
 - [Backup and recovery](#backup-and-recovery)
 - [Editing content](#editing-content)
+- [Proposing content with an agent](#proposing-content-with-an-agent)
 - [Architecture](#architecture)
 - [Working on the source](#working-on-the-source)
 - [Testing](#testing)
@@ -261,6 +262,135 @@ Agents writing content are bound by
 [`AGENT_CONTENT_CONTRACT.md`](./AGENT_CONTENT_CONTRACT.md), which forbids
 publishing, forbids raising a page's own review state, and requires uncertainty
 to be recorded rather than smoothed over.
+
+## Proposing content with an agent
+
+An agent may write content for this corpus. It may not publish it. The whole
+loop below exists so that everything an agent produces arrives as a _proposal_ —
+a patch, a written account of what was done, and a validation verdict — that a
+person reads before it becomes canonical knowledge.
+
+Nothing in this loop is automatic. Every step that changes something needs a
+confirmation you type yourself, and there is no command anywhere in this
+repository that lets an agent accept its own work.
+
+### 1. Prepare a brief
+
+```bash
+npm run navigator -- coverage unresolved          # gaps pages ran into
+npm run navigator -- coverage candidates          # gaps the atlas records
+npm run navigator -- proposal prepare <backlog-id> --tier 3
+```
+
+This writes `.navigator/proposals/<proposal-id>/` containing `manifest.json` and
+`REQUEST.md`. No model is involved. The brief names the one file that may be
+written, the exact `concept_id` and `slug` it must carry, the pages waiting on
+it, the rules it must satisfy, and the point at which the agent must stop.
+
+If the label cannot make a sensible address — `A*`, `C++` — the command refuses
+rather than guessing, and asks for `--name <lowercase-dashed-name>`.
+
+### 2. Read it
+
+```bash
+cat .navigator/proposals/<proposal-id>/REQUEST.md
+```
+
+This is the whole specification the agent will get. If it is wrong, fix it now:
+everything after this point is checking, not writing.
+
+### 3. Set Hermes up, once, yourself
+
+```bash
+node scripts/hermes-content-task.mjs --check
+```
+
+This reports the installed `hermes`, its version, and whether it offers the
+flags this adapter needs. It never installs, updates or configures anything. If
+the project or board is missing, the dry run below prints the exact one-time
+commands to create them — run them yourself, after reading them.
+
+Hermes currently prints a warning if its gateway has not been restarted since
+the last update. That is a message from Hermes about your machine, and it is
+yours to act on: neither this product nor its tests restarts anything.
+
+### 4. Dry run
+
+```bash
+node scripts/hermes-content-task.mjs --proposal <proposal-id>
+```
+
+The default is a dry run. It prints the exact `hermes kanban create` command it
+would run — shell-escaped, with the project and board slug `knowledge-navigator`,
+the repository as the workspace, a two-hour runtime cap, three retries, and a
+completion contract that ends the task at review. Nothing is created.
+
+The model and the reasoning effort are whatever the Hermes profile you select
+says. `hermes kanban create` exposes no flag for either, and this adapter does
+not invent one.
+
+### 5. Dispatch it
+
+```bash
+node scripts/hermes-content-task.mjs --proposal <proposal-id> \
+  --execute --confirm <proposal-id>
+```
+
+The confirmation has to repeat the proposal id. The dispatch is refused unless
+the proposal is still `prepared`, this repository is clean, and the Hermes
+project and board exist. The returned task id is recorded and the proposal moves
+to `running`.
+
+### 6. Watch it, then bring it back
+
+Inspect the task on your Hermes board. When it has finished:
+
+```bash
+npm run navigator -- proposal import-hermes <proposal-id> --worktree <path>
+```
+
+This confirms the worktree belongs to this repository, requires it to still be
+at the recorded base commit with the change uncommitted, turns it into a patch,
+copies `RESULT.md` into the bundle, runs validation, and moves the proposal to
+`review`. It merges nothing.
+
+### 7. Validate and read
+
+```bash
+npm run navigator -- proposal validate .navigator/proposals/<proposal-id>
+cat .navigator/proposals/<proposal-id>/RESULT.md
+git apply --stat .navigator/proposals/<proposal-id>/changes.patch
+```
+
+Validation checks that the patch applies to the recorded base, touches only the
+allowed paths, adds nothing secret-shaped, keeps `concept_id` and `slug`, raises
+no review state, still passes content validation, and carries a real reviewer
+summary. A passing verdict is not an opinion about whether the content is
+_true_ — that part is yours.
+
+### 8. Accept or reject
+
+```bash
+# Check every guard and change nothing:
+npm run navigator -- proposal accept <proposal-id> --confirm <proposal-id> --dry-run
+
+# Apply it to a new branch, staged and uncommitted:
+npm run navigator -- proposal accept <proposal-id> --confirm <proposal-id>
+
+# Or refuse it, with a reason that stays on the record:
+npm run navigator -- proposal reject <proposal-id> --confirm <proposal-id> \
+  --reason "The summary asserts a claim no listed source supports."
+```
+
+Acceptance requires a clean tree, `HEAD` at the recorded base commit, a proposal
+in `review`, and validation passing at that moment. It creates
+`content/<proposal-id>`, applies and stages the patch, runs content validation
+and a compile against the result, and commits nothing. Read the change, run
+`npm test`, and commit it yourself.
+
+The contract an agent works under is
+[`HERMES_CONTENT_PROFILE.md`](./HERMES_CONTENT_PROFILE.md), alongside
+[`AGENT_CONTENT_CONTRACT.md`](./AGENT_CONTENT_CONTRACT.md).
 
 ## Architecture
 

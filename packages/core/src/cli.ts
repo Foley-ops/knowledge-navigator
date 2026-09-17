@@ -6,6 +6,7 @@
  * implemented fails loudly rather than pretending to succeed.
  */
 import { existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import type { Database as DatabaseType } from 'better-sqlite3';
@@ -21,6 +22,11 @@ import { getConceptEvidence, getCoverageSummary, listBacklog, listCandidates } f
 import { compareStrings } from './normalize.js';
 import Database from 'better-sqlite3';
 import { exportFileName, renderSavedItemMarkdown } from './export.js';
+import { PROPOSAL_FILES, ProposalError, serializeProposalManifest } from './proposal.js';
+import { findProposalTarget, prepareProposal, slugNameFromLabel } from './proposal-request.js';
+import { validateProposal, writeProposalValidation } from './proposal-validate.js';
+import { acceptProposal, rejectProposal } from './proposal-accept.js';
+import { importHermesResult } from './proposal-import.js';
 
 const USAGE = `navigator <command> [options]
 
@@ -37,6 +43,21 @@ Commands:
                       [--status <status>]
   coverage unresolved [--blocking]        The grouped editorial backlog
   evidence <concept-id-or-slug>           Claim-level evidence for one concept
+
+  proposal prepare <backlog-id>           Write a bounded agent brief into
+                   --tier 2|3             .navigator/proposals/<proposal-id>/
+                   [--name <slug-tail>]
+                   [--category <id>]
+                   [--out <dir>]
+  proposal validate <proposal-dir>        Check a proposal before a human reads it
+  proposal import-hermes <proposal-id>    Bring an agent's worktree back into the
+                        --worktree <path> bundle and validate it
+  proposal accept <proposal-id>           Apply a reviewed proposal to a new
+                  --confirm <proposal-id> branch, leaving it uncommitted
+                  [--dry-run]
+  proposal reject <proposal-id>           Record a refusal, applying nothing
+                  --confirm <proposal-id>
+                  --reason <text>
 
   export saved <saved-item-id>            Write one saved comparison or path to
                       [--out <dir>]       .navigator/exports/ as Markdown
@@ -55,6 +76,9 @@ Options:
   --out <dir>             Write an export somewhere other than .navigator/exports
   --site <url>            Base URL for canonical links in an export
   --stdout                Print an export instead of writing a file
+  --tier <2|3>            The coverage tier a proposal asks for
+  --name <slug-tail>      Override the address derived from a label
+  --category <id>         Choose the atlas category when a target has several
 `;
 
 function optionValue(args: readonly string[], name: string): string | undefined {
@@ -693,6 +717,367 @@ async function commandExport(args: readonly string[]): Promise<number> {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/* Proposals (v2 runbook R01)                                                  */
+/* -------------------------------------------------------------------------- */
+
+function proposalsDir(): string {
+  return join(projectPaths().navigatorDir, 'proposals');
+}
+
+/** The commit a proposal is written against: whatever HEAD is right now. */
+function headCommit(): string {
+  return execFileSync('git', ['rev-parse', 'HEAD'], {
+    cwd: projectPaths().root,
+    encoding: 'utf8',
+  }).trim();
+}
+
+/**
+ * A readable, unique proposal id.
+ *
+ * The date and the address make it recognisable in a directory listing months
+ * later; the counter only appears when two proposals for the same thing are
+ * prepared on one day, which is exactly when a reader needs to tell them apart.
+ */
+function nextProposalId(baseDir: string, createdAt: string, slugTail: string): string {
+  const day = createdAt.slice(0, 10).replace(/-/g, '');
+  const base = `p-${day}-${slugTail}`;
+  let candidate = base;
+  let counter = 2;
+  while (existsSync(join(baseDir, candidate))) {
+    candidate = `${base}-${String(counter)}`;
+    counter += 1;
+  }
+  return candidate;
+}
+
+async function commandProposalPrepare(args: readonly string[]): Promise<number> {
+  const targetId = args.find((arg) => !arg.startsWith('--'));
+  if (targetId === undefined) {
+    console.error('navigator proposal prepare: a backlog or candidate id is required\n\n' + USAGE);
+    return 2;
+  }
+  const tierText = optionValue(args, '--tier');
+  if (tierText !== '2' && tierText !== '3') {
+    console.error(
+      'navigator proposal prepare: --tier 2 or --tier 3 is required. Tier 1 is a full article and is never delegated.',
+    );
+    return 2;
+  }
+  const tier = tierText === '2' ? 2 : 3;
+
+  const name = optionValue(args, '--name');
+  const category = optionValue(args, '--category');
+  const outOverride = optionValue(args, '--out');
+  const baseDir = outOverride === undefined ? proposalsDir() : resolve(process.cwd(), outOverride);
+
+  // The index is read and closed before anything is written: `withDatabase`
+  // closes synchronously, so an await inside it would run against a shut handle.
+  let outcome: {
+    prepared: ReturnType<typeof prepareProposal>;
+    proposalId: string;
+    createdAt: string;
+  };
+  try {
+    outcome = withDatabase(args, (db) => {
+      const target = findProposalTarget(db, targetId);
+      if (target === undefined) {
+        throw new ProposalError(`no backlog group or atlas candidate with id ${targetId}`, [
+          'list the editorial backlog with `navigator coverage unresolved`',
+          'list atlas candidates with `navigator coverage candidates`',
+        ]);
+      }
+      const at = new Date().toISOString();
+      const slugTail = name ?? slugNameFromLabel(target.label);
+      const id = nextProposalId(baseDir, at, slugTail === '' ? 'proposal' : slugTail);
+      return {
+        proposalId: id,
+        createdAt: at,
+        prepared: prepareProposal(db, {
+          targetId,
+          tier,
+          proposalId: id,
+          createdAt: at,
+          baseCommit: headCommit(),
+          ...(name === undefined ? {} : { name }),
+          ...(category === undefined ? {} : { categoryId: category }),
+        }),
+      };
+    });
+  } catch (error) {
+    if (error instanceof ProposalError) {
+      console.error(`navigator proposal prepare: ${error.message}`);
+      for (const line of error.detail) console.error(`  ${line}`);
+      return 2;
+    }
+    throw error;
+  }
+
+  const { prepared, proposalId, createdAt } = outcome;
+  const dir = join(baseDir, proposalId);
+  await mkdir(dir, { recursive: true });
+  await writeFile(
+    join(dir, PROPOSAL_FILES.manifest),
+    serializeProposalManifest(prepared.manifest),
+    'utf8',
+  );
+  await writeFile(join(dir, PROPOSAL_FILES.request), prepared.request, 'utf8');
+
+  if (wantsJson(args)) {
+    printJson({
+      proposalId,
+      createdAt,
+      directory: dir,
+      manifest: prepared.manifest,
+      conceptId: prepared.conceptId,
+      slug: prepared.slug,
+      allowedPath: prepared.allowedPath,
+    });
+    return 0;
+  }
+
+  console.log(`prepared ${proposalId}`);
+  console.log(`  directory      ${dir}`);
+  console.log(`  target         ${prepared.target.id} (${prepared.target.kind})`);
+  console.log(`  tier           ${String(tier)}`);
+  console.log(`  writes         ${prepared.allowedPath}`);
+  console.log(`  concept id     ${prepared.conceptId}`);
+  console.log(`  slug           ${prepared.slug}`);
+  console.log(`  base commit    ${prepared.manifest.baseCommit}`);
+  console.log('');
+  console.log('Nothing has run. Read the brief before handing it to anything:');
+  console.log(`  ${join(dir, PROPOSAL_FILES.request)}`);
+  return 0;
+}
+
+async function commandProposalValidate(args: readonly string[]): Promise<number> {
+  const dirArg = args.find((arg) => !arg.startsWith('--'));
+  if (dirArg === undefined) {
+    console.error('navigator proposal validate: a proposal directory is required\n\n' + USAGE);
+    return 2;
+  }
+  const proposalDir = resolve(process.cwd(), dirArg);
+
+  let outcome;
+  try {
+    outcome = await validateProposal({ repoRoot: projectPaths().root, proposalDir });
+  } catch (error) {
+    if (error instanceof ProposalError) {
+      console.error(`navigator proposal validate: ${error.message}`);
+      for (const line of error.detail) console.error(`  ${line}`);
+      return 2;
+    }
+    throw error;
+  }
+
+  const { validation } = outcome;
+  const written = await writeProposalValidation(proposalDir, validation);
+
+  if (wantsJson(args)) {
+    printJson(validation);
+    return validation.ok ? 0 : 1;
+  }
+
+  console.log(`${validation.proposalId}: ${validation.ok ? 'valid' : 'not valid'}`);
+  if (validation.filesTouched.length > 0) {
+    console.log('');
+    console.log('files touched:');
+    for (const file of validation.filesTouched) console.log(`  ${file}`);
+  }
+  if (validation.passed.length > 0) {
+    console.log('');
+    for (const line of validation.passed) console.log(`  ok    ${line}`);
+  }
+  if (validation.problems.length > 0) {
+    console.log('');
+    for (const line of validation.problems) console.log(`  FAIL  ${line}`);
+  }
+  console.log('');
+  console.log(`wrote ${written}`);
+  if (!validation.ok) {
+    console.log('');
+    console.log('Nothing has been applied. Send this back, or reject it with a reason.');
+  }
+  return validation.ok ? 0 : 1;
+}
+
+/** Where a proposal lives, by id, unless the caller says otherwise. */
+function proposalDirFor(args: readonly string[], proposalId: string): string {
+  const override = optionValue(args, '--dir');
+  return override === undefined
+    ? join(proposalsDir(), proposalId)
+    : resolve(process.cwd(), override);
+}
+
+async function commandProposalAccept(args: readonly string[]): Promise<number> {
+  const proposalId = args.find((arg) => !arg.startsWith('--'));
+  if (proposalId === undefined) {
+    console.error('navigator proposal accept: a proposal id is required\n\n' + USAGE);
+    return 2;
+  }
+  const confirm = optionValue(args, '--confirm');
+  if (confirm === undefined) {
+    console.error(
+      `navigator proposal accept: --confirm ${proposalId} is required. Accepting a proposal changes canonical knowledge, so it is never one word long.`,
+    );
+    return 2;
+  }
+
+  let outcome;
+  try {
+    outcome = await acceptProposal({
+      repoRoot: projectPaths().root,
+      proposalDir: proposalDirFor(args, proposalId),
+      confirm,
+      dryRun: args.includes('--dry-run'),
+    });
+  } catch (error) {
+    if (error instanceof ProposalError) {
+      console.error(`navigator proposal accept: ${error.message}`);
+      for (const line of error.detail) console.error(`  ${line}`);
+      return 2;
+    }
+    throw error;
+  }
+
+  if (wantsJson(args)) {
+    printJson(outcome);
+    return outcome.ok ? 0 : 1;
+  }
+
+  for (const line of outcome.passed) console.log(`  ok    ${line}`);
+  for (const line of outcome.applied) console.log(`  did   ${line}`);
+  for (const line of outcome.problems) console.log(`  FAIL  ${line}`);
+  console.log('');
+  if (!outcome.ok) {
+    console.log('Nothing was applied.');
+    return 1;
+  }
+  if (args.includes('--dry-run')) {
+    console.log(
+      `Every guard holds. Run it again without --dry-run to apply it to ${outcome.branch}.`,
+    );
+    return 0;
+  }
+  console.log(`The change is on ${outcome.branch}, staged and uncommitted.`);
+  console.log('Read it, run `npm test`, then commit it yourself. Nothing here commits.');
+  return 0;
+}
+
+async function commandProposalReject(args: readonly string[]): Promise<number> {
+  const proposalId = args.find((arg) => !arg.startsWith('--'));
+  if (proposalId === undefined) {
+    console.error('navigator proposal reject: a proposal id is required\n\n' + USAGE);
+    return 2;
+  }
+  const confirm = optionValue(args, '--confirm');
+  const reason = optionValue(args, '--reason');
+  if (confirm === undefined || reason === undefined) {
+    console.error(
+      `navigator proposal reject: --confirm ${proposalId} and --reason "<why>" are both required`,
+    );
+    return 2;
+  }
+  try {
+    const manifest = await rejectProposal({
+      proposalDir: proposalDirFor(args, proposalId),
+      confirm,
+      reason,
+    });
+    console.log(`rejected ${manifest.proposalId}`);
+    console.log(`  reason  ${manifest.rejectedReason ?? ''}`);
+    console.log('');
+    console.log('Nothing was applied and nothing was deleted. The bundle stays for the record.');
+    return 0;
+  } catch (error) {
+    if (error instanceof ProposalError) {
+      console.error(`navigator proposal reject: ${error.message}`);
+      for (const line of error.detail) console.error(`  ${line}`);
+      return 2;
+    }
+    throw error;
+  }
+}
+
+async function commandProposalImport(args: readonly string[]): Promise<number> {
+  const proposalId = args.find((arg) => !arg.startsWith('--'));
+  if (proposalId === undefined) {
+    console.error('navigator proposal import-hermes: a proposal id is required\n\n' + USAGE);
+    return 2;
+  }
+  const worktree = optionValue(args, '--worktree');
+  if (worktree === undefined) {
+    console.error('navigator proposal import-hermes: --worktree <path> is required');
+    return 2;
+  }
+
+  let outcome;
+  try {
+    outcome = await importHermesResult({
+      repoRoot: projectPaths().root,
+      proposalDir: proposalDirFor(args, proposalId),
+      worktree: resolve(process.cwd(), worktree),
+    });
+  } catch (error) {
+    if (error instanceof ProposalError) {
+      console.error(`navigator proposal import-hermes: ${error.message}`);
+      for (const line of error.detail) console.error(`  ${line}`);
+      return 2;
+    }
+    throw error;
+  }
+
+  if (wantsJson(args)) {
+    printJson(outcome);
+    return outcome.ok ? 0 : 1;
+  }
+
+  if (outcome.status !== 'review') {
+    for (const problem of outcome.problems) console.error(`  FAIL  ${problem}`);
+    console.error('');
+    console.error('Nothing was imported. The proposal is unchanged.');
+    return 1;
+  }
+
+  console.log(`imported ${outcome.proposalId}`);
+  console.log(`  patch    ${String(outcome.patchBytes)} bytes`);
+  console.log(`  touches  ${outcome.filesTouched.join(', ')}`);
+  console.log(`  status   review`);
+  console.log('');
+  if (outcome.ok) {
+    console.log('Validation passes. Read the change and RESULT.md, then accept or reject it:');
+    console.log(
+      `  navigator proposal accept ${outcome.proposalId} --confirm ${outcome.proposalId}`,
+    );
+  } else {
+    for (const problem of outcome.problems) console.log(`  FAIL  ${problem}`);
+    console.log('');
+    console.log('The work is in the bundle and the proposal is in review, but it does not');
+    console.log('validate. Read it, then reject it with a reason, or send it back.');
+  }
+  return outcome.ok ? 0 : 1;
+}
+
+async function commandProposal(args: readonly string[]): Promise<number> {
+  const [subcommand, ...rest] = args;
+  switch (subcommand) {
+    case 'prepare':
+      return commandProposalPrepare(rest);
+    case 'validate':
+      return commandProposalValidate(rest);
+    case 'import-hermes':
+      return commandProposalImport(rest);
+    case 'accept':
+      return commandProposalAccept(rest);
+    case 'reject':
+      return commandProposalReject(rest);
+    default:
+      console.error(`navigator proposal: unknown subcommand "${subcommand ?? ''}"\n\n${USAGE}`);
+      return 2;
+  }
+}
+
 async function main(argv: readonly string[]): Promise<number> {
   const [command, ...args] = argv;
   switch (command) {
@@ -712,6 +1097,8 @@ async function main(argv: readonly string[]): Promise<number> {
       return commandEvidence(args);
     case 'export':
       return commandExport(args);
+    case 'proposal':
+      return commandProposal(args);
     case undefined:
     case '--help':
     case '-h':

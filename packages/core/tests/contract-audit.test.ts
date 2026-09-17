@@ -165,11 +165,14 @@ describe('published JSON Schemas', () => {
     }
   });
 
-  it('publishes one schema per canonical format', () => {
+  it('publishes one schema per canonical format, plus the proposal bundle', () => {
     expect(Object.keys(generated).sort()).toEqual([
       'atlas.schema.json',
       'concept.schema.json',
       'graph-only.schema.json',
+      // A proposal is not canonical content, but it is a contract an outside
+      // agent has to meet, so it is published in the same place (v2 R00).
+      'proposal.schema.json',
     ]);
   });
 

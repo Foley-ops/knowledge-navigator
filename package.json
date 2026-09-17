@@ -20,6 +20,7 @@
     "search": "npm run build:core --silent && node packages/core/dist/cli.js search",
     "schema": "npm run build:core --silent && node packages/core/dist/cli.js schema",
     "sidebars": "npm run build:core --silent && node packages/core/dist/cli.js sidebars",
+    "navigator": "npm run build:core --silent && node packages/core/dist/cli.js",
     "typecheck": "npm run typecheck --workspace @navigator/core && npm run typecheck --workspace @navigator/api && npm run typecheck --workspace @navigator/web",
     "lint": "eslint .",
     "format": "prettier --write .",

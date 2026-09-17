@@ -10,12 +10,14 @@ import { z } from 'zod';
 import { atlasDocumentSchema } from './atlas.js';
 import { graphOnlyIdentitySchema } from './graph-only.js';
 import { conceptFrontmatterSchema } from './schema.js';
+import { proposalManifestSchema } from './proposal.js';
 import { compareStrings } from './normalize.js';
 
 export const CONCEPT_SCHEMA_ID = 'https://knowledge-navigator.local/schemas/concept.schema.json';
 export const GRAPH_ONLY_SCHEMA_ID =
   'https://knowledge-navigator.local/schemas/graph-only.schema.json';
 export const ATLAS_SCHEMA_ID = 'https://knowledge-navigator.local/schemas/atlas.schema.json';
+export const PROPOSAL_SCHEMA_ID = 'https://knowledge-navigator.local/schemas/proposal.schema.json';
 
 type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 
@@ -112,11 +114,35 @@ export function serializeAtlasJsonSchema(): string {
   return serialize(buildAtlasJsonSchema());
 }
 
+/** JSON Schema for a proposal manifest. */
+export function buildProposalJsonSchema(): Json {
+  return toDocument(proposalManifestSchema, {
+    $id: PROPOSAL_SCHEMA_ID,
+    title: 'Knowledge Navigator proposal manifest',
+    description:
+      'Generated from packages/core/src/proposal.ts — do not edit by hand. A proposal is a ' +
+      'local, reviewable bundle of agent work that has not touched canonical knowledge. JSON ' +
+      'Schema cannot express the rules that matter most here: every allowed path must be a file ' +
+      'under content/concepts/ or content/graph-only/ with no absolute path, no parent ' +
+      'traversal, no backslash and no control character; a Tier 2 proposal may write only ' +
+      'Markdown and a Tier 3 proposal only YAML; a rejection reason may appear only on a ' +
+      'rejected proposal; the base commit must be present in this repository; and status may ' +
+      'only move as PROPOSAL_TRANSITIONS allows. Those are enforced by `navigator proposal ' +
+      'validate`, which is authoritative.',
+  });
+}
+
+/** Serialise the proposal manifest schema exactly as it is written to disk. */
+export function serializeProposalJsonSchema(): string {
+  return serialize(buildProposalJsonSchema());
+}
+
 /** Every published schema, as file name → contents. */
 export function allJsonSchemas(): Record<string, string> {
   return {
     'concept.schema.json': serializeConceptJsonSchema(),
     'graph-only.schema.json': serializeGraphOnlyJsonSchema(),
     'atlas.schema.json': serializeAtlasJsonSchema(),
+    'proposal.schema.json': serializeProposalJsonSchema(),
   };
 }

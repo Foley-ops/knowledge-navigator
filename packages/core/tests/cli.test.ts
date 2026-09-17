@@ -3,7 +3,7 @@
  * acceptance corpus so the shipped entry point is what gets tested.
  */
 import { execFile } from 'node:child_process';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -311,4 +311,117 @@ describe('navigator evidence (v2 runbook L06)', () => {
     expect(result.code).toBe(2);
     expect(result.stderr).toContain('a concept id or slug is required');
   }, 60_000);
+});
+
+/* ----------------------------------------------------------------- R01 ---- */
+
+describe('navigator proposal prepare', () => {
+  it('writes a bundle for an atlas candidate and runs no model', async () => {
+    const out = join(root, 'proposals');
+    const result = await navigator(
+      'proposal',
+      'prepare',
+      'candidate.artificial_intelligence.symbolic_ai.search.a_star',
+      '--tier',
+      '3',
+      '--name',
+      'a-star',
+      '--out',
+      out,
+      '--json',
+    );
+    expect(result.code, result.stderr).toBe(0);
+    const written = JSON.parse(result.stdout) as {
+      proposalId: string;
+      directory: string;
+      allowedPath: string;
+      conceptId: string;
+      manifest: { status: string; baseCommit: string };
+    };
+    expect(written.allowedPath).toBe('content/graph-only/a-star.yaml');
+    expect(written.conceptId).toBe('concept.search.a_star');
+    expect(written.manifest.status).toBe('prepared');
+    expect(written.manifest.baseCommit).toMatch(/^[0-9a-f]{40}$/);
+
+    const request = await readFile(join(written.directory, 'REQUEST.md'), 'utf8');
+    expect(request).toContain('## The one file you may write');
+    expect(request).toContain('A person reviews it next.');
+    // Nothing canonical was touched.
+    expect(existsSync(join(REPO_ROOT, 'content', 'graph-only', 'a-star.yaml'))).toBe(false);
+  });
+
+  it('produces the same brief twice, apart from the id and the time', async () => {
+    const out = join(root, 'twice');
+    const runOnce = async () => {
+      const result = await navigator(
+        'proposal',
+        'prepare',
+        'candidate.artificial_intelligence.symbolic_ai.search.a_star',
+        '--tier',
+        '3',
+        '--name',
+        'a-star',
+        '--out',
+        out,
+        '--json',
+      );
+      expect(result.code, result.stderr).toBe(0);
+      const written = JSON.parse(result.stdout) as { directory: string; proposalId: string };
+      return {
+        id: written.proposalId,
+        request: await readFile(join(written.directory, 'REQUEST.md'), 'utf8'),
+      };
+    };
+
+    const first = await runOnce();
+    const second = await runOnce();
+    // A second proposal for the same target on the same day is a new proposal,
+    // not a silent overwrite.
+    expect(second.id).not.toBe(first.id);
+    const mask = (text: string) =>
+      text.replace(/p-\d{8}[a-z0-9-]*/g, '<id>').replace(/\d{4}-\d{2}-\d{2}T[0-9:.]+Z/g, '<time>');
+    expect(mask(second.request)).toBe(mask(first.request));
+  });
+
+  it('refuses a tier it may not delegate, and an id it cannot find', async () => {
+    const out = join(root, 'refused');
+    const tier1 = await navigator(
+      'proposal',
+      'prepare',
+      'candidate.artificial_intelligence.symbolic_ai.search.a_star',
+      '--tier',
+      '1',
+      '--out',
+      out,
+    );
+    expect(tier1.code).toBe(2);
+    expect(tier1.stderr).toContain('never delegated');
+
+    const unknown = await navigator(
+      'proposal',
+      'prepare',
+      'candidate.nope.nope',
+      '--tier',
+      '3',
+      '--out',
+      out,
+    );
+    expect(unknown.code).toBe(2);
+    expect(unknown.stderr).toContain('no backlog group or atlas candidate');
+    expect(existsSync(out)).toBe(false);
+  });
+
+  it('refuses to invent an address for a label that cannot make one', async () => {
+    const result = await navigator(
+      'proposal',
+      'prepare',
+      'candidate.artificial_intelligence.symbolic_ai.search.a_star',
+      '--tier',
+      '3',
+      '--out',
+      join(root, 'no-name'),
+    );
+    expect(result.code).toBe(2);
+    expect(result.stderr).toContain('--name');
+  });
 });

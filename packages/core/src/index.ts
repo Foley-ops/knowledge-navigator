@@ -22,3 +22,8 @@ export * from './compare.js';
 export * from './learning-paths.js';
 export * from './coverage.js';
 export * from './export.js';
+export * from './proposal.js';
+export * from './proposal-request.js';
+export * from './proposal-validate.js';
+export * from './proposal-accept.js';
+export * from './proposal-import.js';

@@ -172,6 +172,20 @@ else ok "the command line opens the private store read-only"; fi
 if grep -qE "projectPaths\(\)\.exportsDir" packages/core/src/cli.ts; then
   ok "exports default to .navigator/exports, which Git ignores"
 else bad "the export command does not default to .navigator/exports"; fi
+# The Hermes adapter (R05-R07) is the only thing here that talks to another
+# agent runner. It may read its help and create one task; it may not change it.
+adapter=scripts/hermes-content-task.mjs
+if grep -nE "(npm|brew|pip|cargo) install|hermes (install|update|config)|restart" "$adapter" | grep -q .; then
+  bad "the Hermes adapter contains an install, update or restart command:"
+  grep -nE "(npm|brew|pip|cargo) install|hermes (install|update|config)|restart" "$adapter" | sed 's/^/        /'
+else ok "the Hermes adapter never installs, updates, configures or restarts Hermes"; fi
+if grep -qE "shell:\s*false" "$adapter" && ! grep -qE "shell:\s*true|exec\(" "$adapter"; then
+  ok "the Hermes adapter spawns with an argument array and never through a shell"
+else bad "the Hermes adapter may be building a shell command"; fi
+# A dispatched task id and an agent worktree are local state about one machine.
+if git ls-files | grep -qE "\.navigator/|worktree-"; then
+  bad "a proposal workspace or agent worktree is tracked"
+else ok "no proposal bundle, task id or agent worktree is tracked"; fi
 
 echo
 echo "== 8. no externally hosted asset in the shipped site =="
