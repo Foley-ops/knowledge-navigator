@@ -1,0 +1,2004 @@
+{
+  "$comment": "Curated sources for the content build. A page may cite ONLY what is listed here: an agent that needs a source not in this file reports it, a person checks it, and it is added. That is the control that keeps invented citations out of canonical content. `id`, `title`, `url` and `kind` must be copied verbatim \u2014 one source_id describes one source everywhere it is cited, and the validator enforces that across the whole corpus.",
+  "sources": [
+    {
+      "id": "source.mit_ocw.single_variable_calculus",
+      "title": "MIT 18.01 Single Variable Calculus (Fall 2006)",
+      "url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "calculus",
+        "derivatives",
+        "integrals",
+        "limits",
+        "series"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.multivariable_calculus",
+      "title": "MIT 18.02 Multivariable Calculus (Fall 2007)",
+      "url": "https://ocw.mit.edu/courses/18-02-multivariable-calculus-fall-2007/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "multivariable calculus",
+        "gradient",
+        "divergence",
+        "curl",
+        "vector calculus"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.linear_algebra",
+      "title": "MIT 18.06 Linear Algebra (Spring 2010)",
+      "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "linear algebra",
+        "matrices",
+        "eigenvalues",
+        "vector spaces",
+        "decompositions"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.real_analysis",
+      "title": "MIT 18.100A Real Analysis (Fall 2020)",
+      "url": "https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "real analysis",
+        "sequences",
+        "continuity",
+        "compactness",
+        "convergence"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.differential_equations",
+      "title": "MIT 18.03 Differential Equations (Spring 2010)",
+      "url": "https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "ordinary differential equations",
+        "stability",
+        "linear systems"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.matrix_methods",
+      "title": "MIT 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning (Spring 2018)",
+      "url": "https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "matrix decompositions",
+        "svd",
+        "least squares",
+        "applied linear algebra"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.theory_of_computation",
+      "title": "MIT 18.404J Theory of Computation (Fall 2020)",
+      "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "automata",
+        "turing machines",
+        "computability",
+        "complexity",
+        "np-completeness"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.introduction_to_algorithms",
+      "title": "MIT 6.006 Introduction to Algorithms (Spring 2020)",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "algorithms",
+        "data structures",
+        "sorting",
+        "searching",
+        "graph algorithms",
+        "complexity"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.probabilistic_systems",
+      "title": "MIT 6.041 Probabilistic Systems Analysis and Applied Probability (Fall 2010)",
+      "url": "https://ocw.mit.edu/courses/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "probability",
+        "random variables",
+        "markov chains",
+        "estimation"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.algebraic_topology",
+      "title": "MIT 18.905 Algebraic Topology I (Fall 2016)",
+      "url": "https://ocw.mit.edu/courses/18-905-algebraic-topology-i-fall-2016/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "algebraic topology",
+        "homology",
+        "homotopy",
+        "fundamental group"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.algebra_i",
+      "title": "MIT 18.701 Algebra I (Fall 2010)",
+      "url": "https://ocw.mit.edu/courses/18-701-algebra-i-fall-2010/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "group theory",
+        "rings",
+        "linear algebra",
+        "symmetry"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.algebra_ii",
+      "title": "MIT 18.702 Algebra II (Spring 2011)",
+      "url": "https://ocw.mit.edu/courses/18-702-algebra-ii-spring-2011/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "galois theory",
+        "fields",
+        "representation theory",
+        "rings"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.differential_geometry",
+      "title": "MIT 18.950 Differential Geometry (Fall 2008)",
+      "url": "https://ocw.mit.edu/courses/18-950-differential-geometry-fall-2008/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "differential geometry",
+        "curvature",
+        "surfaces",
+        "manifolds"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.partial_differential_equations",
+      "title": "MIT 18.152 Introduction to Partial Differential Equations (Fall 2011)",
+      "url": "https://ocw.mit.edu/courses/18-152-introduction-to-partial-differential-equations-fall-2011/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "partial differential equations",
+        "heat equation",
+        "wave equation",
+        "laplace"
+      ]
+    },
+    {
+      "id": "source.mit_ocw.signals_and_systems",
+      "title": "MIT 6.003 Signals and Systems (Fall 2011)",
+      "url": "https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/",
+      "kind": "lecture-or-course",
+      "topics": [
+        "fourier",
+        "convolution",
+        "signals",
+        "filters",
+        "transforms"
+      ]
+    },
+    {
+      "id": "source.tao.analysis_i",
+      "title": "Terence Tao, Analysis I",
+      "url": "https://terrytao.wordpress.com/books/analysis-i/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "real analysis",
+        "construction of the reals",
+        "limits",
+        "rigour"
+      ]
+    },
+    {
+      "id": "source.axler.linear_algebra_done_right",
+      "title": "Sheldon Axler, Linear Algebra Done Right",
+      "url": "https://linear.axler.net/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "vector spaces",
+        "linear maps",
+        "eigenvalues",
+        "inner product spaces",
+        "spectral theorem"
+      ]
+    },
+    {
+      "id": "source.hatcher.algebraic_topology",
+      "title": "Allen Hatcher, Algebraic Topology",
+      "url": "https://pi.math.cornell.edu/~hatcher/AT/ATpage.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "algebraic topology",
+        "homology",
+        "cohomology",
+        "covering spaces",
+        "homotopy"
+      ]
+    },
+    {
+      "id": "source.durrett.probability_theory",
+      "title": "Rick Durrett, Probability: Theory and Examples",
+      "url": "https://services.math.duke.edu/~rtd/PTE/pte.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "measure-theoretic probability",
+        "martingales",
+        "brownian motion",
+        "limit theorems"
+      ]
+    },
+    {
+      "id": "source.vershynin.high_dimensional_probability",
+      "title": "Roman Vershynin, High-Dimensional Probability",
+      "url": "https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "concentration inequalities",
+        "random matrices",
+        "high-dimensional statistics",
+        "sub-gaussian"
+      ]
+    },
+    {
+      "id": "source.boyd.convex_optimization",
+      "title": "Stephen Boyd and Lieven Vandenberghe, Convex Optimization",
+      "url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "convex optimization",
+        "duality",
+        "kkt",
+        "constrained optimization",
+        "convexity"
+      ]
+    },
+    {
+      "id": "source.arora_barak.computational_complexity",
+      "title": "Sanjeev Arora and Boaz Barak, Computational Complexity: A Modern Approach",
+      "url": "https://theory.cs.princeton.edu/complexity/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "complexity classes",
+        "np-completeness",
+        "randomness",
+        "circuits",
+        "reductions"
+      ]
+    },
+    {
+      "id": "source.mackay.information_theory",
+      "title": "David MacKay, Information Theory, Inference, and Learning Algorithms",
+      "url": "https://www.inference.org.uk/mackay/itila/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "entropy",
+        "coding",
+        "inference",
+        "bayesian methods",
+        "information theory"
+      ]
+    },
+    {
+      "id": "source.shannon1948.mathematical_theory_of_communication",
+      "title": "A Mathematical Theory of Communication",
+      "url": "https://ieeexplore.ieee.org/document/6773024",
+      "kind": "primary-research",
+      "topics": [
+        "entropy",
+        "channel capacity",
+        "information theory",
+        "coding"
+      ]
+    },
+    {
+      "id": "source.nlab.category_theory",
+      "title": "nLab: category theory",
+      "url": "https://ncatlab.org/nlab/show/category+theory",
+      "kind": "reference-documentation",
+      "topics": [
+        "category theory",
+        "functors",
+        "natural transformations",
+        "universal properties"
+      ]
+    },
+    {
+      "id": "source.plato.set_theory",
+      "title": "Stanford Encyclopedia of Philosophy: Set Theory",
+      "url": "https://plato.stanford.edu/entries/set-theory/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "set theory",
+        "zfc",
+        "cardinals",
+        "ordinals",
+        "foundations"
+      ]
+    },
+    {
+      "id": "source.plato.classical_logic",
+      "title": "Stanford Encyclopedia of Philosophy: Classical Logic",
+      "url": "https://plato.stanford.edu/entries/logic-classical/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "propositional logic",
+        "first-order logic",
+        "semantics",
+        "proof systems"
+      ]
+    },
+    {
+      "id": "source.plato.proof_theory",
+      "title": "Stanford Encyclopedia of Philosophy: Proof Theory",
+      "url": "https://plato.stanford.edu/entries/proof-theory/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "proof theory",
+        "natural deduction",
+        "sequent calculus",
+        "cut elimination"
+      ]
+    },
+    {
+      "id": "source.plato.model_theory",
+      "title": "Stanford Encyclopedia of Philosophy: Model Theory",
+      "url": "https://plato.stanford.edu/entries/model-theory/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "model theory",
+        "structures",
+        "compactness",
+        "completeness"
+      ]
+    },
+    {
+      "id": "source.plato.computability",
+      "title": "Stanford Encyclopedia of Philosophy: Computability and Complexity",
+      "url": "https://plato.stanford.edu/entries/computability/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "computability",
+        "turing machines",
+        "church-turing",
+        "decidability"
+      ]
+    },
+    {
+      "id": "source.turing1936.computable_numbers",
+      "title": "On Computable Numbers, with an Application to the Entscheidungsproblem",
+      "url": "https://londmathsoc.onlinelibrary.wiley.com/doi/10.1112/plms/s2-42.1.230",
+      "kind": "primary-research",
+      "topics": [
+        "turing machines",
+        "computability",
+        "halting problem",
+        "foundations"
+      ]
+    },
+    {
+      "id": "source.dlmf.nist",
+      "title": "NIST Digital Library of Mathematical Functions",
+      "url": "https://dlmf.nist.gov/",
+      "kind": "reference-documentation",
+      "topics": [
+        "special functions",
+        "orthogonal polynomials",
+        "asymptotics",
+        "reference"
+      ]
+    },
+    {
+      "id": "source.oeis",
+      "title": "The On-Line Encyclopedia of Integer Sequences",
+      "url": "https://oeis.org/",
+      "kind": "reference-documentation",
+      "topics": [
+        "integer sequences",
+        "combinatorics",
+        "number theory",
+        "reference"
+      ]
+    },
+    {
+      "id": "source.mathworld",
+      "title": "Wolfram MathWorld",
+      "url": "https://mathworld.wolfram.com/",
+      "kind": "reference-documentation",
+      "topics": [
+        "mathematics reference",
+        "definitions",
+        "identities"
+      ]
+    },
+    {
+      "id": "source.leanprover.documentation",
+      "title": "Lean language documentation",
+      "url": "https://lean-lang.org/documentation/",
+      "kind": "reference-documentation",
+      "topics": [
+        "lean",
+        "theorem prover",
+        "dependent types",
+        "tactics"
+      ]
+    },
+    {
+      "id": "source.mathlib.community",
+      "title": "Lean mathlib community documentation",
+      "url": "https://leanprover-community.github.io/",
+      "kind": "reference-documentation",
+      "topics": [
+        "mathlib",
+        "lean",
+        "formalised mathematics"
+      ]
+    },
+    {
+      "id": "source.coq.documentation",
+      "title": "The Coq Proof Assistant documentation",
+      "url": "https://coq.inria.fr/documentation",
+      "kind": "reference-documentation",
+      "topics": [
+        "coq",
+        "calculus of constructions",
+        "tactics",
+        "proof assistant"
+      ]
+    },
+    {
+      "id": "source.goodfellow.deep_learning_book",
+      "title": "Ian Goodfellow, Yoshua Bengio and Aaron Courville, Deep Learning",
+      "url": "https://www.deeplearningbook.org/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "deep learning",
+        "optimization",
+        "regularization",
+        "architectures",
+        "representation learning"
+      ]
+    },
+    {
+      "id": "source.deep_learning_book.convnets",
+      "title": "Deep Learning, Chapter 9 \u2014 Convolutional Networks",
+      "url": "https://www.deeplearningbook.org/contents/convnets.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "convolution",
+        "pooling",
+        "cnn",
+        "equivariance"
+      ]
+    },
+    {
+      "id": "source.hastie.elements_of_statistical_learning",
+      "title": "Hastie, Tibshirani and Friedman, The Elements of Statistical Learning",
+      "url": "https://hastie.su.domains/ElemStatLearn/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "supervised learning",
+        "regression",
+        "trees",
+        "boosting",
+        "clustering",
+        "model selection"
+      ]
+    },
+    {
+      "id": "source.murphy.probabilistic_machine_learning",
+      "title": "Kevin Murphy, Probabilistic Machine Learning",
+      "url": "https://probml.github.io/pml-book/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "probabilistic models",
+        "inference",
+        "graphical models",
+        "machine learning"
+      ]
+    },
+    {
+      "id": "source.shalev_shwartz.understanding_machine_learning",
+      "title": "Shalev-Shwartz and Ben-David, Understanding Machine Learning: From Theory to Algorithms",
+      "url": "https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "pac learning",
+        "vc dimension",
+        "generalization",
+        "learning theory",
+        "svm"
+      ]
+    },
+    {
+      "id": "source.rasmussen.gaussian_processes",
+      "title": "Rasmussen and Williams, Gaussian Processes for Machine Learning",
+      "url": "https://gaussianprocess.org/gpml/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "gaussian processes",
+        "kernels",
+        "bayesian regression",
+        "uncertainty"
+      ]
+    },
+    {
+      "id": "source.sutton_barto.reinforcement_learning",
+      "title": "Sutton and Barto, Reinforcement Learning: An Introduction (2nd edition)",
+      "url": "http://incompleteideas.net/book/the-book-2nd.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "reinforcement learning",
+        "mdp",
+        "temporal difference",
+        "policy gradient",
+        "value functions"
+      ]
+    },
+    {
+      "id": "source.russell_norvig.aima",
+      "title": "Russell and Norvig, Artificial Intelligence: A Modern Approach",
+      "url": "https://aima.cs.berkeley.edu/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "search",
+        "planning",
+        "knowledge representation",
+        "logic",
+        "agents",
+        "symbolic ai"
+      ]
+    },
+    {
+      "id": "source.pearl.causality",
+      "title": "Judea Pearl, Causality: Models, Reasoning and Inference",
+      "url": "https://bayes.cs.ucla.edu/BOOK-2K/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "causal inference",
+        "do-calculus",
+        "structural causal models",
+        "confounding"
+      ]
+    },
+    {
+      "id": "source.vaswani2017.attention_is_all_you_need",
+      "title": "Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "kind": "preprint",
+      "topics": [
+        "transformer",
+        "attention",
+        "positional encoding",
+        "sequence modelling"
+      ]
+    },
+    {
+      "id": "source.devlin2019.bert",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "url": "https://arxiv.org/abs/1810.04805",
+      "kind": "preprint",
+      "topics": [
+        "bert",
+        "pretraining",
+        "masked language modelling",
+        "nlp"
+      ]
+    },
+    {
+      "id": "source.brown2020.gpt3",
+      "title": "Language Models are Few-Shot Learners",
+      "url": "https://arxiv.org/abs/2005.14165",
+      "kind": "preprint",
+      "topics": [
+        "gpt",
+        "few-shot",
+        "language models",
+        "scaling"
+      ]
+    },
+    {
+      "id": "source.openai2023.gpt4",
+      "title": "GPT-4 Technical Report",
+      "url": "https://arxiv.org/abs/2303.08774",
+      "kind": "preprint",
+      "topics": [
+        "gpt-4",
+        "language models",
+        "evaluation",
+        "capabilities"
+      ]
+    },
+    {
+      "id": "source.touvron2023.llama",
+      "title": "LLaMA: Open and Efficient Foundation Language Models",
+      "url": "https://arxiv.org/abs/2302.13971",
+      "kind": "preprint",
+      "topics": [
+        "llama",
+        "open models",
+        "language models",
+        "scaling"
+      ]
+    },
+    {
+      "id": "source.he2016.deep_residual_learning",
+      "title": "Deep Residual Learning for Image Recognition",
+      "url": "https://arxiv.org/abs/1512.03385",
+      "kind": "preprint",
+      "topics": [
+        "resnet",
+        "residual connections",
+        "depth",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.simonyan2015.very_deep_convolutional_networks",
+      "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+      "url": "https://arxiv.org/abs/1409.1556",
+      "kind": "preprint",
+      "topics": [
+        "vgg",
+        "depth",
+        "convolutional networks",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.kingma2015.adam",
+      "title": "Adam: A Method for Stochastic Optimization",
+      "url": "https://arxiv.org/abs/1412.6980",
+      "kind": "preprint",
+      "topics": [
+        "adam",
+        "optimizers",
+        "adaptive learning rates",
+        "training"
+      ]
+    },
+    {
+      "id": "source.ioffe2015.batch_normalization",
+      "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift",
+      "url": "https://arxiv.org/abs/1502.03167",
+      "kind": "preprint",
+      "topics": [
+        "batch normalization",
+        "training",
+        "normalization"
+      ]
+    },
+    {
+      "id": "source.ba2016.layer_normalization",
+      "title": "Layer Normalization",
+      "url": "https://arxiv.org/abs/1607.06450",
+      "kind": "preprint",
+      "topics": [
+        "layer normalization",
+        "normalization",
+        "recurrent networks",
+        "transformers"
+      ]
+    },
+    {
+      "id": "source.srivastava2014.dropout",
+      "title": "Dropout: A Simple Way to Prevent Neural Networks from Overfitting",
+      "url": "https://www.jmlr.org/papers/v15/srivastava14a.html",
+      "kind": "primary-research",
+      "topics": [
+        "dropout",
+        "regularization",
+        "overfitting"
+      ]
+    },
+    {
+      "id": "source.he2015.delving_deep_into_rectifiers",
+      "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification",
+      "url": "https://arxiv.org/abs/1502.01852",
+      "kind": "preprint",
+      "topics": [
+        "initialization",
+        "relu",
+        "prelu",
+        "training"
+      ]
+    },
+    {
+      "id": "source.loshchilov2017.sgdr",
+      "title": "SGDR: Stochastic Gradient Descent with Warm Restarts",
+      "url": "https://arxiv.org/abs/1608.03983",
+      "kind": "preprint",
+      "topics": [
+        "learning rate schedules",
+        "cosine annealing",
+        "warm restarts",
+        "training"
+      ]
+    },
+    {
+      "id": "source.goodfellow2014.generative_adversarial_networks",
+      "title": "Generative Adversarial Networks",
+      "url": "https://arxiv.org/abs/1406.2661",
+      "kind": "preprint",
+      "topics": [
+        "gan",
+        "generative models",
+        "adversarial training"
+      ]
+    },
+    {
+      "id": "source.kingma2014.auto_encoding_variational_bayes",
+      "title": "Auto-Encoding Variational Bayes",
+      "url": "https://arxiv.org/abs/1312.6114",
+      "kind": "preprint",
+      "topics": [
+        "vae",
+        "variational inference",
+        "generative models",
+        "elbo"
+      ]
+    },
+    {
+      "id": "source.ho2020.denoising_diffusion",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "url": "https://arxiv.org/abs/2006.11239",
+      "kind": "preprint",
+      "topics": [
+        "diffusion",
+        "generative models",
+        "denoising"
+      ]
+    },
+    {
+      "id": "source.song2021.score_based_sde",
+      "title": "Score-Based Generative Modeling through Stochastic Differential Equations",
+      "url": "https://arxiv.org/abs/2011.13456",
+      "kind": "preprint",
+      "topics": [
+        "score matching",
+        "diffusion",
+        "sde",
+        "generative models"
+      ]
+    },
+    {
+      "id": "source.lipman2023.flow_matching",
+      "title": "Flow Matching for Generative Modeling",
+      "url": "https://arxiv.org/abs/2210.02747",
+      "kind": "preprint",
+      "topics": [
+        "flow matching",
+        "continuous normalizing flows",
+        "generative models"
+      ]
+    },
+    {
+      "id": "source.rezende2015.normalizing_flows",
+      "title": "Variational Inference with Normalizing Flows",
+      "url": "https://arxiv.org/abs/1505.05770",
+      "kind": "preprint",
+      "topics": [
+        "normalizing flows",
+        "variational inference",
+        "invertible models"
+      ]
+    },
+    {
+      "id": "source.gu2022.s4",
+      "title": "Efficiently Modeling Long Sequences with Structured State Spaces",
+      "url": "https://arxiv.org/abs/2111.00396",
+      "kind": "preprint",
+      "topics": [
+        "s4",
+        "state space models",
+        "long sequences"
+      ]
+    },
+    {
+      "id": "source.gu2023.mamba",
+      "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "url": "https://arxiv.org/abs/2312.00752",
+      "kind": "preprint",
+      "topics": [
+        "mamba",
+        "state space models",
+        "selective",
+        "sequence modelling"
+      ]
+    },
+    {
+      "id": "source.peng2023.rwkv",
+      "title": "RWKV: Reinventing RNNs for the Transformer Era",
+      "url": "https://arxiv.org/abs/2305.13048",
+      "kind": "preprint",
+      "topics": [
+        "rwkv",
+        "recurrent",
+        "linear attention",
+        "sequence modelling"
+      ]
+    },
+    {
+      "id": "source.beck2024.xlstm",
+      "title": "xLSTM: Extended Long Short-Term Memory",
+      "url": "https://arxiv.org/abs/2405.04517",
+      "kind": "preprint",
+      "topics": [
+        "xlstm",
+        "lstm",
+        "recurrent",
+        "sequence modelling"
+      ]
+    },
+    {
+      "id": "source.chen2018.neural_ode",
+      "title": "Neural Ordinary Differential Equations",
+      "url": "https://arxiv.org/abs/1806.07366",
+      "kind": "preprint",
+      "topics": [
+        "neural ode",
+        "continuous depth",
+        "adjoint method"
+      ]
+    },
+    {
+      "id": "source.kipf2017.graph_convolutional_networks",
+      "title": "Semi-Supervised Classification with Graph Convolutional Networks",
+      "url": "https://arxiv.org/abs/1609.02907",
+      "kind": "preprint",
+      "topics": [
+        "gcn",
+        "graph neural networks",
+        "spectral convolution"
+      ]
+    },
+    {
+      "id": "source.velickovic2018.graph_attention_networks",
+      "title": "Graph Attention Networks",
+      "url": "https://arxiv.org/abs/1710.10903",
+      "kind": "preprint",
+      "topics": [
+        "gat",
+        "attention",
+        "graph neural networks"
+      ]
+    },
+    {
+      "id": "source.gilmer2017.message_passing",
+      "title": "Neural Message Passing for Quantum Chemistry",
+      "url": "https://arxiv.org/abs/1704.01212",
+      "kind": "preprint",
+      "topics": [
+        "message passing",
+        "graph neural networks",
+        "chemistry"
+      ]
+    },
+    {
+      "id": "source.xu2019.how_powerful_are_gnns",
+      "title": "How Powerful are Graph Neural Networks?",
+      "url": "https://arxiv.org/abs/1810.00826",
+      "kind": "preprint",
+      "topics": [
+        "gin",
+        "expressiveness",
+        "weisfeiler-lehman",
+        "graph neural networks"
+      ]
+    },
+    {
+      "id": "source.bronstein2021.geometric_deep_learning",
+      "title": "Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges",
+      "url": "https://arxiv.org/abs/2104.13478",
+      "kind": "preprint",
+      "topics": [
+        "geometric deep learning",
+        "symmetry",
+        "equivariance",
+        "groups",
+        "manifolds"
+      ]
+    },
+    {
+      "id": "source.cohen2018.spherical_cnns",
+      "title": "Spherical CNNs",
+      "url": "https://arxiv.org/abs/1801.10130",
+      "kind": "preprint",
+      "topics": [
+        "spherical cnn",
+        "rotation equivariance",
+        "so(3)"
+      ]
+    },
+    {
+      "id": "source.sabour2017.dynamic_routing",
+      "title": "Dynamic Routing Between Capsules",
+      "url": "https://arxiv.org/abs/1710.09829",
+      "kind": "preprint",
+      "topics": [
+        "capsule networks",
+        "routing",
+        "pose"
+      ]
+    },
+    {
+      "id": "source.liu2024.kolmogorov_arnold_networks",
+      "title": "KAN: Kolmogorov-Arnold Networks",
+      "url": "https://arxiv.org/abs/2404.19756",
+      "kind": "preprint",
+      "topics": [
+        "kan",
+        "spline",
+        "kolmogorov-arnold",
+        "interpretability"
+      ]
+    },
+    {
+      "id": "source.dosovitskiy2021.vision_transformer",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "url": "https://arxiv.org/abs/2010.11929",
+      "kind": "preprint",
+      "topics": [
+        "vision transformer",
+        "patches",
+        "vision",
+        "transformer"
+      ]
+    },
+    {
+      "id": "source.liu2022.convnext",
+      "title": "A ConvNet for the 2020s",
+      "url": "https://arxiv.org/abs/2201.03545",
+      "kind": "preprint",
+      "topics": [
+        "convnext",
+        "convolutional networks",
+        "vision",
+        "design"
+      ]
+    },
+    {
+      "id": "source.shazeer2017.mixture_of_experts",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "url": "https://arxiv.org/abs/1701.06538",
+      "kind": "preprint",
+      "topics": [
+        "mixture of experts",
+        "sparsity",
+        "routing",
+        "conditional computation"
+      ]
+    },
+    {
+      "id": "source.hinton2015.distilling_knowledge",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "url": "https://arxiv.org/abs/1503.02531",
+      "kind": "preprint",
+      "topics": [
+        "distillation",
+        "compression",
+        "soft targets"
+      ]
+    },
+    {
+      "id": "source.cho2014.gru",
+      "title": "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation",
+      "url": "https://arxiv.org/abs/1406.1078",
+      "kind": "preprint",
+      "topics": [
+        "gru",
+        "encoder-decoder",
+        "recurrent networks",
+        "gating"
+      ]
+    },
+    {
+      "id": "source.graves2013.generating_sequences",
+      "title": "Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/abs/1308.0850",
+      "kind": "preprint",
+      "topics": [
+        "lstm",
+        "recurrent networks",
+        "sequence generation"
+      ]
+    },
+    {
+      "id": "source.hochreiter1997.long_short_term_memory",
+      "title": "Long Short-Term Memory",
+      "url": "https://direct.mit.edu/neco/article/9/8/1735/6109/Long-Short-Term-Memory",
+      "kind": "primary-research",
+      "topics": [
+        "lstm",
+        "vanishing gradients",
+        "recurrent networks",
+        "gating"
+      ]
+    },
+    {
+      "id": "source.lecun1998.gradient_based_learning",
+      "title": "Gradient-Based Learning Applied to Document Recognition",
+      "url": "https://ieeexplore.ieee.org/document/726791",
+      "kind": "primary-research",
+      "topics": [
+        "lenet",
+        "convolutional networks",
+        "backpropagation",
+        "ocr"
+      ]
+    },
+    {
+      "id": "source.rumelhart1986.learning_representations",
+      "title": "Learning representations by back-propagating errors",
+      "url": "https://www.nature.com/articles/323533a0",
+      "kind": "primary-research",
+      "topics": [
+        "backpropagation",
+        "neural networks",
+        "gradient descent"
+      ]
+    },
+    {
+      "id": "source.rosenblatt1958.perceptron",
+      "title": "The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain",
+      "url": "https://psycnet.apa.org/doi/10.1037/h0042519",
+      "kind": "primary-research",
+      "topics": [
+        "perceptron",
+        "linear classifier",
+        "history"
+      ]
+    },
+    {
+      "id": "source.hopfield1982.neural_networks",
+      "title": "Neural networks and physical systems with emergent collective computational abilities",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.79.8.2554",
+      "kind": "primary-research",
+      "topics": [
+        "hopfield network",
+        "associative memory",
+        "energy function"
+      ]
+    },
+    {
+      "id": "source.radford2021.clip",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "url": "https://arxiv.org/abs/2103.00020",
+      "kind": "preprint",
+      "topics": [
+        "clip",
+        "contrastive",
+        "multimodal",
+        "zero-shot"
+      ]
+    },
+    {
+      "id": "source.chen2020.simclr",
+      "title": "A Simple Framework for Contrastive Learning of Visual Representations",
+      "url": "https://arxiv.org/abs/2002.05709",
+      "kind": "preprint",
+      "topics": [
+        "simclr",
+        "contrastive learning",
+        "self-supervised",
+        "augmentation"
+      ]
+    },
+    {
+      "id": "source.he2020.moco",
+      "title": "Momentum Contrast for Unsupervised Visual Representation Learning",
+      "url": "https://arxiv.org/abs/1911.05722",
+      "kind": "preprint",
+      "topics": [
+        "moco",
+        "contrastive learning",
+        "self-supervised",
+        "momentum encoder"
+      ]
+    },
+    {
+      "id": "source.finn2017.maml",
+      "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks",
+      "url": "https://arxiv.org/abs/1703.03400",
+      "kind": "preprint",
+      "topics": [
+        "meta-learning",
+        "maml",
+        "few-shot",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "source.mcmahan2017.federated_averaging",
+      "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+      "url": "https://arxiv.org/abs/1602.05629",
+      "kind": "preprint",
+      "topics": [
+        "federated learning",
+        "fedavg",
+        "privacy",
+        "decentralised"
+      ]
+    },
+    {
+      "id": "source.kirkpatrick2017.ewc",
+      "title": "Overcoming catastrophic forgetting in neural networks",
+      "url": "https://arxiv.org/abs/1612.00796",
+      "kind": "preprint",
+      "topics": [
+        "continual learning",
+        "catastrophic forgetting",
+        "ewc",
+        "regularization"
+      ]
+    },
+    {
+      "id": "source.bengio2009.curriculum_learning",
+      "title": "Curriculum Learning",
+      "url": "https://dl.acm.org/doi/10.1145/1553374.1553380",
+      "kind": "primary-research",
+      "topics": [
+        "curriculum learning",
+        "training order",
+        "optimization"
+      ]
+    },
+    {
+      "id": "source.vandermaaten2008.tsne",
+      "title": "Visualizing Data using t-SNE",
+      "url": "https://www.jmlr.org/papers/v9/vandermaaten08a.html",
+      "kind": "primary-research",
+      "topics": [
+        "t-sne",
+        "dimensionality reduction",
+        "visualisation",
+        "embedding"
+      ]
+    },
+    {
+      "id": "source.mcinnes2018.umap",
+      "title": "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction",
+      "url": "https://arxiv.org/abs/1802.03426",
+      "kind": "preprint",
+      "topics": [
+        "umap",
+        "dimensionality reduction",
+        "manifold learning",
+        "visualisation"
+      ]
+    },
+    {
+      "id": "source.chen2016.xgboost",
+      "title": "XGBoost: A Scalable Tree Boosting System",
+      "url": "https://arxiv.org/abs/1603.02754",
+      "kind": "preprint",
+      "topics": [
+        "gradient boosting",
+        "trees",
+        "xgboost",
+        "regularization"
+      ]
+    },
+    {
+      "id": "source.breiman2001.random_forests",
+      "title": "Random Forests",
+      "url": "https://link.springer.com/article/10.1023/A:1010933404324",
+      "kind": "primary-research",
+      "topics": [
+        "random forests",
+        "bagging",
+        "trees",
+        "ensembles"
+      ]
+    },
+    {
+      "id": "source.cortes1995.support_vector_networks",
+      "title": "Support-Vector Networks",
+      "url": "https://link.springer.com/article/10.1007/BF00994018",
+      "kind": "primary-research",
+      "topics": [
+        "svm",
+        "margin",
+        "kernels",
+        "classification"
+      ]
+    },
+    {
+      "id": "source.rabiner1989.hidden_markov_models",
+      "title": "A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition",
+      "url": "https://ieeexplore.ieee.org/document/18626",
+      "kind": "primary-research",
+      "topics": [
+        "hmm",
+        "forward-backward",
+        "viterbi",
+        "speech"
+      ]
+    },
+    {
+      "id": "source.sutton2010.crf_tutorial",
+      "title": "An Introduction to Conditional Random Fields",
+      "url": "https://arxiv.org/abs/1011.4088",
+      "kind": "preprint",
+      "topics": [
+        "conditional random fields",
+        "structured prediction",
+        "graphical models"
+      ]
+    },
+    {
+      "id": "source.ester1996.dbscan",
+      "title": "A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise",
+      "url": "https://cdn.aaai.org/KDD/1996/KDD96-037.pdf",
+      "kind": "primary-research",
+      "topics": [
+        "dbscan",
+        "density clustering",
+        "noise",
+        "clustering"
+      ]
+    },
+    {
+      "id": "source.vonluxburg2007.spectral_clustering",
+      "title": "A Tutorial on Spectral Clustering",
+      "url": "https://arxiv.org/abs/0711.0189",
+      "kind": "preprint",
+      "topics": [
+        "spectral clustering",
+        "graph laplacian",
+        "eigenvectors",
+        "clustering"
+      ]
+    },
+    {
+      "id": "source.lloyd1982.least_squares_quantization",
+      "title": "Least squares quantization in PCM",
+      "url": "https://ieeexplore.ieee.org/document/1056489",
+      "kind": "primary-research",
+      "topics": [
+        "k-means",
+        "quantization",
+        "clustering"
+      ]
+    },
+    {
+      "id": "source.mikolov2013.word2vec",
+      "title": "Efficient Estimation of Word Representations in Vector Space",
+      "url": "https://arxiv.org/abs/1301.3781",
+      "kind": "preprint",
+      "topics": [
+        "word2vec",
+        "embeddings",
+        "distributional semantics",
+        "nlp"
+      ]
+    },
+    {
+      "id": "source.sennrich2016.subword_units",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "url": "https://arxiv.org/abs/1508.07909",
+      "kind": "preprint",
+      "topics": [
+        "bpe",
+        "tokenization",
+        "subwords",
+        "machine translation"
+      ]
+    },
+    {
+      "id": "source.kudo2018.sentencepiece",
+      "title": "SentencePiece: A simple and language independent subword tokenizer and detokenizer",
+      "url": "https://arxiv.org/abs/1808.06226",
+      "kind": "preprint",
+      "topics": [
+        "sentencepiece",
+        "tokenization",
+        "unigram",
+        "nlp"
+      ]
+    },
+    {
+      "id": "source.wei2022.chain_of_thought",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "url": "https://arxiv.org/abs/2201.11903",
+      "kind": "preprint",
+      "topics": [
+        "chain of thought",
+        "prompting",
+        "reasoning",
+        "agents"
+      ]
+    },
+    {
+      "id": "source.redmon2016.yolo",
+      "title": "You Only Look Once: Unified, Real-Time Object Detection",
+      "url": "https://arxiv.org/abs/1506.02640",
+      "kind": "preprint",
+      "topics": [
+        "yolo",
+        "object detection",
+        "single-stage",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.ren2015.faster_rcnn",
+      "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+      "url": "https://arxiv.org/abs/1506.01497",
+      "kind": "preprint",
+      "topics": [
+        "faster r-cnn",
+        "object detection",
+        "region proposals",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.ronneberger2015.unet",
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "url": "https://arxiv.org/abs/1505.04597",
+      "kind": "preprint",
+      "topics": [
+        "u-net",
+        "segmentation",
+        "encoder-decoder",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.he2017.mask_rcnn",
+      "title": "Mask R-CNN",
+      "url": "https://arxiv.org/abs/1703.06870",
+      "kind": "preprint",
+      "topics": [
+        "mask r-cnn",
+        "instance segmentation",
+        "detection",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.arandjelovic2016.netvlad",
+      "title": "NetVLAD: CNN architecture for weakly supervised place recognition",
+      "url": "https://arxiv.org/abs/1511.07247",
+      "kind": "preprint",
+      "topics": [
+        "place recognition",
+        "vlad",
+        "retrieval",
+        "vision"
+      ]
+    },
+    {
+      "id": "source.mnih2015.human_level_control",
+      "title": "Human-level control through deep reinforcement learning",
+      "url": "https://www.nature.com/articles/nature14236",
+      "kind": "primary-research",
+      "topics": [
+        "dqn",
+        "atari",
+        "experience replay",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.schulman2017.ppo",
+      "title": "Proximal Policy Optimization Algorithms",
+      "url": "https://arxiv.org/abs/1707.06347",
+      "kind": "preprint",
+      "topics": [
+        "ppo",
+        "policy gradient",
+        "clipping",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.schulman2015.trpo",
+      "title": "Trust Region Policy Optimization",
+      "url": "https://arxiv.org/abs/1502.05477",
+      "kind": "preprint",
+      "topics": [
+        "trpo",
+        "trust region",
+        "policy gradient",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.haarnoja2018.sac",
+      "title": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+      "url": "https://arxiv.org/abs/1801.01290",
+      "kind": "preprint",
+      "topics": [
+        "sac",
+        "maximum entropy",
+        "actor-critic",
+        "off-policy"
+      ]
+    },
+    {
+      "id": "source.mnih2016.a3c",
+      "title": "Asynchronous Methods for Deep Reinforcement Learning",
+      "url": "https://arxiv.org/abs/1602.01783",
+      "kind": "preprint",
+      "topics": [
+        "a3c",
+        "actor-critic",
+        "asynchronous",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.silver2016.alphago",
+      "title": "Mastering the game of Go with deep neural networks and tree search",
+      "url": "https://www.nature.com/articles/nature16961",
+      "kind": "primary-research",
+      "topics": [
+        "alphago",
+        "monte carlo tree search",
+        "self-play",
+        "go"
+      ]
+    },
+    {
+      "id": "source.silver2017.alphazero",
+      "title": "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm",
+      "url": "https://arxiv.org/abs/1712.01815",
+      "kind": "preprint",
+      "topics": [
+        "alphazero",
+        "self-play",
+        "mcts",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.schrittwieser2020.muzero",
+      "title": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+      "url": "https://arxiv.org/abs/1911.08265",
+      "kind": "preprint",
+      "topics": [
+        "muzero",
+        "model-based",
+        "planning",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.levine2020.offline_rl",
+      "title": "Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems",
+      "url": "https://arxiv.org/abs/2005.01643",
+      "kind": "preprint",
+      "topics": [
+        "offline rl",
+        "batch rl",
+        "distribution shift",
+        "reinforcement learning"
+      ]
+    },
+    {
+      "id": "source.ouyang2022.instructgpt",
+      "title": "Training language models to follow instructions with human feedback",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "kind": "preprint",
+      "topics": [
+        "rlhf",
+        "instruction following",
+        "preference learning",
+        "alignment"
+      ]
+    },
+    {
+      "id": "source.bai2022.constitutional_ai",
+      "title": "Constitutional AI: Harmlessness from AI Feedback",
+      "url": "https://arxiv.org/abs/2212.08073",
+      "kind": "preprint",
+      "topics": [
+        "rlaif",
+        "constitutional ai",
+        "alignment",
+        "ai feedback"
+      ]
+    },
+    {
+      "id": "source.amodei2016.concrete_problems",
+      "title": "Concrete Problems in AI Safety",
+      "url": "https://arxiv.org/abs/1606.06565",
+      "kind": "preprint",
+      "topics": [
+        "ai safety",
+        "side effects",
+        "reward hacking",
+        "robustness"
+      ]
+    },
+    {
+      "id": "source.olah2020.zoom_in_circuits",
+      "title": "Zoom In: An Introduction to Circuits",
+      "url": "https://distill.pub/2020/circuits/zoom-in/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "interpretability",
+        "circuits",
+        "features",
+        "vision models"
+      ]
+    },
+    {
+      "id": "source.elhage2021.transformer_circuits",
+      "title": "A Mathematical Framework for Transformer Circuits",
+      "url": "https://transformer-circuits.pub/2021/framework/index.html",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "mechanistic interpretability",
+        "transformer",
+        "induction heads",
+        "circuits"
+      ]
+    },
+    {
+      "id": "source.hart1968.a_star",
+      "title": "A Formal Basis for the Heuristic Determination of Minimum Cost Paths",
+      "url": "https://ieeexplore.ieee.org/document/4082128",
+      "kind": "primary-research",
+      "topics": [
+        "a*",
+        "heuristic search",
+        "admissibility",
+        "shortest path"
+      ]
+    },
+    {
+      "id": "source.browne2012.mcts_survey",
+      "title": "A Survey of Monte Carlo Tree Search Methods",
+      "url": "https://ieeexplore.ieee.org/document/6145622",
+      "kind": "primary-research",
+      "topics": [
+        "monte carlo tree search",
+        "uct",
+        "game playing",
+        "search"
+      ]
+    },
+    {
+      "id": "source.planning_wiki.pddl",
+      "title": "The Planning Wiki \u2014 PDDL reference",
+      "url": "https://planning.wiki/",
+      "kind": "reference-documentation",
+      "topics": [
+        "pddl",
+        "planning",
+        "domains",
+        "problem files"
+      ]
+    },
+    {
+      "id": "source.python.documentation",
+      "title": "The Python Language Reference and Library",
+      "url": "https://docs.python.org/3/",
+      "kind": "reference-documentation",
+      "topics": [
+        "python",
+        "language reference",
+        "standard library"
+      ]
+    },
+    {
+      "id": "source.cppreference",
+      "title": "cppreference.com \u2014 C and C++ reference",
+      "url": "https://en.cppreference.com/w/",
+      "kind": "reference-documentation",
+      "topics": [
+        "c",
+        "c++",
+        "standard library",
+        "language reference"
+      ]
+    },
+    {
+      "id": "source.isocpp.standard",
+      "title": "Standard C++ Foundation",
+      "url": "https://isocpp.org/",
+      "kind": "reference-documentation",
+      "topics": [
+        "c++",
+        "iso standard",
+        "language evolution"
+      ]
+    },
+    {
+      "id": "source.rust.book",
+      "title": "The Rust Programming Language",
+      "url": "https://doc.rust-lang.org/book/",
+      "kind": "reference-documentation",
+      "topics": [
+        "rust",
+        "ownership",
+        "borrowing",
+        "lifetimes",
+        "memory safety"
+      ]
+    },
+    {
+      "id": "source.go.documentation",
+      "title": "The Go Programming Language documentation",
+      "url": "https://go.dev/doc/",
+      "kind": "reference-documentation",
+      "topics": [
+        "go",
+        "goroutines",
+        "channels",
+        "concurrency"
+      ]
+    },
+    {
+      "id": "source.mdn.javascript",
+      "title": "MDN Web Docs \u2014 JavaScript",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      "kind": "reference-documentation",
+      "topics": [
+        "javascript",
+        "event loop",
+        "prototypes",
+        "web"
+      ]
+    },
+    {
+      "id": "source.typescript.handbook",
+      "title": "The TypeScript Handbook",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "typescript",
+        "types",
+        "structural typing",
+        "javascript"
+      ]
+    },
+    {
+      "id": "source.haskell.report",
+      "title": "The Haskell 2010 Language Report",
+      "url": "https://www.haskell.org/onlinereport/haskell2010/",
+      "kind": "reference-documentation",
+      "topics": [
+        "haskell",
+        "lazy evaluation",
+        "type classes",
+        "functional programming"
+      ]
+    },
+    {
+      "id": "source.mitpress.sicp",
+      "title": "Structure and Interpretation of Computer Programs",
+      "url": "https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "lisp",
+        "scheme",
+        "abstraction",
+        "interpreters",
+        "functional programming"
+      ]
+    },
+    {
+      "id": "source.julia.documentation",
+      "title": "The Julia Language documentation",
+      "url": "https://docs.julialang.org/en/v1/",
+      "kind": "reference-documentation",
+      "topics": [
+        "julia",
+        "multiple dispatch",
+        "jit",
+        "scientific computing"
+      ]
+    },
+    {
+      "id": "source.cran.manuals",
+      "title": "The Comprehensive R Archive Network \u2014 manuals",
+      "url": "https://cran.r-project.org/manuals.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "r",
+        "statistics",
+        "data frames",
+        "vectorisation"
+      ]
+    },
+    {
+      "id": "source.mathworks.matlab",
+      "title": "MATLAB documentation",
+      "url": "https://www.mathworks.com/help/matlab/",
+      "kind": "reference-documentation",
+      "topics": [
+        "matlab",
+        "matrices",
+        "numerical computing",
+        "toolboxes"
+      ]
+    },
+    {
+      "id": "source.intel.software_developer_manual",
+      "title": "Intel 64 and IA-32 Architectures Software Developer Manuals",
+      "url": "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "assembly",
+        "x86",
+        "instruction set",
+        "registers"
+      ]
+    },
+    {
+      "id": "source.nvidia.cuda_programming_guide",
+      "title": "CUDA C++ Programming Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/",
+      "kind": "reference-documentation",
+      "topics": [
+        "cuda",
+        "gpu",
+        "kernels",
+        "memory hierarchy",
+        "warps"
+      ]
+    },
+    {
+      "id": "source.triton.documentation",
+      "title": "Triton documentation",
+      "url": "https://triton-lang.org/main/index.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "triton",
+        "gpu kernels",
+        "tiling",
+        "compilation"
+      ]
+    },
+    {
+      "id": "source.pytorch.documentation",
+      "title": "PyTorch documentation",
+      "url": "https://pytorch.org/docs/stable/index.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "pytorch",
+        "autograd",
+        "tensors",
+        "modules",
+        "training"
+      ]
+    },
+    {
+      "id": "source.jax.documentation",
+      "title": "JAX documentation",
+      "url": "https://jax.readthedocs.io/en/latest/",
+      "kind": "reference-documentation",
+      "topics": [
+        "jax",
+        "jit",
+        "vmap",
+        "grad",
+        "functional programming"
+      ]
+    },
+    {
+      "id": "source.mlflow.documentation",
+      "title": "MLflow documentation",
+      "url": "https://mlflow.org/docs/latest/index.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "experiment tracking",
+        "model registry",
+        "reproducibility",
+        "mlops"
+      ]
+    },
+    {
+      "id": "source.docker.documentation",
+      "title": "Docker documentation",
+      "url": "https://docs.docker.com/",
+      "kind": "reference-documentation",
+      "topics": [
+        "containers",
+        "images",
+        "namespaces",
+        "deployment"
+      ]
+    },
+    {
+      "id": "source.kubernetes.documentation",
+      "title": "Kubernetes documentation",
+      "url": "https://kubernetes.io/docs/concepts/",
+      "kind": "reference-documentation",
+      "topics": [
+        "kubernetes",
+        "orchestration",
+        "deployment",
+        "scaling"
+      ]
+    },
+    {
+      "id": "source.postgresql.documentation",
+      "title": "PostgreSQL documentation",
+      "url": "https://www.postgresql.org/docs/current/",
+      "kind": "reference-documentation",
+      "topics": [
+        "relational databases",
+        "sql",
+        "transactions",
+        "indexes",
+        "acid"
+      ]
+    },
+    {
+      "id": "source.neo4j.documentation",
+      "title": "Neo4j documentation",
+      "url": "https://neo4j.com/docs/",
+      "kind": "reference-documentation",
+      "topics": [
+        "graph databases",
+        "cypher",
+        "property graph",
+        "traversal"
+      ]
+    },
+    {
+      "id": "source.mpi_forum.standard",
+      "title": "MPI: A Message-Passing Interface Standard",
+      "url": "https://www.mpi-forum.org/docs/",
+      "kind": "reference-documentation",
+      "topics": [
+        "mpi",
+        "message passing",
+        "hpc",
+        "parallel computing"
+      ]
+    },
+    {
+      "id": "source.openmp.specifications",
+      "title": "OpenMP specifications",
+      "url": "https://www.openmp.org/specifications/",
+      "kind": "reference-documentation",
+      "topics": [
+        "openmp",
+        "shared memory",
+        "parallel computing",
+        "threads"
+      ]
+    },
+    {
+      "id": "source.rfc9293.tcp",
+      "title": "RFC 9293: Transmission Control Protocol (TCP)",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293",
+      "kind": "reference-documentation",
+      "topics": [
+        "tcp",
+        "networking",
+        "protocols",
+        "congestion control"
+      ]
+    },
+    {
+      "id": "source.ostep.operating_systems",
+      "title": "Operating Systems: Three Easy Pieces",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "operating systems",
+        "virtualisation",
+        "concurrency",
+        "persistence",
+        "scheduling"
+      ]
+    },
+    {
+      "id": "source.kleppmann.data_intensive_applications",
+      "title": "Martin Kleppmann, Designing Data-Intensive Applications",
+      "url": "https://dataintensive.net/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "distributed systems",
+        "replication",
+        "consistency",
+        "partitioning",
+        "databases"
+      ]
+    },
+    {
+      "id": "source.git_scm.book",
+      "title": "Pro Git",
+      "url": "https://git-scm.com/book/en/v2",
+      "kind": "reference-documentation",
+      "topics": [
+        "version control",
+        "git",
+        "branching",
+        "merging",
+        "history"
+      ]
+    },
+    {
+      "id": "source.fowler.refactoring_catalog",
+      "title": "Martin Fowler \u2014 Refactoring and design catalogue",
+      "url": "https://martinfowler.com/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "design patterns",
+        "refactoring",
+        "architecture",
+        "continuous integration",
+        "testing"
+      ]
+    },
+    {
+      "id": "source.modelcontextprotocol.specification",
+      "title": "Model Context Protocol documentation",
+      "url": "https://modelcontextprotocol.io",
+      "kind": "reference-documentation",
+      "topics": [
+        "model context protocol",
+        "tools",
+        "resources",
+        "json-rpc",
+        "agents"
+      ]
+    },
+    {
+      "id": "source.ollama.project",
+      "title": "Ollama",
+      "url": "https://github.com/ollama/ollama",
+      "kind": "implementation",
+      "topics": [
+        "ollama",
+        "local models",
+        "inference",
+        "quantized models"
+      ]
+    },
+    {
+      "id": "source.ggml.llama_cpp",
+      "title": "llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "kind": "implementation",
+      "topics": [
+        "quantization",
+        "edge inference",
+        "gguf",
+        "cpu inference"
+      ]
+    },
+    {
+      "id": "source.semver.specification",
+      "title": "Semantic Versioning 2.0.0",
+      "url": "https://semver.org/",
+      "kind": "reference-documentation",
+      "topics": [
+        "versioning",
+        "releases",
+        "compatibility",
+        "apis"
+      ]
+    },
+    {
+      "id": "source.openapi.specification",
+      "title": "OpenAPI Specification",
+      "url": "https://spec.openapis.org/oas/latest.html",
+      "kind": "reference-documentation",
+      "topics": [
+        "apis",
+        "http",
+        "schemas",
+        "contracts"
+      ]
+    }
+  ]
+}
