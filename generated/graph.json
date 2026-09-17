@@ -1,35 +1,35 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T13:33:53.452Z",
-  "corpusHash": "dfbbeabc3c74ef539d7aff2b4042a0e435c2bac2af2fba89993a483b48fd97ca",
-  "atlasHash": "dfb21e5834c05556cbf2bd823d0dd7876a22cf325150de3721d2ada46e162ae0",
+  "builtAt": "2026-09-17T17:22:38.644Z",
+  "corpusHash": "b2f9beb7c491f3ff8495640ea67eef95e5427e1d3cc016bcd5bb6e6329c4a821",
+  "atlasHash": "d1a1f11f935d2875832f8006881a4cde385aa14452bb243abc579adf2295334a",
   "counts": {
-    "concepts": 41,
-    "relationships": 137,
-    "categories": 9
+    "concepts": 51,
+    "relationships": 176,
+    "categories": 10
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 41,
+      "1": 51,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 41,
+      "markdown": 51,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 41
+      "generated-draft": 51
     },
-    "conceptsWithArticle": 41,
+    "conceptsWithArticle": 51,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 250,
+      "candidate": 240,
       "proposed-tier-3": 0,
-      "covered": 41,
+      "covered": 51,
       "deferred": 0
     },
     "unresolvedReferences": 0,
@@ -215,6 +215,7 @@
         "concept.linear_algebra.matrix_decompositions",
         "concept.linear_algebra.matrix_theory",
         "concept.linear_algebra.spectral_theory",
+        "concept.linear_algebra.tensor_decomposition",
         "concept.linear_algebra.tensors",
         "concept.linear_algebra.vector_spaces"
       ],
@@ -222,8 +223,38 @@
         "concept.linear_algebra.matrix_decompositions",
         "concept.linear_algebra.matrix_theory",
         "concept.linear_algebra.spectral_theory",
+        "concept.linear_algebra.tensor_decomposition",
         "concept.linear_algebra.tensors",
         "concept.linear_algebra.vector_spaces"
+      ]
+    },
+    {
+      "path": "Mathematics/Probability & Statistics",
+      "name": "Probability & Statistics",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [
+        "concept.probability.bayesian_inference",
+        "concept.probability.concentration_inequalities",
+        "concept.probability.frequentist_inference",
+        "concept.probability.high_dimensional_statistics",
+        "concept.probability.martingales",
+        "concept.probability.probability_and_computing",
+        "concept.probability.probability_theory",
+        "concept.probability.random_matrix_theory",
+        "concept.probability.stochastic_processes"
+      ],
+      "conceptIds": [
+        "concept.probability.bayesian_inference",
+        "concept.probability.concentration_inequalities",
+        "concept.probability.frequentist_inference",
+        "concept.probability.high_dimensional_statistics",
+        "concept.probability.martingales",
+        "concept.probability.probability_and_computing",
+        "concept.probability.probability_theory",
+        "concept.probability.random_matrix_theory",
+        "concept.probability.stochastic_processes"
       ]
     }
   ],
@@ -1021,6 +1052,28 @@
       "claims": 0
     },
     {
+      "id": "concept.linear_algebra.tensor_decomposition",
+      "title": "Tensor Decomposition",
+      "slug": "/concepts/tensor-decomposition",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Writing a multi-way array as a short combination of simple factors — CP, Tucker, tensor train — which buys an essential uniqueness that no unconstrained matrix factorisation has, at the cost of almost every computational guarantee the SVD provides.",
+      "aliases": [
+        "tensor factorization"
+      ],
+      "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
+      "categories": [
+        "Mathematics/Linear & Multilinear Algebra"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.linear_and_multilinear_algebra.tensor_decomposition",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.linear_algebra.tensors",
       "title": "Tensors",
       "slug": "/concepts/tensors",
@@ -1124,6 +1177,203 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.mathematics.foundations.logic_and_proof.propositional_logic",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.bayesian_inference",
+      "title": "Bayesian Inference",
+      "slug": "/concepts/bayesian-inference",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A method of statistical inference that treats the unknown as a random variable and reports its conditional distribution given the data, so that estimates, intervals and predictions are all summaries of one posterior.",
+      "aliases": [
+        "inverse probability",
+        "Bayesian statistics"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.bayesian_inference",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.concentration_inequalities",
+      "title": "Concentration Inequalities",
+      "slug": "/concepts/concentration-inequalities",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Explicit, non-asymptotic bounds on the chance that an average — or any well-behaved function of many independent variables — lands far from its mean, and the reason a finite sample can certify anything at all.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.concentration_inequalities",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.frequentist_inference",
+      "title": "Frequentist Inference",
+      "slug": "/concepts/frequentist-inference",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The school of statistics that holds the parameter fixed and the data random, licensing every estimate, interval and test by how the procedure behaves over repeated sampling rather than by any probability attached to the hypothesis.",
+      "aliases": [
+        "classical statistical inference",
+        "frequentist statistics"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.frequentist_inference",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.high_dimensional_statistics",
+      "title": "High-Dimensional Statistics",
+      "slug": "/concepts/high-dimensional-statistics",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of estimation and inference when the number of parameters grows with the sample size, where fixed-dimension asymptotics give the wrong answer and accuracy has to be bought with structural assumptions such as sparsity.",
+      "aliases": [
+        "large p small n"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.high_dimensional_statistics",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.martingales",
+      "title": "Martingales",
+      "slug": "/concepts/martingales",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A martingale is a process whose conditional expectation of the next value, given everything observed so far, is exactly its current value — a hypothesis weak enough to arise almost everywhere in probability and strong enough to force theorems about stopping, convergence and concentration.",
+      "aliases": [],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.martingales",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.probability_and_computing",
+      "title": "Probability and Computing",
+      "slug": "/concepts/probability-and-computing",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The use of random choices inside algorithms, and of probabilistic analysis to bound what they cost, giving simpler and faster procedures whose guarantees hold for every input.",
+      "aliases": [
+        "randomized algorithms"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.probability_and_computing",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.probability_theory",
+      "title": "Probability Theory",
+      "slug": "/concepts/probability-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The measure-theoretic framework in which chance is a mass-one measure, random variables are measurable functions, and the law of large numbers and the central limit theorem are theorems rather than folklore.",
+      "aliases": [
+        "Kolmogorov axioms"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.probability_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.random_matrix_theory",
+      "title": "Random Matrix Theory",
+      "slug": "/concepts/random-matrix-theory",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "When a matrix is large and its entries are random, its eigenvalues stop being random in the aggregate and settle into a deterministic shape that depends on almost nothing about the entries — which is what makes high-dimensional covariance estimation both predictably wrong and correctable.",
+      "aliases": [
+        "RMT"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.random_matrix_theory",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.probability.stochastic_processes",
+      "title": "Stochastic Processes",
+      "slug": "/concepts/stochastic-processes",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The part of probability that models an entire random trajectory rather than a single random number, so that dependence across time, information available so far, and whole-path events like hitting times and long-run averages all become things you can compute with.",
+      "aliases": [
+        "random process",
+        "stochastic process"
+      ],
+      "primaryCategory": "Mathematics/Probability & Statistics",
+      "categories": [
+        "Mathematics/Probability & Statistics"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.mathematics.probability_and_statistics.stochastic_processes",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -2067,6 +2317,38 @@
       "condition": null
     },
     {
+      "id": "concept.linear_algebra.tensor_decomposition|contrasts_with|concept.linear_algebra.spectral_theory",
+      "source": "concept.linear_algebra.tensor_decomposition",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "contrasts_with",
+      "note": "The spectral theorem buys orthogonality at the price of an arbitrary rotation inside each eigenspace, while CP gives up orthogonality entirely and gets essential uniqueness of the factors instead.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensor_decomposition|contributes_to|concept.probability.high_dimensional_statistics",
+      "source": "concept.linear_algebra.tensor_decomposition",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "contributes_to",
+      "note": "Third-order moments of a latent-variable model form a tensor whose CP decomposition is essentially unique, which turns non-identifiable second-moment problems into identifiable third-moment ones.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensor_decomposition|generalizes|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.linear_algebra.tensor_decomposition",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "generalizes",
+      "note": "At d = 2 the CP decomposition is exactly a rank-revealing matrix factorisation, but existence of a best rank-k approximation, nested truncation and polynomial-time rank are lost in the generalisation, which is the whole content of the subject.",
+      "condition": null
+    },
+    {
+      "id": "concept.linear_algebra.tensor_decomposition|requires|concept.linear_algebra.tensors",
+      "source": "concept.linear_algebra.tensor_decomposition",
+      "target": "concept.linear_algebra.tensors",
+      "type": "requires",
+      "note": "Every statement here is about an order-d array and its modes, and a reader who has not separated the multilinear-map sense of the word from the framework-array sense will read the rank claims as claims about arrays of numbers.",
+      "condition": null
+    },
+    {
       "id": "concept.linear_algebra.tensors|contrasts_with|concept.linear_algebra.matrix_decompositions",
       "source": "concept.linear_algebra.tensors",
       "target": "concept.linear_algebra.matrix_decompositions",
@@ -2224,6 +2506,286 @@
       "target": "concept.logic.proof_theory",
       "type": "prerequisite_of",
       "note": "The propositional fragment is where natural deduction, sequent calculus and cut elimination are first defined and first proved to behave.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.bayesian_inference|contrasts_with|concept.probability.frequentist_inference",
+      "source": "concept.probability.bayesian_inference",
+      "target": "concept.probability.frequentist_inference",
+      "type": "contrasts_with",
+      "note": "Both answer questions about an unknown parameter, but one puts a distribution on the parameter and the other on the procedure's behaviour under repeated sampling.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.bayesian_inference|contributes_to|concept.probability.probability_and_computing",
+      "source": "concept.probability.bayesian_inference",
+      "target": "concept.probability.probability_and_computing",
+      "type": "contributes_to",
+      "note": "Posterior expectations are integrals nobody can do in closed form, and the demand for them is what drove Markov chain Monte Carlo into general use.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.bayesian_inference|requires|concept.probability.probability_theory",
+      "source": "concept.probability.bayesian_inference",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The posterior is a conditional distribution, so conditional probability, densities and expectation must be in hand before the update rule means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.concentration_inequalities|contributes_to|concept.probability.high_dimensional_statistics",
+      "source": "concept.probability.concentration_inequalities",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "contributes_to",
+      "note": "Results such as covariance estimation in $n \\ll d$ regimes and sparse recovery are proved by concentrating a sum of independent terms and then paying a union bound over dimensions.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.concentration_inequalities|contributes_to|concept.probability.probability_and_computing",
+      "source": "concept.probability.concentration_inequalities",
+      "target": "concept.probability.probability_and_computing",
+      "type": "contributes_to",
+      "note": "Chernoff bounds are what turn a randomised algorithm's expected behaviour into a failure probability small enough to ignore, which is why repetition-and-majority amplification works.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.concentration_inequalities|requires|concept.probability.probability_theory",
+      "source": "concept.probability.concentration_inequalities",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Every inequality here is a statement about expectations, independence and moment generating functions, so a reader without those objects cannot parse the hypotheses, let alone check them.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.concentration_inequalities|supported_by|concept.probability.martingales",
+      "source": "concept.probability.concentration_inequalities",
+      "target": "concept.probability.martingales",
+      "type": "supported_by",
+      "note": "Azuma's inequality is stated for martingale difference sequences, and McDiarmid's is proved by applying it to the Doob martingale of the function, so the half of this page that drops independence rests on martingale machinery.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.frequentist_inference|contrasts_with|concept.probability.bayesian_inference",
+      "source": "concept.probability.frequentist_inference",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contrasts_with",
+      "note": "Both answer the same questions from the same likelihood, but a credible interval is a probability statement about the parameter given this data while a confidence interval is a frequency statement about the procedure.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.frequentist_inference|contrasts_with|concept.probability.high_dimensional_statistics",
+      "source": "concept.probability.frequentist_inference",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "contrasts_with",
+      "note": "Classical guarantees are asymptotics in which the parameter dimension stays fixed as the sample grows, and high-dimensional statistics studies exactly the regime where that limit is the wrong one.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.frequentist_inference|requires|concept.probability.probability_theory",
+      "source": "concept.probability.frequentist_inference",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "A sampling distribution is the law of a function of random variables, so nothing in this page can be stated without random variables, expectation and convergence in distribution.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.frequentist_inference|supported_by|concept.probability.concentration_inequalities",
+      "source": "concept.probability.frequentist_inference",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "supported_by",
+      "note": "Hoeffding- and Bernstein-type bounds give intervals whose coverage holds at every sample size, replacing the asymptotic normal approximation that most classical intervals rely on.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.high_dimensional_statistics|contrasts_with|concept.probability.bayesian_inference",
+      "source": "concept.probability.high_dimensional_statistics",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contrasts_with",
+      "note": "The lasso estimate is the posterior mode under an i.i.d. Laplace prior, but the Bayesian route judges an estimator by posterior contraction rather than by minimax risk over a sparsity class, and the two framings disagree about what the interval around a selected coefficient means.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.high_dimensional_statistics|contrasts_with|concept.probability.frequentist_inference",
+      "source": "concept.probability.high_dimensional_statistics",
+      "target": "concept.probability.frequentist_inference",
+      "type": "contrasts_with",
+      "note": "Classical frequentist asymptotics fixes the parameter count and sends n to infinity; here the parameter count moves with n, and consistency, asymptotic normality of the MLE and chi-squared likelihood-ratio approximations can all fail.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.high_dimensional_statistics|requires|concept.probability.concentration_inequalities",
+      "source": "concept.probability.high_dimensional_statistics",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "requires",
+      "note": "Every guarantee on this page is a non-asymptotic tail bound plus a union bound over p coordinates, so a reader without sub-Gaussian tail inequalities cannot follow why log p appears in the rates.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.high_dimensional_statistics|supported_by|concept.probability.random_matrix_theory",
+      "source": "concept.probability.high_dimensional_statistics",
+      "target": "concept.probability.random_matrix_theory",
+      "type": "supported_by",
+      "note": "The spectral facts about sample covariance matrices in the proportional regime — the Marchenko-Pastur bulk, the shifted extreme eigenvalues — are what make the failure of classical covariance estimation quantitative rather than anecdotal.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.martingales|contributes_to|concept.probability.concentration_inequalities",
+      "source": "concept.probability.martingales",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "contributes_to",
+      "note": "Azuma-Hoeffding and the bounded-differences inequality extend concentration from independent sums to dependent sequences by routing the quantity of interest through a martingale.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.martingales|requires|concept.analysis.measure_theory",
+      "source": "concept.probability.martingales",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "Filtrations are increasing families of sigma-algebras, stopping times are defined by a measurability condition, and uniform integrability is the measure-theoretic hypothesis that makes the limit theorems work.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.martingales|requires|concept.probability.probability_theory",
+      "source": "concept.probability.martingales",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The defining identity is a conditional expectation given a sigma-algebra, so a reader who has not met conditional expectation cannot read the definition at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.martingales|specializes|concept.probability.stochastic_processes",
+      "source": "concept.probability.martingales",
+      "target": "concept.probability.stochastic_processes",
+      "type": "specializes",
+      "note": "A martingale is a stochastic process singled out by one condition on its conditional increments, stated in the adaptedness and filtration language the general theory supplies.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_and_computing|contributes_to|concept.probability.bayesian_inference",
+      "source": "concept.probability.probability_and_computing",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contributes_to",
+      "note": "Markov chain Monte Carlo is the computational machinery that makes posterior expectations tractable when the normalising constant has no closed form.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_and_computing|requires|concept.probability.probability_theory",
+      "source": "concept.probability.probability_and_computing",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Every analysis on this page is an expectation, an independence argument or a conditioning step over the algorithm's coin flips.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_and_computing|supported_by|concept.probability.concentration_inequalities",
+      "source": "concept.probability.probability_and_computing",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "supported_by",
+      "note": "Amplification, high-probability running-time bounds and maximum-load estimates all come from Chernoff-type tail bounds rather than from expectations alone.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_and_computing|used_to_solve|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.probability.probability_and_computing",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "used_to_solve",
+      "note": "Randomised sketching produces approximate low-rank factorisations of matrices far too large to factor deterministically.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_theory|contributes_to|concept.probability.bayesian_inference",
+      "source": "concept.probability.probability_theory",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contributes_to",
+      "note": "Bayes' rule and the posterior are theorems about conditional expectation in this framework; what the two statistical schools disagree about is the interpretation of the prior, not the axioms.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_theory|contributes_to|concept.probability.concentration_inequalities",
+      "source": "concept.probability.probability_theory",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "contributes_to",
+      "note": "Concentration replaces the asymptotic limit theorems with bounds that hold at a fixed sample size, and is written entirely in the vocabulary of independence and expectation set up here.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_theory|prerequisite_of|concept.probability.stochastic_processes",
+      "source": "concept.probability.probability_theory",
+      "target": "concept.probability.stochastic_processes",
+      "type": "prerequisite_of",
+      "note": "A process is an indexed family of random variables carried by one probability space, and that such a space exists at all is the Kolmogorov extension theorem stated here.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.probability_theory|requires|concept.analysis.measure_theory",
+      "source": "concept.probability.probability_theory",
+      "target": "concept.analysis.measure_theory",
+      "type": "requires",
+      "note": "A probability space is a measure space of total mass one, and expectation, almost-sure convergence and conditional expectation are respectively the Lebesgue integral, convergence off a null set, and a Radon–Nikodym derivative.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.random_matrix_theory|contrasts_with|concept.probability.concentration_inequalities",
+      "source": "concept.probability.random_matrix_theory",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "contrasts_with",
+      "note": "Both describe the spectrum of a large random matrix, but concentration gives explicit finite-$n$ bounds with unspecified constants while random matrix theory gives exact limiting laws with no finite-$n$ guarantee.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.random_matrix_theory|contributes_to|concept.probability.high_dimensional_statistics",
+      "source": "concept.probability.random_matrix_theory",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "contributes_to",
+      "note": "The Marchenko-Pastur law is the null distribution against which high-dimensional covariance estimators, PCA component counts and detection thresholds are calibrated.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.random_matrix_theory|requires|concept.linear_algebra.spectral_theory",
+      "source": "concept.probability.random_matrix_theory",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "requires",
+      "note": "The object whose limiting law is computed is the eigenvalue set of a symmetric matrix, so a reader needs eigenvalues and the spectral theorem before any statement here parses.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.random_matrix_theory|requires|concept.probability.probability_theory",
+      "source": "concept.probability.random_matrix_theory",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The theorems are statements about weak convergence of random measures and almost-sure limits, which cannot be read without modes of convergence and the law of large numbers.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.stochastic_processes|contrasts_with|concept.analysis.dynamical_systems",
+      "source": "concept.probability.stochastic_processes",
+      "target": "concept.analysis.dynamical_systems",
+      "type": "contrasts_with",
+      "note": "Both study long-run behaviour of trajectories under a fixed evolution rule, but there the rule is deterministic and the randomness lives only in the initial condition, which is why ergodic theory reads as the shared language of the two subjects.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.stochastic_processes|contributes_to|concept.probability.probability_and_computing",
+      "source": "concept.probability.stochastic_processes",
+      "target": "concept.probability.probability_and_computing",
+      "type": "contributes_to",
+      "note": "Markov chains and their convergence rates are the analytic object behind MCMC samplers and behind the runtime analysis of randomised algorithms.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.stochastic_processes|prerequisite_of|concept.probability.martingales",
+      "source": "concept.probability.stochastic_processes",
+      "target": "concept.probability.martingales",
+      "type": "prerequisite_of",
+      "note": "The martingale condition is an equation about a process adapted to a filtration, so the filtration, adaptedness and conditional-expectation machinery defined here have to exist before the definition can even be written down.",
+      "condition": null
+    },
+    {
+      "id": "concept.probability.stochastic_processes|requires|concept.probability.probability_theory",
+      "source": "concept.probability.stochastic_processes",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "A process is a family of random variables on one probability space, and its defining properties are statements about conditional expectation and joint distributions, so none of it can be stated before those are.",
       "condition": null
     }
   ]

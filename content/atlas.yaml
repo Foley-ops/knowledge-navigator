@@ -322,8 +322,8 @@ candidates:
     title: Tensor Decomposition
     categories:
       - atlas.mathematics.linear_and_multilinear_algebra
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.linear_algebra.tensor_decomposition
   - candidate_id: candidate.mathematics.linear_and_multilinear_algebra.spectral_theory
     title: Spectral Theory
     categories:
@@ -460,56 +460,56 @@ candidates:
     title: Probability Theory
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.probability_theory
   - candidate_id: candidate.mathematics.probability_and_statistics.stochastic_processes
     title: Stochastic Processes
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.stochastic_processes
   - candidate_id: candidate.mathematics.probability_and_statistics.martingales
     title: Martingales
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.martingales
   - candidate_id: candidate.mathematics.probability_and_statistics.concentration_inequalities
     title: Concentration Inequalities
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.concentration_inequalities
   - candidate_id: candidate.mathematics.probability_and_statistics.probability_and_computing
     title: Probability and Computing
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.probability_and_computing
   - candidate_id: candidate.mathematics.probability_and_statistics.frequentist_inference
     title: Frequentist Inference
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.frequentist_inference
   - candidate_id: candidate.mathematics.probability_and_statistics.bayesian_inference
     title: Bayesian Inference
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.bayesian_inference
   - candidate_id: candidate.mathematics.probability_and_statistics.high_dimensional_statistics
     title: High-Dimensional Statistics
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.high_dimensional_statistics
   - candidate_id: candidate.mathematics.probability_and_statistics.random_matrix_theory
     title: Random Matrix Theory
     categories:
       - atlas.mathematics.probability_and_statistics
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.probability.random_matrix_theory
   - candidate_id: candidate.mathematics.geometry_and_topology.euclidean_geometry
     title: Euclidean Geometry
     categories:

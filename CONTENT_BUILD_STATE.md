@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 4 of 28.** 10 of 10 pages in it are still to write.
+**Batch 5 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/tensor-decomposition.md` — Tensor Decomposition (concept.linear_algebra.tensor_decomposition)
-- `content/concepts/probability-theory.md` — Probability Theory (concept.probability.probability_theory)
-- `content/concepts/stochastic-processes.md` — Stochastic Processes (concept.probability.stochastic_processes)
-- `content/concepts/martingales.md` — Martingales (concept.probability.martingales)
-- `content/concepts/concentration-inequalities.md` — Concentration Inequalities (concept.probability.concentration_inequalities)
-- `content/concepts/frequentist-inference.md` — Frequentist Inference (concept.probability.frequentist_inference)
-- `content/concepts/bayesian-inference.md` — Bayesian Inference (concept.probability.bayesian_inference)
-- `content/concepts/high-dimensional-statistics.md` — High-Dimensional Statistics (concept.probability.high_dimensional_statistics)
-- `content/concepts/random-matrix-theory.md` — Random Matrix Theory (concept.probability.random_matrix_theory)
-- `content/concepts/probability-and-computing.md` — Probability and Computing (concept.probability.probability_and_computing)
+- `content/concepts/group-theory.md` — Group Theory (concept.algebra.group_theory)
+- `content/concepts/ring-theory.md` — Ring Theory (concept.algebra.ring_theory)
+- `content/concepts/field-theory.md` — Field Theory (concept.algebra.field_theory)
+- `content/concepts/order-theory.md` — Order Theory (concept.algebra.order_theory)
+- `content/concepts/lattice-theory.md` — Lattice Theory (concept.algebra.lattice_theory)
+- `content/concepts/galois-theory.md` — Galois Theory (concept.algebra.galois_theory)
+- `content/concepts/representation-theory.md` — Representation Theory (concept.algebra.representation_theory)
+- `content/concepts/lie-algebras.md` — Lie Algebras (concept.algebra.lie_algebras)
+- `content/concepts/homological-algebra.md` — Homological Algebra (concept.algebra.homological_algebra)
+- `content/concepts/complex-numbers.md` — Complex Numbers (concept.algebra.complex_numbers)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,19 +36,19 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 41 |
-| Markdown pages in the corpus | 41 |
-| Tier 1 pages | 41 |
+| Candidates covered by a page | 51 |
+| Markdown pages in the corpus | 51 |
+| Tier 1 pages | 51 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 30 of 280 |
+| Planned pages written | 40 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
 | Artificial Intelligence | 0 | 148 | 0% |
-| Mathematics | 30 | 85 | 35% |
+| Mathematics | 40 | 85 | 47% |
 | Programming | 0 | 47 | 0% |
 
 ### By category
@@ -73,11 +73,11 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Mathematics/Foundations/Formal Verification | 0 | 2 |  |
 | Mathematics/Foundations/Logic & Proof | 3 | 3 | complete |
 | Mathematics/Geometry & Topology | 0 | 15 |  |
-| Mathematics/Linear & Multilinear Algebra | 5 | 6 |  |
+| Mathematics/Linear & Multilinear Algebra | 6 | 6 | complete |
 | Mathematics/Mathematical Physics | 0 | 2 |  |
 | Mathematics/Number Theory | 0 | 3 |  |
 | Mathematics/Optimization | 0 | 7 |  |
-| Mathematics/Probability & Statistics | 0 | 9 |  |
+| Mathematics/Probability & Statistics | 9 | 9 | complete |
 | Mathematics/Theory of Computation | 0 | 2 |  |
 | Programming/Data Structures & Algorithms | 0 | 5 |  |
 | Programming/Languages | 0 | 15 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-30 of the planned 280, in the order they were written.
+40 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -122,6 +122,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Matrix Decompositions | `concept.linear_algebra.matrix_decompositions` | tier 1 | covered |
 | Spectral Theory | `concept.linear_algebra.spectral_theory` | tier 1 | covered |
 | Tensors | `concept.linear_algebra.tensors` | tier 1 | covered |
+| Tensor Decomposition | `concept.linear_algebra.tensor_decomposition` | tier 1 | covered |
+| Probability Theory | `concept.probability.probability_theory` | tier 1 | covered |
+| Stochastic Processes | `concept.probability.stochastic_processes` | tier 1 | covered |
+| Martingales | `concept.probability.martingales` | tier 1 | covered |
+| Concentration Inequalities | `concept.probability.concentration_inequalities` | tier 1 | covered |
+| Frequentist Inference | `concept.probability.frequentist_inference` | tier 1 | covered |
+| Bayesian Inference | `concept.probability.bayesian_inference` | tier 1 | covered |
+| High-Dimensional Statistics | `concept.probability.high_dimensional_statistics` | tier 1 | covered |
+| Random Matrix Theory | `concept.probability.random_matrix_theory` | tier 1 | covered |
+| Probability and Computing | `concept.probability.probability_and_computing` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -175,20 +185,20 @@ it. Batches are ten pages each.
 | x | Spectral Theory | `concept.linear_algebra.spectral_theory` | Mathematics/Linear & Multilinear Algebra |
 | x | Tensors | `concept.linear_algebra.tensors` | Mathematics/Linear & Multilinear Algebra |
 
-### Batch 4
+### Batch 4 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Tensor Decomposition | `concept.linear_algebra.tensor_decomposition` | Mathematics/Linear & Multilinear Algebra |
-|   | Probability Theory | `concept.probability.probability_theory` | Mathematics/Probability & Statistics |
-|   | Stochastic Processes | `concept.probability.stochastic_processes` | Mathematics/Probability & Statistics |
-|   | Martingales | `concept.probability.martingales` | Mathematics/Probability & Statistics |
-|   | Concentration Inequalities | `concept.probability.concentration_inequalities` | Mathematics/Probability & Statistics |
-|   | Frequentist Inference | `concept.probability.frequentist_inference` | Mathematics/Probability & Statistics |
-|   | Bayesian Inference | `concept.probability.bayesian_inference` | Mathematics/Probability & Statistics |
-|   | High-Dimensional Statistics | `concept.probability.high_dimensional_statistics` | Mathematics/Probability & Statistics |
-|   | Random Matrix Theory | `concept.probability.random_matrix_theory` | Mathematics/Probability & Statistics |
-|   | Probability and Computing | `concept.probability.probability_and_computing` | Mathematics/Probability & Statistics |
+| x | Tensor Decomposition | `concept.linear_algebra.tensor_decomposition` | Mathematics/Linear & Multilinear Algebra |
+| x | Probability Theory | `concept.probability.probability_theory` | Mathematics/Probability & Statistics |
+| x | Stochastic Processes | `concept.probability.stochastic_processes` | Mathematics/Probability & Statistics |
+| x | Martingales | `concept.probability.martingales` | Mathematics/Probability & Statistics |
+| x | Concentration Inequalities | `concept.probability.concentration_inequalities` | Mathematics/Probability & Statistics |
+| x | Frequentist Inference | `concept.probability.frequentist_inference` | Mathematics/Probability & Statistics |
+| x | Bayesian Inference | `concept.probability.bayesian_inference` | Mathematics/Probability & Statistics |
+| x | High-Dimensional Statistics | `concept.probability.high_dimensional_statistics` | Mathematics/Probability & Statistics |
+| x | Random Matrix Theory | `concept.probability.random_matrix_theory` | Mathematics/Probability & Statistics |
+| x | Probability and Computing | `concept.probability.probability_and_computing` | Mathematics/Probability & Statistics |
 
 ### Batch 5
 
@@ -576,6 +586,31 @@ with Kahn's algorithm over the edges the search already collects, `depth` kept a
 the tie-break so the order stays deterministic and foundational concepts still
 come first among equals. Cycles, already reported as missing information, are
 appended rather than dropped.
+
+### Batch 4 — the writing run hit the session limit mid-batch
+
+Five of the batch's agents died to a session limit: one writer, two verifiers and
+two correction agents. All ten pages were on disk and passing `check-page.mjs`,
+which is exactly the state that hides a problem — two pages carried verified
+faults whose correction never ran, and three had never been read by a verifier at
+all. The pages were kept and the missing work was redone rather than the batch
+rewritten: the recorded faults were applied, and the three unchecked pages were
+verified (one clean, two corrected).
+
+The lesson recorded for later batches: a page passing the per-page checker is not
+evidence that it was verified. The batch is finished when every page has been
+both checked and read, and an interrupted run has to be reconciled against what
+the verifiers actually returned, not against what is on disk.
+
+### Batch 4 — the repository gate had not been run
+
+`npm run check` — formatting, lint, types, validation, deterministic compile,
+tests and the site build — was failing at stage three on
+`docs/source-registry.json`, which had been written with `JSON.stringify` in
+batch 1 and never passed through Prettier. Batches 1 to 3 were being gated on
+`npx vitest run` alone, which does not cover formatting, lint, types or the
+Docusaurus build. Fixed, and `npm run check` is now the per-batch gate in place
+of the test run.
 
 ### Batch 3 — the corpus grew a prerequisite cycle
 
