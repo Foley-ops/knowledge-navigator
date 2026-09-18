@@ -995,8 +995,8 @@ candidates:
     title: Capsule Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.capsule_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.recurrent_neural_networks
     title: Recurrent Neural Networks
     categories:
@@ -1133,14 +1133,14 @@ candidates:
     title: Graph Convolutional Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.graph_convolutional_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.graph_attention_networks
     title: Graph Attention Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.graph_attention_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.message_passing
     title: Message Passing
     categories:
@@ -1151,44 +1151,44 @@ candidates:
     title: Geometric Deep Learning
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.geometric_deep_learning
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.equivariance
     title: Equivariance
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.equivariance
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.spherical_cnns
     title: Spherical CNNs
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.spherical_cnns
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.quaternion_neural_networks
     title: Quaternion Neural Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.quaternion_neural_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.clifford_neural_networks
     title: Clifford Neural Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.clifford_neural_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.kolmogorov_arnold_networks
     title: Kolmogorov-Arnold Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.kolmogorov_arnold_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.spiking_neural_networks
     title: Spiking Neural Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.spiking_neural_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.neuromorphic_computing
     title: Neuromorphic Computing
     categories:

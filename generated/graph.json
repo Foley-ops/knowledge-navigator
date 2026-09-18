@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T04:01:47.988Z",
-  "corpusHash": "a6aa4152161fc87505d1bc56153d3caeaec94a1aa22f6809f5465dee6054e292",
-  "atlasHash": "1deb9dbf089fa20c6c6479b2b4d944446ff649c9fc548d2fac13e838112f1f87",
+  "builtAt": "2026-09-18T04:23:18.331Z",
+  "corpusHash": "355b0e4929c01e970c5f776f6701ed17b4f1aecc12ab825294a8d9d5c9eca57d",
+  "atlasHash": "b8575c5959a389fd4c6290a4aef5d9d68e8ebf538d172c0645597e359c1ab851",
   "counts": {
-    "concepts": 221,
-    "relationships": 830,
+    "concepts": 231,
+    "relationships": 870,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 221,
+      "1": 231,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 221,
+      "markdown": 231,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 221
+      "generated-draft": 231
     },
-    "conceptsWithArticle": 221,
+    "conceptsWithArticle": 231,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 70,
+      "candidate": 60,
       "proposed-tier-3": 0,
-      "covered": 221,
+      "covered": 231,
       "deferred": 0
     },
-    "unresolvedReferences": 303,
-    "unresolvedGroups": 303,
+    "unresolvedReferences": 326,
+    "unresolvedGroups": 326,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -143,16 +143,23 @@
         "concept.deep_learning.attention",
         "concept.deep_learning.autoencoders",
         "concept.deep_learning.boltzmann_machines",
+        "concept.deep_learning.capsule_networks",
+        "concept.deep_learning.clifford_neural_networks",
         "concept.deep_learning.convnext",
         "concept.deep_learning.convolutional_layer",
         "concept.deep_learning.convolutional_networks",
         "concept.deep_learning.diffusion_models",
         "concept.deep_learning.energy_based_models",
+        "concept.deep_learning.equivariance",
         "concept.deep_learning.flow_matching",
         "concept.deep_learning.generative_adversarial_networks",
+        "concept.deep_learning.geometric_deep_learning",
+        "concept.deep_learning.graph_attention_networks",
+        "concept.deep_learning.graph_convolutional_networks",
         "concept.deep_learning.graph_neural_networks",
         "concept.deep_learning.gru",
         "concept.deep_learning.hopfield_networks",
+        "concept.deep_learning.kolmogorov_arnold_networks",
         "concept.deep_learning.lenet",
         "concept.deep_learning.lstm",
         "concept.deep_learning.mamba",
@@ -164,6 +171,7 @@
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
         "concept.deep_learning.positional_encoding",
+        "concept.deep_learning.quaternion_neural_networks",
         "concept.deep_learning.radial_basis_function_networks",
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.recurrent_neural_networks",
@@ -171,6 +179,8 @@
         "concept.deep_learning.rwkv",
         "concept.deep_learning.s4",
         "concept.deep_learning.self_organizing_maps",
+        "concept.deep_learning.spherical_cnns",
+        "concept.deep_learning.spiking_neural_networks",
         "concept.deep_learning.state_space_models",
         "concept.deep_learning.transformers",
         "concept.deep_learning.variational_autoencoders",
@@ -182,16 +192,23 @@
         "concept.deep_learning.attention",
         "concept.deep_learning.autoencoders",
         "concept.deep_learning.boltzmann_machines",
+        "concept.deep_learning.capsule_networks",
+        "concept.deep_learning.clifford_neural_networks",
         "concept.deep_learning.convnext",
         "concept.deep_learning.convolutional_layer",
         "concept.deep_learning.convolutional_networks",
         "concept.deep_learning.diffusion_models",
         "concept.deep_learning.energy_based_models",
+        "concept.deep_learning.equivariance",
         "concept.deep_learning.flow_matching",
         "concept.deep_learning.generative_adversarial_networks",
+        "concept.deep_learning.geometric_deep_learning",
+        "concept.deep_learning.graph_attention_networks",
+        "concept.deep_learning.graph_convolutional_networks",
         "concept.deep_learning.graph_neural_networks",
         "concept.deep_learning.gru",
         "concept.deep_learning.hopfield_networks",
+        "concept.deep_learning.kolmogorov_arnold_networks",
         "concept.deep_learning.lenet",
         "concept.deep_learning.lstm",
         "concept.deep_learning.mamba",
@@ -203,6 +220,7 @@
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
         "concept.deep_learning.positional_encoding",
+        "concept.deep_learning.quaternion_neural_networks",
         "concept.deep_learning.radial_basis_function_networks",
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.recurrent_neural_networks",
@@ -211,6 +229,8 @@
         "concept.deep_learning.rwkv",
         "concept.deep_learning.s4",
         "concept.deep_learning.self_organizing_maps",
+        "concept.deep_learning.spherical_cnns",
+        "concept.deep_learning.spiking_neural_networks",
         "concept.deep_learning.state_space_models",
         "concept.deep_learning.transformers",
         "concept.deep_learning.variational_autoencoders",
@@ -1828,6 +1848,51 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.capsule_networks",
+      "title": "Capsule Networks",
+      "slug": "/concepts/capsule-networks",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An architecture in which groups of neurons encode an entity's pose in their activity vector and layers are connected by an iterative agreement procedure rather than fixed weights, proposed as a replacement for pooling and never scaled beyond small benchmarks.",
+      "aliases": [
+        "CapsNet",
+        "routing by agreement"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.capsule_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.clifford_neural_networks",
+      "title": "Clifford Neural Networks",
+      "slug": "/concepts/clifford-neural-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A layer family in which each feature is a multivector and the linear operation is the geometric product, so that scalar, vector and bivector parts of a physical field are mixed according to the algebra rather than treated as unrelated channels.",
+      "aliases": [
+        "Clifford neural layers"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.clifford_neural_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.convnext",
       "title": "ConvNeXt",
       "slug": "/concepts/convnext",
@@ -1960,6 +2025,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.equivariance",
+      "title": "Equivariance",
+      "slug": "/concepts/equivariance",
+      "kind": "property",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The condition that a map commutes with a group acting on its input and on its output, which is how a known symmetry of a problem becomes a constraint the architecture cannot violate.",
+      "aliases": [
+        "G-equivariance"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.equivariance",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.flow_matching",
       "title": "Flow Matching",
       "slug": "/concepts/flow-matching",
@@ -2001,6 +2088,72 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.generative_adversarial_networks",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.geometric_deep_learning",
+      "title": "Geometric Deep Learning",
+      "slug": "/concepts/geometric-deep-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A programme that derives neural network architectures from the symmetry group of the domain the data lives on, under which convolutional, graph, transformer and mesh networks turn out to be one blueprint instantiated on different domains.",
+      "aliases": [
+        "GDL"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.geometric_deep_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.graph_attention_networks",
+      "title": "Graph Attention Networks",
+      "slug": "/concepts/graph-attention-networks",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A graph layer that learns how much each neighbour contributes, replacing the degree-derived coefficients of a graph convolution with a softmax over scores computed from the two endpoints' features.",
+      "aliases": [
+        "GAT"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.graph_attention_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.graph_convolutional_networks",
+      "title": "Graph Convolutional Networks",
+      "slug": "/concepts/graph-convolutional-networks",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The architecture that made graph learning ordinary — a single sparse matrix multiply per layer, obtained by truncating a spectral filter on the graph Laplacian to first order and renormalising it with self-loops.",
+      "aliases": [
+        "GCN"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.graph_convolutional_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -2090,6 +2243,28 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_training.initialization",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.kolmogorov_arnold_networks",
+      "title": "Kolmogorov-Arnold Networks",
+      "slug": "/concepts/kolmogorov-arnold-networks",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An architecture that moves the learnable nonlinearity from the nodes to the edges — every connection carries its own univariate spline and every node just adds — inspired by, but not licensed by, the Kolmogorov-Arnold representation theorem.",
+      "aliases": [
+        "KAN"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.kolmogorov_arnold_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -2448,6 +2623,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.quaternion_neural_networks",
+      "title": "Quaternion Neural Networks",
+      "slug": "/concepts/quaternion-neural-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Networks whose weights and activations are quaternions multiplied with the Hamilton product, which ties each block of sixteen real weights down to four and so trades layer capacity for a built-in four-dimensional coupling between channels.",
+      "aliases": [
+        "quaternion-valued neural networks"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.quaternion_neural_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.radial_basis_function_networks",
       "title": "Radial Basis Function Networks",
       "slug": "/concepts/radial-basis-function-networks",
@@ -2646,6 +2843,51 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.self_organizing_maps",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.spherical_cnns",
+      "title": "Spherical CNNs",
+      "slug": "/concepts/spherical-cnns",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A convolutional architecture for signals on the sphere whose layers correlate over rotations instead of translations, so that rotating the input rotates every feature map exactly rather than scrambling it.",
+      "aliases": [
+        "S2CNN"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.spherical_cnns",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.spiking_neural_networks",
+      "title": "Spiking Neural Networks",
+      "slug": "/concepts/spiking-neural-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A network whose units carry a membrane potential through time and communicate only by discrete threshold-crossing events, trading a differentiable forward pass for event-driven computation that costs energy only when something fires.",
+      "aliases": [
+        "SNN",
+        "pulsed neural networks"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.spiking_neural_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -7000,6 +7242,70 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.capsule_networks|contrasts_with|concept.deep_learning.attention",
+      "source": "concept.deep_learning.capsule_networks",
+      "target": "concept.deep_learning.attention",
+      "type": "contrasts_with",
+      "note": "Routing by agreement is a competition among units mediated by a softmax, like attention, but the softmax normalises over the receiving capsules rather than over the senders, so parents compete for each child's vote.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.capsule_networks|contrasts_with|concept.deep_learning.pooling",
+      "source": "concept.deep_learning.capsule_networks",
+      "target": "concept.deep_learning.pooling",
+      "type": "contrasts_with",
+      "note": "Capsules were proposed precisely to avoid pooling's discarding of within-window position, keeping pose in the activity vector instead of summarising it away.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.capsule_networks|contributes_to|concept.deep_learning.equivariance",
+      "source": "concept.deep_learning.capsule_networks",
+      "target": "concept.deep_learning.equivariance",
+      "type": "contributes_to",
+      "note": "Capsules are one attempt to make a representation whose direction changes with viewpoint while its magnitude does not, which is an equivariance-by-training rather than equivariance-by-construction design.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.capsule_networks|requires|concept.deep_learning.convolutional_networks",
+      "source": "concept.deep_learning.capsule_networks",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "requires",
+      "note": "The primary capsules of the vision capsule networks described here are formed by reshaping the output of ordinary convolutional layers, so the convolutional stack is machinery the reader needs first.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.clifford_neural_networks|contributes_to|concept.deep_learning.equivariance",
+      "source": "concept.deep_learning.clifford_neural_networks",
+      "target": "concept.deep_learning.equivariance",
+      "type": "contributes_to",
+      "note": "The Clifford-group construction supplies a family of layers that are exactly equivariant to the orthogonal group of the quadratic form, while the plain Clifford layers are not — the distinction is one of the things this page exists to state.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.clifford_neural_networks|generalizes|concept.deep_learning.quaternion_neural_networks",
+      "source": "concept.deep_learning.clifford_neural_networks",
+      "target": "concept.deep_learning.quaternion_neural_networks",
+      "type": "generalizes",
+      "note": "A quaternion layer is the special case $\\mathrm{Cl}_{0,2}(\\mathbb{R}) \\cong \\mathbb{H}$, and the Hamilton-product weight sharing is exactly the left-multiplication constraint written here for a general signature.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.clifford_neural_networks|requires|concept.algebra.clifford_algebra",
+      "source": "concept.deep_learning.clifford_neural_networks",
+      "target": "concept.algebra.clifford_algebra",
+      "type": "requires",
+      "note": "The layer is defined by the geometric product and the grade decomposition, so a reader who does not already know what $\\mathrm{Cl}_{p,q}(\\mathbb{R})$ is cannot read the weight equation at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.clifford_neural_networks|used_to_solve|concept.analysis.partial_differential_equations",
+      "source": "concept.deep_learning.clifford_neural_networks",
+      "target": "concept.analysis.partial_differential_equations",
+      "type": "used_to_solve",
+      "note": "The layers were introduced as surrogates for time-stepping fluid and electromagnetic PDEs, where the state is a mixture of scalar and vector fields rather than a stack of independent channels.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.convnext|contrasts_with|concept.deep_learning.vision_transformer",
       "source": "concept.deep_learning.convnext",
       "target": "concept.deep_learning.vision_transformer",
@@ -7192,6 +7498,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.equivariance|contrasts_with|concept.deep_learning.vision_transformer",
+      "source": "concept.deep_learning.equivariance",
+      "target": "concept.deep_learning.vision_transformer",
+      "type": "contrasts_with",
+      "note": "Vision transformers deliberately drop built-in spatial equivariance and recover approximate tolerance from data and augmentation instead, which is the opposing side of the same design trade-off.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.equivariance|contributes_to|concept.deep_learning.geometric_deep_learning",
+      "source": "concept.deep_learning.equivariance",
+      "target": "concept.deep_learning.geometric_deep_learning",
+      "type": "contributes_to",
+      "note": "Equivariance to a domain's symmetry group is the organising constraint that the geometric deep learning blueprint uses to derive architectures.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.equivariance|generalizes|concept.analysis.translation_equivariance",
+      "source": "concept.deep_learning.equivariance",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "generalizes",
+      "note": "Translation equivariance is this condition with G fixed to the translation group acting the same way on input and output.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.equivariance|requires|concept.algebra.group_theory",
+      "source": "concept.deep_learning.equivariance",
+      "target": "concept.algebra.group_theory",
+      "type": "requires",
+      "note": "The definition is a statement about a group acting on two spaces, and a reader who has not met groups, actions and homomorphisms cannot read it.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.flow_matching|contrasts_with|concept.deep_learning.generative_adversarial_networks",
       "source": "concept.deep_learning.flow_matching",
       "target": "concept.deep_learning.generative_adversarial_networks",
@@ -7253,6 +7591,102 @@
       "target": "concept.learning.unsupervised_learning",
       "type": "used_to_solve",
       "note": "A GAN learns to sample from an unlabelled data distribution; the only supervision in the system is the real-versus-fake label the training procedure manufactures for itself.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.geometric_deep_learning|contributes_to|concept.deep_learning.spherical_cnns",
+      "source": "concept.deep_learning.geometric_deep_learning",
+      "target": "concept.deep_learning.spherical_cnns",
+      "type": "contributes_to",
+      "note": "Spherical CNNs are one of the few architectures designed forward from the symmetry argument rather than recovered by it — the sphere and the rotation group fix the form of the layer before any experiment is run.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.geometric_deep_learning|generalizes|concept.analysis.translation_equivariance",
+      "source": "concept.deep_learning.geometric_deep_learning",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "generalizes",
+      "note": "The grid with its translation group is one entry in the blueprint's table, and the programme replaces the translation group in that argument with an arbitrary symmetry group acting on an arbitrary domain.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.geometric_deep_learning|generalizes|concept.deep_learning.graph_neural_networks",
+      "source": "concept.deep_learning.geometric_deep_learning",
+      "target": "concept.deep_learning.graph_neural_networks",
+      "type": "generalizes",
+      "note": "A graph network is what the blueprint produces when the domain is a node set, the group is the full permutation group and the equivariant layer is restricted to be local.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.geometric_deep_learning|requires|concept.deep_learning.equivariance",
+      "source": "concept.deep_learning.geometric_deep_learning",
+      "target": "concept.deep_learning.equivariance",
+      "type": "requires",
+      "note": "Every layer in the blueprint is defined by the condition that it commutes with a group action, so the equivariance condition has to be understood before any of the architectures can be read off from it.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_attention_networks|contrasts_with|concept.deep_learning.graph_convolutional_networks",
+      "source": "concept.deep_learning.graph_attention_networks",
+      "target": "concept.deep_learning.graph_convolutional_networks",
+      "type": "contrasts_with",
+      "note": "Both aggregate over one-hop neighbourhoods, but a graph convolution fixes the edge coefficient at 1/sqrt(d_i d_j) before training while this layer computes it from the endpoint features, and the comparison between the two is the whole argument for attention on graphs.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_attention_networks|contributes_to|concept.deep_learning.graph_neural_networks",
+      "source": "concept.deep_learning.graph_attention_networks",
+      "target": "concept.deep_learning.graph_neural_networks",
+      "type": "contributes_to",
+      "note": "It is one of the layer families a survey of graph networks covers, and the one that made content-dependent edge weights standard in the family.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_attention_networks|requires|concept.deep_learning.message_passing",
+      "source": "concept.deep_learning.graph_attention_networks",
+      "target": "concept.deep_learning.message_passing",
+      "type": "requires",
+      "note": "A GAT layer is the aggregate-then-update scheme with one particular choice of aggregation weight, so the scheme has to be in hand before the attention coefficient is anything more than a formula.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_attention_networks|specializes|concept.deep_learning.attention",
+      "source": "concept.deep_learning.graph_attention_networks",
+      "target": "concept.deep_learning.attention",
+      "type": "specializes",
+      "note": "It is the same attention mechanism with the candidate set restricted from \"every item\" to \"the neighbours of this node\", which is why its cost is linear in edges rather than quadratic in nodes.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_convolutional_networks|contrasts_with|concept.deep_learning.graph_attention_networks",
+      "source": "concept.deep_learning.graph_convolutional_networks",
+      "target": "concept.deep_learning.graph_attention_networks",
+      "type": "contrasts_with",
+      "note": "Both aggregate over the same neighbourhoods, but GCN fixes each neighbour's weight from degrees alone while attention learns it from the pair of feature vectors, buying anisotropy at the cost of parameters and a harder optimisation.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_convolutional_networks|contributes_to|concept.deep_learning.geometric_deep_learning",
+      "source": "concept.deep_learning.graph_convolutional_networks",
+      "target": "concept.deep_learning.geometric_deep_learning",
+      "type": "contributes_to",
+      "note": "GCN is the worked graph case of the permutation-equivariance blueprint, and is the example that showed a symmetry-derived layer could be cheap enough to be a default.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_convolutional_networks|requires|concept.linear_algebra.spectral_theory",
+      "source": "concept.deep_learning.graph_convolutional_networks",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "requires",
+      "note": "The layer is derived by diagonalising the normalised graph Laplacian and truncating a function of its eigenvalues, and the argument for the self-loop renormalisation is entirely about where the propagation matrix's spectrum sits.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_convolutional_networks|specializes|concept.deep_learning.message_passing",
+      "source": "concept.deep_learning.graph_convolutional_networks",
+      "target": "concept.deep_learning.message_passing",
+      "type": "specializes",
+      "note": "A GCN layer is the message-passing scheme with the message fixed to a symmetrically degree-normalised copy of the neighbour's state and the update fixed to one shared linear map, so it has no per-edge parameters at all.",
       "condition": null
     },
     {
@@ -7373,6 +7807,38 @@
       "target": "concept.optimization.nonconvex_optimization",
       "type": "useful_when",
       "note": "Different starting points can lead a nonconvex training run through different regions and optimization trajectories.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.kolmogorov_arnold_networks|contrasts_with|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.deep_learning.kolmogorov_arnold_networks",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "contrasts_with",
+      "note": "The two differ in exactly one structural choice — a fixed shape on the node and a scalar on the edge, versus a learned shape on the edge and a plain sum on the node — so every comparison between them isolates that choice.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.kolmogorov_arnold_networks|contrasts_with|concept.deep_learning.radial_basis_function_networks",
+      "source": "concept.deep_learning.kolmogorov_arnold_networks",
+      "target": "concept.deep_learning.radial_basis_function_networks",
+      "type": "contrasts_with",
+      "note": "Both replace the dot-product unit with a basis expansion, but an RBF network expands in basis functions of the distance to a centre in the full input space and fits the output layer linearly, while a KAN expands each coordinate separately and stacks the result.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.kolmogorov_arnold_networks|contrasts_with|concept.machine_learning.generalized_linear_models",
+      "source": "concept.deep_learning.kolmogorov_arnold_networks",
+      "target": "concept.machine_learning.generalized_linear_models",
+      "type": "contrasts_with",
+      "note": "A generalized additive model replaces the linear predictor with a sum of univariate splines, which is exactly a one-layer KAN; KANs stack that construction and give up its convex fit and per-coordinate readability to gain depth.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.kolmogorov_arnold_networks|requires|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.kolmogorov_arnold_networks",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "requires",
+      "note": "Nothing about the architecture changes how it is fitted — the spline coefficients are ordinary parameters trained by gradients through the composition — so a reader who does not know backpropagation cannot follow how a KAN is trained.",
       "condition": null
     },
     {
@@ -7800,6 +8266,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.quaternion_neural_networks|contrasts_with|concept.deep_learning.equivariance",
+      "source": "concept.deep_learning.quaternion_neural_networks",
+      "target": "concept.deep_learning.equivariance",
+      "type": "contrasts_with",
+      "note": "The Hamilton product constrains a layer by an internal algebraic action on the four components rather than by a transformation of the input domain, so the parameter saving looks like equivariant weight sharing but buys no invariance to any spatial symmetry.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.quaternion_neural_networks|contributes_to|concept.deep_learning.geometric_deep_learning",
+      "source": "concept.deep_learning.quaternion_neural_networks",
+      "target": "concept.deep_learning.geometric_deep_learning",
+      "type": "contributes_to",
+      "note": "It is a worked instance of the programme's central move — derive a layer's weight sharing from structure the data already carries — and a useful test of how far that move goes when the structure is algebraic rather than geometric.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.quaternion_neural_networks|requires|concept.algebra.quaternions",
+      "source": "concept.deep_learning.quaternion_neural_networks",
+      "target": "concept.algebra.quaternions",
+      "type": "requires",
+      "note": "Every layer in the architecture is a Hamilton product, so a reader who does not already know the multiplication table, non-commutativity and the unit-quaternion sphere cannot follow what the layer computes.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.quaternion_neural_networks|specializes|concept.deep_learning.clifford_neural_networks",
+      "source": "concept.deep_learning.quaternion_neural_networks",
+      "target": "concept.deep_learning.clifford_neural_networks",
+      "type": "specializes",
+      "note": "The quaternions are one particular Clifford algebra, so a quaternion layer is the fixed-signature instance of the general construction that builds a layer from geometric-algebra products.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.radial_basis_function_networks|approximates|concept.machine_learning.kernel_methods",
       "source": "concept.deep_learning.radial_basis_function_networks",
       "target": "concept.machine_learning.kernel_methods",
@@ -8029,6 +8527,70 @@
       "target": "concept.machine_learning.k_means",
       "type": "specializes",
       "note": "A SOM is online k-means with prototypes tied to a fixed lattice and neighbours dragged along with the winner; shrinking the neighbourhood radius to zero recovers online k-means exactly.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spherical_cnns|contrasts_with|concept.deep_learning.convolutional_networks",
+      "source": "concept.deep_learning.spherical_cnns",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "contrasts_with",
+      "note": "Both share weights across a transitive group action, but the planar network shares across translations of a grid, which is the wrong group for data on a sphere.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spherical_cnns|requires|concept.analysis.harmonic_analysis",
+      "source": "concept.deep_learning.spherical_cnns",
+      "target": "concept.analysis.harmonic_analysis",
+      "type": "requires",
+      "note": "The spherical-harmonic and Wigner-D expansions are what make the rotational correlation computable at all, so the formal treatment is unreadable without them.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spherical_cnns|requires|concept.deep_learning.equivariance",
+      "source": "concept.deep_learning.spherical_cnns",
+      "target": "concept.deep_learning.equivariance",
+      "type": "requires",
+      "note": "The architecture exists only to satisfy an equivariance constraint, and its layers cannot be read as anything but the general definition applied to the rotation group.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spherical_cnns|specializes|concept.deep_learning.geometric_deep_learning",
+      "source": "concept.deep_learning.spherical_cnns",
+      "target": "concept.deep_learning.geometric_deep_learning",
+      "type": "specializes",
+      "note": "It is the sphere-and-rotation-group instance of the general recipe for building networks from a domain's symmetry group.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spiking_neural_networks|contrasts_with|concept.deep_learning.neural_odes",
+      "source": "concept.deep_learning.spiking_neural_networks",
+      "target": "concept.deep_learning.neural_odes",
+      "type": "contrasts_with",
+      "note": "Both define hidden state by an ODE in continuous time; the neural ODE keeps the trajectory smooth so the adjoint gives exact gradients, while the spiking reset deliberately makes it discontinuous.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spiking_neural_networks|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.spiking_neural_networks",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "Both carry state across time, but a spiking unit's state is a leaky scalar and its output is a one-bit event, which removes the gradient path that makes ordinary recurrent training work.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spiking_neural_networks|requires|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.spiking_neural_networks",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "requires",
+      "note": "Surrogate-gradient training is backpropagation through time with one derivative swapped out, so the training story here cannot be followed without the chain-rule machinery it modifies.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.spiking_neural_networks|used_to_solve|concept.ml_engineering.edge_inference",
+      "source": "concept.deep_learning.spiking_neural_networks",
+      "target": "concept.ml_engineering.edge_inference",
+      "type": "used_to_solve",
+      "note": "Always-on inference under a milliwatt power budget is the deployment problem that event-driven spiking hardware is built for.",
       "condition": null
     },
     {

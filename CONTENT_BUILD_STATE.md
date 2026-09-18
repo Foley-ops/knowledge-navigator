@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 22 of 28.** 10 of 10 pages in it are still to write.
+**Batch 23 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/graph-convolutional-networks.md` — Graph Convolutional Networks (concept.deep_learning.graph_convolutional_networks)
-- `content/concepts/graph-attention-networks.md` — Graph Attention Networks (concept.deep_learning.graph_attention_networks)
-- `content/concepts/equivariance.md` — Equivariance (concept.deep_learning.equivariance)
-- `content/concepts/geometric-deep-learning.md` — Geometric Deep Learning (concept.deep_learning.geometric_deep_learning)
-- `content/concepts/spherical-cnns.md` — Spherical CNNs (concept.deep_learning.spherical_cnns)
-- `content/concepts/capsule-networks.md` — Capsule Networks (concept.deep_learning.capsule_networks)
-- `content/concepts/kolmogorov-arnold-networks.md` — Kolmogorov-Arnold Networks (concept.deep_learning.kolmogorov_arnold_networks)
-- `content/concepts/quaternion-neural-networks.md` — Quaternion Neural Networks (concept.deep_learning.quaternion_neural_networks)
-- `content/concepts/clifford-neural-networks.md` — Clifford Neural Networks (concept.deep_learning.clifford_neural_networks)
-- `content/concepts/spiking-neural-networks.md` — Spiking Neural Networks (concept.deep_learning.spiking_neural_networks)
+- `content/concepts/neuromorphic-computing.md` — Neuromorphic Computing (concept.deep_learning.neuromorphic_computing)
+- `content/concepts/markov-decision-processes.md` — Markov Decision Processes (concept.reinforcement_learning.markov_decision_processes)
+- `content/concepts/dynamic-programming.md` — Dynamic Programming (concept.reinforcement_learning.dynamic_programming)
+- `content/concepts/monte-carlo-methods.md` — Monte Carlo Methods (concept.reinforcement_learning.monte_carlo_methods)
+- `content/concepts/temporal-difference-learning.md` — Temporal-Difference Learning (concept.reinforcement_learning.temporal_difference_learning)
+- `content/concepts/q-learning.md` — Q-Learning (concept.reinforcement_learning.q_learning)
+- `content/concepts/dqn.md` — DQN (concept.reinforcement_learning.dqn)
+- `content/concepts/policy-gradients.md` — Policy Gradients (concept.reinforcement_learning.policy_gradients)
+- `content/concepts/reinforce.md` — REINFORCE (concept.reinforcement_learning.reinforce)
+- `content/concepts/actor-critic.md` — Actor-Critic (concept.reinforcement_learning.actor_critic)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 221 |
-| Markdown pages in the corpus | 221 |
-| Tier 1 pages | 221 |
+| Candidates covered by a page | 231 |
+| Markdown pages in the corpus | 231 |
+| Tier 1 pages | 231 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 210 of 280 |
+| Planned pages written | 220 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 78 | 148 | 53% |
+| Artificial Intelligence | 88 | 148 | 59% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -56,7 +56,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
-| Artificial Intelligence/Deep Learning — Architectures | 31 | 42 |  |
+| Artificial Intelligence/Deep Learning — Architectures | 41 | 42 |  |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-210 of the planned 280, in the order they were written.
+220 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -302,6 +302,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Neural ODEs | `concept.deep_learning.neural_odes` | tier 1 | covered |
 | Message Passing | `concept.deep_learning.message_passing` | tier 1 | covered |
 | Graph Neural Networks | `concept.deep_learning.graph_neural_networks` | tier 1 | covered |
+| Graph Convolutional Networks | `concept.deep_learning.graph_convolutional_networks` | tier 1 | covered |
+| Graph Attention Networks | `concept.deep_learning.graph_attention_networks` | tier 1 | covered |
+| Equivariance | `concept.deep_learning.equivariance` | tier 1 | covered |
+| Geometric Deep Learning | `concept.deep_learning.geometric_deep_learning` | tier 1 | covered |
+| Spherical CNNs | `concept.deep_learning.spherical_cnns` | tier 1 | covered |
+| Capsule Networks | `concept.deep_learning.capsule_networks` | tier 1 | covered |
+| Kolmogorov-Arnold Networks | `concept.deep_learning.kolmogorov_arnold_networks` | tier 1 | covered |
+| Quaternion Neural Networks | `concept.deep_learning.quaternion_neural_networks` | tier 1 | covered |
+| Clifford Neural Networks | `concept.deep_learning.clifford_neural_networks` | tier 1 | covered |
+| Spiking Neural Networks | `concept.deep_learning.spiking_neural_networks` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -625,20 +635,20 @@ it. Batches are ten pages each.
 | x | Message Passing | `concept.deep_learning.message_passing` | Artificial Intelligence/Deep Learning — Architectures |
 | x | Graph Neural Networks | `concept.deep_learning.graph_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
 
-### Batch 22
+### Batch 22 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Graph Convolutional Networks | `concept.deep_learning.graph_convolutional_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Graph Attention Networks | `concept.deep_learning.graph_attention_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Equivariance | `concept.deep_learning.equivariance` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Geometric Deep Learning | `concept.deep_learning.geometric_deep_learning` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Spherical CNNs | `concept.deep_learning.spherical_cnns` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Capsule Networks | `concept.deep_learning.capsule_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Kolmogorov-Arnold Networks | `concept.deep_learning.kolmogorov_arnold_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Quaternion Neural Networks | `concept.deep_learning.quaternion_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Clifford Neural Networks | `concept.deep_learning.clifford_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Spiking Neural Networks | `concept.deep_learning.spiking_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Graph Convolutional Networks | `concept.deep_learning.graph_convolutional_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Graph Attention Networks | `concept.deep_learning.graph_attention_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Equivariance | `concept.deep_learning.equivariance` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Geometric Deep Learning | `concept.deep_learning.geometric_deep_learning` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Spherical CNNs | `concept.deep_learning.spherical_cnns` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Capsule Networks | `concept.deep_learning.capsule_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Kolmogorov-Arnold Networks | `concept.deep_learning.kolmogorov_arnold_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Quaternion Neural Networks | `concept.deep_learning.quaternion_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Clifford Neural Networks | `concept.deep_learning.clifford_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Spiking Neural Networks | `concept.deep_learning.spiking_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
 
 ### Batch 23
 
