@@ -821,14 +821,14 @@ candidates:
     title: DBSCAN
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.dbscan
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.spectral_clustering
     title: Spectral Clustering
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.spectral_clustering
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.principal_component_analysis
     title: Principal Component Analysis
     categories:
@@ -845,14 +845,14 @@ candidates:
     title: t-SNE
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.t_sne
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.umap
     title: UMAP
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.umap
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.gaussian_processes
     title: Gaussian Processes
     categories:
@@ -863,20 +863,20 @@ candidates:
     title: Hidden Markov Models
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.hidden_markov_models
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.bayesian_networks
     title: Bayesian Networks
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.bayesian_networks
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.conditional_random_fields
     title: Conditional Random Fields
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.conditional_random_fields
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.pac_learning
     title: PAC Learning
     categories:
@@ -1199,8 +1199,8 @@ candidates:
     title: Backpropagation
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.backpropagation
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.backpropagation_through_convolution
     title: Backpropagation Through Convolution
     categories:
@@ -1211,14 +1211,14 @@ candidates:
     title: Stochastic Gradient Descent
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.stochastic_gradient_descent
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.adam
     title: Adam
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.adam
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.learning_rate_schedules
     title: Learning-Rate Schedules
     categories:

@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 17 of 28.** 10 of 10 pages in it are still to write.
+**Batch 18 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/dbscan.md` — DBSCAN (concept.machine_learning.dbscan)
-- `content/concepts/spectral-clustering.md` — Spectral Clustering (concept.machine_learning.spectral_clustering)
-- `content/concepts/t-sne.md` — t-SNE (concept.machine_learning.t_sne)
-- `content/concepts/umap.md` — UMAP (concept.machine_learning.umap)
-- `content/concepts/hidden-markov-models.md` — Hidden Markov Models (concept.machine_learning.hidden_markov_models)
-- `content/concepts/bayesian-networks.md` — Bayesian Networks (concept.machine_learning.bayesian_networks)
-- `content/concepts/conditional-random-fields.md` — Conditional Random Fields (concept.machine_learning.conditional_random_fields)
-- `content/concepts/backpropagation.md` — Backpropagation (concept.deep_learning.backpropagation)
-- `content/concepts/stochastic-gradient-descent.md` — Stochastic Gradient Descent (concept.deep_learning.stochastic_gradient_descent)
-- `content/concepts/adam.md` — Adam (concept.deep_learning.adam)
+- `content/concepts/learning-rate-schedules.md` — Learning-Rate Schedules (concept.deep_learning.learning_rate_schedules)
+- `content/concepts/loss-functions.md` — Loss Functions (concept.deep_learning.loss_functions)
+- `content/concepts/initialization.md` — Initialization (concept.deep_learning.initialization)
+- `content/concepts/regularization.md` — Regularization (concept.deep_learning.regularization)
+- `content/concepts/batch-normalization.md` — Batch Normalization (concept.deep_learning.batch_normalization)
+- `content/concepts/layer-normalization.md` — Layer Normalization (concept.deep_learning.layer_normalization)
+- `content/concepts/distillation.md` — Distillation (concept.deep_learning.distillation)
+- `content/concepts/pruning.md` — Pruning (concept.deep_learning.pruning)
+- `content/concepts/quantization.md` — Quantization (concept.deep_learning.quantization)
+- `content/concepts/perceptron.md` — Perceptron (concept.deep_learning.perceptron)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 171 |
-| Markdown pages in the corpus | 171 |
-| Tier 1 pages | 171 |
+| Candidates covered by a page | 181 |
+| Markdown pages in the corpus | 181 |
+| Tier 1 pages | 181 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 160 of 280 |
+| Planned pages written | 170 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 28 | 148 | 19% |
+| Artificial Intelligence | 38 | 148 | 26% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -55,9 +55,9 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
-| Artificial Intelligence/Classical Machine Learning | 19 | 26 |  |
+| Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
 | Artificial Intelligence/Deep Learning — Architectures | 0 | 42 |  |
-| Artificial Intelligence/Deep Learning — Training | 0 | 12 |  |
+| Artificial Intelligence/Deep Learning — Training | 3 | 12 |  |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
 | Artificial Intelligence/Domains/Natural Language Processing | 0 | 5 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-160 of the planned 280, in the order they were written.
+170 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -252,6 +252,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Independent Component Analysis | `concept.machine_learning.independent_component_analysis` | tier 1 | covered |
 | k-Means | `concept.machine_learning.k_means` | tier 1 | covered |
 | Hierarchical Clustering | `concept.machine_learning.hierarchical_clustering` | tier 1 | covered |
+| DBSCAN | `concept.machine_learning.dbscan` | tier 1 | covered |
+| Spectral Clustering | `concept.machine_learning.spectral_clustering` | tier 1 | covered |
+| t-SNE | `concept.machine_learning.t_sne` | tier 1 | covered |
+| UMAP | `concept.machine_learning.umap` | tier 1 | covered |
+| Hidden Markov Models | `concept.machine_learning.hidden_markov_models` | tier 1 | covered |
+| Bayesian Networks | `concept.machine_learning.bayesian_networks` | tier 1 | covered |
+| Conditional Random Fields | `concept.machine_learning.conditional_random_fields` | tier 1 | covered |
+| Backpropagation | `concept.deep_learning.backpropagation` | tier 1 | covered |
+| Stochastic Gradient Descent | `concept.deep_learning.stochastic_gradient_descent` | tier 1 | covered |
+| Adam | `concept.deep_learning.adam` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -500,20 +510,20 @@ it. Batches are ten pages each.
 | x | k-Means | `concept.machine_learning.k_means` | Artificial Intelligence/Classical Machine Learning |
 | x | Hierarchical Clustering | `concept.machine_learning.hierarchical_clustering` | Artificial Intelligence/Classical Machine Learning |
 
-### Batch 17
+### Batch 17 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | DBSCAN | `concept.machine_learning.dbscan` | Artificial Intelligence/Classical Machine Learning |
-|   | Spectral Clustering | `concept.machine_learning.spectral_clustering` | Artificial Intelligence/Classical Machine Learning |
-|   | t-SNE | `concept.machine_learning.t_sne` | Artificial Intelligence/Classical Machine Learning |
-|   | UMAP | `concept.machine_learning.umap` | Artificial Intelligence/Classical Machine Learning |
-|   | Hidden Markov Models | `concept.machine_learning.hidden_markov_models` | Artificial Intelligence/Classical Machine Learning |
-|   | Bayesian Networks | `concept.machine_learning.bayesian_networks` | Artificial Intelligence/Classical Machine Learning |
-|   | Conditional Random Fields | `concept.machine_learning.conditional_random_fields` | Artificial Intelligence/Classical Machine Learning |
-|   | Backpropagation | `concept.deep_learning.backpropagation` | Artificial Intelligence/Deep Learning — Training |
-|   | Stochastic Gradient Descent | `concept.deep_learning.stochastic_gradient_descent` | Artificial Intelligence/Deep Learning — Training |
-|   | Adam | `concept.deep_learning.adam` | Artificial Intelligence/Deep Learning — Training |
+| x | DBSCAN | `concept.machine_learning.dbscan` | Artificial Intelligence/Classical Machine Learning |
+| x | Spectral Clustering | `concept.machine_learning.spectral_clustering` | Artificial Intelligence/Classical Machine Learning |
+| x | t-SNE | `concept.machine_learning.t_sne` | Artificial Intelligence/Classical Machine Learning |
+| x | UMAP | `concept.machine_learning.umap` | Artificial Intelligence/Classical Machine Learning |
+| x | Hidden Markov Models | `concept.machine_learning.hidden_markov_models` | Artificial Intelligence/Classical Machine Learning |
+| x | Bayesian Networks | `concept.machine_learning.bayesian_networks` | Artificial Intelligence/Classical Machine Learning |
+| x | Conditional Random Fields | `concept.machine_learning.conditional_random_fields` | Artificial Intelligence/Classical Machine Learning |
+| x | Backpropagation | `concept.deep_learning.backpropagation` | Artificial Intelligence/Deep Learning — Training |
+| x | Stochastic Gradient Descent | `concept.deep_learning.stochastic_gradient_descent` | Artificial Intelligence/Deep Learning — Training |
+| x | Adam | `concept.deep_learning.adam` | Artificial Intelligence/Deep Learning — Training |
 
 ### Batch 18
 
@@ -686,6 +696,26 @@ it. Batches are ten pages each.
 
 Every check that fails during a batch is recorded here with what it was, what
 caused it, and what fixed it.
+
+### Batch 17 — two relationships used the category name instead of the permanent id
+
+The first `content-batch.mjs 17` validation rejected the Array Programming
+relationship targets in `backpropagation.md` and `adam.md`. Both used
+`concept.languages.array_programming`, inferred from the broad Languages atlas
+category, while the existing page's permanent address is
+`concept.paradigms.array_programming`. Corrected both targets to the existing id;
+no new page or alias was created.
+
+### Batch 17 — graph edge ordering disagreed at an id-prefix boundary
+
+The full gate's graph test rejected the exported edge order after the new
+`concept.deep_learning.backpropagation` page made
+`concept.deep_learning.backpropagation_through_convolution` an id-prefix
+neighbor. SQLite ordered relationship columns separately, putting the shorter
+source first, while the graph contract orders the final
+`source|type|target` identifiers, where `_` sorts before `|`. The exporter now
+sorts the completed edge ids explicitly with the repository's locale-independent
+comparator. The existing semantic-order test was kept unchanged.
 
 ### Batch 1 — the learning path put a concept before its own prerequisite
 

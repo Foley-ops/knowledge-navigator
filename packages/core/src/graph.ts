@@ -192,14 +192,16 @@ export function buildGraphDocument(
     note: string | null;
     condition: string | null;
   }[];
-  const edges: GraphEdge[] = edgeRows.map((row) => ({
-    id: edgeId(row.source_concept_id, row.type, row.target_concept_id),
-    source: row.source_concept_id,
-    target: row.target_concept_id,
-    type: row.type,
-    note: row.note,
-    condition: row.condition,
-  }));
+  const edges: GraphEdge[] = edgeRows
+    .map((row) => ({
+      id: edgeId(row.source_concept_id, row.type, row.target_concept_id),
+      source: row.source_concept_id,
+      target: row.target_concept_id,
+      type: row.type,
+      note: row.note,
+      condition: row.condition,
+    }))
+    .sort((a, b) => compareStrings(a.id, b.id));
 
   const categoryRows = db
     .prepare(

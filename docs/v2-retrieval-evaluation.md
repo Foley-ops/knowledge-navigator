@@ -42,21 +42,21 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > What lets a very deep network train without the signal dying on the way back?
 
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
-- Retrieved instead: `concept.ml_engineering.deployment`, `concept.machine_learning.random_forests`, `concept.learning.meta_learning`, `concept.learning.federated_learning`, `concept.algebra.geometric_algebra`
+- Retrieved instead: `concept.ml_engineering.deployment`, `concept.machine_learning.random_forests`, `concept.learning.meta_learning`, `concept.algebra.geometric_algebra`, `concept.learning.federated_learning`
 
 ### P5 (paraphrase)
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.paradigms.imperative_programming`, `concept.foundations.category_theory`, `concept.ml_engineering.pytorch`, `concept.ml_engineering.jax`
+- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.paradigms.imperative_programming`, `concept.ml_engineering.pytorch`, `concept.foundations.category_theory`, `concept.ml_engineering.jax`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.learning.unsupervised_learning`, `concept.deep_learning.residual_connection`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.learning.unsupervised_learning`, `concept.probability.martingales`
 
 ### R3 (path)
 

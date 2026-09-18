@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T01:40:33.479Z",
-  "corpusHash": "419d9356cf14d419c2892c8674671ea70381d572a0c8946211c62104d8f6013c",
-  "atlasHash": "ce5382f1ee5f6eb6053b6249e1c31a7e9d9f497e0b89f9c0432e3744c1f0de36",
+  "builtAt": "2026-09-18T01:59:51.438Z",
+  "corpusHash": "c08477dde5a9da032767ca4d4f790e78d5c78e0ca3c3c5f3dc83f6f428e3ed44",
+  "atlasHash": "01ce4e0b69f39a93069df38d3b9324c837686da60f72f48c498a5368d886494b",
   "counts": {
-    "concepts": 171,
-    "relationships": 640,
+    "concepts": 181,
+    "relationships": 680,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 171,
+      "1": 181,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 171,
+      "markdown": 181,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 171
+      "generated-draft": 181
     },
-    "conceptsWithArticle": 171,
+    "conceptsWithArticle": 181,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 120,
+      "candidate": 110,
       "proposed-tier-3": 0,
-      "covered": 171,
+      "covered": 181,
       "deferred": 0
     },
-    "unresolvedReferences": 230,
-    "unresolvedGroups": 230,
+    "unresolvedReferences": 233,
+    "unresolvedGroups": 233,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -60,12 +60,16 @@
       "depth": 2,
       "parent": "Artificial Intelligence",
       "primaryConceptIds": [
+        "concept.machine_learning.bayesian_networks",
         "concept.machine_learning.bias_variance",
+        "concept.machine_learning.conditional_random_fields",
+        "concept.machine_learning.dbscan",
         "concept.machine_learning.decision_trees",
         "concept.machine_learning.gaussian_processes",
         "concept.machine_learning.generalization",
         "concept.machine_learning.generalized_linear_models",
         "concept.machine_learning.gradient_boosting",
+        "concept.machine_learning.hidden_markov_models",
         "concept.machine_learning.hierarchical_clustering",
         "concept.machine_learning.independent_component_analysis",
         "concept.machine_learning.k_means",
@@ -77,16 +81,23 @@
         "concept.machine_learning.pac_learning",
         "concept.machine_learning.principal_component_analysis",
         "concept.machine_learning.random_forests",
+        "concept.machine_learning.spectral_clustering",
         "concept.machine_learning.support_vector_machines",
+        "concept.machine_learning.t_sne",
+        "concept.machine_learning.umap",
         "concept.machine_learning.vc_dimension"
       ],
       "conceptIds": [
+        "concept.machine_learning.bayesian_networks",
         "concept.machine_learning.bias_variance",
+        "concept.machine_learning.conditional_random_fields",
+        "concept.machine_learning.dbscan",
         "concept.machine_learning.decision_trees",
         "concept.machine_learning.gaussian_processes",
         "concept.machine_learning.generalization",
         "concept.machine_learning.generalized_linear_models",
         "concept.machine_learning.gradient_boosting",
+        "concept.machine_learning.hidden_markov_models",
         "concept.machine_learning.hierarchical_clustering",
         "concept.machine_learning.independent_component_analysis",
         "concept.machine_learning.k_means",
@@ -98,7 +109,10 @@
         "concept.machine_learning.pac_learning",
         "concept.machine_learning.principal_component_analysis",
         "concept.machine_learning.random_forests",
+        "concept.machine_learning.spectral_clustering",
         "concept.machine_learning.support_vector_machines",
+        "concept.machine_learning.t_sne",
+        "concept.machine_learning.umap",
         "concept.machine_learning.vc_dimension"
       ]
     },
@@ -150,10 +164,16 @@
       "depth": 2,
       "parent": "Artificial Intelligence",
       "primaryConceptIds": [
-        "concept.deep_learning.backpropagation_through_convolution"
+        "concept.deep_learning.adam",
+        "concept.deep_learning.backpropagation",
+        "concept.deep_learning.backpropagation_through_convolution",
+        "concept.deep_learning.stochastic_gradient_descent"
       ],
       "conceptIds": [
-        "concept.deep_learning.backpropagation_through_convolution"
+        "concept.deep_learning.adam",
+        "concept.deep_learning.backpropagation",
+        "concept.deep_learning.backpropagation_through_convolution",
+        "concept.deep_learning.stochastic_gradient_descent"
       ]
     },
     {
@@ -1576,6 +1596,48 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.adam",
+      "title": "Adam",
+      "slug": "/concepts/adam",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Adam combines exponential moving averages of gradients and squared gradients with bias correction to produce adaptive coordinate-wise parameter updates.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.adam",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.backpropagation",
+      "title": "Backpropagation",
+      "slug": "/concepts/backpropagation",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Backpropagation applies reverse-mode differentiation to a computational graph, reusing local derivatives to compute a scalar objective's gradient with respect to many parameters efficiently.",
+      "aliases": [
+        "back-propagation"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.backpropagation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.backpropagation_through_convolution",
       "title": "Backpropagation Through Convolution",
       "slug": "/concepts/backpropagation-through-convolution",
@@ -1733,6 +1795,28 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.resnet",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.stochastic_gradient_descent",
+      "title": "Stochastic Gradient Descent",
+      "slug": "/concepts/stochastic-gradient-descent",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Stochastic gradient descent updates parameters from a randomly sampled example or mini-batch, trading noisy directions for far cheaper iterations than full-gradient descent.",
+      "aliases": [
+        "SGD"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.stochastic_gradient_descent",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -2910,6 +2994,28 @@
       "claims": 0
     },
     {
+      "id": "concept.machine_learning.bayesian_networks",
+      "title": "Bayesian Networks",
+      "slug": "/concepts/bayesian-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A Bayesian network represents a joint probability distribution by a directed acyclic graph and local conditional distributions, making conditional-independence assumptions explicit.",
+      "aliases": [
+        "belief networks"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.bayesian_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.machine_learning.bias_variance",
       "title": "Bias-Variance",
       "slug": "/concepts/bias-variance",
@@ -2929,6 +3035,50 @@
       "candidateId": "candidate.artificial_intelligence.classical_machine_learning.bias_variance",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.conditional_random_fields",
+      "title": "Conditional Random Fields",
+      "slug": "/concepts/conditional-random-fields",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A conditional random field is an undirected graphical model that directly normalizes a conditional distribution over structured outputs given observed inputs.",
+      "aliases": [
+        "CRFs"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.conditional_random_fields",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.dbscan",
+      "title": "DBSCAN",
+      "slug": "/concepts/dbscan",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "DBSCAN forms clusters from density-connected points at a chosen neighborhood radius, labels isolated points as noise, and does not require the number of clusters in advance.",
+      "aliases": [
+        "density-based spatial clustering of applications with noise"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.dbscan",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
       "claims": 0
     },
     {
@@ -3034,6 +3184,28 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.classical_machine_learning.gradient_boosting",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.hidden_markov_models",
+      "title": "Hidden Markov Models",
+      "slug": "/concepts/hidden-markov-models",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A hidden Markov model describes a sequence using an unobserved finite-state Markov chain whose current state probabilistically emits each observation.",
+      "aliases": [
+        "HMMs"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.hidden_markov_models",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -3266,6 +3438,26 @@
       "claims": 0
     },
     {
+      "id": "concept.machine_learning.spectral_clustering",
+      "title": "Spectral Clustering",
+      "slug": "/concepts/spectral-clustering",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Spectral clustering embeds a weighted similarity graph using eigenvectors of a graph Laplacian and then partitions that embedding to reveal graph-separated groups.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.spectral_clustering",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.machine_learning.support_vector_machines",
       "title": "Support Vector Machines",
       "slug": "/concepts/support-vector-machines",
@@ -3281,6 +3473,50 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.classical_machine_learning.support_vector_machines",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.t_sne",
+      "title": "t-SNE",
+      "slug": "/concepts/t-sne",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "t-SNE makes a low-dimensional visualization by matching local neighbor probabilities while using a heavy-tailed output distribution to reduce crowding.",
+      "aliases": [
+        "t-distributed stochastic neighbor embedding"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.t_sne",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.umap",
+      "title": "UMAP",
+      "slug": "/concepts/umap",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "UMAP builds a fuzzy weighted neighbor graph in the input space and optimizes a low-dimensional graph with similar local connectivity for visualization or representation.",
+      "aliases": [
+        "uniform manifold approximation and projection"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.umap",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 0
@@ -5613,11 +5849,75 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.adam|assumes|concept.paradigms.array_programming",
+      "source": "concept.deep_learning.adam",
+      "target": "concept.paradigms.array_programming",
+      "type": "assumes",
+      "note": "Adam maintains and updates elementwise first- and second-moment arrays matching every parameter tensor.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.adam|requires|concept.optimization.stochastic_optimization",
+      "source": "concept.deep_learning.adam",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "requires",
+      "note": "Adam operates on noisy gradients of sampled objectives and inherits the assumptions and evaluation issues of stochastic optimization.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.adam|supported_by|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.adam",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "supported_by",
+      "note": "In neural networks, backpropagation supplies the gradient vector whose moments Adam tracks.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.adam|variant_of|concept.deep_learning.stochastic_gradient_descent",
+      "source": "concept.deep_learning.adam",
+      "target": "concept.deep_learning.stochastic_gradient_descent",
+      "type": "variant_of",
+      "note": "Adam is a stochastic first-order optimizer that transforms sampled gradients using adaptive moment estimates instead of applying one shared scale directly.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.backpropagation_through_convolution|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.backpropagation_through_convolution",
       "target": "concept.deep_learning.convolutional_layer",
       "type": "requires",
       "note": "The backward pass is derived from the layer's forward definition and depends on its stride, padding and dilation.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.backpropagation|generalizes|concept.deep_learning.backpropagation_through_convolution",
+      "source": "concept.deep_learning.backpropagation",
+      "target": "concept.deep_learning.backpropagation_through_convolution",
+      "type": "generalizes",
+      "note": "The convolutional backward pass is one specialized local derivative inside the general reverse traversal.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.backpropagation|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.deep_learning.backpropagation",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "Backpropagation repeatedly applies the multivariable chain rule to compositions of differentiable operations.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.backpropagation|supported_by|concept.paradigms.array_programming",
+      "source": "concept.deep_learning.backpropagation",
+      "target": "concept.paradigms.array_programming",
+      "type": "supported_by",
+      "note": "Tensor operations and vector-Jacobian products allow implementations to batch local derivative calculations efficiently.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.backpropagation|useful_when|concept.optimization.nonconvex_optimization",
+      "source": "concept.deep_learning.backpropagation",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "useful_when",
+      "note": "Backpropagation supplies gradients consumed by first-order optimizers for neural-network objectives.",
       "condition": null
     },
     {
@@ -5730,6 +6030,38 @@
       "target": "concept.deep_learning.vgg",
       "type": "requires",
       "note": "ResNet adopts VGG's 3x3 design discipline and stage structure, then adds shortcuts to get past its depth limit.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.stochastic_gradient_descent|contrasts_with|concept.deep_learning.adam",
+      "source": "concept.deep_learning.stochastic_gradient_descent",
+      "target": "concept.deep_learning.adam",
+      "type": "contrasts_with",
+      "note": "Plain SGD uses one shared learning-rate rule, while Adam rescales coordinates using moving first and second moments.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.stochastic_gradient_descent|implements|concept.optimization.stochastic_optimization",
+      "source": "concept.deep_learning.stochastic_gradient_descent",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "implements",
+      "note": "SGD is the canonical first-order algorithm for objectives whose gradients are accessed through random samples or mini-batches.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.stochastic_gradient_descent|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.deep_learning.stochastic_gradient_descent",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "Each update follows a sampled gradient of the objective with respect to a vector of parameters.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.stochastic_gradient_descent|supported_by|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.stochastic_gradient_descent",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "supported_by",
+      "note": "In differentiable neural networks, backpropagation efficiently computes the per-example or mini-batch gradients used by SGD.",
       "condition": null
     },
     {
@@ -7397,6 +7729,38 @@
       "condition": null
     },
     {
+      "id": "concept.machine_learning.bayesian_networks|contrasts_with|concept.machine_learning.conditional_random_fields",
+      "source": "concept.machine_learning.bayesian_networks",
+      "target": "concept.machine_learning.conditional_random_fields",
+      "type": "contrasts_with",
+      "note": "Bayesian networks direct and normalize local conditional factors for a joint model, while CRFs directly normalize a conditional distribution over outputs.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.bayesian_networks|generalizes|concept.machine_learning.hidden_markov_models",
+      "source": "concept.machine_learning.bayesian_networks",
+      "target": "concept.machine_learning.hidden_markov_models",
+      "type": "generalizes",
+      "note": "A finite unrolling of an HMM is a Bayesian network with repeated transition and emission factors.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.bayesian_networks|generalizes|concept.machine_learning.naive_bayes",
+      "source": "concept.machine_learning.bayesian_networks",
+      "target": "concept.machine_learning.naive_bayes",
+      "type": "generalizes",
+      "note": "Naive Bayes is a particular directed network in which the class is a parent of conditionally independent features.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.bayesian_networks|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.bayesian_networks",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Bayesian networks use conditional probability, marginalization, factorization, and conditional independence.",
+      "condition": null
+    },
+    {
       "id": "concept.machine_learning.bias_variance|contrasts_with|concept.machine_learning.vc_dimension",
       "source": "concept.machine_learning.bias_variance",
       "target": "concept.machine_learning.vc_dimension",
@@ -7426,6 +7790,70 @@
       "target": "concept.probability.probability_theory",
       "type": "requires",
       "note": "The decomposition is algebra on expectations and variances taken over a random training set, so a reader needs expectation, independence and variance before the two-line derivation says anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.conditional_random_fields|contrasts_with|concept.machine_learning.bayesian_networks",
+      "source": "concept.machine_learning.conditional_random_fields",
+      "target": "concept.machine_learning.bayesian_networks",
+      "type": "contrasts_with",
+      "note": "CRFs use undirected factors and one input-dependent global normalizer rather than locally normalized directed conditionals for a joint distribution.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.conditional_random_fields|contrasts_with|concept.machine_learning.hidden_markov_models",
+      "source": "concept.machine_learning.conditional_random_fields",
+      "target": "concept.machine_learning.hidden_markov_models",
+      "type": "contrasts_with",
+      "note": "A CRF conditions on the complete observed input and need not model its distribution, while an HMM specifies a joint generative model.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.conditional_random_fields|generalizes|concept.machine_learning.logistic_regression",
+      "source": "concept.machine_learning.conditional_random_fields",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "generalizes",
+      "note": "Logistic regression is the unstructured single-output conditional log-linear case; CRFs add dependencies among multiple outputs.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.conditional_random_fields|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.conditional_random_fields",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "CRFs define normalized conditional distributions and use marginalization, expectations, and log-likelihood.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.dbscan|assumes|concept.algorithms.complexity_analysis",
+      "source": "concept.machine_learning.dbscan",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "assumes",
+      "note": "Efficient neighborhood queries depend on dimension, indexing, and implementation; a quadratic scan can dominate large datasets.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.dbscan|contrasts_with|concept.machine_learning.hierarchical_clustering",
+      "source": "concept.machine_learning.dbscan",
+      "target": "concept.machine_learning.hierarchical_clustering",
+      "type": "contrasts_with",
+      "note": "DBSCAN returns one density-based partition for chosen parameters rather than a nested sequence of partitions.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.dbscan|contrasts_with|concept.machine_learning.k_means",
+      "source": "concept.machine_learning.dbscan",
+      "target": "concept.machine_learning.k_means",
+      "type": "contrasts_with",
+      "note": "DBSCAN can recover nonconvex dense regions and designate noise, whereas k-means returns a fixed number of centroid-based clusters.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.dbscan|requires|concept.learning.unsupervised_learning",
+      "source": "concept.machine_learning.dbscan",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "requires",
+      "note": "DBSCAN infers groups without target labels, so its parameters and output require unsupervised interpretation and validation.",
       "condition": null
     },
     {
@@ -7578,6 +8006,38 @@
       "target": "concept.machine_learning.decision_trees",
       "type": "requires",
       "note": "The standard tabular implementation uses shallow regression trees as its weak learners, so tree partitions explain how each stage makes a local correction.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hidden_markov_models|contrasts_with|concept.machine_learning.conditional_random_fields",
+      "source": "concept.machine_learning.hidden_markov_models",
+      "target": "concept.machine_learning.conditional_random_fields",
+      "type": "contrasts_with",
+      "note": "An HMM models a joint distribution over observations and labels, while a linear-chain CRF models labels conditional on the observed sequence.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hidden_markov_models|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.hidden_markov_models",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Filtering, smoothing, decoding, and learning use conditional probability, marginalization, and likelihood.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hidden_markov_models|requires|concept.probability.stochastic_processes",
+      "source": "concept.machine_learning.hidden_markov_models",
+      "target": "concept.probability.stochastic_processes",
+      "type": "requires",
+      "note": "The latent states form a Markov chain and the observations are random variables conditionally generated from those states.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hidden_markov_models|specializes|concept.machine_learning.bayesian_networks",
+      "source": "concept.machine_learning.hidden_markov_models",
+      "target": "concept.machine_learning.bayesian_networks",
+      "type": "specializes",
+      "note": "A finite unrolling of an HMM is a directed graphical model with repeated transition and emission structure.",
       "condition": null
     },
     {
@@ -7933,6 +8393,38 @@
       "condition": null
     },
     {
+      "id": "concept.machine_learning.spectral_clustering|contrasts_with|concept.machine_learning.dbscan",
+      "source": "concept.machine_learning.spectral_clustering",
+      "target": "concept.machine_learning.dbscan",
+      "type": "contrasts_with",
+      "note": "Spectral clustering partitions a chosen similarity graph into a requested number of groups, while DBSCAN expands dense neighborhoods and can label noise.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.spectral_clustering|contrasts_with|concept.machine_learning.k_means",
+      "source": "concept.machine_learning.spectral_clustering",
+      "target": "concept.machine_learning.k_means",
+      "type": "contrasts_with",
+      "note": "Spectral clustering can separate nonconvex groups in the input space, though common versions use k-means after the spectral embedding.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.spectral_clustering|requires|concept.algorithms.graph_algorithms",
+      "source": "concept.machine_learning.spectral_clustering",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "requires",
+      "note": "Observations are represented as vertices joined by weighted similarity edges, and connected components explain the ideal case.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.spectral_clustering|requires|concept.linear_algebra.spectral_theory",
+      "source": "concept.machine_learning.spectral_clustering",
+      "target": "concept.linear_algebra.spectral_theory",
+      "type": "requires",
+      "note": "The method uses eigenvalues and eigenvectors of a graph Laplacian to relax a discrete graph-partition problem.",
+      "condition": null
+    },
+    {
       "id": "concept.machine_learning.support_vector_machines|contrasts_with|concept.machine_learning.logistic_regression",
       "source": "concept.machine_learning.support_vector_machines",
       "target": "concept.machine_learning.logistic_regression",
@@ -7962,6 +8454,70 @@
       "target": "concept.optimization.convex_optimization",
       "type": "requires",
       "note": "Training the standard primal or dual SVM is a convex quadratic optimization problem.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.t_sne|contrasts_with|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.t_sne",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "contrasts_with",
+      "note": "PCA preserves directions of linear variance with an explicit map, while t-SNE optimizes a nonlinear neighborhood visualization without a default parametric transform.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.t_sne|contrasts_with|concept.machine_learning.umap",
+      "source": "concept.machine_learning.t_sne",
+      "target": "concept.machine_learning.umap",
+      "type": "contrasts_with",
+      "note": "Both create nonlinear neighborhood embeddings, but they define similarities and optimization objectives differently.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.t_sne|contributes_to|concept.learning.unsupervised_learning",
+      "source": "concept.machine_learning.t_sne",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "contributes_to",
+      "note": "The embedding explores unlabeled neighborhood structure but does not itself validate clusters or predictive relationships.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.t_sne|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.t_sne",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "t-SNE represents similarities as conditional and joint probabilities and minimizes a divergence between distributions.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.umap|assumes|concept.geometry.manifolds",
+      "source": "concept.machine_learning.umap",
+      "target": "concept.geometry.manifolds",
+      "type": "assumes",
+      "note": "Its motivating derivation treats observations as samples from a locally connected manifold with a locally approximately constant metric.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.umap|contrasts_with|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.umap",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "contrasts_with",
+      "note": "UMAP is a nonlinear neighbor-graph embedding, whereas PCA gives an explicit linear projection optimized for variance and reconstruction.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.umap|contrasts_with|concept.machine_learning.t_sne",
+      "source": "concept.machine_learning.umap",
+      "target": "concept.machine_learning.t_sne",
+      "type": "contrasts_with",
+      "note": "UMAP and t-SNE both emphasize local neighborhoods but use different similarity construction, loss functions, and modeling motivation.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.umap|requires|concept.algorithms.graph_algorithms",
+      "source": "concept.machine_learning.umap",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "requires",
+      "note": "UMAP constructs and optimizes a weighted nearest-neighbor graph whose edges encode local connectivity.",
       "condition": null
     },
     {
