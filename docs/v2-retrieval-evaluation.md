@@ -35,35 +35,35 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.learning.supervised_learning`
 
 ### P3 (paraphrase)
 
 > What lets a very deep network train without the signal dying on the way back?
 
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
-- Retrieved instead: `concept.deep_learning.batch_normalization`, `concept.ml_engineering.deployment`, `concept.algebra.geometric_algebra`, `concept.learning.meta_learning`, `concept.machine_learning.random_forests`
+- Retrieved instead: `concept.deep_learning.batch_normalization`, `concept.algebra.geometric_algebra`, `concept.ml_engineering.deployment`, `concept.learning.meta_learning`, `concept.machine_learning.random_forests`
 
 ### P4 (paraphrase)
 
 > How do you shrink a feature map without learning any parameters?
 
 - Needed but not retrieved: `concept.deep_learning.pooling`
-- Retrieved instead: `concept.deep_learning.gru`, `concept.learning.meta_learning`, `concept.analysis.vector_calculus`, `concept.optimization.variational_methods`, `concept.geometry.renormalization`
+- Retrieved instead: `concept.deep_learning.radial_basis_function_networks`, `concept.deep_learning.gru`, `concept.learning.meta_learning`, `concept.analysis.vector_calculus`, `concept.optimization.variational_methods`
 
 ### P5 (paraphrase)
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
-- Retrieved instead: `concept.deep_learning.convolutional_networks`, `concept.deep_learning.backpropagation_through_convolution`, `concept.paradigms.imperative_programming`, `concept.ml_engineering.pytorch`, `concept.foundations.category_theory`
+- Retrieved instead: `concept.deep_learning.convolutional_networks`, `concept.deep_learning.backpropagation_through_convolution`, `concept.deep_learning.hopfield_networks`, `concept.paradigms.imperative_programming`, `concept.ml_engineering.pytorch`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.learning.unsupervised_learning`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.deep_learning.flow_matching`
 
 ### R3 (path)
 

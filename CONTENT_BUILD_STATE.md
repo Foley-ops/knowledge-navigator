@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 20 of 28.** 10 of 10 pages in it are still to write.
+**Batch 21 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/autoencoders.md` — Autoencoders (concept.deep_learning.autoencoders)
-- `content/concepts/variational-autoencoders.md` — Variational Autoencoders (concept.deep_learning.variational_autoencoders)
-- `content/concepts/generative-adversarial-networks.md` — Generative Adversarial Networks (concept.deep_learning.generative_adversarial_networks)
-- `content/concepts/normalizing-flows.md` — Normalizing Flows (concept.deep_learning.normalizing_flows)
-- `content/concepts/diffusion-models.md` — Diffusion Models (concept.deep_learning.diffusion_models)
-- `content/concepts/flow-matching.md` — Flow Matching (concept.deep_learning.flow_matching)
-- `content/concepts/energy-based-models.md` — Energy-Based Models (concept.deep_learning.energy_based_models)
-- `content/concepts/boltzmann-machines.md` — Boltzmann Machines (concept.deep_learning.boltzmann_machines)
-- `content/concepts/hopfield-networks.md` — Hopfield Networks (concept.deep_learning.hopfield_networks)
-- `content/concepts/radial-basis-function-networks.md` — Radial Basis Function Networks (concept.deep_learning.radial_basis_function_networks)
+- `content/concepts/self-organizing-maps.md` — Self-Organizing Maps (concept.deep_learning.self_organizing_maps)
+- `content/concepts/mixture-of-experts.md` — Mixture of Experts (concept.deep_learning.mixture_of_experts)
+- `content/concepts/state-space-models.md` — State Space Models (concept.deep_learning.state_space_models)
+- `content/concepts/s4.md` — S4 (concept.deep_learning.s4)
+- `content/concepts/mamba.md` — Mamba (concept.deep_learning.mamba)
+- `content/concepts/rwkv.md` — RWKV (concept.deep_learning.rwkv)
+- `content/concepts/xlstm.md` — xLSTM (concept.deep_learning.xlstm)
+- `content/concepts/neural-odes.md` — Neural ODEs (concept.deep_learning.neural_odes)
+- `content/concepts/message-passing.md` — Message Passing (concept.deep_learning.message_passing)
+- `content/concepts/graph-neural-networks.md` — Graph Neural Networks (concept.deep_learning.graph_neural_networks)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 201 |
-| Markdown pages in the corpus | 201 |
-| Tier 1 pages | 201 |
+| Candidates covered by a page | 211 |
+| Markdown pages in the corpus | 211 |
+| Tier 1 pages | 211 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 190 of 280 |
+| Planned pages written | 200 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 58 | 148 | 39% |
+| Artificial Intelligence | 68 | 148 | 46% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -56,7 +56,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
-| Artificial Intelligence/Deep Learning — Architectures | 11 | 42 |  |
+| Artificial Intelligence/Deep Learning — Architectures | 21 | 42 |  |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-190 of the planned 280, in the order they were written.
+200 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -282,6 +282,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Transformers | `concept.deep_learning.transformers` | tier 1 | covered |
 | Vision Transformer | `concept.deep_learning.vision_transformer` | tier 1 | covered |
 | ConvNeXt | `concept.deep_learning.convnext` | tier 1 | covered |
+| Autoencoders | `concept.deep_learning.autoencoders` | tier 1 | covered |
+| Variational Autoencoders | `concept.deep_learning.variational_autoencoders` | tier 1 | covered |
+| Generative Adversarial Networks | `concept.deep_learning.generative_adversarial_networks` | tier 1 | covered |
+| Normalizing Flows | `concept.deep_learning.normalizing_flows` | tier 1 | covered |
+| Diffusion Models | `concept.deep_learning.diffusion_models` | tier 1 | covered |
+| Flow Matching | `concept.deep_learning.flow_matching` | tier 1 | covered |
+| Energy-Based Models | `concept.deep_learning.energy_based_models` | tier 1 | covered |
+| Boltzmann Machines | `concept.deep_learning.boltzmann_machines` | tier 1 | covered |
+| Hopfield Networks | `concept.deep_learning.hopfield_networks` | tier 1 | covered |
+| Radial Basis Function Networks | `concept.deep_learning.radial_basis_function_networks` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -575,20 +585,20 @@ it. Batches are ten pages each.
 | x | Vision Transformer | `concept.deep_learning.vision_transformer` | Artificial Intelligence/Deep Learning — Architectures |
 | x | ConvNeXt | `concept.deep_learning.convnext` | Artificial Intelligence/Deep Learning — Architectures |
 
-### Batch 20
+### Batch 20 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Autoencoders | `concept.deep_learning.autoencoders` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Variational Autoencoders | `concept.deep_learning.variational_autoencoders` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Generative Adversarial Networks | `concept.deep_learning.generative_adversarial_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Normalizing Flows | `concept.deep_learning.normalizing_flows` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Diffusion Models | `concept.deep_learning.diffusion_models` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Flow Matching | `concept.deep_learning.flow_matching` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Energy-Based Models | `concept.deep_learning.energy_based_models` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Boltzmann Machines | `concept.deep_learning.boltzmann_machines` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Hopfield Networks | `concept.deep_learning.hopfield_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Radial Basis Function Networks | `concept.deep_learning.radial_basis_function_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Autoencoders | `concept.deep_learning.autoencoders` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Variational Autoencoders | `concept.deep_learning.variational_autoencoders` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Generative Adversarial Networks | `concept.deep_learning.generative_adversarial_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Normalizing Flows | `concept.deep_learning.normalizing_flows` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Diffusion Models | `concept.deep_learning.diffusion_models` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Flow Matching | `concept.deep_learning.flow_matching` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Energy-Based Models | `concept.deep_learning.energy_based_models` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Boltzmann Machines | `concept.deep_learning.boltzmann_machines` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Hopfield Networks | `concept.deep_learning.hopfield_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Radial Basis Function Networks | `concept.deep_learning.radial_basis_function_networks` | Artificial Intelligence/Deep Learning — Architectures |
 
 ### Batch 21
 

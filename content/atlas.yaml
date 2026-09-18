@@ -911,20 +911,20 @@ candidates:
     title: Hopfield Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.hopfield_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.boltzmann_machines
     title: Boltzmann Machines
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.boltzmann_machines
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.radial_basis_function_networks
     title: Radial Basis Function Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.radial_basis_function_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.self_organizing_maps
     title: Self-Organizing Maps
     categories:
@@ -1079,44 +1079,44 @@ candidates:
     title: Autoencoders
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.autoencoders
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.variational_autoencoders
     title: Variational Autoencoders
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.variational_autoencoders
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.generative_adversarial_networks
     title: Generative Adversarial Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.generative_adversarial_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.diffusion_models
     title: Diffusion Models
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.diffusion_models
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.normalizing_flows
     title: Normalizing Flows
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.normalizing_flows
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.flow_matching
     title: Flow Matching
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.flow_matching
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.energy_based_models
     title: Energy-Based Models
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.energy_based_models
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.neural_odes
     title: Neural ODEs
     categories:

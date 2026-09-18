@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T03:07:32.885Z",
-  "corpusHash": "b7e097acbab35b1b71a1ad2f844974f7c9860e390db8b276030af451a989c52f",
-  "atlasHash": "e97dd6427da394543b69fa4eb987d5bf75247bb311e1f8143e7ba820e7180029",
+  "builtAt": "2026-09-18T03:42:36.240Z",
+  "corpusHash": "b14c6f6d03ce5381e22d793307cbf77d787672861936b7f261c23fcd996f7b2d",
+  "atlasHash": "8c28703e0bc5ec650118e7fbb8498d81736d95b55de4a521acacedb94db9ce5f",
   "counts": {
-    "concepts": 201,
-    "relationships": 750,
+    "concepts": 211,
+    "relationships": 790,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 201,
+      "1": 211,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 201,
+      "markdown": 211,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 201
+      "generated-draft": 211
     },
-    "conceptsWithArticle": 201,
+    "conceptsWithArticle": 211,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 90,
+      "candidate": 80,
       "proposed-tier-3": 0,
-      "covered": 201,
+      "covered": 211,
       "deferred": 0
     },
-    "unresolvedReferences": 261,
-    "unresolvedGroups": 261,
+    "unresolvedReferences": 283,
+    "unresolvedGroups": 283,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -141,40 +141,60 @@
       "parent": "Artificial Intelligence",
       "primaryConceptIds": [
         "concept.deep_learning.attention",
+        "concept.deep_learning.autoencoders",
+        "concept.deep_learning.boltzmann_machines",
         "concept.deep_learning.convnext",
         "concept.deep_learning.convolutional_layer",
         "concept.deep_learning.convolutional_networks",
+        "concept.deep_learning.diffusion_models",
+        "concept.deep_learning.energy_based_models",
+        "concept.deep_learning.flow_matching",
+        "concept.deep_learning.generative_adversarial_networks",
         "concept.deep_learning.gru",
+        "concept.deep_learning.hopfield_networks",
         "concept.deep_learning.lenet",
         "concept.deep_learning.lstm",
         "concept.deep_learning.multilayer_perceptrons",
+        "concept.deep_learning.normalizing_flows",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
         "concept.deep_learning.positional_encoding",
+        "concept.deep_learning.radial_basis_function_networks",
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.recurrent_neural_networks",
         "concept.deep_learning.residual_connection",
         "concept.deep_learning.transformers",
+        "concept.deep_learning.variational_autoencoders",
         "concept.deep_learning.vision_transformer"
       ],
       "conceptIds": [
         "concept.analysis.translation_equivariance",
         "concept.deep_learning.attention",
+        "concept.deep_learning.autoencoders",
+        "concept.deep_learning.boltzmann_machines",
         "concept.deep_learning.convnext",
         "concept.deep_learning.convolutional_layer",
         "concept.deep_learning.convolutional_networks",
+        "concept.deep_learning.diffusion_models",
+        "concept.deep_learning.energy_based_models",
+        "concept.deep_learning.flow_matching",
+        "concept.deep_learning.generative_adversarial_networks",
         "concept.deep_learning.gru",
+        "concept.deep_learning.hopfield_networks",
         "concept.deep_learning.lenet",
         "concept.deep_learning.lstm",
         "concept.deep_learning.multilayer_perceptrons",
+        "concept.deep_learning.normalizing_flows",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
         "concept.deep_learning.positional_encoding",
+        "concept.deep_learning.radial_basis_function_networks",
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.recurrent_neural_networks",
         "concept.deep_learning.residual_connection",
         "concept.deep_learning.resnet",
         "concept.deep_learning.transformers",
+        "concept.deep_learning.variational_autoencoders",
         "concept.deep_learning.vgg",
         "concept.deep_learning.vision_transformer"
       ]
@@ -1676,6 +1696,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.autoencoders",
+      "title": "Autoencoders",
+      "slug": "/concepts/autoencoders",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An encoder-decoder pair trained to reproduce its own input under a constraint that forbids plain copying, so that the intermediate code becomes a learned representation rather than a relabelling of the data.",
+      "aliases": [
+        "autoassociative network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.autoencoders",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.backpropagation",
       "title": "Backpropagation",
       "slug": "/concepts/backpropagation",
@@ -1740,6 +1782,29 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_training.batch_normalization",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.boltzmann_machines",
+      "title": "Boltzmann Machines",
+      "slug": "/concepts/boltzmann-machines",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A network of stochastic binary units whose symmetric weights define an energy, and whose bipartite restricted variant made unsupervised layer-wise pretraining of deep networks briefly practical before supervised training overtook it.",
+      "aliases": [
+        "restricted Boltzmann machine",
+        "harmonium"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.boltzmann_machines",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1808,6 +1873,29 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.diffusion_models",
+      "title": "Diffusion Models",
+      "slug": "/concepts/diffusion-models",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of generative models that destroy data with a fixed Gaussian noising process and learn to undo it one small step at a time, turning generation into a sequence of denoising regressions.",
+      "aliases": [
+        "denoising diffusion probabilistic models",
+        "DDPM"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.diffusion_models",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 4,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.distillation",
       "title": "Distillation",
       "slug": "/concepts/distillation",
@@ -1830,6 +1918,72 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.energy_based_models",
+      "title": "Energy-Based Models",
+      "slug": "/concepts/energy-based-models",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of probabilistic models that define a distribution by exponentiating the negative of an unconstrained scalar function, buying total architectural freedom at the price of a normalising constant nobody can compute.",
+      "aliases": [
+        "EBM"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.energy_based_models",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.flow_matching",
+      "title": "Flow Matching",
+      "slug": "/concepts/flow-matching",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A way to train a continuous-time generative model by regressing a neural velocity field onto a per-example target velocity, so the model's ODE is never simulated during training.",
+      "aliases": [
+        "conditional flow matching"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.flow_matching",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.generative_adversarial_networks",
+      "title": "Generative Adversarial Networks",
+      "slug": "/concepts/generative-adversarial-networks",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A generative model trained by pitting a sample generator against a classifier that tries to tell its output from real data, so the training signal comes from a learned critic rather than from a likelihood.",
+      "aliases": [
+        "GAN"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.generative_adversarial_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.gru",
       "title": "GRU",
       "slug": "/concepts/gru",
@@ -1849,6 +2003,29 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.gru",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.hopfield_networks",
+      "title": "Hopfield Networks",
+      "slug": "/concepts/hopfield-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A recurrent network of symmetrically coupled binary units whose asynchronous dynamics always run downhill in an energy function, turning stored patterns into attractors that can be retrieved from a corrupted fragment.",
+      "aliases": [
+        "Hopfield model",
+        "dense associative memory"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.hopfield_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -2009,6 +2186,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.normalizing_flows",
+      "title": "Normalizing Flows",
+      "slug": "/concepts/normalizing-flows",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A generative model that builds a complicated density by pushing a simple one through a learned invertible map, so the exact log-likelihood is available as the base log-density minus a Jacobian log-determinant.",
+      "aliases": [
+        "invertible generative models"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.normalizing_flows",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.perceptron",
       "title": "Perceptron",
       "slug": "/concepts/perceptron",
@@ -2116,6 +2315,28 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_training.quantization",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.radial_basis_function_networks",
+      "title": "Radial Basis Function Networks",
+      "slug": "/concepts/radial-basis-function-networks",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A one-hidden-layer model whose units respond to distance from a stored centre, so that once the centres are fixed the fit reduces to linear least squares.",
+      "aliases": [
+        "RBF network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.radial_basis_function_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 4,
       "claims": 0
     },
     {
@@ -2272,6 +2493,28 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.transformers",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.variational_autoencoders",
+      "title": "Variational Autoencoders",
+      "slug": "/concepts/variational-autoencoders",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A deep latent-variable generative model trained by maximising a lower bound on the data log-likelihood, using a neural network to amortise posterior inference and a change of variables that makes the bound differentiable.",
+      "aliases": [
+        "VAE"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.variational_autoencoders",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
       "claims": 0
@@ -6392,6 +6635,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.autoencoders|contributes_to|concept.learning.self_supervised_learning",
+      "source": "concept.deep_learning.autoencoders",
+      "target": "concept.learning.self_supervised_learning",
+      "type": "contributes_to",
+      "note": "Reconstructing a bottlenecked or corrupted input is one of the earliest label-free pretext objectives, and masked reconstruction descends directly from it.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.autoencoders|generalizes|concept.machine_learning.principal_component_analysis",
+      "source": "concept.deep_learning.autoencoders",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "generalizes",
+      "note": "With linear maps and squared loss the optimal autoencoder attains exactly the rank-k PCA reconstruction error, and nonlinear encoders extend the same objective to curved low-dimensional structure.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.autoencoders|prerequisite_of|concept.deep_learning.variational_autoencoders",
+      "source": "concept.deep_learning.autoencoders",
+      "target": "concept.deep_learning.variational_autoencoders",
+      "type": "prerequisite_of",
+      "note": "The VAE is this architecture with a probabilistic encoder and a prior imposed on the code, so its construction is unreadable without the deterministic version first.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.autoencoders|requires|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.deep_learning.autoencoders",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "requires",
+      "note": "The encoder and decoder are ordinary feedforward networks trained by gradient descent, so a reader who cannot read an MLP cannot read an autoencoder.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.backpropagation_through_convolution|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.backpropagation_through_convolution",
       "target": "concept.deep_learning.convolutional_layer",
@@ -6453,6 +6728,38 @@
       "target": "concept.deep_learning.backpropagation",
       "type": "supported_by",
       "note": "Batch normalization is differentiated through during training, including the dependence of batch statistics on every example in the normalized group.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.boltzmann_machines|contrasts_with|concept.deep_learning.variational_autoencoders",
+      "source": "concept.deep_learning.boltzmann_machines",
+      "target": "concept.deep_learning.variational_autoencoders",
+      "type": "contrasts_with",
+      "note": "Both fit latent-variable generative models, but the Boltzmann machine's intractable quantity is the partition function while the VAE's is the posterior, and only the latter admits an unbiased stochastic gradient of a bound.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.boltzmann_machines|generalizes|concept.deep_learning.hopfield_networks",
+      "source": "concept.deep_learning.boltzmann_machines",
+      "target": "concept.deep_learning.hopfield_networks",
+      "type": "generalizes",
+      "note": "Replacing the Hopfield network's deterministic threshold update with a stochastic one at temperature T, and adding hidden units, gives exactly a Boltzmann machine.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.boltzmann_machines|specializes|concept.deep_learning.energy_based_models",
+      "source": "concept.deep_learning.boltzmann_machines",
+      "target": "concept.deep_learning.energy_based_models",
+      "type": "specializes",
+      "note": "A Boltzmann machine is the special case in which the units are binary and the energy is a quadratic form in the state, so its conditionals are logistic.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.boltzmann_machines|used_to_solve|concept.learning.unsupervised_learning",
+      "source": "concept.deep_learning.boltzmann_machines",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "used_to_solve",
+      "note": "Restricted Boltzmann machines were trained on unlabelled data to learn features, which is what made them the pretraining stage of the 2006 deep belief network recipe.",
       "condition": null
     },
     {
@@ -6560,6 +6867,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.diffusion_models|contrasts_with|concept.deep_learning.flow_matching",
+      "source": "concept.deep_learning.diffusion_models",
+      "target": "concept.deep_learning.flow_matching",
+      "type": "contrasts_with",
+      "note": "Flow matching regresses a velocity field along a probability path chosen by the designer, and the Gaussian path a diffusion model uses is one such choice, so the two frameworks overlap on the deterministic sampler and differ on how freely the path can be picked.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.diffusion_models|contrasts_with|concept.deep_learning.generative_adversarial_networks",
+      "source": "concept.deep_learning.diffusion_models",
+      "target": "concept.deep_learning.generative_adversarial_networks",
+      "type": "contrasts_with",
+      "note": "Both target high-fidelity sampling, but diffusion replaces the adversarial minimax game with a plain regression loss, buying stability and mode coverage at the price of hundreds of sequential network evaluations per sample.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.diffusion_models|requires|concept.probability.stochastic_processes",
+      "source": "concept.deep_learning.diffusion_models",
+      "target": "concept.probability.stochastic_processes",
+      "type": "requires",
+      "note": "The forward corruption is a Markov chain whose continuous limit is an Itô diffusion, and the sampler discretises a reverse-time stochastic differential equation, so neither the construction nor its continuous form is readable without those objects.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.diffusion_models|specializes|concept.deep_learning.variational_autoencoders",
+      "source": "concept.deep_learning.diffusion_models",
+      "target": "concept.deep_learning.variational_autoencoders",
+      "type": "specializes",
+      "note": "A diffusion model is a deep latent-variable model trained on a variational bound in which the encoder is a fixed Gaussian chain rather than a learned network and the latents keep the dimension of the data.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.distillation|contributes_to|concept.learning.transfer_learning",
       "source": "concept.deep_learning.distillation",
       "target": "concept.learning.transfer_learning",
@@ -6581,6 +6920,102 @@
       "target": "concept.learning.supervised_learning",
       "type": "requires",
       "note": "Standard distillation fits a student from inputs paired with teacher-produced targets and often with original labels.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.energy_based_models|contrasts_with|concept.deep_learning.normalizing_flows",
+      "source": "concept.deep_learning.energy_based_models",
+      "target": "concept.deep_learning.normalizing_flows",
+      "type": "contrasts_with",
+      "note": "Flows constrain the architecture to be invertible so that the normaliser is available exactly, which is the opposite trade to an energy-based model that keeps the architecture free and never learns its own normaliser.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.energy_based_models|contributes_to|concept.deep_learning.diffusion_models",
+      "source": "concept.deep_learning.energy_based_models",
+      "target": "concept.deep_learning.diffusion_models",
+      "type": "contributes_to",
+      "note": "Denoising score matching was developed to fit energy-based models without touching the partition function, and that objective — fitting the score of a noise-perturbed density — is what diffusion models train on.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.energy_based_models|generalizes|concept.deep_learning.boltzmann_machines",
+      "source": "concept.deep_learning.energy_based_models",
+      "target": "concept.deep_learning.boltzmann_machines",
+      "type": "generalizes",
+      "note": "A Boltzmann machine is the energy-based model whose energy is a quadratic form over binary units, and its positive-phase/negative-phase learning rule is the general maximum-likelihood gradient written out for that particular energy.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.energy_based_models|specializes|concept.physics.statistical_mechanics",
+      "source": "concept.deep_learning.energy_based_models",
+      "target": "concept.physics.statistical_mechanics",
+      "type": "specializes",
+      "note": "The Boltzmann form, the partition function and the free energy are taken unchanged from statistical mechanics, with the temperature fixed at one and the energy learned from data instead of given by a Hamiltonian.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.flow_matching|contrasts_with|concept.deep_learning.generative_adversarial_networks",
+      "source": "concept.deep_learning.flow_matching",
+      "target": "concept.deep_learning.generative_adversarial_networks",
+      "type": "contrasts_with",
+      "note": "Both produce high-quality samples without a tractable likelihood during training, but flow matching is a stable least-squares regression that pays for it with an ODE solve at sampling time, where a GAN samples in one forward pass and pays with an unstable minimax objective.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.flow_matching|contrasts_with|concept.optimization.optimal_transport",
+      "source": "concept.deep_learning.flow_matching",
+      "target": "concept.optimization.optimal_transport",
+      "type": "contrasts_with",
+      "note": "The so-called optimal-transport path is optimal only between the two Gaussians attached to a single data point; the marginal flow the network learns is generally not the optimal transport map between noise and data.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.flow_matching|generalizes|concept.deep_learning.diffusion_models",
+      "source": "concept.deep_learning.flow_matching",
+      "target": "concept.deep_learning.diffusion_models",
+      "type": "generalizes",
+      "note": "The forward noising process of a diffusion model is one particular Gaussian conditional path in the flow matching family, and its training objective is a reparameterisation of the conditional flow matching loss on that path, up to a time-dependent loss weighting.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.flow_matching|requires|concept.deep_learning.normalizing_flows",
+      "source": "concept.deep_learning.flow_matching",
+      "target": "concept.deep_learning.normalizing_flows",
+      "type": "requires",
+      "note": "The object flow matching trains is a continuous normalizing flow, so a reader who does not know what a flow and its change-of-variables density are cannot follow what the velocity field is for.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.generative_adversarial_networks|contrasts_with|concept.deep_learning.diffusion_models",
+      "source": "concept.deep_learning.generative_adversarial_networks",
+      "target": "concept.deep_learning.diffusion_models",
+      "type": "contrasts_with",
+      "note": "Diffusion models reach comparable or better sample quality with a stable regression objective and no adversarial game, at the cost of many network evaluations per sample instead of one.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.generative_adversarial_networks|contrasts_with|concept.deep_learning.variational_autoencoders",
+      "source": "concept.deep_learning.generative_adversarial_networks",
+      "target": "concept.deep_learning.variational_autoencoders",
+      "type": "contrasts_with",
+      "note": "Both learn a decoder from a simple latent distribution, but the VAE maximises a likelihood bound with an explicit reconstruction term while the GAN optimises an implicitly defined divergence, which is why their failure modes are opposite — blurry means over sharp.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.generative_adversarial_networks|requires|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.generative_adversarial_networks",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "requires",
+      "note": "The generator is trained by differentiating the discriminator's output with respect to the generated sample and continuing the chain rule back into the generator's weights, so the reader needs the backward pass before the training rule makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.generative_adversarial_networks|used_to_solve|concept.learning.unsupervised_learning",
+      "source": "concept.deep_learning.generative_adversarial_networks",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "used_to_solve",
+      "note": "A GAN learns to sample from an unlabelled data distribution; the only supervision in the system is the real-versus-fake label the training procedure manufactures for itself.",
       "condition": null
     },
     {
@@ -6613,6 +7048,38 @@
       "target": "concept.deep_learning.recurrent_neural_networks",
       "type": "requires",
       "note": "The GRU changes only how a recurrent hidden state is updated, so the page is unreadable without the notion of a state carried across time steps and trained through time.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.hopfield_networks|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.hopfield_networks",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "Both are recurrent, but a Hopfield network is run to a fixed point over a symmetric weight matrix rather than unrolled over a sequence with asymmetric weights.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.hopfield_networks|contributes_to|concept.deep_learning.boltzmann_machines",
+      "source": "concept.deep_learning.hopfield_networks",
+      "target": "concept.deep_learning.boltzmann_machines",
+      "type": "contributes_to",
+      "note": "The Boltzmann machine keeps the symmetric energy and replaces deterministic descent with stochastic sampling and hidden units, so it is the direct descendant of this architecture.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.hopfield_networks|equivalent_under|concept.deep_learning.attention",
+      "source": "concept.deep_learning.hopfield_networks",
+      "target": "concept.deep_learning.attention",
+      "type": "equivalent_under",
+      "note": "The one-step retrieval rule of the continuous modern Hopfield network is softmax over inner products with stored patterns, which is the same expression as dot-product attention when queries, keys and values are set accordingly.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.hopfield_networks|specializes|concept.deep_learning.energy_based_models",
+      "source": "concept.deep_learning.hopfield_networks",
+      "target": "concept.deep_learning.energy_based_models",
+      "type": "specializes",
+      "note": "A Hopfield network is the special case in which the energy is a quadratic form in binary units and inference is coordinate-wise descent rather than sampling.",
       "condition": null
     },
     {
@@ -6792,6 +7259,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.normalizing_flows|contrasts_with|concept.deep_learning.energy_based_models",
+      "source": "concept.deep_learning.normalizing_flows",
+      "target": "concept.deep_learning.energy_based_models",
+      "type": "contrasts_with",
+      "note": "An energy-based model can use any architecture but leaves the normalising constant intractable; a flow constrains the architecture so that the density is normalised by construction.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.normalizing_flows|contrasts_with|concept.deep_learning.variational_autoencoders",
+      "source": "concept.deep_learning.normalizing_flows",
+      "target": "concept.deep_learning.variational_autoencoders",
+      "type": "contrasts_with",
+      "note": "Both learn a latent-variable density, but a VAE uses a stochastic non-invertible encoder and optimises a lower bound, whereas a flow buys exact likelihood by forcing the map to be a bijection and the latent space to have the data's dimension.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.normalizing_flows|refined_by|concept.deep_learning.flow_matching",
+      "source": "concept.deep_learning.normalizing_flows",
+      "target": "concept.deep_learning.flow_matching",
+      "type": "refined_by",
+      "note": "Flow matching trains the velocity field of a continuous normalizing flow by regression against a known conditional field, removing the ODE simulation and trace estimation that made maximum-likelihood CNF training expensive.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.normalizing_flows|requires|concept.analysis.multivariable_calculus",
+      "source": "concept.deep_learning.normalizing_flows",
+      "target": "concept.analysis.multivariable_calculus",
+      "type": "requires",
+      "note": "The entire method is the multivariate change-of-variables formula, so a reader needs the Jacobian matrix and its determinant as a local volume factor before anything here parses.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.perceptron|contrasts_with|concept.machine_learning.logistic_regression",
       "source": "concept.deep_learning.perceptron",
       "target": "concept.machine_learning.logistic_regression",
@@ -6901,6 +7400,38 @@
       "target": "concept.ml_engineering.edge_inference",
       "type": "contributes_to",
       "note": "Lower-bit weights can reduce the memory capacity and bandwidth required for on-device inference.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.radial_basis_function_networks|approximates|concept.machine_learning.kernel_methods",
+      "source": "concept.deep_learning.radial_basis_function_networks",
+      "target": "concept.machine_learning.kernel_methods",
+      "type": "approximates",
+      "note": "With fewer centres than data points the network is a low-rank surrogate for kernel ridge regression using the same radial kernel.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.radial_basis_function_networks|contrasts_with|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.deep_learning.radial_basis_function_networks",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "contrasts_with",
+      "note": "An MLP unit responds to a dot product and so is active over a half-space, while an RBF unit responds to a distance and so is active only near one point.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.radial_basis_function_networks|equivalent_under|concept.machine_learning.gaussian_processes",
+      "source": "concept.deep_learning.radial_basis_function_networks",
+      "target": "concept.machine_learning.gaussian_processes",
+      "type": "equivalent_under",
+      "note": "With one centre per training point and a strictly positive definite radial kernel, the interpolating RBF network is exactly the posterior mean of noise-free Gaussian process regression with that kernel.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.radial_basis_function_networks|requires|concept.machine_learning.linear_regression",
+      "source": "concept.deep_learning.radial_basis_function_networks",
+      "target": "concept.machine_learning.linear_regression",
+      "type": "requires",
+      "note": "The output layer is fitted by ordinary or ridge least squares, so a reader who cannot solve a linear regression cannot follow the training procedure at all.",
       "condition": null
     },
     {
@@ -7069,6 +7600,38 @@
       "target": "concept.deep_learning.multilayer_perceptrons",
       "type": "requires",
       "note": "The second sublayer of every block is a two-layer perceptron applied independently at each position, and it holds most of the block's parameters.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.variational_autoencoders|contrasts_with|concept.deep_learning.generative_adversarial_networks",
+      "source": "concept.deep_learning.variational_autoencoders",
+      "target": "concept.deep_learning.generative_adversarial_networks",
+      "type": "contrasts_with",
+      "note": "Both learn a decoder that maps noise to data, but one maximises a likelihood bound and gets an inference network for free while the other optimises an adversarial game and gets neither likelihood nor encoder.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.variational_autoencoders|contributes_to|concept.deep_learning.diffusion_models",
+      "source": "concept.deep_learning.variational_autoencoders",
+      "target": "concept.deep_learning.diffusion_models",
+      "type": "contributes_to",
+      "note": "A diffusion model can be written as a hierarchical variational autoencoder whose encoder is fixed rather than learned, so its training objective is derived the same way.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.variational_autoencoders|requires|concept.optimization.variational_methods",
+      "source": "concept.deep_learning.variational_autoencoders",
+      "target": "concept.optimization.variational_methods",
+      "type": "requires",
+      "note": "The training objective is an evidence lower bound, and a reader who has not seen a variational bound cannot follow why maximising it is a sensible substitute for maximising the likelihood.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.variational_autoencoders|specializes|concept.deep_learning.autoencoders",
+      "source": "concept.deep_learning.variational_autoencoders",
+      "target": "concept.deep_learning.autoencoders",
+      "type": "specializes",
+      "note": "It keeps the encoder-decoder shape but replaces the deterministic code with a distribution and the reconstruction error with a bound on log-likelihood, which is what turns it into a generative model.",
       "condition": null
     },
     {
