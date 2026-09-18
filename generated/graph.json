@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T04:51:35.303Z",
-  "corpusHash": "e71fd261dd3f140ddcaf5e208caa7eb53cedd30820de4847cc275b883d5246fa",
-  "atlasHash": "30937729e5c879b3e5414d19684c0553a089c96ed783040bfccd1aced7a523f2",
+  "builtAt": "2026-09-18T10:52:54.815Z",
+  "corpusHash": "ae3c3bfccdf6f44edd784070180cd344bbb1eaa77127f2e567b75ffaf4cb3253",
+  "atlasHash": "1777f637066202db4401d58348908e44724c0fae7be180d47d911ef9072e3b22",
   "counts": {
-    "concepts": 241,
-    "relationships": 910,
+    "concepts": 251,
+    "relationships": 950,
     "categories": 27
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 241,
+      "1": 251,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 241,
+      "markdown": 251,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 241
+      "generated-draft": 251
     },
-    "conceptsWithArticle": 241,
+    "conceptsWithArticle": 251,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 50,
+      "candidate": 40,
       "proposed-tier-3": 0,
-      "covered": 241,
+      "covered": 251,
       "deferred": 0
     },
-    "unresolvedReferences": 339,
-    "unresolvedGroups": 338,
+    "unresolvedReferences": 363,
+    "unresolvedGroups": 361,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -317,22 +317,42 @@
         "concept.reinforcement_learning.actor_critic",
         "concept.reinforcement_learning.dqn",
         "concept.reinforcement_learning.dynamic_programming",
+        "concept.reinforcement_learning.imitation_learning",
+        "concept.reinforcement_learning.inverse_reinforcement_learning",
         "concept.reinforcement_learning.markov_decision_processes",
+        "concept.reinforcement_learning.model_based_reinforcement_learning",
         "concept.reinforcement_learning.monte_carlo_methods",
+        "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+        "concept.reinforcement_learning.multi_armed_bandits",
+        "concept.reinforcement_learning.offline_reinforcement_learning",
         "concept.reinforcement_learning.policy_gradients",
+        "concept.reinforcement_learning.ppo",
         "concept.reinforcement_learning.q_learning",
         "concept.reinforcement_learning.reinforce",
+        "concept.reinforcement_learning.rlaif",
+        "concept.reinforcement_learning.rlhf",
+        "concept.reinforcement_learning.sac",
         "concept.reinforcement_learning.temporal_difference_learning"
       ],
       "conceptIds": [
         "concept.reinforcement_learning.actor_critic",
         "concept.reinforcement_learning.dqn",
         "concept.reinforcement_learning.dynamic_programming",
+        "concept.reinforcement_learning.imitation_learning",
+        "concept.reinforcement_learning.inverse_reinforcement_learning",
         "concept.reinforcement_learning.markov_decision_processes",
+        "concept.reinforcement_learning.model_based_reinforcement_learning",
         "concept.reinforcement_learning.monte_carlo_methods",
+        "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+        "concept.reinforcement_learning.multi_armed_bandits",
+        "concept.reinforcement_learning.offline_reinforcement_learning",
         "concept.reinforcement_learning.policy_gradients",
+        "concept.reinforcement_learning.ppo",
         "concept.reinforcement_learning.q_learning",
         "concept.reinforcement_learning.reinforce",
+        "concept.reinforcement_learning.rlaif",
+        "concept.reinforcement_learning.rlhf",
+        "concept.reinforcement_learning.sac",
         "concept.reinforcement_learning.temporal_difference_learning"
       ]
     },
@@ -5555,6 +5575,51 @@
       "claims": 0
     },
     {
+      "id": "concept.reinforcement_learning.imitation_learning",
+      "title": "Imitation Learning",
+      "slug": "/concepts/imitation-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Learning a control policy from recorded expert behaviour instead of from reward, where the catch is that the learner's own mistakes carry it into states the expert never demonstrated.",
+      "aliases": [
+        "behavioural cloning",
+        "learning from demonstration"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.imitation_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "title": "Inverse Reinforcement Learning",
+      "slug": "/concepts/inverse-reinforcement-learning",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The problem of reading a reward function off observed behaviour, which is badly ill-posed — a constant reward explains every policy — so that every method is really a rule for choosing among the many rewards the data allows.",
+      "aliases": [
+        "inverse optimal control"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.inverse_reinforcement_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.reinforcement_learning.markov_decision_processes",
       "title": "Markov Decision Processes",
       "slug": "/concepts/markov-decision-processes",
@@ -5574,6 +5639,29 @@
       "candidateId": "candidate.artificial_intelligence.reinforcement_learning.markov_decision_processes",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "title": "Model-Based Reinforcement Learning",
+      "slug": "/concepts/model-based-reinforcement-learning",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The family of reinforcement learning methods that learn a predictive model of the environment's dynamics and then plan in it or train on its simulated experience, buying sample efficiency at the price of model error that compounds over a rollout.",
+      "aliases": [
+        "MBRL",
+        "model-based RL"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.model_based_reinforcement_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -5600,6 +5688,73 @@
       "claims": 0
     },
     {
+      "id": "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+      "title": "Multi-Agent Reinforcement Learning",
+      "slug": "/concepts/multi-agent-reinforcement-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Reinforcement learning when several agents learn at once in one environment, where each agent's updates change the world the others are learning about and \"optimal policy\" gives way to a game-theoretic solution concept.",
+      "aliases": [
+        "MARL"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.multi_agent_reinforcement_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_armed_bandits",
+      "title": "Multi-Armed Bandits",
+      "slug": "/concepts/multi-armed-bandits",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The exploration-exploitation problem stripped of state — repeatedly choose among fixed actions with unknown payoffs — where regret is the objective and logarithmic regret is provably the best anyone can do on a fixed instance.",
+      "aliases": [
+        "k-armed bandit"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.multi_armed_bandits",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "title": "Offline Reinforcement Learning",
+      "slug": "/concepts/offline-reinforcement-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Learning a control policy from a fixed, previously collected dataset with no further environment interaction, where the central difficulty is that the learner cannot check the actions it wants to take.",
+      "aliases": [
+        "batch reinforcement learning",
+        "offline RL"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.offline_reinforcement_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
       "id": "concept.reinforcement_learning.policy_gradients",
       "title": "Policy Gradients",
       "slug": "/concepts/policy-gradients",
@@ -5617,6 +5772,29 @@
       "candidateId": "candidate.artificial_intelligence.reinforcement_learning.policy_gradients",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.ppo",
+      "title": "PPO",
+      "slug": "/concepts/ppo",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "PPO makes on-policy reinforcement learning sample-efficient by reusing each batch of experience for several epochs of gradient ascent on an objective that clips the policy-probability ratio, a first-order heuristic that removes the incentive to move far without proving that the policy stays close.",
+      "aliases": [
+        "proximal policy optimization",
+        "clipped surrogate objective"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.ppo",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -5657,6 +5835,72 @@
       "candidateId": "candidate.artificial_intelligence.reinforcement_learning.reinforce",
       "candidateStatus": "covered",
       "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.rlaif",
+      "title": "RLAIF",
+      "slug": "/concepts/rlaif",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A preference-learning recipe in which the comparison labels that train a reward model are produced by a language model reading written principles rather than by paid human annotators.",
+      "aliases": [
+        "reinforcement learning from AI feedback"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.rlaif",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.rlhf",
+      "title": "RLHF",
+      "slug": "/concepts/rlhf",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The standard post-training recipe for objectives nobody can write down as a loss: fit a reward model to pairwise human preference judgements, then optimise the policy against that reward while a KL penalty holds it near the model it started from.",
+      "aliases": [
+        "reinforcement learning from human feedback"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.rlhf",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.sac",
+      "title": "SAC",
+      "slug": "/concepts/sac",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An off-policy actor-critic algorithm for continuous control that pays the agent for entropy as well as reward, so the optimum it converges to is a genuinely stochastic policy rather than a deterministic one with noise bolted on.",
+      "aliases": [
+        "soft actor-critic"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.sac",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -12648,6 +12892,70 @@
       "condition": null
     },
     {
+      "id": "concept.reinforcement_learning.imitation_learning|contrasts_with|concept.reinforcement_learning.inverse_reinforcement_learning",
+      "source": "concept.reinforcement_learning.imitation_learning",
+      "target": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "type": "contrasts_with",
+      "note": "Both consume the same demonstrations, but inverse RL recovers a reward function and then optimises it, where imitation learning fits the expert's state-to-action map directly.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.imitation_learning|contributes_to|concept.reinforcement_learning.rlhf",
+      "source": "concept.reinforcement_learning.imitation_learning",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "contributes_to",
+      "note": "The supervised fine-tuning stage that precedes reward modelling in an RLHF pipeline is behavioural cloning of human-written demonstrations.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.imitation_learning|requires|concept.learning.supervised_learning",
+      "source": "concept.reinforcement_learning.imitation_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "Behavioural cloning is literally a supervised classification or regression fit to state-action pairs, so the reader needs the supervised setting before seeing how sequential execution breaks its assumptions.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.imitation_learning|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.imitation_learning",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The error bound below is stated over an MDP's induced state distribution, horizon and cost-to-go, and none of those objects can be read without the MDP formalism first.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.inverse_reinforcement_learning|contrasts_with|concept.reinforcement_learning.imitation_learning",
+      "source": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "target": "concept.reinforcement_learning.imitation_learning",
+      "type": "contrasts_with",
+      "note": "Both start from demonstrations, but imitation learning fits the expert's action mapping directly while IRL insists on the reward behind it, which is slower and only pays off when the reward must transfer.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.inverse_reinforcement_learning|contributes_to|concept.reinforcement_learning.rlhf",
+      "source": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "contributes_to",
+      "note": "The reward-model stage of RLHF is reward inference from human data with a Boltzmann-style likelihood, the same machinery IRL developed, applied to comparisons rather than demonstrations.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.inverse_reinforcement_learning|equivalent_under|concept.deep_learning.generative_adversarial_networks",
+      "source": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "target": "concept.deep_learning.generative_adversarial_networks",
+      "type": "equivalent_under",
+      "note": "Under a max-entropy formulation with a particular convex reward penalty, running RL on the output of IRL reduces to a GAN-style minimax game in which the discriminator separates learner from expert state-action pairs.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.inverse_reinforcement_learning|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The problem is literally stated as an MDP with the reward deleted, and the optimality conditions that constrain the reward are the MDP's own Bellman conditions rearranged.",
+      "condition": null
+    },
+    {
       "id": "concept.reinforcement_learning.markov_decision_processes|contrasts_with|concept.machine_learning.hidden_markov_models",
       "source": "concept.reinforcement_learning.markov_decision_processes",
       "target": "concept.machine_learning.hidden_markov_models",
@@ -12677,6 +12985,38 @@
       "target": "concept.probability.stochastic_processes",
       "type": "requires",
       "note": "The state sequence under a fixed policy is a Markov chain, so transition kernels, stationarity and conditional independence over time are the substrate the definition is written in.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.model_based_reinforcement_learning|approximates|concept.reinforcement_learning.dynamic_programming",
+      "source": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "target": "concept.reinforcement_learning.dynamic_programming",
+      "type": "approximates",
+      "note": "Planning inside a learned model is dynamic programming or forward search run against an estimated transition kernel instead of the true one, which is exactly where its error comes from.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.model_based_reinforcement_learning|contrasts_with|concept.reinforcement_learning.sac",
+      "source": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "target": "concept.reinforcement_learning.sac",
+      "type": "contrasts_with",
+      "note": "A model-free actor-critic such as SAC never represents dynamics and so cannot be misled by model bias, which is the trade the sample-efficiency comparison between the two families turns on.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.model_based_reinforcement_learning|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The object being learned is precisely the MDP's transition kernel and reward function, so there is nothing to call a model until states, actions, transitions and discounting are defined.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.model_based_reinforcement_learning|used_to_solve|concept.reinforcement_learning.offline_reinforcement_learning",
+      "source": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "target": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "type": "used_to_solve",
+      "note": "Fitting a model to a fixed dataset and planning in it with an uncertainty penalty is one of the main algorithm families for learning from logged data without further interaction.",
       "condition": null
     },
     {
@@ -12712,6 +13052,102 @@
       "condition": null
     },
     {
+      "id": "concept.reinforcement_learning.multi_agent_reinforcement_learning|contrasts_with|concept.learning.federated_learning",
+      "source": "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+      "target": "concept.learning.federated_learning",
+      "type": "contrasts_with",
+      "note": "Both spread learning across many participants, but federated clients optimise one shared objective on separate data and never act on each other, whereas these agents have separate rewards and their actions enter each other's transitions.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_agent_reinforcement_learning|contrasts_with|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "contrasts_with",
+      "note": "Q-learning converges under a fixed transition and reward distribution, and running one independent copy per agent voids exactly that hypothesis while still often working, which makes it the sharpest illustration of what multi-agent learning gives up.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_agent_reinforcement_learning|requires|concept.reinforcement_learning.actor_critic",
+      "source": "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+      "target": "concept.reinforcement_learning.actor_critic",
+      "type": "requires",
+      "note": "Centralised training with decentralised execution is stated as an actor-critic architecture in which the critic is given the joint observation and action while each actor sees only its own, which cannot be followed without knowing what a critic is and why it is fitted separately.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_agent_reinforcement_learning|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The stochastic game that defines the setting is an MDP whose transition depends on a joint action and which pays one reward per agent, so states, transitions, discounting and returns must already be in place before the generalisation reads as anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_armed_bandits|contrasts_with|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.multi_armed_bandits",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "contrasts_with",
+      "note": "TD learning exists to propagate value backwards across transitions, which is exactly the structure a bandit lacks, so a bandit estimator is a plain sample mean with no bootstrapping.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_armed_bandits|contributes_to|concept.reinforcement_learning.rlhf",
+      "source": "concept.reinforcement_learning.multi_armed_bandits",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "contributes_to",
+      "note": "RLHF fine-tuning is usually posed as a one-step contextual bandit — the prompt is the context, the response is the arm, the reward model supplies the payoff, and no transition dynamics are modelled.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_armed_bandits|requires|concept.probability.concentration_inequalities",
+      "source": "concept.reinforcement_learning.multi_armed_bandits",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "requires",
+      "note": "The upper confidence bound is literally an inverted Hoeffding bound, so the width of the exploration bonus and the failure probability it buys cannot be derived without concentration.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.multi_armed_bandits|specializes|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.multi_armed_bandits",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "specializes",
+      "note": "A bandit is the single-state MDP: actions yield rewards but do not change what situation you face next, so the whole apparatus of transitions, returns and bootstrapping collapses away and only exploration remains.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.offline_reinforcement_learning|contrasts_with|concept.reinforcement_learning.imitation_learning",
+      "source": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "target": "concept.reinforcement_learning.imitation_learning",
+      "type": "contrasts_with",
+      "note": "Both consume the same fixed dataset, but imitation learning reproduces the behaviour policy and stays inside its support, while offline RL tries to exceed it, which is exactly what forces it to evaluate unseen actions.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.offline_reinforcement_learning|contrasts_with|concept.reinforcement_learning.rlhf",
+      "source": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "contrasts_with",
+      "note": "RLHF fits its reward model on a fixed human dataset but then improves the policy with fresh rollouts scored by that model, so it sidesteps out-of-distribution bootstrapping and inherits reward-model overoptimisation in its place.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.offline_reinforcement_learning|contrasts_with|concept.reinforcement_learning.sac",
+      "source": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "target": "concept.reinforcement_learning.sac",
+      "type": "contrasts_with",
+      "note": "SAC is off-policy and trains from a replay buffer, which makes it look applicable to a fixed dataset, yet running it unmodified on one is the standard demonstration of offline divergence because it keeps interacting in the online case and cannot here.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.offline_reinforcement_learning|requires|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "requires",
+      "note": "The failure that defines the offline setting is a maximisation inside the Q-learning backup evaluated at actions the dataset never contains, so the update rule has to be in hand before the problem is even visible.",
+      "condition": null
+    },
+    {
       "id": "concept.reinforcement_learning.policy_gradients|contrasts_with|concept.reinforcement_learning.q_learning",
       "source": "concept.reinforcement_learning.policy_gradients",
       "target": "concept.reinforcement_learning.q_learning",
@@ -12741,6 +13177,38 @@
       "target": "concept.reinforcement_learning.markov_decision_processes",
       "type": "requires",
       "note": "The objective being differentiated is expected return under an MDP, and the derivation depends on the Markov factorisation of a trajectory's probability.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.ppo|contrasts_with|concept.reinforcement_learning.sac",
+      "source": "concept.reinforcement_learning.ppo",
+      "target": "concept.reinforcement_learning.sac",
+      "type": "contrasts_with",
+      "note": "Both are default choices for continuous control, but PPO is on-policy and discards each batch after a few epochs where SAC replays a buffer indefinitely, which is the same trade seen from opposite sides.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.ppo|contributes_to|concept.reinforcement_learning.rlhf",
+      "source": "concept.reinforcement_learning.ppo",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "contributes_to",
+      "note": "PPO is the policy optimiser in the standard RLHF pipeline, where the reward model plays the role of the environment.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.ppo|requires|concept.reinforcement_learning.policy_gradients",
+      "source": "concept.reinforcement_learning.ppo",
+      "target": "concept.reinforcement_learning.policy_gradients",
+      "type": "requires",
+      "note": "The clipped objective is a modification of the importance-sampled policy gradient surrogate, and its gradient at the sampling policy is exactly the policy gradient, so the estimator must be understood first.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.ppo|specializes|concept.reinforcement_learning.actor_critic",
+      "source": "concept.reinforcement_learning.ppo",
+      "target": "concept.reinforcement_learning.actor_critic",
+      "type": "specializes",
+      "note": "PPO is one particular actor-critic recipe — a learned state-value function supplies the advantage estimates and is fit by a squared-error term inside the same loss.",
       "condition": null
     },
     {
@@ -12805,6 +13273,102 @@
       "target": "concept.reinforcement_learning.policy_gradients",
       "type": "specializes",
       "note": "REINFORCE is the Monte Carlo instance of the general policy gradient, obtained by substituting the sampled return for the action-value it estimates.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlaif|contrasts_with|concept.deep_learning.distillation",
+      "source": "concept.reinforcement_learning.rlaif",
+      "target": "concept.deep_learning.distillation",
+      "type": "contrasts_with",
+      "note": "Both move competence from one model into another, but distillation matches a teacher's output distribution directly whereas RLAIF transfers only an ordering over samples the student itself generated.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlaif|contrasts_with|concept.reinforcement_learning.inverse_reinforcement_learning",
+      "source": "concept.reinforcement_learning.rlaif",
+      "target": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "type": "contrasts_with",
+      "note": "Both recover a reward function rather than being handed one, but inverse RL infers it from demonstrated behaviour while RLAIF reads it off a model's stated judgements about pairs of outputs.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlaif|requires|concept.reinforcement_learning.ppo",
+      "source": "concept.reinforcement_learning.rlaif",
+      "target": "concept.reinforcement_learning.ppo",
+      "type": "requires",
+      "note": "The RL stage of the original recipe is PPO against the fitted preference model, so the clipped surrogate and its KL anchor have to be understood before this page's optimisation step makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlaif|variant_of|concept.reinforcement_learning.rlhf",
+      "source": "concept.reinforcement_learning.rlaif",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "variant_of",
+      "note": "Every stage is inherited unchanged — pairwise comparisons, a fitted reward model, KL-regularised policy optimisation — and only the source of the comparison labels is swapped.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlhf|contrasts_with|concept.reinforcement_learning.inverse_reinforcement_learning",
+      "source": "concept.reinforcement_learning.rlhf",
+      "target": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "type": "contrasts_with",
+      "note": "Both recover a reward function from human data, but IRL infers it from demonstrations assumed near-optimal, while RLHF fits it to explicit rankings of the model's own samples.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlhf|contrasts_with|concept.reinforcement_learning.rlaif",
+      "source": "concept.reinforcement_learning.rlhf",
+      "target": "concept.reinforcement_learning.rlaif",
+      "type": "contrasts_with",
+      "note": "RLAIF keeps the whole pipeline and swaps only the source of the comparison labels, so the pair isolates what the human annotator is contributing.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlhf|requires|concept.machine_learning.logistic_regression",
+      "source": "concept.reinforcement_learning.rlhf",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "requires",
+      "note": "The Bradley-Terry reward-model loss is binary logistic regression on the difference of two scores, and reading it as anything else hides where the identifiability limits come from.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.rlhf|requires|concept.reinforcement_learning.ppo",
+      "source": "concept.reinforcement_learning.rlhf",
+      "target": "concept.reinforcement_learning.ppo",
+      "type": "requires",
+      "note": "The optimisation stage is a PPO run against the learned reward, so the clipped surrogate and its on-policy sampling loop are what actually executes when RLHF is trained.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.sac|contrasts_with|concept.reinforcement_learning.ppo",
+      "source": "concept.reinforcement_learning.sac",
+      "target": "concept.reinforcement_learning.ppo",
+      "type": "contrasts_with",
+      "note": "PPO is on-policy and throws each batch away after a few epochs where SAC replays a buffer indefinitely, so the two are the opposite standard answers to how continuous-control data should be reused.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.sac|contributes_to|concept.reinforcement_learning.offline_reinforcement_learning",
+      "source": "concept.reinforcement_learning.sac",
+      "target": "concept.reinforcement_learning.offline_reinforcement_learning",
+      "type": "contributes_to",
+      "note": "Several offline algorithms are SAC with a pessimism or behaviour-constraint term added, because SAC's off-policy critic is precisely the component that fails on a fixed dataset.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.sac|generalizes|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.sac",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "generalizes",
+      "note": "The soft Bellman backup replaces the max over actions with a log-sum-exp, and recovers the ordinary Q-learning backup exactly as the temperature goes to zero.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.sac|requires|concept.reinforcement_learning.actor_critic",
+      "source": "concept.reinforcement_learning.sac",
+      "target": "concept.reinforcement_learning.actor_critic",
+      "type": "requires",
+      "note": "SAC is the actor-critic split with soft targets substituted in; the roles of the two networks and the reason a critic is worth learning at all are established there and assumed here.",
       "condition": null
     },
     {

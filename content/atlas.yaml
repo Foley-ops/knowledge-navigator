@@ -1277,8 +1277,8 @@ candidates:
     title: Multi-Armed Bandits
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.multi_armed_bandits
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.markov_decision_processes
     title: Markov Decision Processes
     categories:
@@ -1331,14 +1331,14 @@ candidates:
     title: PPO
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.ppo
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.sac
     title: SAC
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.sac
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.actor_critic
     title: Actor-Critic
     categories:
@@ -1349,44 +1349,44 @@ candidates:
     title: Model-Based Reinforcement Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.model_based_reinforcement_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.offline_reinforcement_learning
     title: Offline Reinforcement Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.offline_reinforcement_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.inverse_reinforcement_learning
     title: Inverse Reinforcement Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.inverse_reinforcement_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.imitation_learning
     title: Imitation Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.imitation_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.multi_agent_reinforcement_learning
     title: Multi-Agent Reinforcement Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.multi_agent_reinforcement_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.rlhf
     title: RLHF
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.rlhf
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.rlaif
     title: RLAIF
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.rlaif
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.supervised_learning
     title: Supervised Learning
     categories:

@@ -35,14 +35,14 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > Why does sliding a filter over an image work the same wherever the object is?
 
 - Needed but not retrieved: `concept.analysis.translation_equivariance`
-- Retrieved instead: `concept.analysis.cross_correlation`, `concept.deep_learning.backpropagation_through_convolution`, `concept.deep_learning.spherical_cnns`, `concept.deep_learning.convolutional_networks`, `concept.analysis.convolution`
+- Retrieved instead: `concept.analysis.cross_correlation`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.spherical_cnns`, `concept.analysis.convolution`, `concept.deep_learning.equivariance`
 
 ### P2 (paraphrase)
 
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.message_passing`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.geometry.hyperbolic_geometry`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.message_passing`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.learning.supervised_learning`
 
 ### P3 (paraphrase)
 
@@ -70,7 +70,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > Training a 40-layer plain network is worse than my 20-layer one. What is going on?
 
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
-- Retrieved instead: `concept.deep_learning.boltzmann_machines`, `concept.machine_learning.decision_trees`, `concept.ml_engineering.pytorch`, `concept.ml_engineering.ollama`, `concept.ml_engineering.deployment`
+- Retrieved instead: `concept.deep_learning.boltzmann_machines`, `concept.ml_engineering.pytorch`, `concept.machine_learning.decision_trees`, `concept.ml_engineering.ollama`, `concept.systems.operating_systems`
 
 ### R2 (path)
 

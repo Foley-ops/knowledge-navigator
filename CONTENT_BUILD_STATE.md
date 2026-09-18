@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 24 of 28.** 10 of 10 pages in it are still to write.
+**Batch 25 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/ppo.md` — PPO (concept.reinforcement_learning.ppo)
-- `content/concepts/sac.md` — SAC (concept.reinforcement_learning.sac)
-- `content/concepts/model-based-reinforcement-learning.md` — Model-Based Reinforcement Learning (concept.reinforcement_learning.model_based_reinforcement_learning)
-- `content/concepts/multi-armed-bandits.md` — Multi-Armed Bandits (concept.reinforcement_learning.multi_armed_bandits)
-- `content/concepts/imitation-learning.md` — Imitation Learning (concept.reinforcement_learning.imitation_learning)
-- `content/concepts/inverse-reinforcement-learning.md` — Inverse Reinforcement Learning (concept.reinforcement_learning.inverse_reinforcement_learning)
-- `content/concepts/offline-reinforcement-learning.md` — Offline Reinforcement Learning (concept.reinforcement_learning.offline_reinforcement_learning)
-- `content/concepts/multi-agent-reinforcement-learning.md` — Multi-Agent Reinforcement Learning (concept.reinforcement_learning.multi_agent_reinforcement_learning)
-- `content/concepts/rlhf.md` — RLHF (concept.reinforcement_learning.rlhf)
-- `content/concepts/rlaif.md` — RLAIF (concept.reinforcement_learning.rlaif)
+- `content/concepts/uninformed-search.md` — Uninformed Search (concept.search.uninformed_search)
+- `content/concepts/a-star.md` — A* (concept.search.a_star)
+- `content/concepts/adversarial-search.md` — Adversarial Search (concept.search.adversarial_search)
+- `content/concepts/minimax.md` — Minimax (concept.search.minimax)
+- `content/concepts/monte-carlo-tree-search.md` — Monte Carlo Tree Search (concept.search.monte_carlo_tree_search)
+- `content/concepts/strips.md` — STRIPS (concept.planning.strips)
+- `content/concepts/pddl.md` — PDDL (concept.planning.pddl)
+- `content/concepts/hierarchical-planning.md` — Hierarchical Planning (concept.planning.hierarchical_planning)
+- `content/concepts/knowledge-representation.md` — Knowledge Representation (concept.symbolic_ai.knowledge_representation)
+- `content/concepts/ontologies.md` — Ontologies (concept.symbolic_ai.ontologies)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 241 |
-| Markdown pages in the corpus | 241 |
-| Tier 1 pages | 241 |
+| Candidates covered by a page | 251 |
+| Markdown pages in the corpus | 251 |
+| Tier 1 pages | 251 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 230 of 280 |
+| Planned pages written | 240 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 98 | 148 | 66% |
+| Artificial Intelligence | 108 | 148 | 73% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -63,7 +63,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Domains/Natural Language Processing | 0 | 5 |  |
 | Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
 | Artificial Intelligence/Other Traditions & Frontiers | 0 | 11 |  |
-| Artificial Intelligence/Reinforcement Learning | 9 | 19 |  |
+| Artificial Intelligence/Reinforcement Learning | 19 | 19 | complete |
 | Artificial Intelligence/Symbolic AI | 0 | 5 |  |
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-230 of the planned 280, in the order they were written.
+240 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -322,6 +322,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Policy Gradients | `concept.reinforcement_learning.policy_gradients` | tier 1 | covered |
 | REINFORCE | `concept.reinforcement_learning.reinforce` | tier 1 | covered |
 | Actor-Critic | `concept.reinforcement_learning.actor_critic` | tier 1 | covered |
+| PPO | `concept.reinforcement_learning.ppo` | tier 1 | covered |
+| SAC | `concept.reinforcement_learning.sac` | tier 1 | covered |
+| Model-Based Reinforcement Learning | `concept.reinforcement_learning.model_based_reinforcement_learning` | tier 1 | covered |
+| Multi-Armed Bandits | `concept.reinforcement_learning.multi_armed_bandits` | tier 1 | covered |
+| Imitation Learning | `concept.reinforcement_learning.imitation_learning` | tier 1 | covered |
+| Inverse Reinforcement Learning | `concept.reinforcement_learning.inverse_reinforcement_learning` | tier 1 | covered |
+| Offline Reinforcement Learning | `concept.reinforcement_learning.offline_reinforcement_learning` | tier 1 | covered |
+| Multi-Agent Reinforcement Learning | `concept.reinforcement_learning.multi_agent_reinforcement_learning` | tier 1 | covered |
+| RLHF | `concept.reinforcement_learning.rlhf` | tier 1 | covered |
+| RLAIF | `concept.reinforcement_learning.rlaif` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -675,20 +685,20 @@ it. Batches are ten pages each.
 | x | REINFORCE | `concept.reinforcement_learning.reinforce` | Artificial Intelligence/Reinforcement Learning |
 | x | Actor-Critic | `concept.reinforcement_learning.actor_critic` | Artificial Intelligence/Reinforcement Learning |
 
-### Batch 24
+### Batch 24 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | PPO | `concept.reinforcement_learning.ppo` | Artificial Intelligence/Reinforcement Learning |
-|   | SAC | `concept.reinforcement_learning.sac` | Artificial Intelligence/Reinforcement Learning |
-|   | Model-Based Reinforcement Learning | `concept.reinforcement_learning.model_based_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | Multi-Armed Bandits | `concept.reinforcement_learning.multi_armed_bandits` | Artificial Intelligence/Reinforcement Learning |
-|   | Imitation Learning | `concept.reinforcement_learning.imitation_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | Inverse Reinforcement Learning | `concept.reinforcement_learning.inverse_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | Offline Reinforcement Learning | `concept.reinforcement_learning.offline_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | Multi-Agent Reinforcement Learning | `concept.reinforcement_learning.multi_agent_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | RLHF | `concept.reinforcement_learning.rlhf` | Artificial Intelligence/Reinforcement Learning |
-|   | RLAIF | `concept.reinforcement_learning.rlaif` | Artificial Intelligence/Reinforcement Learning |
+| x | PPO | `concept.reinforcement_learning.ppo` | Artificial Intelligence/Reinforcement Learning |
+| x | SAC | `concept.reinforcement_learning.sac` | Artificial Intelligence/Reinforcement Learning |
+| x | Model-Based Reinforcement Learning | `concept.reinforcement_learning.model_based_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | Multi-Armed Bandits | `concept.reinforcement_learning.multi_armed_bandits` | Artificial Intelligence/Reinforcement Learning |
+| x | Imitation Learning | `concept.reinforcement_learning.imitation_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | Inverse Reinforcement Learning | `concept.reinforcement_learning.inverse_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | Offline Reinforcement Learning | `concept.reinforcement_learning.offline_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | Multi-Agent Reinforcement Learning | `concept.reinforcement_learning.multi_agent_reinforcement_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | RLHF | `concept.reinforcement_learning.rlhf` | Artificial Intelligence/Reinforcement Learning |
+| x | RLAIF | `concept.reinforcement_learning.rlaif` | Artificial Intelligence/Reinforcement Learning |
 
 ### Batch 25
 
