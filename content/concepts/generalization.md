@@ -126,7 +126,7 @@ Two pictures, both useful, both leaky.
 The first is the exam analogy: the training set is the practice problems, the
 test distribution is the real exam, and memorising the practice answers does not
 help. This is the picture most people arrive with, and it is the one modern deep
-learning broke. Large networks *do* memorise — the same architecture and
+learning broke. Large networks _do_ memorise — the same architecture and
 optimiser that reach a few percent error on real labels can drive training error
 to zero on entirely random labels — and yet they still generalize when the labels
 are real. Memorisation and generalization turn out not to be exclusive.
@@ -134,7 +134,7 @@ are real. Memorisation and generalization turn out not to be exclusive.
 The second picture is better: searching a large family of candidate functions
 gives you many chances to fit the sample by luck. The more functions you are
 willing to consider, the more likely one of them matches $n$ observations by
-coincidence, so a bound must control the *worst* member of the class, not the one
+coincidence, so a bound must control the _worst_ member of the class, not the one
 you happened to pick. This is the uniform-convergence picture, and its own leak is
 the reason the subject is unfinished: real training does not search the class
 uniformly. Gradient descent from a small initialisation reaches a particular,
@@ -174,7 +174,7 @@ subject.
 
 ## Formal treatment
 
-Let $\ell$ take values in $[0,1]$ and let $h$ be fixed *before* $S$ is drawn.
+Let $\ell$ take values in $[0,1]$ and let $h$ be fixed _before_ $S$ is drawn.
 Hoeffding's inequality gives
 
 $$

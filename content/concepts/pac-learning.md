@@ -80,7 +80,7 @@ unresolved_references:
 ## Definition
 
 **PAC learning** — probably approximately correct learning — is a definition of
-learnability that applies to a *hypothesis class*, not to an algorithm and not
+learnability that applies to a _hypothesis class_, not to an algorithm and not
 to a dataset. A class $\mathcal H$ of functions from a domain $\mathcal X$ to
 $\{0,1\}$ is PAC learnable if there exists a learning algorithm $A$ and a
 sample-size function $m_{\mathcal H}(\epsilon, \delta)$ such that for every
@@ -90,8 +90,8 @@ $\mathcal H$, feeding $A$ at least $m_{\mathcal H}(\epsilon,\delta)$
 independent examples yields a hypothesis whose error under $\mathcal D$ is at
 most $\epsilon$, except on a set of samples of probability at most $\delta$.
 
-Two words carry the weight. *Approximately*: the output is allowed error
-$\epsilon$, not zero. *Probably*: the guarantee may fail with probability
+Two words carry the weight. _Approximately_: the output is allowed error
+$\epsilon$, not zero. _Probably_: the guarantee may fail with probability
 $\delta$, because an unlucky sample can be unrepresentative and no finite
 sample rules that out.
 
@@ -99,7 +99,7 @@ sample rules that out.
 
 Before 1984 there was no agreed answer to "has this system learned?" that was
 both falsifiable and computational. PAC gave one, and with it the machinery to
-prove that a class *cannot* be learned — which is the more useful half. It
+prove that a class _cannot_ be learned — which is the more useful half. It
 converts vague questions about model capacity into a single number, the sample
 complexity, that can be bounded above by an algorithm and below by an
 adversary, and it makes explicit the thing practitioners rediscover every time
@@ -116,15 +116,15 @@ Think of an opinion poll. Nobody can promise a poll is within three points of
 the truth — the sample might be freakish — but one can promise it is within
 three points nineteen times in twenty. PAC is that promise lifted from
 estimating one number to choosing a whole function, with one extra demand: the
-promise must hold for *every* population, since the learner is not told the
+promise must hold for _every_ population, since the learner is not told the
 distribution.
 
 The analogy breaks in an important place. In a poll you estimate a fixed
 quantity, and the sampling error follows from a single concentration bound. A
-learner *chooses* its hypothesis after seeing the data, so the hypothesis it
+learner _chooses_ its hypothesis after seeing the data, so the hypothesis it
 returns is correlated with the sample, and its empirical error is optimistically
-biased. That is why PAC proofs bound the deviation *uniformly over the whole
-class* rather than for one fixed function — and why the size of the class, not
+biased. That is why PAC proofs bound the deviation _uniformly over the whole
+class_ rather than for one fixed function — and why the size of the class, not
 the number of parameters, is what appears in the bound.
 
 ## Concrete example
@@ -193,7 +193,7 @@ $$
 $$
 
 The quantifier order is the definition. $A$ and $m_{\mathcal H}$ are fixed
-*before* $\mathcal D$ and $f$ are chosen, so neither may depend on them: this is
+_before_ $\mathcal D$ and $f$ are chosen, so neither may depend on them: this is
 what "distribution-free" means. The inner probability is over the draw of the
 sample $S$; the $\epsilon$ is over a fresh point from $\mathcal D$. Valiant's
 framework adds that $m_{\mathcal H}$ be polynomial in $1/\epsilon$ and
@@ -263,7 +263,7 @@ sometimes converts an NP-hard problem into a polynomial-time one.
 
 ## Uses and applicability
 
-Reach for PAC when the question is whether a class is learnable *in principle*,
+Reach for PAC when the question is whether a class is learnable _in principle_,
 when comparing the intrinsic difficulty of two hypothesis classes, or when you
 need a guarantee that holds without assuming anything about the data source. It
 is the right frame for lower bounds — the no-free-lunch theorem, which says no
@@ -280,7 +280,7 @@ vacuous even though the theorems are true.
 ## Limitations and common mistakes
 
 The commonest misreading is treating $1-\delta$ as an accuracy: "correct 95% of
-the time". It is not. $\delta$ is the probability that the *training sample* was
+the time". It is not. $\delta$ is the probability that the _training sample_ was
 bad enough to break the guarantee; $\epsilon$ is the error rate on future data.
 Two different randomness sources, two different parameters.
 
@@ -322,7 +322,7 @@ rule you can actually run.
 ## History and attribution
 
 Leslie Valiant introduced the model in 1984 in "A Theory of the Learnable",
-asking what could be acquired from examples *in polynomial time* — his concern
+asking what could be acquired from examples _in polynomial time_ — his concern
 was knowledge acquisition in artificial intelligence, and the novelty was
 insisting that learnability be a computational question rather than only a
 statistical one. He received the Turing Award in 2010, this work prominent among
@@ -342,17 +342,17 @@ explains why the field carries two vocabularies for one set of results.
 
 ## Sources
 
-*Understanding Machine Learning* is the canonical modern treatment and the
+_Understanding Machine Learning_ is the canonical modern treatment and the
 reference for essentially everything here: the definitions with their quantifier
 order, the finite-class and rectangle examples, the fundamental theorem, the
 hardness of proper 3-term DNF learning, PAC-Bayes, and the bibliographic notes
 that place Valiant beside Vapnik and Chervonenkis. Vershynin's
-*High-Dimensional Probability* supplies the probabilistic machinery underneath —
+_High-Dimensional Probability_ supplies the probabilistic machinery underneath —
 Hoeffding's inequality, the union bound, Sauer's lemma and the uniform law of
 large numbers — and is the place to go if the proofs rather than the statements
-are what you need. The *Deep Learning* book is the honest account of why these
-bounds are not used numerically for large models. *The Elements of Statistical
-Learning* covers VC dimension and structural risk minimisation from the model
+are what you need. The _Deep Learning_ book is the honest account of why these
+bounds are not used numerically for large models. _The Elements of Statistical
+Learning_ covers VC dimension and structural risk minimisation from the model
 selection side, which is where a practitioner is most likely to meet the theory.
 
 ## Prerequisites and next connections

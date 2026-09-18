@@ -74,7 +74,7 @@ claims: []
 
 **Supervised learning** is the problem of picking a function $h : \mathcal{X} \to \mathcal{Y}$ out of
 a declared set of candidates, using a finite sample of labelled pairs $(x_i, y_i)$, so as to minimise
-the expected loss of $h$ on *future* pairs from the same unknown distribution. Three things are fixed
+the expected loss of $h$ on _future_ pairs from the same unknown distribution. Three things are fixed
 before any fitting happens: a **hypothesis class** $\mathcal{H}$, the functions the learner may
 return; a **loss** $\ell(\hat{y}, y)$, what a wrong answer costs; and the process that sampled the
 data. The learner can evaluate its loss only on the sample it holds. The quantity it cares about is
@@ -109,9 +109,9 @@ and pretending otherwise is the standard way people are surprised by a model tha
 Eight soil samples, one feature (pH), and a binary label for whether a crop established. The
 generating rule is "$1$ for pH in $[5.5, 7.5]$", and the reading at pH 6.0 was mislabelled:
 
-| pH | 4.5 | 5.0 | 5.5 | 6.0 | 6.5 | 7.0 | 7.5 | 8.0 |
-|----|-----|-----|-----|-----|-----|-----|-----|-----|
-| y  | 0   | 0   | 1   | 0   | 1   | 1   | 1   | 0   |
+| pH  | 4.5 | 5.0 | 5.5 | 6.0 | 6.5 | 7.0 | 7.5 | 8.0 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| y   | 0   | 0   | 1   | 0   | 1   | 1   | 1   | 0   |
 
 Take $\mathcal{H}$ to be the thresholds $h_\theta(x) = \mathbb{1}[x \ge \theta]$ and $\ell$ to be
 0–1 loss. Empirical risk minimisation is then a one-line search:
@@ -171,7 +171,7 @@ hence $L_{\mathcal{D}}(\hat{h}) \le \min_{h \in \mathcal{H}} L_{\mathcal{D}}(h) 
 infinite classes the $\log|\mathcal{H}|$ is replaced by a capacity measure such as the VC dimension.
 
 This also explains the **train/validation/test** discipline exactly. Validation error is used to
-*choose* among candidates, so the chosen model's validation score inherits the union-bound penalty
+_choose_ among candidates, so the chosen model's validation score inherits the union-bound penalty
 over everything you tried and is optimistic. A test set touched once evaluates a single hypothesis
 fixed before the data was seen, so no union bound is needed and plain Hoeffding applies: with
 probability $1 - \delta$ on a fresh sample of size $n$,
@@ -183,19 +183,19 @@ tried, and the guarantee degrades silently.
 
 Four hypotheses carry the results above, and each fails in a recognisable way.
 
-*Identically distributed train and test data.* The bounds compare $L_S$ to $L_{\mathcal{D}}$ for one
+_Identically distributed train and test data._ The bounds compare $L_S$ to $L_{\mathcal{D}}$ for one
 $\mathcal{D}$. Under distribution shift there are two distributions and the inequality says nothing
 about the second — not a loose bound, no bound.
 
-*Independence.* Time series, repeated measurements of one patient, and multiple crops from one
+_Independence._ Time series, repeated measurements of one patient, and multiple crops from one
 field all break it. The effective sample size is the number of independent groups, not of rows, so
 a random row-level split leaks information across the boundary and inflates the estimate.
 
-*A hypothesis class fixed in advance.* $\mathcal{H}$ must not depend on $S$. Choosing features by
+_A hypothesis class fixed in advance._ $\mathcal{H}$ must not depend on $S$. Choosing features by
 inspecting all the labels and only then splitting violates this, and the resulting estimate can be
 arbitrarily optimistic.
 
-*A bounded, decision-relevant loss.* The $[0, 1]$ range is what Hoeffding needs; unbounded losses
+_A bounded, decision-relevant loss._ The $[0, 1]$ range is what Hoeffding needs; unbounded losses
 need heavier-tailed arguments. More practically, $\ell$ must encode the real cost, because
 minimising the wrong loss well is still minimising the wrong thing.
 
@@ -274,7 +274,7 @@ model of information storage in the brain, learns a linear classifier by correct
 labelled examples, and is the ancestor of the error-driven fitting loop still in use. The
 statistical framing — hypothesis class, risk, uniform convergence — came from Vapnik and
 Chervonenkis's work on the convergence of empirical frequencies, and the computational framing from
-Valiant's PAC model, which asked what is *efficiently* learnable rather than merely learnable in the
+Valiant's PAC model, which asked what is _efficiently_ learnable rather than merely learnable in the
 limit. Shalev-Shwartz and Ben-David's bibliographic remarks trace those two threads and their
 merger into the modern treatment.
 

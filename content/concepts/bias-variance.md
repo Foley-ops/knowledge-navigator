@@ -82,7 +82,7 @@ claims: []
 
 The **bias-variance decomposition** splits the expected squared error of a
 learning procedure, at one input point, into three non-negative pieces: how far
-the procedure's *average* prediction sits from the truth, how much its
+the procedure's _average_ prediction sits from the truth, how much its
 prediction moves when the training set is redrawn, and the noise in the label
 that no predictor can remove. At a test point $x_0$,
 
@@ -93,7 +93,7 @@ $$
 + \underbrace{\mathbb{E}_D\big[(\hat f_D(x_0) - \bar f(x_0))^2\big]}_{\text{variance}} .
 $$
 
-Bias and variance are properties of a *procedure* — an algorithm, a hypothesis
+Bias and variance are properties of a _procedure_ — an algorithm, a hypothesis
 class and a sample size together — evaluated against a distribution. They are
 not properties of the one model you happen to have trained.
 
@@ -117,7 +117,7 @@ these axes.
 The standard picture is a dart board: bias is how far the cluster of darts sits
 from the bullseye, variance is how spread the cluster is. The analogy is
 genuinely useful and breaks in two places worth naming. First, each dart is a
-model trained on a *different* dataset that you never see — you throw exactly
+model trained on a _different_ dataset that you never see — you throw exactly
 one dart, and the cluster is a thought experiment. Second, the bullseye moves:
 bias is defined at each $x_0$ separately, so a procedure can aim high in one
 region of input space and low in another.
@@ -133,13 +133,13 @@ average of $k$ independent noisy labels is $\sigma^2/k$, and the bias is
 $f(x_0)$ minus the average of $f$ over the window.
 
 | $k$ | bias$^2$ | variance | total error |
-| --- | --- | --- | --- |
-| 1 | 0.0000 | 0.2500 | 0.5000 |
-| 3 | 0.00004 | 0.0833 | 0.3334 |
-| 5 | 0.0004 | 0.0500 | 0.3004 |
-| 7 | 0.0016 | 0.0357 | 0.2873 |
-| 9 | 0.0044 | 0.0278 | 0.2822 |
-| 11 | 0.0100 | 0.0227 | 0.2827 |
+| --- | -------- | -------- | ----------- |
+| 1   | 0.0000   | 0.2500   | 0.5000      |
+| 3   | 0.00004  | 0.0833   | 0.3334      |
+| 5   | 0.0004   | 0.0500   | 0.3004      |
+| 7   | 0.0016   | 0.0357   | 0.2873      |
+| 9   | 0.0044   | 0.0278   | 0.2822      |
+| 11  | 0.0100   | 0.0227   | 0.2827      |
 
 At $k=1$ the fit is unbiased at this point and pays the full noise variance
 twice over. As $k$ grows, variance falls like $1/k$ while the window reaches
@@ -181,7 +181,7 @@ $\mathbb{E}[\sigma^2(X)]$ if the noise is heteroscedastic.
 
 Both steps used the fact that squared error is a quadratic form, so mean-zero
 cross terms disappear. Nothing comparable holds for 0-1 loss: there, variance
-around a systematically wrong prediction can *reduce* error, because a noisy
+around a systematically wrong prediction can _reduce_ error, because a noisy
 estimate sometimes lands on the correct side of the decision boundary. Unified
 decompositions have been proposed for 0-1 and log loss, but they require a
 loss-specific definition of the central prediction, and the terms no longer
@@ -199,7 +199,7 @@ sample size has near-singular Gram matrices and a variance term that can be
 enormous — which is exactly where the double-descent peak sits.
 
 For randomised procedures the expectation must run over the joint randomness of
-the sample *and* the algorithm: initialisation, minibatch order, bagging draws,
+the sample _and_ the algorithm: initialisation, minibatch order, bagging draws,
 dropout masks. Vary the seed only and you measure something narrower than the
 variance in the identity.
 
@@ -207,7 +207,7 @@ Train and test must come from the same distribution, and the sample must be
 i.i.d. from it; the learning-theory treatments make this explicit because
 without it no finite-sample statement about unseen data is available at all.
 Under covariate shift the identity still holds pointwise, but $\bar f$ is the
-average under the *training* distribution, so shift hides inside the bias term
+average under the _training_ distribution, so shift hides inside the bias term
 rather than appearing as a fourth one.
 
 Finally, the whole decomposition is relative to a fixed $n$. "This model has high
@@ -303,9 +303,9 @@ confined largely to linear and random-feature models.
 
 ## Sources
 
-*The Elements of Statistical Learning* carries the decomposition, the exact
+_The Elements of Statistical Learning_ carries the decomposition, the exact
 $k$-NN formula used in the worked example, the optimism and effective-degrees-of-freedom
-material, and the bagging analysis. Murphy's *Probabilistic Machine Learning*
+material, and the bagging analysis. Murphy's _Probabilistic Machine Learning_
 states the decomposition and is explicit that the tradeoff is a property of
 squared loss rather than of learning in general. Shalev-Shwartz and Ben-David
 supply the approximation-estimation view and the sampling assumptions any

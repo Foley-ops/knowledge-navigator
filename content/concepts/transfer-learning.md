@@ -88,13 +88,13 @@ claims: []
 
 ## Definition
 
-**Transfer learning** is the practice of using data or parameters from a *source*
-task to improve learning on a different *target* task. In deep learning it almost
+**Transfer learning** is the practice of using data or parameters from a _source_
+task to improve learning on a different _target_ task. In deep learning it almost
 always takes one concrete form: split a trained network into a representation
 $\phi$ and a task head $g$, throw away $g$, keep $\phi$, and fit a new head on the
 target data. Two things can then happen to $\phi$.
 
-- **Feature extraction** (or *linear probing*): $\phi$ is frozen and only the new
+- **Feature extraction** (or _linear probing_): $\phi$ is frozen and only the new
   head is trained, so the pretrained network is a fixed function from inputs to
   vectors.
 - **Fine-tuning**: gradients continue into $\phi$, so the pretrained weights are an
@@ -114,7 +114,7 @@ estimation problem into a tractable one, because the expensive part — learning
 edges, textures and syntax look like — was paid for once, on data the practitioner
 will never see.
 
-This also changed what a model *is*. Since BERT, the normal unit of work in
+This also changed what a model _is_. Since BERT, the normal unit of work in
 language processing is not a task-specific architecture but one pretrained network
 fine-tuned separately per task, at a cost of hours rather than weeks. The same
 shift happened in vision a few years earlier.
@@ -201,7 +201,7 @@ $$
 $$
 
 with $\theta$ held at $\theta_S$. If $g_w$ is linear and $\ell$ convex this is a
-convex problem with a unique optimum, which is why the *linear probe* is the
+convex problem with a unique optimum, which is why the _linear probe_ is the
 standard yardstick for representation quality: it measures the representation, not
 the optimisation run. Fine-tuning instead solves
 
@@ -238,8 +238,8 @@ same normalisation constants, same tokeniser. Feeding differently-normalised ima
 to a frozen backbone degrades its features silently, with no error and only worse
 numbers.
 
-There must be shared structure, in the sense of a small $\lambda$ above. *Deep
-Learning* puts this as a requirement that the tasks share underlying factors of
+There must be shared structure, in the sense of a small $\lambda$ above. _Deep
+Learning_ puts this as a requirement that the tasks share underlying factors of
 variation; when they do not, nothing in the procedure creates them.
 
 The number of unfrozen parameters must be supportable by the number of target
@@ -266,7 +266,7 @@ final number, so its value is compute, not accuracy. When the modality does not
 match — arbitrary tabular schemas, most scientific instrument data — no pretrained
 $\phi$ computes anything meaningful about your inputs. And when the requirement is
 robustness rather than accuracy: CLIP's authors found that fine-tuning raised
-in-distribution accuracy while *reducing* effective robustness under distribution
+in-distribution accuracy while _reducing_ effective robustness under distribution
 shift, so the better in-distribution model was the worse model to ship.
 
 ## Limitations and common mistakes
@@ -332,15 +332,15 @@ a single added output layer, reached state of the art across eleven tasks.
 
 ## Sources
 
-The *Deep Learning* textbook's chapter on representation learning gives the
+The _Deep Learning_ textbook's chapter on representation learning gives the
 conceptual framing: what transfer requires in terms of shared factors of variation,
 and how domain adaptation, concept drift and zero-shot learning sit in one family.
-*BERT* is the primary document for the pretrain-then-fine-tune paradigm in language
+_BERT_ is the primary document for the pretrain-then-fine-tune paradigm in language
 and holds the direct comparison of the frozen feature-based route against
-fine-tuning. *Learning Transferable Visual Models From Natural Language
-Supervision* is the reference for zero-shot transfer, for linear probing as an
-evaluation protocol, and for the robustness trade-off. The *ImageNet Large Scale
-Visual Recognition Challenge* paper documents the dataset scale quoted in the
+fine-tuning. _Learning Transferable Visual Models From Natural Language
+Supervision_ is the reference for zero-shot transfer, for linear probing as an
+evaluation protocol, and for the robustness trade-off. The _ImageNet Large Scale
+Visual Recognition Challenge_ paper documents the dataset scale quoted in the
 example.
 
 ## Prerequisites and next connections

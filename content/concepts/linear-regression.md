@@ -80,7 +80,7 @@ claims: []
 
 **Linear regression** models a scalar response $y$ as $x^{\top}\beta$ plus noise
 and estimates $\beta$ by minimising the squared error
-$\lVert y - X\beta \rVert_2^2$. "Linear" constrains the *parameters*, not the
+$\lVert y - X\beta \rVert_2^2$. "Linear" constrains the _parameters_, not the
 predictors: $y = \beta_0 + \beta_1 x + \beta_2 x^2$ is a linear regression in
 $(\beta_0, \beta_1, \beta_2)$, and any fixed basis expansion of the inputs —
 polynomials, splines, indicator variables for categories — stays inside the
@@ -147,7 +147,7 @@ $S_{xy}/(S_{xx} + \lambda)$: at $\lambda = 1$ it is $7/6 \approx 1.167$, at
 $\lambda = 5$ it is $0.7$ — half the unpenalised value, because the penalty now
 matches the signal in $S_{xx}$.
 
-In code, note what is *not* called:
+In code, note what is _not_ called:
 
 ```python
 import numpy as np
@@ -185,12 +185,12 @@ $c \in \mathbb{R}^p$, the estimator $c^{\top}\hat\beta$ has the smallest varianc
 among all estimators $a^{\top}y$ that are unbiased for $c^{\top}\beta$, and
 $\operatorname{Cov}(\hat\beta) = \sigma^2 (X^{\top}X)^{-1}$.
 
-Three things this does *not* say. It assumes nothing about the shape of the
+Three things this does _not_ say. It assumes nothing about the shape of the
 error distribution — only zero mean, constant variance $\sigma^2$
 (homoscedasticity) and zero correlation between observations. Normality is
 needed later, to make $t$ and $F$ statistics exactly distributed in finite
 samples and to identify $\hat\beta$ as the maximum-likelihood estimate, but not
-for the theorem. And "best" is best *within the class of linear unbiased*
+for the theorem. And "best" is best _within the class of linear unbiased_
 estimators; nonlinear or biased estimators are unconstrained by it.
 
 **Numerics.** Forming $X^{\top}X$ squares the conditioning:
@@ -210,7 +210,7 @@ minimum-norm solution $\hat\beta = X^{+}y$ via the pseudoinverse; this is what
 
 Fitting requires nothing. Least squares is a deterministic projection and always
 returns a best approximation, whatever generated the data. The assumptions buy
-*interpretation*, and each buys a different piece:
+_interpretation_, and each buys a different piece:
 
 - **Correct linear form.** $\mathbb{E}[y \mid X] = X\beta$ for the chosen basis.
   Dropped, the coefficients estimate the best linear approximation to a
@@ -300,14 +300,14 @@ Hoerl and Kennard in 1970, the lasso to Tibshirani in 1996.
 
 ## Sources
 
-*The Elements of Statistical Learning* chapter 3 matches this page most closely:
+_The Elements of Statistical Learning_ chapter 3 matches this page most closely:
 least squares, the projection geometry, the Gauss–Markov statement, the QR route,
 and ridge, lasso and their relatives in one place, with bibliographic notes
 naming Hoerl–Kennard and Tibshirani. MIT 18.06 develops the projection-matrix
 picture and small worked line fits from the linear algebra side. MIT 18.065
 treats least squares as a numerical problem — which factorisation to use, what
 conditioning costs, how the pseudoinverse handles rank deficiency. Murphy's
-*Probabilistic Machine Learning* supplies the probabilistic reading: least
+_Probabilistic Machine Learning_ supplies the probabilistic reading: least
 squares as Gaussian maximum likelihood, ridge and lasso as maximum a posteriori
 estimates under Gaussian and Laplace priors.
 

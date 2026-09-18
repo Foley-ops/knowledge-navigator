@@ -767,14 +767,14 @@ candidates:
     title: Support Vector Machines
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.support_vector_machines
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.kernel_methods
     title: Kernel Methods
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.kernel_methods
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.decision_trees
     title: Decision Trees
     categories:
@@ -791,32 +791,32 @@ candidates:
     title: Gradient Boosting
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.gradient_boosting
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.k_nearest_neighbors
     title: k-Nearest Neighbors
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.k_nearest_neighbors
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.naive_bayes
     title: Naive Bayes
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.naive_bayes
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.k_means
     title: k-Means
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.k_means
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.hierarchical_clustering
     title: Hierarchical Clustering
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.hierarchical_clustering
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.dbscan
     title: DBSCAN
     categories:
@@ -833,14 +833,14 @@ candidates:
     title: Principal Component Analysis
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.principal_component_analysis
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.independent_component_analysis
     title: Independent Component Analysis
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.independent_component_analysis
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.t_sne
     title: t-SNE
     categories:
@@ -857,8 +857,8 @@ candidates:
     title: Gaussian Processes
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.gaussian_processes
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.hidden_markov_models
     title: Hidden Markov Models
     categories:

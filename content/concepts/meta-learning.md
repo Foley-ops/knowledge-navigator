@@ -79,7 +79,7 @@ claims: []
 
 ## Definition
 
-**Meta-learning** treats a *task* rather than an example as the unit of data:
+**Meta-learning** treats a _task_ rather than an example as the unit of data:
 it optimises some meta-parameter $\theta$ over a distribution of tasks so that
 a task drawn fresh from that distribution can be learned from very few
 examples. The structure is bilevel. An **inner loop** adapts to a single task
@@ -96,7 +96,7 @@ per class, and many real problems refuse to supply them: a rare disease with
 forty confirmed cases, a robot that must adapt on its first day in a new
 building. The standard answer is to transfer a representation learned elsewhere
 and hope it fits. Meta-learning makes the hope an objective: it measures,
-during training, how well the model does *after* being given $k$ examples, and
+during training, how well the model does _after_ being given $k$ examples, and
 optimises that. The same machinery extends past few-shot classification into
 learned optimisers and learned hyperparameters.
 
@@ -105,8 +105,8 @@ learned optimisers and learned hyperparameters.
 The picture worth carrying is geometric. Multi-task learning looks for one
 parameter vector that is simultaneously decent at every task. Optimisation-based
 meta-learning looks for a point from which a short gradient descent path reaches
-a good solution for *any* task in the family — a point that may be mediocre at
-every task on its own, but has small *optimisation distance* to all of them.
+a good solution for _any_ task in the family — a point that may be mediocre at
+every task on its own, but has small _optimisation distance_ to all of them.
 
 The tempting analogy is a student who has sat many exams and learned how to
 revise. It breaks in a specific way: the student's skill generalises to subjects
@@ -201,7 +201,7 @@ predictions for the query, with adaptation living in the activations.
 ## Assumptions and requirements
 
 The load-bearing assumption is that meta-training and meta-test tasks come from
-the *same* task distribution. Nothing in the formulation protects against a
+the _same_ task distribution. Nothing in the formulation protects against a
 shift in task structure, and cross-domain few-shot accuracy typically drops
 sharply.
 
@@ -282,7 +282,7 @@ inference time.
 The idea has several independent origins. Schmidhuber's 1987 diploma thesis
 proposed self-referential systems that modify their own learning; Bengio, Bengio
 and Cloutier explored learning a synaptic learning rule in 1991; Thrun and
-Pratt's 1998 edited volume *Learning to Learn* gave the field its name and its
+Pratt's 1998 edited volume _Learning to Learn_ gave the field its name and its
 framing as generalisation across tasks; and Hochreiter, Younger and Conwell
 showed in 2001 that a recurrent network could carry a learning algorithm in its
 activations.
@@ -300,7 +300,7 @@ learning.
 The MAML paper is the primary reference for the bilevel formulation, the exact
 meta-gradient including its Hessian factor, the first-order approximation with
 its local-linearity argument, and the benchmark number quoted above.
-Goodfellow, Bengio and Courville's *Deep Learning* covers the surrounding
+Goodfellow, Bengio and Courville's _Deep Learning_ covers the surrounding
 motivation — transfer, one-shot and zero-shot learning through shared
 representations — rather than meta-learning algorithms themselves. The GPT-3
 paper is the reference for in-context few-shot learning as an alternative route

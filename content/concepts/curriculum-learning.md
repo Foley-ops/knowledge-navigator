@@ -126,8 +126,8 @@ The more honest picture is the continuation one: you are not teaching, you are
 smoothing. Restricting training to easy examples defines a different, simpler
 loss surface; the pacing function slowly turns that surface back into the one you
 actually care about. Curricula fail when the simple surface's minimum is not near
-any good minimum of the real one, which is why "easy" must mean easy *for this
-model on this objective*, not easy for a person to describe.
+any good minimum of the real one, which is why "easy" must mean easy _for this
+model on this objective_, not easy for a person to describe.
 
 ## Concrete example
 
@@ -204,8 +204,8 @@ paper presents it as one.
 
 ## Assumptions and requirements
 
-The difficulty measure must correlate with what *this model* finds hard at *this
-stage*. A proxy chosen by human intuition — sentence length, object size — that
+The difficulty measure must correlate with what _this model_ finds hard at _this
+stage_. A proxy chosen by human intuition — sentence length, object size — that
 turns out to be uncorrelated with the model's loss makes the curriculum a random
 reordering with extra machinery.
 
@@ -314,11 +314,11 @@ cited in the 2009 paper as the direct antecedent. In neural networks, Elman's
 structure when input complexity or memory was restricted early, and failing
 without that restriction.
 
-The term *curriculum learning* and the continuation-method formalisation are due
+The term _curriculum learning_ and the continuation-method formalisation are due
 to Bengio, Louradour, Collobert and Weston at ICML 2009, who were motivated by
 the difficulty of optimising deep networks in the pre-ReLU, pre-batch-norm era —
 a context worth remembering, since several of that era's optimisation problems
-were later solved by architecture and initialisation instead. *Deep Learning*
+were later solved by architecture and initialisation instead. _Deep Learning_
 (2016) treats it in the optimisation chapter, as one continuation strategy among
 several. Self-paced learning is due to Kumar, Packer and Koller (2010), and
 bandit-driven automated curricula appeared around 2017. The systematic

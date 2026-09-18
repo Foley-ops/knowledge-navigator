@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T01:20:31.206Z",
-  "corpusHash": "5b2fc61ce704c98d2bd7d7ab1f66b65110de1ffc476c6ee05da323eb66231f90",
-  "atlasHash": "e96014607d7b0fe642369ea1af996bd15ab47ebda8e0b6c952b1f1d7718a70f6",
+  "builtAt": "2026-09-18T01:40:33.479Z",
+  "corpusHash": "419d9356cf14d419c2892c8674671ea70381d572a0c8946211c62104d8f6013c",
+  "atlasHash": "ce5382f1ee5f6eb6053b6249e1c31a7e9d9f497e0b89f9c0432e3744c1f0de36",
   "counts": {
-    "concepts": 161,
-    "relationships": 600,
+    "concepts": 171,
+    "relationships": 640,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 161,
+      "1": 171,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 161,
+      "markdown": 171,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 161
+      "generated-draft": 171
     },
-    "conceptsWithArticle": 161,
+    "conceptsWithArticle": 171,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 130,
+      "candidate": 120,
       "proposed-tier-3": 0,
-      "covered": 161,
+      "covered": 171,
       "deferred": 0
     },
-    "unresolvedReferences": 224,
-    "unresolvedGroups": 224,
+    "unresolvedReferences": 230,
+    "unresolvedGroups": 230,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -62,23 +62,43 @@
       "primaryConceptIds": [
         "concept.machine_learning.bias_variance",
         "concept.machine_learning.decision_trees",
+        "concept.machine_learning.gaussian_processes",
         "concept.machine_learning.generalization",
         "concept.machine_learning.generalized_linear_models",
+        "concept.machine_learning.gradient_boosting",
+        "concept.machine_learning.hierarchical_clustering",
+        "concept.machine_learning.independent_component_analysis",
+        "concept.machine_learning.k_means",
+        "concept.machine_learning.k_nearest_neighbors",
+        "concept.machine_learning.kernel_methods",
         "concept.machine_learning.linear_regression",
         "concept.machine_learning.logistic_regression",
+        "concept.machine_learning.naive_bayes",
         "concept.machine_learning.pac_learning",
+        "concept.machine_learning.principal_component_analysis",
         "concept.machine_learning.random_forests",
+        "concept.machine_learning.support_vector_machines",
         "concept.machine_learning.vc_dimension"
       ],
       "conceptIds": [
         "concept.machine_learning.bias_variance",
         "concept.machine_learning.decision_trees",
+        "concept.machine_learning.gaussian_processes",
         "concept.machine_learning.generalization",
         "concept.machine_learning.generalized_linear_models",
+        "concept.machine_learning.gradient_boosting",
+        "concept.machine_learning.hierarchical_clustering",
+        "concept.machine_learning.independent_component_analysis",
+        "concept.machine_learning.k_means",
+        "concept.machine_learning.k_nearest_neighbors",
+        "concept.machine_learning.kernel_methods",
         "concept.machine_learning.linear_regression",
         "concept.machine_learning.logistic_regression",
+        "concept.machine_learning.naive_bayes",
         "concept.machine_learning.pac_learning",
+        "concept.machine_learning.principal_component_analysis",
         "concept.machine_learning.random_forests",
+        "concept.machine_learning.support_vector_machines",
         "concept.machine_learning.vc_dimension"
       ]
     },
@@ -2935,6 +2955,26 @@
       "claims": 0
     },
     {
+      "id": "concept.machine_learning.gaussian_processes",
+      "title": "Gaussian Processes",
+      "slug": "/concepts/gaussian-processes",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A Gaussian process is a probability distribution over functions whose every finite set of values is jointly Gaussian, enabling Bayesian prediction with kernel-controlled structure and explicit uncertainty.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.gaussian_processes",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.machine_learning.generalization",
       "title": "Generalization",
       "slug": "/concepts/generalization",
@@ -2976,6 +3016,126 @@
       "candidateId": "candidate.artificial_intelligence.classical_machine_learning.generalized_linear_models",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.gradient_boosting",
+      "title": "Gradient Boosting",
+      "slug": "/concepts/gradient-boosting",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Gradient boosting builds an additive predictor stage by stage, fitting each new weak learner to the current loss's negative gradient so that many simple corrections form a flexible model.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.gradient_boosting",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.hierarchical_clustering",
+      "title": "Hierarchical Clustering",
+      "slug": "/concepts/hierarchical-clustering",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Hierarchical clustering builds a nested family of groups by repeatedly merging the closest clusters or recursively splitting them, with a dendrogram recording every level of resolution.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.hierarchical_clustering",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.independent_component_analysis",
+      "title": "Independent Component Analysis",
+      "slug": "/concepts/independent-component-analysis",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Independent component analysis models observed vectors as linear mixtures of statistically independent non-Gaussian sources and estimates an unmixing transform from higher-order distributional structure.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.independent_component_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.k_means",
+      "title": "k-Means",
+      "slug": "/concepts/k-means",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "k-Means partitions numeric observations into k groups by alternating nearest-centroid assignments with centroid updates to reduce within-cluster squared Euclidean distance.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.k_means",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.k_nearest_neighbors",
+      "title": "k-Nearest Neighbors",
+      "slug": "/concepts/k-nearest-neighbors",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "k-Nearest Neighbors predicts from the labels or responses of the k training points closest to a query under a chosen distance, replacing an explicit fitted model with a local neighborhood rule.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.k_nearest_neighbors",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.kernel_methods",
+      "title": "Kernel Methods",
+      "slug": "/concepts/kernel-methods",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Kernel methods express learning algorithms through pairwise inner products supplied by a positive-semidefinite kernel, enabling linear procedures in implicit nonlinear feature spaces.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.kernel_methods",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -3022,6 +3182,26 @@
       "claims": 0
     },
     {
+      "id": "concept.machine_learning.naive_bayes",
+      "title": "Naive Bayes",
+      "slug": "/concepts/naive-bayes",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Naive Bayes classifies by applying Bayes' rule under a conditional-independence assumption that factorizes a high-dimensional class likelihood into simple feature-wise terms.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.naive_bayes",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.machine_learning.pac_learning",
       "title": "PAC Learning",
       "slug": "/concepts/pac-learning",
@@ -3044,6 +3224,26 @@
       "claims": 0
     },
     {
+      "id": "concept.machine_learning.principal_component_analysis",
+      "title": "Principal Component Analysis",
+      "slug": "/concepts/principal-component-analysis",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Principal component analysis rotates centered data onto orthogonal directions of decreasing sample variance, providing the optimal linear low-rank reconstruction under squared error.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.principal_component_analysis",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.machine_learning.random_forests",
       "title": "Random Forests",
       "slug": "/concepts/random-forests",
@@ -3063,6 +3263,26 @@
       "candidateId": "candidate.artificial_intelligence.classical_machine_learning.random_forests",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.support_vector_machines",
+      "title": "Support Vector Machines",
+      "slug": "/concepts/support-vector-machines",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A support vector machine chooses a separating hyperplane with maximum margin, using hinge loss and regularization for nonseparable data and kernels for nonlinear boundaries.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.support_vector_machines",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
       "claims": 0
     },
     {
@@ -7233,6 +7453,38 @@
       "condition": null
     },
     {
+      "id": "concept.machine_learning.gaussian_processes|contrasts_with|concept.machine_learning.linear_regression",
+      "source": "concept.machine_learning.gaussian_processes",
+      "target": "concept.machine_learning.linear_regression",
+      "type": "contrasts_with",
+      "note": "Bayesian linear regression is a finite-feature special case, while common Gaussian processes work directly with potentially infinite feature spaces.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gaussian_processes|requires|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.machine_learning.gaussian_processes",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "requires",
+      "note": "Stable inference uses factorizations such as Cholesky rather than explicitly inverting the covariance matrix.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gaussian_processes|requires|concept.machine_learning.kernel_methods",
+      "source": "concept.machine_learning.gaussian_processes",
+      "target": "concept.machine_learning.kernel_methods",
+      "type": "requires",
+      "note": "The covariance kernel must generate positive-semidefinite Gram matrices and encodes the process's similarity assumptions.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gaussian_processes|requires|concept.probability.bayesian_inference",
+      "source": "concept.machine_learning.gaussian_processes",
+      "target": "concept.probability.bayesian_inference",
+      "type": "requires",
+      "note": "Regression conditions a Gaussian prior over latent function values on noisy observations to obtain a posterior predictive distribution.",
+      "condition": null
+    },
+    {
       "id": "concept.machine_learning.generalization|contrasts_with|concept.machine_learning.bias_variance",
       "source": "concept.machine_learning.generalization",
       "target": "concept.machine_learning.bias_variance",
@@ -7294,6 +7546,198 @@
       "target": "concept.probability.frequentist_inference",
       "type": "requires",
       "note": "Fitting is maximum likelihood and the deviance table is a likelihood-ratio test, so a reader without sampling distributions and likelihood cannot follow what a GLM reports.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gradient_boosting|assumes|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.gradient_boosting",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "assumes",
+      "note": "Tree depth, shrinkage, and the number of stages trade approximation bias against variance and overfitting.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gradient_boosting|contrasts_with|concept.machine_learning.random_forests",
+      "source": "concept.machine_learning.gradient_boosting",
+      "target": "concept.machine_learning.random_forests",
+      "type": "contrasts_with",
+      "note": "Random forests fit decorrelated trees independently and average them, whereas gradient boosting fits trees sequentially so each stage corrects the current ensemble.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gradient_boosting|contributes_to|concept.learning.supervised_learning",
+      "source": "concept.machine_learning.gradient_boosting",
+      "target": "concept.learning.supervised_learning",
+      "type": "contributes_to",
+      "note": "Gradient boosting is a general supervised strategy for regression, classification, and ranking losses.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.gradient_boosting|requires|concept.machine_learning.decision_trees",
+      "source": "concept.machine_learning.gradient_boosting",
+      "target": "concept.machine_learning.decision_trees",
+      "type": "requires",
+      "note": "The standard tabular implementation uses shallow regression trees as its weak learners, so tree partitions explain how each stage makes a local correction.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hierarchical_clustering|assumes|concept.algorithms.complexity_analysis",
+      "source": "concept.machine_learning.hierarchical_clustering",
+      "target": "concept.algorithms.complexity_analysis",
+      "type": "assumes",
+      "note": "Pairwise distances and repeated merges impose time and memory costs that determine whether an implementation fits the dataset.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hierarchical_clustering|contrasts_with|concept.machine_learning.k_means",
+      "source": "concept.machine_learning.hierarchical_clustering",
+      "target": "concept.machine_learning.k_means",
+      "type": "contrasts_with",
+      "note": "Hierarchical clustering records a nested sequence without revising earlier merges, while k-means iteratively optimizes one flat partition for a chosen k.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hierarchical_clustering|requires|concept.learning.unsupervised_learning",
+      "source": "concept.machine_learning.hierarchical_clustering",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "requires",
+      "note": "The hierarchy is inferred from unlabeled observations or pairwise dissimilarities and needs unsupervised validation.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.hierarchical_clustering|useful_when|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.hierarchical_clustering",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "useful_when",
+      "note": "A training-only low-dimensional representation can reduce noisy dimensions before distance calculation, though it also changes the hierarchy.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.independent_component_analysis|contrasts_with|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.independent_component_analysis",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "contrasts_with",
+      "note": "PCA identifies orthogonal maximum-variance directions, while ICA uses higher-order information to seek independent sources and has different ambiguities.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.independent_component_analysis|contributes_to|concept.learning.unsupervised_learning",
+      "source": "concept.machine_learning.independent_component_analysis",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "contributes_to",
+      "note": "Sources are recovered from unlabeled multivariate observations under a latent linear mixing model.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.independent_component_analysis|requires|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.independent_component_analysis",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "requires",
+      "note": "Whitening by PCA commonly removes second-order dependence and reduces the remaining search to an orthogonal rotation.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.independent_component_analysis|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.independent_component_analysis",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "ICA relies on statistical independence, likelihoods, entropy, and non-Gaussianity rather than covariance alone.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_means|assumes|concept.linear_algebra.vector_spaces",
+      "source": "concept.machine_learning.k_means",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "assumes",
+      "note": "Means and squared Euclidean distances require numeric vector coordinates in which averaging is meaningful.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_means|contrasts_with|concept.machine_learning.hierarchical_clustering",
+      "source": "concept.machine_learning.k_means",
+      "target": "concept.machine_learning.hierarchical_clustering",
+      "type": "contrasts_with",
+      "note": "k-Means optimizes one flat k-partition, whereas hierarchical clustering builds a nested merge or split structure without revising earlier decisions.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_means|contributes_to|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.k_means",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "contributes_to",
+      "note": "Choosing k controls representation granularity, with small k underfitting structure and large k fitting sampling noise.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_means|requires|concept.learning.unsupervised_learning",
+      "source": "concept.machine_learning.k_means",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "requires",
+      "note": "k-Means infers a partition from unlabeled inputs and must be evaluated without treating cluster labels as observed targets.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_nearest_neighbors|assumes|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.k_nearest_neighbors",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "assumes",
+      "note": "The neighborhood size k directly trades the variance of very local fits against the bias of broad averaging.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_nearest_neighbors|contrasts_with|concept.machine_learning.linear_regression",
+      "source": "concept.machine_learning.k_nearest_neighbors",
+      "target": "concept.machine_learning.linear_regression",
+      "type": "contrasts_with",
+      "note": "Nearest neighbors makes local predictions without a global functional form, whereas linear regression commits to one affine response surface.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_nearest_neighbors|requires|concept.learning.supervised_learning",
+      "source": "concept.machine_learning.k_nearest_neighbors",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "The basic classifier and regressor require labeled examples whose responses can be aggregated near a query.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.k_nearest_neighbors|useful_when|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.k_nearest_neighbors",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "useful_when",
+      "note": "A carefully validated low-dimensional representation can make distances more meaningful and neighbor search cheaper.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.kernel_methods|contrasts_with|concept.machine_learning.principal_component_analysis",
+      "source": "concept.machine_learning.kernel_methods",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "contrasts_with",
+      "note": "Ordinary PCA is linear in explicit coordinates, while kernel PCA performs an analogous eigendecomposition through an implicit feature-space Gram matrix.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.kernel_methods|contributes_to|concept.machine_learning.support_vector_machines",
+      "source": "concept.machine_learning.kernel_methods",
+      "target": "concept.machine_learning.support_vector_machines",
+      "type": "contributes_to",
+      "note": "Replacing inner products in the SVM dual by kernel evaluations yields nonlinear maximum-margin classifiers.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.kernel_methods|prerequisite_of|concept.machine_learning.gaussian_processes",
+      "source": "concept.machine_learning.kernel_methods",
+      "target": "concept.machine_learning.gaussian_processes",
+      "type": "prerequisite_of",
+      "note": "Gaussian-process covariance functions obey the same positive-semidefinite Gram-matrix condition and determine smoothness and similarity assumptions.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.kernel_methods|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.machine_learning.kernel_methods",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "A valid kernel is interpreted as an inner product between feature vectors in a possibly implicit vector space.",
       "condition": null
     },
     {
@@ -7361,6 +7805,38 @@
       "condition": null
     },
     {
+      "id": "concept.machine_learning.naive_bayes|contrasts_with|concept.machine_learning.logistic_regression",
+      "source": "concept.machine_learning.naive_bayes",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "contrasts_with",
+      "note": "Naive Bayes models class-conditional feature distributions and derives the posterior, whereas logistic regression models the posterior class odds directly.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.naive_bayes|contributes_to|concept.learning.supervised_learning",
+      "source": "concept.machine_learning.naive_bayes",
+      "target": "concept.learning.supervised_learning",
+      "type": "contributes_to",
+      "note": "Class priors and class-conditional feature distributions are estimated from labeled examples for supervised classification.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.naive_bayes|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.naive_bayes",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The classifier is a direct application of conditional probability, product rules, and Bayes' rule.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.naive_bayes|useful_when|concept.probability.high_dimensional_statistics",
+      "source": "concept.machine_learning.naive_bayes",
+      "target": "concept.probability.high_dimensional_statistics",
+      "type": "useful_when",
+      "note": "Its strong factorization greatly reduces the number of parameters in sparse high-dimensional problems, at the cost of misspecification.",
+      "condition": null
+    },
+    {
       "id": "concept.machine_learning.pac_learning|contrasts_with|concept.probability.bayesian_inference",
       "source": "concept.machine_learning.pac_learning",
       "target": "concept.probability.bayesian_inference",
@@ -7393,6 +7869,38 @@
       "condition": null
     },
     {
+      "id": "concept.machine_learning.principal_component_analysis|contrasts_with|concept.machine_learning.independent_component_analysis",
+      "source": "concept.machine_learning.principal_component_analysis",
+      "target": "concept.machine_learning.independent_component_analysis",
+      "type": "contrasts_with",
+      "note": "PCA decorrelates components and orders their variance, whereas ICA seeks statistically independent non-Gaussian sources.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.principal_component_analysis|contributes_to|concept.learning.unsupervised_learning",
+      "source": "concept.machine_learning.principal_component_analysis",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "contributes_to",
+      "note": "PCA learns a lower-dimensional representation from inputs without using response labels.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.principal_component_analysis|requires|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.machine_learning.principal_component_analysis",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "requires",
+      "note": "PCA is computed through an eigendecomposition of the covariance matrix or, more stably, a singular value decomposition of the centered data matrix.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.principal_component_analysis|useful_when|concept.machine_learning.k_nearest_neighbors",
+      "source": "concept.machine_learning.principal_component_analysis",
+      "target": "concept.machine_learning.k_nearest_neighbors",
+      "type": "useful_when",
+      "note": "Validated dimensionality reduction can reduce noise and search cost before distance-based prediction, though high variance need not mean predictive relevance.",
+      "condition": null
+    },
+    {
       "id": "concept.machine_learning.random_forests|assumes|concept.machine_learning.bias_variance",
       "source": "concept.machine_learning.random_forests",
       "target": "concept.machine_learning.bias_variance",
@@ -7422,6 +7930,38 @@
       "target": "concept.machine_learning.decision_trees",
       "type": "requires",
       "note": "A forest is defined by modifying the tree-growing procedure, so a reader who does not know how a single tree chooses splits cannot follow what the randomisation changes.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.support_vector_machines|contrasts_with|concept.machine_learning.logistic_regression",
+      "source": "concept.machine_learning.support_vector_machines",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "contrasts_with",
+      "note": "Both learn linear score functions, but SVM uses margin-based hinge loss while logistic regression uses probabilistic log loss.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.support_vector_machines|contributes_to|concept.machine_learning.generalization",
+      "source": "concept.machine_learning.support_vector_machines",
+      "target": "concept.machine_learning.generalization",
+      "type": "contributes_to",
+      "note": "Margin control provides a capacity measure connecting geometric separation to generalization bounds.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.support_vector_machines|contributes_to|concept.machine_learning.kernel_methods",
+      "source": "concept.machine_learning.support_vector_machines",
+      "target": "concept.machine_learning.kernel_methods",
+      "type": "contributes_to",
+      "note": "Kernelized SVMs are a canonical use of positive-semidefinite kernels and the representer form.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.support_vector_machines|requires|concept.optimization.convex_optimization",
+      "source": "concept.machine_learning.support_vector_machines",
+      "target": "concept.optimization.convex_optimization",
+      "type": "requires",
+      "note": "Training the standard primal or dual SVM is a convex quadratic optimization problem.",
       "condition": null
     },
     {

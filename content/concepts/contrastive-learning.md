@@ -62,18 +62,18 @@ sources:
       - history-and-attribution
     checked_on: 2026-09-17
 unresolved_references:
-  - label: "van den Oord, Li and Vinyals, Representation Learning with Contrastive Predictive Coding"
-    reason: "The InfoNCE loss and its lower bound on mutual information come from this paper, which the registry does not list; the papers cited here use the loss and cite it rather than deriving the bound."
+  - label: 'van den Oord, Li and Vinyals, Representation Learning with Contrastive Predictive Coding'
+    reason: 'The InfoNCE loss and its lower bound on mutual information come from this paper, which the registry does not list; the papers cited here use the loss and cite it rather than deriving the bound.'
     sections:
       - formal-treatment
       - limitations-and-common-mistakes
-  - label: "Variational bounds on mutual information and their looseness"
-    reason: "The claim that InfoNCE cannot certify more than log N nats, and the empirical finding that a tighter mutual-information estimate does not imply a better representation, rest on later analysis work that no registered source covers."
+  - label: 'Variational bounds on mutual information and their looseness'
+    reason: 'The claim that InfoNCE cannot certify more than log N nats, and the empirical finding that a tighter mutual-information estimate does not imply a better representation, rest on later analysis work that no registered source covers.'
     sections:
       - formal-treatment
       - limitations-and-common-mistakes
-  - label: "Non-contrastive siamese methods such as BYOL, SimSiam, Barlow Twins and VICReg"
-    reason: "The methods that drop negatives and prevent collapse by architectural asymmetry or feature decorrelation postdate the registered sources and are described here from general knowledge."
+  - label: 'Non-contrastive siamese methods such as BYOL, SimSiam, Barlow Twins and VICReg'
+    reason: 'The methods that drop negatives and prevent collapse by architectural asymmetry or feature decorrelation postdate the registered sources and are described here from general knowledge.'
     sections:
       - variants-and-alternatives
       - limitations-and-common-mistakes
@@ -84,7 +84,7 @@ claims: []
 
 **Contrastive learning** trains an encoder by solving a manufactured
 multiple-choice problem: given an anchor, pick which of $N$ candidates is its
-designated *positive*, the other $N-1$ being *negatives*. Nothing in the raw
+designated _positive_, the other $N-1$ being _negatives_. Nothing in the raw
 data says which pairs are positive. A designer chooses that, usually by
 declaring two randomly augmented copies of one item to be the same thing, or by
 taking a pairing the dataset already carries, such as an image and the caption
@@ -113,7 +113,7 @@ somewhere that its other view can find and nothing else occupies.
 
 The picture that matters is the unit sphere. Embeddings are usually normalised,
 so the loss has exactly two jobs: pull each positive pair onto the same point
-(*alignment*), and keep everything else spread out (*uniformity*). Negatives are
+(_alignment_), and keep everything else spread out (_uniformity_). Negatives are
 what supplies the second job, and without them the sphere would collapse to a
 point.
 
@@ -125,8 +125,8 @@ what may be ignored. The augmentation distribution is the whole specification.
 ## Concrete example
 
 Take four normalised embeddings on a circle and a temperature $\tau = 0.1$.
-The anchor $z_1$ sits at $0°$, its positive $z_2$ at $20°$, a *hard* negative
-$z_3$ at $25°$ (a near-duplicate image), and an *easy* negative $z_4$ at $100°$.
+The anchor $z_1$ sits at $0°$, its positive $z_2$ at $20°$, a _hard_ negative
+$z_3$ at $25°$ (a near-duplicate image), and an _easy_ negative $z_4$ at $100°$.
 Cosine similarities divided by $\tau$ give logits $9.397$, $9.063$ and $-1.737$.
 Exponentiating gives $12051$, $8631$ and $0.176$, a denominator of $20682$, so
 the probability assigned to the positive is $0.583$ and the loss is
@@ -207,7 +207,7 @@ No augmentation is involved: the dataset's pairing defines the positives.
 
 ## Assumptions and requirements
 
-The positives must be equivalent *for the downstream task*. Colour jitter
+The positives must be equivalent _for the downstream task_. Colour jitter
 declares colour irrelevant, which is useful for object recognition and
 destructive for identifying birds by plumage; random cropping declares that a
 part stands for the whole, which fails when the label depends on the scene's
@@ -227,7 +227,7 @@ to treat the bound as an interpretation rather than a measurement.
 Two conventions are load-bearing rather than cosmetic. Without $L_2$
 normalisation the model can lower the loss by inflating embedding norms instead
 of aligning directions. And SimCLR found that contrasting through a small
-nonlinear projection head and then *discarding* it improves the representation
+nonlinear projection head and then _discarding_ it improves the representation
 taken from the backbone — an empirical finding that has replicated widely, not a
 theorem.
 
@@ -268,7 +268,7 @@ those pairs; this is worst when classes are few or the data is redundant.
 
 The fourth is thinking collapse is impossible. With negatives, a constant
 encoder gives loss $\log(2N-1)$ and loses to almost anything, so collapse is not
-a minimiser. Drop the negatives and it becomes the *global* minimum, which is why
+a minimiser. Drop the negatives and it becomes the _global_ minimum, which is why
 non-contrastive methods need a predictor, a stop-gradient, a momentum target or
 an explicit variance term — mechanisms that are still debated rather than
 derived.

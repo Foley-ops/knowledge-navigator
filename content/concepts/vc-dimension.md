@@ -87,7 +87,7 @@ labelling those $m$ points is realised by some member of the class. The
 all shattered $C$, and $\infty$ if arbitrarily large sets are shattered.
 
 Three things follow from the wording and are worth fixing immediately. It is a supremum over
-sets, so $\mathrm{VCdim}(\mathcal{H}) = d$ means *some* set of size $d$ is shattered, not every
+sets, so $\mathrm{VCdim}(\mathcal{H}) = d$ means _some_ set of size $d$ is shattered, not every
 one. It is a property of the hypothesis class alone — no data, no distribution, no learning
 algorithm enters. And it can be finite even when $\mathcal{H}$ is uncountable.
 
@@ -99,7 +99,7 @@ about the uncountably many halfspaces in $\mathbb{R}^d$. VC dimension explains w
 nevertheless easy to learn while a class with the same number of real parameters can be impossible.
 
 The payoff is the fundamental theorem of statistical learning: for binary classification under
-0-1 loss, a class is agnostic PAC learnable *if and only if* its VC dimension is finite, empirical
+0-1 loss, a class is agnostic PAC learnable _if and only if_ its VC dimension is finite, empirical
 risk minimisation is a successful learner whenever it is, and the number of samples needed is
 $\Theta\bigl((d + \log(1/\delta))/\varepsilon^2\bigr)$. Learnability, uniform convergence and
 finiteness of one combinatorial quantity turn out to be the same condition.
@@ -136,7 +136,7 @@ a convex negative region, so if it realised that split the two hulls would lie i
 sets and could not meet. That labelling is therefore unachievable, for every set of four points.
 Hence $\mathrm{VCdim} = 3$, and the same argument in $\mathbb{R}^d$ gives $d+1$.
 
-Note what the choice of points did. Three *collinear* points $x_1, x_2, x_3$ in that order are
+Note what the choice of points did. Three _collinear_ points $x_1, x_2, x_3$ in that order are
 not shattered — the labelling $(1,0,1)$ would need a convex positive region containing the outer
 two but not the middle one. The dimension is 3 because a good triple exists, not because every
 triple works.
@@ -197,7 +197,7 @@ can hold without uniform convergence, so the fundamental theorem does not simply
 Measurability conditions are also needed to make $\sup_{h}$ a random variable, though for the
 classes that arise in practice they hold and are routinely suppressed.
 
-The decisive assumption is the one that is *absent*: nothing is assumed about $D$. The bound holds
+The decisive assumption is the one that is _absent_: nothing is assumed about $D$. The bound holds
 for every distribution, including adversarial ones. That is the theory's strength and the direct
 cause of its looseness — it must cover the worst distribution consistent with the class, and real
 data is nowhere near the worst case.
@@ -249,7 +249,7 @@ real-valued functions, where "all labellings" must be replaced by a margin condi
 sequences.
 
 The main competitors are distribution-dependent. **Rademacher complexity** measures how well the
-class correlates with random noise *on the actual sample*, so it adapts to benign data and can be
+class correlates with random noise _on the actual sample_, so it adapts to benign data and can be
 estimated empirically, at the cost of no longer being a single distribution-free integer.
 **Covering numbers and chaining** give finer control for real-valued classes. **PAC-Bayes**,
 **algorithmic stability** and **compression bounds** each drop the uniform-over-the-class
@@ -271,13 +271,13 @@ that synthesis — learnability equals finite VC dimension — that the name now
 
 ## Sources
 
-*Understanding Machine Learning* is the primary reference here: it develops shattering, Sauer's
+_Understanding Machine Learning_ is the primary reference here: it develops shattering, Sauer's
 lemma, the halfspace computation and the fundamental theorem in a single chapter, and its
-bibliographic remarks are the basis for the attributions above. Vershynin's *High-Dimensional
-Probability* gives the probabilistic side — symmetrisation and the uniform law of large numbers —
+bibliographic remarks are the basis for the attributions above. Vershynin's _High-Dimensional
+Probability_ gives the probabilistic side — symmetrisation and the uniform law of large numbers —
 in the language of empirical processes, and is the better source for why concentration makes the
-argument work. *The Elements of Statistical Learning* situates VC dimension among the practical
-model-selection tools it competes with, and *Deep Learning* is cited for the point that capacity
+argument work. _The Elements of Statistical Learning_ situates VC dimension among the practical
+model-selection tools it competes with, and _Deep Learning_ is cited for the point that capacity
 bounds of this kind are not used in practice on deep networks.
 
 ## Prerequisites and next connections

@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 16 of 28.** 10 of 10 pages in it are still to write.
+**Batch 17 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/gradient-boosting.md` — Gradient Boosting (concept.machine_learning.gradient_boosting)
-- `content/concepts/k-nearest-neighbors.md` — k-Nearest Neighbors (concept.machine_learning.k_nearest_neighbors)
-- `content/concepts/naive-bayes.md` — Naive Bayes (concept.machine_learning.naive_bayes)
-- `content/concepts/support-vector-machines.md` — Support Vector Machines (concept.machine_learning.support_vector_machines)
-- `content/concepts/kernel-methods.md` — Kernel Methods (concept.machine_learning.kernel_methods)
-- `content/concepts/gaussian-processes.md` — Gaussian Processes (concept.machine_learning.gaussian_processes)
-- `content/concepts/principal-component-analysis.md` — Principal Component Analysis (concept.machine_learning.principal_component_analysis)
-- `content/concepts/independent-component-analysis.md` — Independent Component Analysis (concept.machine_learning.independent_component_analysis)
-- `content/concepts/k-means.md` — k-Means (concept.machine_learning.k_means)
-- `content/concepts/hierarchical-clustering.md` — Hierarchical Clustering (concept.machine_learning.hierarchical_clustering)
+- `content/concepts/dbscan.md` — DBSCAN (concept.machine_learning.dbscan)
+- `content/concepts/spectral-clustering.md` — Spectral Clustering (concept.machine_learning.spectral_clustering)
+- `content/concepts/t-sne.md` — t-SNE (concept.machine_learning.t_sne)
+- `content/concepts/umap.md` — UMAP (concept.machine_learning.umap)
+- `content/concepts/hidden-markov-models.md` — Hidden Markov Models (concept.machine_learning.hidden_markov_models)
+- `content/concepts/bayesian-networks.md` — Bayesian Networks (concept.machine_learning.bayesian_networks)
+- `content/concepts/conditional-random-fields.md` — Conditional Random Fields (concept.machine_learning.conditional_random_fields)
+- `content/concepts/backpropagation.md` — Backpropagation (concept.deep_learning.backpropagation)
+- `content/concepts/stochastic-gradient-descent.md` — Stochastic Gradient Descent (concept.deep_learning.stochastic_gradient_descent)
+- `content/concepts/adam.md` — Adam (concept.deep_learning.adam)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 161 |
-| Markdown pages in the corpus | 161 |
-| Tier 1 pages | 161 |
+| Candidates covered by a page | 171 |
+| Markdown pages in the corpus | 171 |
+| Tier 1 pages | 171 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 150 of 280 |
+| Planned pages written | 160 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 18 | 148 | 12% |
+| Artificial Intelligence | 28 | 148 | 19% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -55,7 +55,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
-| Artificial Intelligence/Classical Machine Learning | 9 | 26 |  |
+| Artificial Intelligence/Classical Machine Learning | 19 | 26 |  |
 | Artificial Intelligence/Deep Learning — Architectures | 0 | 42 |  |
 | Artificial Intelligence/Deep Learning — Training | 0 | 12 |  |
 | Artificial Intelligence/Domains | 0 | 7 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-150 of the planned 280, in the order they were written.
+160 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -242,6 +242,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | PAC Learning | `concept.machine_learning.pac_learning` | tier 1 | covered |
 | Decision Trees | `concept.machine_learning.decision_trees` | tier 1 | covered |
 | Random Forests | `concept.machine_learning.random_forests` | tier 1 | covered |
+| Gradient Boosting | `concept.machine_learning.gradient_boosting` | tier 1 | covered |
+| k-Nearest Neighbors | `concept.machine_learning.k_nearest_neighbors` | tier 1 | covered |
+| Naive Bayes | `concept.machine_learning.naive_bayes` | tier 1 | covered |
+| Support Vector Machines | `concept.machine_learning.support_vector_machines` | tier 1 | covered |
+| Kernel Methods | `concept.machine_learning.kernel_methods` | tier 1 | covered |
+| Gaussian Processes | `concept.machine_learning.gaussian_processes` | tier 1 | covered |
+| Principal Component Analysis | `concept.machine_learning.principal_component_analysis` | tier 1 | covered |
+| Independent Component Analysis | `concept.machine_learning.independent_component_analysis` | tier 1 | covered |
+| k-Means | `concept.machine_learning.k_means` | tier 1 | covered |
+| Hierarchical Clustering | `concept.machine_learning.hierarchical_clustering` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -475,20 +485,20 @@ it. Batches are ten pages each.
 | x | Decision Trees | `concept.machine_learning.decision_trees` | Artificial Intelligence/Classical Machine Learning |
 | x | Random Forests | `concept.machine_learning.random_forests` | Artificial Intelligence/Classical Machine Learning |
 
-### Batch 16
+### Batch 16 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Gradient Boosting | `concept.machine_learning.gradient_boosting` | Artificial Intelligence/Classical Machine Learning |
-|   | k-Nearest Neighbors | `concept.machine_learning.k_nearest_neighbors` | Artificial Intelligence/Classical Machine Learning |
-|   | Naive Bayes | `concept.machine_learning.naive_bayes` | Artificial Intelligence/Classical Machine Learning |
-|   | Support Vector Machines | `concept.machine_learning.support_vector_machines` | Artificial Intelligence/Classical Machine Learning |
-|   | Kernel Methods | `concept.machine_learning.kernel_methods` | Artificial Intelligence/Classical Machine Learning |
-|   | Gaussian Processes | `concept.machine_learning.gaussian_processes` | Artificial Intelligence/Classical Machine Learning |
-|   | Principal Component Analysis | `concept.machine_learning.principal_component_analysis` | Artificial Intelligence/Classical Machine Learning |
-|   | Independent Component Analysis | `concept.machine_learning.independent_component_analysis` | Artificial Intelligence/Classical Machine Learning |
-|   | k-Means | `concept.machine_learning.k_means` | Artificial Intelligence/Classical Machine Learning |
-|   | Hierarchical Clustering | `concept.machine_learning.hierarchical_clustering` | Artificial Intelligence/Classical Machine Learning |
+| x | Gradient Boosting | `concept.machine_learning.gradient_boosting` | Artificial Intelligence/Classical Machine Learning |
+| x | k-Nearest Neighbors | `concept.machine_learning.k_nearest_neighbors` | Artificial Intelligence/Classical Machine Learning |
+| x | Naive Bayes | `concept.machine_learning.naive_bayes` | Artificial Intelligence/Classical Machine Learning |
+| x | Support Vector Machines | `concept.machine_learning.support_vector_machines` | Artificial Intelligence/Classical Machine Learning |
+| x | Kernel Methods | `concept.machine_learning.kernel_methods` | Artificial Intelligence/Classical Machine Learning |
+| x | Gaussian Processes | `concept.machine_learning.gaussian_processes` | Artificial Intelligence/Classical Machine Learning |
+| x | Principal Component Analysis | `concept.machine_learning.principal_component_analysis` | Artificial Intelligence/Classical Machine Learning |
+| x | Independent Component Analysis | `concept.machine_learning.independent_component_analysis` | Artificial Intelligence/Classical Machine Learning |
+| x | k-Means | `concept.machine_learning.k_means` | Artificial Intelligence/Classical Machine Learning |
+| x | Hierarchical Clustering | `concept.machine_learning.hierarchical_clustering` | Artificial Intelligence/Classical Machine Learning |
 
 ### Batch 17
 

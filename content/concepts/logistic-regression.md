@@ -194,7 +194,7 @@ $$
 \;=\; \sum_{i=1}^{n} \Big[\log\!\big(1 + e^{\theta^\top x_i}\big) - y_i\,\theta^\top x_i \Big].
 $$
 
-Cross-entropy is not a separate design choice bolted onto the model; it *is*
+Cross-entropy is not a separate design choice bolted onto the model; it _is_
 the negative log-likelihood. Differentiating gives a gradient of unusually clean
 form,
 
@@ -213,7 +213,7 @@ Since $\mu_i(1 - \mu_i) > 0$, the Hessian is positive semidefinite for every
 $\theta$, so $\mathcal{L}$ is convex — the second form of $\mathcal{L}$ above is
 a sum of log-sum-exp terms, which is the standard textbook example of a convex
 function, and the fit is a convex program in the sense of Boyd and
-Vandenberghe. It is *strictly* convex when $X$ has full column rank. Newton's
+Vandenberghe. It is _strictly_ convex when $X$ has full column rank. Newton's
 method on this objective is iteratively reweighted least squares,
 $\theta^{+} = \theta + (X^\top S X)^{-1} X^\top (y - \mu)$, which is a weighted
 least-squares solve per iteration.
@@ -274,7 +274,7 @@ has its own more suitable model.
 **A coefficient is a log-odds effect, not a probability effect.** This is the
 most misread output in applied statistics. $\theta_j = 0.7$ means that a
 one-unit increase in $x_j$, holding the other features fixed, multiplies the
-*odds* by $e^{0.7} \approx 2.01$. It does not double the probability, and the
+_odds_ by $e^{0.7} \approx 2.01$. It does not double the probability, and the
 change in probability depends on where you start. An odds ratio also is not a
 risk ratio; the two agree only when the outcome is rare.
 
@@ -335,14 +335,14 @@ covers the primary history.
 
 ## Sources
 
-*The Elements of Statistical Learning* is the reference for the model as a
+_The Elements of Statistical Learning_ is the reference for the model as a
 statistical method — the log-odds parameterisation, Newton's method, the
 separation problem, the $\ell_1$-penalised version and the comparison with
-discriminant analysis. Murphy's *Probabilistic Machine Learning* gives the same
+discriminant analysis. Murphy's _Probabilistic Machine Learning_ gives the same
 material from the probabilistic-modelling side, with the multinomial extension
 and the Bayesian treatment. Boyd and Vandenberghe supply the optimisation
 foundation: log-sum-exp convexity and maximum likelihood as a convex program.
-MacKay's *Information Theory, Inference, and Learning Algorithms* is the source
+MacKay's _Information Theory, Inference, and Learning Algorithms_ is the source
 for the single-neuron-as-classifier picture and evidence measured in bits.
 
 ## Prerequisites and next connections

@@ -192,7 +192,7 @@ own page.
 
 ## Assumptions and requirements
 
-The pretext target must be predictable from what remains, but not *cheaply*
+The pretext target must be predictable from what remains, but not _cheaply_
 predictable. A task solvable by a superficial local rule teaches that rule; a task
 with no signal teaches nothing. Most of the engineering here is a search for the
 band between.
@@ -276,7 +276,7 @@ predicting the next symbol from raw text since Shannon, long before anyone calle
 it self-supervision. Autoencoders — in particular denoising autoencoders, which
 reconstruct a corrupted input — supplied the corrupt-and-reconstruct template, and
 greedy layer-wise unsupervised pretraining in the mid-2000s established the
-pretrain-then-fine-tune workflow; the *Deep Learning* book covers both strands.
+pretrain-then-fine-tune workflow; the _Deep Learning_ book covers both strands.
 Word embeddings trained by predicting neighbouring words made derived labels
 ordinary practice in language processing around 2013.
 
@@ -287,7 +287,7 @@ the scaling argument, and SimCLR and MoCo (2020) for contrastive vision.
 
 ## Sources
 
-The *Deep Learning* book is the reference for the claim that the supervised and
+The _Deep Learning_ book is the reference for the claim that the supervised and
 unsupervised boundary is a convention rather than a formal distinction, and for
 the autoencoder and unsupervised-pretraining history. The BERT paper gives the
 masking recipe with its exact proportions and the reasoning behind the 80/10/10

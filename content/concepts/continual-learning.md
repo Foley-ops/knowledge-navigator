@@ -182,7 +182,7 @@ L(\theta) \;=\; L_B(\theta) \;+\; \frac{\lambda}{2}\sum_i F_i\,(\theta_i - \thet
 $$
 
 Two approximations are doing work. The Fisher equals the Hessian of the expected
-negative log-likelihood only at a well-fit optimum, and the *empirical* Fisher
+negative log-likelihood only at a well-fit optimum, and the _empirical_ Fisher
 computed from observed labels is a different object again. The diagonal discards
 every parameter correlation, which is precisely what a 2-parameter example
 cannot show you.

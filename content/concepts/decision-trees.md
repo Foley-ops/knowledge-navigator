@@ -130,7 +130,7 @@ Ten loan applicants, with income in thousands, an employment flag, and whether
 they defaulted:
 
 | income | employed | default |     | income | employed | default |
-|--------|----------|---------|-----|--------|----------|---------|
+| ------ | -------- | ------- | --- | ------ | -------- | ------- |
 | 22     | 0        | 1       |     | 62     | 1        | 1       |
 | 31     | 0        | 1       |     | 70     | 1        | 0       |
 | 38     | 1        | 1       |     | 85     | 1        | 0       |
@@ -212,7 +212,7 @@ $$
 $$
 
 which is non-negative for any concave $Q$ by Jensen's inequality. Gini and
-entropy are *strictly* concave; misclassification error is concave but piecewise
+entropy are _strictly_ concave; misclassification error is concave but piecewise
 linear, and this matters. In Hastie, Tibshirani and Friedman's example, a
 400/400 node split into $(300,100)$ and $(100,300)$ and the same node split into
 $(200,400)$ and $(200,0)$ both leave 200 errors, so misclassification error
@@ -243,25 +243,25 @@ in 1976, so no practical algorithm searches the space of trees directly.
 Trees assume nothing about the distribution of $x$ — no linearity, no
 homoscedasticity, no normality. What they do assume is structural.
 
-*The target must be well approximated by axis-aligned boxes.* A smooth or
+_The target must be well approximated by axis-aligned boxes._ A smooth or
 additive function is representable only as a staircase, so a tree wastes depth on
 geometry a linear term would capture exactly.
 
-*Some single feature must look informative at each node.* Greedy growth needs
+_Some single feature must look informative at each node._ Greedy growth needs
 marginal signal. Pure XOR on two balanced binary features is the clean
 counterexample: neither feature alone changes the impurity at all, so $\Delta = 0$
 for every root split and the greedy criterion has nothing to prefer, even though a
 depth-2 tree fits the data exactly.
 
-*Leaves must hold enough data.* The leaf constant is an average over $N_m$
+_Leaves must hold enough data._ The leaf constant is an average over $N_m$
 points, and its variance scales like $1/N_m$; a leaf of size 1 is a memorised
 label.
 
-*The prediction is bounded by the training labels.* A tree cannot extrapolate: a
+_The prediction is bounded by the training labels._ A tree cannot extrapolate: a
 regression tree predicts the same constant for $x = 10^{6}$ as for the largest
 training point in that leaf.
 
-*Cross-validated pruning assumes exchangeable data.* With time series or grouped
+_Cross-validated pruning assumes exchangeable data._ With time series or grouped
 records, ordinary $k$-fold cross-validation leaks and selects $\alpha$ too small.
 
 ## Uses and applicability
@@ -347,7 +347,7 @@ name. In artificial intelligence, Quinlan's ID3 (1986) and later C4.5 grew trees
 from examples with an information-gain criterion, in the context of learning
 classification rules from data.
 
-The modern formulation is *Classification and Regression Trees* by Breiman,
+The modern formulation is _Classification and Regression Trees_ by Breiman,
 Friedman, Olshen and Stone (1984), which gave the binary-split construction,
 Gini, the squared-error regression tree, cost-complexity pruning and surrogate
 splits for missing values. Hyafil and Rivest had already shown in 1976 that
@@ -357,15 +357,15 @@ the consequence of tree instability: bagging in 1996 and random forests in 2001.
 
 ## Sources
 
-*The Elements of Statistical Learning* is the reference for the construction
+_The Elements of Statistical Learning_ is the reference for the construction
 itself — the impurity measures, the misclassification-error example, the
 cost-complexity pruning sequence, and the frank section on instability, lack of
 smoothness and the bias toward many-level categorical predictors.
-*Understanding Machine Learning* gives the learning-theoretic view: trees as a
+_Understanding Machine Learning_ gives the learning-theoretic view: trees as a
 hypothesis class, the NP-hardness of finding a minimal consistent tree, and a
 description-length argument for why smaller trees generalise better. Breiman's
-*Random Forests* is where tree instability becomes a resource rather than a
-defect, and where permutation importance is introduced. The *XGBoost* paper
+_Random Forests_ is where tree instability becomes a resource rather than a
+defect, and where permutation importance is introduced. The _XGBoost_ paper
 documents both the engineering of large-scale tree boosting and the empirical
 standing of tree ensembles on tabular problems.
 

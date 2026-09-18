@@ -84,7 +84,7 @@ independently:
 3. a **link function** $g$, monotone and differentiable, tying the two together
    by $g(\mu_i) = \eta_i$, where $\mu_i = \mathbb{E}[Y_i \mid x_i]$.
 
-Linearity is imposed on a transformation of the *mean*, not on the data and not
+Linearity is imposed on a transformation of the _mean_, not on the data and not
 on the noise. Fix the family to Gaussian and the link to the identity and you
 have least squares; fix it to Bernoulli with the logit link and you have
 logistic regression; fix it to Poisson with the log link and you have Poisson
@@ -111,7 +111,7 @@ for free.
 Carry two pictures. The first: regression is still a straight line, but you get
 to choose the ruler it is straight on. Log-mean for counts, log-odds for
 probabilities, mean itself for continuous symmetric data. The second: the family
-is not just a noise model bolted on afterwards — it *dictates* how the variance
+is not just a noise model bolted on afterwards — it _dictates_ how the variance
 grows with the mean, so choosing Poisson is a claim that variance equals mean,
 not merely a claim about the shape of the residuals.
 
@@ -169,11 +169,11 @@ a free parameter: it is determined by the mean up to the scalar $\phi$.
 The **canonical link** is the $g$ that makes the linear predictor equal the
 canonical parameter, $\theta_i = \eta_i$, that is $g = (b')^{-1}$. Three cases:
 
-| Family | $b(\theta)$ | $V(\mu)$ | canonical link | $\phi$ |
-| --- | --- | --- | --- | --- |
-| Gaussian | $\theta^2/2$ | $1$ | identity | $\sigma^2$ |
-| Bernoulli | $\log(1 + e^{\theta})$ | $\mu(1-\mu)$ | $\operatorname{logit}$ | $1$ |
-| Poisson | $e^{\theta}$ | $\mu$ | $\log$ | $1$ |
+| Family    | $b(\theta)$            | $V(\mu)$     | canonical link         | $\phi$     |
+| --------- | ---------------------- | ------------ | ---------------------- | ---------- |
+| Gaussian  | $\theta^2/2$           | $1$          | identity               | $\sigma^2$ |
+| Bernoulli | $\log(1 + e^{\theta})$ | $\mu(1-\mu)$ | $\operatorname{logit}$ | $1$        |
+| Poisson   | $e^{\theta}$           | $\mu$        | $\log$                 | $1$        |
 
 The score equations are
 
@@ -196,7 +196,7 @@ $$
 $$
 
 recomputing $W$ and $z$ at the current fit. Under a canonical link the observed
-and expected information coincide, so Fisher scoring *is* Newton–Raphson.
+and expected information coincide, so Fisher scoring _is_ Newton–Raphson.
 
 The **deviance** compares the fit to the saturated model that reproduces every
 observation, $D = 2\,\big(\ell_{\text{sat}} - \ell(\hat\beta)\big)\,\phi$. For
@@ -304,10 +304,10 @@ individual models.
 
 ## Sources
 
-Murphy's *Probabilistic Machine Learning* gives the exponential-family algebra,
+Murphy's _Probabilistic Machine Learning_ gives the exponential-family algebra,
 the mean and variance identities from the cumulant function, and the GLM
-construction as a modern probabilistic-modelling chapter. *The Elements of
-Statistical Learning* is the place for the estimation and model-selection side —
+construction as a modern probabilistic-modelling chapter. _The Elements of
+Statistical Learning_ is the place for the estimation and model-selection side —
 logistic regression fitted by IRLS, deviance, and the additive and regularized
 extensions — and for where GLMs sit relative to trees and boosting. The R
 manuals document `glm`, its families and links, and the quasi families whose

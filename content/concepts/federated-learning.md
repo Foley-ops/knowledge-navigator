@@ -79,7 +79,7 @@ from them are exchanged, usually through a coordinating server. The canonical
 procedure is **federated averaging** (FedAvg): the server broadcasts the current
 model to a sample of clients, each client runs several epochs of local SGD on its
 own data, each returns its updated parameters, and the server replaces its model
-with a weighted average of what came back. One pass of that loop is a *round*,
+with a weighted average of what came back. One pass of that loop is a _round_,
 and rounds — not gradient steps — are the currency of the method.
 
 ## Why it matters
@@ -107,7 +107,7 @@ expensive, so each member works alone for a while first.
 
 Two things follow, and they are the whole subject. The longer each member works
 alone, the fewer meetings are needed. And the longer each member works alone, the
-further their copy drifts toward *their* material, so the merged book is worse
+further their copy drifts toward _their_ material, so the merged book is worse
 than any single copy would suggest. The analogy breaks in one important place:
 averaging books only makes sense if everyone started from the same edition.
 Averaging two networks trained from different random initialisations produces a
@@ -123,7 +123,7 @@ $f = \tfrac12 (F_1 + F_2)$, minimised at
 $w^\star = (\lambda_1 a_1 + \lambda_2 a_2)/(\lambda_1 + \lambda_2) = 0.6$. Run
 FedAvg from $w_0 = 0$ with learning rate $\eta = 0.1$ and $E = 5$ local full-batch
 steps. Client 1 returns $1 - 0.6^5 = 0.92224$, client 2 returns
-$-1 + 0.9^5 = -0.40951$, and the average is $0.256365$ — while five *centralised*
+$-1 + 0.9^5 = -0.40951$, and the average is $0.256365$ — while five _centralised_
 gradient steps from the same point would have reached $0.457617$.
 
 Worse, the gap does not close with more rounds. The round map has a fixed point at
@@ -215,9 +215,9 @@ population silently shrinks to the fastest devices.
 
 ## Uses and applicability
 
-The literature separates two regimes with different engineering. *Cross-device*:
+The literature separates two regimes with different engineering. _Cross-device_:
 up to millions of unreliable, stateless clients with tiny local datasets, only a
-sliver available per round, each perhaps appearing once ever. *Cross-silo*: a
+sliver available per round, each perhaps appearing once ever. _Cross-silo_: a
 handful of institutions with large datasets, reliable availability, and
 per-participant state that persists across rounds. The same objective covers both;
 almost nothing else transfers.
@@ -280,7 +280,7 @@ quantisation and sketching attack the $2|w|$ per round directly.
 
 The genuine alternatives are not federated at all: centralise under a
 differential-privacy mechanism, compute inside a trusted execution environment, or
-train centrally and only *infer* on device. Each moves the trust assumption
+train centrally and only _infer_ on device. Each moves the trust assumption
 somewhere else rather than removing it.
 
 ## History and attribution

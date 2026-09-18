@@ -159,7 +159,7 @@ The stored form is 8.4 MB of 4-bit codes plus 0.52 MB of scales: 8.9 MB, an
 effective 4.25 bits per weight and a 7.5-fold reduction against fp32. The price
 is a relative Frobenius error of about 11% on the weights — enormous by the
 standards of numerical linear algebra, and yet models of this kind often remain
-usable, because what matters is the distribution of the layer's *outputs*, not
+usable, because what matters is the distribution of the layer's _outputs_, not
 the fidelity of its parameters.
 
 Scale it up: a 7-billion-parameter model at fp16 needs roughly 14 GB and will not
