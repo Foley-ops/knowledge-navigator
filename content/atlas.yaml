@@ -1193,8 +1193,8 @@ candidates:
     title: Neuromorphic Computing
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.neuromorphic_computing
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.backpropagation
     title: Backpropagation
     categories:
@@ -1283,50 +1283,50 @@ candidates:
     title: Markov Decision Processes
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.markov_decision_processes
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.dynamic_programming
     title: Dynamic Programming
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.dynamic_programming
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.monte_carlo_methods
     title: Monte Carlo Methods
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.monte_carlo_methods
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.temporal_difference_learning
     title: Temporal-Difference Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.temporal_difference_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.q_learning
     title: Q-Learning
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.q_learning
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.dqn
     title: DQN
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.dqn
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.policy_gradients
     title: Policy Gradients
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.policy_gradients
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.reinforce
     title: REINFORCE
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.reinforce
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.ppo
     title: PPO
     categories:
@@ -1343,8 +1343,8 @@ candidates:
     title: Actor-Critic
     categories:
       - atlas.artificial_intelligence.reinforcement_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.reinforcement_learning.actor_critic
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.model_based_reinforcement_learning
     title: Model-Based Reinforcement Learning
     categories:

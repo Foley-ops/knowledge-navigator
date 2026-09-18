@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 23 of 28.** 10 of 10 pages in it are still to write.
+**Batch 24 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/neuromorphic-computing.md` — Neuromorphic Computing (concept.deep_learning.neuromorphic_computing)
-- `content/concepts/markov-decision-processes.md` — Markov Decision Processes (concept.reinforcement_learning.markov_decision_processes)
-- `content/concepts/dynamic-programming.md` — Dynamic Programming (concept.reinforcement_learning.dynamic_programming)
-- `content/concepts/monte-carlo-methods.md` — Monte Carlo Methods (concept.reinforcement_learning.monte_carlo_methods)
-- `content/concepts/temporal-difference-learning.md` — Temporal-Difference Learning (concept.reinforcement_learning.temporal_difference_learning)
-- `content/concepts/q-learning.md` — Q-Learning (concept.reinforcement_learning.q_learning)
-- `content/concepts/dqn.md` — DQN (concept.reinforcement_learning.dqn)
-- `content/concepts/policy-gradients.md` — Policy Gradients (concept.reinforcement_learning.policy_gradients)
-- `content/concepts/reinforce.md` — REINFORCE (concept.reinforcement_learning.reinforce)
-- `content/concepts/actor-critic.md` — Actor-Critic (concept.reinforcement_learning.actor_critic)
+- `content/concepts/ppo.md` — PPO (concept.reinforcement_learning.ppo)
+- `content/concepts/sac.md` — SAC (concept.reinforcement_learning.sac)
+- `content/concepts/model-based-reinforcement-learning.md` — Model-Based Reinforcement Learning (concept.reinforcement_learning.model_based_reinforcement_learning)
+- `content/concepts/multi-armed-bandits.md` — Multi-Armed Bandits (concept.reinforcement_learning.multi_armed_bandits)
+- `content/concepts/imitation-learning.md` — Imitation Learning (concept.reinforcement_learning.imitation_learning)
+- `content/concepts/inverse-reinforcement-learning.md` — Inverse Reinforcement Learning (concept.reinforcement_learning.inverse_reinforcement_learning)
+- `content/concepts/offline-reinforcement-learning.md` — Offline Reinforcement Learning (concept.reinforcement_learning.offline_reinforcement_learning)
+- `content/concepts/multi-agent-reinforcement-learning.md` — Multi-Agent Reinforcement Learning (concept.reinforcement_learning.multi_agent_reinforcement_learning)
+- `content/concepts/rlhf.md` — RLHF (concept.reinforcement_learning.rlhf)
+- `content/concepts/rlaif.md` — RLAIF (concept.reinforcement_learning.rlaif)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 231 |
-| Markdown pages in the corpus | 231 |
-| Tier 1 pages | 231 |
+| Candidates covered by a page | 241 |
+| Markdown pages in the corpus | 241 |
+| Tier 1 pages | 241 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 220 of 280 |
+| Planned pages written | 230 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 88 | 148 | 59% |
+| Artificial Intelligence | 98 | 148 | 66% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -56,14 +56,14 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
-| Artificial Intelligence/Deep Learning — Architectures | 41 | 42 |  |
+| Artificial Intelligence/Deep Learning — Architectures | 42 | 42 | complete |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
 | Artificial Intelligence/Domains/Natural Language Processing | 0 | 5 |  |
 | Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
 | Artificial Intelligence/Other Traditions & Frontiers | 0 | 11 |  |
-| Artificial Intelligence/Reinforcement Learning | 0 | 19 |  |
+| Artificial Intelligence/Reinforcement Learning | 9 | 19 |  |
 | Artificial Intelligence/Symbolic AI | 0 | 5 |  |
 | Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
 | Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-220 of the planned 280, in the order they were written.
+230 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -312,6 +312,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Quaternion Neural Networks | `concept.deep_learning.quaternion_neural_networks` | tier 1 | covered |
 | Clifford Neural Networks | `concept.deep_learning.clifford_neural_networks` | tier 1 | covered |
 | Spiking Neural Networks | `concept.deep_learning.spiking_neural_networks` | tier 1 | covered |
+| Neuromorphic Computing | `concept.deep_learning.neuromorphic_computing` | tier 1 | covered |
+| Markov Decision Processes | `concept.reinforcement_learning.markov_decision_processes` | tier 1 | covered |
+| Dynamic Programming | `concept.reinforcement_learning.dynamic_programming` | tier 1 | covered |
+| Monte Carlo Methods | `concept.reinforcement_learning.monte_carlo_methods` | tier 1 | covered |
+| Temporal-Difference Learning | `concept.reinforcement_learning.temporal_difference_learning` | tier 1 | covered |
+| Q-Learning | `concept.reinforcement_learning.q_learning` | tier 1 | covered |
+| DQN | `concept.reinforcement_learning.dqn` | tier 1 | covered |
+| Policy Gradients | `concept.reinforcement_learning.policy_gradients` | tier 1 | covered |
+| REINFORCE | `concept.reinforcement_learning.reinforce` | tier 1 | covered |
+| Actor-Critic | `concept.reinforcement_learning.actor_critic` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -650,20 +660,20 @@ it. Batches are ten pages each.
 | x | Clifford Neural Networks | `concept.deep_learning.clifford_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
 | x | Spiking Neural Networks | `concept.deep_learning.spiking_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
 
-### Batch 23
+### Batch 23 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Neuromorphic Computing | `concept.deep_learning.neuromorphic_computing` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Markov Decision Processes | `concept.reinforcement_learning.markov_decision_processes` | Artificial Intelligence/Reinforcement Learning |
-|   | Dynamic Programming | `concept.reinforcement_learning.dynamic_programming` | Artificial Intelligence/Reinforcement Learning |
-|   | Monte Carlo Methods | `concept.reinforcement_learning.monte_carlo_methods` | Artificial Intelligence/Reinforcement Learning |
-|   | Temporal-Difference Learning | `concept.reinforcement_learning.temporal_difference_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | Q-Learning | `concept.reinforcement_learning.q_learning` | Artificial Intelligence/Reinforcement Learning |
-|   | DQN | `concept.reinforcement_learning.dqn` | Artificial Intelligence/Reinforcement Learning |
-|   | Policy Gradients | `concept.reinforcement_learning.policy_gradients` | Artificial Intelligence/Reinforcement Learning |
-|   | REINFORCE | `concept.reinforcement_learning.reinforce` | Artificial Intelligence/Reinforcement Learning |
-|   | Actor-Critic | `concept.reinforcement_learning.actor_critic` | Artificial Intelligence/Reinforcement Learning |
+| x | Neuromorphic Computing | `concept.deep_learning.neuromorphic_computing` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Markov Decision Processes | `concept.reinforcement_learning.markov_decision_processes` | Artificial Intelligence/Reinforcement Learning |
+| x | Dynamic Programming | `concept.reinforcement_learning.dynamic_programming` | Artificial Intelligence/Reinforcement Learning |
+| x | Monte Carlo Methods | `concept.reinforcement_learning.monte_carlo_methods` | Artificial Intelligence/Reinforcement Learning |
+| x | Temporal-Difference Learning | `concept.reinforcement_learning.temporal_difference_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | Q-Learning | `concept.reinforcement_learning.q_learning` | Artificial Intelligence/Reinforcement Learning |
+| x | DQN | `concept.reinforcement_learning.dqn` | Artificial Intelligence/Reinforcement Learning |
+| x | Policy Gradients | `concept.reinforcement_learning.policy_gradients` | Artificial Intelligence/Reinforcement Learning |
+| x | REINFORCE | `concept.reinforcement_learning.reinforce` | Artificial Intelligence/Reinforcement Learning |
+| x | Actor-Critic | `concept.reinforcement_learning.actor_critic` | Artificial Intelligence/Reinforcement Learning |
 
 ### Batch 24
 

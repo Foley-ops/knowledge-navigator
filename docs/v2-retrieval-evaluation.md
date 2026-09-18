@@ -35,21 +35,21 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > Why does sliding a filter over an image work the same wherever the object is?
 
 - Needed but not retrieved: `concept.analysis.translation_equivariance`
-- Retrieved instead: `concept.analysis.cross_correlation`, `concept.deep_learning.backpropagation_through_convolution`, `concept.analysis.convolution`, `concept.deep_learning.spherical_cnns`, `concept.deep_learning.convolutional_networks`
+- Retrieved instead: `concept.analysis.cross_correlation`, `concept.deep_learning.backpropagation_through_convolution`, `concept.deep_learning.spherical_cnns`, `concept.deep_learning.convolutional_networks`, `concept.analysis.convolution`
 
 ### P2 (paraphrase)
 
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.message_passing`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.capsule_networks`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.message_passing`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.geometry.hyperbolic_geometry`
 
 ### P3 (paraphrase)
 
 > What lets a very deep network train without the signal dying on the way back?
 
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
-- Retrieved instead: `concept.deep_learning.batch_normalization`, `concept.algebra.geometric_algebra`, `concept.deep_learning.s4`, `concept.ml_engineering.deployment`, `concept.deep_learning.geometric_deep_learning`
+- Retrieved instead: `concept.algebra.geometric_algebra`, `concept.deep_learning.batch_normalization`, `concept.deep_learning.s4`, `concept.ml_engineering.deployment`, `concept.learning.meta_learning`
 
 ### P4 (paraphrase)
 

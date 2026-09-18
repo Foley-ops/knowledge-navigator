@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T04:23:18.331Z",
-  "corpusHash": "355b0e4929c01e970c5f776f6701ed17b4f1aecc12ab825294a8d9d5c9eca57d",
-  "atlasHash": "b8575c5959a389fd4c6290a4aef5d9d68e8ebf538d172c0645597e359c1ab851",
+  "builtAt": "2026-09-18T04:51:35.303Z",
+  "corpusHash": "e71fd261dd3f140ddcaf5e208caa7eb53cedd30820de4847cc275b883d5246fa",
+  "atlasHash": "30937729e5c879b3e5414d19684c0553a089c96ed783040bfccd1aced7a523f2",
   "counts": {
-    "concepts": 231,
-    "relationships": 870,
-    "categories": 26
+    "concepts": 241,
+    "relationships": 910,
+    "categories": 27
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 231,
+      "1": 241,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 231,
+      "markdown": 241,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 231
+      "generated-draft": 241
     },
-    "conceptsWithArticle": 231,
+    "conceptsWithArticle": 241,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 60,
+      "candidate": 50,
       "proposed-tier-3": 0,
-      "covered": 231,
+      "covered": 241,
       "deferred": 0
     },
-    "unresolvedReferences": 326,
-    "unresolvedGroups": 326,
+    "unresolvedReferences": 339,
+    "unresolvedGroups": 338,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -167,6 +167,7 @@
         "concept.deep_learning.mixture_of_experts",
         "concept.deep_learning.multilayer_perceptrons",
         "concept.deep_learning.neural_odes",
+        "concept.deep_learning.neuromorphic_computing",
         "concept.deep_learning.normalizing_flows",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
@@ -216,6 +217,7 @@
         "concept.deep_learning.mixture_of_experts",
         "concept.deep_learning.multilayer_perceptrons",
         "concept.deep_learning.neural_odes",
+        "concept.deep_learning.neuromorphic_computing",
         "concept.deep_learning.normalizing_flows",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
@@ -303,6 +305,35 @@
         "concept.learning.supervised_learning",
         "concept.learning.transfer_learning",
         "concept.learning.unsupervised_learning"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Reinforcement Learning",
+      "name": "Reinforcement Learning",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.reinforcement_learning.actor_critic",
+        "concept.reinforcement_learning.dqn",
+        "concept.reinforcement_learning.dynamic_programming",
+        "concept.reinforcement_learning.markov_decision_processes",
+        "concept.reinforcement_learning.monte_carlo_methods",
+        "concept.reinforcement_learning.policy_gradients",
+        "concept.reinforcement_learning.q_learning",
+        "concept.reinforcement_learning.reinforce",
+        "concept.reinforcement_learning.temporal_difference_learning"
+      ],
+      "conceptIds": [
+        "concept.reinforcement_learning.actor_critic",
+        "concept.reinforcement_learning.dqn",
+        "concept.reinforcement_learning.dynamic_programming",
+        "concept.reinforcement_learning.markov_decision_processes",
+        "concept.reinforcement_learning.monte_carlo_methods",
+        "concept.reinforcement_learning.policy_gradients",
+        "concept.reinforcement_learning.q_learning",
+        "concept.reinforcement_learning.reinforce",
+        "concept.reinforcement_learning.temporal_difference_learning"
       ]
     },
     {
@@ -2488,6 +2519,29 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.neural_odes",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.neuromorphic_computing",
+      "title": "Neuromorphic Computing",
+      "slug": "/concepts/neuromorphic-computing",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Computing hardware organised like nervous tissue — asynchronous events instead of a clocked instruction stream, and memory sitting inside the compute instead of across a bus — whose energy advantage is real but conditional on the activity being sparse.",
+      "aliases": [
+        "neuromorphic engineering",
+        "neuromorphic hardware"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.neuromorphic_computing",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -5437,6 +5491,198 @@
       "claims": 0
     },
     {
+      "id": "concept.reinforcement_learning.actor_critic",
+      "title": "Actor-Critic",
+      "slug": "/concepts/actor-critic",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A reinforcement learning architecture in which a parameterised policy is updated using a separately learned value function, buying a large reduction in gradient variance at the price of whatever bias that value function carries.",
+      "aliases": [
+        "advantage actor-critic"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.actor_critic",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.dqn",
+      "title": "DQN",
+      "slug": "/concepts/dqn",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The algorithm that made Q-learning work with a neural network by training on a replay buffer of past transitions and computing its regression targets from a frozen copy of the weights.",
+      "aliases": [
+        "deep Q-network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.dqn",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.dynamic_programming",
+      "title": "Dynamic Programming",
+      "slug": "/concepts/dynamic-programming",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Given a complete model of a Markov decision process, dynamic programming computes exact optimal values and policies by iterating the Bellman operators, which the discount factor makes contractions in the sup norm.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.dynamic_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.markov_decision_processes",
+      "title": "Markov Decision Processes",
+      "slug": "/concepts/markov-decision-processes",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The standard formal model of sequential decision making under uncertainty, and the setting in which nearly every reinforcement learning algorithm is stated, proved and debugged.",
+      "aliases": [
+        "MDP"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.markov_decision_processes",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.monte_carlo_methods",
+      "title": "Monte Carlo Methods",
+      "slug": "/concepts/monte-carlo-methods",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The model-free way to learn what a state is worth — run the episode to the end, average the returns you actually got, and accept high variance in exchange for no bootstrapping and no model.",
+      "aliases": [
+        "Monte Carlo prediction",
+        "Monte Carlo control"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.monte_carlo_methods",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.policy_gradients",
+      "title": "Policy Gradients",
+      "slug": "/concepts/policy-gradients",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of reinforcement learning methods that improve a parameterised stochastic policy by ascending an unbiased sample estimate of the gradient of expected return, obtained from the log-derivative of the policy itself.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.policy_gradients",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.q_learning",
+      "title": "Q-Learning",
+      "slug": "/concepts/q-learning",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An off-policy control algorithm that learns the optimal action-value function by bootstrapping from the best action available at the next state, regardless of which action the agent actually took.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.q_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.reinforce",
+      "title": "REINFORCE",
+      "slug": "/concepts/reinforce",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "REINFORCE estimates the gradient of expected return by weighting each action's score function by the return that actually followed it, giving an unbiased policy update that requires complete episodes and has notoriously high variance.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.reinforce",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.reinforcement_learning.temporal_difference_learning",
+      "title": "Temporal-Difference Learning",
+      "slug": "/concepts/temporal-difference-learning",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of value-estimation methods that corrects each prediction towards the next one — a sampled reward plus the current estimate of what follows — so an agent can learn online, without a model and without waiting for an episode to end.",
+      "aliases": [
+        "TD learning",
+        "TD(lambda)"
+      ],
+      "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
+      "categories": [
+        "Artificial Intelligence/Reinforcement Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.reinforcement_learning.temporal_difference_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.software.apis",
       "title": "APIs",
       "slug": "/concepts/apis",
@@ -8119,6 +8365,38 @@
       "target": "concept.analysis.ordinary_differential_equations",
       "type": "requires",
       "note": "The model is literally an initial value problem, and its well-posedness, its flow map and its numerical solution are ODE facts a reader needs before the architecture makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neuromorphic_computing|contrasts_with|concept.deep_learning.quantization",
+      "source": "concept.deep_learning.neuromorphic_computing",
+      "target": "concept.deep_learning.quantization",
+      "type": "contrasts_with",
+      "note": "Both attack the same energy bill, but quantisation shrinks the operands on conventional silicon while neuromorphic design changes the substrate, and the two are usually alternatives rather than complements in a given deployment.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neuromorphic_computing|contrasts_with|concept.languages.gpu_kernels",
+      "source": "concept.deep_learning.neuromorphic_computing",
+      "target": "concept.languages.gpu_kernels",
+      "type": "contrasts_with",
+      "note": "A GPU kernel wins by scheduling dense regular work through an explicit memory hierarchy, which is exactly the organisation neuromorphic hardware abandons — there is no shared-memory tile and no clock-synchronous inner loop to write.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neuromorphic_computing|implements|concept.deep_learning.spiking_neural_networks",
+      "source": "concept.deep_learning.neuromorphic_computing",
+      "target": "concept.deep_learning.spiking_neural_networks",
+      "type": "implements",
+      "note": "These chips realise leaky-integrate-and-fire dynamics and spike routing in silicon, so a spike is a physical event on a wire rather than a number in a simulated tensor.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neuromorphic_computing|useful_when|concept.ml_engineering.edge_inference",
+      "source": "concept.deep_learning.neuromorphic_computing",
+      "target": "concept.ml_engineering.edge_inference",
+      "type": "useful_when",
+      "note": "The advantage appears in the always-on, battery-powered, sparse-input regime that edge inference defines, and disappears in a batched datacentre setting where dense throughput is what is being bought.",
       "condition": null
     },
     {
@@ -12271,6 +12549,294 @@
       "target": "concept.probability.probability_theory",
       "type": "requires",
       "note": "A process is a family of random variables on one probability space, and its defining properties are statements about conditional expectation and joint distributions, so none of it can be stated before those are.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.actor_critic|contrasts_with|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.actor_critic",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "contrasts_with",
+      "note": "Q-learning keeps only a value function and recovers actions by maximising over them, which actor-critic avoids by carrying an explicit policy that need not be maximised over.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.actor_critic|contrasts_with|concept.reinforcement_learning.reinforce",
+      "source": "concept.reinforcement_learning.actor_critic",
+      "target": "concept.reinforcement_learning.reinforce",
+      "type": "contrasts_with",
+      "note": "REINFORCE uses the full sampled return and is unbiased with high variance; actor-critic substitutes a learned estimate and moves to the opposite side of the same trade.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.actor_critic|requires|concept.reinforcement_learning.policy_gradients",
+      "source": "concept.reinforcement_learning.actor_critic",
+      "target": "concept.reinforcement_learning.policy_gradients",
+      "type": "requires",
+      "note": "The actor update is the policy gradient estimator with the return replaced by a critic-derived coefficient, so the theorem that licenses it is stated there and not repeated here.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.actor_critic|requires|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.actor_critic",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "requires",
+      "note": "The critic is fit by bootstrapped TD regression, and its bias, its stability and its step-size requirements are TD's, not the policy's.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dqn|assumes|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.dqn",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "assumes",
+      "note": "Bootstrapping from the successor state is only valid when the state is Markov, which is why DQN stacks four Atari frames into one state.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dqn|contrasts_with|concept.reinforcement_learning.policy_gradients",
+      "source": "concept.reinforcement_learning.dqn",
+      "target": "concept.reinforcement_learning.policy_gradients",
+      "type": "contrasts_with",
+      "note": "DQN learns values and reads a deterministic greedy policy off them, whereas policy gradient methods optimise a parameterised stochastic policy directly and are not restricted to discrete actions.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dqn|requires|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.dqn",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "requires",
+      "note": "DQN is the Q-learning update with the lookup table replaced by a network, so its loss is unreadable without the tabular update first.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dqn|specializes|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.dqn",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "specializes",
+      "note": "The DQN loss regresses onto a one-step TD target, and its gradient is the semi-gradient form that TD methods use.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dynamic_programming|contrasts_with|concept.reinforcement_learning.monte_carlo_methods",
+      "source": "concept.reinforcement_learning.dynamic_programming",
+      "target": "concept.reinforcement_learning.monte_carlo_methods",
+      "type": "contrasts_with",
+      "note": "Monte Carlo estimates the same value functions from complete sampled returns with no model and no bootstrapping, which is the exact complement of DP's model-based, one-step, full-width backups.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dynamic_programming|contributes_to|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.dynamic_programming",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "contributes_to",
+      "note": "Q-learning is value iteration on action values with sampled transitions, and its convergence proof is the stochastic-approximation version of the contraction argument given here.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dynamic_programming|prerequisite_of|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.dynamic_programming",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "prerequisite_of",
+      "note": "The TD update is the DP backup with the expectation over next states replaced by a single sampled transition, so its form is unreadable before the backup it samples.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.dynamic_programming|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.dynamic_programming",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "Every operator, value function and convergence claim here is stated over a finite MDP, and the transition kernel and reward function are the inputs the algorithms consume.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.markov_decision_processes|contrasts_with|concept.machine_learning.hidden_markov_models",
+      "source": "concept.reinforcement_learning.markov_decision_processes",
+      "target": "concept.machine_learning.hidden_markov_models",
+      "type": "contrasts_with",
+      "note": "An HMM has a hidden Markov state and no actions or rewards, an MDP has actions and rewards and an observed state, and the partially observable MDP is what you get when both complications hold at once.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.markov_decision_processes|prerequisite_of|concept.reinforcement_learning.dynamic_programming",
+      "source": "concept.reinforcement_learning.markov_decision_processes",
+      "target": "concept.reinforcement_learning.dynamic_programming",
+      "type": "prerequisite_of",
+      "note": "Value iteration and policy iteration are algorithms that operate on a fully known MDP, and their statement and convergence proof are meaningless without the transition kernel, reward and discount.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.markov_decision_processes|prerequisite_of|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.markov_decision_processes",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "prerequisite_of",
+      "note": "A TD update is a sampled version of the Bellman expectation equation, so the value function it estimates is defined only once the MDP is fixed.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.markov_decision_processes|requires|concept.probability.stochastic_processes",
+      "source": "concept.reinforcement_learning.markov_decision_processes",
+      "target": "concept.probability.stochastic_processes",
+      "type": "requires",
+      "note": "The state sequence under a fixed policy is a Markov chain, so transition kernels, stationarity and conditional independence over time are the substrate the definition is written in.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.monte_carlo_methods|contrasts_with|concept.reinforcement_learning.dynamic_programming",
+      "source": "concept.reinforcement_learning.monte_carlo_methods",
+      "target": "concept.reinforcement_learning.dynamic_programming",
+      "type": "contrasts_with",
+      "note": "Both compute value functions for the same MDP, but dynamic programming sweeps a known transition model and bootstraps from its own estimates, while Monte Carlo needs only sampled episodes and bootstraps from nothing.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.monte_carlo_methods|contrasts_with|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.monte_carlo_methods",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "contrasts_with",
+      "note": "TD replaces the remainder of the episode with a current estimate, which buys online updates and lower variance at the cost of bias; Monte Carlo is the zero-bias, high-variance end of the same spectrum, and n-step returns interpolate between them.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.monte_carlo_methods|contributes_to|concept.reinforcement_learning.reinforce",
+      "source": "concept.reinforcement_learning.monte_carlo_methods",
+      "target": "concept.reinforcement_learning.reinforce",
+      "type": "contributes_to",
+      "note": "REINFORCE is the policy-gradient method whose gradient sample is exactly the complete sampled return defined here, which is why it inherits Monte Carlo's unbiasedness and its variance problem.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.monte_carlo_methods|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.monte_carlo_methods",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The return, the policy and the value functions being estimated are defined by the MDP, so the quantity a Monte Carlo average converges to cannot be stated without it.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.policy_gradients|contrasts_with|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.policy_gradients",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "contrasts_with",
+      "note": "Q-learning learns action values and acts by maximising over actions, which policy gradients never do, so the two differ in exactly which object is parameterised.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.policy_gradients|generalizes|concept.reinforcement_learning.reinforce",
+      "source": "concept.reinforcement_learning.policy_gradients",
+      "target": "concept.reinforcement_learning.reinforce",
+      "type": "generalizes",
+      "note": "REINFORCE is the Monte-Carlo instance of the general estimator, using full sampled returns where the general form allows any unbiased weighting of the score.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.policy_gradients|prerequisite_of|concept.reinforcement_learning.actor_critic",
+      "source": "concept.reinforcement_learning.policy_gradients",
+      "target": "concept.reinforcement_learning.actor_critic",
+      "type": "prerequisite_of",
+      "note": "An actor-critic is a policy gradient whose baseline and return estimate come from a learned value function, so the gradient must be understood first.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.policy_gradients|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.policy_gradients",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The objective being differentiated is expected return under an MDP, and the derivation depends on the Markov factorisation of a trajectory's probability.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.q_learning|contrasts_with|concept.reinforcement_learning.policy_gradients",
+      "source": "concept.reinforcement_learning.q_learning",
+      "target": "concept.reinforcement_learning.policy_gradients",
+      "type": "contrasts_with",
+      "note": "Both solve control, but Q-learning derives a policy implicitly from a learned value function while policy gradients optimise a parameterised policy directly and handle continuous actions the max cannot.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.q_learning|prerequisite_of|concept.reinforcement_learning.dqn",
+      "source": "concept.reinforcement_learning.q_learning",
+      "target": "concept.reinforcement_learning.dqn",
+      "type": "prerequisite_of",
+      "note": "DQN is this update with a neural network in place of the table, so its target, its instabilities and its target-network fix are unreadable without this rule first.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.q_learning|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.q_learning",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The update is a sampled application of the Bellman optimality operator, which is only defined once states, actions, transition probabilities and discounting are in place.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.q_learning|specializes|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.q_learning",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "specializes",
+      "note": "Q-learning is the one-step TD control rule in which the bootstrap target is formed from the maximising action rather than the action the behaviour policy chose.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.reinforce|contrasts_with|concept.reinforcement_learning.temporal_difference_learning",
+      "source": "concept.reinforcement_learning.reinforce",
+      "target": "concept.reinforcement_learning.temporal_difference_learning",
+      "type": "contrasts_with",
+      "note": "Both estimate the same quantities, but REINFORCE waits for a terminal state and accepts the variance, where TD bootstraps from its own estimate and accepts the bias.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.reinforce|contributes_to|concept.reinforcement_learning.actor_critic",
+      "source": "concept.reinforcement_learning.reinforce",
+      "target": "concept.reinforcement_learning.actor_critic",
+      "type": "contributes_to",
+      "note": "Replacing REINFORCE's constant baseline with a learned state-value function, and then its sampled return with a bootstrapped one, is exactly how actor-critic is derived.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.reinforce|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.reinforce",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The update is defined over trajectories, returns and a discount factor, all of which are the MDP's vocabulary and undefined without it.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.reinforce|specializes|concept.reinforcement_learning.policy_gradients",
+      "source": "concept.reinforcement_learning.reinforce",
+      "target": "concept.reinforcement_learning.policy_gradients",
+      "type": "specializes",
+      "note": "REINFORCE is the Monte Carlo instance of the general policy gradient, obtained by substituting the sampled return for the action-value it estimates.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.temporal_difference_learning|contrasts_with|concept.reinforcement_learning.dynamic_programming",
+      "source": "concept.reinforcement_learning.temporal_difference_learning",
+      "target": "concept.reinforcement_learning.dynamic_programming",
+      "type": "contrasts_with",
+      "note": "Dynamic programming also bootstraps but sweeps the exact expectation from a known model, where TD samples one transition and needs no model.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.temporal_difference_learning|contrasts_with|concept.reinforcement_learning.monte_carlo_methods",
+      "source": "concept.reinforcement_learning.temporal_difference_learning",
+      "target": "concept.reinforcement_learning.monte_carlo_methods",
+      "type": "contrasts_with",
+      "note": "Monte Carlo waits for the realised return and is unbiased with high variance; TD substitutes its own estimate for the tail and trades bias for variance in the other direction.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.temporal_difference_learning|prerequisite_of|concept.reinforcement_learning.q_learning",
+      "source": "concept.reinforcement_learning.temporal_difference_learning",
+      "target": "concept.reinforcement_learning.q_learning",
+      "type": "prerequisite_of",
+      "note": "Q-learning is the off-policy control form of the TD update, so its target, its error term and its convergence conditions are unreadable without TD first.",
+      "condition": null
+    },
+    {
+      "id": "concept.reinforcement_learning.temporal_difference_learning|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.reinforcement_learning.temporal_difference_learning",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "The value function TD estimates, the Bellman equation its target approximates, and the Markov property its correctness rests on are all defined by the MDP formalism.",
       "condition": null
     },
     {
