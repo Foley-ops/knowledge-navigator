@@ -935,14 +935,14 @@ candidates:
     title: Multilayer Perceptrons
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.multilayer_perceptrons
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.convolutional_networks
     title: Convolutional Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.convolutional_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.convolutional_layer
     title: Convolutional Layer
     categories:
@@ -989,8 +989,8 @@ candidates:
     title: ConvNeXt
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.convnext
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.capsule_networks
     title: Capsule Networks
     categories:
@@ -1001,20 +1001,20 @@ candidates:
     title: Recurrent Neural Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.recurrent_neural_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.lstm
     title: LSTM
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.lstm
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.gru
     title: GRU
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.gru
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.xlstm
     title: xLSTM
     categories:
@@ -1031,20 +1031,20 @@ candidates:
     title: Transformers
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.transformers
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.attention
     title: Attention
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.attention
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.positional_encoding
     title: Positional Encoding
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.positional_encoding
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.mixture_of_experts
     title: Mixture of Experts
     categories:
@@ -1055,8 +1055,8 @@ candidates:
     title: Vision Transformer
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.vision_transformer
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.state_space_models
     title: State Space Models
     categories:

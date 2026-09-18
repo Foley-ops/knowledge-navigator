@@ -11,8 +11,8 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 ## Result
 
 - Questions: **28** across 6 intent classes.
-- Complete retrieval (every needed concept reached): **23/28** (82%).
-- Concept recall (needed concepts reached): **31/37** (84%).
+- Complete retrieval (every needed concept reached): **22/28** (79%).
+- Concept recall (needed concepts reached): **30/37** (81%).
 - Answer quality: **not measured**. No model is involved in this evaluation.
 
 ## By intent
@@ -21,21 +21,21 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 | --- | --- | --- | --- |
 | title | 5 | 5/5 (100%) | 5/5 (100%) |
 | alias | 5 | 5/5 (100%) | 5/5 (100%) |
-| paraphrase | 5 | 2/5 (40%) | 2/6 (33%) |
+| paraphrase | 5 | 1/5 (20%) | 1/6 (17%) |
 | symptom | 5 | 5/5 (100%) | 5/5 (100%) |
 | comparison | 4 | 4/4 (100%) | 8/8 (100%) |
 | path | 4 | 2/4 (50%) | 6/8 (75%) |
 
 ## Where it fails
 
-5 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
+6 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
 
 ### P2 (paraphrase)
 
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`, `concept.learning.supervised_learning`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.deep_learning.residual_connection`
 
 ### P3 (paraphrase)
 
@@ -44,26 +44,33 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
 - Retrieved instead: `concept.deep_learning.batch_normalization`, `concept.ml_engineering.deployment`, `concept.algebra.geometric_algebra`, `concept.learning.meta_learning`, `concept.machine_learning.random_forests`
 
+### P4 (paraphrase)
+
+> How do you shrink a feature map without learning any parameters?
+
+- Needed but not retrieved: `concept.deep_learning.pooling`
+- Retrieved instead: `concept.deep_learning.gru`, `concept.learning.meta_learning`, `concept.analysis.vector_calculus`, `concept.optimization.variational_methods`, `concept.geometry.renormalization`
+
 ### P5 (paraphrase)
 
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
-- Retrieved instead: `concept.deep_learning.backpropagation_through_convolution`, `concept.paradigms.imperative_programming`, `concept.ml_engineering.pytorch`, `concept.foundations.category_theory`, `concept.ml_engineering.jax`
+- Retrieved instead: `concept.deep_learning.convolutional_networks`, `concept.deep_learning.backpropagation_through_convolution`, `concept.paradigms.imperative_programming`, `concept.ml_engineering.pytorch`, `concept.foundations.category_theory`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.learning.unsupervised_learning`, `concept.probability.martingales`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.learning.unsupervised_learning`
 
 ### R3 (path)
 
 > What comes before a convolutional layer?
 
 - Needed but not retrieved: `concept.analysis.convolution`
-- Retrieved instead: `concept.deep_learning.convolutional_layer`, `concept.analysis.translation_equivariance`, `concept.deep_learning.resnet`, `concept.deep_learning.backpropagation_through_convolution`, `concept.deep_learning.vgg`
+- Retrieved instead: `concept.deep_learning.convolutional_layer`, `concept.deep_learning.vision_transformer`, `concept.deep_learning.convolutional_networks`, `concept.analysis.translation_equivariance`, `concept.deep_learning.resnet`
 
 ## Private context
 
@@ -90,7 +97,7 @@ Nothing here is evidence for embeddings yet. A miss on eleven pages is usually a
 | P1 | paraphrase | Why does sliding a filter over an image work the same wherever the object is? | `analysis.translation_equivariance` | yes |
 | P2 | paraphrase | How does a network see a wider area of the input as it gets deeper? | `deep_learning.receptive_field` | no |
 | P3 | paraphrase | What lets a very deep network train without the signal dying on the way back? | `deep_learning.residual_connection` | no |
-| P4 | paraphrase | How do you shrink a feature map without learning any parameters? | `deep_learning.pooling` | yes |
+| P4 | paraphrase | How do you shrink a feature map without learning any parameters? | `deep_learning.pooling` | no |
 | P5 | paraphrase | Is the operation in a CNN really the mathematical one, or the flipped version? | `analysis.convolution`, `analysis.cross_correlation` | no |
 | S1 | symptom | My detector keeps losing small objects after a few downsampling stages. Why? | `deep_learning.pooling` | yes |
 | S2 | symptom | Training a 40-layer plain network is worse than my 20-layer one. What is going on? | `deep_learning.residual_connection` | yes |

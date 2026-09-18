@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T02:40:39.121Z",
-  "corpusHash": "99bb646c9140733dac73607d4353c0c1580b16edd6ab677d8e868b9a46066e27",
-  "atlasHash": "6a83845db9726ed0bd805d0342a75e35f0322c49c8f203588c4f0721da21807b",
+  "builtAt": "2026-09-18T03:07:32.885Z",
+  "corpusHash": "b7e097acbab35b1b71a1ad2f844974f7c9860e390db8b276030af451a989c52f",
+  "atlasHash": "e97dd6427da394543b69fa4eb987d5bf75247bb311e1f8143e7ba820e7180029",
   "counts": {
-    "concepts": 191,
-    "relationships": 710,
+    "concepts": 201,
+    "relationships": 750,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 191,
+      "1": 201,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 191,
+      "markdown": 201,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 191
+      "generated-draft": 201
     },
-    "conceptsWithArticle": 191,
+    "conceptsWithArticle": 201,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 100,
+      "candidate": 90,
       "proposed-tier-3": 0,
-      "covered": 191,
+      "covered": 201,
       "deferred": 0
     },
-    "unresolvedReferences": 246,
-    "unresolvedGroups": 246,
+    "unresolvedReferences": 261,
+    "unresolvedGroups": 261,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -140,23 +140,43 @@
       "depth": 2,
       "parent": "Artificial Intelligence",
       "primaryConceptIds": [
+        "concept.deep_learning.attention",
+        "concept.deep_learning.convnext",
         "concept.deep_learning.convolutional_layer",
+        "concept.deep_learning.convolutional_networks",
+        "concept.deep_learning.gru",
         "concept.deep_learning.lenet",
+        "concept.deep_learning.lstm",
+        "concept.deep_learning.multilayer_perceptrons",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
+        "concept.deep_learning.positional_encoding",
         "concept.deep_learning.receptive_field",
-        "concept.deep_learning.residual_connection"
+        "concept.deep_learning.recurrent_neural_networks",
+        "concept.deep_learning.residual_connection",
+        "concept.deep_learning.transformers",
+        "concept.deep_learning.vision_transformer"
       ],
       "conceptIds": [
         "concept.analysis.translation_equivariance",
+        "concept.deep_learning.attention",
+        "concept.deep_learning.convnext",
         "concept.deep_learning.convolutional_layer",
+        "concept.deep_learning.convolutional_networks",
+        "concept.deep_learning.gru",
         "concept.deep_learning.lenet",
+        "concept.deep_learning.lstm",
+        "concept.deep_learning.multilayer_perceptrons",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
+        "concept.deep_learning.positional_encoding",
         "concept.deep_learning.receptive_field",
+        "concept.deep_learning.recurrent_neural_networks",
         "concept.deep_learning.residual_connection",
         "concept.deep_learning.resnet",
-        "concept.deep_learning.vgg"
+        "concept.deep_learning.transformers",
+        "concept.deep_learning.vgg",
+        "concept.deep_learning.vision_transformer"
       ]
     },
     {
@@ -1636,6 +1656,26 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.attention",
+      "title": "Attention",
+      "slug": "/concepts/attention",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Attention lets a model read a whole collection of items at once by blending their value vectors in proportions it computes from how well each key matches a query, giving content-dependent, differentiable lookup.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.attention",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.backpropagation",
       "title": "Backpropagation",
       "slug": "/concepts/backpropagation",
@@ -1703,6 +1743,26 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.convnext",
+      "title": "ConvNeXt",
+      "slug": "/concepts/convnext",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A convolutional network rebuilt out of a ResNet-50 by adopting transformer-era design and training choices one change at a time, which matches hierarchical vision transformers at equal compute and so shows how much of their advantage was never attention.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.convnext",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.convolutional_layer",
       "title": "Convolutional Layer",
       "slug": "/concepts/convolutional-layer",
@@ -1726,6 +1786,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.convolutional_networks",
+      "title": "Convolutional Networks",
+      "slug": "/concepts/convolutional-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An architecture family in which almost all computation is local filtering with weights shared across position, so that depth buys a hierarchy of receptive fields instead of a larger parameter count.",
+      "aliases": [
+        "CNN"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.convolutional_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.distillation",
       "title": "Distillation",
       "slug": "/concepts/distillation",
@@ -1743,6 +1825,28 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_training.distillation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.gru",
+      "title": "GRU",
+      "slug": "/concepts/gru",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A recurrent cell that updates its hidden state as a learned interpolation between the old state and a fresh candidate, using two gates and no separate memory cell.",
+      "aliases": [
+        "gated recurrent unit"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.gru",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
       "claims": 0
@@ -1859,6 +1963,52 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.lstm",
+      "title": "LSTM",
+      "slug": "/concepts/lstm",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A recurrent cell that carries an additive, gate-controlled memory state through time, so that gradients survive hundreds of steps instead of decaying exponentially after ten.",
+      "aliases": [
+        "long short-term memory",
+        "constant error carousel"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.lstm",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.multilayer_perceptrons",
+      "title": "Multilayer Perceptrons",
+      "slug": "/concepts/multilayer-perceptrons",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The multilayer perceptron is the baseline neural architecture — a chain of affine maps separated by elementwise nonlinearities — and the nonlinearity is the only thing that stops the whole chain collapsing into one matrix.",
+      "aliases": [
+        "MLP",
+        "feedforward neural network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.multilayer_perceptrons",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.perceptron",
       "title": "Perceptron",
       "slug": "/concepts/perceptron",
@@ -1900,6 +2050,28 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.pooling",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.positional_encoding",
+      "title": "Positional Encoding",
+      "slug": "/concepts/positional-encoding",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The mechanism that tells a transformer where each token sits, because self-attention on its own treats its input as a set rather than a sequence.",
+      "aliases": [
+        "sinusoidal positional encoding"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.positional_encoding",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -1967,6 +2139,29 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.receptive_field",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.recurrent_neural_networks",
+      "title": "Recurrent Neural Networks",
+      "slug": "/concepts/recurrent-neural-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A network that reads a sequence one step at a time, carrying a hidden state forward through the same weights, so that training becomes backpropagation down a chain of Jacobians whose product decides whether long-range gradients survive.",
+      "aliases": [
+        "RNN",
+        "Elman network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.recurrent_neural_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -2060,6 +2255,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.transformers",
+      "title": "Transformers",
+      "slug": "/concepts/transformers",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A sequence architecture that replaces recurrence with stacked blocks of multi-head self-attention and a position-wise feedforward network, so every position is computed in parallel and any two positions interact in a single step.",
+      "aliases": [
+        "Transformer architecture"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.transformers",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.vgg",
       "title": "VGG",
       "slug": "/concepts/vgg",
@@ -2081,6 +2298,28 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.vgg",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.vision_transformer",
+      "title": "Vision Transformer",
+      "slug": "/concepts/vision-transformer",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Vision Transformer applies an unmodified transformer encoder to a sequence of flattened image patches, and overtakes convolutional networks on image classification only after pretraining on data far beyond ImageNet scale.",
+      "aliases": [
+        "ViT"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.vision_transformer",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -6121,6 +6360,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.attention|contrasts_with|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.attention",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "contrasts_with",
+      "note": "A convolution applies weights that are fixed after training and local in extent, whereas attention computes its mixing weights from the input at run time and over the whole set.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.attention|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.attention",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "A recurrent network reaches distant context by propagating a fixed-size state through every intervening step, while attention reaches it in one operation at quadratic cost.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.attention|contributes_to|concept.deep_learning.positional_encoding",
+      "source": "concept.deep_learning.attention",
+      "target": "concept.deep_learning.positional_encoding",
+      "type": "contributes_to",
+      "note": "Attention is invariant to permuting its keys and values, so order information has to be injected into the representations separately — which is the problem positional encoding exists to solve.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.attention|prerequisite_of|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.attention",
+      "target": "concept.deep_learning.transformers",
+      "type": "prerequisite_of",
+      "note": "A transformer block is attention plus a position-wise feedforward network and normalisation, so its architecture cannot be read without knowing what the attention sublayer computes.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.backpropagation_through_convolution|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.backpropagation_through_convolution",
       "target": "concept.deep_learning.convolutional_layer",
@@ -6185,6 +6456,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.convnext|contrasts_with|concept.deep_learning.vision_transformer",
+      "source": "concept.deep_learning.convnext",
+      "target": "concept.deep_learning.vision_transformer",
+      "type": "contrasts_with",
+      "note": "The architecture exists as a controlled comparison against vision transformers at matched FLOPs, so the two are best read against each other rather than separately.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convnext|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.convnext",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "Every step in the modernisation is a change to kernel size, grouping, width or stride, none of which can be read without knowing what a convolution computes.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convnext|specializes|concept.deep_learning.convolutional_networks",
+      "source": "concept.deep_learning.convnext",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "specializes",
+      "note": "It is one particular convolutional architecture family, and its interest lies in which of the general convnet design choices it abandons.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convnext|variant_of|concept.deep_learning.resnet",
+      "source": "concept.deep_learning.convnext",
+      "target": "concept.deep_learning.resnet",
+      "type": "variant_of",
+      "note": "ConvNeXt is literally a ResNet-50 with its stem, stage ratios, block interior, normalisation and activations replaced in sequence; the residual stage layout survives the whole procedure.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.convolutional_layer|implements|concept.analysis.cross_correlation",
       "source": "concept.deep_learning.convolutional_layer",
       "target": "concept.analysis.cross_correlation",
@@ -6225,6 +6528,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.convolutional_networks|contrasts_with|concept.deep_learning.vision_transformer",
+      "source": "concept.deep_learning.convolutional_networks",
+      "target": "concept.deep_learning.vision_transformer",
+      "type": "contrasts_with",
+      "note": "Both map images to features, but one builds locality and weight sharing into the architecture while the other learns them from data via global attention over patches.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_networks|guarantees|concept.analysis.translation_equivariance",
+      "source": "concept.deep_learning.convolutional_networks",
+      "target": "concept.analysis.translation_equivariance",
+      "type": "guarantees",
+      "note": "A stack of stride-one convolutions and pointwise nonlinearities commutes exactly with translation on an unbounded or circular domain.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_networks|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.convolutional_networks",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "A convolutional network is a stack of these layers, so the layer's arithmetic must be understood before the architecture makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.convolutional_networks|specializes|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.deep_learning.convolutional_networks",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "specializes",
+      "note": "Each convolutional layer is a fully connected layer whose weight matrix is forced to be sparse and to repeat one small block at every position.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.distillation|contributes_to|concept.learning.transfer_learning",
       "source": "concept.deep_learning.distillation",
       "target": "concept.learning.transfer_learning",
@@ -6246,6 +6581,38 @@
       "target": "concept.learning.supervised_learning",
       "type": "requires",
       "note": "Standard distillation fits a student from inputs paired with teacher-produced targets and often with original labels.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.gru|contrasts_with|concept.deep_learning.lstm",
+      "source": "concept.deep_learning.gru",
+      "target": "concept.deep_learning.lstm",
+      "type": "contrasts_with",
+      "note": "Both gate a recurrent state, but the GRU merges the forget and input gates into one update gate, drops the output gate, and keeps no separate cell vector.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.gru|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.gru",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "A GRU compresses history into a fixed-size state updated sequentially, where a transformer keeps every position and attends over all of them in parallel.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.gru|contributes_to|concept.deep_learning.attention",
+      "source": "concept.deep_learning.gru",
+      "target": "concept.deep_learning.attention",
+      "type": "contributes_to",
+      "note": "The GRU encoder-decoder of Cho et al. is the architecture whose fixed-length summary vector attention was introduced to bypass.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.gru|requires|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.gru",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "requires",
+      "note": "The GRU changes only how a recurrent hidden state is updated, so the page is unreadable without the notion of a state carried across time steps and trained through time.",
       "condition": null
     },
     {
@@ -6361,6 +6728,70 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.lstm|contrasts_with|concept.deep_learning.gru",
+      "source": "concept.deep_learning.lstm",
+      "target": "concept.deep_learning.gru",
+      "type": "contrasts_with",
+      "note": "The GRU keeps the additive path but merges cell and hidden state and drops to two gates, which is the same idea at three quarters of the parameters and a different set of trade-offs.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.lstm|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.lstm",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "Both attack long-range dependency, but attention gives every position a direct path to every other at quadratic cost, where an LSTM routes everything through one fixed-size state at constant cost per step.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.lstm|contributes_to|concept.deep_learning.residual_connection",
+      "source": "concept.deep_learning.lstm",
+      "target": "concept.deep_learning.residual_connection",
+      "type": "contributes_to",
+      "note": "The gated additive update is the same gradient-preserving trick a residual connection applies in the depth direction rather than along time, and the recurrent version came first.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.lstm|requires|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.lstm",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "requires",
+      "note": "The LSTM is a replacement for the hidden unit of a recurrent network; unrolling, weight sharing across time and backpropagation through time are assumed by everything on this page and explained there.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.multilayer_perceptrons|contrasts_with|concept.deep_learning.convolutional_networks",
+      "source": "concept.deep_learning.multilayer_perceptrons",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "contrasts_with",
+      "note": "A dense layer imposes no locality or weight sharing, which is precisely the structural prior a convolutional network adds and pays for in parameters saved.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.multilayer_perceptrons|generalizes|concept.deep_learning.perceptron",
+      "source": "concept.deep_learning.multilayer_perceptrons",
+      "target": "concept.deep_learning.perceptron",
+      "type": "generalizes",
+      "note": "A single weight matrix with a threshold is the one-unit, no-hidden-layer case; the MLP adds hidden layers and a differentiable activation so the whole stack can be trained by gradient descent.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.multilayer_perceptrons|prerequisite_of|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.multilayer_perceptrons",
+      "target": "concept.deep_learning.transformers",
+      "type": "prerequisite_of",
+      "note": "A transformer block is attention plus a position-wise MLP, so the block cannot be read without already knowing what the feedforward sublayer computes.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.multilayer_perceptrons|requires|concept.linear_algebra.matrix_theory",
+      "source": "concept.deep_learning.multilayer_perceptrons",
+      "target": "concept.linear_algebra.matrix_theory",
+      "type": "requires",
+      "note": "Every layer is a matrix-vector product plus a bias, and the collapse argument is a statement about products and ranks of those matrices.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.perceptron|contrasts_with|concept.machine_learning.logistic_regression",
       "source": "concept.deep_learning.perceptron",
       "target": "concept.machine_learning.logistic_regression",
@@ -6390,6 +6821,38 @@
       "target": "concept.deep_learning.convolutional_layer",
       "type": "requires",
       "note": "Pooling operates on the feature maps a convolutional layer produces and is placed between convolutional stages.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.positional_encoding|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.positional_encoding",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "A recurrent network encodes order implicitly in the sequence of its state updates and needs no positional signal, which is exactly what parallel attention gives up.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.positional_encoding|contributes_to|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.positional_encoding",
+      "target": "concept.deep_learning.transformers",
+      "type": "contributes_to",
+      "note": "A transformer's entire sensitivity to word order comes from the positional signal; remove it from an unmasked stack and the model computes a set function.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.positional_encoding|contributes_to|concept.deep_learning.vision_transformer",
+      "source": "concept.deep_learning.positional_encoding",
+      "target": "concept.deep_learning.vision_transformer",
+      "type": "contributes_to",
+      "note": "Image patches arrive as an unordered set, so a vision transformer has to add position embeddings to recover the spatial grid.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.positional_encoding|requires|concept.deep_learning.attention",
+      "source": "concept.deep_learning.positional_encoding",
+      "target": "concept.deep_learning.attention",
+      "type": "requires",
+      "note": "The permutation equivariance that positional encoding exists to repair is a property of the attention operation, so its definition has to be in hand first.",
       "condition": null
     },
     {
@@ -6446,6 +6909,38 @@
       "target": "concept.analysis.convolution",
       "type": "requires",
       "note": "The receptive field is determined by the spatial extent, stride and dilation of the convolutions a unit sits behind.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.recurrent_neural_networks|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.recurrent_neural_networks",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "Both model sequences, but a transformer replaces the serial state update with an all-pairs comparison that parallelises over time and pays memory instead.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.recurrent_neural_networks|contrasts_with|concept.machine_learning.hidden_markov_models",
+      "source": "concept.deep_learning.recurrent_neural_networks",
+      "target": "concept.machine_learning.hidden_markov_models",
+      "type": "contrasts_with",
+      "note": "Both carry latent state through a sequence, but an HMM's state is a distribution over finitely many discrete values with exact inference, while an RNN's is a single deterministic point in a continuous space.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.recurrent_neural_networks|prerequisite_of|concept.deep_learning.lstm",
+      "source": "concept.deep_learning.recurrent_neural_networks",
+      "target": "concept.deep_learning.lstm",
+      "type": "prerequisite_of",
+      "note": "Every gate in an LSTM exists to interrupt the Jacobian product derived on this page, so the fix cannot be understood before the failure.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.recurrent_neural_networks|requires|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.recurrent_neural_networks",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "requires",
+      "note": "Backpropagation through time is ordinary backpropagation run over the unrolled computation graph, so the gradient derivation here is unreadable without it.",
       "condition": null
     },
     {
@@ -6545,6 +7040,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.transformers|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.transformers",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "Both model sequences, but a recurrent network carries a state forward step by step while a transformer mixes all positions at once, which trades linear-time inference for parallel training.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.transformers|prerequisite_of|concept.deep_learning.vision_transformer",
+      "source": "concept.deep_learning.transformers",
+      "target": "concept.deep_learning.vision_transformer",
+      "type": "prerequisite_of",
+      "note": "A vision transformer is this architecture with image patches as tokens, so the block structure has to be understood before the vision variant makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.transformers|requires|concept.deep_learning.attention",
+      "source": "concept.deep_learning.transformers",
+      "target": "concept.deep_learning.attention",
+      "type": "requires",
+      "note": "A transformer block is defined by its multi-head self-attention sublayer, so the page is unreadable without knowing what an attention operation computes.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.transformers|requires|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.deep_learning.transformers",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "requires",
+      "note": "The second sublayer of every block is a two-layer perceptron applied independently at each position, and it holds most of the block's parameters.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.vgg|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.vgg",
       "target": "concept.deep_learning.convolutional_layer",
@@ -6558,6 +7085,38 @@
       "target": "concept.deep_learning.pooling",
       "type": "requires",
       "note": "Five max-pooling stages separate VGG's convolutional blocks and set its resolution schedule.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vision_transformer|challenged_by|concept.deep_learning.convnext",
+      "source": "concept.deep_learning.vision_transformer",
+      "target": "concept.deep_learning.convnext",
+      "type": "challenged_by",
+      "note": "A convolutional network rebuilt with the same training recipe and scaling matches transformer-based accuracy, which weakens the inference that self-attention was the cause of the 2020-2021 gains.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vision_transformer|contrasts_with|concept.deep_learning.convolutional_networks",
+      "source": "concept.deep_learning.vision_transformer",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "contrasts_with",
+      "note": "The two solve the same task with opposite commitments about prior knowledge — hard-wired locality and weight sharing on one side, unrestricted token-to-token mixing learned from data on the other.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vision_transformer|requires|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.vision_transformer",
+      "target": "concept.deep_learning.transformers",
+      "type": "requires",
+      "note": "The model is the transformer encoder block used without modification, so a reader who does not already know multi-head self-attention, the residual sublayers and the normalization placement cannot follow the architecture.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vision_transformer|useful_when|concept.learning.transfer_learning",
+      "source": "concept.deep_learning.vision_transformer",
+      "target": "concept.learning.transfer_learning",
+      "type": "useful_when",
+      "note": "Its headline results are transfer results, so the architecture is chosen when a very large pretraining corpus exists and the target task is reached by fine-tuning, not when a single mid-sized dataset is all there is.",
       "condition": null
     },
     {

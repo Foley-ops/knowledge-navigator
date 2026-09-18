@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 19 of 28.** 10 of 10 pages in it are still to write.
+**Batch 20 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/multilayer-perceptrons.md` — Multilayer Perceptrons (concept.deep_learning.multilayer_perceptrons)
-- `content/concepts/convolutional-networks.md` — Convolutional Networks (concept.deep_learning.convolutional_networks)
-- `content/concepts/recurrent-neural-networks.md` — Recurrent Neural Networks (concept.deep_learning.recurrent_neural_networks)
-- `content/concepts/lstm.md` — LSTM (concept.deep_learning.lstm)
-- `content/concepts/gru.md` — GRU (concept.deep_learning.gru)
-- `content/concepts/attention.md` — Attention (concept.deep_learning.attention)
-- `content/concepts/positional-encoding.md` — Positional Encoding (concept.deep_learning.positional_encoding)
-- `content/concepts/transformers.md` — Transformers (concept.deep_learning.transformers)
-- `content/concepts/vision-transformer.md` — Vision Transformer (concept.deep_learning.vision_transformer)
-- `content/concepts/convnext.md` — ConvNeXt (concept.deep_learning.convnext)
+- `content/concepts/autoencoders.md` — Autoencoders (concept.deep_learning.autoencoders)
+- `content/concepts/variational-autoencoders.md` — Variational Autoencoders (concept.deep_learning.variational_autoencoders)
+- `content/concepts/generative-adversarial-networks.md` — Generative Adversarial Networks (concept.deep_learning.generative_adversarial_networks)
+- `content/concepts/normalizing-flows.md` — Normalizing Flows (concept.deep_learning.normalizing_flows)
+- `content/concepts/diffusion-models.md` — Diffusion Models (concept.deep_learning.diffusion_models)
+- `content/concepts/flow-matching.md` — Flow Matching (concept.deep_learning.flow_matching)
+- `content/concepts/energy-based-models.md` — Energy-Based Models (concept.deep_learning.energy_based_models)
+- `content/concepts/boltzmann-machines.md` — Boltzmann Machines (concept.deep_learning.boltzmann_machines)
+- `content/concepts/hopfield-networks.md` — Hopfield Networks (concept.deep_learning.hopfield_networks)
+- `content/concepts/radial-basis-function-networks.md` — Radial Basis Function Networks (concept.deep_learning.radial_basis_function_networks)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 191 |
-| Markdown pages in the corpus | 191 |
-| Tier 1 pages | 191 |
+| Candidates covered by a page | 201 |
+| Markdown pages in the corpus | 201 |
+| Tier 1 pages | 201 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 180 of 280 |
+| Planned pages written | 190 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 48 | 148 | 32% |
+| Artificial Intelligence | 58 | 148 | 39% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -56,7 +56,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
-| Artificial Intelligence/Deep Learning — Architectures | 1 | 42 |  |
+| Artificial Intelligence/Deep Learning — Architectures | 11 | 42 |  |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-180 of the planned 280, in the order they were written.
+190 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -272,6 +272,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Pruning | `concept.deep_learning.pruning` | tier 1 | covered |
 | Quantization | `concept.deep_learning.quantization` | tier 1 | covered |
 | Perceptron | `concept.deep_learning.perceptron` | tier 1 | covered |
+| Multilayer Perceptrons | `concept.deep_learning.multilayer_perceptrons` | tier 1 | covered |
+| Convolutional Networks | `concept.deep_learning.convolutional_networks` | tier 1 | covered |
+| Recurrent Neural Networks | `concept.deep_learning.recurrent_neural_networks` | tier 1 | covered |
+| LSTM | `concept.deep_learning.lstm` | tier 1 | covered |
+| GRU | `concept.deep_learning.gru` | tier 1 | covered |
+| Attention | `concept.deep_learning.attention` | tier 1 | covered |
+| Positional Encoding | `concept.deep_learning.positional_encoding` | tier 1 | covered |
+| Transformers | `concept.deep_learning.transformers` | tier 1 | covered |
+| Vision Transformer | `concept.deep_learning.vision_transformer` | tier 1 | covered |
+| ConvNeXt | `concept.deep_learning.convnext` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -550,20 +560,20 @@ it. Batches are ten pages each.
 | x | Quantization | `concept.deep_learning.quantization` | Artificial Intelligence/Deep Learning — Training |
 | x | Perceptron | `concept.deep_learning.perceptron` | Artificial Intelligence/Deep Learning — Architectures |
 
-### Batch 19
+### Batch 19 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Multilayer Perceptrons | `concept.deep_learning.multilayer_perceptrons` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Convolutional Networks | `concept.deep_learning.convolutional_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Recurrent Neural Networks | `concept.deep_learning.recurrent_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
-|   | LSTM | `concept.deep_learning.lstm` | Artificial Intelligence/Deep Learning — Architectures |
-|   | GRU | `concept.deep_learning.gru` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Attention | `concept.deep_learning.attention` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Positional Encoding | `concept.deep_learning.positional_encoding` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Transformers | `concept.deep_learning.transformers` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Vision Transformer | `concept.deep_learning.vision_transformer` | Artificial Intelligence/Deep Learning — Architectures |
-|   | ConvNeXt | `concept.deep_learning.convnext` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Multilayer Perceptrons | `concept.deep_learning.multilayer_perceptrons` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Convolutional Networks | `concept.deep_learning.convolutional_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Recurrent Neural Networks | `concept.deep_learning.recurrent_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | LSTM | `concept.deep_learning.lstm` | Artificial Intelligence/Deep Learning — Architectures |
+| x | GRU | `concept.deep_learning.gru` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Attention | `concept.deep_learning.attention` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Positional Encoding | `concept.deep_learning.positional_encoding` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Transformers | `concept.deep_learning.transformers` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Vision Transformer | `concept.deep_learning.vision_transformer` | Artificial Intelligence/Deep Learning — Architectures |
+| x | ConvNeXt | `concept.deep_learning.convnext` | Artificial Intelligence/Deep Learning — Architectures |
 
 ### Batch 20
 
