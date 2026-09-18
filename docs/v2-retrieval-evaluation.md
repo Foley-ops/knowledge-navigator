@@ -42,7 +42,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > What lets a very deep network train without the signal dying on the way back?
 
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
-- Retrieved instead: `concept.ml_engineering.deployment`, `concept.machine_learning.random_forests`, `concept.learning.meta_learning`, `concept.algebra.geometric_algebra`, `concept.learning.federated_learning`
+- Retrieved instead: `concept.deep_learning.batch_normalization`, `concept.ml_engineering.deployment`, `concept.algebra.geometric_algebra`, `concept.learning.meta_learning`, `concept.machine_learning.random_forests`
 
 ### P5 (paraphrase)
 

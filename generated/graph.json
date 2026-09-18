@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T01:59:51.438Z",
-  "corpusHash": "c08477dde5a9da032767ca4d4f790e78d5c78e0ca3c3c5f3dc83f6f428e3ed44",
-  "atlasHash": "01ce4e0b69f39a93069df38d3b9324c837686da60f72f48c498a5368d886494b",
+  "builtAt": "2026-09-18T02:40:39.121Z",
+  "corpusHash": "99bb646c9140733dac73607d4353c0c1580b16edd6ab677d8e868b9a46066e27",
+  "atlasHash": "6a83845db9726ed0bd805d0342a75e35f0322c49c8f203588c4f0721da21807b",
   "counts": {
-    "concepts": 181,
-    "relationships": 680,
+    "concepts": 191,
+    "relationships": 710,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 181,
+      "1": 191,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 181,
+      "markdown": 191,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 181
+      "generated-draft": 191
     },
-    "conceptsWithArticle": 181,
+    "conceptsWithArticle": 191,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 110,
+      "candidate": 100,
       "proposed-tier-3": 0,
-      "covered": 181,
+      "covered": 191,
       "deferred": 0
     },
-    "unresolvedReferences": 233,
-    "unresolvedGroups": 233,
+    "unresolvedReferences": 246,
+    "unresolvedGroups": 246,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -142,6 +142,7 @@
       "primaryConceptIds": [
         "concept.deep_learning.convolutional_layer",
         "concept.deep_learning.lenet",
+        "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.residual_connection"
@@ -150,6 +151,7 @@
         "concept.analysis.translation_equivariance",
         "concept.deep_learning.convolutional_layer",
         "concept.deep_learning.lenet",
+        "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.residual_connection",
@@ -167,12 +169,30 @@
         "concept.deep_learning.adam",
         "concept.deep_learning.backpropagation",
         "concept.deep_learning.backpropagation_through_convolution",
+        "concept.deep_learning.batch_normalization",
+        "concept.deep_learning.distillation",
+        "concept.deep_learning.initialization",
+        "concept.deep_learning.layer_normalization",
+        "concept.deep_learning.learning_rate_schedules",
+        "concept.deep_learning.loss_functions",
+        "concept.deep_learning.pruning",
+        "concept.deep_learning.quantization",
+        "concept.deep_learning.regularization",
         "concept.deep_learning.stochastic_gradient_descent"
       ],
       "conceptIds": [
         "concept.deep_learning.adam",
         "concept.deep_learning.backpropagation",
         "concept.deep_learning.backpropagation_through_convolution",
+        "concept.deep_learning.batch_normalization",
+        "concept.deep_learning.distillation",
+        "concept.deep_learning.initialization",
+        "concept.deep_learning.layer_normalization",
+        "concept.deep_learning.learning_rate_schedules",
+        "concept.deep_learning.loss_functions",
+        "concept.deep_learning.pruning",
+        "concept.deep_learning.quantization",
+        "concept.deep_learning.regularization",
         "concept.deep_learning.stochastic_gradient_descent"
       ]
     },
@@ -1661,6 +1681,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.batch_normalization",
+      "title": "Batch Normalization",
+      "slug": "/concepts/batch-normalization",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Batch normalization standardizes selected activations using mini-batch statistics during training, then applies learned scale and shift parameters and stored statistics for inference.",
+      "aliases": [
+        "BatchNorm"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.batch_normalization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.convolutional_layer",
       "title": "Convolutional Layer",
       "slug": "/concepts/convolutional-layer",
@@ -1681,6 +1723,94 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.convolutional_layer",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.distillation",
+      "title": "Distillation",
+      "slug": "/concepts/distillation",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Distillation trains a student model to imitate a teacher's predictive distribution, often combining softened teacher targets with the original labeled objective.",
+      "aliases": [
+        "knowledge distillation"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.distillation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.initialization",
+      "title": "Initialization",
+      "slug": "/concepts/initialization",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Initialization chooses a model's parameter values before training, setting the starting symmetry, activation scale, and gradient scale that the optimizer inherits.",
+      "aliases": [
+        "parameter initialization"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.initialization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.layer_normalization",
+      "title": "Layer Normalization",
+      "slug": "/concepts/layer-normalization",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Layer normalization standardizes a chosen set of features within each individual example, then applies learned feature-wise gains and biases with the same computation in training and inference.",
+      "aliases": [
+        "LayerNorm"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.layer_normalization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.learning_rate_schedules",
+      "title": "Learning-Rate Schedules",
+      "slug": "/concepts/learning-rate-schedules",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A learning-rate schedule makes an optimizer's global step size vary with training progress so that early updates can move quickly and later updates can settle more carefully.",
+      "aliases": [
+        "learning-rate decay"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.learning_rate_schedules",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1707,6 +1837,50 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.loss_functions",
+      "title": "Loss Functions",
+      "slug": "/concepts/loss-functions",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A loss function assigns a numerical cost to a prediction and target, turning the behavior desired from a model into the objective that training can optimize.",
+      "aliases": [
+        "objective losses"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.loss_functions",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.perceptron",
+      "title": "Perceptron",
+      "slug": "/concepts/perceptron",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The perceptron is a binary linear classifier and mistake-driven learning algorithm that updates its weight vector only when a labeled example is classified incorrectly or without positive margin.",
+      "aliases": [
+        "perceptron classifier"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.perceptron",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.pooling",
       "title": "Pooling",
       "slug": "/concepts/pooling",
@@ -1726,6 +1900,50 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.pooling",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.pruning",
+      "title": "Pruning",
+      "slug": "/concepts/pruning",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Pruning removes selected parameters or structures from a trained or training model, creating sparsity or a smaller dense computation that must be evaluated and often fine-tuned.",
+      "aliases": [
+        "network pruning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.pruning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.quantization",
+      "title": "Quantization",
+      "slug": "/concepts/quantization",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Quantization maps model values to a finite set of representable levels so weights or activations can use fewer bits, accepting approximation error in exchange for storage or execution benefits.",
+      "aliases": [
+        "neural-network quantization"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.quantization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -1749,6 +1967,28 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.receptive_field",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.regularization",
+      "title": "Regularization",
+      "slug": "/concepts/regularization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Regularization changes a learning problem to favor predictors expected to behave better beyond the training sample, often by penalties, constraints, noise, or early stopping.",
+      "aliases": [
+        "model regularisation"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_training.regularization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -5921,6 +6161,30 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.batch_normalization|contrasts_with|concept.deep_learning.initialization",
+      "source": "concept.deep_learning.batch_normalization",
+      "target": "concept.deep_learning.initialization",
+      "type": "contrasts_with",
+      "note": "Initialization controls signal scale before the first update, whereas batch normalization recomputes activation statistics throughout training.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.batch_normalization|contributes_to|concept.deep_learning.stochastic_gradient_descent",
+      "source": "concept.deep_learning.batch_normalization",
+      "target": "concept.deep_learning.stochastic_gradient_descent",
+      "type": "contributes_to",
+      "note": "Normalized activations can change the scale and conditioning of the optimization problem seen by mini-batch gradient methods.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.batch_normalization|supported_by|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.batch_normalization",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "supported_by",
+      "note": "Batch normalization is differentiated through during training, including the dependence of batch statistics on every example in the normalized group.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.convolutional_layer|implements|concept.analysis.cross_correlation",
       "source": "concept.deep_learning.convolutional_layer",
       "target": "concept.analysis.cross_correlation",
@@ -5961,6 +6225,102 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.distillation|contributes_to|concept.learning.transfer_learning",
+      "source": "concept.deep_learning.distillation",
+      "target": "concept.learning.transfer_learning",
+      "type": "contributes_to",
+      "note": "Teacher outputs transfer behavior learned by one model into another model, although the source and target tasks may be the same.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.distillation|contributes_to|concept.ml_engineering.deployment",
+      "source": "concept.deep_learning.distillation",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contributes_to",
+      "note": "A smaller student can replace an expensive teacher or ensemble when serving cost prevents direct deployment.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.distillation|requires|concept.learning.supervised_learning",
+      "source": "concept.deep_learning.distillation",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "Standard distillation fits a student from inputs paired with teacher-produced targets and often with original labels.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.initialization|assumes|concept.probability.probability_theory",
+      "source": "concept.deep_learning.initialization",
+      "target": "concept.probability.probability_theory",
+      "type": "assumes",
+      "note": "Variance-preserving initializers are defined through distributions, independence approximations, means, and variances.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.initialization|contributes_to|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.initialization",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "contributes_to",
+      "note": "Initial weight scales influence the products of local derivatives carried backward through a deep network.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.initialization|useful_when|concept.optimization.nonconvex_optimization",
+      "source": "concept.deep_learning.initialization",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "useful_when",
+      "note": "Different starting points can lead a nonconvex training run through different regions and optimization trajectories.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.layer_normalization|supported_by|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.layer_normalization",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "supported_by",
+      "note": "The learned gains, biases, and normalized activations are trained through the derivatives of the layer statistics.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.layer_normalization|useful_when|concept.deep_learning.stochastic_gradient_descent",
+      "source": "concept.deep_learning.layer_normalization",
+      "target": "concept.deep_learning.stochastic_gradient_descent",
+      "type": "useful_when",
+      "note": "Per-example statistics avoid making the normalized forward computation depend on the mini-batch size used by a stochastic optimizer.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.layer_normalization|variant_of|concept.deep_learning.batch_normalization",
+      "source": "concept.deep_learning.layer_normalization",
+      "target": "concept.deep_learning.batch_normalization",
+      "type": "variant_of",
+      "note": "Both methods normalize activations and apply learned affine parameters, but layer normalization obtains its statistics within one example instead of across a mini-batch.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.learning_rate_schedules|contributes_to|concept.deep_learning.adam",
+      "source": "concept.deep_learning.learning_rate_schedules",
+      "target": "concept.deep_learning.adam",
+      "type": "contributes_to",
+      "note": "Adam supplies coordinate-wise scaling, while a separate schedule still controls its global learning-rate multiplier.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.learning_rate_schedules|contributes_to|concept.deep_learning.stochastic_gradient_descent",
+      "source": "concept.deep_learning.learning_rate_schedules",
+      "target": "concept.deep_learning.stochastic_gradient_descent",
+      "type": "contributes_to",
+      "note": "A schedule replaces SGD's constant step size with a specified function of the update count or another observed signal.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.learning_rate_schedules|useful_when|concept.optimization.stochastic_optimization",
+      "source": "concept.deep_learning.learning_rate_schedules",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "useful_when",
+      "note": "Decaying the step size is useful when persistent stochastic-gradient noise prevents a constant-rate method from settling.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.lenet|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.lenet",
       "target": "concept.deep_learning.convolutional_layer",
@@ -5977,6 +6337,54 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.loss_functions|contributes_to|concept.machine_learning.generalization",
+      "source": "concept.deep_learning.loss_functions",
+      "target": "concept.machine_learning.generalization",
+      "type": "contributes_to",
+      "note": "The selected loss defines both the empirical risk being optimized and the population risk whose generalization is evaluated.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.loss_functions|requires|concept.learning.supervised_learning",
+      "source": "concept.deep_learning.loss_functions",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "In supervised learning, the loss is defined on a prediction and its observed target and is averaged to form empirical risk.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.loss_functions|supported_by|concept.deep_learning.backpropagation",
+      "source": "concept.deep_learning.loss_functions",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "supported_by",
+      "note": "Backpropagation computes how a differentiable scalar loss changes with every trainable parameter.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.perceptron|contrasts_with|concept.machine_learning.logistic_regression",
+      "source": "concept.deep_learning.perceptron",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "contrasts_with",
+      "note": "Both use a linear score, but logistic regression fits a probabilistic likelihood while the perceptron applies mistake-driven updates.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.perceptron|implements|concept.learning.supervised_learning",
+      "source": "concept.deep_learning.perceptron",
+      "target": "concept.learning.supervised_learning",
+      "type": "implements",
+      "note": "The perceptron learns a binary predictor from labeled examples using prediction mistakes as its training signal.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.perceptron|requires|concept.linear_algebra.vector_spaces",
+      "source": "concept.deep_learning.perceptron",
+      "target": "concept.linear_algebra.vector_spaces",
+      "type": "requires",
+      "note": "Its score is an inner product between an input vector and a learned weight vector.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.pooling|requires|concept.deep_learning.convolutional_layer",
       "source": "concept.deep_learning.pooling",
       "target": "concept.deep_learning.convolutional_layer",
@@ -5985,11 +6393,83 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.pruning|contrasts_with|concept.deep_learning.regularization",
+      "source": "concept.deep_learning.pruning",
+      "target": "concept.deep_learning.regularization",
+      "type": "contrasts_with",
+      "note": "Sparsity penalties can encourage pruning, but removal for compression and regularization for generalization are distinct goals.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.pruning|contributes_to|concept.ml_engineering.deployment",
+      "source": "concept.deep_learning.pruning",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contributes_to",
+      "note": "A pruned artifact may reduce serving memory or latency, but only after it is encoded and benchmarked on the deployment stack.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.pruning|contributes_to|concept.ml_engineering.edge_inference",
+      "source": "concept.deep_learning.pruning",
+      "target": "concept.ml_engineering.edge_inference",
+      "type": "contributes_to",
+      "note": "Structured removal can reduce stored weights and executable work when the target runtime supports the resulting representation.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.quantization|contrasts_with|concept.deep_learning.pruning",
+      "source": "concept.deep_learning.quantization",
+      "target": "concept.deep_learning.pruning",
+      "type": "contrasts_with",
+      "note": "Quantization reduces the representation precision of retained values, while pruning removes selected values or structures.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.quantization|contributes_to|concept.ml_engineering.deployment",
+      "source": "concept.deep_learning.quantization",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contributes_to",
+      "note": "Quantized artifacts may reduce serving storage or latency when the deployment runtime has matching kernels.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.quantization|contributes_to|concept.ml_engineering.edge_inference",
+      "source": "concept.deep_learning.quantization",
+      "target": "concept.ml_engineering.edge_inference",
+      "type": "contributes_to",
+      "note": "Lower-bit weights can reduce the memory capacity and bandwidth required for on-device inference.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.receptive_field|requires|concept.analysis.convolution",
       "source": "concept.deep_learning.receptive_field",
       "target": "concept.analysis.convolution",
       "type": "requires",
       "note": "The receptive field is determined by the spatial extent, stride and dilation of the convolutions a unit sits behind.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.regularization|contributes_to|concept.machine_learning.generalization",
+      "source": "concept.deep_learning.regularization",
+      "target": "concept.machine_learning.generalization",
+      "type": "contributes_to",
+      "note": "Regularization expresses an inductive bias intended to reduce out-of-sample error rather than merely minimize training loss.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.regularization|mitigates|concept.machine_learning.bias_variance",
+      "source": "concept.deep_learning.regularization",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "mitigates",
+      "note": "Many regularizers trade increased bias for reduced sensitivity to the particular training sample, although the simple tradeoff is not universal.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.regularization|requires|concept.learning.supervised_learning",
+      "source": "concept.deep_learning.regularization",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "The role of regularization is defined relative to empirical fitting and performance on fresh data.",
       "condition": null
     },
     {

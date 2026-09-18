@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 18 of 28.** 10 of 10 pages in it are still to write.
+**Batch 19 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/learning-rate-schedules.md` — Learning-Rate Schedules (concept.deep_learning.learning_rate_schedules)
-- `content/concepts/loss-functions.md` — Loss Functions (concept.deep_learning.loss_functions)
-- `content/concepts/initialization.md` — Initialization (concept.deep_learning.initialization)
-- `content/concepts/regularization.md` — Regularization (concept.deep_learning.regularization)
-- `content/concepts/batch-normalization.md` — Batch Normalization (concept.deep_learning.batch_normalization)
-- `content/concepts/layer-normalization.md` — Layer Normalization (concept.deep_learning.layer_normalization)
-- `content/concepts/distillation.md` — Distillation (concept.deep_learning.distillation)
-- `content/concepts/pruning.md` — Pruning (concept.deep_learning.pruning)
-- `content/concepts/quantization.md` — Quantization (concept.deep_learning.quantization)
-- `content/concepts/perceptron.md` — Perceptron (concept.deep_learning.perceptron)
+- `content/concepts/multilayer-perceptrons.md` — Multilayer Perceptrons (concept.deep_learning.multilayer_perceptrons)
+- `content/concepts/convolutional-networks.md` — Convolutional Networks (concept.deep_learning.convolutional_networks)
+- `content/concepts/recurrent-neural-networks.md` — Recurrent Neural Networks (concept.deep_learning.recurrent_neural_networks)
+- `content/concepts/lstm.md` — LSTM (concept.deep_learning.lstm)
+- `content/concepts/gru.md` — GRU (concept.deep_learning.gru)
+- `content/concepts/attention.md` — Attention (concept.deep_learning.attention)
+- `content/concepts/positional-encoding.md` — Positional Encoding (concept.deep_learning.positional_encoding)
+- `content/concepts/transformers.md` — Transformers (concept.deep_learning.transformers)
+- `content/concepts/vision-transformer.md` — Vision Transformer (concept.deep_learning.vision_transformer)
+- `content/concepts/convnext.md` — ConvNeXt (concept.deep_learning.convnext)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 181 |
-| Markdown pages in the corpus | 181 |
-| Tier 1 pages | 181 |
+| Candidates covered by a page | 191 |
+| Markdown pages in the corpus | 191 |
+| Tier 1 pages | 191 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 170 of 280 |
+| Planned pages written | 180 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 38 | 148 | 26% |
+| Artificial Intelligence | 48 | 148 | 32% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -56,8 +56,8 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
-| Artificial Intelligence/Deep Learning — Architectures | 0 | 42 |  |
-| Artificial Intelligence/Deep Learning — Training | 3 | 12 |  |
+| Artificial Intelligence/Deep Learning — Architectures | 1 | 42 |  |
+| Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
 | Artificial Intelligence/Domains/Natural Language Processing | 0 | 5 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-170 of the planned 280, in the order they were written.
+180 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -262,6 +262,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Backpropagation | `concept.deep_learning.backpropagation` | tier 1 | covered |
 | Stochastic Gradient Descent | `concept.deep_learning.stochastic_gradient_descent` | tier 1 | covered |
 | Adam | `concept.deep_learning.adam` | tier 1 | covered |
+| Learning-Rate Schedules | `concept.deep_learning.learning_rate_schedules` | tier 1 | covered |
+| Loss Functions | `concept.deep_learning.loss_functions` | tier 1 | covered |
+| Initialization | `concept.deep_learning.initialization` | tier 1 | covered |
+| Regularization | `concept.deep_learning.regularization` | tier 1 | covered |
+| Batch Normalization | `concept.deep_learning.batch_normalization` | tier 1 | covered |
+| Layer Normalization | `concept.deep_learning.layer_normalization` | tier 1 | covered |
+| Distillation | `concept.deep_learning.distillation` | tier 1 | covered |
+| Pruning | `concept.deep_learning.pruning` | tier 1 | covered |
+| Quantization | `concept.deep_learning.quantization` | tier 1 | covered |
+| Perceptron | `concept.deep_learning.perceptron` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -525,20 +535,20 @@ it. Batches are ten pages each.
 | x | Stochastic Gradient Descent | `concept.deep_learning.stochastic_gradient_descent` | Artificial Intelligence/Deep Learning — Training |
 | x | Adam | `concept.deep_learning.adam` | Artificial Intelligence/Deep Learning — Training |
 
-### Batch 18
+### Batch 18 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Learning-Rate Schedules | `concept.deep_learning.learning_rate_schedules` | Artificial Intelligence/Deep Learning — Training |
-|   | Loss Functions | `concept.deep_learning.loss_functions` | Artificial Intelligence/Deep Learning — Training |
-|   | Initialization | `concept.deep_learning.initialization` | Artificial Intelligence/Deep Learning — Training |
-|   | Regularization | `concept.deep_learning.regularization` | Artificial Intelligence/Deep Learning — Training |
-|   | Batch Normalization | `concept.deep_learning.batch_normalization` | Artificial Intelligence/Deep Learning — Training |
-|   | Layer Normalization | `concept.deep_learning.layer_normalization` | Artificial Intelligence/Deep Learning — Training |
-|   | Distillation | `concept.deep_learning.distillation` | Artificial Intelligence/Deep Learning — Training |
-|   | Pruning | `concept.deep_learning.pruning` | Artificial Intelligence/Deep Learning — Training |
-|   | Quantization | `concept.deep_learning.quantization` | Artificial Intelligence/Deep Learning — Training |
-|   | Perceptron | `concept.deep_learning.perceptron` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Learning-Rate Schedules | `concept.deep_learning.learning_rate_schedules` | Artificial Intelligence/Deep Learning — Training |
+| x | Loss Functions | `concept.deep_learning.loss_functions` | Artificial Intelligence/Deep Learning — Training |
+| x | Initialization | `concept.deep_learning.initialization` | Artificial Intelligence/Deep Learning — Training |
+| x | Regularization | `concept.deep_learning.regularization` | Artificial Intelligence/Deep Learning — Training |
+| x | Batch Normalization | `concept.deep_learning.batch_normalization` | Artificial Intelligence/Deep Learning — Training |
+| x | Layer Normalization | `concept.deep_learning.layer_normalization` | Artificial Intelligence/Deep Learning — Training |
+| x | Distillation | `concept.deep_learning.distillation` | Artificial Intelligence/Deep Learning — Training |
+| x | Pruning | `concept.deep_learning.pruning` | Artificial Intelligence/Deep Learning — Training |
+| x | Quantization | `concept.deep_learning.quantization` | Artificial Intelligence/Deep Learning — Training |
+| x | Perceptron | `concept.deep_learning.perceptron` | Artificial Intelligence/Deep Learning — Architectures |
 
 ### Batch 19
 

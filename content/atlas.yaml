@@ -905,8 +905,8 @@ candidates:
     title: Perceptron
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.perceptron
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.hopfield_networks
     title: Hopfield Networks
     categories:
@@ -1223,56 +1223,56 @@ candidates:
     title: Learning-Rate Schedules
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.learning_rate_schedules
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.loss_functions
     title: Loss Functions
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.loss_functions
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.regularization
     title: Regularization
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.regularization
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.batch_normalization
     title: Batch Normalization
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.batch_normalization
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.layer_normalization
     title: Layer Normalization
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.layer_normalization
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.initialization
     title: Initialization
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.initialization
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.distillation
     title: Distillation
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.distillation
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.pruning
     title: Pruning
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.pruning
   - candidate_id: candidate.artificial_intelligence.deep_learning_training.quantization
     title: Quantization
     categories:
       - atlas.artificial_intelligence.deep_learning_training
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.quantization
   - candidate_id: candidate.artificial_intelligence.reinforcement_learning.multi_armed_bandits
     title: Multi-Armed Bandits
     categories:
