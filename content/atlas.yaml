@@ -749,20 +749,20 @@ candidates:
     title: Linear Regression
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.linear_regression
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.logistic_regression
     title: Logistic Regression
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.logistic_regression
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.generalized_linear_models
     title: Generalized Linear Models
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.generalized_linear_models
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.support_vector_machines
     title: Support Vector Machines
     categories:
@@ -779,14 +779,14 @@ candidates:
     title: Decision Trees
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.decision_trees
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.random_forests
     title: Random Forests
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.random_forests
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.gradient_boosting
     title: Gradient Boosting
     categories:
@@ -881,26 +881,26 @@ candidates:
     title: PAC Learning
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.pac_learning
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.vc_dimension
     title: VC Dimension
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.vc_dimension
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.bias_variance
     title: Bias-Variance
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.bias_variance
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.generalization
     title: Generalization
     categories:
       - atlas.artificial_intelligence.classical_machine_learning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.machine_learning.generalization
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.perceptron
     title: Perceptron
     categories:
@@ -1391,56 +1391,56 @@ candidates:
     title: Supervised Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.supervised_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.unsupervised_learning
     title: Unsupervised Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.unsupervised_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.self_supervised_learning
     title: Self-Supervised Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.self_supervised_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.contrastive_learning
     title: Contrastive Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.contrastive_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.meta_learning
     title: Meta-Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.meta_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.continual_learning
     title: Continual Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.continual_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.transfer_learning
     title: Transfer Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.transfer_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.federated_learning
     title: Federated Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.federated_learning
   - candidate_id: candidate.artificial_intelligence.learning_paradigms.curriculum_learning
     title: Curriculum Learning
     categories:
       - atlas.artificial_intelligence.learning_paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.learning.curriculum_learning
   - candidate_id: candidate.artificial_intelligence.domains.computer_vision.classification
     title: Classification
     categories:
@@ -1805,8 +1805,8 @@ candidates:
     title: Ollama
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.ollama
   - candidate_id: candidate.programming.ml_engineering.training_infrastructure
     title: Training Infrastructure
     categories:
@@ -1829,8 +1829,8 @@ candidates:
     title: Edge Inference
     categories:
       - atlas.programming.ml_engineering
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ml_engineering.edge_inference
   - candidate_id: candidate.programming.software_practice.version_control
     title: Version Control
     categories:

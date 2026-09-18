@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-17T22:56:34.523Z",
-  "corpusHash": "454afe2acb47393a78f6f5a38afa1da1b53d05b814e207c33b236b71ed6ce483",
-  "atlasHash": "4b3b98a2440e60047bbac2167c27babdeec01828361a5b0c7bc9bd1710d498c0",
+  "builtAt": "2026-09-18T01:20:31.206Z",
+  "corpusHash": "5b2fc61ce704c98d2bd7d7ab1f66b65110de1ffc476c6ee05da323eb66231f90",
+  "atlasHash": "e96014607d7b0fe642369ea1af996bd15ab47ebda8e0b6c952b1f1d7718a70f6",
   "counts": {
-    "concepts": 141,
-    "relationships": 524,
-    "categories": 24
+    "concepts": 161,
+    "relationships": 600,
+    "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 141,
+      "1": 161,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 141,
+      "markdown": 161,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 141
+      "generated-draft": 161
     },
-    "conceptsWithArticle": 141,
+    "conceptsWithArticle": 161,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 150,
+      "candidate": 130,
       "proposed-tier-3": 0,
-      "covered": 141,
+      "covered": 161,
       "deferred": 0
     },
-    "unresolvedReferences": 178,
-    "unresolvedGroups": 178,
+    "unresolvedReferences": 224,
+    "unresolvedGroups": 224,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -52,6 +52,35 @@
       "parent": null,
       "primaryConceptIds": [],
       "conceptIds": []
+    },
+    {
+      "path": "Artificial Intelligence/Classical Machine Learning",
+      "name": "Classical Machine Learning",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.machine_learning.bias_variance",
+        "concept.machine_learning.decision_trees",
+        "concept.machine_learning.generalization",
+        "concept.machine_learning.generalized_linear_models",
+        "concept.machine_learning.linear_regression",
+        "concept.machine_learning.logistic_regression",
+        "concept.machine_learning.pac_learning",
+        "concept.machine_learning.random_forests",
+        "concept.machine_learning.vc_dimension"
+      ],
+      "conceptIds": [
+        "concept.machine_learning.bias_variance",
+        "concept.machine_learning.decision_trees",
+        "concept.machine_learning.generalization",
+        "concept.machine_learning.generalized_linear_models",
+        "concept.machine_learning.linear_regression",
+        "concept.machine_learning.logistic_regression",
+        "concept.machine_learning.pac_learning",
+        "concept.machine_learning.random_forests",
+        "concept.machine_learning.vc_dimension"
+      ]
     },
     {
       "path": "Artificial Intelligence/Computer Vision",
@@ -105,6 +134,35 @@
       ],
       "conceptIds": [
         "concept.deep_learning.backpropagation_through_convolution"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Learning Paradigms",
+      "name": "Learning Paradigms",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.learning.continual_learning",
+        "concept.learning.contrastive_learning",
+        "concept.learning.curriculum_learning",
+        "concept.learning.federated_learning",
+        "concept.learning.meta_learning",
+        "concept.learning.self_supervised_learning",
+        "concept.learning.supervised_learning",
+        "concept.learning.transfer_learning",
+        "concept.learning.unsupervised_learning"
+      ],
+      "conceptIds": [
+        "concept.learning.continual_learning",
+        "concept.learning.contrastive_learning",
+        "concept.learning.curriculum_learning",
+        "concept.learning.federated_learning",
+        "concept.learning.meta_learning",
+        "concept.learning.self_supervised_learning",
+        "concept.learning.supervised_learning",
+        "concept.learning.transfer_learning",
+        "concept.learning.unsupervised_learning"
       ]
     },
     {
@@ -522,15 +580,19 @@
       "parent": "Programming",
       "primaryConceptIds": [
         "concept.ml_engineering.deployment",
+        "concept.ml_engineering.edge_inference",
         "concept.ml_engineering.experiment_tracking",
         "concept.ml_engineering.jax",
+        "concept.ml_engineering.ollama",
         "concept.ml_engineering.pytorch",
         "concept.ml_engineering.training_infrastructure"
       ],
       "conceptIds": [
         "concept.ml_engineering.deployment",
+        "concept.ml_engineering.edge_inference",
         "concept.ml_engineering.experiment_tracking",
         "concept.ml_engineering.jax",
+        "concept.ml_engineering.ollama",
         "concept.ml_engineering.pytorch",
         "concept.ml_engineering.training_infrastructure"
       ]
@@ -2443,6 +2505,199 @@
       "claims": 0
     },
     {
+      "id": "concept.learning.continual_learning",
+      "title": "Continual Learning",
+      "slug": "/concepts/continual-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Training one model on a stream of tasks it can never revisit, where the central obstacle is that gradient descent on new data quietly overwrites what the same weights encoded about the old.",
+      "aliases": [
+        "lifelong learning",
+        "incremental learning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.continual_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.contrastive_learning",
+      "title": "Contrastive Learning",
+      "slug": "/concepts/contrastive-learning",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Contrastive learning trains an encoder by pulling two views of the same item together and pushing every other item in the batch apart, so that a choice of augmentation becomes the supervision signal.",
+      "aliases": [
+        "contrastive representation learning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.contrastive_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.curriculum_learning",
+      "title": "Curriculum Learning",
+      "slug": "/concepts/curriculum-learning",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Curriculum learning orders training data from easy to hard instead of sampling it uniformly, a schedule that clearly helps in a few specific regimes and whose benefit on ordinary supervised benchmarks is small, inconsistent, and easily confounded.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.curriculum_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.federated_learning",
+      "title": "Federated Learning",
+      "slug": "/concepts/federated-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Training one shared model across data that never leaves the phones or institutions holding it, by repeatedly broadcasting the model, training locally, and averaging what comes back — which buys data minimisation at the price of a harder optimisation problem and no privacy guarantee on its own.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.federated_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.meta_learning",
+      "title": "Meta-Learning",
+      "slug": "/concepts/meta-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Training across a distribution of tasks so that the result — an initialisation, a metric, or a learning rule — lets a new task be learned from a handful of examples.",
+      "aliases": [
+        "learning to learn"
+      ],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.meta_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.self_supervised_learning",
+      "title": "Self-Supervised Learning",
+      "slug": "/concepts/self-supervised-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Training on labels that the data generates about itself — the next token, the masked word, the matching view — so that supervision scales with raw data instead of with annotation effort.",
+      "aliases": [
+        "self-supervision"
+      ],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.self_supervised_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.supervised_learning",
+      "title": "Supervised Learning",
+      "slug": "/concepts/supervised-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The paradigm in which a predictor is fitted to labelled input-output pairs with the goal of scoring well on new inputs drawn from the same distribution, not on the examples it was shown.",
+      "aliases": [
+        "learning with a teacher"
+      ],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.supervised_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.transfer_learning",
+      "title": "Transfer Learning",
+      "slug": "/concepts/transfer-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Reusing a model fitted on one task to learn another — by freezing its representation or by continuing to train it — which usually beats training from scratch when target labels are scarce, and can be worse than scratch when the two tasks share little.",
+      "aliases": [
+        "inductive transfer"
+      ],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.transfer_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 4,
+      "claims": 0
+    },
+    {
+      "id": "concept.learning.unsupervised_learning",
+      "title": "Unsupervised Learning",
+      "slug": "/concepts/unsupervised-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Learning from inputs alone — clustering, dimensionality reduction, density estimation and generative modelling — where no label defines success, so the choice of objective decides what counts as structure.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Learning Paradigms",
+      "categories": [
+        "Artificial Intelligence/Learning Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.learning_paradigms.unsupervised_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
       "id": "concept.linear_algebra.matrix_decompositions",
       "title": "Matrix Decompositions",
       "slug": "/concepts/matrix-decompositions",
@@ -2635,6 +2890,204 @@
       "claims": 0
     },
     {
+      "id": "concept.machine_learning.bias_variance",
+      "title": "Bias-Variance",
+      "slug": "/concepts/bias-variance",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An exact identity splitting the expected squared prediction error of a learning procedure into squared bias, variance across training sets, and irreducible noise — together with a rule of thumb about model complexity that does not always hold.",
+      "aliases": [
+        "bias-variance decomposition"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.bias_variance",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.decision_trees",
+      "title": "Decision Trees",
+      "slug": "/concepts/decision-trees",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A decision tree predicts by routing an input through single-feature tests to a leaf holding a constant, carving the feature space into axis-aligned boxes chosen greedily because finding the best tree is NP-hard.",
+      "aliases": [
+        "CART",
+        "recursive partitioning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.decision_trees",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.generalization",
+      "title": "Generalization",
+      "slug": "/concepts/generalization",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A predictor generalizes when its error on fresh data from the training distribution stays close to its error on the training sample, and why heavily overparameterised networks manage this is still unexplained.",
+      "aliases": [
+        "generalisation"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.generalization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.generalized_linear_models",
+      "title": "Generalized Linear Models",
+      "slug": "/concepts/generalized-linear-models",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A single framework — an exponential-family response, a linear predictor and a link function — that contains linear, logistic and Poisson regression as three settings of the same three parts, all fitted by the same algorithm.",
+      "aliases": [
+        "GLM"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.generalized_linear_models",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.linear_regression",
+      "title": "Linear Regression",
+      "slug": "/concepts/linear-regression",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Fitting a function that is linear in its parameters by minimising the sum of squared residuals, which is exactly an orthogonal projection of the response onto the span of the predictors.",
+      "aliases": [
+        "ordinary least squares",
+        "OLS"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.linear_regression",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.logistic_regression",
+      "title": "Logistic Regression",
+      "slug": "/concepts/logistic-regression",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A model of the probability of a binary outcome as a logistic function of a linear score, fitted by maximising a Bernoulli likelihood whose negative logarithm is the convex cross-entropy objective.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.logistic_regression",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.pac_learning",
+      "title": "PAC Learning",
+      "slug": "/concepts/pac-learning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Valiant's criterion for when a class of hypotheses is learnable at all — one algorithm, fixed before the data distribution is known, must reach error at most epsilon with probability at least one minus delta from a sample size polynomial in both.",
+      "aliases": [
+        "probably approximately correct learning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.pac_learning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.random_forests",
+      "title": "Random Forests",
+      "slug": "/concepts/random-forests",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An ensemble of decision trees grown on bootstrap resamples with a random subset of features considered at each split, whose averaged prediction has far lower variance than a single tree because the second randomisation decorrelates them.",
+      "aliases": [
+        "random decision forests"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.random_forests",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.machine_learning.vc_dimension",
+      "title": "VC Dimension",
+      "slug": "/concepts/vc-dimension",
+      "kind": "mathematical-object",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A single integer attached to a class of binary classifiers — the size of the largest point set it can label in every possible way — that decides, with no reference to any data distribution, whether and how fast the class can be learned.",
+      "aliases": [
+        "Vapnik-Chervonenkis dimension"
+      ],
+      "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
+      "categories": [
+        "Artificial Intelligence/Classical Machine Learning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.classical_machine_learning.vc_dimension",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.ml_engineering.deployment",
       "title": "Deployment",
       "slug": "/concepts/deployment",
@@ -2654,6 +3107,26 @@
       "candidateId": "candidate.programming.ml_engineering.deployment",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.ml_engineering.edge_inference",
+      "title": "Edge Inference",
+      "slug": "/concepts/edge-inference",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Running a trained model's forward pass on the device that holds the data — phone, laptop, camera, vehicle — where memory bandwidth, power and heat rather than raw arithmetic decide what is possible.",
+      "aliases": [],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.edge_inference",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -2694,6 +3167,26 @@
       "candidateId": "candidate.programming.ml_engineering.jax",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.ml_engineering.ollama",
+      "title": "Ollama",
+      "slug": "/concepts/ollama",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A local model runner that packages open-weight language model weights, their prompt template and their sampling parameters into one pullable artefact served by a daemon on localhost.",
+      "aliases": [],
+      "primaryCategory": "Programming/ML Engineering",
+      "categories": [
+        "Programming/ML Engineering"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.programming.ml_engineering.ollama",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -6124,6 +6617,278 @@
       "condition": null
     },
     {
+      "id": "concept.learning.continual_learning|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.learning.continual_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "Ordinary supervised learning draws its training batches i.i.d. from one fixed dataset held in full; continual learning is the same objective with exactly that access removed.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.continual_learning|contrasts_with|concept.learning.transfer_learning",
+      "source": "concept.learning.continual_learning",
+      "target": "concept.learning.transfer_learning",
+      "type": "contrasts_with",
+      "note": "Transfer learning is scored only on the target task and is content to degrade the source, whereas continual learning counts that degradation as the failure it is trying to prevent.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.continual_learning|requires|concept.optimization.stochastic_optimization",
+      "source": "concept.learning.continual_learning",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "requires",
+      "note": "Forgetting is a property of stochastic gradient steps taken on samples from the current distribution only, so the reader needs the sampled-oracle picture before the failure makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.continual_learning|useful_when|concept.ml_engineering.edge_inference",
+      "source": "concept.learning.continual_learning",
+      "target": "concept.ml_engineering.edge_inference",
+      "type": "useful_when",
+      "note": "A model adapting on a device cannot ship its user's data back to a training cluster, which rules out the retrain-from-scratch answer and leaves the continual setting.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.contrastive_learning|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.learning.contrastive_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "Both minimise a softmax cross-entropy, but the classes here are manufactured per batch by the augmentation pipeline instead of being fixed human labels.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.contrastive_learning|contributes_to|concept.learning.transfer_learning",
+      "source": "concept.learning.contrastive_learning",
+      "target": "concept.learning.transfer_learning",
+      "type": "contributes_to",
+      "note": "Its output is a frozen encoder whose value is measured entirely by how well the features transfer to downstream detection, segmentation and classification tasks.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.contrastive_learning|specializes|concept.learning.self_supervised_learning",
+      "source": "concept.learning.contrastive_learning",
+      "target": "concept.learning.self_supervised_learning",
+      "type": "specializes",
+      "note": "It is one family of self-supervised objective, distinguished by learning through discrimination against negatives rather than by reconstructing masked or corrupted input.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.curriculum_learning|contrasts_with|concept.learning.continual_learning",
+      "source": "concept.learning.curriculum_learning",
+      "target": "concept.learning.continual_learning",
+      "type": "contrasts_with",
+      "note": "Both train on a non-stationary stream, but continual learning has the sequence imposed on it and fights forgetting, while curriculum learning chooses the sequence to speed up one fixed task.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.curriculum_learning|contributes_to|concept.learning.meta_learning",
+      "source": "concept.learning.curriculum_learning",
+      "target": "concept.learning.meta_learning",
+      "type": "contributes_to",
+      "note": "Automated curricula make the ordering itself the thing being learned, turning \"what should the student see next\" into an outer optimisation problem over the student's learning progress.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.curriculum_learning|requires|concept.learning.supervised_learning",
+      "source": "concept.learning.curriculum_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "The notion of an example's difficulty is defined through a per-example loss on labelled data, so the supervised training loop is the object a curriculum modifies.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.curriculum_learning|used_to_solve|concept.optimization.nonconvex_optimization",
+      "source": "concept.learning.curriculum_learning",
+      "target": "concept.optimization.nonconvex_optimization",
+      "type": "used_to_solve",
+      "note": "Bengio et al. cast a curriculum as a continuation method that attacks a non-convex training objective by solving a sequence of smoothed, easier objectives first.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.federated_learning|contrasts_with|concept.ml_engineering.training_infrastructure",
+      "source": "concept.learning.federated_learning",
+      "target": "concept.ml_engineering.training_infrastructure",
+      "type": "contrasts_with",
+      "note": "Datacentre data parallelism assumes a shuffled shared dataset, a fast homogeneous interconnect and reliable workers exchanging gradients every step; federated learning drops all three, which is why it averages models instead of gradients.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.federated_learning|requires|concept.optimization.stochastic_optimization",
+      "source": "concept.learning.federated_learning",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "requires",
+      "note": "The inner loop of every federated algorithm is minibatch SGD, and the whole design question is how many local SGD steps to take between averages, so the page cannot be read without knowing what a stochastic gradient step is.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.federated_learning|requires|concept.systems.distributed_systems",
+      "source": "concept.learning.federated_learning",
+      "target": "concept.systems.distributed_systems",
+      "type": "requires",
+      "note": "Partial participation, stragglers and mid-round dropouts are part of the algorithm's specification here rather than an implementation detail, and they are the standard distributed-systems failure model applied to an optimiser.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.meta_learning|contrasts_with|concept.learning.self_supervised_learning",
+      "source": "concept.learning.meta_learning",
+      "target": "concept.learning.self_supervised_learning",
+      "type": "contrasts_with",
+      "note": "Self-supervised pretraining plus a linear probe is the competing route to few-shot performance, reaching it through representation quality rather than through an explicit adaptation objective.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.meta_learning|contrasts_with|concept.learning.transfer_learning",
+      "source": "concept.learning.meta_learning",
+      "target": "concept.learning.transfer_learning",
+      "type": "contrasts_with",
+      "note": "Both aim at a new task with little data, but transfer learning reuses a representation fitted for some other objective while meta-learning makes adaptation itself the training objective — and strong transfer baselines match meta-learners on many benchmarks.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.meta_learning|contributes_to|concept.learning.continual_learning",
+      "source": "concept.learning.meta_learning",
+      "target": "concept.learning.continual_learning",
+      "type": "contributes_to",
+      "note": "Meta-learning supplies continual learning with update rules and initialisations optimised so that learning a new task interferes less with old ones.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.meta_learning|requires|concept.learning.supervised_learning",
+      "source": "concept.learning.meta_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "The inner loop of a standard few-shot meta-learner is an ordinary supervised fit on a labelled support set, so the episodic protocol is unreadable without supervised learning first.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.self_supervised_learning|contrasts_with|concept.learning.unsupervised_learning",
+      "source": "concept.learning.self_supervised_learning",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "contrasts_with",
+      "note": "Both consume unannotated data, but self-supervision constructs an explicit prediction target and a per-example loss rather than fitting structure such as clusters or densities directly.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.self_supervised_learning|contributes_to|concept.learning.transfer_learning",
+      "source": "concept.learning.self_supervised_learning",
+      "target": "concept.learning.transfer_learning",
+      "type": "contributes_to",
+      "note": "Self-supervised pretraining is the step that produces the general-purpose weights a transfer pipeline then adapts to a labelled downstream task.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.self_supervised_learning|generalizes|concept.learning.contrastive_learning",
+      "source": "concept.learning.self_supervised_learning",
+      "target": "concept.learning.contrastive_learning",
+      "type": "generalizes",
+      "note": "Contrastive objectives are one family of pretext task, in which the derived label is which views came from the same underlying example.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.self_supervised_learning|specializes|concept.learning.supervised_learning",
+      "source": "concept.learning.self_supervised_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "specializes",
+      "note": "The training loop, loss and generalisation behaviour are those of supervised learning; only the origin of the labels differs, since a rule computes them from the input.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.supervised_learning|contrasts_with|concept.learning.unsupervised_learning",
+      "source": "concept.learning.supervised_learning",
+      "target": "concept.learning.unsupervised_learning",
+      "type": "contrasts_with",
+      "note": "Both fit structure to data, but unsupervised learning has no target variable and therefore no external loss to minimise, which changes what \"correct\" can even mean.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.supervised_learning|prerequisite_of|concept.learning.transfer_learning",
+      "source": "concept.learning.supervised_learning",
+      "target": "concept.learning.transfer_learning",
+      "type": "prerequisite_of",
+      "note": "Transfer learning reuses a predictor fitted on one labelled task for another, so a reader needs the source task's hypothesis class, loss and risk before the transfer has anything to transfer.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.supervised_learning|requires|concept.probability.probability_theory",
+      "source": "concept.learning.supervised_learning",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The setup is an unknown joint distribution over inputs and labels, and every quantity that matters — risk, the i.i.d. sample, the Bayes error — is an expectation under it.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.supervised_learning|supported_by|concept.probability.concentration_inequalities",
+      "source": "concept.learning.supervised_learning",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "supported_by",
+      "note": "The reason a finite training sample says anything about future error is that empirical means concentrate around their expectations, which is what turns empirical risk minimisation into a guarantee.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.transfer_learning|contrasts_with|concept.learning.continual_learning",
+      "source": "concept.learning.transfer_learning",
+      "target": "concept.learning.continual_learning",
+      "type": "contrasts_with",
+      "note": "Transfer moves in one direction and is free to forget the source task, while continual learning must keep performing on everything it has seen; the same gradient step that makes transfer work is the one continual learning tries to prevent.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.transfer_learning|contrasts_with|concept.learning.meta_learning",
+      "source": "concept.learning.transfer_learning",
+      "target": "concept.learning.meta_learning",
+      "type": "contrasts_with",
+      "note": "Meta-learning explicitly optimises the initialisation for fast adaptation across a distribution of tasks, whereas transfer learning reuses a model that was never trained with adaptability as an objective.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.transfer_learning|contributes_to|concept.learning.self_supervised_learning",
+      "source": "concept.learning.transfer_learning",
+      "target": "concept.learning.self_supervised_learning",
+      "type": "contributes_to",
+      "note": "A self-supervised pretext objective has no value in itself; it is judged almost entirely by how well the representation it produces transfers, so transfer is the step that gives pretraining its purpose.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.transfer_learning|requires|concept.learning.supervised_learning",
+      "source": "concept.learning.transfer_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "Both feature extraction and fine-tuning end in fitting a labelled objective on the target task, so the supervised setup — loss, labels, generalisation gap — has to be understood before the transfer step makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.unsupervised_learning|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.learning.unsupervised_learning",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "Supervised learning is handed a loss by its labels; unsupervised learning has to choose one, which is the whole difference in how results are judged.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.unsupervised_learning|contributes_to|concept.learning.transfer_learning",
+      "source": "concept.learning.unsupervised_learning",
+      "target": "concept.learning.transfer_learning",
+      "type": "contributes_to",
+      "note": "Representations fitted without labels are the usual starting point that transfer learning then adapts to a labelled downstream task.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.unsupervised_learning|refined_by|concept.learning.self_supervised_learning",
+      "source": "concept.learning.unsupervised_learning",
+      "target": "concept.learning.self_supervised_learning",
+      "type": "refined_by",
+      "note": "Self-supervised methods manufacture a prediction target from the input itself, turning a chosen unsupervised objective into a well-posed supervised one.",
+      "condition": null
+    },
+    {
+      "id": "concept.learning.unsupervised_learning|requires|concept.probability.probability_theory",
+      "source": "concept.learning.unsupervised_learning",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The density-estimation and mixture-model half of the field is stated entirely in terms of distributions, likelihood and marginalisation, and cannot be read without them.",
+      "condition": null
+    },
+    {
       "id": "concept.linear_algebra.matrix_decompositions|contributes_to|concept.analysis.operators",
       "source": "concept.linear_algebra.matrix_decompositions",
       "target": "concept.analysis.operators",
@@ -6412,6 +7177,286 @@
       "condition": null
     },
     {
+      "id": "concept.machine_learning.bias_variance|contrasts_with|concept.machine_learning.vc_dimension",
+      "source": "concept.machine_learning.bias_variance",
+      "target": "concept.machine_learning.vc_dimension",
+      "type": "contrasts_with",
+      "note": "VC dimension bounds error uniformly over a hypothesis class without reference to the target function, where this decomposition is exact but depends on the specific target, distribution and sample size.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.bias_variance|contributes_to|concept.machine_learning.generalization",
+      "source": "concept.machine_learning.bias_variance",
+      "target": "concept.machine_learning.generalization",
+      "type": "contributes_to",
+      "note": "It supplies one exact, loss-specific account of where out-of-sample error comes from, and most practical discussion of generalization is conducted in its vocabulary.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.bias_variance|contributes_to|concept.machine_learning.random_forests",
+      "source": "concept.machine_learning.bias_variance",
+      "target": "concept.machine_learning.random_forests",
+      "type": "contributes_to",
+      "note": "Bagging is engineered directly against the variance term — averaging decorrelated deep trees shrinks variance while leaving each tree's low bias largely intact.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.bias_variance|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.bias_variance",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "The decomposition is algebra on expectations and variances taken over a random training set, so a reader needs expectation, independence and variance before the two-line derivation says anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.decision_trees|contrasts_with|concept.machine_learning.logistic_regression",
+      "source": "concept.machine_learning.decision_trees",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "contrasts_with",
+      "note": "Both are standard classifiers for tabular data, but a tree fits a piecewise-constant function on boxes with no global form, where logistic regression fits one global linear logit.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.decision_trees|contributes_to|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.decision_trees",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "contributes_to",
+      "note": "A fully grown tree is the textbook low-bias, high-variance predictor, and its depth is an unusually direct knob on that trade-off.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.decision_trees|prerequisite_of|concept.machine_learning.random_forests",
+      "source": "concept.machine_learning.decision_trees",
+      "target": "concept.machine_learning.random_forests",
+      "type": "prerequisite_of",
+      "note": "A random forest is an average of many decision trees, so its construction and its variance-reduction argument are unreadable without knowing how a single tree is grown.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalization|contrasts_with|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.generalization",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "contrasts_with",
+      "note": "The bias-variance decomposition explains out-of-sample error by splitting it pointwise rather than by bounding a supremum over a class, and its classical U-shaped reading conflicts with what overparameterised models actually do.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalization|contributes_to|concept.machine_learning.pac_learning",
+      "source": "concept.machine_learning.generalization",
+      "target": "concept.machine_learning.pac_learning",
+      "type": "contributes_to",
+      "note": "PAC learning is the formal framework built around exactly the demand described here, that low empirical risk should imply low true risk with high probability over the sample.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalization|refined_by|concept.machine_learning.vc_dimension",
+      "source": "concept.machine_learning.generalization",
+      "target": "concept.machine_learning.vc_dimension",
+      "type": "refined_by",
+      "note": "VC dimension turns the informal idea that a hypothesis class can be \"too rich to trust\" into a combinatorial number that appears directly in a bound on the generalization gap.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalization|requires|concept.probability.probability_theory",
+      "source": "concept.machine_learning.generalization",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Risk is an expectation over an unknown distribution and the whole subject is stated in terms of i.i.d. sampling, so a reader without expectation and independence cannot follow the definitions here.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalized_linear_models|contrasts_with|concept.machine_learning.decision_trees",
+      "source": "concept.machine_learning.generalized_linear_models",
+      "target": "concept.machine_learning.decision_trees",
+      "type": "contrasts_with",
+      "note": "Trees attack the same tabular regression and classification problems by recursively partitioning the feature space instead of assuming any monotone link to a linear predictor.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalized_linear_models|generalizes|concept.machine_learning.linear_regression",
+      "source": "concept.machine_learning.generalized_linear_models",
+      "target": "concept.machine_learning.linear_regression",
+      "type": "generalizes",
+      "note": "Least squares is the GLM with a Gaussian response and the identity link; the other cases keep the linear predictor and change only the family and the link.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalized_linear_models|generalizes|concept.machine_learning.logistic_regression",
+      "source": "concept.machine_learning.generalized_linear_models",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "generalizes",
+      "note": "Logistic regression is the GLM with a Bernoulli response and the logit link, which is that family's canonical link.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.generalized_linear_models|requires|concept.probability.frequentist_inference",
+      "source": "concept.machine_learning.generalized_linear_models",
+      "target": "concept.probability.frequentist_inference",
+      "type": "requires",
+      "note": "Fitting is maximum likelihood and the deviance table is a likelihood-ratio test, so a reader without sampling distributions and likelihood cannot follow what a GLM reports.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.linear_regression|contrasts_with|concept.machine_learning.decision_trees",
+      "source": "concept.machine_learning.linear_regression",
+      "target": "concept.machine_learning.decision_trees",
+      "type": "contrasts_with",
+      "note": "Both predict a numeric response from the same tabular data, but a tree fits a piecewise-constant function by recursive partitioning and makes no global linearity assumption at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.linear_regression|contributes_to|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.linear_regression",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "contributes_to",
+      "note": "Ridge regression is the textbook demonstration that deliberately biasing an estimator can lower its mean squared error, and the shrinkage path makes the trade-off visible coefficient by coefficient.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.linear_regression|requires|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.machine_learning.linear_regression",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "requires",
+      "note": "The estimator is computed in practice by QR factorising the design matrix, and the rank-deficient case is handled by the SVD, so the numerical story cannot be followed without decompositions.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.linear_regression|specializes|concept.machine_learning.generalized_linear_models",
+      "source": "concept.machine_learning.linear_regression",
+      "target": "concept.machine_learning.generalized_linear_models",
+      "type": "specializes",
+      "note": "Least-squares regression is the member of the GLM family with a Gaussian response and the identity link, which is why its estimates have a closed form and the rest of the family does not.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.logistic_regression|contrasts_with|concept.machine_learning.decision_trees",
+      "source": "concept.machine_learning.logistic_regression",
+      "target": "concept.machine_learning.decision_trees",
+      "type": "contrasts_with",
+      "note": "Both are standard baselines on tabular data, but a tree carves the feature space into axis-aligned regions while logistic regression imposes one global linear structure on the log-odds.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.logistic_regression|contrasts_with|concept.machine_learning.linear_regression",
+      "source": "concept.machine_learning.logistic_regression",
+      "target": "concept.machine_learning.linear_regression",
+      "type": "contrasts_with",
+      "note": "Both fit a score that is linear in the parameters, but least squares models a real-valued conditional mean and has a closed-form solution, while this models a probability and has none.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.logistic_regression|requires|concept.probability.frequentist_inference",
+      "source": "concept.machine_learning.logistic_regression",
+      "target": "concept.probability.frequentist_inference",
+      "type": "requires",
+      "note": "The fitting rule is maximum likelihood under a Bernoulli model, so a reader needs the likelihood function and the meaning of an estimator before the objective on this page makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.logistic_regression|specializes|concept.machine_learning.generalized_linear_models",
+      "source": "concept.machine_learning.logistic_regression",
+      "target": "concept.machine_learning.generalized_linear_models",
+      "type": "specializes",
+      "note": "It is the generalized linear model with a Bernoulli response and the logit as canonical link, so everything the GLM page says about link functions and iteratively reweighted least squares specialises to it.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.pac_learning|contrasts_with|concept.probability.bayesian_inference",
+      "source": "concept.machine_learning.pac_learning",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contrasts_with",
+      "note": "PAC quantifies over every distribution and asks for a worst-case guarantee with no prior, where Bayesian inference fixes a prior over targets and reports a posterior, so the two disagree about what an assumption is allowed to be.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.pac_learning|contributes_to|concept.machine_learning.generalization",
+      "source": "concept.machine_learning.pac_learning",
+      "target": "concept.machine_learning.generalization",
+      "type": "contributes_to",
+      "note": "PAC supplies the first precise, distribution-free definition of what a generalization guarantee even asserts, and the vocabulary of sample complexity that later accounts still use.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.pac_learning|equivalent_under|concept.machine_learning.vc_dimension",
+      "source": "concept.machine_learning.pac_learning",
+      "target": "concept.machine_learning.vc_dimension",
+      "type": "equivalent_under",
+      "note": "For binary classification under 0-1 loss, a class is PAC learnable exactly when its VC dimension is finite, so the two properties are the same property stated combinatorially and statistically.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.pac_learning|requires|concept.probability.concentration_inequalities",
+      "source": "concept.machine_learning.pac_learning",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "requires",
+      "note": "Every PAC sample-complexity bound is proved by bounding the deviation of an empirical error from its mean and then paying a union bound, so a reader without Hoeffding's inequality cannot follow a single proof here.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.random_forests|assumes|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.random_forests",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "assumes",
+      "note": "Averaging leaves the bias of the individual trees untouched, so the method only pays off when a single deep tree's error is dominated by its variance.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.random_forests|contrasts_with|concept.machine_learning.linear_regression",
+      "source": "concept.machine_learning.random_forests",
+      "target": "concept.machine_learning.linear_regression",
+      "type": "contrasts_with",
+      "note": "A forest fits a piecewise-constant, axis-aligned function and is flat outside the training range, where a linear model extrapolates by construction and states a global functional form.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.random_forests|contributes_to|concept.machine_learning.generalization",
+      "source": "concept.machine_learning.random_forests",
+      "target": "concept.machine_learning.generalization",
+      "type": "contributes_to",
+      "note": "Out-of-bag error turns the bootstrap into a held-out estimate of generalisation error that costs no extra fitting and needs no validation split.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.random_forests|requires|concept.machine_learning.decision_trees",
+      "source": "concept.machine_learning.random_forests",
+      "target": "concept.machine_learning.decision_trees",
+      "type": "requires",
+      "note": "A forest is defined by modifying the tree-growing procedure, so a reader who does not know how a single tree chooses splits cannot follow what the randomisation changes.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.vc_dimension|contrasts_with|concept.machine_learning.bias_variance",
+      "source": "concept.machine_learning.vc_dimension",
+      "target": "concept.machine_learning.bias_variance",
+      "type": "contrasts_with",
+      "note": "Both describe the cost of capacity, but VC theory gives a worst-case bound uniform over all distributions where the bias-variance decomposition is an exact identity for one fixed distribution and loss.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.vc_dimension|contributes_to|concept.machine_learning.pac_learning",
+      "source": "concept.machine_learning.vc_dimension",
+      "target": "concept.machine_learning.pac_learning",
+      "type": "contributes_to",
+      "note": "Finiteness of the VC dimension is the exact condition under which a binary hypothesis class is PAC learnable, and the integer itself sets the sample complexity.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.vc_dimension|guarantees|concept.machine_learning.generalization",
+      "source": "concept.machine_learning.vc_dimension",
+      "target": "concept.machine_learning.generalization",
+      "type": "guarantees",
+      "note": "A finite VC dimension forces empirical error to converge to true error uniformly over the class, so any hypothesis with low training error generalises.",
+      "condition": null
+    },
+    {
+      "id": "concept.machine_learning.vc_dimension|requires|concept.probability.concentration_inequalities",
+      "source": "concept.machine_learning.vc_dimension",
+      "target": "concept.probability.concentration_inequalities",
+      "type": "requires",
+      "note": "The bound is proved by symmetrisation followed by a Hoeffding-type tail bound and a union bound over the finitely many behaviours Sauer's lemma leaves, so the probabilistic machinery has to come first.",
+      "condition": null
+    },
+    {
       "id": "concept.ml_engineering.deployment|contrasts_with|concept.ml_engineering.training_infrastructure",
       "source": "concept.ml_engineering.deployment",
       "target": "concept.ml_engineering.training_infrastructure",
@@ -6433,6 +7478,30 @@
       "target": "concept.software.continuous_delivery",
       "type": "supported_by",
       "note": "Staged rollout, versioned artefacts and automated rollback are continuous delivery machinery that a model release reuses rather than reinvents.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.edge_inference|contrasts_with|concept.ml_engineering.training_infrastructure",
+      "source": "concept.ml_engineering.edge_inference",
+      "target": "concept.ml_engineering.training_infrastructure",
+      "type": "contrasts_with",
+      "note": "Training buys throughput with elastic cluster capacity and tolerates a slow step; an edge device has a fixed memory pool, a battery and a thermal cap that no amount of budget enlarges.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.edge_inference|specializes|concept.ml_engineering.deployment",
+      "source": "concept.ml_engineering.edge_inference",
+      "target": "concept.ml_engineering.deployment",
+      "type": "specializes",
+      "note": "It is deployment whose serving host is the end user's device, so the artefact ships inside an application release instead of onto a fleet the operator controls and can roll back.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.edge_inference|supported_by|concept.ml_engineering.ollama",
+      "source": "concept.ml_engineering.edge_inference",
+      "target": "concept.ml_engineering.ollama",
+      "type": "supported_by",
+      "note": "Ollama is a concrete realisation of the pattern described here — quantised weights, a local runtime and a model store — and is how most people meet edge inference in practice.",
       "condition": null
     },
     {
@@ -6497,6 +7566,38 @@
       "target": "concept.paradigms.functional_programming",
       "type": "requires",
       "note": "Every JAX transformation is sound only on a referentially transparent function, so a reader who does not already have the idea of a pure function cannot make sense of why a stray global or a print statement silently produces the wrong program.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.ollama|contrasts_with|concept.ml_engineering.deployment",
+      "source": "concept.ml_engineering.ollama",
+      "target": "concept.ml_engineering.deployment",
+      "type": "contrasts_with",
+      "note": "Server deployment optimises tail latency and cost under concurrent traffic across a fleet; Ollama optimises one machine's memory budget for one user, so almost none of the fleet machinery applies.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.ollama|contrasts_with|concept.ml_engineering.pytorch",
+      "source": "concept.ml_engineering.ollama",
+      "target": "concept.ml_engineering.pytorch",
+      "type": "contrasts_with",
+      "note": "PyTorch is a Python research stack carrying autograd and training; Ollama ships a compiled inference-only runtime with no Python, no gradients and no ability to change the model's architecture.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.ollama|implements|concept.ml_engineering.edge_inference",
+      "source": "concept.ml_engineering.ollama",
+      "target": "concept.ml_engineering.edge_inference",
+      "type": "implements",
+      "note": "Ollama is one concrete packaging of edge inference — quantised weights, a compiled runtime and no network round trip — with the hardware decisions made for you by defaults.",
+      "condition": null
+    },
+    {
+      "id": "concept.ml_engineering.ollama|implements|concept.software.apis",
+      "source": "concept.ml_engineering.ollama",
+      "target": "concept.software.apis",
+      "type": "implements",
+      "note": "Everything past the command line is an HTTP API on 127.0.0.1, including a partial OpenAI-compatible route, so editors and agents consume a local model exactly the way they consume a remote one.",
       "condition": null
     },
     {

@@ -16,6 +16,22 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
+          label: "Classical Machine Learning",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "bias-variance", label: "Bias-Variance" },
+            { type: 'doc', id: "decision-trees", label: "Decision Trees" },
+            { type: 'doc', id: "generalization", label: "Generalization" },
+            { type: 'doc', id: "generalized-linear-models", label: "Generalized Linear Models" },
+            { type: 'doc', id: "linear-regression", label: "Linear Regression" },
+            { type: 'doc', id: "logistic-regression", label: "Logistic Regression" },
+            { type: 'doc', id: "pac-learning", label: "PAC Learning" },
+            { type: 'doc', id: "random-forests", label: "Random Forests" },
+            { type: 'doc', id: "vc-dimension", label: "VC Dimension" },
+          ],
+        },
+        {
+          type: 'category',
           label: "Computer Vision",
           collapsed: true,
           items: [
@@ -46,6 +62,22 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             { type: 'doc', id: "backpropagation-through-convolution", label: "Backpropagation Through Convolution" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Learning Paradigms",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "continual-learning", label: "Continual Learning" },
+            { type: 'doc', id: "contrastive-learning", label: "Contrastive Learning" },
+            { type: 'doc', id: "curriculum-learning", label: "Curriculum Learning" },
+            { type: 'doc', id: "federated-learning", label: "Federated Learning" },
+            { type: 'doc', id: "meta-learning", label: "Meta-Learning" },
+            { type: 'doc', id: "self-supervised-learning", label: "Self-Supervised Learning" },
+            { type: 'doc', id: "supervised-learning", label: "Supervised Learning" },
+            { type: 'doc', id: "transfer-learning", label: "Transfer Learning" },
+            { type: 'doc', id: "unsupervised-learning", label: "Unsupervised Learning" },
           ],
         },
       ],
@@ -285,8 +317,10 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             { type: 'doc', id: "deployment", label: "Deployment" },
+            { type: 'doc', id: "edge-inference", label: "Edge Inference" },
             { type: 'doc', id: "experiment-tracking", label: "Experiment Tracking" },
             { type: 'doc', id: "jax", label: "JAX" },
+            { type: 'doc', id: "ollama", label: "Ollama" },
             { type: 'doc', id: "pytorch", label: "PyTorch" },
             { type: 'doc', id: "training-infrastructure", label: "Training Infrastructure" },
           ],

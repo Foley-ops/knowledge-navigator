@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 14 of 28.** 10 of 10 pages in it are still to write.
+**Batch 16 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/edge-inference.md` — Edge Inference (concept.ml_engineering.edge_inference)
-- `content/concepts/ollama.md` — Ollama (concept.ml_engineering.ollama)
-- `content/concepts/supervised-learning.md` — Supervised Learning (concept.learning.supervised_learning)
-- `content/concepts/unsupervised-learning.md` — Unsupervised Learning (concept.learning.unsupervised_learning)
-- `content/concepts/self-supervised-learning.md` — Self-Supervised Learning (concept.learning.self_supervised_learning)
-- `content/concepts/transfer-learning.md` — Transfer Learning (concept.learning.transfer_learning)
-- `content/concepts/contrastive-learning.md` — Contrastive Learning (concept.learning.contrastive_learning)
-- `content/concepts/meta-learning.md` — Meta-Learning (concept.learning.meta_learning)
-- `content/concepts/curriculum-learning.md` — Curriculum Learning (concept.learning.curriculum_learning)
-- `content/concepts/continual-learning.md` — Continual Learning (concept.learning.continual_learning)
+- `content/concepts/gradient-boosting.md` — Gradient Boosting (concept.machine_learning.gradient_boosting)
+- `content/concepts/k-nearest-neighbors.md` — k-Nearest Neighbors (concept.machine_learning.k_nearest_neighbors)
+- `content/concepts/naive-bayes.md` — Naive Bayes (concept.machine_learning.naive_bayes)
+- `content/concepts/support-vector-machines.md` — Support Vector Machines (concept.machine_learning.support_vector_machines)
+- `content/concepts/kernel-methods.md` — Kernel Methods (concept.machine_learning.kernel_methods)
+- `content/concepts/gaussian-processes.md` — Gaussian Processes (concept.machine_learning.gaussian_processes)
+- `content/concepts/principal-component-analysis.md` — Principal Component Analysis (concept.machine_learning.principal_component_analysis)
+- `content/concepts/independent-component-analysis.md` — Independent Component Analysis (concept.machine_learning.independent_component_analysis)
+- `content/concepts/k-means.md` — k-Means (concept.machine_learning.k_means)
+- `content/concepts/hierarchical-clustering.md` — Hierarchical Clustering (concept.machine_learning.hierarchical_clustering)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,32 +36,32 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 141 |
-| Markdown pages in the corpus | 141 |
-| Tier 1 pages | 141 |
+| Candidates covered by a page | 161 |
+| Markdown pages in the corpus | 161 |
+| Tier 1 pages | 161 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 130 of 280 |
+| Planned pages written | 150 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 0 | 148 | 0% |
+| Artificial Intelligence | 18 | 148 | 12% |
 | Mathematics | 85 | 85 | 100% |
-| Programming | 45 | 47 | 96% |
+| Programming | 47 | 47 | 100% |
 
 ### By category
 
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
-| Artificial Intelligence/Classical Machine Learning | 0 | 26 |  |
+| Artificial Intelligence/Classical Machine Learning | 9 | 26 |  |
 | Artificial Intelligence/Deep Learning — Architectures | 0 | 42 |  |
 | Artificial Intelligence/Deep Learning — Training | 0 | 12 |  |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
 | Artificial Intelligence/Domains/Natural Language Processing | 0 | 5 |  |
-| Artificial Intelligence/Learning Paradigms | 0 | 9 |  |
+| Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
 | Artificial Intelligence/Other Traditions & Frontiers | 0 | 11 |  |
 | Artificial Intelligence/Reinforcement Learning | 0 | 19 |  |
 | Artificial Intelligence/Symbolic AI | 0 | 5 |  |
@@ -82,13 +82,13 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Programming/Data Structures & Algorithms | 5 | 5 | complete |
 | Programming/Languages | 15 | 15 | complete |
 | Programming/Languages/Paradigms | 4 | 4 | complete |
-| Programming/ML Engineering | 5 | 7 |  |
+| Programming/ML Engineering | 7 | 7 | complete |
 | Programming/Software Practice | 9 | 9 | complete |
 | Programming/Systems | 7 | 7 | complete |
 
 ## Completed pages
 
-130 of the planned 280, in the order they were written.
+150 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -222,6 +222,26 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Training Infrastructure | `concept.ml_engineering.training_infrastructure` | tier 1 | covered |
 | Experiment Tracking | `concept.ml_engineering.experiment_tracking` | tier 1 | covered |
 | Deployment | `concept.ml_engineering.deployment` | tier 1 | covered |
+| Edge Inference | `concept.ml_engineering.edge_inference` | tier 1 | covered |
+| Ollama | `concept.ml_engineering.ollama` | tier 1 | covered |
+| Supervised Learning | `concept.learning.supervised_learning` | tier 1 | covered |
+| Unsupervised Learning | `concept.learning.unsupervised_learning` | tier 1 | covered |
+| Self-Supervised Learning | `concept.learning.self_supervised_learning` | tier 1 | covered |
+| Transfer Learning | `concept.learning.transfer_learning` | tier 1 | covered |
+| Contrastive Learning | `concept.learning.contrastive_learning` | tier 1 | covered |
+| Meta-Learning | `concept.learning.meta_learning` | tier 1 | covered |
+| Curriculum Learning | `concept.learning.curriculum_learning` | tier 1 | covered |
+| Continual Learning | `concept.learning.continual_learning` | tier 1 | covered |
+| Federated Learning | `concept.learning.federated_learning` | tier 1 | covered |
+| Linear Regression | `concept.machine_learning.linear_regression` | tier 1 | covered |
+| Logistic Regression | `concept.machine_learning.logistic_regression` | tier 1 | covered |
+| Generalized Linear Models | `concept.machine_learning.generalized_linear_models` | tier 1 | covered |
+| Generalization | `concept.machine_learning.generalization` | tier 1 | covered |
+| Bias-Variance | `concept.machine_learning.bias_variance` | tier 1 | covered |
+| VC Dimension | `concept.machine_learning.vc_dimension` | tier 1 | covered |
+| PAC Learning | `concept.machine_learning.pac_learning` | tier 1 | covered |
+| Decision Trees | `concept.machine_learning.decision_trees` | tier 1 | covered |
+| Random Forests | `concept.machine_learning.random_forests` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -425,35 +445,35 @@ it. Batches are ten pages each.
 | x | Experiment Tracking | `concept.ml_engineering.experiment_tracking` | Programming/ML Engineering |
 | x | Deployment | `concept.ml_engineering.deployment` | Programming/ML Engineering |
 
-### Batch 14
+### Batch 14 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Edge Inference | `concept.ml_engineering.edge_inference` | Programming/ML Engineering |
-|   | Ollama | `concept.ml_engineering.ollama` | Programming/ML Engineering |
-|   | Supervised Learning | `concept.learning.supervised_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Unsupervised Learning | `concept.learning.unsupervised_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Self-Supervised Learning | `concept.learning.self_supervised_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Transfer Learning | `concept.learning.transfer_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Contrastive Learning | `concept.learning.contrastive_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Meta-Learning | `concept.learning.meta_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Curriculum Learning | `concept.learning.curriculum_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Continual Learning | `concept.learning.continual_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Edge Inference | `concept.ml_engineering.edge_inference` | Programming/ML Engineering |
+| x | Ollama | `concept.ml_engineering.ollama` | Programming/ML Engineering |
+| x | Supervised Learning | `concept.learning.supervised_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Unsupervised Learning | `concept.learning.unsupervised_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Self-Supervised Learning | `concept.learning.self_supervised_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Transfer Learning | `concept.learning.transfer_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Contrastive Learning | `concept.learning.contrastive_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Meta-Learning | `concept.learning.meta_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Curriculum Learning | `concept.learning.curriculum_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Continual Learning | `concept.learning.continual_learning` | Artificial Intelligence/Learning Paradigms |
 
-### Batch 15
+### Batch 15 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Federated Learning | `concept.learning.federated_learning` | Artificial Intelligence/Learning Paradigms |
-|   | Linear Regression | `concept.machine_learning.linear_regression` | Artificial Intelligence/Classical Machine Learning |
-|   | Logistic Regression | `concept.machine_learning.logistic_regression` | Artificial Intelligence/Classical Machine Learning |
-|   | Generalized Linear Models | `concept.machine_learning.generalized_linear_models` | Artificial Intelligence/Classical Machine Learning |
-|   | Generalization | `concept.machine_learning.generalization` | Artificial Intelligence/Classical Machine Learning |
-|   | Bias-Variance | `concept.machine_learning.bias_variance` | Artificial Intelligence/Classical Machine Learning |
-|   | VC Dimension | `concept.machine_learning.vc_dimension` | Artificial Intelligence/Classical Machine Learning |
-|   | PAC Learning | `concept.machine_learning.pac_learning` | Artificial Intelligence/Classical Machine Learning |
-|   | Decision Trees | `concept.machine_learning.decision_trees` | Artificial Intelligence/Classical Machine Learning |
-|   | Random Forests | `concept.machine_learning.random_forests` | Artificial Intelligence/Classical Machine Learning |
+| x | Federated Learning | `concept.learning.federated_learning` | Artificial Intelligence/Learning Paradigms |
+| x | Linear Regression | `concept.machine_learning.linear_regression` | Artificial Intelligence/Classical Machine Learning |
+| x | Logistic Regression | `concept.machine_learning.logistic_regression` | Artificial Intelligence/Classical Machine Learning |
+| x | Generalized Linear Models | `concept.machine_learning.generalized_linear_models` | Artificial Intelligence/Classical Machine Learning |
+| x | Generalization | `concept.machine_learning.generalization` | Artificial Intelligence/Classical Machine Learning |
+| x | Bias-Variance | `concept.machine_learning.bias_variance` | Artificial Intelligence/Classical Machine Learning |
+| x | VC Dimension | `concept.machine_learning.vc_dimension` | Artificial Intelligence/Classical Machine Learning |
+| x | PAC Learning | `concept.machine_learning.pac_learning` | Artificial Intelligence/Classical Machine Learning |
+| x | Decision Trees | `concept.machine_learning.decision_trees` | Artificial Intelligence/Classical Machine Learning |
+| x | Random Forests | `concept.machine_learning.random_forests` | Artificial Intelligence/Classical Machine Learning |
 
 ### Batch 16
 
