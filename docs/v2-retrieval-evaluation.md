@@ -42,7 +42,7 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > How does a network see a wider area of the input as it gets deeper?
 
 - Needed but not retrieved: `concept.deep_learning.receptive_field`
-- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.message_passing`, `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.learning.supervised_learning`
+- Retrieved instead: `concept.deep_learning.lenet`, `concept.deep_learning.message_passing`, `concept.deep_learning.vgg`, `concept.search.minimax`, `concept.deep_learning.convolutional_networks`
 
 ### P3 (paraphrase)
 

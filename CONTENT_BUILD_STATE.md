@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 25 of 28.** 10 of 10 pages in it are still to write.
+**Batch 26 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/uninformed-search.md` — Uninformed Search (concept.search.uninformed_search)
-- `content/concepts/a-star.md` — A* (concept.search.a_star)
-- `content/concepts/adversarial-search.md` — Adversarial Search (concept.search.adversarial_search)
-- `content/concepts/minimax.md` — Minimax (concept.search.minimax)
-- `content/concepts/monte-carlo-tree-search.md` — Monte Carlo Tree Search (concept.search.monte_carlo_tree_search)
-- `content/concepts/strips.md` — STRIPS (concept.planning.strips)
-- `content/concepts/pddl.md` — PDDL (concept.planning.pddl)
-- `content/concepts/hierarchical-planning.md` — Hierarchical Planning (concept.planning.hierarchical_planning)
-- `content/concepts/knowledge-representation.md` — Knowledge Representation (concept.symbolic_ai.knowledge_representation)
-- `content/concepts/ontologies.md` — Ontologies (concept.symbolic_ai.ontologies)
+- `content/concepts/logic-programming.md` — Logic Programming (concept.symbolic_ai.logic_programming)
+- `content/concepts/constraint-satisfaction.md` — Constraint Satisfaction (concept.symbolic_ai.constraint_satisfaction)
+- `content/concepts/expert-systems.md` — Expert Systems (concept.symbolic_ai.expert_systems)
+- `content/concepts/classification.md` — Classification (concept.vision.classification)
+- `content/concepts/detection.md` — Detection (concept.vision.detection)
+- `content/concepts/segmentation.md` — Segmentation (concept.vision.segmentation)
+- `content/concepts/visual-place-recognition.md` — Visual Place Recognition (concept.vision.visual_place_recognition)
+- `content/concepts/tokenization.md` — Tokenization (concept.nlp.tokenization)
+- `content/concepts/embeddings.md` — Embeddings (concept.nlp.embeddings)
+- `content/concepts/bert.md` — BERT (concept.nlp.bert)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 251 |
-| Markdown pages in the corpus | 251 |
-| Tier 1 pages | 251 |
+| Candidates covered by a page | 261 |
+| Markdown pages in the corpus | 261 |
+| Tier 1 pages | 261 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 240 of 280 |
+| Planned pages written | 250 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 108 | 148 | 73% |
+| Artificial Intelligence | 118 | 148 | 80% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -64,9 +64,9 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
 | Artificial Intelligence/Other Traditions & Frontiers | 0 | 11 |  |
 | Artificial Intelligence/Reinforcement Learning | 19 | 19 | complete |
-| Artificial Intelligence/Symbolic AI | 0 | 5 |  |
-| Artificial Intelligence/Symbolic AI/Planning | 0 | 3 |  |
-| Artificial Intelligence/Symbolic AI/Search | 0 | 5 |  |
+| Artificial Intelligence/Symbolic AI | 2 | 5 |  |
+| Artificial Intelligence/Symbolic AI/Planning | 3 | 3 | complete |
+| Artificial Intelligence/Symbolic AI/Search | 5 | 5 | complete |
 | Mathematics/Algebra | 14 | 14 | complete |
 | Mathematics/Analysis | 18 | 18 | complete |
 | Mathematics/Foundations | 4 | 4 | complete |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-240 of the planned 280, in the order they were written.
+250 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -332,6 +332,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Multi-Agent Reinforcement Learning | `concept.reinforcement_learning.multi_agent_reinforcement_learning` | tier 1 | covered |
 | RLHF | `concept.reinforcement_learning.rlhf` | tier 1 | covered |
 | RLAIF | `concept.reinforcement_learning.rlaif` | tier 1 | covered |
+| Uninformed Search | `concept.search.uninformed_search` | tier 1 | covered |
+| A* | `concept.search.a_star` | tier 1 | covered |
+| Adversarial Search | `concept.search.adversarial_search` | tier 1 | covered |
+| Minimax | `concept.search.minimax` | tier 1 | covered |
+| Monte Carlo Tree Search | `concept.search.monte_carlo_tree_search` | tier 1 | covered |
+| STRIPS | `concept.planning.strips` | tier 1 | covered |
+| PDDL | `concept.planning.pddl` | tier 1 | covered |
+| Hierarchical Planning | `concept.planning.hierarchical_planning` | tier 1 | covered |
+| Knowledge Representation | `concept.symbolic_ai.knowledge_representation` | tier 1 | covered |
+| Ontologies | `concept.symbolic_ai.ontologies` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -700,20 +710,20 @@ it. Batches are ten pages each.
 | x | RLHF | `concept.reinforcement_learning.rlhf` | Artificial Intelligence/Reinforcement Learning |
 | x | RLAIF | `concept.reinforcement_learning.rlaif` | Artificial Intelligence/Reinforcement Learning |
 
-### Batch 25
+### Batch 25 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Uninformed Search | `concept.search.uninformed_search` | Artificial Intelligence/Symbolic AI/Search |
-|   | A* | `concept.search.a_star` | Artificial Intelligence/Symbolic AI/Search |
-|   | Adversarial Search | `concept.search.adversarial_search` | Artificial Intelligence/Symbolic AI/Search |
-|   | Minimax | `concept.search.minimax` | Artificial Intelligence/Symbolic AI/Search |
-|   | Monte Carlo Tree Search | `concept.search.monte_carlo_tree_search` | Artificial Intelligence/Symbolic AI/Search |
-|   | STRIPS | `concept.planning.strips` | Artificial Intelligence/Symbolic AI/Planning |
-|   | PDDL | `concept.planning.pddl` | Artificial Intelligence/Symbolic AI/Planning |
-|   | Hierarchical Planning | `concept.planning.hierarchical_planning` | Artificial Intelligence/Symbolic AI/Planning |
-|   | Knowledge Representation | `concept.symbolic_ai.knowledge_representation` | Artificial Intelligence/Symbolic AI |
-|   | Ontologies | `concept.symbolic_ai.ontologies` | Artificial Intelligence/Symbolic AI |
+| x | Uninformed Search | `concept.search.uninformed_search` | Artificial Intelligence/Symbolic AI/Search |
+| x | A* | `concept.search.a_star` | Artificial Intelligence/Symbolic AI/Search |
+| x | Adversarial Search | `concept.search.adversarial_search` | Artificial Intelligence/Symbolic AI/Search |
+| x | Minimax | `concept.search.minimax` | Artificial Intelligence/Symbolic AI/Search |
+| x | Monte Carlo Tree Search | `concept.search.monte_carlo_tree_search` | Artificial Intelligence/Symbolic AI/Search |
+| x | STRIPS | `concept.planning.strips` | Artificial Intelligence/Symbolic AI/Planning |
+| x | PDDL | `concept.planning.pddl` | Artificial Intelligence/Symbolic AI/Planning |
+| x | Hierarchical Planning | `concept.planning.hierarchical_planning` | Artificial Intelligence/Symbolic AI/Planning |
+| x | Knowledge Representation | `concept.symbolic_ai.knowledge_representation` | Artificial Intelligence/Symbolic AI |
+| x | Ontologies | `concept.symbolic_ai.ontologies` | Artificial Intelligence/Symbolic AI |
 
 ### Batch 26
 

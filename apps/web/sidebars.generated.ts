@@ -177,6 +177,37 @@ const sidebars: SidebarsConfig = {
             { type: 'doc', id: "temporal-difference-learning", label: "Temporal-Difference Learning" },
           ],
         },
+        {
+          type: 'category',
+          label: "Symbolic AI",
+          collapsed: true,
+          items: [
+            {
+              type: 'category',
+              label: "Planning",
+              collapsed: true,
+              items: [
+                { type: 'doc', id: "hierarchical-planning", label: "Hierarchical Planning" },
+                { type: 'doc', id: "pddl", label: "PDDL" },
+                { type: 'doc', id: "strips", label: "STRIPS" },
+              ],
+            },
+            {
+              type: 'category',
+              label: "Search",
+              collapsed: true,
+              items: [
+                { type: 'doc', id: "a-star", label: "A*" },
+                { type: 'doc', id: "adversarial-search", label: "Adversarial Search" },
+                { type: 'doc', id: "minimax", label: "Minimax" },
+                { type: 'doc', id: "monte-carlo-tree-search", label: "Monte Carlo Tree Search" },
+                { type: 'doc', id: "uninformed-search", label: "Uninformed Search" },
+              ],
+            },
+            { type: 'doc', id: "knowledge-representation", label: "Knowledge Representation" },
+            { type: 'doc', id: "ontologies", label: "Ontologies" },
+          ],
+        },
       ],
     },
     {

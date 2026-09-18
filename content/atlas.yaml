@@ -670,62 +670,62 @@ candidates:
     title: Uninformed Search
     categories:
       - atlas.artificial_intelligence.symbolic_ai.search
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.search.uninformed_search
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.a_star
     title: A*
     categories:
       - atlas.artificial_intelligence.symbolic_ai.search
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.search.a_star
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.adversarial_search
     title: Adversarial Search
     categories:
       - atlas.artificial_intelligence.symbolic_ai.search
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.search.adversarial_search
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.minimax
     title: Minimax
     categories:
       - atlas.artificial_intelligence.symbolic_ai.search
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.search.minimax
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.search.monte_carlo_tree_search
     title: Monte Carlo Tree Search
     categories:
       - atlas.artificial_intelligence.symbolic_ai.search
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.search.monte_carlo_tree_search
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.planning.strips
     title: STRIPS
     categories:
       - atlas.artificial_intelligence.symbolic_ai.planning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.planning.strips
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.planning.pddl
     title: PDDL
     categories:
       - atlas.artificial_intelligence.symbolic_ai.planning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.planning.pddl
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.planning.hierarchical_planning
     title: Hierarchical Planning
     categories:
       - atlas.artificial_intelligence.symbolic_ai.planning
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.planning.hierarchical_planning
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.knowledge_representation
     title: Knowledge Representation
     categories:
       - atlas.artificial_intelligence.symbolic_ai
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.symbolic_ai.knowledge_representation
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.ontologies
     title: Ontologies
     categories:
       - atlas.artificial_intelligence.symbolic_ai
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.symbolic_ai.ontologies
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.logic_programming
     title: Logic Programming
     categories:

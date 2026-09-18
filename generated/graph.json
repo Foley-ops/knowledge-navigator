@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T10:52:54.815Z",
-  "corpusHash": "ae3c3bfccdf6f44edd784070180cd344bbb1eaa77127f2e567b75ffaf4cb3253",
-  "atlasHash": "1777f637066202db4401d58348908e44724c0fae7be180d47d911ef9072e3b22",
+  "builtAt": "2026-09-18T11:27:14.002Z",
+  "corpusHash": "fe1d2a657a581077e8549f878e9245ee085be2029fce2c99c88c74a29cbb3632",
+  "atlasHash": "e3d607518a5ee22a8f7f87c5a352d46135a7366f4751a4f54dffccd845a36f40",
   "counts": {
-    "concepts": 251,
-    "relationships": 950,
-    "categories": 27
+    "concepts": 261,
+    "relationships": 990,
+    "categories": 30
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 251,
+      "1": 261,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 251,
+      "markdown": 261,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 251
+      "generated-draft": 261
     },
-    "conceptsWithArticle": 251,
+    "conceptsWithArticle": 261,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 40,
+      "candidate": 30,
       "proposed-tier-3": 0,
-      "covered": 251,
+      "covered": 261,
       "deferred": 0
     },
-    "unresolvedReferences": 363,
-    "unresolvedGroups": 361,
+    "unresolvedReferences": 380,
+    "unresolvedGroups": 378,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -354,6 +354,59 @@
         "concept.reinforcement_learning.rlhf",
         "concept.reinforcement_learning.sac",
         "concept.reinforcement_learning.temporal_difference_learning"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Symbolic AI",
+      "name": "Symbolic AI",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.symbolic_ai.knowledge_representation",
+        "concept.symbolic_ai.ontologies"
+      ],
+      "conceptIds": [
+        "concept.symbolic_ai.knowledge_representation",
+        "concept.symbolic_ai.ontologies"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Symbolic AI/Planning",
+      "name": "Planning",
+      "topLevel": "Artificial Intelligence",
+      "depth": 3,
+      "parent": "Artificial Intelligence/Symbolic AI",
+      "primaryConceptIds": [
+        "concept.planning.hierarchical_planning",
+        "concept.planning.pddl",
+        "concept.planning.strips"
+      ],
+      "conceptIds": [
+        "concept.planning.hierarchical_planning",
+        "concept.planning.pddl",
+        "concept.planning.strips"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Symbolic AI/Search",
+      "name": "Search",
+      "topLevel": "Artificial Intelligence",
+      "depth": 3,
+      "parent": "Artificial Intelligence/Symbolic AI",
+      "primaryConceptIds": [
+        "concept.search.a_star",
+        "concept.search.adversarial_search",
+        "concept.search.minimax",
+        "concept.search.monte_carlo_tree_search",
+        "concept.search.uninformed_search"
+      ],
+      "conceptIds": [
+        "concept.search.a_star",
+        "concept.search.adversarial_search",
+        "concept.search.minimax",
+        "concept.search.monte_carlo_tree_search",
+        "concept.search.uninformed_search"
       ]
     },
     {
@@ -5314,6 +5367,74 @@
       "claims": 0
     },
     {
+      "id": "concept.planning.hierarchical_planning",
+      "title": "Hierarchical Planning",
+      "slug": "/concepts/hierarchical-planning",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A family of planning methods in which abstract tasks are recursively decomposed into subtasks by an authored method library, so a plan is correct because it decomposes legally rather than because it reaches a goal state.",
+      "aliases": [
+        "HTN planning",
+        "hierarchical task networks"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Planning",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Planning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.planning.hierarchical_planning",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.planning.pddl",
+      "title": "PDDL",
+      "slug": "/concepts/pddl",
+      "kind": "tool",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The standard input language of automated planning, which splits a task into a reusable domain of typed predicates and action schemas and a problem instance of objects, an initial state and a goal.",
+      "aliases": [
+        "Planning Domain Definition Language"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Planning",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Planning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.planning.pddl",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.planning.strips",
+      "title": "STRIPS",
+      "slug": "/concepts/strips",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The planning formalism in which a world state is a set of ground atoms and an action is a precondition list plus an add list and a delete list, so applying an action is one set subtraction followed by one set union.",
+      "aliases": [
+        "Stanford Research Institute Problem Solver",
+        "STRIPS assumption"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Planning",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Planning"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.planning.strips",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.probability.bayesian_inference",
       "title": "Bayesian Inference",
       "slug": "/concepts/bayesian-inference",
@@ -5927,6 +6048,116 @@
       "claims": 0
     },
     {
+      "id": "concept.search.a_star",
+      "title": "A*",
+      "slug": "/concepts/a-star",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The best-first graph search that orders the frontier by cost-so-far plus an estimate of cost-to-go, returning a provably cheapest path whenever that estimate never overestimates — and exhausting memory long before it exhausts time.",
+      "aliases": [
+        "A-star search",
+        "A* search"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Search",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Search"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.search.a_star",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.search.adversarial_search",
+      "title": "Adversarial Search",
+      "slug": "/concepts/adversarial-search",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Search in a world where another agent chooses some of the moves, so the answer is never a path but a strategy that must survive whatever the opponent does next.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Search",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Search"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.search.adversarial_search",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.search.minimax",
+      "title": "Minimax",
+      "slug": "/concepts/minimax",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The value a position is worth when both players play perfectly, computed by backing terminal utilities up the game tree with alternating maximisation and minimisation — and, with alpha-beta pruning, computed while skipping the subtrees that cannot change it.",
+      "aliases": [
+        "negamax",
+        "minimax search"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Search",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Search"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.search.minimax",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.search.monte_carlo_tree_search",
+      "title": "Monte Carlo Tree Search",
+      "slug": "/concepts/monte-carlo-tree-search",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A search method that grows a lopsided tree one simulated trajectory at a time, letting a bandit rule decide where to look next, so an agent can act well in enormous state spaces with no hand-written evaluation function and no fixed search depth.",
+      "aliases": [
+        "MCTS"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Search",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Search"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.search.monte_carlo_tree_search",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.search.uninformed_search",
+      "title": "Uninformed Search",
+      "slug": "/concepts/uninformed-search",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The family of state-space search strategies that know nothing about a problem except its successor function, its action costs and its goal test, and whose members differ only in the order they drain the frontier — which is enough to decide completeness, optimality and whether they fit in memory.",
+      "aliases": [
+        "blind search"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI/Search",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI/Search"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.search.uninformed_search",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
       "id": "concept.software.apis",
       "title": "APIs",
       "slug": "/concepts/apis",
@@ -6121,6 +6352,50 @@
       "candidateId": "candidate.programming.software_practice.version_control",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.symbolic_ai.knowledge_representation",
+      "title": "Knowledge Representation",
+      "slug": "/concepts/knowledge-representation",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The study of how to encode what a system knows in a formal language it can compute over, where every choice of language is a bet on how much expressive power is worth how much reasoning cost.",
+      "aliases": [
+        "knowledge representation and reasoning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.knowledge_representation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.symbolic_ai.ontologies",
+      "title": "Ontologies",
+      "slug": "/concepts/ontologies",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A machine-readable specification of a domain's classes, properties and individuals whose axioms act as premises for a reasoner rather than as constraints on what may be stored, so a query can return facts nobody ever wrote down.",
+      "aliases": [
+        "formal ontology"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.ontologies",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
       "claims": 0
     },
     {
@@ -12516,6 +12791,102 @@
       "condition": null
     },
     {
+      "id": "concept.planning.hierarchical_planning|assumes|concept.symbolic_ai.knowledge_representation",
+      "source": "concept.planning.hierarchical_planning",
+      "target": "concept.symbolic_ai.knowledge_representation",
+      "type": "assumes",
+      "note": "The method library is hand-authored domain knowledge, so the planner's completeness and correctness are relative to how well that knowledge was represented.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.hierarchical_planning|contrasts_with|concept.search.a_star",
+      "source": "concept.planning.hierarchical_planning",
+      "target": "concept.search.a_star",
+      "type": "contrasts_with",
+      "note": "A* searches a state space for a path that satisfies a goal test and prunes with an admissible heuristic; HTN search explores decompositions of tasks and prunes with method preconditions, so nothing corresponds to the heuristic bound.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.hierarchical_planning|contributes_to|concept.planning.pddl",
+      "source": "concept.planning.hierarchical_planning",
+      "target": "concept.planning.pddl",
+      "type": "contributes_to",
+      "note": "Classical PDDL has no syntax for compound tasks or methods, and the hierarchical tradition is what motivated HDDL, the hierarchical extension of the PDDL family.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.hierarchical_planning|requires|concept.planning.strips",
+      "source": "concept.planning.hierarchical_planning",
+      "target": "concept.planning.strips",
+      "type": "requires",
+      "note": "The primitive actions of a hierarchical domain are classical operators with preconditions and effects, and the expressivity comparison that defines the field is stated relative to STRIPS.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.pddl|contributes_to|concept.planning.hierarchical_planning",
+      "source": "concept.planning.pddl",
+      "target": "concept.planning.hierarchical_planning",
+      "type": "contributes_to",
+      "note": "HDDL, the language used by the hierarchical track of the planning competition, is PDDL syntax extended with task and method declarations, so hierarchical planners inherit PDDL's typing and action schemas.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.pddl|generalizes|concept.planning.strips",
+      "source": "concept.planning.pddl",
+      "target": "concept.planning.strips",
+      "type": "generalizes",
+      "note": "The `:strips` requirement is exactly the add/delete/precondition representation of STRIPS, and every other PDDL feature is layered on top of that core.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.pddl|requires|concept.logic.first_order_logic",
+      "source": "concept.planning.pddl",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "Preconditions and goals are formulas in a function-free first-order fragment, so a reader who cannot read quantifiers, literals and a satisfaction relation cannot read a PDDL domain.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.pddl|specializes|concept.symbolic_ai.knowledge_representation",
+      "source": "concept.planning.pddl",
+      "target": "concept.symbolic_ai.knowledge_representation",
+      "type": "specializes",
+      "note": "PDDL is a deliberately narrow knowledge representation formalism whose only subject matter is states, actions and goals, and which gives up most of what a general representation language offers in exchange for a groundable, searchable encoding.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.strips|contrasts_with|concept.planning.hierarchical_planning",
+      "source": "concept.planning.strips",
+      "target": "concept.planning.hierarchical_planning",
+      "type": "contrasts_with",
+      "note": "Hierarchical planners take a library of task decompositions as input and refine an abstract task downward, rather than chaining primitive operators forward from an initial state as STRIPS does.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.strips|contributes_to|concept.symbolic_ai.knowledge_representation",
+      "source": "concept.planning.strips",
+      "target": "concept.symbolic_ai.knowledge_representation",
+      "type": "contributes_to",
+      "note": "The STRIPS assumption is a specific and much-copied answer to the representation question of how to say what an action changes without saying what it leaves alone.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.strips|prerequisite_of|concept.planning.pddl",
+      "source": "concept.planning.strips",
+      "target": "concept.planning.pddl",
+      "type": "prerequisite_of",
+      "note": "PDDL's core fragment is this representation given a standard syntax, and its action blocks are precondition, add and delete lists written as one effect conjunction.",
+      "condition": null
+    },
+    {
+      "id": "concept.planning.strips|requires|concept.logic.first_order_logic",
+      "source": "concept.planning.strips",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "States are sets of ground atoms and operators are schemas made concrete by substituting constants for variables, so atoms, literals, substitution and grounding must be familiar before the representation reads as anything but notation.",
+      "condition": null
+    },
+    {
       "id": "concept.probability.bayesian_inference|contrasts_with|concept.probability.frequentist_inference",
       "source": "concept.probability.bayesian_inference",
       "target": "concept.probability.frequentist_inference",
@@ -13404,6 +13775,166 @@
       "condition": null
     },
     {
+      "id": "concept.search.a_star|contrasts_with|concept.search.monte_carlo_tree_search",
+      "source": "concept.search.a_star",
+      "target": "concept.search.monte_carlo_tree_search",
+      "type": "contrasts_with",
+      "note": "Both order a tree by an estimate of what lies below, but MCTS estimates by sampling and offers statistical rather than admissible guarantees, which is the trade when no lower bound is available.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.a_star|contrasts_with|concept.search.uninformed_search",
+      "source": "concept.search.a_star",
+      "target": "concept.search.uninformed_search",
+      "type": "contrasts_with",
+      "note": "Setting the heuristic to zero turns A* back into uniform-cost search exactly, so the two differ in nothing except what the priority function is allowed to know.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.a_star|requires|concept.algorithms.graph_algorithms",
+      "source": "concept.search.a_star",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "requires",
+      "note": "A* is a priority-queue traversal whose correctness argument is Dijkstra's relax-and-settle argument run on reweighted edge costs, so the shortest-path machinery has to be in hand first.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.a_star|used_to_solve|concept.planning.strips",
+      "source": "concept.search.a_star",
+      "target": "concept.planning.strips",
+      "type": "used_to_solve",
+      "note": "Domain-independent planners search STRIPS state spaces with A* or greedy best-first, deriving the heuristic automatically from a relaxation of the operator set.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.adversarial_search|contrasts_with|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.search.adversarial_search",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "contrasts_with",
+      "note": "An MDP faces a fixed stochastic environment whose transition kernel does not react, whereas here a second optimising agent picks alternate plies, and a chance node is where the two formalisms meet.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.adversarial_search|contributes_to|concept.search.minimax",
+      "source": "concept.search.adversarial_search",
+      "target": "concept.search.minimax",
+      "type": "contributes_to",
+      "note": "The game tree, the zero-sum condition and the depth cutoff defined on this page are exactly the objects minimax's backup rule and its optimality claim are stated over.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.adversarial_search|refined_by|concept.search.monte_carlo_tree_search",
+      "source": "concept.search.adversarial_search",
+      "target": "concept.search.monte_carlo_tree_search",
+      "type": "refined_by",
+      "note": "MCTS keeps the game-tree formulation but drops the hand-written evaluation function and the uniform depth limit, which is what made Go tractable when classical depth-limited search stalled.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.adversarial_search|requires|concept.search.uninformed_search",
+      "source": "concept.search.adversarial_search",
+      "target": "concept.search.uninformed_search",
+      "type": "requires",
+      "note": "The game tree is a search tree, and the vocabulary of node expansion, branching factor, depth and frontier is assumed rather than re-derived here.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.minimax|contrasts_with|concept.reinforcement_learning.dynamic_programming",
+      "source": "concept.search.minimax",
+      "target": "concept.reinforcement_learning.dynamic_programming",
+      "type": "contrasts_with",
+      "note": "Both compute exact optimal values by backing a Bellman-style recursion up from terminal states, but minimax alternates a max with an adversary's min where dynamic programming takes an expectation under a fixed transition model.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.minimax|contrasts_with|concept.search.monte_carlo_tree_search",
+      "source": "concept.search.minimax",
+      "target": "concept.search.monte_carlo_tree_search",
+      "type": "contrasts_with",
+      "note": "MCTS replaces exhaustive backup and a hand-built evaluation function with sampled playouts averaged at each node, buying applicability where no evaluation function is trustworthy at the cost of exactness.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.minimax|contrasts_with|concept.search.uninformed_search",
+      "source": "concept.search.minimax",
+      "target": "concept.search.uninformed_search",
+      "type": "contrasts_with",
+      "note": "The traversal is the same depth-first walk over a tree, but only half the branches belong to the searcher, so the answer is a guaranteed value rather than a path the agent can simply execute.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.minimax|specializes|concept.search.adversarial_search",
+      "source": "concept.search.minimax",
+      "target": "concept.search.adversarial_search",
+      "type": "specializes",
+      "note": "Minimax is the particular backup rule that makes adversarial search well-posed — it is what \"the value of a node\" means once an opponent controls half the moves.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.monte_carlo_tree_search|contrasts_with|concept.search.minimax",
+      "source": "concept.search.monte_carlo_tree_search",
+      "target": "concept.search.minimax",
+      "type": "contrasts_with",
+      "note": "Minimax expands full width to a fixed depth and backs up a static evaluation, while MCTS expands selectively to variable depth and backs up sampled outcomes — opposite answers to the same question of where to spend a search budget.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.monte_carlo_tree_search|contributes_to|concept.reinforcement_learning.model_based_reinforcement_learning",
+      "source": "concept.search.monte_carlo_tree_search",
+      "target": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "type": "contributes_to",
+      "note": "Once an agent has a model it can simulate, MCTS is the standard decision-time planner that turns that model into an improved action, as in AlphaZero and MuZero.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.monte_carlo_tree_search|requires|concept.reinforcement_learning.multi_armed_bandits",
+      "source": "concept.search.monte_carlo_tree_search",
+      "target": "concept.reinforcement_learning.multi_armed_bandits",
+      "type": "requires",
+      "note": "UCT is literally UCB1 run at every node of the tree, so the exploration bonus, its logarithmic growth and the regret argument behind it are unreadable without the bandit problem first.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.monte_carlo_tree_search|used_to_solve|concept.search.adversarial_search",
+      "source": "concept.search.monte_carlo_tree_search",
+      "target": "concept.search.adversarial_search",
+      "type": "used_to_solve",
+      "note": "Choosing a move in a two-player zero-sum game is the problem MCTS was built for and the setting in which its convergence result is stated.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.uninformed_search|contrasts_with|concept.algorithms.graph_algorithms",
+      "source": "concept.search.uninformed_search",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "contrasts_with",
+      "note": "Classical graph algorithms are handed an explicit adjacency structure and charge time in vertices and edges, whereas uninformed search generates a state graph lazily from a successor function and usually cannot afford to store it.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.uninformed_search|contrasts_with|concept.search.adversarial_search",
+      "source": "concept.search.uninformed_search",
+      "target": "concept.search.adversarial_search",
+      "type": "contrasts_with",
+      "note": "Every algorithm here assumes one agent whose chosen action fully determines the next state; adversarial search replaces alternate levels with an opponent's choice, which changes what an optimal solution even means.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.uninformed_search|contributes_to|concept.planning.strips",
+      "source": "concept.search.uninformed_search",
+      "target": "concept.planning.strips",
+      "type": "contributes_to",
+      "note": "A STRIPS planner searches the space of states reachable by operator application, and the uninformed algorithms are the baseline over that space whose hopeless growth rate motivates planning heuristics.",
+      "condition": null
+    },
+    {
+      "id": "concept.search.uninformed_search|prerequisite_of|concept.search.a_star",
+      "source": "concept.search.uninformed_search",
+      "target": "concept.search.a_star",
+      "type": "prerequisite_of",
+      "note": "A* is uniform-cost search with the frontier priority changed from $g$ to $g+h$, so its frontier, its reached set and its optimality argument are the ones established here.",
+      "condition": null
+    },
+    {
       "id": "concept.software.apis|contrasts_with|concept.software.version_control",
       "source": "concept.software.apis",
       "target": "concept.software.version_control",
@@ -13649,6 +14180,70 @@
       "target": "concept.systems.distributed_systems",
       "type": "specializes",
       "note": "A distributed version control system is optimistic replication in miniature — every clone is a full replica that accepts writes while disconnected, and divergence is reconciled at merge time rather than prevented by coordination.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.knowledge_representation|contrasts_with|concept.machine_learning.bayesian_networks",
+      "source": "concept.symbolic_ai.knowledge_representation",
+      "target": "concept.machine_learning.bayesian_networks",
+      "type": "contrasts_with",
+      "note": "Bayesian networks encode knowledge as conditional independences and numbers to be marginalised, where logical representations encode it as sentences whose consequences are fixed by entailment and carry no degree of belief.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.knowledge_representation|contributes_to|concept.planning.strips",
+      "source": "concept.symbolic_ai.knowledge_representation",
+      "target": "concept.planning.strips",
+      "type": "contributes_to",
+      "note": "STRIPS is a representation decision before it is a planner, since its add and delete lists encode a persistence convention that answers the frame problem by fiat rather than by axiom.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.knowledge_representation|generalizes|concept.symbolic_ai.ontologies",
+      "source": "concept.symbolic_ai.knowledge_representation",
+      "target": "concept.symbolic_ai.ontologies",
+      "type": "generalizes",
+      "note": "An ontology is one product of knowledge representation — the agreed vocabulary of classes and relations for a domain — while the wider field also covers rules, defaults, and the inference machinery that runs over them.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.knowledge_representation|requires|concept.logic.first_order_logic",
+      "source": "concept.symbolic_ai.knowledge_representation",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "Every formalism on this page is a syntax plus a model-theoretic semantics plus an entailment relation, and all three are first-order logic's apparatus either reused wholesale or deliberately restricted.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.ontologies|contrasts_with|concept.systems.relational_databases",
+      "source": "concept.symbolic_ai.ontologies",
+      "target": "concept.systems.relational_databases",
+      "type": "contrasts_with",
+      "note": "A relational schema is a constraint that rejects rows under complete information, whereas an ontology axiom is a premise that generates conclusions under incomplete information — the same declaration behaves oppositely in the two systems.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.ontologies|contributes_to|concept.systems.graph_databases",
+      "source": "concept.symbolic_ai.ontologies",
+      "target": "concept.systems.graph_databases",
+      "type": "contributes_to",
+      "note": "RDF triple stores are graph databases whose edges carry an ontology's declared semantics, which is what lets a query answer be inferred rather than only matched.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.ontologies|requires|concept.logic.first_order_logic",
+      "source": "concept.symbolic_ai.ontologies",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "Description logic semantics is first-order semantics restricted to unary and binary predicates, so interpretations, satisfaction and entailment have to be understood before a subsumption axiom means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.ontologies|specializes|concept.symbolic_ai.knowledge_representation",
+      "source": "concept.symbolic_ai.ontologies",
+      "target": "concept.symbolic_ai.knowledge_representation",
+      "type": "specializes",
+      "note": "An ontology is one particular discipline of knowledge representation — declarative, class-and-property shaped, and committed to model-theoretic entailment rather than to procedures.",
       "condition": null
     },
     {
