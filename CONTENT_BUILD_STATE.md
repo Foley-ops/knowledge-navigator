@@ -712,6 +712,47 @@ it. Batches are ten pages each.
 
 <!-- hand-written below this line -->
 
+## Next action
+
+**Write Batch 20 of 28**, the ten pages named under *Resume point* above. Nothing is
+uncommitted: the working tree is clean and Batch 19 is committed at `b80953b`.
+
+A fresh agent needs four things that are not obvious from the repository:
+
+1. **Node 22 is required and is not the default on this machine.** Put
+   `/Users/nick/.nvm/versions/node/v22.14.0/bin` first on `PATH` or every script fails on
+   the version check.
+
+2. **The agent workflow scripts do not survive the session.** The writing, verifying and
+   correcting pipeline ran from scripts in the session scratchpad under `/private/tmp`,
+   which is session-only and is now gone. What survives in the repository is everything
+   needed to rebuild it: `scripts/content-order.mjs` (the frozen order and batch numbers),
+   `scripts/batch-context.mjs` (the allowed relationship targets and linkable files),
+   `scripts/check-page.mjs` (the per-page gate), `scripts/content-batch.mjs` (cover,
+   validate, compile, regenerate state), and `AGENT_CONTENT_CONTRACT.md` (what a page must
+   be). The per-batch loop is: write ten pages, have an independent agent read each one
+   adversarially for false claims, apply the corrections, then
+   `node scripts/content-batch.mjs <n>`, then `npm run check`, then commit.
+
+3. **A page passing `scripts/check-page.mjs` is not evidence that it was verified.** This
+   caught the build three times — batches 4, 8/9 and 18 — where a session limit killed the
+   agents after they had written their files. Reconcile an interrupted batch against what
+   the verifiers actually returned, not against what is on disk. Batch 18's pages passed the
+   checker and still had eleven faults in them, including an arithmetic error.
+
+4. **`npm run check` is the gate, not `npx vitest run`.** The test run skips formatting,
+   lint, types and the Docusaurus build, and all four have failed at some point in this
+   build.
+
+Two pieces of work are deliberately deferred and are not blockers: the unresolved-reference
+backlog (a consolidated registry expansion and resolution sweep, described under *Failed
+checks*), and the eight atlas categories that hold no candidate, which are to be filled by
+giving genuinely related pages a second category rather than by inventing candidates.
+
+The judgment calls behind this build are recorded under *Decisions* below; read them before
+changing how pages are written.
+
+
 ## Failed checks
 
 Every check that fails during a batch is recorded here with what it was, what

@@ -195,4 +195,10 @@ _none_
 - Remaining non-blocking limitations, recorded honestly rather than left implicit. (1) All eleven pages are review_state generated-draft: written and self-corrected by an AI agent, corrected again after an adversarial review, but never checked against their sources by a person. The interface says so on every page. (2) The pages run 982-1235 words against the runbook's 400-800 aim; the runbook subordinates length to correctness and the twelve-section template leaves roughly 80-100 words per section at this length. (3) The 1989 priority claim on convolutional-layer.md is stated in prose and explicitly marked as unsupported by any source cited there, because no verifiable URL for that paper could be fetched. (4) The LeNet-5 source URL returns HTTP 202 rather than 200 to a bounded request, so its reachability is weaker evidence than the other eighteen. (5) The GitHub Actions workflows are syntactically and structurally validated locally but have never executed remotely, because this project is never pushed. (6) The container-ollama fallback configuration is validated but was never started, as the runbook directs. (7) The Ollama fallback image is pinned to ollama/ollama:latest rather than a fixed version.
 
 ## Next action
+COMPLETE for the version 1 and version 2 checkpoints described by this file. **A
+later build is still in progress and has its own state file:**
+[`CONTENT_BUILD_STATE.md`](./CONTENT_BUILD_STATE.md) tracks the content population that
+turns every atlas candidate into a real concept page. Read that file, not this one, to
+resume work. Nothing below is affected by it.
+
 COMPLETE. No checkpoint remains. To re-verify from a clean checkout: npm ci, then make check, ./scripts/smoke.sh, npm run test:browser and make security-review. To run the product: docker compose up --build -d, then open http://127.0.0.1:3000.
