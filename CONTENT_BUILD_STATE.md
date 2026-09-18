@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 21 of 28.** 10 of 10 pages in it are still to write.
+**Batch 22 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/self-organizing-maps.md` — Self-Organizing Maps (concept.deep_learning.self_organizing_maps)
-- `content/concepts/mixture-of-experts.md` — Mixture of Experts (concept.deep_learning.mixture_of_experts)
-- `content/concepts/state-space-models.md` — State Space Models (concept.deep_learning.state_space_models)
-- `content/concepts/s4.md` — S4 (concept.deep_learning.s4)
-- `content/concepts/mamba.md` — Mamba (concept.deep_learning.mamba)
-- `content/concepts/rwkv.md` — RWKV (concept.deep_learning.rwkv)
-- `content/concepts/xlstm.md` — xLSTM (concept.deep_learning.xlstm)
-- `content/concepts/neural-odes.md` — Neural ODEs (concept.deep_learning.neural_odes)
-- `content/concepts/message-passing.md` — Message Passing (concept.deep_learning.message_passing)
-- `content/concepts/graph-neural-networks.md` — Graph Neural Networks (concept.deep_learning.graph_neural_networks)
+- `content/concepts/graph-convolutional-networks.md` — Graph Convolutional Networks (concept.deep_learning.graph_convolutional_networks)
+- `content/concepts/graph-attention-networks.md` — Graph Attention Networks (concept.deep_learning.graph_attention_networks)
+- `content/concepts/equivariance.md` — Equivariance (concept.deep_learning.equivariance)
+- `content/concepts/geometric-deep-learning.md` — Geometric Deep Learning (concept.deep_learning.geometric_deep_learning)
+- `content/concepts/spherical-cnns.md` — Spherical CNNs (concept.deep_learning.spherical_cnns)
+- `content/concepts/capsule-networks.md` — Capsule Networks (concept.deep_learning.capsule_networks)
+- `content/concepts/kolmogorov-arnold-networks.md` — Kolmogorov-Arnold Networks (concept.deep_learning.kolmogorov_arnold_networks)
+- `content/concepts/quaternion-neural-networks.md` — Quaternion Neural Networks (concept.deep_learning.quaternion_neural_networks)
+- `content/concepts/clifford-neural-networks.md` — Clifford Neural Networks (concept.deep_learning.clifford_neural_networks)
+- `content/concepts/spiking-neural-networks.md` — Spiking Neural Networks (concept.deep_learning.spiking_neural_networks)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 211 |
-| Markdown pages in the corpus | 211 |
-| Tier 1 pages | 211 |
+| Candidates covered by a page | 221 |
+| Markdown pages in the corpus | 221 |
+| Tier 1 pages | 221 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 200 of 280 |
+| Planned pages written | 210 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 68 | 148 | 46% |
+| Artificial Intelligence | 78 | 148 | 53% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -56,7 +56,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Category | Written | Planned | State |
 | --- | --- | --- | --- |
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
-| Artificial Intelligence/Deep Learning — Architectures | 21 | 42 |  |
+| Artificial Intelligence/Deep Learning — Architectures | 31 | 42 |  |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
 | Artificial Intelligence/Domains/Computer Vision | 0 | 4 |  |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-200 of the planned 280, in the order they were written.
+210 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -292,6 +292,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Boltzmann Machines | `concept.deep_learning.boltzmann_machines` | tier 1 | covered |
 | Hopfield Networks | `concept.deep_learning.hopfield_networks` | tier 1 | covered |
 | Radial Basis Function Networks | `concept.deep_learning.radial_basis_function_networks` | tier 1 | covered |
+| Self-Organizing Maps | `concept.deep_learning.self_organizing_maps` | tier 1 | covered |
+| Mixture of Experts | `concept.deep_learning.mixture_of_experts` | tier 1 | covered |
+| State Space Models | `concept.deep_learning.state_space_models` | tier 1 | covered |
+| S4 | `concept.deep_learning.s4` | tier 1 | covered |
+| Mamba | `concept.deep_learning.mamba` | tier 1 | covered |
+| RWKV | `concept.deep_learning.rwkv` | tier 1 | covered |
+| xLSTM | `concept.deep_learning.xlstm` | tier 1 | covered |
+| Neural ODEs | `concept.deep_learning.neural_odes` | tier 1 | covered |
+| Message Passing | `concept.deep_learning.message_passing` | tier 1 | covered |
+| Graph Neural Networks | `concept.deep_learning.graph_neural_networks` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -600,20 +610,20 @@ it. Batches are ten pages each.
 | x | Hopfield Networks | `concept.deep_learning.hopfield_networks` | Artificial Intelligence/Deep Learning — Architectures |
 | x | Radial Basis Function Networks | `concept.deep_learning.radial_basis_function_networks` | Artificial Intelligence/Deep Learning — Architectures |
 
-### Batch 21
+### Batch 21 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Self-Organizing Maps | `concept.deep_learning.self_organizing_maps` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Mixture of Experts | `concept.deep_learning.mixture_of_experts` | Artificial Intelligence/Deep Learning — Architectures |
-|   | State Space Models | `concept.deep_learning.state_space_models` | Artificial Intelligence/Deep Learning — Architectures |
-|   | S4 | `concept.deep_learning.s4` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Mamba | `concept.deep_learning.mamba` | Artificial Intelligence/Deep Learning — Architectures |
-|   | RWKV | `concept.deep_learning.rwkv` | Artificial Intelligence/Deep Learning — Architectures |
-|   | xLSTM | `concept.deep_learning.xlstm` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Neural ODEs | `concept.deep_learning.neural_odes` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Message Passing | `concept.deep_learning.message_passing` | Artificial Intelligence/Deep Learning — Architectures |
-|   | Graph Neural Networks | `concept.deep_learning.graph_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Self-Organizing Maps | `concept.deep_learning.self_organizing_maps` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Mixture of Experts | `concept.deep_learning.mixture_of_experts` | Artificial Intelligence/Deep Learning — Architectures |
+| x | State Space Models | `concept.deep_learning.state_space_models` | Artificial Intelligence/Deep Learning — Architectures |
+| x | S4 | `concept.deep_learning.s4` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Mamba | `concept.deep_learning.mamba` | Artificial Intelligence/Deep Learning — Architectures |
+| x | RWKV | `concept.deep_learning.rwkv` | Artificial Intelligence/Deep Learning — Architectures |
+| x | xLSTM | `concept.deep_learning.xlstm` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Neural ODEs | `concept.deep_learning.neural_odes` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Message Passing | `concept.deep_learning.message_passing` | Artificial Intelligence/Deep Learning — Architectures |
+| x | Graph Neural Networks | `concept.deep_learning.graph_neural_networks` | Artificial Intelligence/Deep Learning — Architectures |
 
 ### Batch 22
 

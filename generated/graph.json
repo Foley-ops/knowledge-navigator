@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-18T03:42:36.240Z",
-  "corpusHash": "b14c6f6d03ce5381e22d793307cbf77d787672861936b7f261c23fcd996f7b2d",
-  "atlasHash": "8c28703e0bc5ec650118e7fbb8498d81736d95b55de4a521acacedb94db9ce5f",
+  "builtAt": "2026-09-18T04:01:47.988Z",
+  "corpusHash": "a6aa4152161fc87505d1bc56153d3caeaec94a1aa22f6809f5465dee6054e292",
+  "atlasHash": "1deb9dbf089fa20c6c6479b2b4d944446ff649c9fc548d2fac13e838112f1f87",
   "counts": {
-    "concepts": 211,
-    "relationships": 790,
+    "concepts": 221,
+    "relationships": 830,
     "categories": 26
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 211,
+      "1": 221,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 211,
+      "markdown": 221,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 211
+      "generated-draft": 221
     },
-    "conceptsWithArticle": 211,
+    "conceptsWithArticle": 221,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 80,
+      "candidate": 70,
       "proposed-tier-3": 0,
-      "covered": 211,
+      "covered": 221,
       "deferred": 0
     },
-    "unresolvedReferences": 283,
-    "unresolvedGroups": 283,
+    "unresolvedReferences": 303,
+    "unresolvedGroups": 303,
     "blockingUnresolvedReferences": 0,
     "claims": 0,
     "claimsByStatus": {
@@ -150,11 +150,16 @@
         "concept.deep_learning.energy_based_models",
         "concept.deep_learning.flow_matching",
         "concept.deep_learning.generative_adversarial_networks",
+        "concept.deep_learning.graph_neural_networks",
         "concept.deep_learning.gru",
         "concept.deep_learning.hopfield_networks",
         "concept.deep_learning.lenet",
         "concept.deep_learning.lstm",
+        "concept.deep_learning.mamba",
+        "concept.deep_learning.message_passing",
+        "concept.deep_learning.mixture_of_experts",
         "concept.deep_learning.multilayer_perceptrons",
+        "concept.deep_learning.neural_odes",
         "concept.deep_learning.normalizing_flows",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
@@ -163,9 +168,14 @@
         "concept.deep_learning.receptive_field",
         "concept.deep_learning.recurrent_neural_networks",
         "concept.deep_learning.residual_connection",
+        "concept.deep_learning.rwkv",
+        "concept.deep_learning.s4",
+        "concept.deep_learning.self_organizing_maps",
+        "concept.deep_learning.state_space_models",
         "concept.deep_learning.transformers",
         "concept.deep_learning.variational_autoencoders",
-        "concept.deep_learning.vision_transformer"
+        "concept.deep_learning.vision_transformer",
+        "concept.deep_learning.xlstm"
       ],
       "conceptIds": [
         "concept.analysis.translation_equivariance",
@@ -179,11 +189,16 @@
         "concept.deep_learning.energy_based_models",
         "concept.deep_learning.flow_matching",
         "concept.deep_learning.generative_adversarial_networks",
+        "concept.deep_learning.graph_neural_networks",
         "concept.deep_learning.gru",
         "concept.deep_learning.hopfield_networks",
         "concept.deep_learning.lenet",
         "concept.deep_learning.lstm",
+        "concept.deep_learning.mamba",
+        "concept.deep_learning.message_passing",
+        "concept.deep_learning.mixture_of_experts",
         "concept.deep_learning.multilayer_perceptrons",
+        "concept.deep_learning.neural_odes",
         "concept.deep_learning.normalizing_flows",
         "concept.deep_learning.perceptron",
         "concept.deep_learning.pooling",
@@ -193,10 +208,15 @@
         "concept.deep_learning.recurrent_neural_networks",
         "concept.deep_learning.residual_connection",
         "concept.deep_learning.resnet",
+        "concept.deep_learning.rwkv",
+        "concept.deep_learning.s4",
+        "concept.deep_learning.self_organizing_maps",
+        "concept.deep_learning.state_space_models",
         "concept.deep_learning.transformers",
         "concept.deep_learning.variational_autoencoders",
         "concept.deep_learning.vgg",
-        "concept.deep_learning.vision_transformer"
+        "concept.deep_learning.vision_transformer",
+        "concept.deep_learning.xlstm"
       ]
     },
     {
@@ -1984,6 +2004,28 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.graph_neural_networks",
+      "title": "Graph Neural Networks",
+      "slug": "/concepts/graph-neural-networks",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An architecture family whose layers update every node from its neighbours, so that a network can be applied to irregular relational data without fixing a node ordering or a node count.",
+      "aliases": [
+        "GNN"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.graph_neural_networks",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 4,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.gru",
       "title": "GRU",
       "slug": "/concepts/gru",
@@ -2163,6 +2205,71 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.mamba",
+      "title": "Mamba",
+      "slug": "/concepts/mamba",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A sequence architecture whose state space parameters are computed from each token, buying content-based selection at the cost of the convolutional training mode that made earlier state space models fast.",
+      "aliases": [
+        "S6"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.mamba",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.message_passing",
+      "title": "Message Passing",
+      "slug": "/concepts/message-passing",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The layer scheme behind almost every graph neural network, in which each node rebuilds its state from a permutation-invariant summary of its neighbours — cheap enough to run on millions of edges, and provably blind to whatever the Weisfeiler-Lehman test cannot see.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.message_passing",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.mixture_of_experts",
+      "title": "Mixture of Experts",
+      "slug": "/concepts/mixture-of-experts",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An architecture in which a learned gate sends each input to a few of many expert subnetworks, so a model can hold far more parameters than it evaluates for any one token.",
+      "aliases": [
+        "MoE",
+        "sparsely-gated mixture-of-experts"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.mixture_of_experts",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.multilayer_perceptrons",
       "title": "Multilayer Perceptrons",
       "slug": "/concepts/multilayer-perceptrons",
@@ -2183,6 +2290,29 @@
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.multilayer_perceptrons",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.neural_odes",
+      "title": "Neural ODEs",
+      "slug": "/concepts/neural-odes",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A model family that replaces a stack of layers with a learned vector field, computing its output by numerically integrating an initial value problem and training it with the adjoint method at memory cost independent of how many solver steps are taken.",
+      "aliases": [
+        "neural ordinary differential equations",
+        "ODE-Net"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.neural_odes",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
       "claims": 0
     },
     {
@@ -2454,6 +2584,91 @@
       "claims": 0
     },
     {
+      "id": "concept.deep_learning.rwkv",
+      "title": "RWKV",
+      "slug": "/concepts/rwkv",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A language-model architecture that replaces softmax attention with a per-channel exponentially decaying key-value average, so one network trains over a whole sequence at once and runs at inference as a recurrence with fixed-size state.",
+      "aliases": [
+        "Receptance Weighted Key Value"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.rwkv",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.s4",
+      "title": "S4",
+      "slug": "/concepts/s4",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A deep sequence layer that runs a HiPPO-initialised linear state space model as one very long convolution, made affordable by a diagonal-plus-low-rank parameterisation and an FFT.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.s4",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.self_organizing_maps",
+      "title": "Self-Organizing Maps",
+      "slug": "/concepts/self-organizing-maps",
+      "kind": "algorithm",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A self-organizing map fits a fixed low-dimensional grid of prototype vectors to high-dimensional data by competitive learning, so that neighbouring grid cells come to hold similar prototypes and the grid becomes a coarse, reusable map of the data.",
+      "aliases": [
+        "Kohonen map",
+        "Kohonen network"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.self_organizing_maps",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.state_space_models",
+      "title": "State Space Models",
+      "slug": "/concepts/state-space-models",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A sequence layer built from a linear time-invariant system, whose one set of parameters can be run as a step-by-step recurrence for constant-memory inference or collapsed into a single long convolution for parallel training.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.state_space_models",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.deep_learning.stochastic_gradient_descent",
       "title": "Stochastic Gradient Descent",
       "slug": "/concepts/stochastic-gradient-descent",
@@ -2561,6 +2776,28 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.vision_transformer",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.deep_learning.xlstm",
+      "title": "xLSTM",
+      "slug": "/concepts/xlstm",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A 2024 redesign of the LSTM that replaces sigmoid gating with normalised exponential gating and enlarges the memory, in two block types — a strictly sequential sLSTM with a scalar cell and a parallelisable mLSTM with a matrix cell — in an attempt to make recurrent language models trainable at Transformer scale.",
+      "aliases": [
+        "Extended Long Short-Term Memory"
+      ],
+      "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
+      "categories": [
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.deep_learning_architectures.xlstm",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
       "claims": 0
@@ -7019,6 +7256,38 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.graph_neural_networks|contrasts_with|concept.algorithms.graph_algorithms",
+      "source": "concept.deep_learning.graph_neural_networks",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "contrasts_with",
+      "note": "Classical graph algorithms compute exact combinatorial quantities from hand-written rules, whereas a graph network fits an approximate function of the same structure from labelled examples, trading guarantees for the ability to use node features.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_neural_networks|contrasts_with|concept.deep_learning.convolutional_networks",
+      "source": "concept.deep_learning.graph_neural_networks",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "contrasts_with",
+      "note": "A convolution assumes a regular grid with a canonical orientation so that each filter tap has a fixed meaning, while a graph layer must handle variable degree and has no way to say \"the neighbour above\", which is why its aggregation is order-invariant.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_neural_networks|equivalent_under|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.graph_neural_networks",
+      "target": "concept.deep_learning.transformers",
+      "type": "equivalent_under",
+      "note": "A transformer layer is attentional aggregation over a complete graph of tokens, so it coincides with a graph attention layer once every node is made adjacent to every other; the graph case differs only in that the sparse edge set is given rather than assumed to be all-to-all.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.graph_neural_networks|requires|concept.deep_learning.message_passing",
+      "source": "concept.deep_learning.graph_neural_networks",
+      "target": "concept.deep_learning.message_passing",
+      "type": "requires",
+      "note": "Every layer family on this page is an instance of the message-passing scheme, and the aggregate-then-update pattern has to be understood before the differences between GCN, GraphSAGE and GAT mean anything.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.gru|contrasts_with|concept.deep_learning.lstm",
       "source": "concept.deep_learning.gru",
       "target": "concept.deep_learning.lstm",
@@ -7227,6 +7496,102 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.mamba|contrasts_with|concept.deep_learning.rwkv",
+      "source": "concept.deep_learning.mamba",
+      "target": "concept.deep_learning.rwkv",
+      "type": "contrasts_with",
+      "note": "RWKV reaches linear-time sequence modelling through time-invariant decay in a linear-attention form, so comparing it with Mamba isolates what input-dependent decay actually buys.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mamba|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.mamba",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "Both route information across a sequence, but Mamba compresses history into a fixed-size state at linear cost while attention keeps every token and pays quadratic cost.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mamba|requires|concept.deep_learning.state_space_models",
+      "source": "concept.deep_learning.mamba",
+      "target": "concept.deep_learning.state_space_models",
+      "type": "requires",
+      "note": "Mamba is stated entirely in terms of the discretized linear state space recurrence, so a reader who does not already have that recurrence cannot follow what selection changes.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mamba|variant_of|concept.deep_learning.s4",
+      "source": "concept.deep_learning.mamba",
+      "target": "concept.deep_learning.s4",
+      "type": "variant_of",
+      "note": "Mamba keeps the structured state space recurrence S4 introduced, but takes the purely diagonal state matrix of the later diagonal variants rather than S4's diagonal-plus-low-rank one, and makes the parameters functions of the input.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.message_passing|contrasts_with|concept.deep_learning.attention",
+      "source": "concept.deep_learning.message_passing",
+      "target": "concept.deep_learning.attention",
+      "type": "contrasts_with",
+      "note": "Self-attention is message passing on a complete graph, which removes the sparsity that makes this cheap and the locality that causes over-squashing.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.message_passing|contrasts_with|concept.deep_learning.convolutional_layer",
+      "source": "concept.deep_learning.message_passing",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "contrasts_with",
+      "note": "A convolutional layer exploits a canonical ordering of grid neighbours to give each offset its own weight; dropping that ordering is exactly what forces a graph aggregator to be permutation invariant.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.message_passing|contributes_to|concept.deep_learning.graph_neural_networks",
+      "source": "concept.deep_learning.message_passing",
+      "target": "concept.deep_learning.graph_neural_networks",
+      "type": "contributes_to",
+      "note": "Nearly every graph neural network in use is an instance of this scheme with particular choices of message, aggregation and update function.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.message_passing|requires|concept.algorithms.graph_algorithms",
+      "source": "concept.deep_learning.message_passing",
+      "target": "concept.algorithms.graph_algorithms",
+      "type": "requires",
+      "note": "The layer is defined over neighbourhoods of a graph, so a reader needs adjacency, degree and neighbourhood vocabulary before the update rule means anything.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mixture_of_experts|contrasts_with|concept.deep_learning.pruning",
+      "source": "concept.deep_learning.mixture_of_experts",
+      "target": "concept.deep_learning.pruning",
+      "type": "contrasts_with",
+      "note": "Pruning removes parameters to cut both memory and compute, while a mixture keeps every parameter resident and cuts only the compute spent per token.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mixture_of_experts|contrasts_with|concept.machine_learning.random_forests",
+      "source": "concept.deep_learning.mixture_of_experts",
+      "target": "concept.machine_learning.random_forests",
+      "type": "contrasts_with",
+      "note": "An ensemble evaluates every member and averages to reduce variance, whereas a sparse mixture evaluates only the selected experts and trains them to differ, buying capacity rather than stability.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mixture_of_experts|contributes_to|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.mixture_of_experts",
+      "target": "concept.deep_learning.transformers",
+      "type": "contributes_to",
+      "note": "In current large language models the sparse mixture layer is dropped into the position-wise feedforward slot of the transformer block, leaving attention untouched.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.mixture_of_experts|requires|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.deep_learning.mixture_of_experts",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "requires",
+      "note": "Each expert in the standard formulation is a small feedforward network, and the gate is a linear layer followed by a softmax, so the reader needs that machinery before the layer makes sense.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.multilayer_perceptrons|contrasts_with|concept.deep_learning.convolutional_networks",
       "source": "concept.deep_learning.multilayer_perceptrons",
       "target": "concept.deep_learning.convolutional_networks",
@@ -7256,6 +7621,38 @@
       "target": "concept.linear_algebra.matrix_theory",
       "type": "requires",
       "note": "Every layer is a matrix-vector product plus a bias, and the collapse argument is a statement about products and ranks of those matrices.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neural_odes|contrasts_with|concept.deep_learning.state_space_models",
+      "source": "concept.deep_learning.neural_odes",
+      "target": "concept.deep_learning.state_space_models",
+      "type": "contrasts_with",
+      "note": "Both are continuous-time models that get discretised, but a state space model keeps the dynamics linear so the solution has a closed form, while a neural ODE takes a nonlinear field and pays for a numerical solver.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neural_odes|contributes_to|concept.deep_learning.flow_matching",
+      "source": "concept.deep_learning.neural_odes",
+      "target": "concept.deep_learning.flow_matching",
+      "type": "contributes_to",
+      "note": "Flow matching trains the same learned vector field that a neural ODE defines, replacing differentiation through the solver with regression onto a prescribed target field.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neural_odes|generalizes|concept.deep_learning.residual_connection",
+      "source": "concept.deep_learning.neural_odes",
+      "target": "concept.deep_learning.residual_connection",
+      "type": "generalizes",
+      "note": "A residual block is one explicit Euler step of a neural ODE with step size one, so the continuous model contains the residual update as a particular discretisation.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.neural_odes|requires|concept.analysis.ordinary_differential_equations",
+      "source": "concept.deep_learning.neural_odes",
+      "target": "concept.analysis.ordinary_differential_equations",
+      "type": "requires",
+      "note": "The model is literally an initial value problem, and its well-posedness, its flow map and its numerical solution are ODE facts a reader needs before the architecture makes sense.",
       "condition": null
     },
     {
@@ -7539,6 +7936,134 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.rwkv|contrasts_with|concept.deep_learning.mamba",
+      "source": "concept.deep_learning.rwkv",
+      "target": "concept.deep_learning.mamba",
+      "type": "contrasts_with",
+      "note": "Both are linear-time sequence models carrying a fixed-size state, but Mamba makes the state transition depend on the current input while RWKV-4's decay is a static per-channel parameter.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.rwkv|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.rwkv",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "Both process a training sequence in one pass, but RWKV drops the all-pairs comparison, so decoding costs constant memory per layer instead of a KV cache that grows with context.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.rwkv|requires|concept.deep_learning.attention",
+      "source": "concept.deep_learning.rwkv",
+      "target": "concept.deep_learning.attention",
+      "type": "requires",
+      "note": "The time-mixing block is written as a key-value average and is understood by comparison with what softmax attention computes, so a reader who does not know what K and V are cannot follow it.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.rwkv|specializes|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.rwkv",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "specializes",
+      "note": "At inference RWKV is a recurrent network whose state update happens to be linear and elementwise, and that restriction is exactly what lets the same model be trained over a whole sequence at once.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.s4|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.s4",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "Both mix information across a whole sequence, but S4 does it with a fixed input-independent filter in O(L log L) while self-attention does it with content-dependent weights in O(L^2).",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.s4|refined_by|concept.deep_learning.mamba",
+      "source": "concept.deep_learning.s4",
+      "target": "concept.deep_learning.mamba",
+      "type": "refined_by",
+      "note": "Mamba keeps the state space recurrence but makes its parameters functions of the input, removing exactly the time-invariance that S4 depends on for its convolutional view.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.s4|requires|concept.analysis.convolution",
+      "source": "concept.deep_learning.s4",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "The layer is a single length-L convolution against a kernel derived from the state matrices, so the reader needs convolution and its Fourier-domain form first.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.s4|specializes|concept.deep_learning.state_space_models",
+      "source": "concept.deep_learning.s4",
+      "target": "concept.deep_learning.state_space_models",
+      "type": "specializes",
+      "note": "S4 is one particular structured parameterisation and initialisation of a deep state space layer, not the general family.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.self_organizing_maps|contrasts_with|concept.deep_learning.autoencoders",
+      "source": "concept.deep_learning.self_organizing_maps",
+      "target": "concept.deep_learning.autoencoders",
+      "type": "contrasts_with",
+      "note": "An autoencoder also learns a low-dimensional code without labels, but by gradient descent on a reconstruction loss into a continuous latent space rather than by competitive assignment to discrete lattice cells.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.self_organizing_maps|contrasts_with|concept.machine_learning.t_sne",
+      "source": "concept.deep_learning.self_organizing_maps",
+      "target": "concept.machine_learning.t_sne",
+      "type": "contrasts_with",
+      "note": "Both produce a two-dimensional picture of high-dimensional data, but a SOM commits in advance to a fixed grid of prototypes while t-SNE places every individual point freely to match neighbourhood probabilities.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.self_organizing_maps|contrasts_with|concept.machine_learning.umap",
+      "source": "concept.deep_learning.self_organizing_maps",
+      "target": "concept.machine_learning.umap",
+      "type": "contrasts_with",
+      "note": "UMAP is the tool most researchers now reach for when they want the two-dimensional layout, and unlike a SOM it optimises an explicit objective over a graph of the data rather than a fixed lattice.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.self_organizing_maps|specializes|concept.machine_learning.k_means",
+      "source": "concept.deep_learning.self_organizing_maps",
+      "target": "concept.machine_learning.k_means",
+      "type": "specializes",
+      "note": "A SOM is online k-means with prototypes tied to a fixed lattice and neighbours dragged along with the winner; shrinking the neighbourhood radius to zero recovers online k-means exactly.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.state_space_models|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.state_space_models",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "Both mix information across positions, but an SSM does it with a fixed decaying kernel in linear time while self-attention compares every pair of positions in quadratic time.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.state_space_models|prerequisite_of|concept.deep_learning.s4",
+      "source": "concept.deep_learning.state_space_models",
+      "target": "concept.deep_learning.s4",
+      "type": "prerequisite_of",
+      "note": "S4 is a particular structured parameterisation of the matrices defined here, and its contribution only makes sense once the recurrent-convolutional duality and its cost are understood.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.state_space_models|requires|concept.analysis.convolution",
+      "source": "concept.deep_learning.state_space_models",
+      "target": "concept.analysis.convolution",
+      "type": "requires",
+      "note": "The parallel training form is literally a causal convolution of the input with the system's impulse response, so a reader who does not have convolution cannot read the dual view.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.state_space_models|specializes|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.deep_learning.state_space_models",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "specializes",
+      "note": "The state update is a recurrence with the elementwise nonlinearity removed, and that restriction is exactly what makes the closed-form convolutional view available.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.stochastic_gradient_descent|contrasts_with|concept.deep_learning.adam",
       "source": "concept.deep_learning.stochastic_gradient_descent",
       "target": "concept.deep_learning.adam",
@@ -7680,6 +8205,38 @@
       "target": "concept.learning.transfer_learning",
       "type": "useful_when",
       "note": "Its headline results are transfer results, so the architecture is chosen when a very large pretraining corpus exists and the target task is reached by fine-tuning, not when a single mid-sized dataset is all there is.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.xlstm|contrasts_with|concept.deep_learning.mamba",
+      "source": "concept.deep_learning.xlstm",
+      "target": "concept.deep_learning.mamba",
+      "type": "contrasts_with",
+      "note": "Both replace attention with a recurrence that has a parallel training form — a scan for Mamba, an attention-like quadratic form for mLSTM — but Mamba's state is a diagonal continuous-time system while mLSTM's is a dense outer-product memory.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.xlstm|contrasts_with|concept.deep_learning.rwkv",
+      "source": "concept.deep_learning.xlstm",
+      "target": "concept.deep_learning.rwkv",
+      "type": "contrasts_with",
+      "note": "RWKV reached the same goal from the linear-attention side and is the closest existing architecture to mLSTM, which makes the differences in gating and state shape the interesting comparison.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.xlstm|contrasts_with|concept.deep_learning.transformers",
+      "source": "concept.deep_learning.xlstm",
+      "target": "concept.deep_learning.transformers",
+      "type": "contrasts_with",
+      "note": "The two solve the same problem with opposite cost profiles — a state that grows with context and exact random access, against a fixed-size state and lossy compression.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.xlstm|requires|concept.deep_learning.lstm",
+      "source": "concept.deep_learning.xlstm",
+      "target": "concept.deep_learning.lstm",
+      "type": "requires",
+      "note": "Every equation here is a modification of the LSTM's gates and cell state, and the deficits xLSTM sets out to fix are properties of that cell.",
       "condition": null
     },
     {

@@ -929,8 +929,8 @@ candidates:
     title: Self-Organizing Maps
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.self_organizing_maps
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.multilayer_perceptrons
     title: Multilayer Perceptrons
     categories:
@@ -1019,14 +1019,14 @@ candidates:
     title: xLSTM
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.xlstm
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.rwkv
     title: RWKV
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.rwkv
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.transformers
     title: Transformers
     categories:
@@ -1049,8 +1049,8 @@ candidates:
     title: Mixture of Experts
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.mixture_of_experts
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.vision_transformer
     title: Vision Transformer
     categories:
@@ -1061,20 +1061,20 @@ candidates:
     title: State Space Models
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.state_space_models
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.s4
     title: S4
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.s4
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.mamba
     title: Mamba
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.mamba
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.autoencoders
     title: Autoencoders
     categories:
@@ -1121,14 +1121,14 @@ candidates:
     title: Neural ODEs
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.neural_odes
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.graph_neural_networks
     title: Graph Neural Networks
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.graph_neural_networks
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.graph_convolutional_networks
     title: Graph Convolutional Networks
     categories:
@@ -1145,8 +1145,8 @@ candidates:
     title: Message Passing
     categories:
       - atlas.artificial_intelligence.deep_learning_architectures
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.deep_learning.message_passing
   - candidate_id: candidate.artificial_intelligence.deep_learning_architectures.geometric_deep_learning
     title: Geometric Deep Learning
     categories:
