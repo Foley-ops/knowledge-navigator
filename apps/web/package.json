@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "docusaurus start --host 127.0.0.1 --port 3001",
-    "build": "docusaurus build",
+    "build": "NODE_OPTIONS=--max-old-space-size=5120 docusaurus build",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "typecheck": "tsc"
