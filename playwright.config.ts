@@ -37,6 +37,14 @@ const apiEnvironment = (port: number, provider: string): Record<string, string> 
   HOST: '127.0.0.1',
   LOG_LEVEL: 'silent',
   ALLOWED_ORIGINS: BASE_URL,
+  // Every journey shares one API server, run one after another, and several
+  // hold the page against the API by asking it directly — one reads the review
+  // state of every concept in the corpus. At the production default of 600 a
+  // minute the later journeys were refused with 429 and failed for a reason
+  // unrelated to what they test. The limiter itself is exercised by
+  // apps/api/tests/safety.test.ts, which configures its own server; this is
+  // the harness's budget, not the product's.
+  RATE_LIMIT_MAX: '100000',
 });
 
 export default defineConfig({

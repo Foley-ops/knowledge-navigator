@@ -800,9 +800,11 @@ A fresh agent needs four things that are not obvious from the repository:
    the verifiers actually returned, not against what is on disk. Batch 18's pages passed the
    checker and still had eleven faults in them, including an arithmetic error.
 
-4. **`npm run check` is the gate, not `npx vitest run`.** The test run skips formatting,
-   lint, types and the Docusaurus build, and all four have failed at some point in this
-   build.
+4. **The gate is `npm run check` *and* `npm run test:browser`.** `check` covers formatting,
+   lint, types, validation, compilation, unit tests and the site build, but **not** the
+   Playwright browser journeys — and the Definition of Done asks for the complete suite.
+   Batches 1 to 25 were gated on `check` alone, and eleven browser tests went stale
+   unnoticed; see *Failed checks*. Run both after every batch.
 
 Two pieces of work are deliberately deferred and are not blockers: the unresolved-reference
 backlog (a consolidated registry expansion and resolution sweep, described under *Failed

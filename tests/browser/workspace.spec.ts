@@ -21,8 +21,15 @@ import type { Page } from '@playwright/test';
 async function createProject(page: Page, title: string, description?: string): Promise<void> {
   await page.goto('/workspace');
   const disclosure = page.locator('.workspace-new > summary');
-  if ((await disclosure.count()) > 0) await disclosure.click();
-  await page.getByLabel('Project name').fill(title);
+  const name = page.getByLabel('Project name');
+  // Neither exists until the project list has loaded, so wait for one of them
+  // before deciding. Checking count() straight after goto() is a snapshot: on
+  // a slow machine it runs before the list arrives, sees no disclosure, skips
+  // the click, and then fill() waits out the whole timeout on an input hidden
+  // inside the closed <details> that renders a moment later.
+  await expect(disclosure.or(name).first()).toBeVisible();
+  if (await disclosure.isVisible()) await disclosure.click();
+  await name.fill(title);
   if (description !== undefined) {
     await page.getByLabel('What it is about (optional)').fill(description);
   }

@@ -13,9 +13,151 @@
  * corpus in apps/api/tests/compare-paths.test.ts.
  */
 import { expect, test } from './fixtures';
-import type { Page } from '@playwright/test';
+import { FIXTURE_API } from '../../playwright.config';
+import type { APIRequestContext, Page } from '@playwright/test';
 
 const RESNET = 'concept.deep_learning.resnet';
+const POOLING = 'concept.deep_learning.pooling';
+
+/** What one page declares must come before it. */
+interface Declared {
+  readonly title: string;
+  /** Concepts this page says it requires. */
+  readonly requires: readonly string[];
+  /** Concepts whose own pages say they are a prerequisite of this one. */
+  readonly prerequisiteOf: readonly string[];
+}
+
+/**
+ * Read one page's declared prerequisites from the concepts API. Only the two
+ * types that order anything count, from either end, which is the rule the
+ * route is promised to follow.
+ */
+async function declared(request: APIRequestContext, conceptId: string): Promise<Declared> {
+  const response = await request.get(`${FIXTURE_API}/concepts/${conceptId}`);
+  expect(response.ok(), `GET /api/concepts/${conceptId}`).toBe(true);
+  const concept = (await response.json()) as {
+    title: string;
+    relationships: { type: string; direction: string; otherId: string }[];
+  };
+  const others = (type: string, direction: string): string[] =>
+    concept.relationships
+      .filter((relationship) => relationship.type === type && relationship.direction === direction)
+      .map((relationship) => relationship.otherId);
+  return {
+    title: concept.title,
+    requires: others('requires', 'outgoing'),
+    prerequisiteOf: others('prerequisite_of', 'incoming'),
+  };
+}
+
+function before(page: Declared | undefined): string[] {
+  if (page === undefined) return [];
+  return [...new Set([...page.requires, ...page.prerequisiteOf])].sort();
+}
+
+/**
+ * Every page a route to the target rests on, read one page at a time from what
+ * each declares. This is reached without the paths endpoint the route page is
+ * drawn from, so the page can be held against the corpus itself at any size.
+ */
+async function declaredGraph(
+  request: APIRequestContext,
+  targetId: string,
+): Promise<Map<string, Declared>> {
+  const graph = new Map<string, Declared>();
+  const queue = [targetId];
+  while (queue.length > 0) {
+    const id = queue.shift() as string;
+    if (graph.has(id)) continue;
+    const page = await declared(request, id);
+    graph.set(id, page);
+    queue.push(...before(page).filter((other) => !graph.has(other)));
+  }
+  return graph;
+}
+
+/**
+ * The concepts a route has to visit: the target and everything declared before
+ * it, less where the reader starts. A concept they know is not a step, and nor
+ * is anything the route reached only through it.
+ */
+function routeMembers(
+  graph: ReadonlyMap<string, Declared>,
+  targetId: string,
+  known: readonly string[] = [],
+): Set<string> {
+  const members = new Set([targetId]);
+  const queue = [targetId];
+  while (queue.length > 0) {
+    const id = queue.shift() as string;
+    for (const other of before(graph.get(id))) {
+      if (known.includes(other) || members.has(other)) continue;
+      members.add(other);
+      queue.push(other);
+    }
+  }
+  return members;
+}
+
+/**
+ * Hold the route on the page against the declared graph. Its length is not a
+ * constant worth knowing; what makes a route right at any corpus size is that
+ * it ends at the target, visits every declared prerequisite exactly once and
+ * nothing else, and puts each step after everything it requires. Returns the
+ * step ids in reading order.
+ */
+async function expectDeclaredRoute(
+  page: Page,
+  graph: ReadonlyMap<string, Declared>,
+  targetId: string,
+  known: readonly string[] = [],
+): Promise<string[]> {
+  const members = routeMembers(graph, targetId, known);
+  const steps = page.locator('.path-step');
+  await expect(steps).toHaveCount(members.size);
+
+  const ids = await steps.locator('.path-step__actions .nav-id').allTextContents();
+  expect(ids.at(-1), 'the route ends at the target').toBe(targetId);
+  expect(new Set(ids).size, 'no step appears twice').toBe(ids.length);
+  expect([...ids].sort(), 'every declared prerequisite, and nothing else').toEqual(
+    [...members].sort(),
+  );
+  ids.forEach((id, position) => {
+    for (const other of before(graph.get(id))) {
+      if (!members.has(other)) continue;
+      expect(ids.indexOf(other), `${other} is read before ${id}, which requires it`).toBeLessThan(
+        position,
+      );
+    }
+  });
+  return ids;
+}
+
+/**
+ * A concept the corpus declares nothing before, found by walking down declared
+ * prerequisites rather than named, because which concepts are foundations
+ * changes as pages are written. The corpus validator refuses prerequisite
+ * cycles, so such a walk always ends at one: a corpus with no foundation would
+ * be a cyclic one, and that is worth failing on, not routing around.
+ */
+async function foundation(
+  request: APIRequestContext,
+  from: string,
+): Promise<{ id: string; title: string }> {
+  const walked = new Set<string>();
+  let id = from;
+  while (!walked.has(id)) {
+    walked.add(id);
+    const page = await declared(request, id);
+    const [first] = before(page);
+    if (first === undefined) return { id, title: page.title };
+    id = first;
+  }
+  throw new Error(
+    `Walking down declared prerequisites from ${from} came back to ${id}, so the corpus declares a prerequisite cycle its validator should have refused.`,
+  );
+}
 
 /** Tab to the target search box and type, exactly as a keyboard user would. */
 async function chooseTarget(page: Page, query: string, title: string): Promise<void> {
@@ -40,8 +182,15 @@ async function chooseTarget(page: Page, query: string, title: string): Promise<v
 async function createProject(page: Page, title: string): Promise<void> {
   await page.goto('/workspace');
   const disclosure = page.locator('.workspace-new > summary');
-  if ((await disclosure.count()) > 0) await disclosure.click();
-  await page.getByLabel('Project name').fill(title);
+  const name = page.getByLabel('Project name');
+  // Neither exists until the project list has loaded, so wait for one of them
+  // before deciding. Checking count() straight after goto() is a snapshot: on
+  // a slow machine it runs before the list arrives, sees no disclosure, skips
+  // the click, and then fill() waits out the whole timeout on an input hidden
+  // inside the closed <details> that renders a moment later.
+  await expect(disclosure.or(name).first()).toBeVisible();
+  if (await disclosure.isVisible()) await disclosure.click();
+  await name.fill(title);
   await page.getByRole('button', { name: 'Create project' }).click();
   await expect(page.getByRole('heading', { name: title, exact: true })).toBeVisible();
 }
@@ -62,48 +211,76 @@ async function setFamiliarity(page: Page, slug: string, level: string): Promise<
 test.describe('a route the corpus supports', () => {
   test('is built from the keyboard and explains every step', async ({
     page,
+    request,
     withFixtureProvider,
   }) => {
     void withFixtureProvider;
+    const graph = await declaredGraph(request, RESNET);
     await page.goto('/path');
     await expect(page.getByText('Choose a destination')).toBeVisible();
 
     await chooseTarget(page, 'resnet', 'ResNet');
 
     const steps = page.locator('.path-step');
-    await expect(steps).toHaveCount(10);
-    await expect(steps.last().locator('.path-step__title')).toHaveText('Step 10: ResNet');
+    const ids = await expectDeclaredRoute(page, graph, RESNET);
+    await expect(steps.last().locator('.path-step__title')).toHaveText(
+      `Step ${String(ids.length)}: ResNet`,
+    );
     await expect(steps.last().locator('.path-step__because')).toHaveText(
       'This is what you are working towards.',
     );
 
-    // Every step before the destination says which page put it there.
-    await expect(steps.first().locator('.path-step__because')).toContainText('Comes before');
-    await expect(steps.first().locator('.path-step__because')).toContainText('requires');
+    // Every step before the destination says which page put it there: it names
+    // a later step, the declared type, and whose page declared it — and the
+    // corpus really does hold that declaration. `requires` is written on the
+    // later page, `prerequisite_of` on this one.
+    for (const [index, id] of ids.slice(0, -1).entries()) {
+      const because = steps.nth(index).locator('.path-step__because');
+      await expect(because).toContainText('Comes before');
+      const type = await because.locator('.nav-id').textContent();
+      const afterTitle = await because.locator('strong').textContent();
+      expect(['requires', 'prerequisite_of'], `the relationship behind ${id}`).toContain(type);
+      await expect(because).toContainText(
+        type === 'requires'
+          ? `because the ${String(afterTitle)} page declares requires`
+          : 'because this page declares prerequisite_of',
+      );
+      const declaredLater = ids.slice(index + 1).some((later) => {
+        const after = graph.get(later);
+        if (after === undefined || after.title !== afterTitle) return false;
+        return (type === 'requires' ? after.requires : after.prerequisiteOf).includes(id);
+      });
+      expect(declaredLater, `${id} comes before a later step that declares it`).toBe(true);
+    }
 
     // Canonical links, and the reading order, are both present.
     await expect(steps.first().getByRole('link')).toHaveAttribute('href', /\/concepts\//);
-    await expect(page.locator('.path-count')).toContainText('10 steps');
+    await expect(page.locator('.path-count')).toContainText(`${String(ids.length)} steps`);
 
-    // The target is in the address, so a route can be shared and reloaded.
+    // The target is in the address, so a route can be shared and reloaded —
+    // and what comes back is the same route, in the same order.
     await expect(page).toHaveURL(new RegExp(`target=${RESNET.replace(/\./g, '\\.')}`));
     await page.reload();
-    await expect(page.locator('.path-step')).toHaveCount(10);
+    expect(await expectDeclaredRoute(page, graph, RESNET)).toEqual(ids);
   });
 
   test('shortens when the researcher says they already know a step', async ({
     page,
+    request,
     withFixtureProvider,
   }) => {
     void withFixtureProvider;
+    const graph = await declaredGraph(request, RESNET);
     await page.goto(`/path?target=${RESNET}`);
-    await expect(page.locator('.path-step')).toHaveCount(10);
+    await expectDeclaredRoute(page, graph, RESNET);
 
     const know = page.getByRole('button', { name: 'I already know this — Pooling', exact: true });
     await know.focus();
     await page.keyboard.press('Enter');
 
-    await expect(page.locator('.path-step')).toHaveCount(9);
+    // Pooling leaves the route, and so does anything it alone led to; whatever
+    // else still needs its prerequisites keeps them.
+    await expectDeclaredRoute(page, graph, RESNET, [POOLING]);
     await expect(page.locator('.path-steps')).not.toContainText('Pooling');
     await expect(
       page
@@ -114,18 +291,25 @@ test.describe('a route the corpus supports', () => {
     // And it can be put back, because a route the researcher cannot undo is a
     // route they will stop trusting.
     await page.getByRole('button', { name: 'Put back Pooling', exact: true }).first().click();
-    await expect(page.locator('.path-step')).toHaveCount(10);
+    await expectDeclaredRoute(page, graph, RESNET);
   });
 });
 
 test.describe('a target the corpus records no route to', () => {
-  test('says so instead of arranging related concepts', async ({ page, withFixtureProvider }) => {
+  test('says so instead of arranging related concepts', async ({
+    page,
+    request,
+    withFixtureProvider,
+  }) => {
     void withFixtureProvider;
-    await page.goto('/path?target=concept.analysis.convolution');
+    // Convolution was such a target until pages declared what it rests on, so
+    // the target is found each run rather than named.
+    const target = await foundation(request, RESNET);
+    await page.goto(`/path?target=${target.id}`);
 
     await expect(page.getByRole('heading', { name: 'No route is recorded' })).toBeVisible();
     await expect(page.locator('.path-count')).toContainText(
-      'Nothing in this corpus declares a prerequisite',
+      `Nothing in this corpus declares a prerequisite for ${target.title}`,
     );
     await expect(page.locator('.path-count')).toContainText('nobody checked');
     await expect(page.locator('.path-step')).toHaveCount(0);
@@ -134,6 +318,7 @@ test.describe('a target the corpus records no route to', () => {
     const missing = page
       .locator('.nav-section')
       .filter({ has: page.getByRole('heading', { name: 'What the graph does not say' }) });
+    await expect(missing).toContainText(`${target.title} —`);
     await expect(missing).toContainText('records no route to it');
     await expect(missing.getByRole('link', { name: 'coverage map' })).toBeVisible();
   });
@@ -142,20 +327,24 @@ test.describe('a target the corpus records no route to', () => {
 test.describe('a route personalised by familiarity', () => {
   test('drops a strong concept and says which record did it', async ({
     page,
+    request,
     withFixtureProvider,
   }) => {
     void withFixtureProvider;
+    const graph = await declaredGraph(request, RESNET);
     await createProject(page, 'Route personalisation');
     await setFamiliarity(page, '/concepts/pooling', 'Strong');
 
     await page.goto(`/path?target=${RESNET}`);
     // Familiarity is not used until the researcher points at a project.
-    await expect(page.locator('.path-step')).toHaveCount(10);
+    await expectDeclaredRoute(page, graph, RESNET);
 
     const use = page.getByRole('checkbox', { name: /Use the familiarity I recorded in/ });
     await use.check();
 
-    await expect(page.locator('.path-step')).toHaveCount(9);
+    // Strong familiarity makes Pooling a starting point, exactly as saying so
+    // by hand would: the same shorter route, not merely a shorter one.
+    await expectDeclaredRoute(page, graph, RESNET, [POOLING]);
     await expect(page.locator('.path-steps')).not.toContainText('Pooling');
 
     const changed = page
@@ -244,13 +433,15 @@ test.describe('a route through a graph-only identity', () => {
 test.describe('keeping a route', () => {
   test('saves it to a project and shows the command that exports it', async ({
     page,
+    request,
     withFixtureProvider,
   }) => {
     void withFixtureProvider;
+    const graph = await declaredGraph(request, RESNET);
     await createProject(page, 'Route keeping');
 
     await page.goto(`/path?target=${RESNET}`);
-    await expect(page.locator('.path-step')).toHaveCount(10);
+    await expectDeclaredRoute(page, graph, RESNET);
 
     const save = page.getByRole('button', { name: 'Save route to project' });
     await save.focus();
