@@ -163,11 +163,20 @@ function Counts({ summary }: { summary: CoverageSummary }): ReactNode {
  * and what is known about this one — which is only ever a label, its
  * categories, and an optional note.
  */
-function CandidateEntry({ candidate }: { candidate: CandidateItem }): ReactNode {
+function CandidateEntry({
+  candidate,
+  categoryId,
+}: {
+  candidate: CandidateItem;
+  categoryId: string;
+}): ReactNode {
   const [open, setOpen] = useState(false);
   const node =
     candidate.canonicalConceptId === null ? undefined : nodesById.get(candidate.canonicalConceptId);
-  const panelId = anchorId('candidate', candidate.candidateId);
+  // A candidate filed under two categories is drawn once in each, so its id
+  // alone would give two panels the same DOM id and leave each disclosure's
+  // aria-controls pointing at an ambiguous target. The category disambiguates.
+  const panelId = anchorId('candidate', `${categoryId}--${candidate.candidateId}`);
 
   return (
     <li
@@ -310,7 +319,11 @@ function CategoryBranch({
       {own.length > 0 && (
         <ul className="coverage-entries">
           {own.map((candidate) => (
-            <CandidateEntry key={candidate.candidateId} candidate={candidate} />
+            <CandidateEntry
+              key={candidate.candidateId}
+              candidate={candidate}
+              categoryId={node.categoryId}
+            />
           ))}
         </ul>
       )}

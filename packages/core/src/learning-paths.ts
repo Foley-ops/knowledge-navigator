@@ -288,11 +288,11 @@ export function buildLearningPath(
           continue;
         }
         if (seen.has(edge.beforeId)) {
-          // Already placed, or a cycle. Either way the edge is real and the
-          // reader should see it; the route just does not visit twice.
-          if (depth.has(edge.beforeId) && (depth.get(edge.beforeId) ?? 0) <= (depth.get(id) ?? 0)) {
-            cyclic.add(edge.beforeId);
-          }
+          // Already placed. The edge is real and the route does not visit
+          // twice. Whether it closes a cycle is not decidable from depth — a
+          // shared prerequisite reached along two paths of different length
+          // looks exactly like a back edge — so cycles are found after the
+          // topological sort below, from what it could not place.
           continue;
         }
         seen.add(edge.beforeId);
@@ -308,15 +308,6 @@ export function buildLearningPath(
     }
     if (truncated) break;
     frontier = next;
-  }
-
-  for (const id of [...cyclic].sort(compareStrings)) {
-    missing.push({
-      conceptId: id,
-      title: nodes.get(id)?.title ?? id,
-      reason:
-        'This concept takes part in a prerequisite cycle, so the corpus does not say which comes first.',
-    });
   }
 
   /* ---------------------------- the route -------------------------------- */
@@ -369,12 +360,41 @@ export function buildLearningPath(
     }
   }
 
-  // Anything still blocked sits in a prerequisite cycle, already reported above
-  // as missing information. It is appended rather than dropped: the reader is
-  // better served by an incomplete order plus a note than by a vanished step.
+  // Anything still blocked depends on a prerequisite cycle. It is appended
+  // rather than dropped: the reader is better served by an incomplete order
+  // plus a note than by a vanished step.
   if (ordered.length < visited.length) {
     const placed = new Set(ordered);
-    ordered.push(...visited.filter((id) => !placed.has(id)).sort(readyFirst));
+    const blocked = visited.filter((id) => !placed.has(id));
+    ordered.push(...[...blocked].sort(readyFirst));
+
+    // Blocked is every concept on a cycle plus everything downstream of one.
+    // Only the first kind "takes part" in a cycle, so peel away, repeatedly,
+    // any blocked concept that nothing else blocked depends on: a concept
+    // downstream of a cycle eventually runs out of dependents, and a concept
+    // on one never does.
+    const onCycle = new Set(blocked);
+    for (let peeled = true; peeled;) {
+      peeled = false;
+      for (const id of [...onCycle]) {
+        const holdsSomething = (dependents.get(id) ?? []).some(
+          (dependent) => dependent !== id && onCycle.has(dependent),
+        );
+        if (!holdsSomething) {
+          onCycle.delete(id);
+          peeled = true;
+        }
+      }
+    }
+    for (const id of [...onCycle].sort(compareStrings)) {
+      cyclic.add(id);
+      missing.push({
+        conceptId: id,
+        title: nodes.get(id)?.title ?? id,
+        reason:
+          'This concept takes part in a prerequisite cycle, so the corpus does not say which comes first.',
+      });
+    }
   }
   visited.length = 0;
   visited.push(...ordered);

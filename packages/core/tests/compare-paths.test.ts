@@ -650,6 +650,75 @@ describe('cycles', () => {
   }, 60_000);
 });
 
+describe('diamonds', () => {
+  it('does not mistake a shared prerequisite for a cycle', async () => {
+    // top requires left and right, both of which require base, and left also
+    // reaches base the long way round, through middle. Breadth-first search
+    // meets base first at depth 2 and then again from deeper down, which is
+    // exactly how a back edge looks — so a cycle test that reasons from depth
+    // reported base as cyclic here. Nothing in this graph is a cycle.
+    const diamondRoot = await mkdtemp(join(tmpdir(), 'navigator-diamond-'));
+    try {
+      const contentDir = join(diamondRoot, 'content', 'concepts');
+      await mkdir(contentDir, { recursive: true });
+      const edges: Record<string, string[]> = {
+        top: ['left', 'right'],
+        left: ['middle'],
+        middle: ['base'],
+        right: ['base'],
+        base: [],
+      };
+      for (const [name, requires] of Object.entries(edges)) {
+        await writeFile(
+          join(contentDir, `${name}.md`),
+          conceptMarkdown({
+            conceptId: `concept.diamond.${name}`,
+            title: name,
+            slug: `/concepts/${name}`,
+            aliases: [],
+            categories: ['Mathematics/Analysis'],
+            relationships: requires.map((target) => ({
+              type: 'requires' as const,
+              target: `concept.diamond.${target}`,
+            })),
+            sources: [SOURCE],
+            body: body(name),
+          }),
+          'utf8',
+        );
+      }
+      const compiled = await compileCorpus({
+        contentDir,
+        databasePath: join(diamondRoot, 'knowledge.db'),
+        env: { SOURCE_DATE_EPOCH: '1700000000' },
+      });
+      expect(compiled.ok, JSON.stringify(compiled.diagnostics)).toBe(true);
+
+      const diamondDb = openDatabaseReadOnly(join(diamondRoot, 'knowledge.db'));
+      try {
+        const path = buildLearningPath(diamondDb, 'concept.diamond.top');
+        expect(path.missing.map((item) => item.reason).join(' ')).not.toContain('cycle');
+        const ids = path.steps.map((step) => step.conceptId);
+        expect(new Set(ids)).toEqual(
+          new Set(Object.keys(edges).map((name) => `concept.diamond.${name}`)),
+        );
+        // And the order still respects every declared prerequisite.
+        for (const [name, requires] of Object.entries(edges)) {
+          for (const target of requires) {
+            expect(ids.indexOf(`concept.diamond.${target}`)).toBeLessThan(
+              ids.indexOf(`concept.diamond.${name}`),
+            );
+          }
+        }
+      } finally {
+        diamondDb.close();
+      }
+    } finally {
+      await rm(diamondRoot, { recursive: true, force: true, maxRetries: 10 });
+    }
+  }, 60_000);
+});
+
 describe('ties and an empty known set', () => {
   it('ignores the order prerequisites were declared in and breaks ties on id', async () => {
     const tieRoot = await mkdtemp(join(tmpdir(), 'navigator-tie-'));
