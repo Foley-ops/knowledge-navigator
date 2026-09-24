@@ -26,6 +26,9 @@ relationships:
     target: concept.deep_learning.vgg
     condition: Compared at similar or greater depth on ImageNet classification.
     note: A 152-layer ResNet has lower complexity than VGG-19 and trains successfully at a depth where a plain stack degrades.
+  - type: used_to_solve
+    target: concept.vision.classification
+    note: ResNet is a convolutional backbone for image classification; the d2l fine-tuning example pins a ResNet pretrained on ImageNet as the classifier's feature extractor.
 sources:
   - source_id: source.he2016.deep_residual_learning
     title: Deep Residual Learning for Image Recognition

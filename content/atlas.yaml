@@ -1445,20 +1445,20 @@ candidates:
     title: Classification
     categories:
       - atlas.artificial_intelligence.domains.computer_vision
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.vision.classification
   - candidate_id: candidate.artificial_intelligence.domains.computer_vision.detection
     title: Detection
     categories:
       - atlas.artificial_intelligence.domains.computer_vision
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.vision.detection
   - candidate_id: candidate.artificial_intelligence.domains.computer_vision.segmentation
     title: Segmentation
     categories:
       - atlas.artificial_intelligence.domains.computer_vision
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.vision.segmentation
   - candidate_id: candidate.artificial_intelligence.domains.computer_vision.visual_place_recognition
     title: Visual Place Recognition
     categories:
@@ -1469,20 +1469,20 @@ candidates:
     title: Tokenization
     categories:
       - atlas.artificial_intelligence.domains.natural_language_processing
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.nlp.tokenization
   - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.embeddings
     title: Embeddings
     categories:
       - atlas.artificial_intelligence.domains.natural_language_processing
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.nlp.embeddings
   - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.bert
     title: BERT
     categories:
       - atlas.artificial_intelligence.domains.natural_language_processing
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.nlp.bert
   - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.gpt
     title: GPT
     categories:

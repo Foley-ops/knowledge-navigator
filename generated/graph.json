@@ -1,46 +1,46 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-23T17:27:51.652Z",
-  "corpusHash": "fe1d2a657a581077e8549f878e9245ee085be2029fce2c99c88c74a29cbb3632",
-  "atlasHash": "e3d607518a5ee22a8f7f87c5a352d46135a7366f4751a4f54dffccd845a36f40",
+  "builtAt": "2026-09-24T14:51:51.508Z",
+  "corpusHash": "3b9b2e32a43850539d6ff0c0d85207d64c35822c305048d8961fd953299b42ce",
+  "atlasHash": "6859b036ea56be95648bf1db09893a35d85d520814b042e59de43f772f2c5694",
   "counts": {
-    "concepts": 261,
-    "relationships": 990,
-    "categories": 30
+    "concepts": 267,
+    "relationships": 1036,
+    "categories": 33
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 261,
+      "1": 267,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 261,
+      "markdown": 267,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 261
+      "generated-draft": 267
     },
-    "conceptsWithArticle": 261,
+    "conceptsWithArticle": 267,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 30,
+      "candidate": 24,
       "proposed-tier-3": 0,
-      "covered": 261,
+      "covered": 267,
       "deferred": 0
     },
-    "unresolvedReferences": 380,
-    "unresolvedGroups": 378,
+    "unresolvedReferences": 387,
+    "unresolvedGroups": 385,
     "blockingUnresolvedReferences": 0,
-    "claims": 0,
+    "claims": 58,
     "claimsByStatus": {
-      "supported": 0,
-      "conditional": 0,
+      "supported": 56,
+      "conditional": 1,
       "disputed": 0,
-      "unsupported": 0
+      "unsupported": 1
     }
   },
   "categories": [
@@ -238,7 +238,12 @@
         "concept.deep_learning.variational_autoencoders",
         "concept.deep_learning.vgg",
         "concept.deep_learning.vision_transformer",
-        "concept.deep_learning.xlstm"
+        "concept.deep_learning.xlstm",
+        "concept.nlp.bert",
+        "concept.nlp.embeddings",
+        "concept.vision.classification",
+        "concept.vision.detection",
+        "concept.vision.segmentation"
       ]
     },
     {
@@ -275,7 +280,51 @@
         "concept.deep_learning.pruning",
         "concept.deep_learning.quantization",
         "concept.deep_learning.regularization",
-        "concept.deep_learning.stochastic_gradient_descent"
+        "concept.deep_learning.stochastic_gradient_descent",
+        "concept.nlp.bert"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Domains",
+      "name": "Domains",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [],
+      "conceptIds": []
+    },
+    {
+      "path": "Artificial Intelligence/Domains/Computer Vision",
+      "name": "Computer Vision",
+      "topLevel": "Artificial Intelligence",
+      "depth": 3,
+      "parent": "Artificial Intelligence/Domains",
+      "primaryConceptIds": [
+        "concept.vision.classification",
+        "concept.vision.detection",
+        "concept.vision.segmentation"
+      ],
+      "conceptIds": [
+        "concept.vision.classification",
+        "concept.vision.detection",
+        "concept.vision.segmentation"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Domains/Natural Language Processing",
+      "name": "Natural Language Processing",
+      "topLevel": "Artificial Intelligence",
+      "depth": 3,
+      "parent": "Artificial Intelligence/Domains",
+      "primaryConceptIds": [
+        "concept.nlp.bert",
+        "concept.nlp.embeddings",
+        "concept.nlp.tokenization"
+      ],
+      "conceptIds": [
+        "concept.nlp.bert",
+        "concept.nlp.embeddings",
+        "concept.nlp.tokenization"
       ]
     },
     {
@@ -5018,6 +5067,79 @@
       "claims": 0
     },
     {
+      "id": "concept.nlp.bert",
+      "title": "BERT",
+      "slug": "/concepts/bert",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A pretrained deep transformer encoder in which every token is modeled from both its past and future context, trained with masked-token prediction and tuned downstream for understanding tasks.",
+      "aliases": [
+        "Bidirectional Encoder Representations from Transformers",
+        "BERT model"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Natural Language Processing",
+      "categories": [
+        "Artificial Intelligence/Domains/Natural Language Processing",
+        "Artificial Intelligence/Deep Learning — Architectures",
+        "Artificial Intelligence/Deep Learning — Training"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.natural_language_processing.bert",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 8
+    },
+    {
+      "id": "concept.nlp.embeddings",
+      "title": "Embeddings",
+      "slug": "/concepts/embeddings",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Learnable real-valued vectors assigned to discrete tokens, trained self-supervised so that geometric closeness reflects semantic closeness, and used as a compact input representation for downstream language tasks.",
+      "aliases": [
+        "Word embeddings",
+        "Distributed vector representations"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Natural Language Processing",
+      "categories": [
+        "Artificial Intelligence/Domains/Natural Language Processing",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.natural_language_processing.embeddings",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 10
+    },
+    {
+      "id": "concept.nlp.tokenization",
+      "title": "Tokenization",
+      "slug": "/concepts/tokenization",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The step of splitting raw text into a sequence of discrete tokens and mapping each token to an integer index through a vocabulary, choosing a granularity between character, word, and subword units, with an unknown-token slot standing in for words the vocabulary never saw.",
+      "aliases": [
+        "Text tokenization",
+        "Subword tokenization",
+        "Vocabulary construction"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Natural Language Processing",
+      "categories": [
+        "Artificial Intelligence/Domains/Natural Language Processing"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.natural_language_processing.tokenization",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 9
+    },
+    {
       "id": "concept.number_theory.algebraic_number_theory",
       "title": "Algebraic Number Theory",
       "slug": "/concepts/algebraic-number-theory",
@@ -6547,6 +6669,75 @@
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
       "claims": 0
+    },
+    {
+      "id": "concept.vision.classification",
+      "title": "Classification",
+      "slug": "/concepts/classification",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The task of assigning one whole image exactly one label from a fixed, known set of classes, whose modern default implementation is a convolutional backbone that pools pixels into a whole-image feature, a linear head over the classes, and cross-entropy training.",
+      "aliases": [
+        "Image classification"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Computer Vision",
+      "categories": [
+        "Artificial Intelligence/Domains/Computer Vision",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.computer_vision.classification",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 9
+    },
+    {
+      "id": "concept.vision.detection",
+      "title": "Object Detection",
+      "slug": "/concepts/detection",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A computer-vision task that recognises and localises every object of interest in an image, producing one entry per object with a label, a position, and a score, extending image classification with geometry.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Domains/Computer Vision",
+      "categories": [
+        "Artificial Intelligence/Domains/Computer Vision",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.computer_vision.detection",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 2,
+      "claims": 11
+    },
+    {
+      "id": "concept.vision.segmentation",
+      "title": "Segmentation",
+      "slug": "/concepts/segmentation",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "The image task that assigns every pixel of an image its own label from a shared closed vocabulary — dense prediction whose output is one-to-one with the input in space, and whose standard implementation (a fully convolutional network) upsamples a low-resolution feature map back to input resolution.",
+      "aliases": [
+        "semantic segmentation",
+        "dense prediction",
+        "pixel-level segmentation"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Computer Vision",
+      "categories": [
+        "Artificial Intelligence/Domains/Computer Vision",
+        "Artificial Intelligence/Deep Learning — Architectures"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.computer_vision.segmentation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 3,
+      "claims": 11
     }
   ],
   "edges": [
@@ -9231,6 +9422,14 @@
       "condition": null
     },
     {
+      "id": "concept.deep_learning.resnet|used_to_solve|concept.vision.classification",
+      "source": "concept.deep_learning.resnet",
+      "target": "concept.vision.classification",
+      "type": "used_to_solve",
+      "note": "ResNet is a convolutional backbone for image classification; the d2l fine-tuning example pins a ResNet pretrained on ImageNet as the classifier's feature extractor.",
+      "condition": null
+    },
+    {
       "id": "concept.deep_learning.rwkv|contrasts_with|concept.deep_learning.mamba",
       "source": "concept.deep_learning.rwkv",
       "target": "concept.deep_learning.mamba",
@@ -9532,6 +9731,14 @@
       "target": "concept.deep_learning.pooling",
       "type": "requires",
       "note": "Five max-pooling stages separate VGG's convolutional blocks and set its resolution schedule.",
+      "condition": null
+    },
+    {
+      "id": "concept.deep_learning.vgg|used_to_solve|concept.vision.classification",
+      "source": "concept.deep_learning.vgg",
+      "target": "concept.vision.classification",
+      "type": "used_to_solve",
+      "note": "VGG was designed and evaluated as an image classification network, a concrete instance of the backbone, pooled feature, linear head pipeline.",
       "condition": null
     },
     {
@@ -12279,6 +12486,182 @@
       "condition": null
     },
     {
+      "id": "concept.nlp.bert|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.nlp.bert",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "Both model sequences, but BERT mixes all positions in parallel through attention and reads them in both directions, whereas a recurrent network carries a state forward step by step in one fixed order.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.bert|requires|concept.deep_learning.attention",
+      "source": "concept.nlp.bert",
+      "target": "concept.deep_learning.attention",
+      "type": "requires",
+      "note": "Every BERT layer computes self-attention over the whole context; the mask that removes the causal constraint in a GPT-style decoder is what makes BERT bidirectional.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.bert|requires|concept.deep_learning.layer_normalization",
+      "source": "concept.nlp.bert",
+      "target": "concept.deep_learning.layer_normalization",
+      "type": "requires",
+      "note": "Each sublayer is normalized so that a deep stack trains stably; the training recipe also uses dropout and weight decay.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.bert|requires|concept.deep_learning.multilayer_perceptrons",
+      "source": "concept.nlp.bert",
+      "target": "concept.deep_learning.multilayer_perceptrons",
+      "type": "requires",
+      "note": "The second sublayer in every block is a two-layer feedforward network applied independently at each position, and it holds most of each layer's parameters.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.bert|requires|concept.deep_learning.transformers",
+      "source": "concept.nlp.bert",
+      "target": "concept.deep_learning.transformers",
+      "type": "requires",
+      "note": "BERT is a transformer encoder stack, so the block structure (self-attention plus a position-wise feedforward sublayer, wrapped in residual and normalization) has to be understood first.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.bert|requires|concept.nlp.embeddings",
+      "source": "concept.nlp.bert",
+      "target": "concept.nlp.embeddings",
+      "type": "requires",
+      "note": "BERT's input layer maps each WordPiece token to a learned embedding vector (summed with position and segment embeddings), and its contextual representations are defined in contrast to static word embeddings.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.bert|requires|concept.nlp.tokenization",
+      "source": "concept.nlp.bert",
+      "target": "concept.nlp.tokenization",
+      "type": "requires",
+      "note": "BERT's inputs are WordPiece subword tokens, so the tokenization step that produces them has to be understood first.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|contrasts_with|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "contrasts_with",
+      "note": "Both aim to represent a sequence's meaning, but RNNs carry a running state and process positions in a fixed order, whereas the embedding schemes here are lookup tables over a (precomputed) vocabulary and are order-agnostic by construction.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|contrasts_with|concept.machine_learning.principal_component_analysis",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.machine_learning.principal_component_analysis",
+      "type": "contrasts_with",
+      "note": "Both produce a low-dimensional linear structure from high-dimensional word data, but static vector methods here are trained to predict or fit co-occurrence rather than to explain variance in a factorized matrix.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|prerequisite_of|concept.deep_learning.transformers",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.deep_learning.transformers",
+      "type": "prerequisite_of",
+      "note": "Transformer-based language models (including BERT) take token embeddings plus positional information as input, so a working notion of token embedding is prerequisite to reading those pages.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|prerequisite_of|concept.nlp.bert",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.nlp.bert",
+      "type": "prerequisite_of",
+      "note": "the chapter frames word embeddings as the static baseline that contextual models refine — the same token keeps the same vector regardless of context, so contextual models are later refinements built on the same geometric idea.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|requires|concept.deep_learning.loss_functions",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.deep_learning.loss_functions",
+      "type": "requires",
+      "note": "The skip-gram and CBOW objectives are cross-entropy losses over the dictionary, negative sampling turns the objective into a logistic-loss sum, and GloVe replaces cross-entropy with a weighted squared log-bilinear loss.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|requires|concept.deep_learning.stochastic_gradient_descent",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.deep_learning.stochastic_gradient_descent",
+      "type": "requires",
+      "note": "Every model family on this page (skip-gram, CBOW, GloVe, negative-sampling variants) is trained by stochastic gradient descent over (sub)sequence minibatches, and the negative-sampling formulation changes the per-step gradient cost from vocabulary-sized to |noise words|.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|requires|concept.learning.self_supervised_learning",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.learning.self_supervised_learning",
+      "type": "requires",
+      "note": "word2vec and GloVe are trained self-supervised — skip-gram and CBOW predict surrounding words from the unlabeled corpus itself, and GloVe fits precomputed global co-occurrence counts rather than labeled data.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|requires|concept.machine_learning.logistic_regression",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "requires",
+      "note": "negative sampling rewrites the skip-gram conditional probability as a sequence of sigmoid (logistic) classifications — true versus noise word pairs — so the loss is a sum of per-pair logistic terms.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|requires|concept.nlp.tokenization",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.nlp.tokenization",
+      "type": "requires",
+      "note": "Embeddings map tokens to vectors, so what counts as a token (characters, words, subwords) comes first.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|unreliable_when|concept.nlp.bert",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.nlp.bert",
+      "type": "unreliable_when",
+      "note": "a static vector for \"bank\" is the same in \"river bank\" and \"savings bank\"; when a task needs context-dependent meaning, a static embedding is the wrong tool and a contextual model is.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.embeddings|useful_when|concept.nlp.bert",
+      "source": "concept.nlp.embeddings",
+      "target": "concept.nlp.bert",
+      "type": "useful_when",
+      "note": "a trained contextual model supersedes a static vector for context-dependent meaning, so a static embedding is useful precisely when the token's meaning is context-invariant (lexicons, retrieval, analogy probes) or when a contextual model is too expensive.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.tokenization|prerequisite_of|concept.deep_learning.recurrent_neural_networks",
+      "source": "concept.nlp.tokenization",
+      "target": "concept.deep_learning.recurrent_neural_networks",
+      "type": "prerequisite_of",
+      "note": "Sequence models take a list of token indices as input, with each time step one token, so tokenization defines what those steps are.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.tokenization|prerequisite_of|concept.deep_learning.transformers",
+      "source": "concept.nlp.tokenization",
+      "target": "concept.deep_learning.transformers",
+      "type": "prerequisite_of",
+      "note": "Transformer layers operate over sequences of position vectors, and each position vector comes from the token at that position.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.tokenization|prerequisite_of|concept.nlp.bert",
+      "source": "concept.nlp.tokenization",
+      "target": "concept.nlp.bert",
+      "type": "prerequisite_of",
+      "note": "BERT consumes WordPiece subword tokens as its input units; without a page of vocabulary and subword segmentation, its input representation is unreadable.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.tokenization|prerequisite_of|concept.nlp.embeddings",
+      "source": "concept.nlp.tokenization",
+      "target": "concept.nlp.embeddings",
+      "type": "prerequisite_of",
+      "note": "Embeddings are a lookup of one vector per vocabulary entry, so the embedding table is sized by, and defined on, the vocabulary tokenization produces.",
+      "condition": null
+    },
+    {
       "id": "concept.number_theory.algebraic_number_theory|contrasts_with|concept.number_theory.analytic_number_theory",
       "source": "concept.number_theory.algebraic_number_theory",
       "target": "concept.number_theory.analytic_number_theory",
@@ -14468,6 +14851,182 @@
       "target": "concept.algorithms.core_data_structures",
       "type": "requires",
       "note": "An index is a B-tree or a hash table on disk and a join is a hash table or a merge of sorted runs, so the physical half of the system cannot be read without those structures.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|contrasts_with|concept.deep_learning.lenet",
+      "source": "concept.vision.classification",
+      "target": "concept.deep_learning.lenet",
+      "type": "contrasts_with",
+      "note": "LeNet solved this same task in the 1990s regime — small, clean digit images, a shallow stack, weight-decay-only capacity control — whereas this page describes the large-data regime in which learned features supersede hand-crafted ones; the contrast is scale and era, not task.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|contrasts_with|concept.deep_learning.vision_transformer",
+      "source": "concept.vision.classification",
+      "target": "concept.deep_learning.vision_transformer",
+      "type": "contrasts_with",
+      "note": "A vision transformer solves this same whole-image task without convolutions — self-attention over image patches instead of local filtering — making it the principal non-convolutional alternative to this page's pipeline.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|generalizes|concept.machine_learning.logistic_regression",
+      "source": "concept.vision.classification",
+      "target": "concept.machine_learning.logistic_regression",
+      "type": "generalizes",
+      "note": "The linear head trained with cross-entropy over C classes is the multiclass extension of the binary logistic head; setting C to 2 specializes the construction to logistic regression.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|requires|concept.deep_learning.convolutional_networks",
+      "source": "concept.vision.classification",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "requires",
+      "note": "The standard classification pipeline this page describes puts a convolutional network between the pixels and the class scores, so the convolutional backbone must be understood before the task's default implementation makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|requires|concept.deep_learning.loss_functions",
+      "source": "concept.vision.classification",
+      "target": "concept.deep_learning.loss_functions",
+      "type": "requires",
+      "note": "Training minimizes the cross-entropy between the head's class distribution and the true label, so the loss and its gradient have to be meaningful before the training recipe on this page makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|useful_when|concept.deep_learning.regularization",
+      "source": "concept.vision.classification",
+      "target": "concept.deep_learning.regularization",
+      "type": "useful_when",
+      "note": "On small target datasets the over-parameterized backbones this task uses overfit, so regularization (weight decay, dropout) is the standard tool the recipes cited here employ.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.classification|useful_when|concept.learning.transfer_learning",
+      "source": "concept.vision.classification",
+      "target": "concept.learning.transfer_learning",
+      "type": "useful_when",
+      "note": "When the target dataset is much smaller than ImageNet, fine-tuning a pretrained backbone is the standard way to run this task at all, so the transfer-learning page is the workaround this page leans on for small data.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|generalizes|concept.vision.classification",
+      "source": "concept.vision.detection",
+      "target": "concept.vision.classification",
+      "type": "generalizes",
+      "note": "Classification recognises a single major object in an image; detection extends the same recognition to multiple objects and adds their positions, which is exactly the generalization d2l §14.3 draws.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|prerequisite_of|concept.vision.segmentation",
+      "source": "concept.vision.detection",
+      "target": "concept.vision.segmentation",
+      "type": "prerequisite_of",
+      "note": "Mask R-CNN extends a two-stage detector with a per-region mask head, which is where detection hands off to instance segmentation.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|requires|concept.deep_learning.convolutional_networks",
+      "source": "concept.vision.detection",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "requires",
+      "note": "The region-based detectors on this page are built on a convolutional network used as a shared feature backbone, and the page is unreadable without knowing what one computes.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|requires|concept.deep_learning.loss_functions",
+      "source": "concept.vision.detection",
+      "target": "concept.deep_learning.loss_functions",
+      "type": "requires",
+      "note": "Fast R-CNN and Faster R-CNN are trained by end-to-end losses over the class and box offset predictions, and the R-CNN's SVM and linear-regression heads are loss-supervised as well; the page describes what the losses act on but does not define what a loss function is.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|requires|concept.deep_learning.pooling",
+      "source": "concept.vision.detection",
+      "target": "concept.deep_learning.pooling",
+      "type": "requires",
+      "note": "The region-of-interest (RoI) pooling layer in Fast R-CNN generalizes ordinary pooling by specifying the output shape directly rather than the pooling window, padding, and stride, so the simpler layer has to come first.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|useful_when|concept.deep_learning.resnet",
+      "source": "concept.vision.detection",
+      "target": "concept.deep_learning.resnet",
+      "type": "useful_when",
+      "note": "A ResNet backbone is a common feature extractor the chapter does not name on this page but is the standard choice in practice wherever a CNN backbone is needed for object detection.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.detection|useful_when|concept.learning.transfer_learning",
+      "source": "concept.vision.detection",
+      "target": "concept.learning.transfer_learning",
+      "type": "useful_when",
+      "note": "The R-CNN line takes a pretrained CNN, truncates it before the output layer, and feeds it per-region or whole-image features, which is the standard transfer-learning pattern the chapter describes and the page relies on.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|contrasts_with|concept.deep_learning.pooling",
+      "source": "concept.vision.segmentation",
+      "target": "concept.deep_learning.pooling",
+      "type": "contrasts_with",
+      "note": "Regular convolutional and pooling layers downsample spatial dimensions, while transposed convolution upsamples them; the two are opposite-direction spatial operators that the FCN needs in sequence.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|contrasts_with|concept.vision.detection",
+      "source": "concept.vision.segmentation",
+      "target": "concept.vision.detection",
+      "type": "contrasts_with",
+      "note": "Detection reports a rectangle per object; segmentation reports a label per pixel, so the region is represented exactly rather than approximated by a box.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|generalizes|concept.vision.classification",
+      "source": "concept.vision.segmentation",
+      "target": "concept.vision.classification",
+      "type": "generalizes",
+      "note": "Classification assigns one closed-vocabulary label per image; segmentation generalises that one verdict to one per pixel, which is the extension the chapter draws.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|requires|concept.deep_learning.convolutional_layer",
+      "source": "concept.vision.segmentation",
+      "target": "concept.deep_learning.convolutional_layer",
+      "type": "requires",
+      "note": "Transposed convolution is defined only relative to the convolutional layer (its kernel, stride, padding, and channels), and d2l §14.10.3's matrix-transpose reading depends on the same convolution, so this page is unreadable without that layer.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|requires|concept.deep_learning.convolutional_networks",
+      "source": "concept.vision.segmentation",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "requires",
+      "note": "A fully convolutional network is a convolutional network with a transposed-convolution tail, and the FCN on this page is built on a ResNet-18 backbone, so the convolutional-network page must come first.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|requires|concept.deep_learning.loss_functions",
+      "source": "concept.vision.segmentation",
+      "target": "concept.deep_learning.loss_functions",
+      "type": "requires",
+      "note": "Training minimises the per-pixel cross-entropy between each output pixel's class distribution and its label, so the loss and its reduction have to be meaningful before the training recipe on this page makes sense.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|useful_when|concept.deep_learning.resnet",
+      "source": "concept.vision.segmentation",
+      "target": "concept.deep_learning.resnet",
+      "type": "useful_when",
+      "note": "d2l uses the ResNet-18 model pretrained on ImageNet as the FCN's feature backbone, making ResNet the concrete backbone this page leans on.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.segmentation|useful_when|concept.learning.transfer_learning",
+      "source": "concept.vision.segmentation",
+      "target": "concept.learning.transfer_learning",
+      "type": "useful_when",
+      "note": "The FCN on this page takes a ResNet-18 pretrained on ImageNet and drops its head — the exact standard pattern the transfer-learning page describes — so that page explains why the choice works at all.",
       "condition": null
     }
   ]

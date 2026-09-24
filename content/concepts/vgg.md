@@ -20,6 +20,9 @@ relationships:
   - type: requires
     target: concept.deep_learning.pooling
     note: Five max-pooling stages separate VGG's convolutional blocks and set its resolution schedule.
+  - type: used_to_solve
+    target: concept.vision.classification
+    note: VGG was designed and evaluated as an image classification network, a concrete instance of the backbone, pooled feature, linear head pipeline.
 sources:
   - source_id: source.simonyan2015.very_deep_convolutional_networks
     title: Very Deep Convolutional Networks for Large-Scale Image Recognition

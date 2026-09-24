@@ -11,8 +11,8 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 ## Result
 
 - Questions: **28** across 6 intent classes.
-- Complete retrieval (every needed concept reached): **20/28** (71%).
-- Concept recall (needed concepts reached): **28/37** (76%).
+- Complete retrieval (every needed concept reached): **19/28** (68%).
+- Concept recall (needed concepts reached): **27/37** (73%).
 - Answer quality: **not measured**. No model is involved in this evaluation.
 
 ## By intent
@@ -24,18 +24,18 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 | paraphrase | 5 | 0/5 (0%) | 0/6 (0%) |
 | symptom | 5 | 4/5 (80%) | 4/5 (80%) |
 | comparison | 4 | 4/4 (100%) | 8/8 (100%) |
-| path | 4 | 2/4 (50%) | 6/8 (75%) |
+| path | 4 | 1/4 (25%) | 5/8 (63%) |
 
 ## Where it fails
 
-8 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
+9 of 28 questions did not reach everything a defensible answer needs. These are the evidence a version 3 decision would rest on.
 
 ### P1 (paraphrase)
 
 > Why does sliding a filter over an image work the same wherever the object is?
 
 - Needed but not retrieved: `concept.analysis.translation_equivariance`
-- Retrieved instead: `concept.analysis.cross_correlation`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.spherical_cnns`, `concept.analysis.convolution`, `concept.deep_learning.equivariance`
+- Retrieved instead: `concept.analysis.cross_correlation`, `concept.deep_learning.spherical_cnns`, `concept.deep_learning.convolutional_networks`, `concept.analysis.convolution`, `concept.deep_learning.equivariance`
 
 ### P2 (paraphrase)
 
@@ -63,21 +63,28 @@ The corpus is the eleven canonical pages of this repository. Retrieval selects a
 > Is the operation in a CNN really the mathematical one, or the flipped version?
 
 - Needed but not retrieved: `concept.analysis.convolution`, `concept.analysis.cross_correlation`
-- Retrieved instead: `concept.deep_learning.convolutional_networks`, `concept.deep_learning.backpropagation_through_convolution`, `concept.deep_learning.spherical_cnns`, `concept.deep_learning.geometric_deep_learning`, `concept.deep_learning.hopfield_networks`
+- Retrieved instead: `concept.deep_learning.convolutional_networks`, `concept.deep_learning.backpropagation_through_convolution`, `concept.vision.detection`, `concept.deep_learning.spherical_cnns`, `concept.vision.segmentation`
 
 ### S2 (symptom)
 
 > Training a 40-layer plain network is worse than my 20-layer one. What is going on?
 
 - Needed but not retrieved: `concept.deep_learning.residual_connection`
-- Retrieved instead: `concept.deep_learning.boltzmann_machines`, `concept.ml_engineering.pytorch`, `concept.machine_learning.decision_trees`, `concept.ml_engineering.ollama`, `concept.systems.operating_systems`
+- Retrieved instead: `concept.deep_learning.boltzmann_machines`, `concept.machine_learning.decision_trees`, `concept.ml_engineering.ollama`, `concept.ml_engineering.pytorch`, `concept.ml_engineering.deployment`
+
+### R1 (path)
+
+> What do I need to understand before ResNet?
+
+- Needed but not retrieved: `concept.deep_learning.residual_connection`
+- Retrieved instead: `concept.deep_learning.resnet`, `concept.learning.transfer_learning`, `concept.deep_learning.vision_transformer`, `concept.vision.classification`, `concept.learning.contrastive_learning`
 
 ### R2 (path)
 
 > I want to get to VGG. Where do I start?
 
 - Needed but not retrieved: `concept.deep_learning.convolutional_layer`
-- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`, `concept.deep_learning.flow_matching`
+- Retrieved instead: `concept.deep_learning.vgg`, `concept.deep_learning.convolutional_networks`, `concept.vision.classification`, `concept.deep_learning.resnet`, `concept.deep_learning.lenet`
 
 ### R3 (path)
 
@@ -122,7 +129,7 @@ Nothing here is evidence for embeddings yet. A miss on eleven pages is usually a
 | C2 | comparison | What is the difference between convolution and cross-correlation? | `analysis.convolution`, `analysis.cross_correlation` | yes |
 | C3 | comparison | LeNet versus VGG: what changed? | `deep_learning.lenet`, `deep_learning.vgg` | yes |
 | C4 | comparison | Should I use pooling or a strided convolutional layer? | `deep_learning.pooling`, `deep_learning.convolutional_layer` | yes |
-| R1 | path | What do I need to understand before ResNet? | `deep_learning.resnet`, `deep_learning.residual_connection` | yes |
+| R1 | path | What do I need to understand before ResNet? | `deep_learning.resnet`, `deep_learning.residual_connection` | no |
 | R2 | path | I want to get to VGG. Where do I start? | `deep_learning.vgg`, `deep_learning.convolutional_layer` | no |
 | R3 | path | What comes before a convolutional layer? | `deep_learning.convolutional_layer`, `analysis.convolution` | no |
 | R4 | path | In what order should I read about pooling and receptive fields? | `deep_learning.pooling`, `deep_learning.receptive_field` | yes |

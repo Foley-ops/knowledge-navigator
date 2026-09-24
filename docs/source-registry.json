@@ -1835,6 +1835,86 @@
         "period doubling",
         "fractal dimension"
       ]
+    },
+    {
+      "id": "source.zhang2023.d2l",
+      "title": "Dive into Deep Learning",
+      "url": "https://d2l.ai",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "deep learning",
+        "cnn",
+        "computer vision",
+        "nlp",
+        "attention",
+        "recommender systems"
+      ]
+    },
+    {
+      "id": "source.goodfellow2016.deep_learning",
+      "title": "Deep Learning",
+      "url": "https://www.deeplearningbook.org",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "deep learning",
+        "convolutional networks",
+        "optimization",
+        "regularization",
+        "sequence modeling"
+      ]
+    },
+    {
+      "id": "source.bishop2023.deep_learning_foundations",
+      "title": "Deep Learning: Foundations and Concepts",
+      "url": "https://www.bishopbook.com",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "deep learning",
+        "transformers",
+        "diffusion models",
+        "normalization",
+        "generative models"
+      ]
+    },
+    {
+      "id": "source.murphy2022.probabilistic_ml_intro",
+      "title": "Probabilistic Machine Learning: An Introduction",
+      "url": "https://probml.github.io/pml-book/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "machine learning",
+        "probability",
+        "causal inference",
+        "time series",
+        "recommender systems"
+      ]
+    },
+    {
+      "id": "source.molnar.interpretable_ml",
+      "title": "Interpretable Machine Learning",
+      "url": "https://christophm.github.io/interpretable-ml-book/",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "interpretability",
+        "explainability",
+        "feature importance",
+        "shap",
+        "saliency"
+      ]
+    },
+    {
+      "id": "source.reddi2026.ml_systems",
+      "title": "Machine Learning Systems",
+      "url": "https://mlsysbook.ai",
+      "kind": "authoritative-secondary",
+      "topics": [
+        "ml systems",
+        "edge ai",
+        "deployment",
+        "inference",
+        "mlops",
+        "efficiency"
+      ]
     }
   ]
 }
