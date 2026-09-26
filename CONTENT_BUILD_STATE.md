@@ -790,13 +790,22 @@ it. Batches are ten pages each.
 
 ## Next action
 
-**Run the Docker acceptance test and record the final verified totals.** All 28 batches
-are committed: 291 of 291 atlas candidates have a Tier 1 page, and no atlas category is
-empty. Batch 28's gate was `npm run check` (9 of 9 stages) and `npm run test:browser`
-(76 of 76). Since batch 26, each batch has been written directly and then read by a
-single adversarial reviewer agent. That cut cost sharply, and the reviewer still found
-faults: 15 in batch 26, 23 in batch 27 and 31 in batch 28. Every fault was applied or
-settled before finalising.
+**The content build is complete.** Each item of the Definition of Done was
+verified on 2026-09-25 at commit `84dc672`, as follows.
+
+| Item | Verified result | How |
+| --- | --- | --- |
+| Every candidate has a real page | 291 of 291 candidates covered, 291 Markdown pages, all Tier 1, 0 Tier 3 identities | `node scripts/content-batch.mjs 28` |
+| No candidate is only a label or graph record | 0 candidates with status `candidate` or `proposed-tier-3` | same |
+| Every page passes schema and corpus validation | 0 errors, 0 blocking unresolved references (409 non-blocking, listed per page) | same |
+| Every relationship resolves | 0 relationship targets without a page | probe over all 291 pages |
+| Search finds every page | every page's title returns that page as the first hit from the compiled index | same probe, `searchConcepts` |
+| Every page opens in the application | all 291 slugs have a built route under `apps/web/build/concepts/` | same probe |
+| Compiled coverage matches the Markdown | 291 compiled concepts = 291 Markdown files = 291 covered candidates | same probe |
+| Zero empty categories | 0 of 38 atlas categories empty | same probe |
+| Full test suite | `npm run check` 9 of 9 stages (unit tests 1033 of 1033); `npm run test:browser` 76 of 76 | run on the host, Node 22 |
+| Docker | `./scripts/smoke.sh` built both images, started the stack and passed 66 checks | the images have no test stage, so the suite runs on the host |
+| Version 2 audit | `./scripts/definition-of-done.sh` 57 of 57 items | clean tree |
 
 A fresh agent needs four things that are not obvious from the repository:
 
