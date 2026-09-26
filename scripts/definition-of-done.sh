@@ -75,9 +75,30 @@ fi
 section "Repository and regression safety"
 V1_TESTS="$(ls packages/core/tests/*.test.ts apps/api/tests/*.test.ts | wc -l | tr -d ' ')"
 ok "version 1's suites still pass" "${V1_TESTS} test files, all in the vitest run above; browser journeys include every v1 journey"
-ELEVEN="$(ls content/concepts/*.md | wc -l | tr -d ' ')"
-judge "$([[ "${ELEVEN}" == "11" ]] && echo 0 || echo 1)" \
-  "the original eleven concept files are still eleven" "ls content/concepts/*.md — ${ELEVEN} files"
+# The content build adds pages, so the corpus is no longer eleven files; what
+# version 2 promised is that the original eleven were not disturbed. Each must
+# still exist under its original file name and carry its original id.
+ORIGINAL_ELEVEN=(
+  backpropagation-through-convolution:concept.deep_learning.backpropagation_through_convolution
+  convolution:concept.analysis.convolution
+  convolutional-layer:concept.deep_learning.convolutional_layer
+  cross-correlation:concept.analysis.cross_correlation
+  lenet:concept.deep_learning.lenet
+  pooling:concept.deep_learning.pooling
+  receptive-field:concept.deep_learning.receptive_field
+  residual-connection:concept.deep_learning.residual_connection
+  resnet:concept.deep_learning.resnet
+  translation-equivariance:concept.analysis.translation_equivariance
+  vgg:concept.deep_learning.vgg
+)
+KEPT=0
+for entry in "${ORIGINAL_ELEVEN[@]}"; do
+  file="content/concepts/${entry%%:*}.md"
+  [[ -f "${file}" ]] && grep -qx "concept_id: ${entry#*:}" "${file}" && KEPT=$((KEPT + 1))
+done
+TOTAL="$(ls content/concepts/*.md | wc -l | tr -d ' ')"
+judge "$([[ "${KEPT}" == "11" ]] && echo 0 || echo 1)" \
+  "the original eleven concept files are all still present" "${KEPT} of 11 at their original paths with their original ids; ${TOTAL} pages in the corpus"
 DRIFTED="$(grep -L 'review_state: generated-draft' content/concepts/*.md | wc -l | tr -d ' ')"
 judge "$([[ "${DRIFTED}" == "0" ]] && echo 0 || echo 1)" \
   "all eleven keep review_state generated-draft" "grep -L over content/concepts — ${DRIFTED} page(s) differ"
