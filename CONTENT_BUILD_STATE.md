@@ -13,41 +13,27 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 28 of 28.** 10 of 10 pages in it are still to write.
+Every planned page exists: 280 of 280 written.
 
-Write these files next:
-
-- `content/concepts/genetic-algorithms.md` — Genetic Algorithms (concept.ai_frontiers.genetic_algorithms)
-- `content/concepts/neuroevolution.md` — Neuroevolution (concept.ai_frontiers.neuroevolution)
-- `content/concepts/swarm-intelligence.md` — Swarm Intelligence (concept.ai_frontiers.swarm_intelligence)
-- `content/concepts/fuzzy-logic.md` — Fuzzy Logic (concept.ai_frontiers.fuzzy_logic)
-- `content/concepts/causal-inference.md` — Causal Inference (concept.ai_frontiers.causal_inference)
-- `content/concepts/neuro-symbolic-ai.md` — Neuro-Symbolic AI (concept.ai_frontiers.neuro_symbolic_ai)
-- `content/concepts/interpretability.md` — Interpretability (concept.ai_frontiers.interpretability)
-- `content/concepts/mechanistic-interpretability.md` — Mechanistic Interpretability (concept.ai_frontiers.mechanistic_interpretability)
-- `content/concepts/ai-safety.md` — AI Safety (concept.ai_frontiers.ai_safety)
-- `content/concepts/alignment.md` — Alignment (concept.ai_frontiers.alignment)
-
-Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
-`npx vitest run`, and commit the batch.
+The next work is tier promotion and the final verification, not new pages.
 
 ## Running totals
 
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 281 |
-| Markdown pages in the corpus | 281 |
-| Tier 1 pages | 281 |
+| Candidates covered by a page | 291 |
+| Markdown pages in the corpus | 291 |
+| Tier 1 pages | 291 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 270 of 280 |
+| Planned pages written | 280 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 138 | 148 | 93% |
+| Artificial Intelligence | 148 | 148 | 100% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -62,7 +48,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Domains/Computer Vision | 4 | 4 | complete |
 | Artificial Intelligence/Domains/Natural Language Processing | 5 | 5 | complete |
 | Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
-| Artificial Intelligence/Other Traditions & Frontiers | 1 | 11 |  |
+| Artificial Intelligence/Other Traditions & Frontiers | 11 | 11 | complete |
 | Artificial Intelligence/Reinforcement Learning | 19 | 19 | complete |
 | Artificial Intelligence/Symbolic AI | 5 | 5 | complete |
 | Artificial Intelligence/Symbolic AI/Planning | 3 | 3 | complete |
@@ -88,7 +74,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-270 of the planned 280, in the order they were written.
+280 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -362,6 +348,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Robotics | `concept.applications.robotics` | tier 1 | covered |
 | Recommender Systems | `concept.applications.recommender_systems` | tier 1 | covered |
 | Evolutionary Computation | `concept.ai_frontiers.evolutionary_computation` | tier 1 | covered |
+| Genetic Algorithms | `concept.ai_frontiers.genetic_algorithms` | tier 1 | covered |
+| Neuroevolution | `concept.ai_frontiers.neuroevolution` | tier 1 | covered |
+| Swarm Intelligence | `concept.ai_frontiers.swarm_intelligence` | tier 1 | covered |
+| Fuzzy Logic | `concept.ai_frontiers.fuzzy_logic` | tier 1 | covered |
+| Causal Inference | `concept.ai_frontiers.causal_inference` | tier 1 | covered |
+| Neuro-Symbolic AI | `concept.ai_frontiers.neuro_symbolic_ai` | tier 1 | covered |
+| Interpretability | `concept.ai_frontiers.interpretability` | tier 1 | covered |
+| Mechanistic Interpretability | `concept.ai_frontiers.mechanistic_interpretability` | tier 1 | covered |
+| AI Safety | `concept.ai_frontiers.ai_safety` | tier 1 | covered |
+| Alignment | `concept.ai_frontiers.alignment` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -775,32 +771,32 @@ it. Batches are ten pages each.
 | x | Recommender Systems | `concept.applications.recommender_systems` | Artificial Intelligence/Domains |
 | x | Evolutionary Computation | `concept.ai_frontiers.evolutionary_computation` | Artificial Intelligence/Other Traditions & Frontiers |
 
-### Batch 28
+### Batch 28 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Genetic Algorithms | `concept.ai_frontiers.genetic_algorithms` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Neuroevolution | `concept.ai_frontiers.neuroevolution` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Swarm Intelligence | `concept.ai_frontiers.swarm_intelligence` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Fuzzy Logic | `concept.ai_frontiers.fuzzy_logic` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Causal Inference | `concept.ai_frontiers.causal_inference` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Neuro-Symbolic AI | `concept.ai_frontiers.neuro_symbolic_ai` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Interpretability | `concept.ai_frontiers.interpretability` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Mechanistic Interpretability | `concept.ai_frontiers.mechanistic_interpretability` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | AI Safety | `concept.ai_frontiers.ai_safety` | Artificial Intelligence/Other Traditions & Frontiers |
-|   | Alignment | `concept.ai_frontiers.alignment` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Genetic Algorithms | `concept.ai_frontiers.genetic_algorithms` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Neuroevolution | `concept.ai_frontiers.neuroevolution` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Swarm Intelligence | `concept.ai_frontiers.swarm_intelligence` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Fuzzy Logic | `concept.ai_frontiers.fuzzy_logic` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Causal Inference | `concept.ai_frontiers.causal_inference` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Neuro-Symbolic AI | `concept.ai_frontiers.neuro_symbolic_ai` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Interpretability | `concept.ai_frontiers.interpretability` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Mechanistic Interpretability | `concept.ai_frontiers.mechanistic_interpretability` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | AI Safety | `concept.ai_frontiers.ai_safety` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | Alignment | `concept.ai_frontiers.alignment` | Artificial Intelligence/Other Traditions & Frontiers |
 
 <!-- hand-written below this line -->
 
 ## Next action
 
-**Write Batch 28 of 28**, the ten pages named under *Resume point* above, then do the
-Definition-of-Done work: fill the eight empty atlas categories, confirm search and routing
-reach every page, and run the Docker build and suite. Batch 27 is committed; its gate was
-`npm run check` (9 of 9 stages) and `npm run test:browser` (76 of 76). Since batch 26 each
-batch is written directly and read by a single adversarial reviewer agent, which cut cost
-sharply without dropping the fault rate the reviewer catches (15 in batch 26, 23 in batch
-27, every one applied or settled before finalising).
+**Run the Docker acceptance test and record the final verified totals.** All 28 batches
+are committed: 291 of 291 atlas candidates have a Tier 1 page, and no atlas category is
+empty. Batch 28's gate was `npm run check` (9 of 9 stages) and `npm run test:browser`
+(76 of 76). Since batch 26, each batch has been written directly and then read by a
+single adversarial reviewer agent. That cut cost sharply, and the reviewer still found
+faults: 15 in batch 26, 23 in batch 27 and 31 in batch 28. Every fault was applied or
+settled before finalising.
 
 A fresh agent needs four things that are not obvious from the repository:
 
@@ -844,6 +840,33 @@ changing how pages are written.
 
 Every check that fails during a batch is recorded here with what it was, what
 caused it, and what fixed it.
+
+### Batch 28 — the last corpus-size snapshot in the API tests
+
+The coverage workflow test in `apps/api/tests/evaluation.test.ts` asserted that
+atlas candidates outnumber concepts. That was true of every corpus until this
+batch. Once every candidate had a page, both counts were 291 and the assertion
+failed: it was a snapshot of the pre-content state, not a property the product
+promises. The assertion now checks what it was protecting, at any corpus size:
+the status counts account for every candidate, and the number of covered
+candidates is at least one and never more than the number of pages. This is the
+same class of fault as batch 1's tests pinned at eleven concepts.
+
+The retrieval evaluation's generated report described "the eleven canonical
+pages" and retrieval "using titles, aliases, full text and one hop of the graph".
+Both statements were false: the corpus has grown, and `retrieve()` has no graph
+step. The page count is now read from the compiled index, and the method
+description matches the code. The frozen questions, the figures and the
+assertions are unchanged.
+
+That report now shows something the project owner should decide on: every page
+its 28 questions need exists, yet paraphrase recall is 0 of 5 and path recall is
+5 of 8. Question R1, "What do I need to understand before ResNet?", retrieves
+ResNet but not the residual connection it requires. The report's own conclusion
+names this — low recall while the needed pages exist — as the evidence a vector
+index or a graph-hop step would rest on. A test still asserts the sentence
+"Nothing here is evidence for embeddings yet", so the conclusion was left as it
+is rather than rewritten here.
 
 ### Batch 17 — two relationships used the category name instead of the permanent id
 
@@ -1061,6 +1084,22 @@ loosened; several are now strictly stronger than the constant they replaced,
 because a count derived from the corpus catches a miscount at any size.
 
 ## Decisions
+
+- **The eight empty atlas categories were filled by second categories, not new
+  candidates.** They were all in Mathematics. Each one now holds existing pages
+  whose content belongs there:
+  - Combinatorics: probability and computing, combinatorial optimization.
+  - Graph Theory: graph algorithms.
+  - Spectral Graph Theory: spectral clustering, graph convolutional networks.
+  - Discrete Mathematics: graph algorithms, propositional logic.
+  - Numerical Analysis: ordinary differential equations, matrix decompositions.
+  - Information Theory: statistical mechanics, loss functions, contrastive
+    learning.
+  - Game Theory: minimax, multi-agent reinforcement learning.
+  - Operations Research: integer programming, combinatorial optimization.
+
+  Primary categories are unchanged. The atlas's frozen labels and structure are
+  untouched.
 
 - **The tier the task asks for.** Every new page is written to the same bar: a
   definition, why it matters, intuition, a concrete example, a technical

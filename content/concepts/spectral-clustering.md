@@ -9,6 +9,7 @@ review_state: generated-draft
 summary: Spectral clustering embeds a weighted similarity graph using eigenvectors of a graph Laplacian and then partitions that embedding to reveal graph-separated groups.
 categories:
   - Artificial Intelligence/Classical Machine Learning
+  - Mathematics/Spectral Graph Theory
 primary_category: Artificial Intelligence/Classical Machine Learning
 relationships:
   - type: requires

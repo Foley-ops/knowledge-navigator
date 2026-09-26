@@ -10,6 +10,7 @@ review_state: generated-draft
 summary: Contrastive learning trains an encoder by pulling two views of the same item together and pushing every other item in the batch apart, so that a choice of augmentation becomes the supervision signal.
 categories:
   - Artificial Intelligence/Learning Paradigms
+  - Mathematics/Information Theory
 primary_category: Artificial Intelligence/Learning Paradigms
 relationships:
   - type: specializes

@@ -10,6 +10,7 @@ review_state: generated-draft
 summary: The theory of equations that pin down a function of one variable from its own rate of change, where a Lipschitz condition buys exactly one trajectory through each point and almost everything past the linear case must be computed rather than solved.
 categories:
   - Mathematics/Analysis
+  - Mathematics/Numerical Analysis
 primary_category: Mathematics/Analysis
 relationships:
   - type: requires

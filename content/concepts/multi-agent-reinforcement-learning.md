@@ -10,6 +10,7 @@ review_state: generated-draft
 summary: Reinforcement learning when several agents learn at once in one environment, where each agent's updates change the world the others are learning about and "optimal policy" gives way to a game-theoretic solution concept.
 categories:
   - Artificial Intelligence/Reinforcement Learning
+  - Mathematics/Game Theory
 primary_category: Artificial Intelligence/Reinforcement Learning
 relationships:
   - type: requires

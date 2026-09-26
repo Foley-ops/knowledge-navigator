@@ -10,6 +10,7 @@ review_state: generated-draft
 summary: A loss function assigns a numerical cost to a prediction and target, turning the behavior desired from a model into the objective that training can optimize.
 categories:
   - Artificial Intelligence/Deep Learning — Training
+  - Mathematics/Information Theory
 primary_category: Artificial Intelligence/Deep Learning — Training
 relationships:
   - type: requires

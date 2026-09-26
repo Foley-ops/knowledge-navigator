@@ -10,6 +10,7 @@ review_state: generated-draft
 summary: The use of random choices inside algorithms, and of probabilistic analysis to bound what they cost, giving simpler and faster procedures whose guarantees hold for every input.
 categories:
   - Mathematics/Probability & Statistics
+  - Mathematics/Combinatorics
 primary_category: Mathematics/Probability & Statistics
 relationships:
   - type: requires

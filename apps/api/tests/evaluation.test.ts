@@ -414,9 +414,14 @@ describe('workflow 1: discovering an unfamiliar neighbourhood from Coverage', ()
     const candidates = await get('/api/coverage/candidates?limit=1');
     expect(body.atlas.candidates).toBe(candidates.body.total);
     expect(body.atlas.candidates).toBeGreaterThan(200);
-    // Candidates outnumber concepts by a wide margin, and the product says so
-    // rather than hiding it.
-    expect(body.atlas.candidates).toBeGreaterThan(body.concepts.total);
+    // A candidate is only a name until a page covers it, and the summary keeps
+    // the two apart at every stage of the build — while names outnumber pages
+    // and once every name has one: the statuses account for every candidate,
+    // and no more candidates are covered than there are pages to cover them.
+    const byStatus = body.atlas.byStatus as Record<string, number>;
+    expect(Object.values(byStatus).reduce((sum, n) => sum + n, 0)).toBe(body.atlas.candidates);
+    expect(byStatus['covered'] ?? 0).toBeGreaterThan(0);
+    expect(byStatus['covered'] ?? 0).toBeLessThanOrEqual(body.concepts.total);
     record(
       `coverage: ${String(body.concepts.total)} canonical concepts, ${String(body.atlas.candidates)} candidates, ${String(body.atlas.emptyCategories)} empty categories`,
     );

@@ -11,6 +11,7 @@ review_state: generated-draft
 summary: The value a position is worth when both players play perfectly, computed by backing terminal utilities up the game tree with alternating maximisation and minimisation — and, with alpha-beta pruning, computed while skipping the subtrees that cannot change it.
 categories:
   - Artificial Intelligence/Symbolic AI/Search
+  - Mathematics/Game Theory
 primary_category: Artificial Intelligence/Symbolic AI/Search
 relationships:
   - type: specializes

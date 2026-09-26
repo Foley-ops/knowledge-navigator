@@ -8,6 +8,8 @@ review_state: generated-draft
 summary: The family of procedures — traversal, shortest paths, spanning trees, topological order, connectivity — that extract structure from vertices and edges in time linear or near-linear in the graph, together with the representation choices that decide whether they actually run that fast.
 categories:
   - Programming/Data Structures & Algorithms
+  - Mathematics/Graph Theory
+  - Mathematics/Discrete Mathematics
 primary_category: Programming/Data Structures & Algorithms
 relationships:
   - type: requires

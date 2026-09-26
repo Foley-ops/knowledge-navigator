@@ -2,7 +2,7 @@
  * Retrieval evaluation (v2 runbook T02).
  *
  * The evidence gate before embeddings. Twenty-eight frozen questions, six
- * intent classes, one eleven-page corpus, and a number for each class that
+ * intent classes, the whole canonical corpus, and a number for each class that
  * somebody can disagree with.
  *
  * What is measured is **retrieval**: did the material a correct answer would
@@ -254,6 +254,7 @@ function render(): string {
   const hits = outcomes.filter((outcome) => outcome.hit).length;
   const needed = outcomes.reduce((sum, outcome) => sum + outcome.question.needs.length, 0);
   const reached = outcomes.reduce((sum, outcome) => sum + outcome.found.length, 0);
+  const pages = (db.prepare('SELECT COUNT(*) AS n FROM concepts').get() as { n: number }).n;
 
   const lines: string[] = [];
   lines.push('# Retrieval evaluation (Version 2)', '');
@@ -265,7 +266,7 @@ function render(): string {
   lines.push(
     'This measures **retrieval**: for each question, did every concept a defensible answer would need actually reach the prompt? It does not measure answer quality. That needs a model and a judge, and a retrieval number presented as an answer-quality number would be worse than no number at all.',
     '',
-    `The corpus is the eleven canonical pages of this repository. Retrieval selects at most ${String(MAX_RETRIEVED_CONCEPTS)} concepts within a ${String(CHARACTER_BUDGET)}-character budget, using titles, aliases, full text and one hop of the graph. There are no embeddings, and this evaluation exists to decide whether there is evidence for adding any.`,
+    `The corpus is the ${String(pages)} canonical pages of this repository. Retrieval selects at most ${String(MAX_RETRIEVED_CONCEPTS)} concepts within a ${String(CHARACTER_BUDGET)}-character budget, using exact names, aliases and full text. There are no embeddings, and this evaluation exists to decide whether there is evidence for adding any.`,
     '',
   );
 

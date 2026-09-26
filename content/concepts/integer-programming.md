@@ -11,6 +11,7 @@ review_state: generated-draft
 summary: Optimizing a linear objective over the integer points of a polyhedron — one extra word in the model that turns a polynomial-time linear program into an NP-hard problem, and that buys the ability to express a yes-or-no decision.
 categories:
   - Mathematics/Optimization
+  - Mathematics/Operations Research
 primary_category: Mathematics/Optimization
 relationships:
   - type: specializes

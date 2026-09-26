@@ -8,6 +8,8 @@ review_state: generated-draft
 summary: Optimization over a feasible set that is finite but exponentially large — tours, matchings, spanning trees, subsets — where an optimum always exists and the whole difficulty is finding it without enumerating.
 categories:
   - Mathematics/Optimization
+  - Mathematics/Combinatorics
+  - Mathematics/Operations Research
 primary_category: Mathematics/Optimization
 relationships:
   - type: requires

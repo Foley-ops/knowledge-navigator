@@ -11,6 +11,7 @@ review_state: generated-draft
 summary: The logic of whole statements joined by not, and, or and if-then, where meaning is fixed by two-valued truth tables — which makes validity decidable, and makes satisfiability the original NP-complete problem.
 categories:
   - Mathematics/Foundations/Logic & Proof
+  - Mathematics/Discrete Mathematics
 primary_category: Mathematics/Foundations/Logic & Proof
 relationships:
   - type: prerequisite_of

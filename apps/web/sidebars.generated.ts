@@ -199,7 +199,17 @@ const sidebars: SidebarsConfig = {
           label: "Other Traditions & Frontiers",
           collapsed: true,
           items: [
+            { type: 'doc', id: "ai-safety", label: "AI Safety" },
+            { type: 'doc', id: "alignment", label: "Alignment" },
+            { type: 'doc', id: "causal-inference", label: "Causal Inference" },
             { type: 'doc', id: "evolutionary-computation", label: "Evolutionary Computation" },
+            { type: 'doc', id: "fuzzy-logic", label: "Fuzzy Logic" },
+            { type: 'doc', id: "genetic-algorithms", label: "Genetic Algorithms" },
+            { type: 'doc', id: "interpretability", label: "Interpretability" },
+            { type: 'doc', id: "mechanistic-interpretability", label: "Mechanistic Interpretability" },
+            { type: 'doc', id: "neuro-symbolic-ai", label: "Neuro-Symbolic AI" },
+            { type: 'doc', id: "neuroevolution", label: "Neuroevolution" },
+            { type: 'doc', id: "swarm-intelligence", label: "Swarm Intelligence" },
           ],
         },
         {
@@ -320,6 +330,24 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: "Combinatorics",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "combinatorial-optimization", label: "Combinatorial Optimization" },
+            { type: 'ref', id: "probability-and-computing", label: "Probability and Computing" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Discrete Mathematics",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "graph-algorithms", label: "Graph Algorithms" },
+            { type: 'ref', id: "propositional-logic", label: "Propositional Logic" },
+          ],
+        },
+        {
+          type: 'category',
           label: "Foundations",
           collapsed: true,
           items: [
@@ -350,6 +378,15 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: "Game Theory",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "minimax", label: "Minimax" },
+            { type: 'ref', id: "multi-agent-reinforcement-learning", label: "Multi-Agent Reinforcement Learning" },
+          ],
+        },
+        {
+          type: 'category',
           label: "Geometry & Topology",
           collapsed: true,
           items: [
@@ -368,6 +405,24 @@ const sidebars: SidebarsConfig = {
             { type: 'doc', id: "point-set-topology", label: "Point-Set Topology" },
             { type: 'doc', id: "renormalization", label: "Renormalization" },
             { type: 'doc', id: "spherical-geometry", label: "Spherical Geometry" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Graph Theory",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "graph-algorithms", label: "Graph Algorithms" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Information Theory",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "contrastive-learning", label: "Contrastive Learning" },
+            { type: 'ref', id: "loss-functions", label: "Loss Functions" },
+            { type: 'ref', id: "statistical-mechanics", label: "Statistical Mechanics" },
           ],
         },
         {
@@ -404,6 +459,24 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: "Numerical Analysis",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "matrix-decompositions", label: "Matrix Decompositions" },
+            { type: 'ref', id: "ordinary-differential-equations", label: "Ordinary Differential Equations" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Operations Research",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "combinatorial-optimization", label: "Combinatorial Optimization" },
+            { type: 'ref', id: "integer-programming", label: "Integer Programming" },
+          ],
+        },
+        {
+          type: 'category',
           label: "Optimization",
           collapsed: true,
           items: [
@@ -430,6 +503,15 @@ const sidebars: SidebarsConfig = {
             { type: 'doc', id: "probability-and-computing", label: "Probability and Computing" },
             { type: 'doc', id: "random-matrix-theory", label: "Random Matrix Theory" },
             { type: 'doc', id: "stochastic-processes", label: "Stochastic Processes" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Spectral Graph Theory",
+          collapsed: true,
+          items: [
+            { type: 'ref', id: "graph-convolutional-networks", label: "Graph Convolutional Networks" },
+            { type: 'ref', id: "spectral-clustering", label: "Spectral Clustering" },
           ],
         },
         {

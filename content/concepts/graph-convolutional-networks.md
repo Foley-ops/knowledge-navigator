@@ -10,6 +10,7 @@ review_state: generated-draft
 summary: The architecture that made graph learning ordinary — a single sparse matrix multiply per layer, obtained by truncating a spectral filter on the graph Laplacian to first order and renormalising it with self-loops.
 categories:
   - Artificial Intelligence/Deep Learning — Architectures
+  - Mathematics/Spectral Graph Theory
 primary_category: Artificial Intelligence/Deep Learning — Architectures
 relationships:
   - type: specializes

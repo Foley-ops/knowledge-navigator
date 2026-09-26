@@ -8,6 +8,7 @@ review_state: generated-draft
 summary: The family of factorisations — LU, QR, Cholesky, eigendecomposition and the SVD — that rewrite a matrix as a product of structured factors so that solving, least squares, rank and approximation become easy, and that differ above all in what they assume about the matrix.
 categories:
   - Mathematics/Linear & Multilinear Algebra
+  - Mathematics/Numerical Analysis
 primary_category: Mathematics/Linear & Multilinear Algebra
 relationships:
   - type: requires

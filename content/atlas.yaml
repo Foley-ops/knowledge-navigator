@@ -1547,62 +1547,62 @@ candidates:
     title: Genetic Algorithms
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.genetic_algorithms
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.neuroevolution
     title: Neuroevolution
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.neuroevolution
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.swarm_intelligence
     title: Swarm Intelligence
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.swarm_intelligence
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.fuzzy_logic
     title: Fuzzy Logic
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.fuzzy_logic
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.neuro_symbolic_ai
     title: Neuro-Symbolic AI
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.neuro_symbolic_ai
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.causal_inference
     title: Causal Inference
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.causal_inference
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.interpretability
     title: Interpretability
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.interpretability
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.mechanistic_interpretability
     title: Mechanistic Interpretability
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.mechanistic_interpretability
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.alignment
     title: Alignment
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.alignment
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.ai_safety
     title: AI Safety
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.ai_safety
   - candidate_id: candidate.programming.languages.paradigms.imperative_programming
     title: Imperative Programming
     categories:

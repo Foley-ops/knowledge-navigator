@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-26T02:38:05.950Z",
-  "corpusHash": "dc4df0a486c6cd0a08d1c4d32e6eb6c13f11ac4b872233571a863f10f08b6f02",
-  "atlasHash": "2f3363907645ad7b5e624305543262d13d12777dbd954b8519b4d00fd44abebf",
+  "builtAt": "2026-09-26T02:59:59.365Z",
+  "corpusHash": "462c94794729a153a469d327ffca6fa799e2937ff0915a47943c584caa7a3dd1",
+  "atlasHash": "deae24c748fb1f9a19620e68f32afb26fe0e21217bffd2cce0b72064e570cf50",
   "counts": {
-    "concepts": 281,
-    "relationships": 1071,
-    "categories": 34
+    "concepts": 291,
+    "relationships": 1100,
+    "categories": 42
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 281,
+      "1": 291,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 281,
+      "markdown": 291,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 281
+      "generated-draft": 291
     },
-    "conceptsWithArticle": 281,
+    "conceptsWithArticle": 291,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 10,
+      "candidate": 0,
       "proposed-tier-3": 0,
-      "covered": 281,
+      "covered": 291,
       "deferred": 0
     },
-    "unresolvedReferences": 400,
-    "unresolvedGroups": 398,
+    "unresolvedReferences": 409,
+    "unresolvedGroups": 407,
     "blockingUnresolvedReferences": 0,
     "claims": 58,
     "claimsByStatus": {
@@ -385,10 +385,30 @@
       "depth": 2,
       "parent": "Artificial Intelligence",
       "primaryConceptIds": [
-        "concept.ai_frontiers.evolutionary_computation"
+        "concept.ai_frontiers.ai_safety",
+        "concept.ai_frontiers.alignment",
+        "concept.ai_frontiers.causal_inference",
+        "concept.ai_frontiers.evolutionary_computation",
+        "concept.ai_frontiers.fuzzy_logic",
+        "concept.ai_frontiers.genetic_algorithms",
+        "concept.ai_frontiers.interpretability",
+        "concept.ai_frontiers.mechanistic_interpretability",
+        "concept.ai_frontiers.neuro_symbolic_ai",
+        "concept.ai_frontiers.neuroevolution",
+        "concept.ai_frontiers.swarm_intelligence"
       ],
       "conceptIds": [
-        "concept.ai_frontiers.evolutionary_computation"
+        "concept.ai_frontiers.ai_safety",
+        "concept.ai_frontiers.alignment",
+        "concept.ai_frontiers.causal_inference",
+        "concept.ai_frontiers.evolutionary_computation",
+        "concept.ai_frontiers.fuzzy_logic",
+        "concept.ai_frontiers.genetic_algorithms",
+        "concept.ai_frontiers.interpretability",
+        "concept.ai_frontiers.mechanistic_interpretability",
+        "concept.ai_frontiers.neuro_symbolic_ai",
+        "concept.ai_frontiers.neuroevolution",
+        "concept.ai_frontiers.swarm_intelligence"
       ]
     },
     {
@@ -601,6 +621,30 @@
       ]
     },
     {
+      "path": "Mathematics/Combinatorics",
+      "name": "Combinatorics",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.optimization.combinatorial_optimization",
+        "concept.probability.probability_and_computing"
+      ]
+    },
+    {
+      "path": "Mathematics/Discrete Mathematics",
+      "name": "Discrete Mathematics",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.algorithms.graph_algorithms",
+        "concept.logic.propositional_logic"
+      ]
+    },
+    {
       "path": "Mathematics/Foundations",
       "name": "Foundations",
       "topLevel": "Mathematics",
@@ -652,6 +696,18 @@
       ]
     },
     {
+      "path": "Mathematics/Game Theory",
+      "name": "Game Theory",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.reinforcement_learning.multi_agent_reinforcement_learning",
+        "concept.search.minimax"
+      ]
+    },
+    {
       "path": "Mathematics/Geometry & Topology",
       "name": "Geometry & Topology",
       "topLevel": "Mathematics",
@@ -690,6 +746,30 @@
         "concept.geometry.point_set_topology",
         "concept.geometry.renormalization",
         "concept.geometry.spherical_geometry"
+      ]
+    },
+    {
+      "path": "Mathematics/Graph Theory",
+      "name": "Graph Theory",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.algorithms.graph_algorithms"
+      ]
+    },
+    {
+      "path": "Mathematics/Information Theory",
+      "name": "Information Theory",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.deep_learning.loss_functions",
+        "concept.learning.contrastive_learning",
+        "concept.physics.statistical_mechanics"
       ]
     },
     {
@@ -748,6 +828,30 @@
       ]
     },
     {
+      "path": "Mathematics/Numerical Analysis",
+      "name": "Numerical Analysis",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.analysis.ordinary_differential_equations",
+        "concept.linear_algebra.matrix_decompositions"
+      ]
+    },
+    {
+      "path": "Mathematics/Operations Research",
+      "name": "Operations Research",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.optimization.combinatorial_optimization",
+        "concept.optimization.integer_programming"
+      ]
+    },
+    {
       "path": "Mathematics/Optimization",
       "name": "Optimization",
       "topLevel": "Mathematics",
@@ -799,6 +903,18 @@
         "concept.probability.probability_theory",
         "concept.probability.random_matrix_theory",
         "concept.probability.stochastic_processes"
+      ]
+    },
+    {
+      "path": "Mathematics/Spectral Graph Theory",
+      "name": "Spectral Graph Theory",
+      "topLevel": "Mathematics",
+      "depth": 2,
+      "parent": "Mathematics",
+      "primaryConceptIds": [],
+      "conceptIds": [
+        "concept.deep_learning.graph_convolutional_networks",
+        "concept.machine_learning.spectral_clustering"
       ]
     },
     {
@@ -989,6 +1105,71 @@
   ],
   "nodes": [
     {
+      "id": "concept.ai_frontiers.ai_safety",
+      "title": "AI Safety",
+      "slug": "/concepts/ai-safety",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "AI safety studies how to keep AI systems from causing unintended harm — through misspecified objectives, reward hacking, unsafe exploration, failures under distribution shift, or oversight that cannot keep up — and ranges from engineering present-day systems to research on risks from more capable ones.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.ai_safety",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.alignment",
+      "title": "Alignment",
+      "slug": "/concepts/alignment",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Alignment is the problem of making an AI system pursue what its designers and users actually intend rather than a proxy for it; for today's language models it is mostly addressed by learning from human or AI preference judgements, which improves behaviour without guaranteeing it.",
+      "aliases": [
+        "AI alignment",
+        "value alignment"
+      ],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.alignment",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.causal_inference",
+      "title": "Causal Inference",
+      "slug": "/concepts/causal-inference",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Causal inference asks what would happen under an intervention rather than what goes with what, and it can answer from observational data only by adding assumptions about how the data were generated, stated as a causal graph or as conditions on potential outcomes.",
+      "aliases": [
+        "causal reasoning"
+      ],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.causal_inference",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.ai_frontiers.evolutionary_computation",
       "title": "Evolutionary Computation",
       "slug": "/concepts/evolutionary-computation",
@@ -1006,6 +1187,154 @@
       "format": "markdown",
       "hasArticle": true,
       "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.evolutionary_computation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.fuzzy_logic",
+      "title": "Fuzzy Logic",
+      "slug": "/concepts/fuzzy-logic",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Fuzzy logic lets propositions be true to a degree between 0 and 1, so vague predicates such as warm or tall can be reasoned with; it models vagueness, not uncertainty, and underlies both a family of many-valued logics and a widely used style of rule-based control.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.fuzzy_logic",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.genetic_algorithms",
+      "title": "Genetic Algorithms",
+      "slug": "/concepts/genetic-algorithms",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A genetic algorithm is a guided random search that evolves a population of encoded candidate solutions by fitness-based selection, crossover and mutation, and it works only as well as its encoding, its operators and its fitness function fit the problem.",
+      "aliases": [
+        "GA"
+      ],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.genetic_algorithms",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.interpretability",
+      "title": "Interpretability",
+      "slug": "/concepts/interpretability",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Interpretability is the degree to which people can understand why a model produces its outputs, achieved either by using models simple enough to read or by explaining complex ones after training, and every explanation method answers a narrower question than it first appears to.",
+      "aliases": [
+        "explainable AI",
+        "XAI"
+      ],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.interpretability",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.mechanistic_interpretability",
+      "title": "Mechanistic Interpretability",
+      "slug": "/concepts/mechanistic-interpretability",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Mechanistic interpretability tries to reverse-engineer the algorithms a trained neural network implements, identifying the features its activations represent and the circuits of weights that compute them, rather than only attributing outputs to inputs.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.mechanistic_interpretability",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.neuro_symbolic_ai",
+      "title": "Neuro-Symbolic AI",
+      "slug": "/concepts/neuro-symbolic-ai",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Neuro-symbolic AI combines neural networks, which learn from raw data, with symbolic representations and reasoning, which are explicit, compositional and checkable, aiming for systems that both perceive and reason — but there are many ways to connect the two and no settled recipe.",
+      "aliases": [
+        "neurosymbolic AI",
+        "neural-symbolic integration"
+      ],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.neuro_symbolic_ai",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.neuroevolution",
+      "title": "Neuroevolution",
+      "slug": "/concepts/neuroevolution",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Neuroevolution trains neural networks with evolutionary search instead of backpropagation, perturbing weights or architectures and keeping what scores well, which trades sample efficiency for needing no gradient and parallelising almost perfectly.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.neuroevolution",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.ai_frontiers.swarm_intelligence",
+      "title": "Swarm Intelligence",
+      "slug": "/concepts/swarm-intelligence",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Swarm intelligence solves problems with many simple agents that follow local rules and share information, as in particle swarm optimisation and ant colony optimisation, so that useful search behaviour emerges from the group without central control.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.swarm_intelligence",
       "candidateStatus": "covered",
       "unresolvedReferences": 1,
       "claims": 0
@@ -1357,7 +1686,9 @@
       "aliases": [],
       "primaryCategory": "Programming/Data Structures & Algorithms",
       "categories": [
-        "Programming/Data Structures & Algorithms"
+        "Programming/Data Structures & Algorithms",
+        "Mathematics/Graph Theory",
+        "Mathematics/Discrete Mathematics"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -1727,7 +2058,8 @@
       ],
       "primaryCategory": "Mathematics/Analysis",
       "categories": [
-        "Mathematics/Analysis"
+        "Mathematics/Analysis",
+        "Mathematics/Numerical Analysis"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -2512,7 +2844,8 @@
       ],
       "primaryCategory": "Artificial Intelligence/Deep Learning — Architectures",
       "categories": [
-        "Artificial Intelligence/Deep Learning — Architectures"
+        "Artificial Intelligence/Deep Learning — Architectures",
+        "Mathematics/Spectral Graph Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -2712,7 +3045,8 @@
       ],
       "primaryCategory": "Artificial Intelligence/Deep Learning — Training",
       "categories": [
-        "Artificial Intelligence/Deep Learning — Training"
+        "Artificial Intelligence/Deep Learning — Training",
+        "Mathematics/Information Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -4233,7 +4567,8 @@
       ],
       "primaryCategory": "Artificial Intelligence/Learning Paradigms",
       "categories": [
-        "Artificial Intelligence/Learning Paradigms"
+        "Artificial Intelligence/Learning Paradigms",
+        "Mathematics/Information Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -4401,7 +4736,8 @@
       "aliases": [],
       "primaryCategory": "Mathematics/Linear & Multilinear Algebra",
       "categories": [
-        "Mathematics/Linear & Multilinear Algebra"
+        "Mathematics/Linear & Multilinear Algebra",
+        "Mathematics/Numerical Analysis"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -4573,7 +4909,8 @@
       ],
       "primaryCategory": "Mathematics/Foundations/Logic & Proof",
       "categories": [
-        "Mathematics/Foundations/Logic & Proof"
+        "Mathematics/Foundations/Logic & Proof",
+        "Mathematics/Discrete Mathematics"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -5037,7 +5374,8 @@
       "aliases": [],
       "primaryCategory": "Artificial Intelligence/Classical Machine Learning",
       "categories": [
-        "Artificial Intelligence/Classical Machine Learning"
+        "Artificial Intelligence/Classical Machine Learning",
+        "Mathematics/Spectral Graph Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -5468,7 +5806,9 @@
       "aliases": [],
       "primaryCategory": "Mathematics/Optimization",
       "categories": [
-        "Mathematics/Optimization"
+        "Mathematics/Optimization",
+        "Mathematics/Combinatorics",
+        "Mathematics/Operations Research"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -5513,7 +5853,8 @@
       ],
       "primaryCategory": "Mathematics/Optimization",
       "categories": [
-        "Mathematics/Optimization"
+        "Mathematics/Optimization",
+        "Mathematics/Operations Research"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -5735,7 +6076,8 @@
       ],
       "primaryCategory": "Mathematics/Mathematical Physics",
       "categories": [
-        "Mathematics/Mathematical Physics"
+        "Mathematics/Mathematical Physics",
+        "Mathematics/Information Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -5933,7 +6275,8 @@
       ],
       "primaryCategory": "Mathematics/Probability & Statistics",
       "categories": [
-        "Mathematics/Probability & Statistics"
+        "Mathematics/Probability & Statistics",
+        "Mathematics/Combinatorics"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -6199,7 +6542,8 @@
       ],
       "primaryCategory": "Artificial Intelligence/Reinforcement Learning",
       "categories": [
-        "Artificial Intelligence/Reinforcement Learning"
+        "Artificial Intelligence/Reinforcement Learning",
+        "Mathematics/Game Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -6482,7 +6826,8 @@
       ],
       "primaryCategory": "Artificial Intelligence/Symbolic AI/Search",
       "categories": [
-        "Artificial Intelligence/Symbolic AI/Search"
+        "Artificial Intelligence/Symbolic AI/Search",
+        "Mathematics/Game Theory"
       ],
       "format": "markdown",
       "hasArticle": true,
@@ -7083,6 +7428,70 @@
   ],
   "edges": [
     {
+      "id": "concept.ai_frontiers.ai_safety|requires|concept.machine_learning.generalization",
+      "source": "concept.ai_frontiers.ai_safety",
+      "target": "concept.machine_learning.generalization",
+      "type": "requires",
+      "note": "A system that behaves well in training can behave badly when deployed on inputs unlike its training data, so robustness to distributional shift is one of the core safety problems.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.ai_safety|requires|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.ai_frontiers.ai_safety",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "requires",
+      "note": "Amodei and colleagues' account of accident risk is posed largely for agents maximising a reward in an environment, so side effects, reward hacking and safe exploration are all stated in terms of states, actions and a reward function that may differ from what the designer intended.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.alignment|contrasts_with|concept.reinforcement_learning.inverse_reinforcement_learning",
+      "source": "concept.ai_frontiers.alignment",
+      "target": "concept.reinforcement_learning.inverse_reinforcement_learning",
+      "type": "contrasts_with",
+      "note": "Inverse reinforcement learning infers an objective from demonstrations of good behaviour, while language-model alignment usually learns one from comparisons between outputs, which people can judge even when they could not produce the better output themselves.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.alignment|contributes_to|concept.ai_frontiers.ai_safety",
+      "source": "concept.ai_frontiers.alignment",
+      "target": "concept.ai_frontiers.ai_safety",
+      "type": "contributes_to",
+      "note": "A system whose goals match what its operators intend avoids the whole class of accidents that come from optimising a misspecified objective, which makes alignment a central part of safety.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.alignment|requires|concept.reinforcement_learning.rlhf",
+      "source": "concept.ai_frontiers.alignment",
+      "target": "concept.reinforcement_learning.rlhf",
+      "type": "requires",
+      "note": "A widely used practical alignment method for language models fits a reward model to human preference comparisons and optimises the model against it, so understanding current alignment practice means understanding that pipeline.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.causal_inference|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.ai_frontiers.causal_inference",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "Supervised learning predicts an outcome from features under the distribution it was trained on, while causal inference predicts what happens when that distribution is changed by an intervention, which the same data do not determine without further assumptions.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.causal_inference|requires|concept.machine_learning.bayesian_networks",
+      "source": "concept.ai_frontiers.causal_inference",
+      "target": "concept.machine_learning.bayesian_networks",
+      "type": "requires",
+      "note": "A causal graph is a Bayesian network whose arrows are read as direct causal influence, and reading off which variables to adjust for relies on the same d-separation criterion.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.causal_inference|requires|concept.probability.probability_theory",
+      "source": "concept.ai_frontiers.causal_inference",
+      "target": "concept.probability.probability_theory",
+      "type": "requires",
+      "note": "Causal effects are defined as differences between probability distributions under different interventions, and identification results are identities between conditional probabilities.",
+      "condition": null
+    },
+    {
       "id": "concept.ai_frontiers.evolutionary_computation|contrasts_with|concept.optimization.stochastic_optimization",
       "source": "concept.ai_frontiers.evolutionary_computation",
       "target": "concept.optimization.stochastic_optimization",
@@ -7096,6 +7505,174 @@
       "target": "concept.optimization.combinatorial_optimization",
       "type": "used_to_solve",
       "note": "Evolutionary algorithms are a standard heuristic for combinatorial problems such as scheduling and routing, where the search space is discrete and exact methods are too slow.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.fuzzy_logic|contrasts_with|concept.probability.probability_theory",
+      "source": "concept.ai_frontiers.fuzzy_logic",
+      "target": "concept.probability.probability_theory",
+      "type": "contrasts_with",
+      "note": "A probability measures uncertainty about a proposition that is either true or false, while a fuzzy truth degree measures how far a vague proposition is true, and fuzzy connectives are truth-functional where probabilities of compound events are not.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.fuzzy_logic|contributes_to|concept.applications.control",
+      "source": "concept.ai_frontiers.fuzzy_logic",
+      "target": "concept.applications.control",
+      "type": "contributes_to",
+      "note": "Fuzzy controllers encode an operator's rules of thumb, such as turning the fan up when it is warm, and blend them smoothly, which made them a practical way to build controllers without a precise model of the system.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.fuzzy_logic|generalizes|concept.logic.propositional_logic",
+      "source": "concept.ai_frontiers.fuzzy_logic",
+      "target": "concept.logic.propositional_logic",
+      "type": "generalizes",
+      "note": "Fuzzy connectives are defined on the whole interval from 0 to 1, and restricted to the values 0 and 1 the standard ones agree with the classical truth tables, so classical propositional logic is the special case with crisp truth values.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.genetic_algorithms|contrasts_with|concept.optimization.stochastic_optimization",
+      "source": "concept.ai_frontiers.genetic_algorithms",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "contrasts_with",
+      "note": "Stochastic gradient methods refine one candidate using noisy derivative information, while a genetic algorithm refines a population using only fitness scores, so it applies where no gradient exists but typically needs far more evaluations.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.genetic_algorithms|specializes|concept.ai_frontiers.evolutionary_computation",
+      "source": "concept.ai_frontiers.genetic_algorithms",
+      "target": "concept.ai_frontiers.evolutionary_computation",
+      "type": "specializes",
+      "note": "Genetic algorithms are the branch of evolutionary computation that encodes candidates as fixed-length strings, often of bits, and relies most heavily on crossover to combine them.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.genetic_algorithms|used_to_solve|concept.optimization.combinatorial_optimization",
+      "source": "concept.ai_frontiers.genetic_algorithms",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "used_to_solve",
+      "note": "Scheduling, routing and packing problems are among the commonest uses of genetic algorithms, provided the encoding and crossover keep children valid, which for orderings needs special operators.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.interpretability|contrasts_with|concept.ai_frontiers.causal_inference",
+      "source": "concept.ai_frontiers.interpretability",
+      "target": "concept.ai_frontiers.causal_inference",
+      "type": "contrasts_with",
+      "note": "A feature attribution describes how a model's output depends on its inputs, not how the world's outcome depends on those variables, so an important feature for the model need not be a cause of the real outcome.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.interpretability|contributes_to|concept.ai_frontiers.ai_safety",
+      "source": "concept.ai_frontiers.interpretability",
+      "target": "concept.ai_frontiers.ai_safety",
+      "type": "contributes_to",
+      "note": "Understanding why a model behaves as it does is one way to find failures, biases and unintended strategies before deployment, which is why interpretability is a pillar of safety research.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.interpretability|requires|concept.learning.supervised_learning",
+      "source": "concept.ai_frontiers.interpretability",
+      "target": "concept.learning.supervised_learning",
+      "type": "requires",
+      "note": "Most interpretability methods explain a trained predictor as a function from input features to outputs, so what counts as a feature and what the model was trained to predict frame every explanation.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.mechanistic_interpretability|contributes_to|concept.ai_frontiers.ai_safety",
+      "source": "concept.ai_frontiers.mechanistic_interpretability",
+      "target": "concept.ai_frontiers.ai_safety",
+      "type": "contributes_to",
+      "note": "If a model's internal mechanisms can be read, deceptive or unintended strategies might be detected directly rather than inferred from behaviour, which is a central safety motivation for the field.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.mechanistic_interpretability|requires|concept.deep_learning.transformers",
+      "source": "concept.ai_frontiers.mechanistic_interpretability",
+      "target": "concept.deep_learning.transformers",
+      "type": "requires",
+      "note": "Much current mechanistic work studies transformers, and its tools for them — the residual stream as a shared channel, and attention heads split into query-key and output-value circuits — are readings of the transformer's own equations.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.mechanistic_interpretability|specializes|concept.ai_frontiers.interpretability",
+      "source": "concept.ai_frontiers.mechanistic_interpretability",
+      "target": "concept.ai_frontiers.interpretability",
+      "type": "specializes",
+      "note": "Mechanistic interpretability is the part of interpretability that explains a network by its internal computations — features and the weights connecting them — rather than by how its outputs depend on its inputs.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.neuro_symbolic_ai|contrasts_with|concept.symbolic_ai.expert_systems",
+      "source": "concept.ai_frontiers.neuro_symbolic_ai",
+      "target": "concept.symbolic_ai.expert_systems",
+      "type": "contrasts_with",
+      "note": "Expert systems reason with rules over symbols that people supply by hand, while neuro-symbolic systems learn to produce or refine those symbols from raw data such as images and text.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.neuro_symbolic_ai|requires|concept.deep_learning.backpropagation",
+      "source": "concept.ai_frontiers.neuro_symbolic_ai",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "requires",
+      "note": "Many neuro-symbolic methods train their neural components end to end through the reasoning step, which needs the symbolic part relaxed or made probabilistic so that gradients can flow through it.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.neuro_symbolic_ai|requires|concept.symbolic_ai.knowledge_representation",
+      "source": "concept.ai_frontiers.neuro_symbolic_ai",
+      "target": "concept.symbolic_ai.knowledge_representation",
+      "type": "requires",
+      "note": "The symbolic half of a neuro-symbolic system is a knowledge representation — rules, logical formulas or a knowledge graph — and its expressiveness bounds what the combined system can reason about.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.neuroevolution|contrasts_with|concept.deep_learning.backpropagation",
+      "source": "concept.ai_frontiers.neuroevolution",
+      "target": "concept.deep_learning.backpropagation",
+      "type": "contrasts_with",
+      "note": "Backpropagation computes an exact gradient of a differentiable loss for one network, while neuroevolution estimates a search direction from the scores of perturbed networks and so works when the objective cannot be differentiated.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.neuroevolution|contrasts_with|concept.reinforcement_learning.policy_gradients",
+      "source": "concept.ai_frontiers.neuroevolution",
+      "target": "concept.reinforcement_learning.policy_gradients",
+      "type": "contrasts_with",
+      "note": "Policy gradient methods perturb actions and credit individual steps of an episode, whereas evolution strategies perturb the policy's parameters and score whole episodes, which ignores the time structure but tolerates sparse and delayed reward.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.neuroevolution|specializes|concept.ai_frontiers.evolutionary_computation",
+      "source": "concept.ai_frontiers.neuroevolution",
+      "target": "concept.ai_frontiers.evolutionary_computation",
+      "type": "specializes",
+      "note": "Neuroevolution is evolutionary computation whose candidates are neural networks, encoded as weight vectors, architectures or both.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.swarm_intelligence|contrasts_with|concept.ai_frontiers.evolutionary_computation",
+      "source": "concept.ai_frontiers.swarm_intelligence",
+      "target": "concept.ai_frontiers.evolutionary_computation",
+      "type": "contrasts_with",
+      "note": "Both improve a population using only fitness scores, but evolutionary methods breed new candidates from old ones, while swarm methods keep the same agents and move them according to what they and their neighbours have found.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.swarm_intelligence|contrasts_with|concept.optimization.stochastic_optimization",
+      "source": "concept.ai_frontiers.swarm_intelligence",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "contrasts_with",
+      "note": "Particle swarm optimisation searches continuous spaces like gradient methods do, but moves each particle toward remembered good positions instead of along a derivative, so it needs no gradient and gives no convergence guarantee to an optimum.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.swarm_intelligence|used_to_solve|concept.optimization.combinatorial_optimization",
+      "source": "concept.ai_frontiers.swarm_intelligence",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "used_to_solve",
+      "note": "Ant colony optimisation builds solutions to routing and scheduling problems piece by piece, guided by pheromone trails that record which choices appeared in good solutions.",
       "condition": null
     },
     {

@@ -11,6 +11,7 @@ review_state: generated-draft
 summary: The theory that predicts what a system of enormously many degrees of freedom does on average, by putting a probability distribution on its microscopic configurations and extracting everything measurable from one normalising sum.
 categories:
   - Mathematics/Mathematical Physics
+  - Mathematics/Information Theory
 primary_category: Mathematics/Mathematical Physics
 relationships:
   - type: requires
