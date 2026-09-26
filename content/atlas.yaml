@@ -1487,62 +1487,62 @@ candidates:
     title: GPT
     categories:
       - atlas.artificial_intelligence.domains.natural_language_processing
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.nlp.gpt
   - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.agents
     title: Agents
     categories:
       - atlas.artificial_intelligence.domains.natural_language_processing
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.nlp.agents
   - candidate_id: candidate.artificial_intelligence.domains.speech
     title: Speech
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.speech
   - candidate_id: candidate.artificial_intelligence.domains.audio
     title: Audio
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.audio
   - candidate_id: candidate.artificial_intelligence.domains.time_series
     title: Time Series
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.time_series
   - candidate_id: candidate.artificial_intelligence.domains.forecasting
     title: Forecasting
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.forecasting
   - candidate_id: candidate.artificial_intelligence.domains.robotics
     title: Robotics
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.robotics
   - candidate_id: candidate.artificial_intelligence.domains.control
     title: Control
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.control
   - candidate_id: candidate.artificial_intelligence.domains.recommender_systems
     title: Recommender Systems
     categories:
       - atlas.artificial_intelligence.domains
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.applications.recommender_systems
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.evolutionary_computation
     title: Evolutionary Computation
     categories:
       - atlas.artificial_intelligence.other_traditions_and_frontiers
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.ai_frontiers.evolutionary_computation
   - candidate_id: candidate.artificial_intelligence.other_traditions_and_frontiers.genetic_algorithms
     title: Genetic Algorithms
     categories:

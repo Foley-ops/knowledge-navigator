@@ -13,20 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 27 of 28.** 10 of 10 pages in it are still to write.
+**Batch 28 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/gpt.md` — GPT (concept.nlp.gpt)
-- `content/concepts/agents.md` — Agents (concept.nlp.agents)
-- `content/concepts/time-series.md` — Time Series (concept.applications.time_series)
-- `content/concepts/forecasting.md` — Forecasting (concept.applications.forecasting)
-- `content/concepts/speech.md` — Speech (concept.applications.speech)
-- `content/concepts/audio.md` — Audio (concept.applications.audio)
-- `content/concepts/control.md` — Control (concept.applications.control)
-- `content/concepts/robotics.md` — Robotics (concept.applications.robotics)
-- `content/concepts/recommender-systems.md` — Recommender Systems (concept.applications.recommender_systems)
-- `content/concepts/evolutionary-computation.md` — Evolutionary Computation (concept.ai_frontiers.evolutionary_computation)
+- `content/concepts/genetic-algorithms.md` — Genetic Algorithms (concept.ai_frontiers.genetic_algorithms)
+- `content/concepts/neuroevolution.md` — Neuroevolution (concept.ai_frontiers.neuroevolution)
+- `content/concepts/swarm-intelligence.md` — Swarm Intelligence (concept.ai_frontiers.swarm_intelligence)
+- `content/concepts/fuzzy-logic.md` — Fuzzy Logic (concept.ai_frontiers.fuzzy_logic)
+- `content/concepts/causal-inference.md` — Causal Inference (concept.ai_frontiers.causal_inference)
+- `content/concepts/neuro-symbolic-ai.md` — Neuro-Symbolic AI (concept.ai_frontiers.neuro_symbolic_ai)
+- `content/concepts/interpretability.md` — Interpretability (concept.ai_frontiers.interpretability)
+- `content/concepts/mechanistic-interpretability.md` — Mechanistic Interpretability (concept.ai_frontiers.mechanistic_interpretability)
+- `content/concepts/ai-safety.md` — AI Safety (concept.ai_frontiers.ai_safety)
+- `content/concepts/alignment.md` — Alignment (concept.ai_frontiers.alignment)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -36,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 271 |
-| Markdown pages in the corpus | 271 |
-| Tier 1 pages | 271 |
+| Candidates covered by a page | 281 |
+| Markdown pages in the corpus | 281 |
+| Tier 1 pages | 281 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 260 of 280 |
+| Planned pages written | 270 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 128 | 148 | 86% |
+| Artificial Intelligence | 138 | 148 | 93% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -58,11 +58,11 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Classical Machine Learning | 26 | 26 | complete |
 | Artificial Intelligence/Deep Learning — Architectures | 42 | 42 | complete |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
-| Artificial Intelligence/Domains | 0 | 7 |  |
+| Artificial Intelligence/Domains | 7 | 7 | complete |
 | Artificial Intelligence/Domains/Computer Vision | 4 | 4 | complete |
-| Artificial Intelligence/Domains/Natural Language Processing | 3 | 5 |  |
+| Artificial Intelligence/Domains/Natural Language Processing | 5 | 5 | complete |
 | Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
-| Artificial Intelligence/Other Traditions & Frontiers | 0 | 11 |  |
+| Artificial Intelligence/Other Traditions & Frontiers | 1 | 11 |  |
 | Artificial Intelligence/Reinforcement Learning | 19 | 19 | complete |
 | Artificial Intelligence/Symbolic AI | 5 | 5 | complete |
 | Artificial Intelligence/Symbolic AI/Planning | 3 | 3 | complete |
@@ -88,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-260 of the planned 280, in the order they were written.
+270 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -352,6 +352,16 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Tokenization | `concept.nlp.tokenization` | tier 1 | covered |
 | Embeddings | `concept.nlp.embeddings` | tier 1 | covered |
 | BERT | `concept.nlp.bert` | tier 1 | covered |
+| GPT | `concept.nlp.gpt` | tier 1 | covered |
+| Agents | `concept.nlp.agents` | tier 1 | covered |
+| Time Series | `concept.applications.time_series` | tier 1 | covered |
+| Forecasting | `concept.applications.forecasting` | tier 1 | covered |
+| Speech | `concept.applications.speech` | tier 1 | covered |
+| Audio | `concept.applications.audio` | tier 1 | covered |
+| Control | `concept.applications.control` | tier 1 | covered |
+| Robotics | `concept.applications.robotics` | tier 1 | covered |
+| Recommender Systems | `concept.applications.recommender_systems` | tier 1 | covered |
+| Evolutionary Computation | `concept.ai_frontiers.evolutionary_computation` | tier 1 | covered |
 
 ## The ordered candidate list
 
@@ -750,20 +760,20 @@ it. Batches are ten pages each.
 | x | Embeddings | `concept.nlp.embeddings` | Artificial Intelligence/Domains/Natural Language Processing |
 | x | BERT | `concept.nlp.bert` | Artificial Intelligence/Domains/Natural Language Processing |
 
-### Batch 27
+### Batch 27 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | GPT | `concept.nlp.gpt` | Artificial Intelligence/Domains/Natural Language Processing |
-|   | Agents | `concept.nlp.agents` | Artificial Intelligence/Domains/Natural Language Processing |
-|   | Time Series | `concept.applications.time_series` | Artificial Intelligence/Domains |
-|   | Forecasting | `concept.applications.forecasting` | Artificial Intelligence/Domains |
-|   | Speech | `concept.applications.speech` | Artificial Intelligence/Domains |
-|   | Audio | `concept.applications.audio` | Artificial Intelligence/Domains |
-|   | Control | `concept.applications.control` | Artificial Intelligence/Domains |
-|   | Robotics | `concept.applications.robotics` | Artificial Intelligence/Domains |
-|   | Recommender Systems | `concept.applications.recommender_systems` | Artificial Intelligence/Domains |
-|   | Evolutionary Computation | `concept.ai_frontiers.evolutionary_computation` | Artificial Intelligence/Other Traditions & Frontiers |
+| x | GPT | `concept.nlp.gpt` | Artificial Intelligence/Domains/Natural Language Processing |
+| x | Agents | `concept.nlp.agents` | Artificial Intelligence/Domains/Natural Language Processing |
+| x | Time Series | `concept.applications.time_series` | Artificial Intelligence/Domains |
+| x | Forecasting | `concept.applications.forecasting` | Artificial Intelligence/Domains |
+| x | Speech | `concept.applications.speech` | Artificial Intelligence/Domains |
+| x | Audio | `concept.applications.audio` | Artificial Intelligence/Domains |
+| x | Control | `concept.applications.control` | Artificial Intelligence/Domains |
+| x | Robotics | `concept.applications.robotics` | Artificial Intelligence/Domains |
+| x | Recommender Systems | `concept.applications.recommender_systems` | Artificial Intelligence/Domains |
+| x | Evolutionary Computation | `concept.ai_frontiers.evolutionary_computation` | Artificial Intelligence/Other Traditions & Frontiers |
 
 ### Batch 28
 
@@ -784,8 +794,13 @@ it. Batches are ten pages each.
 
 ## Next action
 
-**Write Batch 20 of 28**, the ten pages named under *Resume point* above. Nothing is
-uncommitted: the working tree is clean and Batch 19 is committed at `b80953b`.
+**Write Batch 28 of 28**, the ten pages named under *Resume point* above, then do the
+Definition-of-Done work: fill the eight empty atlas categories, confirm search and routing
+reach every page, and run the Docker build and suite. Batch 27 is committed; its gate was
+`npm run check` (9 of 9 stages) and `npm run test:browser` (76 of 76). Since batch 26 each
+batch is written directly and read by a single adversarial reviewer agent, which cut cost
+sharply without dropping the fault rate the reviewer catches (15 in batch 26, 23 in batch
+27, every one applied or settled before finalising).
 
 A fresh agent needs four things that are not obvious from the repository:
 

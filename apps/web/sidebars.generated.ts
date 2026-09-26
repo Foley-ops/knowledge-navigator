@@ -162,11 +162,20 @@ const sidebars: SidebarsConfig = {
               label: "Natural Language Processing",
               collapsed: true,
               items: [
+                { type: 'doc', id: "agents", label: "Agents" },
                 { type: 'doc', id: "bert", label: "BERT" },
                 { type: 'doc', id: "embeddings", label: "Embeddings" },
+                { type: 'doc', id: "gpt", label: "GPT" },
                 { type: 'doc', id: "tokenization", label: "Tokenization" },
               ],
             },
+            { type: 'doc', id: "audio", label: "Audio" },
+            { type: 'doc', id: "control", label: "Control" },
+            { type: 'doc', id: "forecasting", label: "Forecasting" },
+            { type: 'doc', id: "recommender-systems", label: "Recommender Systems" },
+            { type: 'doc', id: "robotics", label: "Robotics" },
+            { type: 'doc', id: "speech", label: "Speech" },
+            { type: 'doc', id: "time-series", label: "Time Series" },
           ],
         },
         {
@@ -183,6 +192,14 @@ const sidebars: SidebarsConfig = {
             { type: 'doc', id: "supervised-learning", label: "Supervised Learning" },
             { type: 'doc', id: "transfer-learning", label: "Transfer Learning" },
             { type: 'doc', id: "unsupervised-learning", label: "Unsupervised Learning" },
+          ],
+        },
+        {
+          type: 'category',
+          label: "Other Traditions & Frontiers",
+          collapsed: true,
+          items: [
+            { type: 'doc', id: "evolutionary-computation", label: "Evolutionary Computation" },
           ],
         },
         {

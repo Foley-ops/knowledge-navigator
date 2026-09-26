@@ -1928,6 +1928,34 @@
       "url": "https://arxiv.org/abs/2210.03629",
       "kind": "preprint",
       "topics": ["language model agents", "tool use", "reasoning", "acting"]
+    },
+    {
+      "id": "source.salimans2017.evolution_strategies",
+      "title": "Evolution Strategies as a Scalable Alternative to Reinforcement Learning",
+      "url": "https://arxiv.org/abs/1703.03864",
+      "kind": "preprint",
+      "topics": ["evolution strategies", "neuroevolution", "reinforcement learning", "parallelism"]
+    },
+    {
+      "id": "source.plato.fuzzy_logic",
+      "title": "Stanford Encyclopedia of Philosophy: Fuzzy Logic",
+      "url": "https://plato.stanford.edu/entries/logic-fuzzy/",
+      "kind": "authoritative-secondary",
+      "topics": ["fuzzy logic", "many-valued logic", "t-norms", "vagueness"]
+    },
+    {
+      "id": "source.hernan_robins.causal_inference_what_if",
+      "title": "Causal Inference: What If",
+      "url": "https://miguelhernan.org/whatifbook",
+      "kind": "authoritative-secondary",
+      "topics": ["causal inference", "potential outcomes", "confounding", "randomized experiments"]
+    },
+    {
+      "id": "source.garcez2020.neurosymbolic_third_wave",
+      "title": "Neurosymbolic AI: The 3rd Wave",
+      "url": "https://arxiv.org/abs/2012.05876",
+      "kind": "preprint",
+      "topics": ["neuro-symbolic ai", "knowledge representation", "reasoning", "deep learning"]
     }
   ]
 }

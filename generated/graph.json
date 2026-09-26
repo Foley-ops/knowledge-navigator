@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-26T02:23:08.920Z",
-  "corpusHash": "9f79124aa86640cfec2ae58939ffe481d3777eeef2088e075b2f63a833ab202c",
-  "atlasHash": "6594bbcf34daf7442f2c44ca16fd49df28b63fe918fd96b4b78a83b7d9510487",
+  "builtAt": "2026-09-26T02:38:05.950Z",
+  "corpusHash": "dc4df0a486c6cd0a08d1c4d32e6eb6c13f11ac4b872233571a863f10f08b6f02",
+  "atlasHash": "2f3363907645ad7b5e624305543262d13d12777dbd954b8519b4d00fd44abebf",
   "counts": {
-    "concepts": 271,
-    "relationships": 1048,
-    "categories": 33
+    "concepts": 281,
+    "relationships": 1071,
+    "categories": 34
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 271,
+      "1": 281,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 271,
+      "markdown": 281,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 271
+      "generated-draft": 281
     },
-    "conceptsWithArticle": 271,
+    "conceptsWithArticle": 281,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 20,
+      "candidate": 10,
       "proposed-tier-3": 0,
-      "covered": 271,
+      "covered": 281,
       "deferred": 0
     },
-    "unresolvedReferences": 390,
-    "unresolvedGroups": 388,
+    "unresolvedReferences": 400,
+    "unresolvedGroups": 398,
     "blockingUnresolvedReferences": 0,
     "claims": 58,
     "claimsByStatus": {
@@ -290,8 +290,24 @@
       "topLevel": "Artificial Intelligence",
       "depth": 2,
       "parent": "Artificial Intelligence",
-      "primaryConceptIds": [],
-      "conceptIds": []
+      "primaryConceptIds": [
+        "concept.applications.audio",
+        "concept.applications.control",
+        "concept.applications.forecasting",
+        "concept.applications.recommender_systems",
+        "concept.applications.robotics",
+        "concept.applications.speech",
+        "concept.applications.time_series"
+      ],
+      "conceptIds": [
+        "concept.applications.audio",
+        "concept.applications.control",
+        "concept.applications.forecasting",
+        "concept.applications.recommender_systems",
+        "concept.applications.robotics",
+        "concept.applications.speech",
+        "concept.applications.time_series"
+      ]
     },
     {
       "path": "Artificial Intelligence/Domains/Computer Vision",
@@ -319,13 +335,17 @@
       "depth": 3,
       "parent": "Artificial Intelligence/Domains",
       "primaryConceptIds": [
+        "concept.nlp.agents",
         "concept.nlp.bert",
         "concept.nlp.embeddings",
+        "concept.nlp.gpt",
         "concept.nlp.tokenization"
       ],
       "conceptIds": [
+        "concept.nlp.agents",
         "concept.nlp.bert",
         "concept.nlp.embeddings",
+        "concept.nlp.gpt",
         "concept.nlp.tokenization"
       ]
     },
@@ -356,6 +376,19 @@
         "concept.learning.supervised_learning",
         "concept.learning.transfer_learning",
         "concept.learning.unsupervised_learning"
+      ]
+    },
+    {
+      "path": "Artificial Intelligence/Other Traditions & Frontiers",
+      "name": "Other Traditions & Frontiers",
+      "topLevel": "Artificial Intelligence",
+      "depth": 2,
+      "parent": "Artificial Intelligence",
+      "primaryConceptIds": [
+        "concept.ai_frontiers.evolutionary_computation"
+      ],
+      "conceptIds": [
+        "concept.ai_frontiers.evolutionary_computation"
       ]
     },
     {
@@ -955,6 +988,28 @@
     }
   ],
   "nodes": [
+    {
+      "id": "concept.ai_frontiers.evolutionary_computation",
+      "title": "Evolutionary Computation",
+      "slug": "/concepts/evolutionary-computation",
+      "kind": "method",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Evolutionary computation searches for good solutions by maintaining a population of candidates and repeatedly selecting, recombining and mutating the fittest, which needs only a way to score candidates and no gradients at all.",
+      "aliases": [
+        "evolutionary algorithms"
+      ],
+      "primaryCategory": "Artificial Intelligence/Other Traditions & Frontiers",
+      "categories": [
+        "Artificial Intelligence/Other Traditions & Frontiers"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.other_traditions_and_frontiers.evolutionary_computation",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
     {
       "id": "concept.algebra.clifford_algebra",
       "title": "Clifford Algebra",
@@ -1811,6 +1866,154 @@
       "candidateId": "candidate.mathematics.analysis.wavelets",
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.audio",
+      "title": "Audio",
+      "slug": "/concepts/audio",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Machine learning on audio starts from a sampled pressure waveform and usually works on a time-frequency picture of it — a spectrogram — whose construction decides what a model can and cannot hear.",
+      "aliases": [
+        "audio signal processing"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.audio",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.control",
+      "title": "Control",
+      "slug": "/concepts/control",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Control is the design of inputs that make a dynamical system behave as intended, usually by feeding its measured output back to correct its course — the idea behind thermostats, autopilots and robot joints.",
+      "aliases": [
+        "control theory"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.control",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.forecasting",
+      "title": "Forecasting",
+      "slug": "/concepts/forecasting",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Forecasting predicts future values of a quantity from its history and related information, and doing it well means stating the uncertainty honestly and proving a method beats simple benchmarks on data it has not seen.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.forecasting",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.recommender_systems",
+      "title": "Recommender Systems",
+      "slug": "/concepts/recommender-systems",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A recommender system predicts which items a person will value from their past behaviour and other people's, and because its recommendations shape the very behaviour it later learns from, it is a feedback loop rather than an ordinary prediction problem.",
+      "aliases": [
+        "recommendation systems"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.recommender_systems",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.robotics",
+      "title": "Robotics",
+      "slug": "/concepts/robotics",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Robotics builds machines that sense, decide and act in the physical world, and it combines perception, state estimation, motion planning and control under an uncertainty that a purely computational task never faces.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.robotics",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.speech",
+      "title": "Speech",
+      "slug": "/concepts/speech",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Speech processing turns spoken language into text and text into speech, and its recognition half moved from hidden Markov models combining separate acoustic, pronunciation and language models to neural systems trained end to end.",
+      "aliases": [
+        "speech processing"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.speech",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
+      "id": "concept.applications.time_series",
+      "title": "Time Series",
+      "slug": "/concepts/time-series",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A time series is a sequence of observations ordered in time, and analysing one means modelling how each value depends on the ones before it — the dependence that ordinary statistics assumes away is here the whole subject.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Domains",
+      "categories": [
+        "Artificial Intelligence/Domains"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.time_series",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -5076,6 +5279,28 @@
       "claims": 0
     },
     {
+      "id": "concept.nlp.agents",
+      "title": "Agents",
+      "slug": "/concepts/agents",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An agent perceives its environment and acts on it in a loop; a language-model agent puts a large language model at the centre of that loop, letting it choose tools to call and read the results, which turns a text generator into a system that takes actions.",
+      "aliases": [
+        "language model agents"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Natural Language Processing",
+      "categories": [
+        "Artificial Intelligence/Domains/Natural Language Processing"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.natural_language_processing.agents",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.nlp.bert",
       "title": "BERT",
       "slug": "/concepts/bert",
@@ -5123,6 +5348,28 @@
       "candidateStatus": "covered",
       "unresolvedReferences": 0,
       "claims": 10
+    },
+    {
+      "id": "concept.nlp.gpt",
+      "title": "GPT",
+      "slug": "/concepts/gpt",
+      "kind": "implementation",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "GPT names OpenAI's family of decoder-only transformer language models, trained to predict the next token of text and then used to generate text one token at a time — the design behind most of today's large language models.",
+      "aliases": [
+        "Generative Pre-trained Transformer"
+      ],
+      "primaryCategory": "Artificial Intelligence/Domains/Natural Language Processing",
+      "categories": [
+        "Artificial Intelligence/Domains/Natural Language Processing"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.natural_language_processing.gpt",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
     },
     {
       "id": "concept.nlp.tokenization",
@@ -6836,6 +7083,22 @@
   ],
   "edges": [
     {
+      "id": "concept.ai_frontiers.evolutionary_computation|contrasts_with|concept.optimization.stochastic_optimization",
+      "source": "concept.ai_frontiers.evolutionary_computation",
+      "target": "concept.optimization.stochastic_optimization",
+      "type": "contrasts_with",
+      "note": "Stochastic gradient methods improve one candidate by following noisy gradient estimates, while evolutionary methods improve a population using only the scores of its members, which is why they work on objectives with no usable gradient.",
+      "condition": null
+    },
+    {
+      "id": "concept.ai_frontiers.evolutionary_computation|used_to_solve|concept.optimization.combinatorial_optimization",
+      "source": "concept.ai_frontiers.evolutionary_computation",
+      "target": "concept.optimization.combinatorial_optimization",
+      "type": "used_to_solve",
+      "note": "Evolutionary algorithms are a standard heuristic for combinatorial problems such as scheduling and routing, where the search space is discrete and exact methods are too slow.",
+      "condition": null
+    },
+    {
       "id": "concept.algebra.clifford_algebra|contributes_to|concept.algebra.representation_theory",
       "source": "concept.algebra.clifford_algebra",
       "target": "concept.algebra.representation_theory",
@@ -8033,6 +8296,118 @@
       "target": "concept.analysis.harmonic_analysis",
       "type": "specializes",
       "note": "Wavelet theory is the branch of harmonic analysis that decomposes functions over a dilation-and-translation family rather than over characters of a group.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.audio|contrasts_with|concept.analysis.wavelets",
+      "source": "concept.applications.audio",
+      "target": "concept.analysis.wavelets",
+      "type": "contrasts_with",
+      "note": "A short-time Fourier transform analyses every frequency with the same window length, while a wavelet transform uses short windows for high frequencies and long ones for low, trading uniform resolution for multi-resolution analysis.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.audio|requires|concept.analysis.fourier_analysis",
+      "source": "concept.applications.audio",
+      "target": "concept.analysis.fourier_analysis",
+      "type": "requires",
+      "note": "The spectrogram that most audio models consume is a sequence of short-time Fourier transforms, so its frequency resolution, leakage and trade-offs are Fourier analysis applied frame by frame.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.control|contrasts_with|concept.reinforcement_learning.model_based_reinforcement_learning",
+      "source": "concept.applications.control",
+      "target": "concept.reinforcement_learning.model_based_reinforcement_learning",
+      "type": "contrasts_with",
+      "note": "Classical optimal control assumes the system's dynamics are known and designs the controller from them, while model-based reinforcement learning has to learn those dynamics from interaction before it can plan.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.control|requires|concept.analysis.dynamical_systems",
+      "source": "concept.applications.control",
+      "target": "concept.analysis.dynamical_systems",
+      "type": "requires",
+      "note": "A controller acts on a system whose state evolves by its own dynamics, so stability, equilibria and how perturbations grow or decay are the language control is written in.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.forecasting|contributes_to|concept.applications.control",
+      "source": "concept.applications.forecasting",
+      "target": "concept.applications.control",
+      "type": "contributes_to",
+      "note": "Model predictive control chooses actions by forecasting how a system will evolve under each candidate, so poor forecasts degrade the control it achieves.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.forecasting|requires|concept.applications.time_series",
+      "source": "concept.applications.forecasting",
+      "target": "concept.applications.time_series",
+      "type": "requires",
+      "note": "Almost every forecasting method models the trend, seasonality and autocorrelation of a time series, so those have to be understood before a forecast can be built or judged.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.recommender_systems|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.applications.recommender_systems",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "Supervised learning assumes a fixed distribution of examples, but a recommender decides which items people see and therefore which interactions it gets to learn from, so its training data depends on its own past outputs.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.recommender_systems|requires|concept.linear_algebra.matrix_decompositions",
+      "source": "concept.applications.recommender_systems",
+      "target": "concept.linear_algebra.matrix_decompositions",
+      "type": "requires",
+      "note": "Matrix factorisation, the central collaborative-filtering method, approximates the sparse user-item matrix by a low-rank product, which is a low-rank decomposition adapted to missing entries.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.robotics|requires|concept.applications.control",
+      "source": "concept.applications.robotics",
+      "target": "concept.applications.control",
+      "type": "requires",
+      "note": "Nearly every motion a robot makes is ultimately executed by feedback controllers driving its motors, so control theory sets what motion is physically achievable.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.robotics|requires|concept.probability.bayesian_inference",
+      "source": "concept.applications.robotics",
+      "target": "concept.probability.bayesian_inference",
+      "type": "requires",
+      "note": "A robot rarely observes its full state directly and instead estimates it by combining uncertain motion with uncertain measurements, which is recursive Bayesian updating.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.speech|requires|concept.applications.audio",
+      "source": "concept.applications.speech",
+      "target": "concept.applications.audio",
+      "type": "requires",
+      "note": "Speech systems consume audio through the same sampled waveforms and spectrogram features as any audio model, so their front end is audio processing.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.speech|requires|concept.probability.stochastic_processes",
+      "source": "concept.applications.speech",
+      "target": "concept.probability.stochastic_processes",
+      "type": "requires",
+      "note": "Classical recognisers model speech as a hidden Markov process — an unobserved sequence of states emitting observed acoustic frames — so the Markov property and its algorithms come first.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.time_series|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.applications.time_series",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "Supervised learning usually assumes examples are independent and identically distributed, while a time series is defined by the dependence between neighbouring observations, which changes how models are fitted and, above all, how they are evaluated.",
+      "condition": null
+    },
+    {
+      "id": "concept.applications.time_series|requires|concept.probability.stochastic_processes",
+      "source": "concept.applications.time_series",
+      "target": "concept.probability.stochastic_processes",
+      "type": "requires",
+      "note": "An observed time series is treated as one realisation of a stochastic process, so stationarity, autocorrelation and the models built on them are all properties of that process.",
       "condition": null
     },
     {
@@ -12580,6 +12955,30 @@
       "condition": null
     },
     {
+      "id": "concept.nlp.agents|contrasts_with|concept.planning.strips",
+      "source": "concept.nlp.agents",
+      "target": "concept.planning.strips",
+      "type": "contrasts_with",
+      "note": "A classical planner searches an explicit model of actions and their effects for a plan that provably reaches the goal, while a language-model agent proposes steps one at a time with no such model and no such guarantee.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.agents|contrasts_with|concept.reinforcement_learning.markov_decision_processes",
+      "source": "concept.nlp.agents",
+      "target": "concept.reinforcement_learning.markov_decision_processes",
+      "type": "contrasts_with",
+      "note": "A reinforcement-learning agent learns its policy from reward in an environment formalised as a decision process, whereas a language-model agent acts from a pretrained model steered by its prompt, usually without any reward-driven training on the task.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.agents|requires|concept.nlp.gpt",
+      "source": "concept.nlp.agents",
+      "target": "concept.nlp.gpt",
+      "type": "requires",
+      "note": "A language-model agent's decisions are text generated by a GPT-style model, so what the agent can and cannot do starts with what that model can do.",
+      "condition": null
+    },
+    {
       "id": "concept.nlp.bert|contrasts_with|concept.deep_learning.recurrent_neural_networks",
       "source": "concept.nlp.bert",
       "target": "concept.deep_learning.recurrent_neural_networks",
@@ -12721,6 +13120,38 @@
       "target": "concept.nlp.bert",
       "type": "useful_when",
       "note": "a trained contextual model supersedes a static vector for context-dependent meaning, so a static embedding is useful precisely when the token's meaning is context-invariant (lexicons, retrieval, analogy probes) or when a contextual model is too expensive.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.gpt|contrasts_with|concept.nlp.bert",
+      "source": "concept.nlp.gpt",
+      "target": "concept.nlp.bert",
+      "type": "contrasts_with",
+      "note": "BERT is an encoder trained to fill in masked tokens using context on both sides, while GPT is a decoder trained to predict the next token from the left context only, which is what lets it generate.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.gpt|contributes_to|concept.nlp.agents",
+      "source": "concept.nlp.gpt",
+      "target": "concept.nlp.agents",
+      "type": "contributes_to",
+      "note": "Language-model agents use a GPT-style model as the component that decides what to do next, so the agent inherits both its abilities and its failure modes.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.gpt|requires|concept.deep_learning.transformers",
+      "source": "concept.nlp.gpt",
+      "target": "concept.deep_learning.transformers",
+      "type": "requires",
+      "note": "A GPT model is a stack of transformer decoder blocks with causal self-attention, so its architecture is read directly off the transformer.",
+      "condition": null
+    },
+    {
+      "id": "concept.nlp.gpt|requires|concept.nlp.tokenization",
+      "source": "concept.nlp.gpt",
+      "target": "concept.nlp.tokenization",
+      "type": "requires",
+      "note": "The model reads and writes tokens rather than characters or words, so its inputs, outputs, context length and several of its odd failures are all defined in tokens.",
       "condition": null
     },
     {
