@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "builtAt": "2026-09-24T14:51:51.508Z",
-  "corpusHash": "3b9b2e32a43850539d6ff0c0d85207d64c35822c305048d8961fd953299b42ce",
-  "atlasHash": "6859b036ea56be95648bf1db09893a35d85d520814b042e59de43f772f2c5694",
+  "builtAt": "2026-09-26T02:23:08.920Z",
+  "corpusHash": "9f79124aa86640cfec2ae58939ffe481d3777eeef2088e075b2f63a833ab202c",
+  "atlasHash": "6594bbcf34daf7442f2c44ca16fd49df28b63fe918fd96b4b78a83b7d9510487",
   "counts": {
-    "concepts": 267,
-    "relationships": 1036,
+    "concepts": 271,
+    "relationships": 1048,
     "categories": 33
   },
   "coverage": {
     "conceptsByTier": {
-      "1": 267,
+      "1": 271,
       "2": 0,
       "3": 0
     },
     "conceptsByFormat": {
-      "markdown": 267,
+      "markdown": 271,
       "graph-only": 0
     },
     "conceptsByReviewState": {
-      "generated-draft": 267
+      "generated-draft": 271
     },
-    "conceptsWithArticle": 267,
+    "conceptsWithArticle": 271,
     "atlasAreas": 3,
     "atlasCategories": 38,
     "atlasEmptyCategories": 8,
     "atlasCandidates": 291,
     "candidatesByStatus": {
-      "candidate": 24,
+      "candidate": 20,
       "proposed-tier-3": 0,
-      "covered": 267,
+      "covered": 271,
       "deferred": 0
     },
-    "unresolvedReferences": 387,
-    "unresolvedGroups": 385,
+    "unresolvedReferences": 390,
+    "unresolvedGroups": 388,
     "blockingUnresolvedReferences": 0,
     "claims": 58,
     "claimsByStatus": {
@@ -302,12 +302,14 @@
       "primaryConceptIds": [
         "concept.vision.classification",
         "concept.vision.detection",
-        "concept.vision.segmentation"
+        "concept.vision.segmentation",
+        "concept.vision.visual_place_recognition"
       ],
       "conceptIds": [
         "concept.vision.classification",
         "concept.vision.detection",
-        "concept.vision.segmentation"
+        "concept.vision.segmentation",
+        "concept.vision.visual_place_recognition"
       ]
     },
     {
@@ -412,11 +414,17 @@
       "depth": 2,
       "parent": "Artificial Intelligence",
       "primaryConceptIds": [
+        "concept.symbolic_ai.constraint_satisfaction",
+        "concept.symbolic_ai.expert_systems",
         "concept.symbolic_ai.knowledge_representation",
+        "concept.symbolic_ai.logic_programming",
         "concept.symbolic_ai.ontologies"
       ],
       "conceptIds": [
+        "concept.symbolic_ai.constraint_satisfaction",
+        "concept.symbolic_ai.expert_systems",
         "concept.symbolic_ai.knowledge_representation",
+        "concept.symbolic_ai.logic_programming",
         "concept.symbolic_ai.ontologies"
       ]
     },
@@ -862,7 +870,8 @@
         "concept.paradigms.array_programming",
         "concept.paradigms.functional_programming",
         "concept.paradigms.imperative_programming",
-        "concept.paradigms.object_oriented_programming"
+        "concept.paradigms.object_oriented_programming",
+        "concept.symbolic_ai.logic_programming"
       ]
     },
     {
@@ -6477,6 +6486,50 @@
       "claims": 0
     },
     {
+      "id": "concept.symbolic_ai.constraint_satisfaction",
+      "title": "Constraint Satisfaction",
+      "slug": "/concepts/constraint-satisfaction",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "A constraint satisfaction problem asks for values for a set of variables that respect every stated restriction on them, and the field's methods exploit that structure — propagating constraints to prune choices before search — to solve problems too large for blind enumeration.",
+      "aliases": [
+        "constraint satisfaction problem"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.constraint_satisfaction",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 0,
+      "claims": 0
+    },
+    {
+      "id": "concept.symbolic_ai.expert_systems",
+      "title": "Expert Systems",
+      "slug": "/concepts/expert-systems",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "An expert system encodes a specialist's know-how as explicit if-then rules and derives conclusions by chaining them, which made its reasoning inspectable but tied its competence to how much knowledge people could write down by hand.",
+      "aliases": [
+        "rule-based expert system"
+      ],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.expert_systems",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
+    },
+    {
       "id": "concept.symbolic_ai.knowledge_representation",
       "title": "Knowledge Representation",
       "slug": "/concepts/knowledge-representation",
@@ -6496,6 +6549,27 @@
       "candidateId": "candidate.artificial_intelligence.symbolic_ai.knowledge_representation",
       "candidateStatus": "covered",
       "unresolvedReferences": 2,
+      "claims": 0
+    },
+    {
+      "id": "concept.symbolic_ai.logic_programming",
+      "title": "Logic Programming",
+      "slug": "/concepts/logic-programming",
+      "kind": "concept",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Logic programming writes a program as a set of logical sentences and runs it by proof search, so that asking a question means asking the system to prove it and every answer is a substitution that makes the proof go through.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Symbolic AI",
+      "categories": [
+        "Artificial Intelligence/Symbolic AI",
+        "Programming/Languages/Paradigms"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.symbolic_ai.logic_programming",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
       "claims": 0
     },
     {
@@ -6738,6 +6812,26 @@
       "candidateStatus": "covered",
       "unresolvedReferences": 3,
       "claims": 11
+    },
+    {
+      "id": "concept.vision.visual_place_recognition",
+      "title": "Visual Place Recognition",
+      "slug": "/concepts/visual-place-recognition",
+      "kind": "problem",
+      "tier": 1,
+      "reviewState": "generated-draft",
+      "summary": "Visual place recognition decides where a photograph was taken by finding the most similar images in a database of pictures with known locations, which turns localisation into image retrieval and makes robustness to changing appearance the central difficulty.",
+      "aliases": [],
+      "primaryCategory": "Artificial Intelligence/Domains/Computer Vision",
+      "categories": [
+        "Artificial Intelligence/Domains/Computer Vision"
+      ],
+      "format": "markdown",
+      "hasArticle": true,
+      "candidateId": "candidate.artificial_intelligence.domains.computer_vision.visual_place_recognition",
+      "candidateStatus": "covered",
+      "unresolvedReferences": 1,
+      "claims": 0
     }
   ],
   "edges": [
@@ -14566,6 +14660,54 @@
       "condition": null
     },
     {
+      "id": "concept.symbolic_ai.constraint_satisfaction|contrasts_with|concept.optimization.integer_programming",
+      "source": "concept.symbolic_ai.constraint_satisfaction",
+      "target": "concept.optimization.integer_programming",
+      "type": "contrasts_with",
+      "note": "Both model discrete combinatorial problems, but integer programming reasons through linear relaxations and bounds while constraint solving reasons through propagation over domains.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.constraint_satisfaction|contributes_to|concept.symbolic_ai.logic_programming",
+      "source": "concept.symbolic_ai.constraint_satisfaction",
+      "target": "concept.symbolic_ai.logic_programming",
+      "type": "contributes_to",
+      "note": "Constraint logic programming replaces syntactic unification over some domains with a constraint solver, so propagation techniques from this field run inside a logic program.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.constraint_satisfaction|requires|concept.search.uninformed_search",
+      "source": "concept.symbolic_ai.constraint_satisfaction",
+      "target": "concept.search.uninformed_search",
+      "type": "requires",
+      "note": "The core solver is depth-first backtracking over partial assignments, so the search strategy and its costs have to be understood first.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.expert_systems|contrasts_with|concept.learning.supervised_learning",
+      "source": "concept.symbolic_ai.expert_systems",
+      "target": "concept.learning.supervised_learning",
+      "type": "contrasts_with",
+      "note": "An expert system's competence is written by hand from interviews with specialists, whereas a supervised model induces its behaviour from labelled examples.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.expert_systems|contrasts_with|concept.probability.bayesian_inference",
+      "source": "concept.symbolic_ai.expert_systems",
+      "target": "concept.probability.bayesian_inference",
+      "type": "contrasts_with",
+      "note": "Early systems attached ad hoc certainty factors to rules, and Bayesian networks displaced them by reasoning about uncertainty with a coherent probability model.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.expert_systems|requires|concept.symbolic_ai.knowledge_representation",
+      "source": "concept.symbolic_ai.expert_systems",
+      "target": "concept.symbolic_ai.knowledge_representation",
+      "type": "requires",
+      "note": "An expert system is a knowledge base plus an inference engine, so what it can know and conclude is bounded by the representation chosen for that knowledge.",
+      "condition": null
+    },
+    {
       "id": "concept.symbolic_ai.knowledge_representation|contrasts_with|concept.machine_learning.bayesian_networks",
       "source": "concept.symbolic_ai.knowledge_representation",
       "target": "concept.machine_learning.bayesian_networks",
@@ -14595,6 +14737,30 @@
       "target": "concept.logic.first_order_logic",
       "type": "requires",
       "note": "Every formalism on this page is a syntax plus a model-theoretic semantics plus an entailment relation, and all three are first-order logic's apparatus either reused wholesale or deliberately restricted.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.logic_programming|contrasts_with|concept.paradigms.functional_programming",
+      "source": "concept.symbolic_ai.logic_programming",
+      "target": "concept.paradigms.functional_programming",
+      "type": "contrasts_with",
+      "note": "Both are declarative, but a functional program computes a value by evaluating expressions while a logic program searches for bindings that make a relation hold, so one query can run forwards or backwards.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.logic_programming|contributes_to|concept.symbolic_ai.expert_systems",
+      "source": "concept.symbolic_ai.logic_programming",
+      "target": "concept.symbolic_ai.expert_systems",
+      "type": "contributes_to",
+      "note": "Backward-chaining expert systems reason much as a logic program does, chaining rules from a goal to the facts that support it, and Prolog was a common language for building them.",
+      "condition": null
+    },
+    {
+      "id": "concept.symbolic_ai.logic_programming|requires|concept.logic.first_order_logic",
+      "source": "concept.symbolic_ai.logic_programming",
+      "target": "concept.logic.first_order_logic",
+      "type": "requires",
+      "note": "A logic program is a set of Horn clauses, which are a fragment of first-order logic, and its answers are defined by first-order entailment.",
       "condition": null
     },
     {
@@ -15027,6 +15193,30 @@
       "target": "concept.learning.transfer_learning",
       "type": "useful_when",
       "note": "The FCN on this page takes a ResNet-18 pretrained on ImageNet and drops its head — the exact standard pattern the transfer-learning page describes — so that page explains why the choice works at all.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.visual_place_recognition|contrasts_with|concept.vision.classification",
+      "source": "concept.vision.visual_place_recognition",
+      "target": "concept.vision.classification",
+      "type": "contrasts_with",
+      "note": "A classifier chooses among a fixed set of labels learned in training, whereas place recognition matches against a database of places that can grow without retraining.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.visual_place_recognition|requires|concept.algorithms.searching",
+      "source": "concept.vision.visual_place_recognition",
+      "target": "concept.algorithms.searching",
+      "type": "requires",
+      "note": "Recognising a place is a nearest-neighbour search over descriptors of every reference image, and at large scale it depends on an efficient, usually approximate, search structure.",
+      "condition": null
+    },
+    {
+      "id": "concept.vision.visual_place_recognition|requires|concept.deep_learning.convolutional_networks",
+      "source": "concept.vision.visual_place_recognition",
+      "target": "concept.deep_learning.convolutional_networks",
+      "type": "requires",
+      "note": "Learned place recognition usually builds its image descriptors on the feature maps of a convolutional backbone, so what those features encode determines what the descriptor can match.",
       "condition": null
     }
   ]

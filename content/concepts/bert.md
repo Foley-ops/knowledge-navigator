@@ -92,7 +92,7 @@ claims:
     status: supported
     evidence:
       - source_id: source.devlin2019.bert
-        locator: "Section 3.1 (Pre-training BERT, Task 1 Masked LM and Task 2 NSP)"
+        locator: 'Section 3.1 (Pre-training BERT, Task 1 Masked LM and Task 2 NSP)'
   - claim_id: claim.bert.mlm_mechanism
     section: formal-treatment
     statement: In masked language modeling, 15% of WordPiece tokens are replaced at random and the model must predict them from the full surrounding context; the feed-forward nonlinearity is GELU rather than ReLU.
@@ -120,7 +120,7 @@ claims:
     status: supported
     evidence:
       - source_id: source.devlin2019.bert
-        locator: "Model-size statement (BERT BASE Total Parameters 110M; BERT LARGE Total Parameters 340M)"
+        locator: 'Model-size statement (BERT BASE Total Parameters 110M; BERT LARGE Total Parameters 340M)'
   - claim_id: claim.bert.sized_like_gpt
     section: variants-and-alternatives
     statement: BERT-base was chosen to match the parameter size of OpenAI GPT for a direct comparison, the decisive difference being bidirectional versus left-only attention.
@@ -364,8 +364,7 @@ LM and next-sentence prediction), the 15% masking and GELU details, the 512-toke
 context and the 90/10 short/long training schedule, the corpus sizes (BooksCorpus
 plus English Wikipedia, about 3.3 billion words), the base/large parameter
 figures, the sizing-to-match-GPT comparison, and the ELMo/GPT and
-transformer/normalization lineages. **Attention Is All You Need** (Vaswani et al.,
-2017) is the architecture being reused, and it grounds the encoder block
+transformer/normalization lineages. **Attention Is All You Need** (Vaswani et al., 2017) is the architecture being reused, and it grounds the encoder block
 structure and the unmasked-attention configuration.
 **Layer Normalization** (Ba et al., 2016) grounds the per-sublayer normalization
 that a deep stack relies on. **Efficient Estimation of Word Representations in

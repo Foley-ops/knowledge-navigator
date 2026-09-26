@@ -731,20 +731,20 @@ candidates:
     categories:
       - atlas.artificial_intelligence.symbolic_ai
       - atlas.programming.languages.paradigms
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.symbolic_ai.logic_programming
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.expert_systems
     title: Expert Systems
     categories:
       - atlas.artificial_intelligence.symbolic_ai
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.symbolic_ai.expert_systems
   - candidate_id: candidate.artificial_intelligence.symbolic_ai.constraint_satisfaction
     title: Constraint Satisfaction
     categories:
       - atlas.artificial_intelligence.symbolic_ai
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.symbolic_ai.constraint_satisfaction
   - candidate_id: candidate.artificial_intelligence.classical_machine_learning.linear_regression
     title: Linear Regression
     categories:
@@ -1463,8 +1463,8 @@ candidates:
     title: Visual Place Recognition
     categories:
       - atlas.artificial_intelligence.domains.computer_vision
-    status: candidate
-    canonical_concept_id: null
+    status: covered
+    canonical_concept_id: concept.vision.visual_place_recognition
   - candidate_id: candidate.artificial_intelligence.domains.natural_language_processing.tokenization
     title: Tokenization
     categories:

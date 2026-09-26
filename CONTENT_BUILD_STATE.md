@@ -13,14 +13,20 @@ is never edited by hand, so it cannot describe a corpus that does not exist.
 
 ## Resume point
 
-**Batch 26 of 28.** 4 of 10 pages in it are still to write.
+**Batch 27 of 28.** 10 of 10 pages in it are still to write.
 
 Write these files next:
 
-- `content/concepts/logic-programming.md` — Logic Programming (concept.symbolic_ai.logic_programming)
-- `content/concepts/constraint-satisfaction.md` — Constraint Satisfaction (concept.symbolic_ai.constraint_satisfaction)
-- `content/concepts/expert-systems.md` — Expert Systems (concept.symbolic_ai.expert_systems)
-- `content/concepts/visual-place-recognition.md` — Visual Place Recognition (concept.vision.visual_place_recognition)
+- `content/concepts/gpt.md` — GPT (concept.nlp.gpt)
+- `content/concepts/agents.md` — Agents (concept.nlp.agents)
+- `content/concepts/time-series.md` — Time Series (concept.applications.time_series)
+- `content/concepts/forecasting.md` — Forecasting (concept.applications.forecasting)
+- `content/concepts/speech.md` — Speech (concept.applications.speech)
+- `content/concepts/audio.md` — Audio (concept.applications.audio)
+- `content/concepts/control.md` — Control (concept.applications.control)
+- `content/concepts/robotics.md` — Robotics (concept.applications.robotics)
+- `content/concepts/recommender-systems.md` — Recommender Systems (concept.applications.recommender_systems)
+- `content/concepts/evolutionary-computation.md` — Evolutionary Computation (concept.ai_frontiers.evolutionary_computation)
 
 Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compile`,
 `npx vitest run`, and commit the batch.
@@ -30,18 +36,18 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Total | Count |
 | --- | --- |
 | Candidates in the atlas | 291 |
-| Candidates covered by a page | 267 |
-| Markdown pages in the corpus | 267 |
-| Tier 1 pages | 267 |
+| Candidates covered by a page | 271 |
+| Markdown pages in the corpus | 271 |
+| Tier 1 pages | 271 |
 | Tier 2 pages | 0 |
 | Tier 3 identities | 0 |
-| Planned pages written | 256 of 280 |
+| Planned pages written | 260 of 280 |
 
 ### By area
 
 | Area | Written | Planned | Done |
 | --- | --- | --- | --- |
-| Artificial Intelligence | 124 | 148 | 84% |
+| Artificial Intelligence | 128 | 148 | 86% |
 | Mathematics | 85 | 85 | 100% |
 | Programming | 47 | 47 | 100% |
 
@@ -53,12 +59,12 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Artificial Intelligence/Deep Learning — Architectures | 42 | 42 | complete |
 | Artificial Intelligence/Deep Learning — Training | 12 | 12 | complete |
 | Artificial Intelligence/Domains | 0 | 7 |  |
-| Artificial Intelligence/Domains/Computer Vision | 3 | 4 |  |
+| Artificial Intelligence/Domains/Computer Vision | 4 | 4 | complete |
 | Artificial Intelligence/Domains/Natural Language Processing | 3 | 5 |  |
 | Artificial Intelligence/Learning Paradigms | 9 | 9 | complete |
 | Artificial Intelligence/Other Traditions & Frontiers | 0 | 11 |  |
 | Artificial Intelligence/Reinforcement Learning | 19 | 19 | complete |
-| Artificial Intelligence/Symbolic AI | 2 | 5 |  |
+| Artificial Intelligence/Symbolic AI | 5 | 5 | complete |
 | Artificial Intelligence/Symbolic AI/Planning | 3 | 3 | complete |
 | Artificial Intelligence/Symbolic AI/Search | 5 | 5 | complete |
 | Mathematics/Algebra | 14 | 14 | complete |
@@ -82,7 +88,7 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 
 ## Completed pages
 
-256 of the planned 280, in the order they were written.
+260 of the planned 280, in the order they were written.
 
 | Title | Concept id | Tier | Atlas |
 | --- | --- | --- | --- |
@@ -336,9 +342,13 @@ Then: `node scripts/check-page.mjs <files>`, `npm run validate`, `npm run compil
 | Hierarchical Planning | `concept.planning.hierarchical_planning` | tier 1 | covered |
 | Knowledge Representation | `concept.symbolic_ai.knowledge_representation` | tier 1 | covered |
 | Ontologies | `concept.symbolic_ai.ontologies` | tier 1 | covered |
+| Logic Programming | `concept.symbolic_ai.logic_programming` | tier 1 | covered |
+| Constraint Satisfaction | `concept.symbolic_ai.constraint_satisfaction` | tier 1 | covered |
+| Expert Systems | `concept.symbolic_ai.expert_systems` | tier 1 | covered |
 | Classification | `concept.vision.classification` | tier 1 | covered |
 | Detection | `concept.vision.detection` | tier 1 | covered |
 | Segmentation | `concept.vision.segmentation` | tier 1 | covered |
+| Visual Place Recognition | `concept.vision.visual_place_recognition` | tier 1 | covered |
 | Tokenization | `concept.nlp.tokenization` | tier 1 | covered |
 | Embeddings | `concept.nlp.embeddings` | tier 1 | covered |
 | BERT | `concept.nlp.bert` | tier 1 | covered |
@@ -725,17 +735,17 @@ it. Batches are ten pages each.
 | x | Knowledge Representation | `concept.symbolic_ai.knowledge_representation` | Artificial Intelligence/Symbolic AI |
 | x | Ontologies | `concept.symbolic_ai.ontologies` | Artificial Intelligence/Symbolic AI |
 
-### Batch 26
+### Batch 26 — complete
 
 | Done | Title | Concept id | Category |
 | --- | --- | --- | --- |
-|   | Logic Programming | `concept.symbolic_ai.logic_programming` | Artificial Intelligence/Symbolic AI |
-|   | Constraint Satisfaction | `concept.symbolic_ai.constraint_satisfaction` | Artificial Intelligence/Symbolic AI |
-|   | Expert Systems | `concept.symbolic_ai.expert_systems` | Artificial Intelligence/Symbolic AI |
+| x | Logic Programming | `concept.symbolic_ai.logic_programming` | Artificial Intelligence/Symbolic AI |
+| x | Constraint Satisfaction | `concept.symbolic_ai.constraint_satisfaction` | Artificial Intelligence/Symbolic AI |
+| x | Expert Systems | `concept.symbolic_ai.expert_systems` | Artificial Intelligence/Symbolic AI |
 | x | Classification | `concept.vision.classification` | Artificial Intelligence/Domains/Computer Vision |
 | x | Detection | `concept.vision.detection` | Artificial Intelligence/Domains/Computer Vision |
 | x | Segmentation | `concept.vision.segmentation` | Artificial Intelligence/Domains/Computer Vision |
-|   | Visual Place Recognition | `concept.vision.visual_place_recognition` | Artificial Intelligence/Domains/Computer Vision |
+| x | Visual Place Recognition | `concept.vision.visual_place_recognition` | Artificial Intelligence/Domains/Computer Vision |
 | x | Tokenization | `concept.nlp.tokenization` | Artificial Intelligence/Domains/Natural Language Processing |
 | x | Embeddings | `concept.nlp.embeddings` | Artificial Intelligence/Domains/Natural Language Processing |
 | x | BERT | `concept.nlp.bert` | Artificial Intelligence/Domains/Natural Language Processing |

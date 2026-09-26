@@ -93,21 +93,21 @@ unresolved_references:
 claims:
   - claim_id: claim.segmentation.semantic_def
     section: definition
-    statement: "Semantic segmentation recognises and understands what is in an image at the pixel level by dividing the image into regions belonging to different semantic classes; its labelling and prediction of semantic regions are in pixel level, and the labelled borders of the dog, cat and background are obviously more fine-grained than in object detection."
+    statement: 'Semantic segmentation recognises and understands what is in an image at the pixel level by dividing the image into regions belonging to different semantic classes; its labelling and prediction of semantic regions are in pixel level, and the labelled borders of the dog, cat and background are obviously more fine-grained than in object detection.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
         locator: d2l §14.9 opening, and Fig. 14.9.1
   - claim_id: claim.segmentation.three_variants
     section: variants-and-alternatives
-    statement: "There are three tasks in the computer-vision literature around segmentation: image segmentation divides an image into several constituent regions using only the correlation between pixels (no label information at training time, and the resulting regions are not guaranteed to carry the desired semantics at prediction time); instance segmentation, also called simultaneous detection and segmentation, recognises the pixel-level regions of each object instance and must distinguish not only semantics but individual instances; and semantic segmentation, as defined above."
+    statement: 'There are three tasks in the computer-vision literature around segmentation: image segmentation divides an image into several constituent regions using only the correlation between pixels (no label information at training time, and the resulting regions are not guaranteed to carry the desired semantics at prediction time); instance segmentation, also called simultaneous detection and segmentation, recognises the pixel-level regions of each object instance and must distinguish not only semantics but individual instances; and semantic segmentation, as defined above.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
         locator: d2l §14.9.1, Image Segmentation and Instance Segmentation, and the Fig. 14.9.1 dog-splitting example (mouth-and-eyes region versus the rest of the body)
   - claim_id: claim.segmentation.voc_dataset
     section: concrete-example
-    statement: "The Pascal VOC2012 dataset is one of the most important semantic-segmentation datasets; its input images are stored in JPEGImages and its per-example labels in SegmentationClass as PNG images of the same size as the input, with a label colour per semantic class (white for borders, black for background); the training list is 1114 examples and the validation list 1078."
+    statement: 'The Pascal VOC2012 dataset is one of the most important semantic-segmentation datasets; its input images are stored in JPEGImages and its per-example labels in SegmentationClass as PNG images of the same size as the input, with a label colour per semantic class (white for borders, black for background); the training list is 1114 examples and the validation list 1078.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
@@ -121,7 +121,7 @@ claims:
         locator: d2l §14.10.4, Summary, and §14.10.1, Basic Operation
   - claim_id: claim.segmentation.tconv_shape
     section: concrete-example
-    statement: "For stride s, padding s/2 (assuming s/2 is an integer), and kernel height and width of 2s, a transposed convolution layer increases the height and width of the input by a factor of s."
+    statement: 'For stride s, padding s/2 (assuming s/2 is an integer), and kernel height and width of 2s, a transposed convolution layer increases the height and width of the input by a factor of s.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
@@ -156,20 +156,20 @@ claims:
         locator: d2l §14.11.4, Training, and the d2l.train_ch13 call
   - claim_id: claim.segmentation.fcn_attr
     section: variants-and-alternatives
-    statement: "The fully convolutional network (FCN) is attributed by the chapter to Long et al., 2015, and the transposed convolution used by it is also called fractionally-strided convolution, attributed to Dumoulin and Visin, 2016."
+    statement: 'The fully convolutional network (FCN) is attributed by the chapter to Long et al., 2015, and the transposed convolution used by it is also called fractionally-strided convolution, attributed to Dumoulin and Visin, 2016.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
         locator: d2l §14.11, opening paragraph (Long et al., 2015), and §14.10, opening paragraph (Dumoulin and Visin, 2016)
   - claim_id: claim.segmentation.fcn_backbone
     section: variants-and-alternatives
-    statement: "The FCN on this page uses a ResNet-18 model pretrained on the ImageNet dataset as its feature backbone, retaining all pretrained layers except the final global-average-pooling layer and the fully-connected layer (d2l §14.11.1); the underlying ResNet-18 work is the He et al. 2016 design, per the extra-source entry."
+    statement: 'The FCN on this page uses a ResNet-18 model pretrained on the ImageNet dataset as its feature backbone, retaining all pretrained layers except the final global-average-pooling layer and the fully-connected layer (d2l §14.11.1); the underlying ResNet-18 work is the He et al. 2016 design, per the extra-source entry.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
         locator: d2l §14.11.1, The Model — "we use a ResNet-18 model pretrained on the ImageNet dataset to extract image features"
       - source_id: source.he2016.deep_residual_learning
-        locator: "naming/authorship per the extra source entry; the chapter itself names the architecture but not the author."
+        locator: 'naming/authorship per the extra source entry; the chapter itself names the architecture but not the author.'
 ---
 
 ## Definition
@@ -180,17 +180,17 @@ In the vocabulary of the deep-learning literature this is a form of **dense pred
 
 ## Why it matters
 
-Classification is one label per image; detection is a rectangle per object. Both answers are coarse in *spatial* terms. If the answer has to name which pixels belong to which semantic class — for a surgical robot that needs an organ boundary, for an autonomous vehicle that needs the drivable-road mask, for a medical-image triage system that needs the tumour outline — boxes and whole-image verdicts stop carrying the information you need. d2l's own §14.9.4 exercises name exactly these two: "autonomous vehicles and medical image diagnostics".
+Classification is one label per image; detection is a rectangle per object. Both answers are coarse in _spatial_ terms. If the answer has to name which pixels belong to which semantic class — for a surgical robot that needs an organ boundary, for an autonomous vehicle that needs the drivable-road mask, for a medical-image triage system that needs the tumour outline — boxes and whole-image verdicts stop carrying the information you need. d2l's own §14.9.4 exercises name exactly these two: "autonomous vehicles and medical image diagnostics".
 
-The task is dense not because the data is dense in some abstract sense, but because the decision is. A pixel-level answer has to say *which pixel, which class*, and it has to do so for every pixel at once. That is a different question from "what is this image about?".
+The task is dense not because the data is dense in some abstract sense, but because the decision is. A pixel-level answer has to say _which pixel, which class_, and it has to do so for every pixel at once. That is a different question from "what is this image about?".
 
 ## Intuition
 
-The backbone is a funnel. Convolutional layers and pooling layers compress the spatial extent of the input to build rich features, and in a classifier that is the whole point — you want a compact, per-image feature vector. But in a segmentation task that compression is in the way: the decision must be made at a *specific* position, and the pixel that a feature in a 10 × 15 map corresponds to is not the same pixel as the one in the original 320 × 480 image.
+The backbone is a funnel. Convolutional layers and pooling layers compress the spatial extent of the input to build rich features, and in a classifier that is the whole point — you want a compact, per-image feature vector. But in a segmentation task that compression is in the way: the decision must be made at a _specific_ position, and the pixel that a feature in a 10 × 15 map corresponds to is not the same pixel as the one in the original 320 × 480 image.
 
 The trick is to let the network do two opposite spatial operations in sequence. The backbone compresses, and a second set of layers (the upsampler) stretches back out to the input's shape. Once the output is the same size as the input and has one channel per class, the last step — take the argmax over channels at each pixel — is trivial, and the network's per-pixel output is the segmentation.
 
-That is the intuition that makes the FCN readable: same backbone as a classifier, plus a tail that *undoes* the down-sampling. The rest of the machinery is the question of what that tail should be, and d2l's answer is a **transposed convolution**.
+That is the intuition that makes the FCN readable: same backbone as a classifier, plus a tail that _undoes_ the down-sampling. The rest of the machinery is the question of what that tail should be, and d2l's answer is a **transposed convolution**.
 
 ## Concrete example
 
@@ -227,7 +227,7 @@ Every input element is "broadcast" through the kernel into the zero-initialised 
 
 **Dense prediction.** Let $x \in \mathbb{R}^{3 \times H \times W}$ be an image with $C$ classes. A segmentation network $f$ produces $y \in \mathbb{R}^{C \times H \times W}$ (one class-channel per pixel), and the predicted class at each pixel is $\hat{c}_{i,j} = \arg\max_c y_{c, i, j}$ (d2l §14.9, §14.11).
 
-**Transposed convolution.** (d2l §14.10, §14.10.1) For a $n_h \times n_w$ input and a $k_h \times k_w$ kernel at stride 1 with no padding, transposed convolution produces $(n_h + k_h - 1) \times (n_w + k_w - 1)$ output. Concretely: zero-initialise a tensor $Y \in \mathbb{R}^{(n_h+k_h-1) \times (n_w+k_w-1)}$, then for each input element $X[i, j]$, add $X[i, j] \cdot K$ to $Y[i : i+k_h, j : j+k_w]$. In contrast to regular convolution, which *reduces* input elements via the kernel, transposed convolution *broadcasts* input elements via the kernel.
+**Transposed convolution.** (d2l §14.10, §14.10.1) For a $n_h \times n_w$ input and a $k_h \times k_w$ kernel at stride 1 with no padding, transposed convolution produces $(n_h + k_h - 1) \times (n_w + k_w - 1)$ output. Concretely: zero-initialise a tensor $Y \in \mathbb{R}^{(n_h+k_h-1) \times (n_w+k_w-1)}$, then for each input element $X[i, j]$, add $X[i, j] \cdot K$ to $Y[i : i+k_h, j : j+k_w]$. In contrast to regular convolution, which _reduces_ input elements via the kernel, transposed convolution _broadcasts_ input elements via the kernel.
 
 **Upsampling rule.** (d2l §14.11.1) For a transposed convolution with stride $s$, padding $s/2$ (where $s/2$ is an integer), and kernel of size $2s \times 2s$, the output height and width are $s$ times the input's. For stride 2, kernel 2, padding 0 the output is $2 \times 2$ the input; for stride 32, kernel 64, padding 16 the output is $32 \times 32$ the input.
 
@@ -258,11 +258,11 @@ Do not reach for it when a box is the answer: detection is cheaper to evaluate a
 
 ## Limitations and common mistakes
 
-- **Confusing the three "segmentations".** d2l explicitly distinguishes three: *image segmentation* (region partition with no labels at training time and no semantic guarantee; e.g. it might split a dog into a "mouth-and-eyes" region and a "rest of body" region), *instance segmentation* (pixel-level per-instance masks, with detection), and *semantic segmentation* (pixel-level per-class masks). They are not interchangeable.
+- **Confusing the three "segmentations".** d2l explicitly distinguishes three: _image segmentation_ (region partition with no labels at training time and no semantic guarantee; e.g. it might split a dog into a "mouth-and-eyes" region and a "rest of body" region), _instance segmentation_ (pixel-level per-instance masks, with detection), and _semantic segmentation_ (pixel-level per-class masks). They are not interchangeable.
 - **Mismapping resolution at inference.** A stride-32 transposed convolution only restores the input's height and width when they are multiples of 32. d2l's remedy is the multiple-crop-and-average strategy at §14.11.5, and a naive "just resize" does not recover the lost spatial correspondence.
-- **Treating transposed convolution as the inverse of convolution.** It is not. It is the *weight-transpose*, per the d2l §14.10.3 reading, and its forward pass is the gradient of the standard convolution's forward pass, not its functional inverse. The two operations agree on shape rules only in a restricted family (kernel $s$ × $s$, padding $s/2$, stride 1, or the $2s$ / $s/2$ / $s$ family).
+- **Treating transposed convolution as the inverse of convolution.** It is not. It is the _weight-transpose_, per the d2l §14.10.3 reading, and its forward pass is the gradient of the standard convolution's forward pass, not its functional inverse. The two operations agree on shape rules only in a restricted family (kernel $s$ × $s$, padding $s/2$, stride 1, or the $2s$ / $s/2$ / $s$ family).
 - **Forgetting that the upsampler has to be initialised.** d2l points out that in the FCN, the $1 \times 1$ convolution is Xavier-initialised and the transposed convolution is bilinear-initialised (§14.11.2). A random large-magnitude initialisation of the transposed layers is a real risk in practice.
-- **Using the wrong dataset for the task.** Pascal VOC2012 is the canonical reference for *semantic* segmentation (d2l §14.9.2). If you want to distinguish individual instances, you need a per-instance labelling regime (e.g. the COCO mask annotations); the same weights will not transfer.
+- **Using the wrong dataset for the task.** Pascal VOC2012 is the canonical reference for _semantic_ segmentation (d2l §14.9.2). If you want to distinguish individual instances, you need a per-instance labelling regime (e.g. the COCO mask annotations); the same weights will not transfer.
 
 ## Variants and alternatives
 

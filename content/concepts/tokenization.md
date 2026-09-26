@@ -79,7 +79,7 @@ claims:
         locator: d2l §9.2.2 and §9.2.6 summary
   - claim_id: claim.nlp.tokenization.granularity_tradeoff
     section: intuition
-    statement: "The sentence \"Baby needs a new pair of shoes\" tokenizes to 7 words over a vocabulary of tens or hundreds of thousands of entries, or to 30 characters over a vocabulary of at most 256 distinct ASCII characters."
+    statement: 'The sentence "Baby needs a new pair of shoes" tokenizes to 7 words over a vocabulary of tens or hundreds of thousands of entries, or to 30 characters over a vocabulary of at most 256 distinct ASCII characters.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
@@ -121,14 +121,14 @@ claims:
         locator: d2l §15.6.1, Eq. 15.6.1, and the discussion of shared parameters
   - claim_id: claim.nlp.tokenization.morphology
     section: variants-and-alternatives
-    statement: "The motivation for subword tokenization in the chapter is morphological: different inflected forms of the same word, and cross-language morphology such as the case-richness of Finnish, have no shared parameters under word-level tokenization."
+    statement: 'The motivation for subword tokenization in the chapter is morphological: different inflected forms of the same word, and cross-language morphology such as the case-richness of Finnish, have no shared parameters under word-level tokenization.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
         locator: d2l §15.6 introduction and §15.6.1
   - claim_id: claim.nlp.tokenization.corpus_dependence
     section: limitations-and-common-mistakes
-    statement: "The result of the tokenization is corpus-dependent: the same BPE procedure gives different subwords on different datasets, and the fastText vocabulary (and so the parameter count) grows with the corpus, so a vocabulary learned for one corpus may be a poor fit for another."
+    statement: 'The result of the tokenization is corpus-dependent: the same BPE procedure gives different subwords on different datasets, and the fastText vocabulary (and so the parameter count) grows with the corpus, so a vocabulary learned for one corpus may be a poor fit for another.'
     status: conditional
     evidence:
       - source_id: source.zhang2023.d2l
@@ -145,7 +145,7 @@ between the symbol world (characters, words, subwords) and the numerical world
 unit of text; what exactly counts as one token — a character, a word, a subword,
 or some other unit — is a design choice, not a fixed fact.
 
-In the pipeline described in *Dive into Deep Learning*, tokenization sits between
+In the pipeline described in _Dive into Deep Learning_, tokenization sits between
 reading the dataset and feeding it to a model. The full pipeline is: (1) load the
 raw text into memory as strings, (2) split the strings into tokens, (3) build a
 vocabulary that associates each distinct token with a numerical index, and (4)
@@ -214,7 +214,7 @@ conflation.
 
 ## Concrete example
 
-The chapter's Time Machine corpus (H. G. Wells, *The Time Machine*, roughly
+The chapter's Time Machine corpus (H. G. Wells, _The Time Machine_, roughly
 30,000 words) is a clean, small-scale worked example. After preprocessing —
 stripping punctuation and lowercasing — the text is tokenized into
 **characters**, giving a flat list of token strings. The vocabulary is built from
@@ -395,8 +395,7 @@ time.
 
 **BPE (Byte Pair Encoding)**: learned subword segmentation via iterative merging
 of the most frequent adjacent symbol pairs. Vocabulary size is a hyperparameter.
-The chapter notes that BPE and its variants are used in GPT-2 (Radford et al.,
-2019) and RoBERTa (Liu et al., 2019). SentencePiece (Kudo, 2018) and WordPiece
+The chapter notes that BPE and its variants are used in GPT-2 (Radford et al., 2019) and RoBERTa (Liu et al., 2019). SentencePiece (Kudo, 2018) and WordPiece
 (Devlin et al., 2019, for BERT) are closely related subword tokenizers, but
 their specific mechanisms are not detailed in the chapter text used here; they
 are named for attribution only.
@@ -411,6 +410,7 @@ structure.
 
 The trade-off across these schemes is a single axis — **vocabulary size** — with
 two consequences that move in opposite directions:
+
 - Larger vocabulary → fewer OOV tokens, but larger embedding table and
   parameter count, and a greater chance that a given rare word is unseen.
 - Smaller vocabulary → fewer parameters and more robust to unseen words (since

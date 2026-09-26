@@ -52,7 +52,7 @@ sources:
       - history-and-attribution
     checked_on: 2026-09-24
   - source_id: source.ren2015.faster_rcnn
-    title: "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+    title: 'Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks'
     url: https://arxiv.org/abs/1506.01497
     source_kind: preprint
     supports:
@@ -88,96 +88,96 @@ unresolved_references:
 claims:
   - claim_id: claim.detection.task_def
     section: definition
-    statement: "Object detection is the computer-vision task of recognizing all the objects of interest in an image and reporting their positions, generally as a rectangular bounding box per object, which extends image classification by adding localization."
+    statement: 'Object detection is the computer-vision task of recognizing all the objects of interest in an image and reporting their positions, generally as a rectangular bounding box per object, which extends image classification by adding localization.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.3 and the §14.3.2 summary: classification assumes a single major object, detection adds positions of multiple objects."
+        locator: 'd2l §14.3 and the §14.3.2 summary: classification assumes a single major object, detection adds positions of multiple objects.'
   - claim_id: claim.detection.box_repr
     section: definition
-    statement: "A bounding box has a corner representation — the (x, y) coordinates of its upper-left and lower-right corners — and a center-width-height representation — the center coordinates plus width and height — and the two are invertible."
+    statement: 'A bounding box has a corner representation — the (x, y) coordinates of its upper-left and lower-right corners — and a center-width-height representation — the center coordinates plus width and height — and the two are invertible.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.3.1, the box_corner_to_center and box_center_to_corner functions."
+        locator: 'd2l §14.3.1, the box_corner_to_center and box_center_to_corner functions.'
   - claim_id: claim.detection.anchor_formula
     section: formal-treatment
-    statement: "With n scales and m aspect ratios, each pixel center yields n + m − 1 anchor boxes, and the whole image yields w·h·(n + m − 1) anchors, where w and h are the image width and height in the coordinate frame used."
+    statement: 'With n scales and m aspect ratios, each pixel center yields n + m − 1 anchor boxes, and the whole image yields w·h·(n + m − 1) anchors, where w and h are the image width and height in the coordinate frame used.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.4.1, Eq. 14.4.1 and the multibox_prior function."
+        locator: 'd2l §14.4.1, Eq. 14.4.1 and the multibox_prior function.'
   - claim_id: claim.detection.iou
     section: formal-treatment
-    statement: "The IoU of two boxes is the Jaccard index of their pixel sets — the intersection area divided by the union area — and ranges from 0 (disjoint) to 1 (identical)."
+    statement: 'The IoU of two boxes is the Jaccard index of their pixel sets — the intersection area divided by the union area — and ranges from 0 (disjoint) to 1 (identical).'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.4.2, Eq. 14.4.2, Fig. 14.4.1, and the box_iou function."
+        locator: 'd2l §14.4.2, Eq. 14.4.2, Fig. 14.4.1, and the box_iou function.'
   - claim_id: claim.detection.label_assignment
     section: formal-treatment
-    statement: "Anchor boxes are assigned to ground-truth boxes by iteratively taking the largest IoU pair, assigning the ground-truth box to the anchor box, discarding the matching row and column of the IoU matrix, and repeating until all ground-truth boxes are assigned; any unassigned anchor with IoU above the threshold is labelled against its best-matching ground truth."
+    statement: 'Anchor boxes are assigned to ground-truth boxes by iteratively taking the largest IoU pair, assigning the ground-truth box to the anchor box, discarding the matching row and column of the IoU matrix, and repeating until all ground-truth boxes are assigned; any unassigned anchor with IoU above the threshold is labelled against its best-matching ground truth.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.4.3, the four-step greedy algorithm and Fig. 14.4.2, with the assign_anchor_to_bbox function."
+        locator: 'd2l §14.4.3, the four-step greedy algorithm and Fig. 14.4.2, with the assign_anchor_to_bbox function.'
   - claim_id: claim.detection.offset_encoding
     section: formal-treatment
-    statement: "The offset label for an anchor is ( ((xb−xa)/wa − μx)/σx, ((yb−ya)/ha − μy)/σy, (log(wb/wa) − μw)/σw, (log(hb/ha) − μh)/σh ), with defaults μx = μy = μw = μh = 0, σx = σy = 0.1 and σw = σh = 0.2, so the network regresses a small normalised offset rather than absolute box coordinates."
+    statement: 'The offset label for an anchor is ( ((xb−xa)/wa − μx)/σx, ((yb−ya)/ha − μy)/σy, (log(wb/wa) − μw)/σw, (log(hb/ha) − μh)/σh ), with defaults μx = μy = μw = μh = 0, σx = σy = 0.1 and σw = σh = 0.2, so the network regresses a small normalised offset rather than absolute box coordinates.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.4.3, Eq. 14.4.3 and the offset_boxes function."
+        locator: 'd2l §14.4.3, Eq. 14.4.3 and the offset_boxes function.'
   - claim_id: claim.detection.nms
     section: formal-treatment
-    statement: "Non-maximum suppression repeatedly takes the highest-confidence remaining predicted box and drops every other predicted box whose IoU with it exceeds the threshold ε, until no two surviving boxes exceed the threshold with each other."
+    statement: 'Non-maximum suppression repeatedly takes the highest-confidence remaining predicted box and drops every other predicted box whose IoU with it exceeds the threshold ε, until no two surviving boxes exceed the threshold with each other.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.4.4, the four-step NMS description and the nms function."
+        locator: 'd2l §14.4.4, the four-step NMS description and the nms function.'
   - claim_id: claim.detection.rcnn_bottleneck
     section: variants-and-alternatives
     statement: "R-CNN's four steps run selective search, then per-region CNN forward passes, then per-class SVMs and a linear-regression box head; thousands of region proposals force thousands of CNN forward propagations, which the chapter names as the reason it is slow."
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.8.1, Fig. 14.8.1, the four-step R-CNN description, and the sentence attributing the cost to thousands of independent forward propagations."
+        locator: 'd2l §14.8.1, Fig. 14.8.1, the four-step R-CNN description, and the sentence attributing the cost to thousands of independent forward propagations.'
   - claim_id: claim.detection.roi_pool
     section: variants-and-alternatives
-    statement: "Fast R-CNN runs the CNN once on the whole image, marks each of n region proposals as a region of interest on the CNN output, and uses a RoI pooling layer that divides each region into an h2 × w2 grid of subwindows taking the max of each to produce a fixed-shape n × c × h2 × w2 tensor for every proposal regardless of its original shape."
+    statement: 'Fast R-CNN runs the CNN once on the whole image, marks each of n region proposals as a region of interest on the CNN output, and uses a RoI pooling layer that divides each region into an h2 × w2 grid of subwindows taking the max of each to produce a fixed-shape n × c × h2 × w2 tensor for every proposal regardless of its original shape.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.8.2, steps 1–4, Fig. 14.8.2, Fig. 14.8.3, and the worked 4 × 4 → 2 × 2 RoI pooling example with the two regions of interest X[:, :, 0:3, 0:3] and X[:, :, 1:4, 0:4]."
+        locator: 'd2l §14.8.2, steps 1–4, Fig. 14.8.2, Fig. 14.8.3, and the worked 4 × 4 → 2 × 2 RoI pooling example with the two regions of interest X[:, :, 0:3, 0:3] and X[:, :, 1:4, 0:4].'
   - claim_id: claim.detection.rpn
     section: variants-and-alternatives
-    statement: "Faster R-CNN replaces selective search with a region proposal network that predicts, for each anchor on the CNN feature map, a binary object-or-background call and a box offset, and keeps the resulting boxes through NMS as the region proposals; the RPN is jointly trained with the rest of the model so its region-proposal objective is part of the end-to-end loss."
+    statement: 'Faster R-CNN replaces selective search with a region proposal network that predicts, for each anchor on the CNN feature map, a binary object-or-background call and a box offset, and keeps the resulting boxes through NMS as the region proposals; the RPN is jointly trained with the rest of the model so its region-proposal objective is part of the end-to-end loss.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.8.3, the four-step RPN description, the note on joint end-to-end training, and Fig. 14.8.4."
+        locator: 'd2l §14.8.3, the four-step RPN description, the note on joint end-to-end training, and Fig. 14.8.4.'
   - claim_id: claim.detection.mask_rcnn
     section: variants-and-alternatives
-    statement: "Mask R-CNN is Faster R-CNN with the RoI pooling layer replaced by a RoI alignment layer using bilinear interpolation, plus an additional fully convolutional network head that predicts per-pixel object positions from the same feature maps."
+    statement: 'Mask R-CNN is Faster R-CNN with the RoI pooling layer replaced by a RoI alignment layer using bilinear interpolation, plus an additional fully convolutional network head that predicts per-pixel object positions from the same feature maps.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §14.8.4, the RoI alignment description and the additional fully-convolutional mask head, Fig. 14.8.5."
+        locator: 'd2l §14.8.4, the RoI alignment description and the additional fully-convolutional mask head, Fig. 14.8.5.'
 ---
 
 ## Definition
 
 Object detection is a computer-vision task that recognises every object of interest in an image and reports its position (d2l §14.3). Its output is a list of predictions, one per detected object, each carrying a class label, a spatial location, and a confidence score. The standard spatial encoding is a **bounding box**: a rectangle in image coordinates either in "corner" form (upper-left $x_1, y_1$, lower-right $x_2, y_2$) or in "center-width-height" form (center $x_c, y_c$ and size $w, h$); the two parameterizations are invertible (d2l §14.3.1).
 
-Image classification is one object, one label. Detection is *many* objects, each with a *where* in addition to a *what*. The "where" is what separates the two tasks, and the rest of the page — anchors, IoU, offsets, NMS, and the region-based detectors — exists to make "where" something a differentiable network can learn.
+Image classification is one object, one label. Detection is _many_ objects, each with a _where_ in addition to a _what_. The "where" is what separates the two tasks, and the rest of the page — anchors, IoU, offsets, NMS, and the region-based detectors — exists to make "where" something a differentiable network can learn.
 
 ## Why it matters
 
-A classifier is blind to geometry: a rotated, scaled, partially occluded, or crowded object is fine so long as the class is the same. That blindness is acceptable when the answer is a single label, and it is useless when the answer is a set of positioned objects. Autonomous vehicles, manipulation robots, and surveillance systems all need "what *and where*" rather than "what" (d2l §14.3). Detection turns vision into a planning signal; classification only gives you a caption.
+A classifier is blind to geometry: a rotated, scaled, partially occluded, or crowded object is fine so long as the class is the same. That blindness is acceptable when the answer is a single label, and it is useless when the answer is a set of positioned objects. Autonomous vehicles, manipulation robots, and surveillance systems all need "what _and where_" rather than "what" (d2l §14.3). Detection turns vision into a planning signal; classification only gives you a caption.
 
 ## Intuition
 
-Anchors make "where" learnable. Instead of letting the network draw a box from nothing, pre-place a fixed set of boxes — **anchor boxes** — at known centers across the image and let the network predict only the *offset* from each anchor to the true box (d2l §14.4). The residual is small and normalised, which is what makes the regression well-conditioned.
+Anchors make "where" learnable. Instead of letting the network draw a box from nothing, pre-place a fixed set of boxes — **anchor boxes** — at known centers across the image and let the network predict only the _offset_ from each anchor to the true box (d2l §14.4). The residual is small and normalised, which is what makes the regression well-conditioned.
 
 IoU is the yardstick. It is the Jaccard index of the two boxes treated as pixel sets — the intersection area over the union area. It is 0 for disjoint boxes and 1 for identical boxes, and the rest of the pipeline reuses it three times: to decide which anchor matches which ground-truth box, to decide how much the anchor should move, and to decide which predictions to keep after NMS (d2l §14.4.2).
 
@@ -210,7 +210,7 @@ Now NMS. Let a detector return three predictions on the same image, and sort by 
 - Round 1: basis $b_1$, keep. $\text{IoU}(b_1, b_2) = 25/45 = 0.556 > 0.5$, so suppress $b_2$. $\text{IoU}(b_1, b_3) = (8\cdot 8)/(10\cdot 10) = 0.64 > 0.5$, so suppress $b_3$. Remaining: $\{b_1\}$.
 - Round 2: only $b_1$ remains.
 
-One prediction survives. Now lower the threshold to `iou_threshold = 0.6`: `IoU(b1, b2) = 0.556 < 0.6`, so keep $b_2$; `IoU(b1, b3) = 0.64 > 0.6`, so still suppress $b_3$. In round 2, $b_2$ and $b_3$ are disjoint, IoU 0, and $b_3$ is now kept. Output $\{b_1, b_3\}$. Two objects of the same class survive because the threshold is looser — and if two *distinct* objects of the same class genuinely overlap by more than `iou_threshold`, one of them has already been dropped. This is the standard tension.
+One prediction survives. Now lower the threshold to `iou_threshold = 0.6`: `IoU(b1, b2) = 0.556 < 0.6`, so keep $b_2$; `IoU(b1, b3) = 0.64 > 0.6`, so still suppress $b_3$. In round 2, $b_2$ and $b_3$ are disjoint, IoU 0, and $b_3$ is now kept. Output $\{b_1, b_3\}$. Two objects of the same class survive because the threshold is looser — and if two _distinct_ objects of the same class genuinely overlap by more than `iou_threshold`, one of them has already been dropped. This is the standard tension.
 
 ```python
 import torch
@@ -274,11 +274,11 @@ NMS. For a predicted box $B$, let $p$ be the largest predicted class likelihood 
 
 ## Assumptions and requirements
 
-Detection is a *localised* task. If you only need a single label per image, classification is cheaper and simpler. If you need per-pixel boundaries rather than rectangles, segmentation is the right frame; a box cannot represent the outline of a thin or elongated object, though Mask R-CNN recovers the outline as a head on top of detection (d2l §14.8.4). The task also presupposes a feature backbone: R-CNN and its descendants all sit on a CNN, and the R-CNN line specifically takes a *pretrained* CNN and truncates it before the output layer (d2l §14.8.1, step 2), which is the standard transfer-learning pattern the page leans on. A ResNet is a common backbone choice in practice (this specific choice is not made in the chapter's account).
+Detection is a _localised_ task. If you only need a single label per image, classification is cheaper and simpler. If you need per-pixel boundaries rather than rectangles, segmentation is the right frame; a box cannot represent the outline of a thin or elongated object, though Mask R-CNN recovers the outline as a head on top of detection (d2l §14.8.4). The task also presupposes a feature backbone: R-CNN and its descendants all sit on a CNN, and the R-CNN line specifically takes a _pretrained_ CNN and truncates it before the output layer (d2l §14.8.1, step 2), which is the standard transfer-learning pattern the page leans on. A ResNet is a common backbone choice in practice (this specific choice is not made in the chapter's account).
 
 ## Uses and applicability
 
-Reach for detection when the answer is a *set* of positioned, labelled objects: self-driving (vehicles, pedestrians, roads, obstacles), robotics, and security (d2l §14.3). Skip it when the image has one dominant object and the label is the whole answer — classification is enough. Skip it when you need per-pixel boundaries — segmentation is the better frame, and Mask R-CNN is the detection model that adds that boundary head (d2l §14.8.4). Reach for one of the region-based detectors below when you need a well-structured two-stage detector that can be trained end-to-end; reach for a single-shot detector (named on this corpus as SSD, §14.7) when you want to skip the two stages, for which this chapter does not provide specifics.
+Reach for detection when the answer is a _set_ of positioned, labelled objects: self-driving (vehicles, pedestrians, roads, obstacles), robotics, and security (d2l §14.3). Skip it when the image has one dominant object and the label is the whole answer — classification is enough. Skip it when you need per-pixel boundaries — segmentation is the better frame, and Mask R-CNN is the detection model that adds that boundary head (d2l §14.8.4). Reach for one of the region-based detectors below when you need a well-structured two-stage detector that can be trained end-to-end; reach for a single-shot detector (named on this corpus as SSD, §14.7) when you want to skip the two stages, for which this chapter does not provide specifics.
 
 ## Limitations and common mistakes
 
@@ -288,7 +288,7 @@ Setting the NMS threshold too low drops real, close objects; setting it too high
 
 RoI pooling rounds subwindow boundaries up to integer positions and takes the max, which quantises the alignment between the region and the feature map. RoI alignment, introduced by Mask R-CNN, fixes this by using bilinear interpolation instead of the round-then-max of the pooling version (d2l §14.8.4); the two look similar and are not the same layer.
 
-The two-stage R-CNN line trades speed for structure: R-CNN's bottleneck is per-region forward passes (d2l §14.8.1), and even Fast R-CNN keeps a separate, non-learnable region-proposal stage from selective search (d2l §14.8.2); Faster R-CNN removes that last external stage by learning the proposals end-to-end (d2l §14.8.3). Each change is about *where the compute goes*, not about what is ultimately computed.
+The two-stage R-CNN line trades speed for structure: R-CNN's bottleneck is per-region forward passes (d2l §14.8.1), and even Fast R-CNN keeps a separate, non-learnable region-proposal stage from selective search (d2l §14.8.2); Faster R-CNN removes that last external stage by learning the proposals end-to-end (d2l §14.8.3). Each change is about _where the compute goes_, not about what is ultimately computed.
 
 ## Variants and alternatives
 
@@ -296,10 +296,10 @@ The region-based lineage the chapter walks:
 
 - **R-CNN** (d2l §14.8.1): 2000 or so region proposals from selective search (Uijlings et al., 2013), a per-region CNN forward pass for each with a pretrained backbone truncated before the output layer, a per-class SVM head, and a linear-regression box head. The chapter's cost objection is that thousands of proposals means thousands of forward passes.
 - **Fast R-CNN** (d2l §14.8.2): the CNN runs once on the whole image, the proposals become regions of interest on the CNN output, and a **RoI pooling** layer divides each region into an $h_2 \times w_2$ grid of subwindows (max over each) to yield a fixed-shape $n \times c \times h_2 \times w_2$ tensor; classification is a softmax head and box refinement is a small regression.
-- **Faster R-CNN** (d2l §14.8.3): selective search is replaced by a *region proposal network* — one $3\times3$ conv on the feature map, anchors at each pixel, per-anchor binary (object or not) and box-offset heads, kept through NMS as the proposals — and the RPN is jointly trained with the rest of the model, which the chapter calls end-to-end training.
+- **Faster R-CNN** (d2l §14.8.3): selective search is replaced by a _region proposal network_ — one $3\times3$ conv on the feature map, anchors at each pixel, per-anchor binary (object or not) and box-offset heads, kept through NMS as the proposals — and the RPN is jointly trained with the rest of the model, which the chapter calls end-to-end training.
 - **Mask R-CNN** (d2l §14.8.4): Faster R-CNN with RoI pooling replaced by RoI alignment (bilinear interpolation preserves spatial alignment) and an added fully-convolutional head that predicts per-pixel masks from the same feature maps.
 
-The R-CNN → Fast → Faster → Mask progression is about moving each stage of the pipeline *into* the network: the region-proposal stage, first an external algorithm (R-CNN, Fast R-CNN) then a learned sub-network (Faster R-CNN), and the mask head last (Mask R-CNN). SSD, named in d2l at §14.7 and outside the excerpt, collapses the two stages into a single forward pass and is a genuinely different design choice; the chapter text here does not carry the specifics to support anything further about it, and this page makes no such claims.
+The R-CNN → Fast → Faster → Mask progression is about moving each stage of the pipeline _into_ the network: the region-proposal stage, first an external algorithm (R-CNN, Fast R-CNN) then a learned sub-network (Faster R-CNN), and the mask head last (Mask R-CNN). SSD, named in d2l at §14.7 and outside the excerpt, collapses the two stages into a single forward pass and is a genuinely different design choice; the chapter text here does not carry the specifics to support anything further about it, and this page makes no such claims.
 
 ## History and attribution
 
@@ -315,6 +315,6 @@ Nothing on this page cites a figure or a result directly from He et al. 2016 or 
 
 ## Prerequisites and next connections
 
-Read [convolutional networks](./convolutional-networks.md) first — the R-CNN family sits on one, and its features are what the per-region and per-anchor heads consume. Read [pooling](./pooling.md) before the Fast R-CNN section, because RoI pooling generalizes exactly that layer: instead of specifying the window, padding, and stride, you specify the *output shape* and the layer works backwards to a grid of subwindows for each region. Read [loss functions](./loss-functions.md) before the training side, because the class head, the box-offset head, and the RPN's binary head are all supervised by losses this page names but does not define here. Read [transfer learning](./transfer-learning.md) before R-CNN's "truncated, pretrained CNN" step, which is the standard pattern that pattern exists to describe. [ResNet](./resnet.md) is a common backbone choice; it is a useful-when on this page rather than a requires, because the chapter names a pretrained CNN generically.
+Read [convolutional networks](./convolutional-networks.md) first — the R-CNN family sits on one, and its features are what the per-region and per-anchor heads consume. Read [pooling](./pooling.md) before the Fast R-CNN section, because RoI pooling generalizes exactly that layer: instead of specifying the window, padding, and stride, you specify the _output shape_ and the layer works backwards to a grid of subwindows for each region. Read [loss functions](./loss-functions.md) before the training side, because the class head, the box-offset head, and the RPN's binary head are all supervised by losses this page names but does not define here. Read [transfer learning](./transfer-learning.md) before R-CNN's "truncated, pretrained CNN" step, which is the standard pattern that pattern exists to describe. [ResNet](./resnet.md) is a common backbone choice; it is a useful-when on this page rather than a requires, because the chapter names a pretrained CNN generically.
 
 From here, [classification](./classification.md) is the task detection generalizes, and segmentation — the per-pixel-boundary task Mask R-CNN bridges to — is the natural next page and is currently named in plain text on this corpus.

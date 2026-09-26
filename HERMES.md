@@ -5,6 +5,7 @@ and HERMES_CONTENT_PROFILE.md outrank this file; where they disagree, they win.
 Each rule below exists because an earlier page got it wrong.
 
 ## Facts and math
+
 1. **Only state numbers that appear in the source text you were given.** Never
    fill a figure from memory, even a well-known one. (A draft once said BERT's
    maximum sequence length was 1024; it is 512.)
@@ -16,10 +17,11 @@ Each rule below exists because an earlier page got it wrong.
    and hedge it. (A detection draft once divided only μ by σ.)
 
 ## Frontmatter
+
 3. **A relationship reads "<this page> <type> <target>".** Check that the
    sentence is true in that direction. A task or problem does not `generalize`
    the architectures that solve it — that edge is `<architecture> used_to_solve
-   <task>` and belongs on the architecture's page; report it instead of adding
+<task>` and belongs on the architecture's page; report it instead of adding
    the backwards version. Make the type agree with the note you write.
 4. **Category strings must already exist.** For `categories` and for
    `proposed_categories` in `unresolved_references`, copy a string that appears
@@ -31,6 +33,7 @@ Each rule below exists because an earlier page got it wrong.
    `[]`, never as a bare key.
 
 ## Scope
+
 7. Edit only your own page. Do not touch other pages, `content/atlas.yaml`, or
    `docs/source-registry.json`. List any cross-links or atlas updates the page
    needs in your final report so the operator can make them.

@@ -93,7 +93,7 @@ claims:
         locator: d2l §15.1.1, Eq. 15.1.1 (cosine similarity) and the surrounding text; §15.1 (Word Embedding, word2vec)
   - claim_id: claim.embeddings.skipgram_mle
     section: formal-treatment
-    statement: "The skip-gram model models the joint conditional probability of its context words given a center word — for the worked example, P(\"the\",\"man\",\"his\",\"son\" | \"loves\") with context window 2 — and, under conditional independence, this factorizes into a product of per-context-word probabilities; training is maximum-likelihood estimation of that product, equivalently minimizing the summed log-loss."
+    statement: 'The skip-gram model models the joint conditional probability of its context words given a center word — for the worked example, P("the","man","his","son" | "loves") with context window 2 — and, under conditional independence, this factorizes into a product of per-context-word probabilities; training is maximum-likelihood estimation of that product, equivalently minimizing the summed log-loss.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
@@ -121,7 +121,7 @@ claims:
         locator: d2l §15.2.2 (including Fig. 15.2.1 and the O(log2|V|) discussion)
   - claim_id: claim.embeddings.glove_loss
     section: formal-treatment
-    statement: "GloVe fits a weighted squared log-bilinear objective over the symmetric global co-occurrence counts x_ij: sum_{i,j} h(x_ij) (u_j^T v_i + b_i + c_j - log x_ij)^2, where h is an increasing weight function that caps large counts (hence zero-count pairs drop out of the loss), and the center-word and context-word vectors are mathematically equivalent and are averaged together as the output vector."
+    statement: 'GloVe fits a weighted squared log-bilinear objective over the symmetric global co-occurrence counts x_ij: sum_{i,j} h(x_ij) (u_j^T v_i + b_i + c_j - log x_ij)^2, where h is an increasing weight function that caps large counts (hence zero-count pairs drop out of the loss), and the center-word and context-word vectors are mathematically equivalent and are averaged together as the output vector.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l

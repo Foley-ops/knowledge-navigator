@@ -1894,27 +1894,40 @@
       "title": "Interpretable Machine Learning",
       "url": "https://christophm.github.io/interpretable-ml-book/",
       "kind": "authoritative-secondary",
-      "topics": [
-        "interpretability",
-        "explainability",
-        "feature importance",
-        "shap",
-        "saliency"
-      ]
+      "topics": ["interpretability", "explainability", "feature importance", "shap", "saliency"]
     },
     {
       "id": "source.reddi2026.ml_systems",
       "title": "Machine Learning Systems",
       "url": "https://mlsysbook.ai",
       "kind": "authoritative-secondary",
+      "topics": ["ml systems", "edge ai", "deployment", "inference", "mlops", "efficiency"]
+    },
+    {
+      "id": "source.hyndman.forecasting_principles_practice",
+      "title": "Forecasting: Principles and Practice (3rd ed)",
+      "url": "https://otexts.com/fpp3/",
+      "kind": "authoritative-secondary",
+      "topics": ["time series", "forecasting", "arima", "exponential smoothing", "evaluation"]
+    },
+    {
+      "id": "source.buontempo.genetic_algorithms_ml",
+      "title": "Genetic Algorithms and Machine Learning for Programmers",
+      "url": "https://pragprog.com/titles/fbmach/genetic-algorithms-and-machine-learning-for-programmers/",
+      "kind": "authoritative-secondary",
       "topics": [
-        "ml systems",
-        "edge ai",
-        "deployment",
-        "inference",
-        "mlops",
-        "efficiency"
+        "genetic algorithms",
+        "evolutionary computation",
+        "swarm intelligence",
+        "cellular automata"
       ]
+    },
+    {
+      "id": "source.yao2022.react",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "kind": "preprint",
+      "topics": ["language model agents", "tool use", "reasoning", "acting"]
     }
   ]
 }

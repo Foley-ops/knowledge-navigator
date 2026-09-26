@@ -86,7 +86,7 @@ unresolved_references:
 claims:
   - claim_id: claim.classification.handcrafted_pipeline
     section: why-it-matters
-    statement: "Before 2012, a typical computer vision pipeline for this task was: obtain the dataset, preprocess it with hand-crafted features, run it through hand-engineered extractors such as SIFT, SURF or bags of visual words, and fit a stock classifier (usually a linear model or kernel method) on top; for practitioners inside such pipelines the learning algorithm was often considered an afterthought."
+    statement: 'Before 2012, a typical computer vision pipeline for this task was: obtain the dataset, preprocess it with hand-crafted features, run it through hand-engineered extractors such as SIFT, SURF or bags of visual words, and fit a stock classifier (usually a linear model or kernel method) on top; for practitioners inside such pipelines the learning algorithm was often considered an afterthought.'
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
@@ -105,7 +105,7 @@ claims:
     status: supported
     evidence:
       - source_id: source.zhang2023.d2l
-        locator: "d2l §8.1.1, Missing Ingredient: Data"
+        locator: 'd2l §8.1.1, Missing Ingredient: Data'
   - claim_id: claim.classification.alexnet_design
     section: concrete-example
     statement: AlexNet is an eight-layer network — five convolutional layers, two fully connected hidden layers, one fully connected output layer — that used ReLU instead of sigmoid, controlled the fully connected layers with dropout, and won the ImageNet Large Scale Visual Recognition Challenge 2012 by a large margin.
@@ -294,7 +294,7 @@ the head changes — which is exactly what fine-tuning exploits.
 
 Reach for classification when the deliverable is one closed-vocabulary verdict per
 whole image: cataloguing products, triaging photos into a fixed set of outcomes,
-filtering a photo library. It is also the route when the *side product* is the point
+filtering a photo library. It is also the route when the _side product_ is the point
 — the final hidden state that "summarizes its contents" (d2l §8.1.1) is exactly the
 compact representation a retrieval or downstream model wants.
 
